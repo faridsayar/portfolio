@@ -106,9 +106,44 @@ a { color: inherit; text-decoration: none; }
 .socials a:hover { color: var(--text); }
 
 /* Toast */
-.toast { position: fixed; left: 50%; bottom: 28px; transform: translateX(-50%); background: #0f1318; border: 1px solid var(--border); color: var(--text); padding: 12px 14px; border-radius: 12px; box-shadow: var(--shadow); display: flex; gap: 12px; align-items: center; }
-.toast__close { background: transparent; border: none; color: var(--muted); font-size: 20px; cursor: pointer; }
-.toast__close:hover { color: var(--text); }
+.toast { 
+  position: fixed; 
+  left: 50%; 
+  bottom: 28px; 
+  transform: translateX(-50%); 
+  background: #0f1318; 
+  border: 1px solid var(--border); 
+  color: var(--text); 
+  padding: 12px 14px; 
+  border-radius: 12px; 
+  box-shadow: var(--shadow); 
+  display: flex; 
+  gap: 12px; 
+  align-items: center; 
+  z-index: 1000;
+}
+
+.toast[hidden] {
+  display: none !important;
+}
+
+.toast__close { 
+  background: transparent; 
+  border: none; 
+  color: var(--muted); 
+  font-size: 20px; 
+  cursor: pointer; 
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toast__close:hover { 
+  color: var(--text); 
+}
 
 /* Lightbox */
 .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,.9); display: none; align-items: center; justify-content: center; z-index: 1000; }

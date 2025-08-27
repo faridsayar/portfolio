@@ -42,23 +42,35 @@
   // Success toast
   var toast = document.getElementById('toast');
   var closeBtn = toast ? toast.querySelector('.toast__close') : null;
+  
+  // Ensure toast is hidden by default and remove any hash from URL
+  if (toast) {
+    toast.hidden = true;
+    // Remove any existing success hash from URL
+    if (window.location.hash === '#success') {
+      history.replaceState('', document.title, window.location.pathname + window.location.search);
+    }
+  }
+  
   function showToast() {
     if (!toast) return;
     toast.hidden = false;
+    // Auto-hide after 6 seconds
     setTimeout(function () { hideToast(); }, 6000);
   }
+  
   function hideToast() {
     if (!toast) return;
     toast.hidden = true;
   }
-  if (closeBtn) closeBtn.addEventListener('click', hideToast);
-
-  // If redirected with #success, show toast
-  if (window.location.hash.replace('#', '') === 'success') {
-    showToast();
-    // Clean hash from URL without reloading
-    history.replaceState('', document.title, window.location.pathname + window.location.search);
+  
+  // Add click event listener to close button
+  if (closeBtn) {
+    closeBtn.addEventListener('click', hideToast);
   }
+
+  // Only show toast if redirected with #success (but we've already cleaned the URL above)
+  // This prevents the toast from showing on page load
 })();
 
 // Lightbox gallery
@@ -153,69 +165,3 @@
     handleGesture();
   }, { passive: true });
 })();
-
-// Portfolio filters
-(function () {
-  var filterButtons = Array.prototype.slice.call(document.querySelectorAll('.filter'));
-  var cards = Array.prototype.slice.call(document.querySelectorAll('.card'));
-
-  function setActiveFilter(category) {
-    filterButtons.forEach(function (btn) {
-      var isActive = btn.getAttribute('data-filter') === category || category === 'all' && btn.getAttribute('data-filter') === 'all';
-      btn.classList.toggle('is-active', btn.getAttribute('data-filter') === category || (category === 'all' && btn.getAttribute('data-filter') === 'all'));
-      btn.setAttribute('aria-selected', btn.classList.contains('is-active') ? 'true' : 'false');
-    });
-  }
-
-  function filterCards(category) {
-    cards.forEach(function (card) {
-      var shouldShow = category === 'all' || card.getAttribute('data-category') === category;
-      card.style.display = shouldShow ? '' : 'none';
-    });
-  }
-
-  filterButtons.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var category = btn.getAttribute('data-filter');
-      setActiveFilter(category);
-      filterCards(category);
-    });
-  });
-})();
-
-// Contact form handling (FormSubmit)
-(function () {
-  var form = document.getElementById('contact-form');
-  if (!form) return;
-
-  // Redirect back with a success hash to trigger toast
-  var nextInput = document.getElementById('_next');
-  if (nextInput) {
-    var url = new URL(window.location.href);
-    url.hash = 'success';
-    nextInput.value = url.toString();
-  }
-
-  // Success toast
-  var toast = document.getElementById('toast');
-  var closeBtn = toast ? toast.querySelector('.toast__close') : null;
-  function showToast() {
-    if (!toast) return;
-    toast.hidden = false;
-    setTimeout(function () { hideToast(); }, 6000);
-  }
-  function hideToast() {
-    if (!toast) return;
-    toast.hidden = true;
-  }
-  if (closeBtn) closeBtn.addEventListener('click', hideToast);
-
-  // If redirected with #success, show toast
-  if (window.location.hash.replace('#', '') === 'success') {
-    showToast();
-    // Clean hash from URL without reloading
-    history.replaceState('', document.title, window.location.pathname + window.location.search);
-  }
-})();
-
-

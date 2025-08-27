@@ -297,6 +297,17 @@
         <button type="button" class="toast__close" aria-label="Close">×</button>
     </div>
 
+    <script>
+        // Ensure toast is hidden by default
+        document.addEventListener('DOMContentLoaded', function() {
+            var toast = document.getElementById('toast');
+            if (toast) {
+                toast.hidden = true;
+                console.log('Toast hidden by default');
+            }
+        });
+    </script>
+
     <!-- Lightbox -->
     <div id="lightbox" class="lightbox" aria-modal="true" aria-hidden="true" role="dialog">
         <button class="lightbox__close" aria-label="Close">×</button>
