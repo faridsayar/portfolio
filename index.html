@@ -3,327 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Designer Portfolio — Farid</title>
-    <meta name="description" content="Portfolio of a designer crafting 3D models, images, industrial design, game dev projects, and more.">
+    <title>Farid Sayar - Industrial designer & Inventor </title>
+    <meta name="description" content="Multidisciplinary designer specializing in 3D modeling, industrial design, game development, and visual experiences. Featured project: AK47-F Modern Design.">
+    <meta name="keywords" content="3D modeling, industrial design, game development, product design, visualization, Blender, Fusion 360, Unreal Engine, AK47-F">
+    <meta name="author" content="Farid Sayar">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Farid Sayar - Designer & Inventor | AK47-F Modern Design">
+    <meta property="og:description" content="Multidisciplinary designer crafting 3D models, industrial design, and game development projects. Featured: AK47-F Modern Design.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://faridsayar.com">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Farid Sayar - Designer & Inventor | AK47-F Modern Design">
+    <meta name="twitter:description" content="Multidisciplinary designer crafting 3D models, industrial design, and game development projects. Featured: AK47-F Modern Design.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header class="site-header">
-        <div class="container nav">
-            <a href="#home" class="brand" aria-label="Go to top">Farid</a>
-            <nav class="nav-links" aria-label="Primary">
-                <a href="#work">Work</a>
-                <a href="#about">About</a>
-                <a href="#contact" class="button">Contact</a>
-            </nav>
-        </div>
-    </header>
-
-    <main id="home">
-        <!-- Hero -->
-        <section class="section hero">
-            <div class="container hero__content">
-                <div class="hero__text">
-                    <h1>Designer and inventor building products, services and 3D assets.</h1>
-                    <p class="lead">I transform ideas into tangible visuals and interactive experiences — from 
-                        photoreal 3D models to industrial design and game development.</p>
-                    <div class="hero__cta">
-                        <a href="#contact" class="button">Contact</a>
-                    </div>
-                </div>
-                <div class="hero__visual" aria-hidden="true">
-                    <div class="hero__orb"></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Work / Portfolio -->
-        <section id="work" class="section">
-            <div class="container">
-                <div class="section__header">
-                    <h2>Portfolio</h2>
-                    <p>Industrial design, technical drawings, Concepts / Ideas, smart solutions, 3D models, branding, visual identity, image renderings, vizualisation, gamedev, character design, animation, UX, services and projects.</p>
-                </div>
-
-                <div class="filters" role="tablist" aria-label="Filter portfolio by category">
-                    <button class="filter is-active" data-filter="all" role="tab" aria-selected="true">All</button>
-                    <button class="filter" data-filter="3d" role="tab">3D Models</button>
-                    <button class="filter" data-filter="images" role="tab">Images</button>
-                    <button class="filter" data-filter="industrial" role="tab">Industrial</button>
-                    <button class="filter" data-filter="gamedev" role="tab">Game Dev</button>
-                    <button class="filter" data-filter="projects" role="tab">Projects</button>
-                </div>
-
-                <div class="grid" role="list">
-                    <!-- Example items. Replace links/thumbnails with your own -->
-                    <a class="card" role="listitem" href="#" data-category="3d" data-images="assets/images/3d/drone/01.jpg|assets/images/3d/drone/02.jpg|assets/images/3d/drone/03.jpg" aria-label="Open 3D Drone Model">
-                        <figure>
-                            <img src="assets/images/3d/drone/thumb.jpg" alt="3D drone model render">
-                            <figcaption>
-                                <span class="chip">3D Models</span>
-                                <h3>Drone Concept</h3>
-                            </figcaption>
-                        </figure>
-                    </a>
-
-                    <a class="card" role="listitem" href="#" data-category="images" data-images="assets/images/images/editorial/01.jpg|assets/images/images/editorial/02.jpg" aria-label="Open Fashion Editorial">
-                        <figure>
-                            <img src="assets/images/images/editorial/thumb.jpg" alt="High-contrast fashion editorial image">
-                            <figcaption>
-                                <span class="chip">Images</span>
-                                <h3>Editorial Series</h3>
-                            </figcaption>
-                        </figure>
-                    </a>
-
-                    <a class="card" role="listitem" href="#" data-category="industrial" data-images="assets/images/industrial/chair/01.jpg|assets/images/industrial/chair/02.jpg" aria-label="Open Chair Industrial Design">
-                        <figure>
-                            <img src="assets/images/industrial/chair/thumb.jpg" alt="Minimal wooden chair industrial design">
-                            <figcaption>
-                                <span class="chip">Industrial</span>
-                                <h3>Minimal Chair</h3>
-                            </figcaption>
-                        </figure>
-                    </a>
-
-                    <a class="card" role="listitem" href="#" data-category="gamedev" data-images="assets/images/gamedev/forest/01.jpg|assets/images/gamedev/forest/02.jpg" aria-label="Open Low Poly Forest Game Scene">
-                        <figure>
-                            <img src="assets/images/gamedev/forest/thumb.jpg" alt="Low poly forest game environment">
-                            <figcaption>
-                                <span class="chip">Game Dev</span>
-                                <h3>Forest Scene</h3>
-                            </figcaption>
-                        </figure>
-                    </a>
-
-                    <a class="card" role="listitem" href="#" data-category="projects" data-images="assets/images/projects/brand/01.jpg|assets/images/projects/brand/02.jpg" aria-label="Open Brand Identity Project">
-                        <figure>
-                            <img src="assets/images/projects/brand/thumb.jpg" alt="Brand identity mockups on stationery">
-                            <figcaption>
-                                <span class="chip">Projects</span>
-                                <h3>Brand Identity</h3>
-                            </figcaption>
-                        </figure>
-                    </a>
-
-                    <a class="card" role="listitem" href="#" data-category="3d" data-images="assets/images/3d/car/01.jpg|assets/images/3d/car/02.jpg" aria-label="Open Car 3D Model">
-                        <figure>
-                            <img src="assets/images/3d/car/thumb.jpg" alt="3D sports car render">
-                            <figcaption>
-                                <span class="chip">3D Models</span>
-                                <h3>Sports Car</h3>
-                            </figcaption>
-                        </figure>
-                    </a>
-
-                    <a class="card" role="listitem" href="#" data-category="images" data-images="assets/images/images/arch/01.jpg|assets/images/images/arch/02.jpg" aria-label="Open Architecture Image Set">
-                        <figure>
-                            <img src="assets/images/images/arch/thumb.jpg" alt="Modern architecture photo">
-                            <figcaption>
-                                <span class="chip">Images</span>
-                                <h3>Architecture Study</h3>
-                            </figcaption>
-                        </figure>
-                    </a>
-
-                    <a class="card" role="listitem" href="#" data-category="industrial" data-images="assets/images/industrial/lamp/01.jpg|assets/images/industrial/lamp/02.jpg" aria-label="Open Lamp Industrial Design">
-                        <figure>
-                            <img src="assets/images/industrial/lamp/thumb.jpg" alt="Sleek lamp product design">
-                            <figcaption>
-                                <span class="chip">Industrial</span>
-                                <h3>Desk Lamp</h3>
-                            </figcaption>
-                        </figure>
-                    </a>
-
-                    <a class="card" role="listitem" href="#" data-category="gamedev" data-images="assets/images/gamedev/character/01.jpg|assets/images/gamedev/character/02.jpg" aria-label="Open Character Game Dev">
-                        <figure>
-                            <img src="assets/images/gamedev/character/thumb.jpg" alt="Stylized game character">
-                            <figcaption>
-                                <span class="chip">Game Dev</span>
-                                <h3>Character Design</h3>
-                            </figcaption>
-                        </figure>
-                    </a>
-
-                    <a class="card" role="listitem" href="#" data-category="projects" data-images="assets/images/projects/website/01.jpg|assets/images/projects/website/02.jpg" aria-label="Open Portfolio Website Project">
-                        <figure>
-                            <img src="assets/images/projects/website/thumb.jpg" alt="Website UI mockups on laptop and phone">
-                            <figcaption>
-                                <span class="chip">Projects</span>
-                                <h3>Portfolio Website</h3>
-                            </figcaption>
-                        </figure>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- About -->
-        <section id="about" class="section section--alt">
-            <div class="container two-col">
-                <div>
-                    <h2>About</h2>
-                    <p>I’m a 35 years old multidisciplinary designer focused on clarity, function, and aesthetics. I love to see my work is being used and appreciated. That gives me energy and motivation.
-                        My work spans industrial product design, technical production drawings, service design, image making, package design 
-                        and 3D game assets and characters. I have a master degree in Industrial Design, 5 years experience working as Product owner and many years working as a designer. </p>
-                    <div class="tools-row" role="list" aria-label="Tools I use">
-                        <h2>My Tools</h2>
-                        <div class="tools-container">
-                            <a class="tool" role="listitem" href="https://www.autodesk.com/products/fusion-360" target="_blank" rel="noopener">
-                                <img src="https://cdn.simpleicons.org/autodesk/ffffff" alt="Fusion 360">
-                                <span>Fusion 360</span>
-                            </a>
-                            <a class="tool" role="listitem" href="https://www.unrealengine.com/" target="_blank" rel="noopener">
-                                <img src="https://cdn.simpleicons.org/unrealengine/ffffff" alt="Unreal Engine">
-                                <span>Unreal Engine</span>
-                            </a>
-                            <a class="tool" role="listitem" href="https://www.blender.org/" target="_blank" rel="noopener">
-                                <img src="https://cdn.simpleicons.org/blender/ffffff" alt="Blender">
-                                <span>Blender</span>
-                            </a>
-                            <a class="tool" role="listitem" href="https://www.adobe.com/products/substance3d" target="_blank" rel="noopener">
-                                <img src="assets/icons/substance_icon.png" alt="Substance Painter">
-                                <span>Substance Painter</span>
-                            </a>
-                            <a class="tool" role="listitem" href="https://www.marvelousdesigner.com/" target="_blank" rel="noopener">
-                                <img src="assets/icons/marvelous_icon.jpg" alt="Marvelous Designer">
-                                <span>Marvelous Designer</span>
-                            </a>
-                            <a class="tool" role="listitem" href="https://www.figma.com/" target="_blank" rel="noopener">
-                                <img src="https://cdn.simpleicons.org/figma/ffffff" alt="Figma">
-                                <span>Figma</span>
-                            </a>
-                            <a class="tool" role="listitem" href="https://www.adobe.com/products/photoshop.html" target="_blank" rel="noopener">
-                                <img src="assets/icons/photoshop_icon.png" alt="Adobe Photoshop">
-                                <span>Photoshop</span>
-                            </a>
-                            <a class="tool" role="listitem" href="https://www.adobe.com/products/illustrator.html" target="_blank" rel="noopener">
-                                <img src="assets/icons/illustrator_icon.png" alt="Adobe Illustrator">
-                                <span>Illustrator</span>
-                            </a>
-                            <a class="tool" role="listitem" href="https://www.adobe.com/products/premiere.html" target="_blank" rel="noopener">
-                                <img src="assets/icons/premier_icon.webp" alt="Adobe Premiere Pro">
-                                <span>Premiere Pro</span>
-                            </a>
-                            <a class="tool" role="listitem" href="https://www.adobe.com/products/aftereffects.html" target="_blank" rel="noopener">
-                                <img src="assets/icons/aftereffects_icon.webp" alt="Adobe After Effects">
-                                <span>After Effects</span>
-                            </a>
-                            <a class="tool" role="listitem" href="https://www.maxon.net/en/zbrush" target="_blank" rel="noopener">
-                                <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'><rect width='24' height='24' rx='6' fill='%231a2326'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='Inter, Arial' font-size='12' fill='%23e6e8ee'>Z</text></svg>" alt="ZBrush">
-                                <span>ZBrush</span>
-                            </a>
-                            <a class="tool" role="listitem" href="https://www.vizcom.co" target="_blank" rel="noopener">
-                                <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'><rect width='24' height='24' rx='6' fill='%231a2326'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='Inter, Arial' font-size='12' fill='%23e6e8ee'>V</text></svg>" alt="Vizcom">
-                                <span>Vizcom</span>
-                            </a>
-                            <a class="tool" role="listitem" href="#" target="_blank" rel="noopener">
-                                <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'><rect width='24' height='24' rx='6' fill='%231a2326'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='Inter, Arial' font-size='12' fill='%23e6e8ee'>Y</text></svg>" alt="Yvo3D">
-                                <span>Yvo3D</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="about__highlights">
-                    <div class="about__item">
-                        <span class="about__stat">7+ years</span>
-                        <span class="about__label">Experience</span>
-                    </div>
-                    <div class="about__item">
-                        <span class="about__stat">20+ projects</span>
-                        <span class="about__label">Delivered</span>
-                    </div>
-                    <div class="about__item">
-                        <span class="about__stat">4 fields</span>
-                        <span class="about__label">ID / SD / UX / 3D</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact -->
-        <section id="contact" class="section">
-            <div class="container">
-                <div class="section__header">
-                    <h2>Let's get to work</h2>
-                    <p>Tell me about your project and I'll get back to you shortly.</p>
-                </div>
-                <form id="contact-form" class="form" method="POST" action="https://formsubmit.co/sayarfarid@gmail.com">
-                    <input type="hidden" name="_subject" value="New portfolio inquiry">
-                    <input type="hidden" name="_template" value="table">
-                    <input type="text" name="_honey" style="display:none">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_next" id="_next" value="">
-
-                    <div class="form__row">
-                        <label for="name">Your name</label>
-                        <input id="name" name="name" type="text" placeholder="Johan Johanson" required>
-                    </div>
-                    <div class="form__row">
-                        <label for="email">Your email</label>
-                        <input id="email" name="email" type="email" placeholder="you@company.com" required>
-                    </div>
-                    <div class="form__row">
-                        <label for="message">What do you need done?</label>
-                        <textarea id="message" name="message" rows="6" placeholder="I need" required></textarea>
-                    </div>
-                    <div class="form__actions">
-                        <button type="submit" class="button" id="submit-btn">Send Email</button>
-                        <span class="form__hint">or</span>
-                        <a href="https://t.me/FARIDSAYAR" target="_blank" rel="noopener" aria-label="Open Telegram @FARIDSAYAR">
-                            <img class="form__telegram" src="assets/icons/telegram_icon.png" alt="Telegram @FARIDSAYAR" loading="lazy">
-                        </a>
-                    </div>
-                </form>
-            </div>
-        </section>
-    </main>
-
-    <footer class="site-footer">
-        <div class="container footer__content">
-            <p>© <span id="year"></span> Farid. All rights reversed.</p>
-            <div class="socials">
-                <a href="#" aria-label="Instagram">Instagram</a>
-                <a href="#" aria-label="ArtStation">ArtStation</a>
-                <a href="#" aria-label="LinkedIn">LinkedIn</a>
-            </div>
-        </div>
-    </footer>
-
-    <div id="toast" role="status" aria-live="polite" class="toast" hidden>
-        <span>Thanks! Your message was sent.</span>
-        <button type="button" class="toast__close" aria-label="Close">×</button>
-    </div>
-
+    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css?v=3">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // Ensure toast is hidden by default
-        document.addEventListener('DOMContentLoaded', function() {
-            var toast = document.getElementById('toast');
-            if (toast) {
-                toast.hidden = true;
-                console.log('Toast hidden by default');
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Readex Pro', 'system-ui', 'sans-serif'],
+                    },
+                    colors: {
+                        dark: '#1F1F1F',
+                        primary: '#004958',
+                        secondary: '#00768E',
+                        accent: '#00D4FF',
+                        white: '#FFFFFF',
+                        black: '#000000',
+                    }
+                }
             }
-        });
+        }
     </script>
-
-    <!-- Lightbox -->
-    <div id="lightbox" class="lightbox" aria-modal="true" aria-hidden="true" role="dialog">
-        <button class="lightbox__close" aria-label="Close">×</button>
-        <button class="lightbox__nav lightbox__nav--prev" aria-label="Previous image">‹</button>
-        <img class="lightbox__img" alt="Expanded work image" />
-        <button class="lightbox__nav lightbox__nav--next" aria-label="Next image">›</button>
+</head>
+<body class="single-page-body">
+    <!-- Single Page with AK47 Background -->
+    <div class="single-page-container">
+        <!-- Background Image -->
+        <div class="background-image"></div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <h1 class="main-title">Industrial Designer & 3D Model Creator | Professional Product Design, Game Assets & Visual Development Expert</h1>
+        </div>
+        
+        <!-- Name Text -->
+        <div class="name-content">
+            <h2 class="name-title">FARID <span class="name-sayar">SAYAR</span></h2>
+        </div>
+        
+        <!-- Award Image -->
+        <div class="award-content">
+            <img src="assets/images/best-designer-award.svg" alt="Best Designer Award" class="award-image">
+        </div>
+        
+        <!-- SEO Description Text -->
+        <div class="seo-content">
+            <p class="seo-text">Professional industrial designer and 3D modeling expert specializing in product design, game asset creation, visual development, and technical design solutions. With extensive experience in industrial design, product development, 3D modeling, game design, visual effects, and creative direction. Expert in Blender, Fusion 360, Unreal Engine, Substance Painter, and Marvelous Designer. Delivering high-quality 3D models, industrial design concepts, game assets, product visualizations, and interactive experiences for clients worldwide. Specializing in weapons design, mechanical engineering visualization, product prototyping, game development assets, and industrial design consulting. Creating photorealistic 3D renders, technical drawings, product concepts, and innovative design solutions for manufacturing, gaming, and visual media industries. Professional services include 3D modeling, product design, game asset development, industrial design, visual effects, technical illustration, and creative consultation.</p>
+        </div>
     </div>
 
-    <script src="script.js"></script>
-    <script>
-        // Set current year in footer without waiting for main JS
-        document.getElementById('year').textContent = new Date().getFullYear();
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Farid Sayar",
+        "jobTitle": "Designer & Inventor",
+        "description": "Multidisciplinary designer specializing in 3D modeling, industrial design, and game development",
+        "url": "https://faridsayar.com",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Oslo",
+            "addressCountry": "Norway"
+        },
+        "knowsAbout": ["3D Modeling", "Industrial Design", "Game Development", "Product Design", "Visualization"],
+        "hasCredential": {
+            "@type": "EducationalOccupationalCredential",
+            "credentialCategory": "degree",
+            "educationalLevel": "Master's degree in Industrial Design"
+        },
+        "sameAs": [
+            "https://www.behance.net/faridsayar"
+        ]
+    }
     </script>
 </body>
 </html>
-
-
