@@ -10,34 +10,33 @@
   --color-black: #000000;
 }
 
-/* Single Page Body - No Scrolling */
+/* Single Page Body - With Parallax Scrolling */
 .single-page-body {
     font-family: 'Readex Pro', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     margin: 0;
     padding: 0;
-    height: 100vh;
+    height: auto;
     width: 100vw;
-    overflow: hidden;
-    position: fixed;
-    top: 0;
-    left: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
 }
 
-/* Single Page Container */
-.single-page-container {
+/* Hero Section - Original Layout */
+.hero-section {
     position: relative;
     width: 100%;
     height: 100vh;
     overflow: hidden;
 }
 
-/* Background Image */
+/* Background Image - Fixed Parallax */
 .background-image {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     background-image: url('assets/images/ak-background-image.jpg');
     background-size: cover;
     background-position: left center;
@@ -68,6 +67,7 @@
     margin: 0;
     padding: 0;
     max-width: 50%;
+    transition: all 0.6s ease-out;
 }
 
 /* Name Content */
@@ -90,6 +90,7 @@
     margin: 0;
     padding: 0;
     max-width: 50%;
+    transition: all 0.6s ease-out;
 }
 
 .name-sayar {
@@ -110,6 +111,7 @@
     height: auto;
     opacity: 0.8;
     filter: drop-shadow(1px 1px 4px rgba(0, 0, 0, 0.8));
+    transition: all 0.6s ease-out;
 }
 
 /* SEO Content */
@@ -120,6 +122,7 @@
     width: 25%;
     z-index: 10;
 }
+
 
 .seo-text {
     font-family: 'Readex Pro', sans-serif;
@@ -132,6 +135,75 @@
     margin: 0;
     padding: 0;
     text-align: left;
+    transition: all 0.6s ease-out;
+}
+
+/* Illustration Boxes */
+.illustration-boxes {
+    position: relative;
+    width: 100%;
+    padding: 2rem 0;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.1); /* Subtle background for contrast */
+}
+
+.illustration-box {
+    position: relative;
+    width: 60%;
+    aspect-ratio: 16/9;
+    margin: 2rem 0 2rem auto;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px 0 0 12px;
+    overflow: hidden;
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.illustration-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.4), transparent 50%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.illustration-box:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.box-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    color: white;
+    z-index: 2;
+}
+
+.box-title {
+    font-family: 'Readex Pro', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: 0 0 0.5rem 0;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.box-description {
+    font-family: 'Readex Pro', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 300;
+    margin: 0;
+    opacity: 0.9;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 /* Mobile: Adjust text container width */
@@ -161,6 +233,28 @@
     .seo-text {
         font-size: 4pt;
     }
+    
+        /* Mobile illustration boxes - aligned to right border without padding */
+        .illustration-boxes {
+            padding: 2rem 0 2rem 0; /* No left/right padding */
+        }
+        
+        .illustration-box {
+            width: 80%;
+            margin: 2rem 0 2rem auto; /* Align to right border */
+        }
+    
+    .box-content {
+        padding: 1rem;
+    }
+    
+    .box-title {
+        font-size: 1rem;
+    }
+    
+    .box-description {
+        font-size: 0.8rem;
+    }
 }
 
 /* Smooth Transitions */
@@ -187,10 +281,11 @@ html {
     scrollbar-width: none;
 }
 
-/* Ensure no scrolling */
+/* Enable smooth scrolling */
 body, html {
-    overflow: hidden;
-    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: auto;
     width: 100%;
 }
 
