@@ -262,7 +262,7 @@
         </div>
       </section>
 
-      <section class="section section--white section--timeline" aria-label="Prosessprioritering">
+      <section class="section section--white section--timeline" aria-label="Send forespørsel">
         <div class="section-inner">
           <div class="section-head">
             <p class="section-kicker">Prioriter prosessen</p>
@@ -273,61 +273,142 @@
             </p>
           </div>
 
-          <!--
-            NOTE: Interactive timeline.
-            - 6 draggable boundary handles between fixed start/end.
-            - 7 segments represent phases and always sum to 100%.
-            - JS updates segment widths, handle positions, and percentage summary.
-          -->
-          <div class="timeline" data-timeline>
-            <div class="timeline-track-wrap">
-              <div class="timeline-labels" aria-hidden="true">
-                <div class="timeline-handle-label" data-handle-label="0"></div>
-                <div class="timeline-handle-label" data-handle-label="1"></div>
-                <div class="timeline-handle-label" data-handle-label="2"></div>
-                <div class="timeline-handle-label" data-handle-label="3"></div>
-                <div class="timeline-handle-label" data-handle-label="4"></div>
-                <div class="timeline-handle-label" data-handle-label="5"></div>
+          <!-- NOTE: One combined inquiry form section. Timeline values will be included later. -->
+          <form class="inquiry-form" action="#" method="post">
+            <!--
+              NOTE: Interactive timeline.
+              - 6 draggable boundary handles between fixed start/end.
+              - 6 segments represent phases and always sum to 100%.
+              - JS updates segment widths, handle positions, and percentage summary.
+            -->
+            <div class="timeline" data-timeline>
+              <div class="timeline-anchors">
+                <span class="timeline-anchor timeline-anchor--start">Konsultasjon</span>
+                <span class="timeline-anchor timeline-anchor--time" data-timeframe-label>
+                  2 mnd prosjekt
+                </span>
+                <span class="timeline-anchor timeline-anchor--end">Ferdigstilling</span>
               </div>
+              <div class="timeline-track-wrap">
+                <div class="timeline-labels" aria-hidden="true">
+                  <div class="timeline-handle-label" data-handle-label="0"></div>
+                  <div class="timeline-handle-label" data-handle-label="1"></div>
+                  <div class="timeline-handle-label" data-handle-label="2"></div>
+                  <div class="timeline-handle-label" data-handle-label="3"></div>
+                  <div class="timeline-handle-label" data-handle-label="4"></div>
+                </div>
 
-              <div class="timeline-track" data-timeline-track aria-label="Tidslinje">
-                <div class="timeline-segments" aria-hidden="true">
-                  <div class="timeline-segment" data-segment="0"></div>
-                  <div class="timeline-segment" data-segment="1"></div>
-                  <div class="timeline-segment" data-segment="2"></div>
-                  <div class="timeline-segment" data-segment="3"></div>
-                  <div class="timeline-segment" data-segment="4"></div>
-                  <div class="timeline-segment" data-segment="5"></div>
-                  <div class="timeline-segment" data-segment="6"></div>
+                <div class="timeline-track" data-timeline-track aria-label="Tidslinje">
+                  <div class="timeline-segments" aria-hidden="true">
+                    <div class="timeline-segment" data-segment="0"></div>
+                    <div class="timeline-segment" data-segment="1"></div>
+                    <div class="timeline-segment" data-segment="2"></div>
+                    <div class="timeline-segment" data-segment="3"></div>
+                    <div class="timeline-segment" data-segment="4"></div>
+                    <div class="timeline-segment" data-segment="5"></div>
+                  </div>
+                </div>
+
+                <div class="timeline-handles" aria-label="Juster grenser mellom faser">
+                  <div class="timeline-handle" data-handle="0" role="slider" tabindex="0"></div>
+                  <div class="timeline-handle" data-handle="1" role="slider" tabindex="0"></div>
+                  <div class="timeline-handle" data-handle="2" role="slider" tabindex="0"></div>
+                  <div class="timeline-handle" data-handle="3" role="slider" tabindex="0"></div>
+                  <div class="timeline-handle" data-handle="4" role="slider" tabindex="0"></div>
                 </div>
               </div>
 
-              <div class="timeline-handles" aria-label="Juster grenser mellom faser">
-                <div class="timeline-handle" data-handle="0" role="slider" tabindex="0"></div>
-                <div class="timeline-handle" data-handle="1" role="slider" tabindex="0"></div>
-                <div class="timeline-handle" data-handle="2" role="slider" tabindex="0"></div>
-                <div class="timeline-handle" data-handle="3" role="slider" tabindex="0"></div>
-                <div class="timeline-handle" data-handle="4" role="slider" tabindex="0"></div>
-                <div class="timeline-handle" data-handle="5" role="slider" tabindex="0"></div>
-              </div>
-            </div>
-
-            <div class="timeline-summary" aria-label="Oppsummering">
-              <h3 class="timeline-summary__title">Oppsummering</h3>
               <div class="timeline-summary__grid" data-timeline-summary></div>
 
               <!-- NOTE: Hidden fields for future submission wiring (no functionality yet). -->
               <div class="timeline-hidden" aria-hidden="true">
-                <input type="hidden" name="phase_konsultasjon" data-phase-input="0" />
-                <input type="hidden" name="phase_brukeranalyse" data-phase-input="1" />
-                <input type="hidden" name="phase_konseptutvikling" data-phase-input="2" />
-                <input type="hidden" name="phase_prototype" data-phase-input="3" />
-                <input type="hidden" name="phase_iterasjon" data-phase-input="4" />
-                <input type="hidden" name="phase_validering" data-phase-input="5" />
-                <input type="hidden" name="phase_ferdigstilling" data-phase-input="6" />
+                <input type="hidden" name="phase_brukeranalyse" data-phase-input="0" />
+                <input type="hidden" name="phase_konseptutvikling" data-phase-input="1" />
+                <input type="hidden" name="phase_prototype" data-phase-input="2" />
+                <input type="hidden" name="phase_finjustering" data-phase-input="3" />
+                <input type="hidden" name="phase_validering" data-phase-input="4" />
+                <input type="hidden" name="phase_ferdigstilling" data-phase-input="5" />
               </div>
             </div>
-          </div>
+
+            <div class="inquiry-grid">
+              <div class="field">
+                <label class="field__label" for="full-name">Fullt navn</label>
+                <input
+                  class="field__input"
+                  id="full-name"
+                  name="full_name"
+                  type="text"
+                  required
+                  placeholder="F.eks. Kari Nordmann"
+                />
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="email">E-post</label>
+                <input
+                  class="field__input"
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  placeholder="F.eks. kari.nordmann@example.com"
+                />
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="timeframe">Total tid vi har</label>
+                <select
+                  class="field__input"
+                  id="timeframe"
+                  name="timeframe"
+                  required
+                  data-timeframe-select
+                >
+                  <option value="1 mnd">1 mnd</option>
+                  <option value="2 mnd" selected>2 mnd</option>
+                  <option value="3 mnd">3 mnd</option>
+                  <option value="4 mnd">4 mnd</option>
+                  <option value="5 mnd">5 mnd</option>
+                  <option value="6+ mnd">6+ mnd</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="budget">Ca. budsjett (frivillig)</label>
+                <input
+                  class="field__input"
+                  id="budget"
+                  name="budget"
+                  type="text"
+                  placeholder="F.eks. 150 000 NOK"
+                />
+              </div>
+            </div>
+
+            <div class="field field--full">
+              <label class="field__label" for="description"
+                >Beskrivelse – hva trenger du hjelp med</label
+              >
+              <textarea
+                class="field__textarea"
+                id="description"
+                name="description"
+                rows="6"
+                required
+                placeholder="F.eks. vi trenger hjelp til å utvikle en funksjonell prototype av et nytt produkt, basert på eksisterende skisser og enkle 3D-modeller."
+              ></textarea>
+            </div>
+
+            <div class="inquiry-footer">
+              <button class="inquiry-cta" type="submit">Send forespørsel</button>
+              <p class="inquiry-note">
+                Forespørselen er uforpliktende og er kun for orientering. Vi vil ta kontakt med deg
+                snarest for å finne ut hvordan vi kan best hjelpe deg og din prosjekt og gi deg et
+                korrekt estimat.
+              </p>
+            </div>
+          </form>
         </div>
       </section>
     </main>

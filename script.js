@@ -85,11 +85,12 @@ class SinglePagePortfolio {
     const handleLabels = Array.from(timeline.querySelectorAll('[data-handle-label]'));
     const summaryEl = timeline.querySelector('[data-timeline-summary]');
     const inputs = Array.from(timeline.querySelectorAll('[data-phase-input]'));
+    const timeframeSelect = document.querySelector('[data-timeframe-select]');
+    const timeframeLabel = timeline.querySelector('[data-timeframe-label]');
 
-    if (!track || segments.length !== 7 || handles.length !== 6) return;
+    if (!track || segments.length !== 6 || handles.length !== 5) return;
 
     const phases = [
-      'Konsultasjon',
       'Brukeranalyse',
       'Konseptutvikling',
       'Prototype',
@@ -99,7 +100,7 @@ class SinglePagePortfolio {
     ];
 
     const minGapPct = 3;
-    let boundaries = Array.from({ length: 6 }, (_, i) => Math.round(((i + 1) * 100) / 7));
+    let boundaries = Array.from({ length: 5 }, (_, i) => Math.round(((i + 1) * 100) / 6));
     let activeHandleIndex = null;
     let pointerId = null;
 
@@ -109,7 +110,7 @@ class SinglePagePortfolio {
 
     function computePhasePercents() {
       const b = boundaries;
-      const p = [b[0], b[1] - b[0], b[2] - b[1], b[3] - b[2], b[4] - b[3], b[5] - b[4], 100 - b[5]];
+      const p = [b[0], b[1] - b[0], b[2] - b[1], b[3] - b[2], b[4] - b[3], 100 - b[4]];
       return p.map((x) => clamp(x, 0, 100));
     }
 
@@ -131,7 +132,7 @@ class SinglePagePortfolio {
 
     function ensureSummary() {
       if (!summaryEl) return;
-      if (summaryEl.children.length === 7) return;
+      if (summaryEl.children.length === phases.length) return;
       summaryEl.innerHTML = '';
       phases.forEach((name, idx) => {
         const item = document.createElement('div');
@@ -193,6 +194,10 @@ class SinglePagePortfolio {
         if (Number.isFinite(idx) && idx >= 0 && idx < rounded.length)
           inputEl.value = String(rounded[idx]);
       });
+
+      if (timeframeLabel && timeframeSelect) {
+        timeframeLabel.textContent = `${timeframeSelect.value} prosjekt`;
+      }
     }
 
     function updateBoundary(idx, nextValue) {
@@ -249,6 +254,13 @@ class SinglePagePortfolio {
     );
 
     render();
+
+    if (timeframeSelect && timeframeLabel) {
+      timeframeLabel.textContent = `${timeframeSelect.value} prosjekt`;
+      timeframeSelect.addEventListener('change', () => {
+        timeframeLabel.textContent = `${timeframeSelect.value} prosjekt`;
+      });
+    }
   }
 
   adjustLayoutForScreenSize() {
