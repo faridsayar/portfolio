@@ -1,156 +1,300 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Farid Sayar - Industrial designer & Inventor </title>
-    <meta name="description" content="Multidisciplinary designer specializing in 3D modeling, industrial design, game development, and visual experiences. Featured project: AK47-F Modern Design.">
-    <meta name="keywords" content="3D modeling, industrial design, game development, product design, visualization, Blender, Fusion 360, Unreal Engine, AK47-F">
-    <meta name="author" content="Farid Sayar">
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Farid Sayar – Industridesigner og oppfinner</title>
+    <meta
+      name="description"
+      content="Tverrfaglig designer med spesialisering i 3D-modellering, industridesign, spillutvikling og visuelle opplevelser. Utvalgt prosjekt: AK47-F moderne design."
+    />
+    <meta
+      name="keywords"
+      content="3D-modellering, industridesign, spillutvikling, produktdesign, visualisering, Blender, Fusion 360, Unreal Engine, AK47-F"
+    />
+    <meta name="author" content="Farid Sayar" />
+
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Farid Sayar - Designer & Inventor | AK47-F Modern Design">
-    <meta property="og:description" content="Multidisciplinary designer crafting 3D models, industrial design, and game development projects. Featured: AK47-F Modern Design.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://faridsayar.com">
-    
+    <meta
+      property="og:title"
+      content="Farid Sayar – Designer og oppfinner | AK47-F moderne design"
+    />
+    <meta
+      property="og:description"
+      content="Tverrfaglig designer som skaper 3D-modeller, industridesign og prosjekter innen spillutvikling. Utvalgt: AK47-F moderne design."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://faridsayar.com" />
+
     <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Farid Sayar - Designer & Inventor | AK47-F Modern Design">
-    <meta name="twitter:description" content="Multidisciplinary designer crafting 3D models, industrial design, and game development projects. Featured: AK47-F Modern Design.">
-    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Farid Sayar – Designer og oppfinner | AK47-F moderne design"
+    />
+    <meta
+      name="twitter:description"
+      content="Tverrfaglig designer som skaper 3D-modeller, industridesign og prosjekter innen spillutvikling. Utvalgt: AK47-F moderne design."
+    />
+
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles.css?v=4">
-    
+    <link rel="stylesheet" href="styles.css?v=4" />
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        'sans': ['Readex Pro', 'system-ui', 'sans-serif'],
-                    },
-                    colors: {
-                        dark: '#1F1F1F',
-                        primary: '#004958',
-                        secondary: '#00768E',
-                        accent: '#00D4FF',
-                        white: '#FFFFFF',
-                        black: '#000000',
-                    }
-                }
-            }
-        }
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Readex Pro', 'system-ui', 'sans-serif'],
+            },
+            colors: {
+              dark: '#1F1F1F',
+              primary: '#004958',
+              secondary: '#00768E',
+              accent: '#00D4FF',
+              white: '#FFFFFF',
+              black: '#000000',
+            },
+          },
+        },
+      };
     </script>
-</head>
-<body class="single-page-body">
-    <!-- Hero Section with Original Content -->
-    <div class="hero-section">
-        <!-- Background Image -->
-        <div class="background-image"></div>
-        
-        <!-- Main Content -->
-        <div class="main-content">
-            <h1 class="main-title">Industrial Designer & 3D Model Creator | Professional Product Design, Game Assets & Visual Development Expert</h1>
+  </head>
+  <body class="single-page-body">
+    <!--
+      Redesign layout:
+      - Full-screen animated background (video recommended) that always covers viewport on desktop/mobile
+      - SEO-forward hero headline
+      - White section below for "What we do" (template content)
+    -->
+    <header class="hero" aria-label="Hovedseksjon">
+      <div class="hero-media" aria-hidden="true">
+        <!-- NOTE: Replace `src` with your optimized background animation (MP4/WebM recommended). -->
+        <video
+          class="hero-video"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          poster="assets/images/ak-background-image.jpg"
+        >
+          <!-- <source src="assets/videos/hero.webm" type="video/webm"> -->
+          <!-- <source src="assets/videos/hero.mp4" type="video/mp4"> -->
+        </video>
+        <div class="hero-overlay"></div>
+      </div>
+
+      <div class="hero-content">
+        <h1 class="hero-title">Gjør ideen din til et ekte produkt — raskere</h1>
+
+        <p class="hero-subtitle">
+          Vi designer og utvikler produkter som er klare for prototyping, produksjon og lansering i
+          markedet.
+        </p>
+
+        <p class="hero-subtitle">
+          Ingen fluff. Ingen endeløse konsepter. Bare tydelig, brukersentrert, funksjonell design
+          som tar ideen din videre.
+        </p>
+
+        <ul class="hero-list" aria-label="Tjenester">
+          <li>→ Industriell produktdesign</li>
+          <li>→ Prototyping og konseptutvikling</li>
+          <li>→ Høykvalitets 3D-visualisering som tiltrekker investorer</li>
+        </ul>
+
+        <a class="hero-cta" href="#start">Start prosjektet ditt →</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="section section--white" id="start" aria-label="Dette gjør vi">
+        <div class="section-inner">
+          <h2 class="section-title">Dette gjør vi</h2>
+          <p class="section-lead">
+            Mal-seksjon. Vi tilpasser dette senere med dine konkrete tjenester, bevis og
+            casestudier.
+          </p>
+
+          <div class="service-grid">
+            <div class="service-card">
+              <h3 class="service-title">Konseptutvikling</h3>
+              <p class="service-text">Tidlig idéarbeid, rammer og tydelig retning.</p>
+            </div>
+            <div class="service-card">
+              <h3 class="service-title">Produktdesign</h3>
+              <p class="service-text">
+                Form, funksjon, brukervennlighet og detaljer som kan produseres.
+              </p>
+            </div>
+            <div class="service-card">
+              <h3 class="service-title">Prototyping og validering</h3>
+              <p class="service-text">Prototyper, iterasjoner og klargjøring for produksjon.</p>
+            </div>
+          </div>
         </div>
-        
-        <!-- Name Text -->
-        <div class="name-content">
-            <h2 class="name-title">FARID <span class="name-sayar">SAYAR</span></h2>
+      </section>
+
+      <section class="section section--white section--features" aria-label="Fordeler">
+        <div class="section-inner">
+          <div class="section-head">
+            <p class="section-kicker">Hvordan vi jobber</p>
+            <h2 class="section-title">Fordeler som gjør prosessen enklere</h2>
+            <p class="section-lead">
+              Tre prinsipper som sikrer fremdrift, produksjonsklarhet og verdi for business.
+            </p>
+            <div class="section-watermark" aria-hidden="true">FEATURES</div>
+          </div>
         </div>
-        
-        <!-- Award Image -->
-        <div class="award-content">
-            <img src="assets/images/best-designer-award.svg" alt="Best Designer Award" class="award-image">
+
+        <div class="feature-grid" aria-label="Tre hovedfordeler">
+          <article class="feature-tile">
+            <!-- NOTE: Replace image with your own (same aspect works best). -->
+            <img
+              class="feature-image"
+              src="assets/images/ak-background-image.jpg"
+              alt="Produksjonsklar produktdesign"
+              loading="lazy"
+            />
+            <div class="feature-overlay"></div>
+            <div class="feature-content">
+              <h3 class="feature-title">Design som faktisk kan produseres</h3>
+              <p class="feature-text">
+                Vi utvikler produkter med fokus på funksjon, materialvalg og produksjon — ikke bare
+                visualiseringer.
+              </p>
+            </div>
+          </article>
+
+          <article class="feature-tile">
+            <!-- NOTE: Replace image with your own (same aspect works best). -->
+            <img
+              class="feature-image"
+              src="assets/images/ak-background-image.jpg"
+              alt="Rask og tydelig fremdrift"
+              loading="lazy"
+            />
+            <div class="feature-overlay"></div>
+            <div class="feature-content">
+              <h3 class="feature-title">Rask fremdrift uten unødvendig kompleksitet</h3>
+              <p class="feature-text">
+                Tydelige prosesser og raske iterasjoner gjør at ideer blir til konkrete resultater,
+                uten å stoppe opp.
+              </p>
+            </div>
+          </article>
+
+          <article class="feature-tile">
+            <!-- NOTE: Replace image with your own (same aspect works best). -->
+            <img
+              class="feature-image"
+              src="assets/images/ak-background-image.jpg"
+              alt="Beslutninger som støtter business"
+              loading="lazy"
+            />
+            <div class="feature-overlay"></div>
+            <div class="feature-content">
+              <h3 class="feature-title">Løsninger som gir mening for business</h3>
+              <p class="feature-text">
+                Hver beslutning tar hensyn til kostnader, produksjon og marked — slik at produktet
+                ikke bare ser bra ut, men også fungerer kommersielt.
+              </p>
+            </div>
+          </article>
         </div>
-        
-        <!-- SEO Description Text -->
-        <div class="seo-content">
-            <p class="seo-text">Professional industrial designer and 3D modeling expert specializing in product design, game asset creation, visual development, and technical design solutions. With extensive experience in industrial design, product development, 3D modeling, game design, visual effects, and creative direction. Expert in Blender, Fusion 360, Unreal Engine, Substance Painter, and Marvelous Designer. Delivering high-quality 3D models, industrial design concepts, game assets, product visualizations, and interactive experiences for clients worldwide. Specializing in weapons design, mechanical engineering visualization, product prototyping, game development assets, and industrial design consulting. Creating photorealistic 3D renders, technical drawings, product concepts, and innovative design solutions for manufacturing, gaming, and visual media industries. Professional services include 3D modeling, product design, game asset development, industrial design, visual effects, technical illustration, and creative consultation.</p>
-        </div>
-    </div>
-    
+      </section>
+    </main>
+
     <!-- Illustration Boxes Section -->
     <div class="illustration-boxes">
-        <div class="illustration-box">
-            <div class="box-content">
-                <h3 class="box-title">Project 1</h3>
-                <p class="box-description">Industrial design concept</p>
-            </div>
+      <div class="illustration-box">
+        <div class="box-content">
+          <h3 class="box-title">Prosjekt 1</h3>
+          <p class="box-description">Industridesign-konsept</p>
         </div>
-        
-        <div class="illustration-box">
-            <div class="box-content">
-                <h3 class="box-title">Project 2</h3>
-                <p class="box-description">3D modeling showcase</p>
-            </div>
+      </div>
+
+      <div class="illustration-box">
+        <div class="box-content">
+          <h3 class="box-title">Prosjekt 2</h3>
+          <p class="box-description">Utstilling av 3D-modellering</p>
         </div>
-        
-        <div class="illustration-box">
-            <div class="box-content">
-                <h3 class="box-title">Project 3</h3>
-                <p class="box-description">Game asset design</p>
-            </div>
+      </div>
+
+      <div class="illustration-box">
+        <div class="box-content">
+          <h3 class="box-title">Prosjekt 3</h3>
+          <p class="box-description">Design av spillressurser</p>
         </div>
-        
-        <div class="illustration-box">
-            <div class="box-content">
-                <h3 class="box-title">Project 4</h3>
-                <p class="box-description">Product visualization</p>
-            </div>
+      </div>
+
+      <div class="illustration-box">
+        <div class="box-content">
+          <h3 class="box-title">Prosjekt 4</h3>
+          <p class="box-description">Produktvisualisering</p>
         </div>
-        
-        <div class="illustration-box">
-            <div class="box-content">
-                <h3 class="box-title">Project 5</h3>
-                <p class="box-description">Technical illustration</p>
-            </div>
+      </div>
+
+      <div class="illustration-box">
+        <div class="box-content">
+          <h3 class="box-title">Prosjekt 5</h3>
+          <p class="box-description">Teknisk illustrasjon</p>
         </div>
-        
-        <div class="illustration-box">
-            <div class="box-content">
-                <h3 class="box-title">Project 6</h3>
-                <p class="box-description">Creative direction</p>
-            </div>
+      </div>
+
+      <div class="illustration-box">
+        <div class="box-content">
+          <h3 class="box-title">Prosjekt 6</h3>
+          <p class="box-description">Kreativ retning</p>
         </div>
+      </div>
     </div>
 
     <!-- Structured Data -->
     <script type="application/ld+json">
-    {
+      {
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Farid Sayar",
-        "jobTitle": "Designer & Inventor",
-        "description": "Multidisciplinary designer specializing in 3D modeling, industrial design, and game development",
+        "jobTitle": "Designer og oppfinner",
+        "description": "Tverrfaglig designer med spesialisering i 3D-modellering, industridesign og spillutvikling",
         "url": "https://faridsayar.com",
         "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Oslo",
-            "addressCountry": "Norway"
+          "@type": "PostalAddress",
+          "addressLocality": "Oslo",
+          "addressCountry": "Norge"
         },
-        "knowsAbout": ["3D Modeling", "Industrial Design", "Game Development", "Product Design", "Visualization"],
+        "knowsAbout": [
+          "3D-modellering",
+          "Industridesign",
+          "Spillutvikling",
+          "Produktdesign",
+          "Visualisering"
+        ],
         "hasCredential": {
-            "@type": "EducationalOccupationalCredential",
-            "credentialCategory": "degree",
-            "educationalLevel": "Master's degree in Industrial Design"
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "degree",
+          "educationalLevel": "Mastergrad i industridesign"
         },
-        "sameAs": [
-            "https://www.behance.net/faridsayar"
-        ]
-    }
+        "sameAs": ["https://www.behance.net/faridsayar"]
+      }
     </script>
-    
-    <!-- Parallax JavaScript -->
-    <script src="parallax.js"></script>
-</body>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+  </body>
 </html>
