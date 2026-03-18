@@ -74,6 +74,26 @@
     </script>
   </head>
   <body class="single-page-body">
+    <!-- NOTE: Right-side vertical navigation to new pages (content will be filled later). -->
+    <nav class="side-nav" aria-label="Navigasjon">
+      <a class="side-nav__link" href="oss.html">Oss</a>
+      <a class="side-nav__link" href="prosjekter.html">Prosjekter</a>
+      <a class="side-nav__link" href="tips.html">Tips</a>
+      <a class="side-nav__link" href="bli-med.html">Bli med</a>
+
+      <div class="side-nav__divider" aria-hidden="true"></div>
+
+      <!-- NOTE: Language switch UI only (no functionality yet). -->
+      <label class="lang-switch" for="lang-switch">
+        <span class="lang-switch__label">NO</span>
+        <input class="lang-switch__input" type="checkbox" id="lang-switch" />
+        <span class="lang-switch__track" aria-hidden="true">
+          <span class="lang-switch__thumb" aria-hidden="true"></span>
+        </span>
+        <span class="lang-switch__label">EN</span>
+      </label>
+    </nav>
+
     <!--
       Redesign layout:
       - Full-screen animated background (video recommended) that always covers viewport on desktop/mobile
@@ -180,7 +200,6 @@
             <p class="section-lead">
               Tre prinsipper som sikrer fremdrift, produksjonsklarhet og verdi for business.
             </p>
-            <div class="section-watermark" aria-hidden="true">FEATURES</div>
           </div>
         </div>
 
