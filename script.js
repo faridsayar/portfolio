@@ -1,80 +1,55 @@
 /**
  * Single Page Portfolio JavaScript
- * Minimal functionality for AK47-F showcase page
+ * Focused behavior: timeline + project grid hydration.
  */
 
 class SinglePagePortfolio {
   constructor() {
-    this.init();
-  }
-
-  init() {
-    this.setupSmoothTransitions();
-    this.setupAccessibility();
-    this.setupResponsiveHandling();
+    this.setupMobileSideNavToggle();
     this.setupTimeline();
+    this.setupProjectsGrid();
   }
 
-  // Smooth transitions for interactive elements
-  setupSmoothTransitions() {
-    // Add smooth hover effects to all interactive elements
-    const interactiveElements = document.querySelectorAll('a, button, .bg-white\\/10');
+  // NOTE: Mobile-only side navigation collapse/expand interaction.
+  setupMobileSideNavToggle() {
+    const nav = document.querySelector('[data-mobile-nav]');
+    const toggle = document.querySelector('[data-mobile-nav-toggle]');
+    if (!nav || !toggle) return;
 
-    interactiveElements.forEach((element) => {
-      element.addEventListener('mouseenter', () => {
-        element.style.transform = 'translateY(-2px)';
-      });
+    const closeMenu = () => {
+      nav.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Utvid meny');
+    };
 
-      element.addEventListener('mouseleave', () => {
-        element.style.transform = 'translateY(0)';
-      });
-    });
-  }
+    const openMenu = () => {
+      nav.classList.add('is-open');
+      toggle.setAttribute('aria-expanded', 'true');
+      toggle.setAttribute('aria-label', 'Lukk meny');
+    };
 
-  // Accessibility enhancements
-  setupAccessibility() {
-    // Add keyboard navigation support
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Tab') {
-        // Ensure focus is visible
-        document.body.classList.add('keyboard-navigation');
+    toggle.addEventListener('click', () => {
+      if (nav.classList.contains('is-open')) {
+        closeMenu();
+      } else {
+        openMenu();
       }
     });
 
-    // Remove keyboard navigation class on mouse use
-    document.addEventListener('mousedown', () => {
-      document.body.classList.remove('keyboard-navigation');
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') closeMenu();
     });
 
-    // Add focus indicators for better accessibility
-    const focusableElements = document.querySelectorAll('a, button');
-    focusableElements.forEach((element) => {
-      element.addEventListener('focus', () => {
-        element.style.outline = '2px solid #00D4FF';
-        element.style.outlineOffset = '2px';
-      });
-
-      element.addEventListener('blur', () => {
-        element.style.outline = 'none';
-      });
-    });
-  }
-
-  // Responsive handling
-  setupResponsiveHandling() {
-    // Handle window resize
+    // NOTE: Ensure menu is not left open when moving back to desktop layout.
     window.addEventListener(
       'resize',
       this.debounce(() => {
-        this.adjustLayoutForScreenSize();
-      }, 250)
+        if (window.innerWidth > 768) closeMenu();
+      }, 120)
     );
-
-    // Initial layout adjustment
-    this.adjustLayoutForScreenSize();
   }
 
-  // Interactive timeline (process prioritization)
+  // NOTE: Interactive timeline (process prioritization)
   setupTimeline() {
     const timeline = document.querySelector('[data-timeline]');
     if (!timeline) return;
@@ -263,30 +238,117 @@ class SinglePagePortfolio {
     }
   }
 
-  adjustLayoutForScreenSize() {
-    const isMobile = window.innerWidth < 768;
-    const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
+  // NOTE: Projects grid hydration to 20 items.
+  setupProjectsGrid() {
+    const grid = document.querySelector('[data-projects-grid]');
+    const sentinel = document.querySelector('[data-projects-sentinel]');
+    if (!grid || !sentinel) return;
 
-    // Adjust font sizes for different screen sizes
-    const title = document.querySelector('h1');
-    if (title) {
-      if (isMobile) {
-        title.style.fontSize = '2.5rem';
-      } else if (isTablet) {
-        title.style.fontSize = '4rem';
+    const baseCards = Array.from(grid.querySelectorAll('.project-tile'));
+    if (baseCards.length === 0) return;
+
+    const source = baseCards.map((card, index) => {
+      const img = card.querySelector('.project-thumb__img');
+      const title = card.querySelector('.project-title');
+      const desc = card.querySelector('.project-desc');
+      return {
+        href: card.getAttribute('href') || 'prosjekter.html',
+        imgSrc: img?.getAttribute('src') || '',
+        imgAlt: img?.getAttribute('alt') || '',
+        title: title?.textContent?.trim() || `Prosjekt ${index + 1}`,
+        desc: desc?.textContent?.trim() || 'Prosjektbeskrivelse',
+      };
+    });
+
+    // NOTE: Use all currently provided local project images before falling back to placeholders.
+    const providedImagePool = [
+      'assets/images/USV.png',
+      'assets/images/H2O.jpg',
+      'assets/images/itac.jpg',
+      'assets/images/Proton.png',
+      'assets/images/Drone2.jpeg',
+      'assets/images/Memorium.jpg',
+      'assets/images/Bike.jpg',
+      'assets/images/Closet-anim.gif',
+      'assets/images/Kalash.jpg',
+      'assets/images/serviett.jpg',
+      'assets/images/ak-background-image.jpg',
+    ];
+
+    const maxItems = 20;
+    let nextIndex = baseCards.length;
+
+    function createCard(item, visualIndex, usePlaceholder = false) {
+      const card = document.createElement('a');
+      card.className = 'project-tile';
+      card.href = item.href;
+      card.setAttribute('aria-label', `Se prosjekt ${visualIndex + 1}`);
+      if (usePlaceholder) {
+        card.innerHTML = `
+          <div class="project-thumb project-thumb--placeholder" aria-hidden="true"></div>
+          <div class="project-meta">
+            <h3 class="project-title">${item.title}</h3>
+            <p class="project-desc">${item.desc}</p>
+          </div>
+        `;
       } else {
-        title.style.fontSize = '5rem';
+        card.innerHTML = `
+          <div class="project-thumb" aria-hidden="true">
+            <img class="project-thumb__img" src="${item.imgSrc}" alt="${item.imgAlt}" loading="lazy" />
+          </div>
+          <div class="project-meta">
+            <h3 class="project-title">${item.title}</h3>
+            <p class="project-desc">${item.desc}</p>
+          </div>
+        `;
       }
+      return card;
     }
 
-    // Adjust grid layout for mobile
-    const projectDetails = document.querySelector('.grid-cols-1');
-    if (projectDetails && isMobile) {
-      projectDetails.classList.add('space-y-4');
+    function titleFromPath(path, fallbackIndex) {
+      const file = path.split('/').pop() || '';
+      const withoutExt = file.replace(/\.[^.]+$/, '');
+      const normalized = withoutExt.replace(/[-_]+/g, ' ').trim();
+      if (!normalized) return `Prosjekt ${fallbackIndex + 1}`;
+      return normalized.charAt(0).toUpperCase() + normalized.slice(1);
     }
+
+    // Render all project cards up to maxItems immediately.
+    const fragment = document.createDocumentFragment();
+    const usedSources = new Set(source.map((item) => item.imgSrc));
+    const additionalRealImages = providedImagePool.filter((src) => !usedSources.has(src));
+
+    // First append all available real images from the provided pool.
+    for (const imgSrc of additionalRealImages) {
+      if (nextIndex >= maxItems) break;
+      const seed = source[nextIndex % source.length];
+      fragment.appendChild(
+        createCard(
+          {
+            ...seed,
+            imgSrc,
+            title: titleFromPath(imgSrc, nextIndex),
+          },
+          nextIndex,
+          false
+        )
+      );
+      nextIndex += 1;
+    }
+
+    // Fill remaining slots with neutral placeholders.
+    while (nextIndex < maxItems) {
+      const item = source[nextIndex % source.length];
+      fragment.appendChild(createCard(item, nextIndex, true));
+      nextIndex += 1;
+    }
+    grid.appendChild(fragment);
+
+    // Keep sentinel hidden/unused when all items are pre-rendered.
+    sentinel.style.display = 'none';
   }
 
-  // Utility function for debouncing
+  // NOTE: Utility function for debouncing high-frequency events.
   debounce(func, wait) {
     let timeout;
     return function executedFunction(...args) {
@@ -298,53 +360,9 @@ class SinglePagePortfolio {
       timeout = setTimeout(later, wait);
     };
   }
-
-  // Handle external link clicks
-  handleExternalLink(url) {
-    // Add loading state
-    const button = event.target.closest('a');
-    if (button) {
-      const originalText = button.textContent;
-      button.textContent = 'Opening...';
-      button.style.opacity = '0.7';
-
-      // Reset after a short delay
-      setTimeout(() => {
-        button.textContent = originalText;
-        button.style.opacity = '1';
-      }, 1000);
-    }
-
-    // Open link
-    window.open(url, '_blank', 'noopener,noreferrer');
-  }
 }
 
-// Initialize the single page portfolio when DOM is loaded
+// NOTE: Initialize page behaviors when DOM is ready.
 document.addEventListener('DOMContentLoaded', () => {
   window.singlePagePortfolio = new SinglePagePortfolio();
-
-  // Add click handlers for external links
-  const externalLinks = document.querySelectorAll('a[target="_blank"]');
-  externalLinks.forEach((link) => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      window.singlePagePortfolio.handleExternalLink(link.href);
-    });
-  });
 });
-
-// Add CSS for keyboard navigation
-const style = document.createElement('style');
-style.textContent = `
-    .keyboard-navigation *:focus {
-        outline: 2px solid #00D4FF !important;
-        outline-offset: 2px !important;
-    }
-    
-    /* Smooth transitions for all elements */
-    * {
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-`;
-document.head.appendChild(style);

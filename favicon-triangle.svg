@@ -1,0 +1,11 @@
+<!-- Favicon: simple thick white outline triangle mark -->
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="56" viewBox="0 0 100 86.6" fill="none">
+  <polygon
+    points="50,3 5,83.6 95,83.6"
+    stroke="#ffffff"
+    stroke-width="10"
+    stroke-linecap="round"
+    stroke-linejoin="miter"
+  />
+</svg>
+

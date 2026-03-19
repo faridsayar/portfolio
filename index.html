@@ -1,43 +1,47 @@
 <!doctype html>
-<html lang="en">
+<html lang="no">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Farid Sayar – Industridesigner og oppfinner</title>
+    <title>Industridesign og produktdesign i Norge | Prototyping & 3D-visualisering</title>
     <meta
       name="description"
-      content="Tverrfaglig designer med spesialisering i 3D-modellering, industridesign, spillutvikling og visuelle opplevelser. Utvalgt prosjekt: AK47-F moderne design."
+      content="Få hjelp med industridesign og produktdesign i Norge. Fra markedsanalyse og konsept til prototyping, produksjonsklare modeller og 3D-visualisering."
     />
     <meta
       name="keywords"
-      content="3D-modellering, industridesign, spillutvikling, produktdesign, visualisering, Blender, Fusion 360, Unreal Engine, AK47-F"
+      content="industridesign Norge, produktdesign Norge, produktutvikling, prototyping, konseptutvikling, 3D-visualisering, design for produksjon, produksjonsklar prototype"
     />
     <meta name="author" content="Farid Sayar" />
 
     <!-- Open Graph Meta Tags -->
     <meta
       property="og:title"
-      content="Farid Sayar – Designer og oppfinner | AK47-F moderne design"
+      content="Industridesign og produktdesign i Norge | Prototyping & 3D-visualisering"
     />
     <meta
       property="og:description"
-      content="Tverrfaglig designer som skaper 3D-modeller, industridesign og prosjekter innen spillutvikling. Utvalgt: AK47-F moderne design."
+      content="Få hjelp med industridesign og produktdesign i Norge. Fra markedsanalyse og konsept til prototyping, produksjonsklare modeller og 3D-visualisering."
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://faridsayar.com" />
+
+    <link rel="canonical" href="https://faridsayar.com/" />
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="Farid Sayar – Designer og oppfinner | AK47-F moderne design"
+      content="Industridesign og produktdesign i Norge | Prototyping & 3D-visualisering"
     />
     <meta
       name="twitter:description"
-      content="Tverrfaglig designer som skaper 3D-modeller, industridesign og prosjekter innen spillutvikling. Utvalgt: AK47-F moderne design."
+      content="Få hjelp med industridesign og produktdesign i Norge. Fra markedsanalyse og konsept til prototyping, produksjonsklare modeller og 3D-visualisering."
     />
 
     <!-- Favicon -->
+    <!-- NOTE: SVG favicon using the same triangle mark as the hero logo -->
+    <link rel="icon" type="image/svg+xml" href="/favicon-triangle.svg" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
     <!-- Google Fonts -->
@@ -50,48 +54,54 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css?v=4" />
-
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ['Readex Pro', 'system-ui', 'sans-serif'],
-            },
-            colors: {
-              dark: '#1F1F1F',
-              primary: '#004958',
-              secondary: '#00768E',
-              accent: '#00D4FF',
-              white: '#FFFFFF',
-              black: '#000000',
-            },
-          },
-        },
-      };
-    </script>
   </head>
   <body class="single-page-body">
     <!-- NOTE: Right-side vertical navigation to new pages (content will be filled later). -->
-    <nav class="side-nav" aria-label="Navigasjon">
-      <a class="side-nav__link" href="oss.html">Oss</a>
-      <a class="side-nav__link" href="prosjekter.html">Prosjekter</a>
-      <a class="side-nav__link" href="tips.html">Tips</a>
-      <a class="side-nav__link" href="bli-med.html">Bli med</a>
+    <nav class="side-nav" aria-label="Navigasjon" data-mobile-nav>
+      <!-- NOTE: Mobile-only toggle for collapsing/expanding side navigation. -->
+      <button
+        class="side-nav__toggle"
+        type="button"
+        aria-label="Utvid meny"
+        aria-expanded="false"
+        aria-controls="side-nav-content"
+        data-mobile-nav-toggle
+      >
+        <svg
+          class="side-nav__toggle-icon"
+          viewBox="0 0 100 86.6"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <polygon
+            points="50,3 5,83.6 95,83.6"
+            fill="none"
+            stroke="var(--color-white)"
+            stroke-width="10"
+            stroke-linecap="round"
+            stroke-linejoin="miter"
+          />
+        </svg>
+      </button>
 
-      <div class="side-nav__divider" aria-hidden="true"></div>
+      <div class="side-nav__content" id="side-nav-content" data-mobile-nav-content>
+        <a class="side-nav__link" href="oss.html">Oss</a>
+        <a class="side-nav__link" href="prosjekter.html">Prosjekter</a>
+        <a class="side-nav__link" href="tips.html">Tips</a>
+        <a class="side-nav__link" href="bli-med.html">Bli med</a>
 
-      <!-- NOTE: Language switch UI only (no functionality yet). -->
-      <label class="lang-switch" for="lang-switch">
-        <span class="lang-switch__label">NO</span>
-        <input class="lang-switch__input" type="checkbox" id="lang-switch" />
-        <span class="lang-switch__track" aria-hidden="true">
-          <span class="lang-switch__thumb" aria-hidden="true"></span>
-        </span>
-        <span class="lang-switch__label">EN</span>
-      </label>
+        <div class="side-nav__divider" aria-hidden="true"></div>
+
+        <!-- NOTE: Language switch UI only (no functionality yet). -->
+        <label class="lang-switch" for="lang-switch">
+          <span class="lang-switch__label">NO</span>
+          <input class="lang-switch__input" type="checkbox" id="lang-switch" />
+          <span class="lang-switch__track" aria-hidden="true">
+            <span class="lang-switch__thumb" aria-hidden="true"></span>
+          </span>
+          <span class="lang-switch__label">EN</span>
+        </label>
+      </div>
     </nav>
 
     <!--
@@ -112,14 +122,27 @@
           preload="metadata"
           poster="assets/images/ak-background-image.jpg"
         >
-          <!-- <source src="assets/videos/hero.webm" type="video/webm"> -->
-          <!-- <source src="assets/videos/hero.mp4" type="video/mp4"> -->
+          <source src="assets/images/test-animation.mp4" type="video/mp4" />
         </video>
         <div class="hero-overlay"></div>
       </div>
 
+      <!-- NOTE: Small triangle logo mark placed over the hero background. -->
+      <div class="hero-triangle-logo" aria-hidden="true">
+        <svg viewBox="0 0 100 86.6" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Logo">
+          <polygon
+            points="50,3 5,83.6 95,83.6"
+            fill="none"
+            stroke="var(--color-white)"
+            stroke-width="10"
+            stroke-linecap="round"
+            stroke-linejoin="miter"
+          />
+        </svg>
+      </div>
+
       <div class="hero-content">
-        <h1 class="hero-title">Gjør ideen din til et ekte produkt — raskere</h1>
+        <h1 class="hero-title">Gjør ideen din til et ekte produkt</h1>
 
         <p class="hero-subtitle">
           Vi designer og utvikler produkter som er klare for prototyping, produksjon og lansering i
@@ -127,38 +150,26 @@
         </p>
 
         <p class="hero-subtitle">
-          Ingen fluff. Ingen endeløse konsepter. Bare tydelig, brukersentrert, funksjonell design
-          basert på markedsanalyse som tar ideen din videre.
+          Ingen unødvendige mellomledd i prosessen. Bare tydelig, brukersentrert, funksjonell design
+          som tar ideen din til neste nivå.
         </p>
 
-        <ul class="hero-list" aria-label="Tjenester">
-          <li>- Industriell produktdesign og konseptutvikling basert på markedsanalyse</li>
-          <li>- Hjelp og konsultasjon med prototype og produksjonsklarhet</li>
-          <li>
-            - Høykvalitets 3D-visualisering og branding som tiltrekker oppmerksomhet til kunder og
-            investorer
-          </li>
-        </ul>
-
-        <a class="hero-cta" href="#start">Få gratis konsultasjon</a>
+        <a class="hero-cta" href="#application-form">Få gratis konsultasjon</a>
       </div>
     </header>
 
     <main>
       <section class="section section--white" id="start" aria-label="Dette gjør vi">
         <div class="section-inner">
+          <p class="section-kicker">Vi er designere</p>
           <h2 class="section-title">Dette gjør vi</h2>
-          <p class="section-lead">
-            Mal-seksjon. Vi tilpasser dette senere med dine konkrete tjenester, bevis og
-            casestudier.
-          </p>
 
           <div class="service-grid">
             <div class="service-card">
               <h3 class="service-title">Konseptutvikling</h3>
               <p class="service-text">Tidlig idéarbeid, rammer og tydelig retning.</p>
             </div>
-            <div class="service-card">
+            <div class="service-card service-card--primary-stroke">
               <h3 class="service-title">Produktdesign</h3>
               <p class="service-text">
                 Form, funksjon, brukervennlighet og detaljer som kan produseres.
@@ -189,6 +200,14 @@
               </p>
             </div>
           </div>
+
+          <p class="section-lead section-lead--after-grid">
+            Vi er et fersk bedrift men vi er ikke ferske i bransjen. Vi har erfaring som trengs for
+            å hjelpe deg på veien fra idé til produkt som er klart for prototype og produksjon. Vi
+            gjør industriell produktdesign og konseptutvikling basert på markedsanalyse, vi følger
+            deg i hele prosessen med prototype og produksjonsklarhet, og vi lager høy-kvalitets
+            3D-visualisering og branding som tiltrekker kunder og investorer.
+          </p>
         </div>
       </section>
 
@@ -198,74 +217,82 @@
             <p class="section-kicker">Hvordan vi jobber</p>
             <h2 class="section-title">Fordeler som gjør prosessen enklere</h2>
             <p class="section-lead">
-              Tre prinsipper som sikrer fremdrift, produksjonsklarhet og verdi for business.
+              Våre prinsipper og metoder som sikrer fremdrift, produksjonsklarhet og verdi for
+              business.
             </p>
           </div>
-        </div>
+          <div class="feature-banner">
+            <img
+              class="feature-banner__img"
+              src="assets/images/feature1.webp"
+              alt="Feature visual"
+              loading="lazy"
+            />
+          </div>
 
-        <div class="section-inner">
-          <div class="feature-grid" aria-label="Tre hovedfordeler">
-            <article class="feature-tile">
-              <!-- NOTE: Replace image with your own (same aspect works best). -->
+          <div class="feature-points" aria-label="Fordeler">
+            <p class="feature-point">
               <img
-                class="feature-image"
-                src="assets/images/ak-background-image.jpg"
-                alt="Produksjonsklar produktdesign"
-                loading="lazy"
+                class="feature-icon"
+                src="assets/icons/produserbar-icon.svg"
+                alt=""
+                aria-hidden="true"
               />
-              <div class="feature-overlay"></div>
-              <div class="feature-content">
-                <h3 class="feature-title">Design som faktisk kan produseres</h3>
-                <p class="feature-text">
-                  Vi utvikler produkter med fokus på funksjon, materialvalg og produksjon — ikke
-                  bare visualiseringer.
-                </p>
-              </div>
-            </article>
-
-            <article class="feature-tile">
-              <!-- NOTE: Replace image with your own (same aspect works best). -->
+              <span class="feature-point__text">
+                <strong>Design som faktisk kan produseres:</strong> Vi utvikler produkter med fokus
+                på funksjon, materialvalg og produksjon, ikke bare visualisering.
+              </span>
+            </p>
+            <p class="feature-point">
               <img
-                class="feature-image"
-                src="assets/images/ak-background-image.jpg"
-                alt="Rask og tydelig fremdrift"
-                loading="lazy"
+                class="feature-icon"
+                src="assets/icons/fremdrift-icon.svg"
+                alt=""
+                aria-hidden="true"
               />
-              <div class="feature-overlay"></div>
-              <div class="feature-content">
-                <h3 class="feature-title">Rask fremdrift uten unødvendig kompleksitet</h3>
-                <p class="feature-text">
-                  Tydelige prosesser og raske iterasjoner gjør at ideer blir til konkrete
-                  resultater, uten å stoppe opp.
-                </p>
-              </div>
-            </article>
-
-            <article class="feature-tile">
-              <!-- NOTE: Replace image with your own (same aspect works best). -->
+              <span class="feature-point__text">
+                <strong>Rask fremdrift uten unødvendig kompleksitet:</strong> Tydelige prosesser og
+                raske iterasjoner gjør at ideer blir til konkrete resultater.
+              </span>
+            </p>
+            <p class="feature-point">
               <img
-                class="feature-image"
-                src="assets/images/ak-background-image.jpg"
-                alt="Beslutninger som støtter business"
-                loading="lazy"
+                class="feature-icon"
+                src="assets/icons/bedrift-icon.svg"
+                alt=""
+                aria-hidden="true"
               />
-              <div class="feature-overlay"></div>
-              <div class="feature-content">
-                <h3 class="feature-title">Løsninger som gir mening for business</h3>
-                <p class="feature-text">
-                  Hver beslutning tar hensyn til kostnader, produksjon og marked — slik at produktet
-                  ikke bare ser bra ut, men også fungerer kommersielt.
-                </p>
-              </div>
-            </article>
+              <span class="feature-point__text">
+                <strong>Løsninger som gir mening for business:</strong> Hver beslutning tar hensyn
+                til kostnader, produksjon og marked.
+              </span>
+            </p>
+            <p class="feature-point">
+              <img
+                class="feature-icon"
+                src="assets/icons/brukerbehov-icon.svg"
+                alt=""
+                aria-hidden="true"
+              />
+              <span class="feature-point__text">
+                <strong
+                  >Design basert på <span class="text-primary">ekte brukerbehov</span>:</strong
+                >
+                Vi tar utgangspunkt i brukernes mål, kontekst og begrensninger.
+              </span>
+            </p>
           </div>
         </div>
       </section>
 
-      <section class="section section--white section--timeline" aria-label="Send forespørsel">
+      <section
+        class="section section--white section--timeline"
+        id="application-form"
+        aria-label="Send forespørsel"
+      >
         <div class="section-inner">
           <div class="section-head">
-            <p class="section-kicker">Prioriter prosessen</p>
+            <p class="section-kicker">Konsultasjon forespørsel</p>
             <h2 class="section-title">Velg hva du vil fokusere på</h2>
             <p class="section-lead">
               Dra punktene på linjen for å vekte fasene. Alle prosjekter er unike – vi tilpasser
@@ -382,7 +409,7 @@
                   id="budget"
                   name="budget"
                   type="text"
-                  placeholder="F.eks. 150 000 NOK"
+                  placeholder="F.eks. 30 000 NOK"
                 />
               </div>
             </div>
@@ -404,9 +431,9 @@
             <div class="inquiry-footer">
               <button class="inquiry-cta" type="submit">Send forespørsel</button>
               <p class="inquiry-note">
-                Forespørselen er uforpliktende og er kun for orientering. Vi vil ta kontakt med deg
-                snarest for å finne ut hvordan vi best kan hjelpe deg og ditt prosjekt, og gi deg et
-                korrekt estimat.
+                *Forespørselen er uforpliktende og er kun for orientering. Vi vil ta kontakt med deg
+                snarest for å finne ut hvordan vi best kan hjelpe deg og ditt prosjekt, for å gi deg
+                et konkret tilbud.
               </p>
             </div>
           </form>
@@ -414,50 +441,113 @@
       </section>
     </main>
 
-    <!-- Illustration Boxes Section -->
-    <div class="illustration-boxes">
-      <div class="illustration-box">
-        <div class="box-content">
-          <h3 class="box-title">Prosjekt 1</h3>
-          <p class="box-description">Industridesign-konsept</p>
+    <!-- Prosjekter (grid med kvadratiske bilder) -->
+    <section class="section section--white section--projects" aria-label="Prosjekter">
+      <div class="section-inner">
+        <div class="section-head">
+          <p class="section-kicker">Portfolio</p>
+          <h2 class="section-title">Prosjekter</h2>
+          <p class="section-lead">Et utvalg av industridesign, prototyping og 3D-visualisering.</p>
         </div>
-      </div>
+        <div class="projects-grid" aria-label="Prosjektliste" data-projects-grid>
+          <a class="project-tile" href="prosjekter.html" aria-label="Se prosjekt 1">
+            <!-- NOTE: Replace thumbnail src with project-specific images later. -->
+            <div class="project-thumb" aria-hidden="true">
+              <img class="project-thumb__img" src="assets/images/USV.png" alt="" loading="lazy" />
+            </div>
+            <div class="project-meta">
+              <h3 class="project-title">Prosjekt 1</h3>
+              <p class="project-desc">Industridesign-konsept</p>
+            </div>
+          </a>
 
-      <div class="illustration-box">
-        <div class="box-content">
-          <h3 class="box-title">Prosjekt 2</h3>
-          <p class="box-description">Utstilling av 3D-modellering</p>
-        </div>
-      </div>
+          <a class="project-tile" href="prosjekter.html" aria-label="Se prosjekt 2">
+            <!-- NOTE: Replace thumbnail src with project-specific images later. -->
+            <div class="project-thumb" aria-hidden="true">
+              <img class="project-thumb__img" src="assets/images/H2O.jpg" alt="" loading="lazy" />
+            </div>
+            <div class="project-meta">
+              <h3 class="project-title">Prosjekt 2</h3>
+              <p class="project-desc">Utstilling av 3D-modellering</p>
+            </div>
+          </a>
 
-      <div class="illustration-box">
-        <div class="box-content">
-          <h3 class="box-title">Prosjekt 3</h3>
-          <p class="box-description">Design av spillressurser</p>
-        </div>
-      </div>
+          <a class="project-tile" href="prosjekter.html" aria-label="Se prosjekt 3">
+            <!-- NOTE: Replace thumbnail src with project-specific images later. -->
+            <div class="project-thumb" aria-hidden="true">
+              <img class="project-thumb__img" src="assets/images/itac.jpg" alt="" loading="lazy" />
+            </div>
+            <div class="project-meta">
+              <h3 class="project-title">Prosjekt 3</h3>
+              <p class="project-desc">Design av spillressurser</p>
+            </div>
+          </a>
 
-      <div class="illustration-box">
-        <div class="box-content">
-          <h3 class="box-title">Prosjekt 4</h3>
-          <p class="box-description">Produktvisualisering</p>
+          <a class="project-tile" href="prosjekter.html" aria-label="Se prosjekt 4">
+            <!-- NOTE: Replace thumbnail src with project-specific images later. -->
+            <div class="project-thumb" aria-hidden="true">
+              <img
+                class="project-thumb__img"
+                src="assets/images/Proton.png"
+                alt=""
+                loading="lazy"
+              />
+            </div>
+            <div class="project-meta">
+              <h3 class="project-title">Prosjekt 4</h3>
+              <p class="project-desc">Klargjøring for prototype og produksjon</p>
+            </div>
+          </a>
         </div>
+        <div class="projects-sentinel" data-projects-sentinel aria-hidden="true"></div>
       </div>
+    </section>
 
-      <div class="illustration-box">
-        <div class="box-content">
-          <h3 class="box-title">Prosjekt 5</h3>
-          <p class="box-description">Teknisk illustrasjon</p>
+    <!-- NOTE: SEO-focused contact section with location and direct phone link. -->
+    <section class="section section--white section--contact" aria-label="Ta kontakt">
+      <div class="section-inner">
+        <div class="section-head">
+          <p class="section-kicker">Kontakt</p>
+          <h2 class="section-title">Ta kontakt</h2>
+          <p class="section-lead">
+            Om du er et lite firma eller en enkeltperson med lavt budsjett, ikke nøl med å ta
+            kontakt. Trenger du hjelp med en startup eller en crowdfunding-kampanje, finner vi en
+            fungerende løsning for alle.
+          </p>
         </div>
-      </div>
 
-      <div class="illustration-box">
-        <div class="box-content">
-          <h3 class="box-title">Prosjekt 6</h3>
-          <p class="box-description">Kreativ retning</p>
+        <div class="contact-grid" itemscope itemtype="https://schema.org/ProfessionalService">
+          <a
+            class="contact-item contact-link"
+            href="https://www.google.com/maps/search/?api=1&query=Oslo%2C+Helsfyr"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Apne kart for Oslo, Helsfyr"
+          >
+            <span class="contact-item__label">Lokasjon</span>
+            <span class="contact-item__value" itemprop="areaServed">Oslo, Helsfyr</span>
+          </a>
+          <a class="contact-item contact-link" href="tel:+4746381887" itemprop="telephone">
+            <span class="contact-item__label">Telefon</span>
+            <span class="contact-item__value">+47 46 38 18 87</span>
+          </a>
+          <a class="contact-item contact-link" href="mailto:sayarfarid@gmail.com" itemprop="email">
+            <span class="contact-item__label">E-post</span>
+            <span class="contact-item__value">sayarfarid@gmail.com</span>
+          </a>
         </div>
       </div>
-    </div>
+    </section>
+
+    <!-- NOTE: Basic footer line with legal + contact context. -->
+    <footer class="site-footer" aria-label="Bunntekst">
+      <div class="site-footer__inner">
+        <p class="site-footer__text">
+          © 2026 Farid Sayar. Industridesign og produktdesign i Oslo (Helsfyr). Alle rettigheter
+          forbeholdt.
+        </p>
+      </div>
+    </footer>
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -465,20 +555,32 @@
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Farid Sayar",
-        "jobTitle": "Designer og oppfinner",
-        "description": "Tverrfaglig designer med spesialisering i 3D-modellering, industridesign og spillutvikling",
+        "jobTitle": "Industridesigner og produktdesigner",
+        "description": "Få hjelp med industridesign og produktdesign i Norge. Fra markedsanalyse og konsept til prototyping, produksjonsklare modeller og 3D-visualisering.",
         "url": "https://faridsayar.com",
+        "telephone": "+47 46 38 18 87",
+        "email": "sayarfarid@gmail.com",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+47 46 38 18 87",
+          "email": "sayarfarid@gmail.com",
+          "contactType": "customer service",
+          "areaServed": "NO",
+          "availableLanguage": ["no", "en"]
+        },
         "address": {
           "@type": "PostalAddress",
+          "streetAddress": "Helsfyr",
           "addressLocality": "Oslo",
           "addressCountry": "Norge"
         },
         "knowsAbout": [
-          "3D-modellering",
           "Industridesign",
-          "Spillutvikling",
           "Produktdesign",
-          "Visualisering"
+          "Produktutvikling",
+          "Prototyping",
+          "3D-visualisering",
+          "Konseptutvikling"
         ],
         "hasCredential": {
           "@type": "EducationalOccupationalCredential",
