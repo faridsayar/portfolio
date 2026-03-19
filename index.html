@@ -1,43 +1,47 @@
 <!doctype html>
-<html lang="en">
+<html lang="no">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Farid Sayar – Industridesigner og oppfinner</title>
+    <title>Industridesign og produktdesign i Norge | Prototyping & 3D-visualisering</title>
     <meta
       name="description"
-      content="Tverrfaglig designer med spesialisering i 3D-modellering, industridesign, spillutvikling og visuelle opplevelser. Utvalgt prosjekt: AK47-F moderne design."
+      content="Få hjelp med industridesign og produktdesign i Norge. Fra markedsanalyse og konsept til prototyping, produksjonsklare modeller og 3D-visualisering."
     />
     <meta
       name="keywords"
-      content="3D-modellering, industridesign, spillutvikling, produktdesign, visualisering, Blender, Fusion 360, Unreal Engine, AK47-F"
+      content="industridesign Norge, produktdesign Norge, produktutvikling, prototyping, konseptutvikling, 3D-visualisering, design for produksjon, produksjonsklar prototype"
     />
     <meta name="author" content="Farid Sayar" />
 
     <!-- Open Graph Meta Tags -->
     <meta
       property="og:title"
-      content="Farid Sayar – Designer og oppfinner | AK47-F moderne design"
+      content="Industridesign og produktdesign i Norge | Prototyping & 3D-visualisering"
     />
     <meta
       property="og:description"
-      content="Tverrfaglig designer som skaper 3D-modeller, industridesign og prosjekter innen spillutvikling. Utvalgt: AK47-F moderne design."
+      content="Få hjelp med industridesign og produktdesign i Norge. Fra markedsanalyse og konsept til prototyping, produksjonsklare modeller og 3D-visualisering."
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://faridsayar.com" />
+
+    <link rel="canonical" href="https://faridsayar.com/" />
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="Farid Sayar – Designer og oppfinner | AK47-F moderne design"
+      content="Industridesign og produktdesign i Norge | Prototyping & 3D-visualisering"
     />
     <meta
       name="twitter:description"
-      content="Tverrfaglig designer som skaper 3D-modeller, industridesign og prosjekter innen spillutvikling. Utvalgt: AK47-F moderne design."
+      content="Få hjelp med industridesign og produktdesign i Norge. Fra markedsanalyse og konsept til prototyping, produksjonsklare modeller og 3D-visualisering."
     />
 
     <!-- Favicon -->
+    <!-- NOTE: SVG favicon using the same triangle mark as the hero logo -->
+    <link rel="icon" type="image/svg+xml" href="/favicon-triangle.svg" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
     <!-- Google Fonts -->
@@ -117,6 +121,20 @@
         <div class="hero-overlay"></div>
       </div>
 
+      <!-- NOTE: Small triangle logo mark placed over the hero background. -->
+      <div class="hero-triangle-logo" aria-hidden="true">
+        <svg viewBox="0 0 100 86.6" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Logo">
+          <polygon
+            points="50,3 5,83.6 95,83.6"
+            fill="none"
+            stroke="var(--color-white)"
+            stroke-width="10"
+            stroke-linecap="round"
+            stroke-linejoin="miter"
+          />
+        </svg>
+      </div>
+
       <div class="hero-content">
         <h1 class="hero-title">Gjør ideen din til et ekte produkt</h1>
 
@@ -145,7 +163,7 @@
               <h3 class="service-title">Konseptutvikling</h3>
               <p class="service-text">Tidlig idéarbeid, rammer og tydelig retning.</p>
             </div>
-            <div class="service-card">
+            <div class="service-card service-card--primary-stroke">
               <h3 class="service-title">Produktdesign</h3>
               <p class="service-text">
                 Form, funksjon, brukervennlighet og detaljer som kan produseres.
@@ -208,20 +226,54 @@
 
           <div class="feature-points" aria-label="Fordeler">
             <p class="feature-point">
-              Design som faktisk kan produseres: Vi utvikler produkter med fokus på funksjon,
-              materialvalg og produksjon, ikke bare visualisering.
+              <img
+                class="feature-icon feature-icon--primary"
+                src="assets/icons/produserbar-icon.svg"
+                alt=""
+                aria-hidden="true"
+              />
+              <span class="feature-point__text">
+                <strong>Design som faktisk kan produseres:</strong> Vi utvikler produkter med fokus
+                på funksjon, materialvalg og produksjon, ikke bare visualisering.
+              </span>
             </p>
             <p class="feature-point">
-              Rask fremdrift uten unødvendig kompleksitet: Tydelige prosesser og raske iterasjoner
-              gjør at ideer blir til konkrete resultater.
+              <img
+                class="feature-icon feature-icon--muted"
+                src="assets/icons/fremdrift-icon.svg"
+                alt=""
+                aria-hidden="true"
+              />
+              <span class="feature-point__text">
+                <strong>Rask fremdrift uten unødvendig kompleksitet:</strong> Tydelige prosesser og
+                raske iterasjoner gjør at ideer blir til konkrete resultater.
+              </span>
             </p>
             <p class="feature-point">
-              Løsninger som gir mening for business: Hver beslutning tar hensyn til kostnader,
-              produksjon og marked.
+              <img
+                class="feature-icon feature-icon--muted"
+                src="assets/icons/bedrift-icon.svg"
+                alt=""
+                aria-hidden="true"
+              />
+              <span class="feature-point__text">
+                <strong>Løsninger som gir mening for business:</strong> Hver beslutning tar hensyn
+                til kostnader, produksjon og marked.
+              </span>
             </p>
             <p class="feature-point">
-              Design basert på ekte brukerbehov: Vi tar utgangspunkt i brukernes mål, kontekst og
-              begrensninger.
+              <img
+                class="feature-icon feature-icon--primary"
+                src="assets/icons/brukerbehov-icon.svg"
+                alt=""
+                aria-hidden="true"
+              />
+              <span class="feature-point__text">
+                <strong
+                  >Design basert på <span class="text-primary">ekte brukerbehov</span>:</strong
+                >
+                Vi tar utgangspunkt i brukernes mål, kontekst og begrensninger.
+              </span>
             </p>
           </div>
         </div>
@@ -451,8 +503,8 @@
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Farid Sayar",
-        "jobTitle": "Designer og oppfinner",
-        "description": "Tverrfaglig designer med spesialisering i 3D-modellering, industridesign og spillutvikling",
+        "jobTitle": "Industridesigner og produktdesigner",
+        "description": "Få hjelp med industridesign og produktdesign i Norge. Fra markedsanalyse og konsept til prototyping, produksjonsklare modeller og 3D-visualisering.",
         "url": "https://faridsayar.com",
         "address": {
           "@type": "PostalAddress",
@@ -460,11 +512,12 @@
           "addressCountry": "Norge"
         },
         "knowsAbout": [
-          "3D-modellering",
           "Industridesign",
-          "Spillutvikling",
           "Produktdesign",
-          "Visualisering"
+          "Produktutvikling",
+          "Prototyping",
+          "3D-visualisering",
+          "Konseptutvikling"
         ],
         "hasCredential": {
           "@type": "EducationalOccupationalCredential",
