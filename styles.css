@@ -10,12 +10,12 @@
   --color-black: #000000;
 
   /* Timeline phase colors (6 phases) */
-  --timeline-phase-0: #ffcc00; /* Brukeranalyse */
-  --timeline-phase-1: #a7e900; /* Konseptutvikling */
+  --timeline-phase-0: #e2cd79; /* Brukeranalyse */
+  --timeline-phase-1: #b0df3a; /* Konseptutvikling */
   --timeline-phase-2: #50da00; /* Prototype */
   --timeline-phase-3: #00cf9f; /* Finjustering */
   --timeline-phase-4: #00b9da; /* Validering */
-  --timeline-phase-5: #0066ff; /* Ferdigstilling */
+  --timeline-phase-5: #4876bb; /* Ferdigstilling */
 }
 
 /* Single Page Body - With Parallax Scrolling */
@@ -331,6 +331,46 @@
   opacity: 0.85;
 }
 
+/* About page team section */
+.about-team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.about-team-card {
+  margin: 0;
+  border: 1px solid rgba(31, 31, 31, 0.12);
+  background: var(--color-white);
+}
+
+.about-team-card__img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center;
+  background: rgba(31, 31, 31, 0.05);
+}
+
+.about-team-card__meta {
+  padding: 0.9rem 1rem 1rem;
+}
+
+.about-team-card__name {
+  margin: 0 0 0.25rem 0;
+  font-size: 1.05rem;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.about-team-card__role {
+  margin: 0;
+  line-height: 1.5;
+  opacity: 0.8;
+}
+
 /* Features section */
 .section--features .section-inner {
   padding-bottom: 2rem;
@@ -355,7 +395,7 @@
 
 .feature-points {
   display: grid;
-  gap: 1.1rem;
+  gap: 2rem;
   max-width: 48rem;
 }
 
@@ -829,23 +869,50 @@
 }
 
 @media (max-width: 1024px) {
+  .about-team-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .projects-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 768px) {
+  .inquiry-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.9rem;
+  }
+
+  .inquiry-note {
+    order: 1;
+  }
+
+  .inquiry-cta {
+    order: 2;
+    width: 100%;
+  }
+
   .contact-grid {
     grid-template-columns: 1fr;
   }
 
+  .about-team-grid {
+    grid-template-columns: 1fr;
+  }
+
   .side-nav {
-    --mobile-toggle-size: 2rem;
+    --mobile-toggle-size: 1.7rem;
     right: 0;
-    gap: 0.55rem;
-    padding: 0.65rem;
+    padding: 0;
     border-radius: 0;
-    align-items: center;
+    background: transparent;
+    backdrop-filter: none;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 0;
     transform: translateY(-50%) translateX(calc(100% - var(--mobile-toggle-size)));
     transition: transform 220ms cubic-bezier(0.4, 0, 0.2, 1);
   }
@@ -854,16 +921,28 @@
     transform: translateY(-50%) translateX(0);
   }
 
+  .side-nav__content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    padding: 0.65rem;
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(10px);
+  }
+
   .side-nav__toggle {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     width: var(--mobile-toggle-size);
-    height: var(--mobile-toggle-size);
-    flex: 0 0 var(--mobile-toggle-size);
+    min-height: var(--mobile-toggle-size);
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(10px);
   }
 
   .side-nav__toggle-icon {
+    width: 13px;
+    height: 13px;
     /* NOTE: collapsed = vertical edge on right side */
     transform: rotate(-90deg);
     transition: transform 220ms cubic-bezier(0.4, 0, 0.2, 1);
