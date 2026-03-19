@@ -335,6 +335,7 @@
 .feature-points {
   display: grid;
   gap: 0.85rem;
+  max-width: 48rem;
 }
 
 .feature-point {
