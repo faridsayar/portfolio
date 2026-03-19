@@ -13,6 +13,7 @@ class SinglePagePortfolio {
     this.setupAccessibility();
     this.setupResponsiveHandling();
     this.setupTimeline();
+    this.setupProjectsInfiniteScroll();
   }
 
   // Smooth transitions for interactive elements
@@ -261,6 +262,116 @@ class SinglePagePortfolio {
         timeframeLabel.textContent = `${timeframeSelect.value} prosjekt`;
       });
     }
+  }
+
+  // Projects grid: progressively append more items on scroll
+  setupProjectsInfiniteScroll() {
+    const grid = document.querySelector('[data-projects-grid]');
+    const sentinel = document.querySelector('[data-projects-sentinel]');
+    if (!grid || !sentinel) return;
+
+    const baseCards = Array.from(grid.querySelectorAll('.project-tile'));
+    if (baseCards.length === 0) return;
+
+    const source = baseCards.map((card, index) => {
+      const img = card.querySelector('.project-thumb__img');
+      const title = card.querySelector('.project-title');
+      const desc = card.querySelector('.project-desc');
+      return {
+        href: card.getAttribute('href') || 'prosjekter.html',
+        imgSrc: img?.getAttribute('src') || '',
+        imgAlt: img?.getAttribute('alt') || '',
+        title: title?.textContent?.trim() || `Prosjekt ${index + 1}`,
+        desc: desc?.textContent?.trim() || 'Prosjektbeskrivelse',
+      };
+    });
+
+    // NOTE: Use all currently provided local project images before falling back to placeholders.
+    const providedImagePool = [
+      'assets/images/USV.png',
+      'assets/images/H2O.jpg',
+      'assets/images/itac.jpg',
+      'assets/images/Proton.png',
+      'assets/images/Drone2.jpeg',
+      'assets/images/Memorium.jpg',
+      'assets/images/Bike.jpg',
+      'assets/images/Closet-anim.gif',
+      'assets/images/Kalash.jpg',
+      'assets/images/serviett.jpg',
+      'assets/images/ak-background-image.jpg',
+    ];
+
+    const maxItems = 20;
+    let nextIndex = baseCards.length;
+
+    function createCard(item, visualIndex, usePlaceholder = false) {
+      const card = document.createElement('a');
+      card.className = 'project-tile';
+      card.href = item.href;
+      card.setAttribute('aria-label', `Se prosjekt ${visualIndex + 1}`);
+      if (usePlaceholder) {
+        card.innerHTML = `
+          <div class="project-thumb project-thumb--placeholder" aria-hidden="true"></div>
+          <div class="project-meta">
+            <h3 class="project-title">${item.title}</h3>
+            <p class="project-desc">${item.desc}</p>
+          </div>
+        `;
+      } else {
+        card.innerHTML = `
+          <div class="project-thumb" aria-hidden="true">
+            <img class="project-thumb__img" src="${item.imgSrc}" alt="${item.imgAlt}" loading="lazy" />
+          </div>
+          <div class="project-meta">
+            <h3 class="project-title">${item.title}</h3>
+            <p class="project-desc">${item.desc}</p>
+          </div>
+        `;
+      }
+      return card;
+    }
+
+    function titleFromPath(path, fallbackIndex) {
+      const file = path.split('/').pop() || '';
+      const withoutExt = file.replace(/\.[^.]+$/, '');
+      const normalized = withoutExt.replace(/[-_]+/g, ' ').trim();
+      if (!normalized) return `Prosjekt ${fallbackIndex + 1}`;
+      return normalized.charAt(0).toUpperCase() + normalized.slice(1);
+    }
+
+    // Render all project cards up to maxItems immediately.
+    const fragment = document.createDocumentFragment();
+    const usedSources = new Set(source.map((item) => item.imgSrc));
+    const additionalRealImages = providedImagePool.filter((src) => !usedSources.has(src));
+
+    // First append all available real images from the provided pool.
+    for (const imgSrc of additionalRealImages) {
+      if (nextIndex >= maxItems) break;
+      const seed = source[nextIndex % source.length];
+      fragment.appendChild(
+        createCard(
+          {
+            ...seed,
+            imgSrc,
+            title: titleFromPath(imgSrc, nextIndex),
+          },
+          nextIndex,
+          false
+        )
+      );
+      nextIndex += 1;
+    }
+
+    // Fill remaining slots with neutral placeholders.
+    while (nextIndex < maxItems) {
+      const item = source[nextIndex % source.length];
+      fragment.appendChild(createCard(item, nextIndex, true));
+      nextIndex += 1;
+    }
+    grid.appendChild(fragment);
+
+    // Keep sentinel hidden/unused when all items are pre-rendered.
+    sentinel.style.display = 'none';
   }
 
   adjustLayoutForScreenSize() {
