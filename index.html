@@ -57,23 +57,51 @@
   </head>
   <body class="single-page-body">
     <!-- NOTE: Right-side vertical navigation to new pages (content will be filled later). -->
-    <nav class="side-nav" aria-label="Navigasjon">
-      <a class="side-nav__link" href="oss.html">Oss</a>
-      <a class="side-nav__link" href="prosjekter.html">Prosjekter</a>
-      <a class="side-nav__link" href="tips.html">Tips</a>
-      <a class="side-nav__link" href="bli-med.html">Bli med</a>
+    <nav class="side-nav" aria-label="Navigasjon" data-mobile-nav>
+      <!-- NOTE: Mobile-only toggle for collapsing/expanding side navigation. -->
+      <button
+        class="side-nav__toggle"
+        type="button"
+        aria-label="Utvid meny"
+        aria-expanded="false"
+        aria-controls="side-nav-content"
+        data-mobile-nav-toggle
+      >
+        <svg
+          class="side-nav__toggle-icon"
+          viewBox="0 0 100 86.6"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <polygon
+            points="50,3 5,83.6 95,83.6"
+            fill="none"
+            stroke="var(--color-white)"
+            stroke-width="10"
+            stroke-linecap="round"
+            stroke-linejoin="miter"
+          />
+        </svg>
+      </button>
 
-      <div class="side-nav__divider" aria-hidden="true"></div>
+      <div class="side-nav__content" id="side-nav-content" data-mobile-nav-content>
+        <a class="side-nav__link" href="oss.html">Oss</a>
+        <a class="side-nav__link" href="prosjekter.html">Prosjekter</a>
+        <a class="side-nav__link" href="tips.html">Tips</a>
+        <a class="side-nav__link" href="bli-med.html">Bli med</a>
 
-      <!-- NOTE: Language switch UI only (no functionality yet). -->
-      <label class="lang-switch" for="lang-switch">
-        <span class="lang-switch__label">NO</span>
-        <input class="lang-switch__input" type="checkbox" id="lang-switch" />
-        <span class="lang-switch__track" aria-hidden="true">
-          <span class="lang-switch__thumb" aria-hidden="true"></span>
-        </span>
-        <span class="lang-switch__label">EN</span>
-      </label>
+        <div class="side-nav__divider" aria-hidden="true"></div>
+
+        <!-- NOTE: Language switch UI only (no functionality yet). -->
+        <label class="lang-switch" for="lang-switch">
+          <span class="lang-switch__label">NO</span>
+          <input class="lang-switch__input" type="checkbox" id="lang-switch" />
+          <span class="lang-switch__track" aria-hidden="true">
+            <span class="lang-switch__thumb" aria-hidden="true"></span>
+          </span>
+          <span class="lang-switch__label">EN</span>
+        </label>
+      </div>
     </nav>
 
     <!--
