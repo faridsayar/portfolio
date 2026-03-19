@@ -475,6 +475,52 @@
       </div>
     </section>
 
+    <!-- NOTE: SEO-focused contact section with location and direct phone link. -->
+    <section class="section section--white section--contact" aria-label="Ta kontakt">
+      <div class="section-inner">
+        <div class="section-head">
+          <p class="section-kicker">Kontakt</p>
+          <h2 class="section-title">Ta kontakt</h2>
+          <p class="section-lead">
+            Om du er et lite firma eller en enkeltperson med lavt budsjett, ikke nøl med å ta
+            kontakt. Trenger du hjelp med en startup eller en crowdfunding-kampanje, finner vi en
+            fungerende løsning for alle.
+          </p>
+        </div>
+
+        <div class="contact-grid" itemscope itemtype="https://schema.org/ProfessionalService">
+          <a
+            class="contact-item contact-link"
+            href="https://www.google.com/maps/search/?api=1&query=Oslo%2C+Helsfyr"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Apne kart for Oslo, Helsfyr"
+          >
+            <span class="contact-item__label">Lokasjon</span>
+            <span class="contact-item__value" itemprop="areaServed">Oslo, Helsfyr</span>
+          </a>
+          <a class="contact-item contact-link" href="tel:+4746381887" itemprop="telephone">
+            <span class="contact-item__label">Telefon</span>
+            <span class="contact-item__value">+47 46 38 18 87</span>
+          </a>
+          <a class="contact-item contact-link" href="mailto:sayarfarid@gmail.com" itemprop="email">
+            <span class="contact-item__label">E-post</span>
+            <span class="contact-item__value">sayarfarid@gmail.com</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- NOTE: Basic footer line with legal + contact context. -->
+    <footer class="site-footer" aria-label="Bunntekst">
+      <div class="site-footer__inner">
+        <p class="site-footer__text">
+          © 2026 Farid Sayar. Industridesign og produktdesign i Oslo (Helsfyr). Alle rettigheter
+          forbeholdt.
+        </p>
+      </div>
+    </footer>
+
     <!-- Structured Data -->
     <script type="application/ld+json">
       {
@@ -484,8 +530,19 @@
         "jobTitle": "Industridesigner og produktdesigner",
         "description": "Få hjelp med industridesign og produktdesign i Norge. Fra markedsanalyse og konsept til prototyping, produksjonsklare modeller og 3D-visualisering.",
         "url": "https://faridsayar.com",
+        "telephone": "+47 46 38 18 87",
+        "email": "sayarfarid@gmail.com",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+47 46 38 18 87",
+          "email": "sayarfarid@gmail.com",
+          "contactType": "customer service",
+          "areaServed": "NO",
+          "availableLanguage": ["no", "en"]
+        },
         "address": {
           "@type": "PostalAddress",
+          "streetAddress": "Helsfyr",
           "addressLocality": "Oslo",
           "addressCountry": "Norge"
         },
