@@ -10,12 +10,12 @@
   --color-black: #000000;
 
   /* Timeline phase colors (6 phases) */
-  --timeline-phase-0: #ffcc00; /* Brukeranalyse */
-  --timeline-phase-1: #a7e900; /* Konseptutvikling */
+  --timeline-phase-0: #e2cd79; /* Brukeranalyse */
+  --timeline-phase-1: #b0df3a; /* Konseptutvikling */
   --timeline-phase-2: #50da00; /* Prototype */
   --timeline-phase-3: #00cf9f; /* Finjustering */
   --timeline-phase-4: #00b9da; /* Validering */
-  --timeline-phase-5: #0066ff; /* Ferdigstilling */
+  --timeline-phase-5: #4876bb; /* Ferdigstilling */
 }
 
 /* Single Page Body - With Parallax Scrolling */
@@ -331,6 +331,46 @@
   opacity: 0.85;
 }
 
+/* About page team section */
+.about-team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.about-team-card {
+  margin: 0;
+  border: 1px solid rgba(31, 31, 31, 0.12);
+  background: var(--color-white);
+}
+
+.about-team-card__img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center;
+  background: rgba(31, 31, 31, 0.05);
+}
+
+.about-team-card__meta {
+  padding: 0.9rem 1rem 1rem;
+}
+
+.about-team-card__name {
+  margin: 0 0 0.25rem 0;
+  font-size: 1.05rem;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.about-team-card__role {
+  margin: 0;
+  line-height: 1.5;
+  opacity: 0.8;
+}
+
 /* Features section */
 .section--features .section-inner {
   padding-bottom: 2rem;
@@ -355,7 +395,7 @@
 
 .feature-points {
   display: grid;
-  gap: 1.1rem;
+  gap: 2rem;
   max-width: 48rem;
 }
 
@@ -829,6 +869,10 @@
 }
 
 @media (max-width: 1024px) {
+  .about-team-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .projects-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -851,6 +895,10 @@
   }
 
   .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-team-grid {
     grid-template-columns: 1fr;
   }
 
