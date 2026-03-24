@@ -1,7 +1,8 @@
 <!-- Favicon: simple thick white outline triangle mark -->
-<svg xmlns="http://www.w3.org/2000/svg" width="64" height="56" viewBox="0 0 100 86.6" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="56" viewBox="29.85 8.3991762275 79.2711431703 92.301647545" fill="none">
   <polygon
     points="50,3 5,83.6 95,83.6"
+    transform="rotate(-30 50 43.3)"
     stroke="#ffffff"
     stroke-width="10"
     stroke-linecap="round"

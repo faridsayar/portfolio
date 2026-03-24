@@ -275,7 +275,8 @@ class SinglePagePortfolio {
       'assets/images/ak-background-image.jpg',
     ];
 
-    const maxItems = 20;
+    // NOTE: Keep this limited while the portfolio content is in progress.
+    const maxItems = 12;
     let nextIndex = baseCards.length;
 
     function createCard(item, visualIndex, usePlaceholder = false) {
