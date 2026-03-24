@@ -184,17 +184,17 @@
   position: absolute;
   top: 1.25rem;
   /* Align with the centered hero content container (same left edge as .hero-content padding). */
-  left: max(1.25rem, calc((100vw - 70rem) / 2 + 1.25rem));
+  left: max(1.25rem, calc((100vw - 70rem) / 2));
   z-index: 2;
-  width: 28px;
-  height: 28px;
+  height: 14px;
+  width: auto;
   pointer-events: none; /* Decorative mark; does not block navigation/inputs */
   opacity: 0.95;
 }
 
-.hero-triangle-logo svg {
-  width: 100%;
+.hero-logo-mark {
   height: 100%;
+  width: auto;
   display: block;
 }
 

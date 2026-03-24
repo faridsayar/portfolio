@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const windowHeight = window.innerHeight;
     const scrollProgress = Math.min(scrollTop / windowHeight, 1);
 
-    // 1. Farid Sayar - fly up to top and stick as logo
+    // 1. Formaa - fly up to top and stick as logo
     if (scrollProgress > 0.1) {
       logoContainer.style.opacity = '1';
       logoContainer.style.transform = 'translateY(0)';
