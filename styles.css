@@ -451,15 +451,15 @@
 
 /* Article template (alternating text/image rows) */
 .section--article-template .section-inner {
-  max-width: 76rem;
+  max-width: 70rem;
 }
 
 .article-row {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  align-items: start;
-  gap: 1.25rem;
-  margin-top: 2rem;
+  align-items: center;
+  gap: 4rem;
+  margin-top: 4rem;
 }
 
 .article-row--text-right .article-row__text {
@@ -510,8 +510,8 @@
 .feature-banner {
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
+  padding-left: 0;
+  padding-right: 0;
   margin-bottom: 2rem;
 }
 
@@ -839,6 +839,15 @@
   cursor: pointer;
 }
 
+/* NOTE: Keep warning text left and CTA button right in inquiry footer on desktop. */
+.inquiry-footer .inquiry-note {
+  order: 1;
+}
+
+.inquiry-footer .inquiry-cta {
+  order: 2;
+}
+
 .inquiry-cta:hover {
   transform: translateY(-1px);
   box-shadow: 0 22px 52px rgba(0, 0, 0, 0.2);
@@ -934,7 +943,7 @@
 
 /* Project page template */
 .section--project-template .section-inner {
-  max-width: 74rem;
+  max-width: 70rem;
 }
 
 .project-template-gallery {
@@ -1029,6 +1038,37 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
   max-width: 60rem;
+}
+
+.social-links {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.social-link {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(31, 31, 31, 0.16);
+  background: rgba(31, 31, 31, 0.02);
+  color: var(--color-dark);
+  text-decoration: none;
+}
+
+.social-link svg {
+  width: 1.15rem;
+  height: 1.15rem;
+  fill: currentColor;
+}
+
+.social-link:hover {
+  border-color: rgba(255, 115, 0, 0.42);
+  color: var(--color-primary);
+  background: rgba(255, 115, 0, 0.06);
 }
 
 .contact-item {
