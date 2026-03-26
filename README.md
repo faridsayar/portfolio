@@ -24,7 +24,7 @@ No build step is required for runtime.
 - `index.html` - Main landing page (hero, services, features, inquiry timeline, project grid)
 - `oss.html` - Placeholder/info page with aligned SEO metadata
 - `prosjekter.html` - Placeholder/info page with aligned SEO metadata
-- `tips.html` - Placeholder/info page with aligned SEO metadata
+- `innsikt.html` - Articles/insights page with aligned SEO metadata
 - `bli-med.html` - Placeholder/info page with aligned SEO metadata
 
 ## Current UX and Features
@@ -97,7 +97,7 @@ All HTML pages are aligned to Norwegian industrial/product design intent:
 ├── index.html
 ├── oss.html
 ├── prosjekter.html
-├── tips.html
+├── innsikt.html
 ├── bli-med.html
 ├── styles.css
 ├── script.js

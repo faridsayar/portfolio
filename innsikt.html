@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Innsikt | Industridesign og produktdesign</title>
+    <meta
+      name="description"
+      content="Praktisk innsikt om industridesign og produktdesign: nyheter, guider, refleksjoner og produksjonsnære råd fra virkelige prosjekter."
+    />
+    <meta
+      name="keywords"
+      content="innsikt, designinnsikt, industridesign, produktdesign, produktutvikling, guider, nyheter, Norge"
+    />
+    <meta name="author" content="Formaa" />
+
+    <meta property="og:title" content="Innsikt | Industridesign og produktdesign" />
+    <meta
+      property="og:description"
+      content="Praktisk innsikt om industridesign og produktdesign: nyheter, guider, refleksjoner og produksjonsnære råd fra virkelige prosjekter."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://formaa.no/innsikt.html" />
+    <meta property="og:image" content="https://formaa.no/assets/images/social-sharing.jpg" />
+    <meta property="og:image:width" content="1920" />
+    <meta property="og:image:height" content="1080" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Innsikt | Industridesign og produktdesign" />
+    <meta
+      name="twitter:description"
+      content="Praktisk innsikt om industridesign og produktdesign: nyheter, guider, refleksjoner og produksjonsnære råd fra virkelige prosjekter."
+    />
+    <meta name="twitter:image" content="https://formaa.no/assets/images/social-sharing.jpg" />
+
+    <link rel="canonical" href="https://formaa.no/innsikt.html" />
+
+    <!-- NOTE: SVG favicon using the same triangle mark as the hero logo -->
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <link rel="stylesheet" href="styles.css?v=4" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="single-page-body">
+    <!-- NOTE: Blog-style insights page with article cards and preview text. -->
+    <nav class="side-nav" aria-label="Navigasjon">
+      <a class="side-nav__link" href="index.html">Hjem</a>
+      <a class="side-nav__link" href="oss.html">Oss</a>
+      <a class="side-nav__link" href="prosjekter.html">Prosjekter</a>
+      <a class="side-nav__link" href="innsikt.html" aria-current="page">Innsikt</a>
+      <a class="side-nav__link" href="bli-med.html">Bli med</a>
+
+      <div class="side-nav__divider" aria-hidden="true"></div>
+
+      <!-- NOTE: Language switch UI only (no functionality yet). -->
+      <label class="lang-switch" for="lang-switch">
+        <span class="lang-switch__label">NO</span>
+        <input class="lang-switch__input" type="checkbox" id="lang-switch" />
+        <span class="lang-switch__track" aria-hidden="true">
+          <span class="lang-switch__thumb" aria-hidden="true"></span>
+        </span>
+        <span class="lang-switch__label">EN</span>
+      </label>
+    </nav>
+
+    <main>
+      <section class="section section--white" aria-label="Innsikt og artikler">
+        <div class="section-inner">
+          <!-- NOTE: Breadcrumb component for quick page hierarchy navigation. -->
+          <nav class="breadcrumb" aria-label="Brødsmulesti">
+            <a class="breadcrumb__link" href="index.html">Formaa</a>
+            <span class="breadcrumb__sep" aria-hidden="true">/</span>
+            <a class="breadcrumb__link" href="innsikt.html" aria-current="page">Innsikt</a>
+          </nav>
+
+          <p class="section-kicker">Innhold</p>
+          <h1 class="section-title">Tips, guider og designinnsikt</h1>
+          <p class="section-lead">
+            Her publiserer vi nyheter, praktiske tips, korte guider og tanker fra designarbeid i
+            virkelige prosjekter.
+          </p>
+
+          <!-- NOTE: Article grid for blog/news style posts (3 columns desktop). -->
+          <div class="articles-grid" aria-label="Artikkeloversikt">
+            <article class="article-card">
+              <a class="article-card__link" href="article-template.html">
+                <img class="article-card__img" src="assets/images/USV.png" alt="Artikkelbilde 1" />
+                <div class="article-card__body">
+                  <h2 class="article-card__title">
+                    Hvordan validere en produktidé før prototyping
+                  </h2>
+                  <p class="article-card__excerpt">
+                    En enkel metode for å teste behov, brukssituasjon og betalingsvilje før du
+                    bruker tid og penger på utvikling.
+                  </p>
+                </div>
+              </a>
+            </article>
+
+            <article class="article-card">
+              <a class="article-card__link" href="article-template.html">
+                <img class="article-card__img" src="assets/images/H2O.jpg" alt="Artikkelbilde 2" />
+                <div class="article-card__body">
+                  <h2 class="article-card__title">5 vanlige feil i tidlig produktdesign</h2>
+                  <p class="article-card__excerpt">
+                    Typiske fallgruver vi ser i startup-prosjekter, og hvordan du kan unngå dem med
+                    bedre prioriteringer.
+                  </p>
+                </div>
+              </a>
+            </article>
+
+            <article class="article-card">
+              <a class="article-card__link" href="article-template.html">
+                <img class="article-card__img" src="assets/images/itac.jpg" alt="Artikkelbilde 3" />
+                <div class="article-card__body">
+                  <h2 class="article-card__title">Fra skisse til produksjonsklar modell</h2>
+                  <p class="article-card__excerpt">
+                    Hva som faktisk må avklares før et konsept kan bli til et robust produkt klart
+                    for produksjon.
+                  </p>
+                </div>
+              </a>
+            </article>
+
+            <article class="article-card">
+              <a class="article-card__link" href="article-template.html">
+                <img
+                  class="article-card__img"
+                  src="assets/images/Proton.png"
+                  alt="Artikkelbilde 4"
+                />
+                <div class="article-card__body">
+                  <h2 class="article-card__title">Design for små team med begrenset budsjett</h2>
+                  <p class="article-card__excerpt">
+                    Praktiske grep for å få mest mulig verdi ut av designprosessen når ressursene er
+                    få og tempoet er høyt.
+                  </p>
+                </div>
+              </a>
+            </article>
+
+            <article class="article-card">
+              <a class="article-card__link" href="article-template.html">
+                <img
+                  class="article-card__img"
+                  src="assets/images/Drone2.jpeg"
+                  alt="Artikkelbilde 5"
+                />
+                <div class="article-card__body">
+                  <h2 class="article-card__title">
+                    Når bør du redesigne i stedet for å starte på nytt?
+                  </h2>
+                  <p class="article-card__excerpt">
+                    En vurderingsramme for å avgjøre om eksisterende produkt bør forbedres eller om
+                    ny retning gir bedre resultat.
+                  </p>
+                </div>
+              </a>
+            </article>
+
+            <article class="article-card">
+              <a class="article-card__link" href="article-template.html">
+                <img
+                  class="article-card__img"
+                  src="assets/images/Memorium.jpg"
+                  alt="Artikkelbilde 6"
+                />
+                <div class="article-card__body">
+                  <h2 class="article-card__title">Nyheter fra studio: hva vi tester akkurat nå</h2>
+                  <p class="article-card__excerpt">
+                    Løpende oppdateringer om materialtester, prototypemetoder og læring fra
+                    prosjekter vi jobber med.
+                  </p>
+                </div>
+              </a>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" aria-label="Bunntekst">
+      <div class="site-footer__inner">
+        <p class="site-footer__text">
+          © 2026 Formaa. Industridesign og produktdesign i Oslo (Helsfyr). Alle rettigheter
+          forbeholdt.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
