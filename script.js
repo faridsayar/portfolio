@@ -8,6 +8,7 @@ class SinglePagePortfolio {
     this.setupMobileSideNavToggle();
     this.setupTimeline();
     this.setupProjectsGrid();
+    this.setupProjectTemplateGalleries();
   }
 
   // NOTE: Mobile-only side navigation collapse/expand interaction.
@@ -347,6 +348,41 @@ class SinglePagePortfolio {
 
     // Keep sentinel hidden/unused when all items are pre-rendered.
     sentinel.style.display = 'none';
+  }
+
+  // NOTE: Reusable project galleries swap main image from local thumbnail rails.
+  setupProjectTemplateGalleries() {
+    const galleries = Array.from(document.querySelectorAll('[data-project-gallery]'));
+    if (galleries.length === 0) return;
+
+    galleries.forEach((gallery) => {
+      const mainImage = gallery.querySelector('[data-project-main-image]');
+      const thumbs = Array.from(gallery.querySelectorAll('[data-project-thumb]'));
+      if (!mainImage || thumbs.length === 0) return;
+
+      function setActiveThumb(activeThumb) {
+        thumbs.forEach((thumb) => {
+          const isActive = thumb === activeThumb;
+          thumb.classList.toggle('is-active', isActive);
+          thumb.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+        });
+      }
+
+      thumbs.forEach((thumb, index) => {
+        if (!thumb.hasAttribute('aria-pressed')) {
+          thumb.setAttribute('aria-pressed', index === 0 ? 'true' : 'false');
+        }
+
+        thumb.addEventListener('click', () => {
+          const nextSrc = thumb.dataset.imageSrc;
+          const nextAlt = thumb.dataset.imageAlt || 'Prosjektbilde';
+          if (!nextSrc) return;
+          mainImage.src = nextSrc;
+          mainImage.alt = nextAlt;
+          setActiveThumb(thumb);
+        });
+      });
+    });
   }
 
   // NOTE: Utility function for debouncing high-frequency events.

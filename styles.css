@@ -186,7 +186,7 @@
   /* Align with the centered hero content container (same left edge as .hero-content padding). */
   left: max(1.25rem, calc((100vw - 70rem) / 2));
   z-index: 2;
-  height: 14px;
+  height: 27.3px;
   width: auto;
   pointer-events: none; /* Decorative mark; does not block navigation/inputs */
   opacity: 0.95;
@@ -800,6 +800,93 @@
   transform: scale(1.06);
 }
 
+/* Project page template */
+.section--project-template .section-inner {
+  max-width: 74rem;
+}
+
+.project-template-gallery {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  align-items: start;
+  margin-top: 1.5rem;
+}
+
+.project-template-main {
+  margin: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(31, 31, 31, 0.06);
+}
+
+.project-template-main__img {
+  display: block;
+  width: 100%;
+  height: clamp(16rem, 56vw, 34rem);
+  object-fit: cover;
+  object-position: center;
+}
+
+.project-template-thumbs {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  display: grid;
+  gap: 0.65rem;
+  width: clamp(4rem, 9vw, 5.6rem);
+}
+
+.project-template-thumb {
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: 10px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.92);
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease;
+}
+
+.project-template-thumb img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.project-template-thumb.is-active {
+  border-color: var(--color-primary);
+}
+
+.project-template-thumb:hover {
+  transform: translateY(-1px);
+}
+
+.project-template-body {
+  margin-top: 1.3rem;
+  max-width: 60rem;
+  font-size: 1rem;
+  line-height: 1.75;
+  opacity: 0.9;
+}
+
+.project-detail-block {
+  margin-top: 2rem;
+}
+
+.section--project-cta .section-inner {
+  padding-top: 1rem;
+  padding-bottom: 4rem;
+}
+
+.section--project-cta .inquiry-cta {
+  margin-top: 0.75rem;
+}
+
 /* Contact section */
 .section--contact .section-inner {
   padding-top: 3rem;
@@ -876,6 +963,10 @@
   .projects-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .project-template-main__img {
+    height: clamp(14rem, 58vw, 26rem);
+  }
 }
 
 @media (max-width: 768px) {
@@ -900,6 +991,17 @@
 
   .about-team-grid {
     grid-template-columns: 1fr;
+  }
+
+  .project-template-gallery {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+
+  .project-template-thumbs {
+    position: static;
+    width: auto;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .side-nav {
