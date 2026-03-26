@@ -9,13 +9,12 @@
   --color-white: #ffffff;
   --color-black: #000000;
 
-  /* Timeline phase colors (6 phases) */
-  --timeline-phase-0: #e2cd79; /* Brukeranalyse */
-  --timeline-phase-1: #b0df3a; /* Konseptutvikling */
-  --timeline-phase-2: #50da00; /* Prototype */
-  --timeline-phase-3: #00cf9f; /* Finjustering */
-  --timeline-phase-4: #00b9da; /* Validering */
-  --timeline-phase-5: #4876bb; /* Ferdigstilling */
+  /* Timeline phase colors (5 phases, yellow removed) */
+  --timeline-phase-0: #b0df3a; /* Brukeranalyse */
+  --timeline-phase-1: #50da00; /* Konseptutvikling */
+  --timeline-phase-2: #00cf9f; /* Prototype */
+  --timeline-phase-3: #00b9da; /* Validering */
+  --timeline-phase-4: #4876bb; /* Ferdigstilling */
 }
 
 /* Single Page Body - With Parallax Scrolling */
@@ -372,14 +371,13 @@
 
 .about-team-card {
   margin: 0;
-  border: 1px solid rgba(31, 31, 31, 0.12);
   background: var(--color-white);
 }
 
 .about-team-card__img {
   display: block;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 4 / 4.5;
   object-fit: cover;
   object-position: center;
   background: rgba(31, 31, 31, 0.05);
@@ -392,6 +390,7 @@
 .about-team-card__name {
   margin: 0 0 0.25rem 0;
   font-size: 1.05rem;
+  font-weight: 700;
   line-height: 1.25;
   letter-spacing: -0.01em;
 }
@@ -400,6 +399,20 @@
   margin: 0;
   line-height: 1.5;
   opacity: 0.8;
+}
+
+.about-team-card__email {
+  display: inline-block;
+  margin-top: 0.45rem;
+  font-size: 0.92rem;
+  color: var(--color-dark);
+  text-decoration: none;
+  opacity: 0.75;
+}
+
+.about-team-card__email:hover {
+  color: var(--color-primary);
+  opacity: 1;
 }
 
 /* Tips/news page article cards */
@@ -629,13 +642,10 @@
   background: var(--timeline-phase-2); /* Prototype */
 }
 .timeline-segment[data-segment='3'] {
-  background: var(--timeline-phase-3); /* Finjustering */
+  background: var(--timeline-phase-3); /* Validering */
 }
 .timeline-segment[data-segment='4'] {
-  background: var(--timeline-phase-4); /* Validering */
-}
-.timeline-segment[data-segment='5'] {
-  background: var(--timeline-phase-5); /* Ferdigstilling */
+  background: var(--timeline-phase-4); /* Ferdigstilling */
 }
 
 .timeline-handles {
@@ -741,11 +751,6 @@
 .timeline-summary-item[data-phase-summary='4'] .timeline-summary-item__name,
 .timeline-summary-item[data-phase-summary='4'] .timeline-summary-item__value {
   color: var(--timeline-phase-4);
-  opacity: 1;
-}
-.timeline-summary-item[data-phase-summary='5'] .timeline-summary-item__name,
-.timeline-summary-item[data-phase-summary='5'] .timeline-summary-item__value {
-  color: var(--timeline-phase-5);
   opacity: 1;
 }
 
@@ -957,7 +962,7 @@
 
 .project-template-main {
   margin: 0;
-  border-radius: 16px;
+  border-radius: 0;
   overflow: hidden;
   background: rgba(31, 31, 31, 0.06);
 }
@@ -981,7 +986,7 @@
 
 .project-template-thumb {
   border: 1px solid rgba(255, 255, 255, 0.75);
-  border-radius: 10px;
+  border-radius: 0;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.92);
   padding: 0;

@@ -64,19 +64,18 @@ class SinglePagePortfolio {
     const timeframeSelect = document.querySelector('[data-timeframe-select]');
     const timeframeLabel = timeline.querySelector('[data-timeframe-label]');
 
-    if (!track || segments.length !== 6 || handles.length !== 5) return;
+    if (!track || segments.length !== 5 || handles.length !== 4) return;
 
     const phases = [
       'Brukeranalyse',
       'Konseptutvikling',
       'Prototype',
-      'Finjustering',
       'Validering',
       'Ferdigstilling',
     ];
 
     const minGapPct = 3;
-    let boundaries = Array.from({ length: 5 }, (_, i) => Math.round(((i + 1) * 100) / 6));
+    let boundaries = Array.from({ length: 4 }, (_, i) => Math.round(((i + 1) * 100) / 5));
     let activeHandleIndex = null;
     let pointerId = null;
 
@@ -86,7 +85,7 @@ class SinglePagePortfolio {
 
     function computePhasePercents() {
       const b = boundaries;
-      const p = [b[0], b[1] - b[0], b[2] - b[1], b[3] - b[2], b[4] - b[3], 100 - b[4]];
+      const p = [b[0], b[1] - b[0], b[2] - b[1], b[3] - b[2], 100 - b[3]];
       return p.map((x) => clamp(x, 0, 100));
     }
 
