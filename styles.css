@@ -17,6 +17,13 @@
   --timeline-phase-4: #4876bb; /* Ferdigstilling */
 }
 
+/* NOTE: One box model everywhere; pages that load Tailwind already use border-box—this keeps plain CSS pages aligned. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 /* Single Page Body - With Parallax Scrolling */
 .single-page-body {
   font-family:
@@ -946,11 +953,7 @@
   transform: scale(1.06);
 }
 
-/* Project page template */
-.section--project-template .section-inner {
-  max-width: 70rem;
-}
-
+/* Project page template (`.section-inner` width/padding match other static pages). */
 .project-template-gallery {
   position: relative;
   display: grid;
@@ -1014,7 +1017,6 @@
 
 .project-template-body {
   margin-top: 1.3rem;
-  max-width: 60rem;
   font-size: 1rem;
   line-height: 1.75;
   opacity: 0.9;
@@ -1031,6 +1033,71 @@
 
 .section--project-cta .inquiry-cta {
   margin-top: 0.75rem;
+}
+
+/* NOTE: Prev/next links live in a position:fixed full-viewport nav (pointer-events none) so they never scroll with content; links are position:absolute, vertically centered; plain icons; desktop only. */
+.project-page-nav {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .project-page-nav {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 40;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    pointer-events: none;
+    overflow: visible;
+  }
+
+  .project-page-nav__link {
+    position: absolute;
+    top: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    margin: 0;
+    background: none;
+    border: none;
+    color: var(--color-dark);
+    text-decoration: none;
+    opacity: 0.65;
+    pointer-events: auto;
+    transition:
+      opacity 180ms ease,
+      transform 180ms ease;
+  }
+
+  .project-page-nav__link--prev {
+    left: clamp(1.25rem, calc((100vw - 70rem) / 4), 10rem);
+    transform: translateY(-50%);
+  }
+
+  .project-page-nav__link--next {
+    right: clamp(5.5rem, calc((100vw - 70rem) / 4), 10rem);
+    transform: translateY(-50%);
+  }
+
+  .project-page-nav__link:hover:not(.is-disabled) {
+    opacity: 1;
+    transform: translateY(-50%) scale(1.06);
+  }
+
+  .project-page-nav__link.is-disabled {
+    opacity: 0.28;
+    pointer-events: none;
+    cursor: default;
+  }
+
+  .project-page-nav__icon {
+    display: block;
+    width: 1.35rem;
+    height: 1.35rem;
+  }
 }
 
 /* Contact section */

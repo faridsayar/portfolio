@@ -47,7 +47,7 @@
     <nav class="side-nav" aria-label="Navigasjon">
       <a class="side-nav__link" href="index.html">Hjem</a>
       <a class="side-nav__link" href="oss.html">Oss</a>
-      <a class="side-nav__link" href="prosjekter.html" aria-current="page">Prosjekter</a>
+      <a class="side-nav__link" href="advanced-project.html">Prosjekter</a>
       <a class="side-nav__link" href="innsikt.html">Innsikt</a>
       <a class="side-nav__link" href="bli-med.html">Bli med</a>
 
@@ -163,6 +163,42 @@
         </div>
       </section>
     </main>
+
+    <!-- NOTE: Desktop-only adjacent project links; positioned in viewport gutters (see `.project-page-nav`). -->
+    <nav class="project-page-nav" aria-label="Forrige og neste prosjekt">
+      <a
+        class="project-page-nav__link project-page-nav__link--prev"
+        href="advanced-project.html"
+        aria-label="Forrige prosjekt"
+      >
+        <svg class="project-page-nav__icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M15 6l-6 6 6 6"
+          />
+        </svg>
+      </a>
+      <span
+        class="project-page-nav__link project-page-nav__link--next is-disabled"
+        aria-disabled="true"
+        aria-label="Ingen neste prosjekt"
+      >
+        <svg class="project-page-nav__icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M9 6l6 6-6 6"
+          />
+        </svg>
+      </span>
+    </nav>
 
     <!-- NOTE: Shared footer matching the homepage footer content. -->
     <footer class="site-footer" aria-label="Bunntekst">
