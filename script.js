@@ -8,6 +8,7 @@ class SinglePagePortfolio {
     this.setupMobileSideNavToggle();
     this.setupTimeline();
     this.setupProjectsGrid();
+    this.setupProjectTemplateGalleries();
   }
 
   // NOTE: Mobile-only side navigation collapse/expand interaction.
@@ -63,19 +64,18 @@ class SinglePagePortfolio {
     const timeframeSelect = document.querySelector('[data-timeframe-select]');
     const timeframeLabel = timeline.querySelector('[data-timeframe-label]');
 
-    if (!track || segments.length !== 6 || handles.length !== 5) return;
+    if (!track || segments.length !== 5 || handles.length !== 4) return;
 
     const phases = [
       'Brukeranalyse',
       'Konseptutvikling',
       'Prototype',
-      'Finjustering',
       'Validering',
       'Ferdigstilling',
     ];
 
     const minGapPct = 3;
-    let boundaries = Array.from({ length: 5 }, (_, i) => Math.round(((i + 1) * 100) / 6));
+    let boundaries = Array.from({ length: 4 }, (_, i) => Math.round(((i + 1) * 100) / 5));
     let activeHandleIndex = null;
     let pointerId = null;
 
@@ -85,7 +85,7 @@ class SinglePagePortfolio {
 
     function computePhasePercents() {
       const b = boundaries;
-      const p = [b[0], b[1] - b[0], b[2] - b[1], b[3] - b[2], b[4] - b[3], 100 - b[4]];
+      const p = [b[0], b[1] - b[0], b[2] - b[1], b[3] - b[2], 100 - b[3]];
       return p.map((x) => clamp(x, 0, 100));
     }
 
@@ -347,6 +347,41 @@ class SinglePagePortfolio {
 
     // Keep sentinel hidden/unused when all items are pre-rendered.
     sentinel.style.display = 'none';
+  }
+
+  // NOTE: Reusable project galleries swap main image from local thumbnail rails.
+  setupProjectTemplateGalleries() {
+    const galleries = Array.from(document.querySelectorAll('[data-project-gallery]'));
+    if (galleries.length === 0) return;
+
+    galleries.forEach((gallery) => {
+      const mainImage = gallery.querySelector('[data-project-main-image]');
+      const thumbs = Array.from(gallery.querySelectorAll('[data-project-thumb]'));
+      if (!mainImage || thumbs.length === 0) return;
+
+      function setActiveThumb(activeThumb) {
+        thumbs.forEach((thumb) => {
+          const isActive = thumb === activeThumb;
+          thumb.classList.toggle('is-active', isActive);
+          thumb.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+        });
+      }
+
+      thumbs.forEach((thumb, index) => {
+        if (!thumb.hasAttribute('aria-pressed')) {
+          thumb.setAttribute('aria-pressed', index === 0 ? 'true' : 'false');
+        }
+
+        thumb.addEventListener('click', () => {
+          const nextSrc = thumb.dataset.imageSrc;
+          const nextAlt = thumb.dataset.imageAlt || 'Prosjektbilde';
+          if (!nextSrc) return;
+          mainImage.src = nextSrc;
+          mainImage.alt = nextAlt;
+          setActiveThumb(thumb);
+        });
+      });
+    });
   }
 
   // NOTE: Utility function for debouncing high-frequency events.
