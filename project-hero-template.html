@@ -3,41 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Arid | Industridesign og produktdesign</title>
+    <title>Prosjekt 3 (hero-mal) | Industridesign og produktdesign</title>
     <meta
       name="description"
-      content="Arid: desertification solution — industridesign og produktdesign med hero-presentasjon og bildegalleri."
-    />
-    <meta
-      name="keywords"
-      content="Arid, industridesign, produktdesign, prototyping, produktutvikling, Norge"
+      content="Test av prosjektmal med fullbreddet hero-bilde, statisk tittel og bildetekst som følger valgt bilde."
     />
     <meta name="author" content="Formaa" />
 
-    <meta property="og:title" content="Arid | Industridesign og produktdesign" />
-    <meta
-      property="og:description"
-      content="Arid: desertification solution — prototyping og produksjonsnær produktdesign."
-    />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://formaa.no/advanced-project.html" />
-    <meta property="og:image" content="https://formaa.no/assets/images/social-sharing.jpg" />
-    <meta property="og:image:width" content="1920" />
-    <meta property="og:image:height" content="1080" />
-
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Arid | Industridesign og produktdesign" />
-    <meta
-      name="twitter:description"
-      content="Arid: desertification solution — prototyping og produksjonsnær produktdesign."
-    />
-    <meta name="twitter:image" content="https://formaa.no/assets/images/social-sharing.jpg" />
-
-    <link rel="canonical" href="https://formaa.no/advanced-project.html" />
-
     <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-
     <link rel="stylesheet" href="styles.css?v=4" />
   </head>
   <body class="single-page-body">
@@ -45,7 +19,7 @@
     <nav class="side-nav" aria-label="Navigasjon">
       <a class="side-nav__link" href="index.html">Hjem</a>
       <a class="side-nav__link" href="oss.html">Oss</a>
-      <a class="side-nav__link" href="advanced-project.html" aria-current="page">Prosjekter</a>
+      <a class="side-nav__link" href="advanced-project.html">Prosjekter</a>
       <a class="side-nav__link" href="innsikt.html">Innsikt</a>
       <a class="side-nav__link" href="bli-med.html">Bli med</a>
 
@@ -64,8 +38,9 @@
     <main>
       <section
         class="section section--white section--project-hero-template"
-        aria-label="Arid prosjekt"
+        aria-label="Prosjekt hero-mal"
       >
+        <!-- NOTE: Breadcrumb + main image + thumbs + copy share one full-bleed stage (no white band above). -->
         <div class="project-hero-gallery" data-project-gallery>
           <div class="project-hero-stage">
             <nav class="breadcrumb project-hero-stage__breadcrumb" aria-label="Brødsmulesti">
@@ -73,26 +48,28 @@
               <span class="breadcrumb__sep" aria-hidden="true">/</span>
               <a class="breadcrumb__link" href="index.html#portfolio">Portfolio</a>
               <span class="breadcrumb__sep" aria-hidden="true">/</span>
-              <a class="breadcrumb__link" href="advanced-project.html" aria-current="page">Arid</a>
+              <a class="breadcrumb__link" href="project-hero-template.html" aria-current="page"
+                >Prosjekt 3</a
+              >
             </nav>
             <div class="project-hero-stage__media">
               <img
                 class="project-hero-stage__img"
-                src="assets/images/Proton.png"
-                alt="Arid prosjektbilde 1"
+                src="assets/images/itac.jpg"
+                alt="Prosjektbilde 1"
                 data-project-main-image
               />
               <div class="project-hero-stage__overlay" aria-hidden="true"></div>
             </div>
             <div class="project-hero-stage__content">
-              <h1 class="project-hero-stage__title">Arid: desertification solution</h1>
+              <h1 class="project-hero-stage__title">Prosjekt 3</h1>
               <p class="project-hero-stage__lead">
-                Klargjøring for prototype og produksjon — industridesign rettet mot tørke og
-                bærekraftige løsninger.
+                Egen hero-mal til test: full bredde som forsiden, med bildetekst over bildet som
+                bytter når du velger miniatyrbilde.
               </p>
               <p class="project-hero-caption" data-project-image-caption>
-                Første leveranse: visuell retning og materiell lesning for feltbruk i tørre
-                omgivelser.
+                Første scene: fokus på materialitet og brukssituasjon for konseptet. Bildetekst
+                knyttet til første bilde.
               </p>
             </div>
             <div
@@ -103,20 +80,20 @@
                 class="project-template-thumb is-active"
                 type="button"
                 data-project-thumb
-                data-image-src="assets/images/Proton.png"
-                data-image-alt="Arid bilde 1"
-                data-image-caption="Første leveranse: visuell retning og materiell lesning for feltbruk i tørre omgivelser."
+                data-image-src="assets/images/itac.jpg"
+                data-image-alt="Itac scene 1"
+                data-image-caption="Første scene: fokus på materialitet og brukssituasjon for konseptet. Bildetekst knyttet til første bilde."
                 aria-label="Vis bilde 1"
               >
-                <img src="assets/images/Proton.png" alt="" aria-hidden="true" />
+                <img src="assets/images/itac.jpg" alt="" aria-hidden="true" />
               </button>
               <button
                 class="project-template-thumb"
                 type="button"
                 data-project-thumb
                 data-image-src="assets/images/H2O.jpg"
-                data-image-alt="Arid bilde 2"
-                data-image-caption="Andre fase: modell og skalering av løsningen mot prototype."
+                data-image-alt="H2O scene 2"
+                data-image-caption="Andre scene: utforsking av form og hvordan produktet møter omgivelsene."
                 aria-label="Vis bilde 2"
               >
                 <img src="assets/images/H2O.jpg" alt="" aria-hidden="true" />
@@ -125,23 +102,23 @@
                 class="project-template-thumb"
                 type="button"
                 data-project-thumb
-                data-image-src="assets/images/itac.jpg"
-                data-image-alt="Arid bilde 3"
-                data-image-caption="Tredje fase: detaljer, iterasjoner og avklaring mot produksjon."
+                data-image-src="assets/images/USV.png"
+                data-image-alt="USV scene 3"
+                data-image-caption="Tredje scene: prototype-kontekst og skalering mot produksjon."
                 aria-label="Vis bilde 3"
               >
-                <img src="assets/images/itac.jpg" alt="" aria-hidden="true" />
+                <img src="assets/images/USV.png" alt="" aria-hidden="true" />
               </button>
               <button
                 class="project-template-thumb"
                 type="button"
                 data-project-thumb
-                data-image-src="assets/images/USV.png"
-                data-image-alt="Arid bilde 4"
-                data-image-caption="Fjerde fase: presentasjon og overlevering til neste steg i verdikjeden."
+                data-image-src="assets/images/Drone2.jpeg"
+                data-image-alt="Drone scene 4"
+                data-image-caption="Fjerde scene: detaljer, iterasjoner og validering før ferdigstilling."
                 aria-label="Vis bilde 4"
               >
-                <img src="assets/images/USV.png" alt="" aria-hidden="true" />
+                <img src="assets/images/Drone2.jpeg" alt="" aria-hidden="true" />
               </button>
             </div>
           </div>
@@ -160,10 +137,10 @@
     </main>
 
     <nav class="project-page-nav" aria-label="Forrige og neste prosjekt">
-      <span
-        class="project-page-nav__link project-page-nav__link--prev is-disabled"
-        aria-disabled="true"
-        aria-label="Ingen forrige prosjekt"
+      <a
+        class="project-page-nav__link project-page-nav__link--prev"
+        href="prosjekter.html"
+        aria-label="Forrige prosjekt"
       >
         <img
           class="project-page-nav__icon"
@@ -174,10 +151,10 @@
           aria-hidden="true"
         />
         <span class="project-page-nav__label" aria-hidden="true">forrige</span>
-      </span>
+      </a>
       <a
         class="project-page-nav__link project-page-nav__link--next"
-        href="prosjekter.html"
+        href="advanced-project.html"
         aria-label="Neste prosjekt"
       >
         <span class="project-page-nav__label" aria-hidden="true">neste</span>

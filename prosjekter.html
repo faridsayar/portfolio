@@ -3,21 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>simple-project | Industridesign og produktdesign</title>
+    <title>Prosjekt 2 | Industridesign og produktdesign</title>
     <meta
       name="description"
-      content="Eksempler på industridesign og produktdesign: konsept, prototyping og 3D-visualisering. Kommer snart."
+      content="Prosjekt 2 — industridesign og produktdesign med hero-presentasjon og bildegalleri."
     />
     <meta
       name="keywords"
-      content="industridesign, produktdesign, produktutvikling, prototyping, 3D-visualisering, prosjekter, Norge"
+      content="industridesign, produktdesign, prototyping, 3D-visualisering, Norge"
     />
     <meta name="author" content="Formaa" />
 
-    <meta property="og:title" content="simple-project | Industridesign og produktdesign" />
+    <meta property="og:title" content="Prosjekt 2 | Industridesign og produktdesign" />
     <meta
       property="og:description"
-      content="Eksempler på industridesign og produktdesign: konsept, prototyping og 3D-visualisering. Kommer snart."
+      content="Prosjekt 2 — utstilling av 3D-modellering og produktdesign."
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://formaa.no/prosjekter.html" />
@@ -26,16 +26,15 @@
     <meta property="og:image:height" content="1080" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="simple-project | Industridesign og produktdesign" />
+    <meta name="twitter:title" content="Prosjekt 2 | Industridesign og produktdesign" />
     <meta
       name="twitter:description"
-      content="Eksempler på industridesign og produktdesign: konsept, prototyping og 3D-visualisering. Kommer snart."
+      content="Prosjekt 2 — utstilling av 3D-modellering og produktdesign."
     />
     <meta name="twitter:image" content="https://formaa.no/assets/images/social-sharing.jpg" />
 
     <link rel="canonical" href="https://formaa.no/prosjekter.html" />
 
-    <!-- NOTE: SVG favicon using the same triangle mark as the hero logo -->
     <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
@@ -43,17 +42,16 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body class="single-page-body">
-    <!-- NOTE: Project page template with interactive gallery and project details. -->
+    <!-- NOTE: Prosjektside (delt hero-mal): fullbreddet bilde, brødsmulesti, miniatyrer og bildetekst per bilde. -->
     <nav class="side-nav" aria-label="Navigasjon">
       <a class="side-nav__link" href="index.html">Hjem</a>
       <a class="side-nav__link" href="oss.html">Oss</a>
-      <a class="side-nav__link" href="prosjekter.html" aria-current="page">Prosjekter</a>
+      <a class="side-nav__link" href="advanced-project.html">Prosjekter</a>
       <a class="side-nav__link" href="innsikt.html">Innsikt</a>
       <a class="side-nav__link" href="bli-med.html">Bli med</a>
 
       <div class="side-nav__divider" aria-hidden="true"></div>
 
-      <!-- NOTE: Language switch UI only (no functionality yet). -->
       <label class="lang-switch" for="lang-switch">
         <span class="lang-switch__label">NO</span>
         <input class="lang-switch__input" type="checkbox" id="lang-switch" />
@@ -65,52 +63,49 @@
     </nav>
 
     <main>
-      <section class="section section--white section--project-template" aria-label="Prosjektmal">
-        <div class="section-inner">
-          <!-- NOTE: Breadcrumb component for quick page hierarchy navigation. -->
-          <nav class="breadcrumb" aria-label="Brødsmulesti">
-            <a class="breadcrumb__link" href="index.html">Formaa</a>
-            <span class="breadcrumb__sep" aria-hidden="true">/</span>
-            <a class="breadcrumb__link" href="prosjekter.html">Portfolio</a>
-            <span class="breadcrumb__sep" aria-hidden="true">/</span>
-            <a class="breadcrumb__link" href="prosjekter.html" aria-current="page">Project 1</a>
-          </nav>
-
-          <p class="section-kicker">simple-project</p>
-          <h1 class="section-title">simple-project</h1>
-          <p class="section-lead">
-            Kort beskrivelse av prosjektet: mål, målgruppe og hvilken verdi løsningen skaper.
-          </p>
-
-          <!-- NOTE: Interactive gallery; clicking a thumbnail swaps the main hero image. -->
-          <div class="project-template-gallery" data-project-gallery>
-            <figure class="project-template-main">
+      <section
+        class="section section--white section--project-hero-template"
+        aria-label="Prosjekt 2"
+      >
+        <div class="project-hero-gallery" data-project-gallery>
+          <div class="project-hero-stage">
+            <nav class="breadcrumb project-hero-stage__breadcrumb" aria-label="Brødsmulesti">
+              <a class="breadcrumb__link" href="index.html">Formaa</a>
+              <span class="breadcrumb__sep" aria-hidden="true">/</span>
+              <a class="breadcrumb__link" href="index.html#portfolio">Portfolio</a>
+              <span class="breadcrumb__sep" aria-hidden="true">/</span>
+              <a class="breadcrumb__link" href="prosjekter.html" aria-current="page">Prosjekt 2</a>
+            </nav>
+            <div class="project-hero-stage__media">
               <img
-                class="project-template-main__img"
-                src="assets/images/USV.png"
-                alt="Prosjekt hovedbilde"
+                class="project-hero-stage__img"
+                src="assets/images/H2O.jpg"
+                alt="Prosjekt 2 bilde 1"
                 data-project-main-image
               />
-            </figure>
-
-            <div class="project-template-thumbs" aria-label="Velg prosjektbilde">
+              <div class="project-hero-stage__overlay" aria-hidden="true"></div>
+            </div>
+            <div class="project-hero-stage__content">
+              <h1 class="project-hero-stage__title">Prosjekt 2</h1>
+              <p class="project-hero-stage__lead">
+                Utstilling av 3D-modellering og produktdesign — kort case for porteføljen.
+              </p>
+              <p class="project-hero-caption" data-project-image-caption>
+                Introduksjon: tidlig idé og visualisering av volum og materialitet.
+              </p>
+            </div>
+            <div
+              class="project-template-thumbs project-hero-stage__thumbs"
+              aria-label="Velg prosjektbilde"
+            >
               <button
                 class="project-template-thumb is-active"
                 type="button"
                 data-project-thumb
-                data-image-src="assets/images/USV.png"
-                data-image-alt="Prosjektbilde 1"
-                aria-label="Vis prosjektbilde 1"
-              >
-                <img src="assets/images/USV.png" alt="" aria-hidden="true" />
-              </button>
-              <button
-                class="project-template-thumb"
-                type="button"
-                data-project-thumb
                 data-image-src="assets/images/H2O.jpg"
-                data-image-alt="Prosjektbilde 2"
-                aria-label="Vis prosjektbilde 2"
+                data-image-alt="Prosjekt 2 bilde 1"
+                data-image-caption="Introduksjon: tidlig idé og visualisering av volum og materialitet."
+                aria-label="Vis bilde 1"
               >
                 <img src="assets/images/H2O.jpg" alt="" aria-hidden="true" />
               </button>
@@ -119,8 +114,9 @@
                 type="button"
                 data-project-thumb
                 data-image-src="assets/images/itac.jpg"
-                data-image-alt="Prosjektbilde 3"
-                aria-label="Vis prosjektbilde 3"
+                data-image-alt="Prosjekt 2 bilde 2"
+                data-image-caption="Konseptfase: detaljer og brukssituasjoner i scenen."
+                aria-label="Vis bilde 2"
               >
                 <img src="assets/images/itac.jpg" alt="" aria-hidden="true" />
               </button>
@@ -129,30 +125,28 @@
                 type="button"
                 data-project-thumb
                 data-image-src="assets/images/Proton.png"
-                data-image-alt="Prosjektbilde 4"
-                aria-label="Vis prosjektbilde 4"
+                data-image-alt="Prosjekt 2 bilde 3"
+                data-image-caption="Prototypevisning: klarhet mot produksjon og presentasjon."
+                aria-label="Vis bilde 3"
               >
                 <img src="assets/images/Proton.png" alt="" aria-hidden="true" />
               </button>
+              <button
+                class="project-template-thumb"
+                type="button"
+                data-project-thumb
+                data-image-src="assets/images/USV.png"
+                data-image-alt="Prosjekt 2 bilde 4"
+                data-image-caption="Avslutning: leveranse og videre steg for kunden."
+                aria-label="Vis bilde 4"
+              >
+                <img src="assets/images/USV.png" alt="" aria-hidden="true" />
+              </button>
             </div>
-          </div>
-
-          <div class="project-template-body">
-            <p>
-              Prosjektbeskrivelse: Her kan du skrive om utfordringen kunden hadde, hvordan dere
-              jobbet metodisk gjennom designprosessen, og hvilke avklaringer som ble gjort i
-              konseptfasen.
-            </p>
-            <p>
-              Beskriv også valg knyttet til funksjon, ergonomi, materialer og produksjonsmuligheter.
-              Dette gjør det enklere for besøkende å forstå både tankegangen og kvaliteten i
-              arbeidet.
-            </p>
           </div>
         </div>
       </section>
 
-      <!-- NOTE: Bottom CTA redirects users to the homepage application form section. -->
       <section class="section section--white section--project-cta" aria-label="Neste steg">
         <div class="section-inner">
           <h2 class="section-title">Har du et prosjekt du vil realisere?</h2>
@@ -164,7 +158,39 @@
       </section>
     </main>
 
-    <!-- NOTE: Shared footer matching the homepage footer content. -->
+    <nav class="project-page-nav" aria-label="Forrige og neste prosjekt">
+      <a
+        class="project-page-nav__link project-page-nav__link--prev"
+        href="advanced-project.html"
+        aria-label="Forrige prosjekt"
+      >
+        <img
+          class="project-page-nav__icon"
+          src="triangle.svg"
+          alt=""
+          width="30"
+          height="26"
+          aria-hidden="true"
+        />
+        <span class="project-page-nav__label" aria-hidden="true">forrige</span>
+      </a>
+      <a
+        class="project-page-nav__link project-page-nav__link--next"
+        href="project-hero-template.html"
+        aria-label="Neste prosjekt"
+      >
+        <span class="project-page-nav__label" aria-hidden="true">neste</span>
+        <img
+          class="project-page-nav__icon"
+          src="triangle.svg"
+          alt=""
+          width="30"
+          height="26"
+          aria-hidden="true"
+        />
+      </a>
+    </nav>
+
     <footer class="site-footer" aria-label="Bunntekst">
       <div class="site-footer__inner">
         <p class="site-footer__text">
@@ -173,7 +199,6 @@
       </div>
     </footer>
 
-    <!-- NOTE: Reuse global interaction script for gallery and shared behaviors. -->
     <script src="script.js"></script>
   </body>
 </html>

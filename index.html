@@ -76,7 +76,7 @@
 
       <div class="side-nav__content" id="side-nav-content" data-mobile-nav-content>
         <a class="side-nav__link" href="oss.html">Oss</a>
-        <a class="side-nav__link" href="prosjekter.html">Prosjekter</a>
+        <a class="side-nav__link" href="advanced-project.html">Prosjekter</a>
         <a class="side-nav__link" href="innsikt.html">Innsikt</a>
         <a class="side-nav__link" href="bli-med.html">Bli med</a>
 
@@ -274,7 +274,7 @@
         <div class="section-inner">
           <div class="section-head">
             <p class="section-kicker">Konsultasjon forespørsel</p>
-            <h2 class="section-title">Velg hva du vil fokusere på</h2>
+            <h2 class="section-title">Send forespørsel</h2>
             <p class="section-lead">
               Dra punktene langs linjen for å vekte prioriteringene. Alle prosjekter er unike – vi
               tilpasser prosessen til dine behov og målene du setter. (Dette er en grov oversikt og
@@ -419,64 +419,76 @@
     </main>
 
     <!-- Prosjekter (grid med kvadratiske bilder) -->
-    <section class="section section--white section--projects" aria-label="Prosjekter">
+    <section
+      class="section section--white section--projects"
+      id="portfolio"
+      aria-label="Prosjekter"
+    >
       <div class="section-inner">
         <div class="section-head">
           <p class="section-kicker">Portfolio</p>
           <h2 class="section-title">Prosjekter</h2>
           <p class="section-lead">Et utvalg av industridesign, prototyping og 3D-visualisering.</p>
         </div>
-        <div class="projects-grid" aria-label="Prosjektliste" data-projects-grid>
-          <a class="project-tile" href="advanced-project.html" aria-label="Se Arid prosjekt">
-            <!-- NOTE: Replace thumbnail src with project-specific images later. -->
-            <div class="project-thumb" aria-hidden="true">
-              <img
-                class="project-thumb__img"
-                src="assets/images/Proton.png"
-                alt=""
-                loading="lazy"
-              />
-            </div>
-            <div class="project-meta">
-              <h3 class="project-title">Arid: desertification solution</h3>
-              <p class="project-desc">Klargjøring for prototype og produksjon</p>
-            </div>
-          </a>
+        <!-- NOTE: Full-bleed dark band includes grey strip above grid; captions use panel text color via CSS. -->
+        <div class="projects-grid-panel">
+          <div class="projects-grid" aria-label="Prosjektliste" data-projects-grid>
+            <a class="project-tile" href="advanced-project.html" aria-label="Se Arid prosjekt">
+              <!-- NOTE: Replace thumbnail src with project-specific images later. -->
+              <div class="project-thumb" aria-hidden="true">
+                <img
+                  class="project-thumb__img"
+                  src="assets/images/Proton.png"
+                  alt=""
+                  loading="lazy"
+                />
+              </div>
+              <div class="project-meta">
+                <h3 class="project-title">Arid: desertification solution</h3>
+                <p class="project-desc">Klargjøring for prototype og produksjon</p>
+              </div>
+            </a>
 
-          <a class="project-tile" href="prosjekter.html" aria-label="Se prosjekt 2">
-            <!-- NOTE: Replace thumbnail src with project-specific images later. -->
-            <div class="project-thumb" aria-hidden="true">
-              <img class="project-thumb__img" src="assets/images/H2O.jpg" alt="" loading="lazy" />
-            </div>
-            <div class="project-meta">
-              <h3 class="project-title">Prosjekt 2</h3>
-              <p class="project-desc">Utstilling av 3D-modellering</p>
-            </div>
-          </a>
+            <a class="project-tile" href="prosjekter.html" aria-label="Se prosjekt 2">
+              <!-- NOTE: Replace thumbnail src with project-specific images later. -->
+              <div class="project-thumb" aria-hidden="true">
+                <img class="project-thumb__img" src="assets/images/H2O.jpg" alt="" loading="lazy" />
+              </div>
+              <div class="project-meta">
+                <h3 class="project-title">Prosjekt 2</h3>
+                <p class="project-desc">Utstilling av 3D-modellering</p>
+              </div>
+            </a>
 
-          <a class="project-tile" href="prosjekter.html" aria-label="Se prosjekt 3">
-            <!-- NOTE: Replace thumbnail src with project-specific images later. -->
-            <div class="project-thumb" aria-hidden="true">
-              <img class="project-thumb__img" src="assets/images/itac.jpg" alt="" loading="lazy" />
-            </div>
-            <div class="project-meta">
-              <h3 class="project-title">Prosjekt 3</h3>
-              <p class="project-desc">Design av spillressurser</p>
-            </div>
-          </a>
+            <a class="project-tile" href="project-hero-template.html" aria-label="Se prosjekt 3">
+              <!-- NOTE: Replace thumbnail src with project-specific images later. -->
+              <div class="project-thumb" aria-hidden="true">
+                <img
+                  class="project-thumb__img"
+                  src="assets/images/itac.jpg"
+                  alt=""
+                  loading="lazy"
+                />
+              </div>
+              <div class="project-meta">
+                <h3 class="project-title">Prosjekt 3</h3>
+                <p class="project-desc">Design av spillressurser</p>
+              </div>
+            </a>
 
-          <a class="project-tile" href="prosjekter.html" aria-label="Se prosjekt 4">
-            <!-- NOTE: Replace thumbnail src with project-specific images later. -->
-            <div class="project-thumb" aria-hidden="true">
-              <img class="project-thumb__img" src="assets/images/USV.png" alt="" loading="lazy" />
-            </div>
-            <div class="project-meta">
-              <h3 class="project-title">Prosjekt 4</h3>
-              <p class="project-desc">Industridesign-konsept</p>
-            </div>
-          </a>
+            <a class="project-tile" href="prosjekter.html" aria-label="Se prosjekt 4">
+              <!-- NOTE: Replace thumbnail src with project-specific images later. -->
+              <div class="project-thumb" aria-hidden="true">
+                <img class="project-thumb__img" src="assets/images/USV.png" alt="" loading="lazy" />
+              </div>
+              <div class="project-meta">
+                <h3 class="project-title">Prosjekt 4</h3>
+                <p class="project-desc">Industridesign-konsept</p>
+              </div>
+            </a>
+          </div>
+          <div class="projects-sentinel" data-projects-sentinel aria-hidden="true"></div>
         </div>
-        <div class="projects-sentinel" data-projects-sentinel aria-hidden="true"></div>
       </div>
     </section>
 

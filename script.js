@@ -9,6 +9,7 @@ class SinglePagePortfolio {
     this.setupTimeline();
     this.setupProjectsGrid();
     this.setupProjectTemplateGalleries();
+    this.setupProjectPageNavVerticalAlign();
   }
 
   // NOTE: Mobile-only side navigation collapse/expand interaction.
@@ -349,7 +350,7 @@ class SinglePagePortfolio {
     sentinel.style.display = 'none';
   }
 
-  // NOTE: Reusable project galleries swap main image from local thumbnail rails.
+  // NOTE: Reusable project galleries swap main image from local thumbnail rails; optional data-image-caption updates [data-project-image-caption] in the same gallery.
   setupProjectTemplateGalleries() {
     const galleries = Array.from(document.querySelectorAll('[data-project-gallery]'));
     if (galleries.length === 0) return;
@@ -357,6 +358,7 @@ class SinglePagePortfolio {
     galleries.forEach((gallery) => {
       const mainImage = gallery.querySelector('[data-project-main-image]');
       const thumbs = Array.from(gallery.querySelectorAll('[data-project-thumb]'));
+      const captionEl = gallery.querySelector('[data-project-image-caption]');
       if (!mainImage || thumbs.length === 0) return;
 
       function setActiveThumb(activeThumb) {
@@ -365,6 +367,11 @@ class SinglePagePortfolio {
           thumb.classList.toggle('is-active', isActive);
           thumb.setAttribute('aria-pressed', isActive ? 'true' : 'false');
         });
+      }
+
+      function applyCaptionFromThumb(thumb) {
+        if (!captionEl || thumb.dataset.imageCaption === undefined) return;
+        captionEl.textContent = thumb.dataset.imageCaption;
       }
 
       thumbs.forEach((thumb, index) => {
@@ -379,9 +386,37 @@ class SinglePagePortfolio {
           mainImage.src = nextSrc;
           mainImage.alt = nextAlt;
           setActiveThumb(thumb);
+          applyCaptionFromThumb(thumb);
         });
       });
+
+      const initialThumb = thumbs.find((t) => t.classList.contains('is-active')) || thumbs[0];
+      applyCaptionFromThumb(initialThumb);
     });
+  }
+
+  // NOTE: On hero template, pin prev/next to 90% down the hero image (viewport px); other pages use CSS `90%`.
+  setupProjectPageNavVerticalAlign() {
+    const stage = document.querySelector('.project-hero-stage');
+    const projectNav = document.querySelector('.project-page-nav');
+    if (!stage || !projectNav) {
+      document.documentElement.style.removeProperty('--project-page-nav-anchor-y');
+      return;
+    }
+
+    const sync = () => {
+      if (window.innerWidth < 1024) {
+        document.documentElement.style.removeProperty('--project-page-nav-anchor-y');
+        return;
+      }
+      const r = stage.getBoundingClientRect();
+      const y = r.top + r.height * 0.9;
+      document.documentElement.style.setProperty('--project-page-nav-anchor-y', `${y}px`);
+    };
+
+    sync();
+    window.addEventListener('scroll', sync, { passive: true });
+    window.addEventListener('resize', this.debounce(sync, 100));
   }
 
   // NOTE: Utility function for debouncing high-frequency events.
