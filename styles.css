@@ -10,6 +10,8 @@
   --color-black: #000000;
   /* NOTE: Full-bleed portfolio grid strip on homepage (behind tiles + captions only). */
   --color-projects-panel: #383838;
+  /* NOTE: “Hvordan vi jobber” strip — mid grey (left) → very dark grey (right), matches panel tone. */
+  --color-features-gradient-end: #151515;
 
   /* Timeline phase colors (5 phases, yellow removed) */
   --timeline-phase-0: #b0df3a; /* Brukeranalyse */
@@ -41,6 +43,8 @@
   overflow-x: hidden;
   overflow-y: auto;
   position: relative;
+  /* NOTE: Default global page background (very light gray gradient) across all pages. */
+  background: linear-gradient(180deg, #fafafa 0%, #f3f3f3 100%);
 }
 
 /* Right-side vertical navigation */
@@ -371,6 +375,102 @@
 }
 
 /* About page team section */
+.about-top-graphic {
+  position: relative;
+  margin: 0 0 1.5rem 0;
+  width: 100vw;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.about-top-graphic__img {
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: auto;
+  max-height: none;
+}
+
+.about-top-graphic__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  padding: 1rem 0 0;
+}
+
+/* NOTE: Breadcrumb overlay aligned to shared content container, with light color for contrast on image. */
+.about-top-graphic__breadcrumb {
+  max-width: 70rem;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  color: var(--color-white);
+}
+
+.about-top-graphic__breadcrumb .breadcrumb__link,
+.about-top-graphic__breadcrumb .breadcrumb__sep {
+  color: var(--color-white);
+  opacity: 0.85;
+}
+
+.about-top-graphic__breadcrumb .breadcrumb__link:hover,
+.about-top-graphic__breadcrumb .breadcrumb__link[aria-current='page'] {
+  opacity: 1;
+}
+
+.about-top-graphic__logo {
+  position: absolute;
+  top: 50%;
+  left: max(1.25rem, calc((100vw - 70rem) / 2 + 1.25rem));
+  transform: translateY(-50%);
+  z-index: 2;
+  height: clamp(1.4rem, 3.2vw, 2.4rem);
+  width: auto;
+  display: block;
+  pointer-events: none;
+}
+
+/* NOTE: "Vi er" intro text pulses slowly (fade in -> hold -> fade out). */
+.about-top-graphic__intro-wrap {
+  position: absolute;
+  top: calc(50% - 3.2rem);
+  left: max(1.25rem, calc((100vw - 70rem) / 2 + 1.25rem));
+  transform: none;
+  z-index: 2;
+  pointer-events: none;
+  animation: aboutIntroPulse 7s ease-in-out infinite;
+  opacity: 0;
+}
+
+.about-top-graphic__intro {
+  /* NOTE: Keep pure `.section-kicker` typography; only color is overridden for image contrast. */
+  font-family: 'Jura', sans-serif;
+  text-transform: none;
+  color: var(--color-white);
+}
+
+@keyframes aboutIntroPulse {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  65% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* NOTE: Om oss starts with full-bleed hero artwork, so remove default section top padding. */
+section[aria-label='Oss'] .section-inner {
+  padding-top: 0;
+}
+
 .about-team-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -532,36 +632,42 @@
 .feature-banner {
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
-  padding-left: 0;
-  padding-right: 0;
   margin-bottom: 2rem;
-}
-
-.feature-banner__img {
-  display: block;
-  width: 100%;
-  max-height: 62vh;
-  object-fit: cover;
-  object-position: center;
-  background: rgba(31, 31, 31, 0.04);
+  padding: clamp(2.5rem, 7vw, 4.5rem) clamp(1rem, 4vw, 1.5rem);
+  min-height: clamp(20rem, 52vh, 36rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    90deg,
+    var(--color-projects-panel) 0%,
+    var(--color-features-gradient-end) 100%
+  );
+  color: var(--color-white);
 }
 
 .feature-points {
   display: grid;
-  gap: 2rem;
-  max-width: 48rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: start;
+  gap: clamp(1.25rem, 3.5vw, 2.75rem);
+  width: 100%;
+  max-width: 70rem;
+  margin: 0 auto;
 }
 
 .feature-point {
   margin: 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 1.2rem; /* Icon-to-text spacing */
+  text-align: center;
+  gap: 1rem;
   line-height: 1.6;
 }
 
 .feature-point__text {
-  opacity: 0.9;
+  opacity: 0.92;
 }
 
 /* Note: utility for highlighting specific text in primary color */
@@ -578,9 +684,27 @@
   margin-top: 0;
 }
 
+/* NOTE: Title ends with “:”; block + gap separates lead line from body copy in each point. */
+.feature-banner .feature-point__text strong {
+  display: block;
+  margin-bottom: 0.65em;
+  color: var(--color-white);
+  font-weight: 600;
+}
+
 @media (max-width: 1024px) {
-  .feature-banner__img {
-    max-height: 48vh;
+  .feature-points {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .feature-banner {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .feature-points {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -897,7 +1021,12 @@
   padding-left: 1.25rem;
   padding-right: 1.25rem;
   padding-bottom: 2.5rem;
-  background-color: var(--color-projects-panel);
+  /* Same left→right greys as `.feature-banner` (“Hvordan vi jobber”). */
+  background: linear-gradient(
+    90deg,
+    var(--color-projects-panel) 0%,
+    var(--color-features-gradient-end) 100%
+  );
 }
 
 .projects-grid-panel .project-tile {
@@ -1145,6 +1274,11 @@
 .section--project-cta .section-inner {
   padding-top: 1rem;
   padding-bottom: 4rem;
+}
+
+/* NOTE: CTA sections stay transparent so global page gradient flows continuously. */
+.section--project-cta {
+  background: transparent;
 }
 
 /* NOTE: Extra top padding after hero template (doubles default 1rem for this transition only). */

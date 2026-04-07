@@ -34,6 +34,12 @@
     <meta name="twitter:image" content="https://formaa.no/assets/images/social-sharing.jpg" />
 
     <link rel="canonical" href="https://formaa.no/oss.html" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jura:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- NOTE: SVG favicon using the same triangle mark as the hero logo -->
     <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
@@ -67,24 +73,45 @@
     <main>
       <section class="section section--white" aria-label="Oss">
         <div class="section-inner">
-          <!-- NOTE: Breadcrumb component for quick page hierarchy navigation. -->
-          <nav class="breadcrumb" aria-label="Brødsmulesti">
-            <a class="breadcrumb__link" href="index.html">Formaa</a>
-            <span class="breadcrumb__sep" aria-hidden="true">/</span>
-            <a class="breadcrumb__link" href="oss.html" aria-current="page">Oss</a>
-          </nav>
+          <!-- NOTE: Full-bleed top artwork with breadcrumb overlay anchored on image. -->
+          <figure class="about-top-graphic">
+            <img
+              class="about-top-graphic__img"
+              src="assets/images/Background-tris.svg"
+              alt=""
+              loading="lazy"
+            />
+            <!-- NOTE: Breadcrumb stays visible on top of the artwork. -->
+            <figcaption class="about-top-graphic__overlay">
+              <!-- NOTE: Intro overlay text above logo; text keeps pure `.section-kicker` typography. -->
+              <div class="about-top-graphic__intro-wrap" aria-hidden="true">
+                <p class="section-kicker about-top-graphic__intro">vi er</p>
+              </div>
+              <!-- NOTE: Brand mark centered vertically on artwork, aligned with text column left edge. -->
+              <img
+                class="about-top-graphic__logo"
+                src="assets/formaa-logo.svg"
+                alt=""
+                aria-hidden="true"
+              />
+              <nav class="breadcrumb about-top-graphic__breadcrumb" aria-label="Brødsmulesti">
+                <a class="breadcrumb__link" href="index.html">Formaa</a>
+                <span class="breadcrumb__sep" aria-hidden="true">/</span>
+                <a class="breadcrumb__link" href="oss.html" aria-current="page">Oss</a>
+              </nav>
+            </figcaption>
+          </figure>
 
           <p class="section-kicker">Om oss</p>
-          <h1 class="section-title">Tre designere med ulik bakgrunn, ett felles mål</h1>
+          <h1 class="section-title">Tre designere</h1>
           <p class="section-lead">
-            Vi er tre venner med forskjellig bakgrunn som alle jobber med design. Etter erfaring fra
-            etablerte selskaper og ulike startups valgte vi å starte noe eget. Målet er å tilby en
-            mer praktisk, tydelig og tilgjengelig måte å jobbe med design på.
+            Vi er tre venner med forskjellige designer-bakgrunner. Vi har bestemt oss for å starte
+            egen liten designbyrå for å hjelpe mellomstore og små bedrifter med produktutvikling.
+            Det vi gjør vil også passe bra for grüdere og startups.
           </p>
           <p class="section-lead section-lead--after-grid">
-            Vi ønsker å gjøre designprosessen enklere for dem som faktisk trenger den og verdsetter
-            den. Derfor tilbyr vi solid kompetanse innen produktdesign, prototyping og utvikling -
-            uten at det må koste en formue å få et godt produkt på plass.
+            Målet er å tilby en mer praktisk, tydelig og tilgjengelig måte å jobbe med design på.
+            Kort sagt: ekte og produksjonsklar produkt - uten at det må koste en formue.
           </p>
 
           <!-- NOTE: Team row with 3 members (image + name + role). -->
@@ -92,7 +119,7 @@
             <figure class="about-team-card">
               <img
                 class="about-team-card__img"
-                src="assets/images/USV.png"
+                src="assets/images/profiles/Farid.JPG"
                 alt="Medgründer - industridesign og produktdesign"
               />
               <figcaption class="about-team-card__meta">
@@ -105,7 +132,7 @@
             <figure class="about-team-card">
               <img
                 class="about-team-card__img"
-                src="assets/images/H2O.jpg"
+                src="assets/images/profiles/Anton.jpeg"
                 alt="Medgründer - konsept og strategi"
               />
               <figcaption class="about-team-card__meta">
@@ -118,7 +145,7 @@
             <figure class="about-team-card">
               <img
                 class="about-team-card__img"
-                src="assets/images/itac.jpg"
+                src="assets/images/profiles/Leonardo.jpg"
                 alt="Medgründer - prototyping og visualisering"
               />
               <figcaption class="about-team-card__meta">
@@ -132,6 +159,78 @@
           </div>
         </div>
       </section>
+
+      <!-- NOTE: Copied from homepage contact section; main lead text block removed by request. -->
+      <section class="section section--white section--contact" aria-label="Ta kontakt">
+        <div class="section-inner">
+          <div class="section-head">
+            <p class="section-kicker">Kontakt</p>
+            <h2 class="section-title">Ta kontakt</h2>
+          </div>
+
+          <div class="contact-grid" itemscope itemtype="https://schema.org/ProfessionalService">
+            <a
+              class="contact-item contact-link"
+              href="https://www.google.com/maps/search/?api=1&query=Oslo%2C+Helsfyr"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Apne kart for Oslo, Helsfyr"
+            >
+              <span class="contact-item__label">Lokasjon</span>
+              <span class="contact-item__value" itemprop="areaServed">Oslo, Helsfyr</span>
+            </a>
+            <a class="contact-item contact-link" href="tel:+4746381887" itemprop="telephone">
+              <span class="contact-item__label">Telefon</span>
+              <span class="contact-item__value">+47 46 38 18 87</span>
+            </a>
+            <a class="contact-item contact-link" href="mailto:formaa@formaa.no" itemprop="email">
+              <span class="contact-item__label">E-post</span>
+              <span class="contact-item__value">formaa@formaa.no</span>
+            </a>
+          </div>
+
+          <!-- NOTE: Social links row copied from homepage. -->
+          <div class="social-links" aria-label="Sosiale medier">
+            <a class="social-link" href="#" aria-label="Telegram">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M21.75 4.2a1 1 0 0 0-1.02-.14L2.8 11.44a1 1 0 0 0 .08 1.87l4.28 1.56 1.7 5.2a1 1 0 0 0 1.78.28l2.38-3.14 3.9 2.87a1 1 0 0 0 1.58-.59l3.35-14.31a1 1 0 0 0-.5-.98ZM9.32 14.12l8.56-6.27-6.88 7.83-.95 1.26-.73-2.82Z"
+                />
+              </svg>
+            </a>
+            <a class="social-link" href="#" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M6.94 8.5H3.56V20h3.38V8.5Zm.24-3.54A1.96 1.96 0 0 0 5.2 3a1.95 1.95 0 0 0-1.95 1.96c0 1.08.86 1.96 1.95 1.96 1.09 0 1.98-.88 1.98-1.96ZM20.44 13.3c0-3.08-1.64-4.52-3.83-4.52-1.77 0-2.56.97-3 1.65V8.5h-3.38V20h3.38v-6.4c0-.34.02-.68.13-.93.27-.68.88-1.39 1.9-1.39 1.35 0 1.9 1.03 1.9 2.55V20h3.38v-6.7Z"
+                />
+              </svg>
+            </a>
+            <a class="social-link" href="#" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 1.8A3.7 3.7 0 0 0 3.8 7.5v9a3.7 3.7 0 0 0 3.7 3.7h9a3.7 3.7 0 0 0 3.7-3.7v-9a3.7 3.7 0 0 0-3.7-3.7h-9Zm10.1 1.37a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4Z"
+                />
+              </svg>
+            </a>
+            <a class="social-link" href="#" aria-label="X">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M18.9 3h2.98l-6.52 7.45L23 21h-5.95l-4.66-6.1L7.05 21H4.06l6.97-7.96L1 3h6.1l4.21 5.53L18.9 3Zm-1.04 16.2h1.65L6.2 4.72H4.42L17.86 19.2Z"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
     </main>
+
+    <!-- NOTE: Footer copied from homepage. -->
+    <footer class="site-footer" aria-label="Bunntekst">
+      <div class="site-footer__inner">
+        <p class="site-footer__text">
+          © 2026 Formaa. Industridesign og produktdesign i Oslo. Alle rettigheter forbeholdt.
+        </p>
+      </div>
+    </footer>
   </body>
 </html>
