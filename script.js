@@ -6,6 +6,7 @@
 class SinglePagePortfolio {
   constructor() {
     this.setupMobileSideNavToggle();
+    this.setupHeroVideoShuffle();
     this.setupTimeline();
     this.setupProjectsGrid();
     this.setupProjectTemplateGalleries();
@@ -49,6 +50,96 @@ class SinglePagePortfolio {
         if (window.innerWidth > 768) closeMenu();
       }, 120)
     );
+  }
+
+  // NOTE: Interactive timeline (process prioritization)
+  setupHeroVideoShuffle() {
+    const heroVideo = document.querySelector('[data-hero-video-shuffle]');
+    if (!heroVideo) return;
+
+    // NOTE: Hero background clip list from `assets/images/shuffle-images/`, shuffled in a fixed 2-second cadence.
+    const clipSources = [
+      { src: 'assets/images/shuffle-images/test-animation.mp4', key: 'test-animation' },
+      { src: 'assets/images/shuffle-images/me-drawing.mp4', key: 'me-drawing' },
+      { src: 'assets/images/shuffle-images/3d-printer-working.mp4', key: '3d-printer-working' },
+    ];
+
+    let currentClipIndex = 0;
+    let shuffleTimer = null;
+    let isShuffling = false;
+
+    const clipDurationByKey = {
+      'me-drawing': 3000,
+      '3d-printer-working': 2000,
+    };
+
+    const setClip = (index) => {
+      const nextClip = clipSources[index];
+      if (!nextClip) return;
+
+      // NOTE: Expose current clip key so CSS can apply clip-specific framing (e.g. extra crop for me-drawing).
+      heroVideo.dataset.heroVideoClip = nextClip.key;
+      heroVideo.src = nextClip.src;
+      heroVideo.currentTime = 0;
+      heroVideo.play().catch(() => {});
+    };
+
+    const clearShuffleTimer = () => {
+      if (!shuffleTimer) return;
+      window.clearTimeout(shuffleTimer);
+      shuffleTimer = null;
+    };
+
+    const getClipDurationMs = () => {
+      const clip = clipSources[currentClipIndex];
+      if (!clip) return 2000;
+      if (clip.key === 'test-animation') {
+        // NOTE: Let test-animation run for its full intrinsic duration when metadata is available.
+        const seconds = Number(heroVideo.duration);
+        return Number.isFinite(seconds) && seconds > 0 ? Math.round(seconds * 1000) : 2000;
+      }
+      return clipDurationByKey[clip.key] ?? 2000;
+    };
+
+    const scheduleNextClip = () => {
+      clearShuffleTimer();
+      if (!isShuffling) return;
+      shuffleTimer = window.setTimeout(() => {
+        currentClipIndex = (currentClipIndex + 1) % clipSources.length;
+        setClip(currentClipIndex);
+        scheduleNextClip();
+      }, getClipDurationMs());
+    };
+
+    const startShuffle = () => {
+      if (isShuffling) return;
+      isShuffling = true;
+      scheduleNextClip();
+    };
+
+    const stopShuffle = () => {
+      isShuffling = false;
+      clearShuffleTimer();
+    };
+
+    setClip(currentClipIndex);
+    startShuffle();
+
+    // NOTE: If metadata for test-animation arrives after initial load, reschedule to honor full duration.
+    heroVideo.addEventListener('loadedmetadata', () => {
+      if (!isShuffling) return;
+      scheduleNextClip();
+    });
+
+    // NOTE: Pause timer when tab is hidden to avoid unnecessary source swaps in the background.
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        stopShuffle();
+      } else {
+        setClip(currentClipIndex);
+        startShuffle();
+      }
+    });
   }
 
   // NOTE: Interactive timeline (process prioritization)

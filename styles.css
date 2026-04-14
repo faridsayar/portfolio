@@ -179,6 +179,13 @@
   object-fit: cover; /* NOTE: ensures full-screen cover without exceptions */
   object-position: center;
   filter: saturate(0.8);
+  /* NOTE: Prevent global transition utility from animating clip switches. */
+  transition: none;
+}
+
+/* NOTE: Crop me-drawing clip tighter (~25%) while preserving full-bleed hero sizing. */
+.hero-video[data-hero-video-clip='me-drawing'] {
+  transform: scale(1.25);
 }
 
 .hero-overlay {

@@ -105,6 +105,7 @@
         <!-- NOTE: Replace `src` with your optimized background animation (MP4/WebM recommended). -->
         <video
           class="hero-video"
+          data-hero-video-shuffle
           autoplay
           muted
           loop
@@ -112,7 +113,8 @@
           preload="metadata"
           poster="assets/images/ak-background-image.jpg"
         >
-          <source src="assets/images/test-animation.mp4" type="video/mp4" />
+          <!-- NOTE: Hero starts with the first local shuffle clip; JS rotates all clips every 2 seconds. -->
+          <source src="assets/images/shuffle-images/test-animation.mp4" type="video/mp4" />
         </video>
         <div class="hero-overlay"></div>
       </div>
