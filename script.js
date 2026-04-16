@@ -60,8 +60,10 @@ class SinglePagePortfolio {
     // NOTE: Hero background clip list from `assets/images/shuffle-images/`, shuffled in a fixed 2-second cadence.
     const clipSources = [
       { src: 'assets/images/shuffle-images/test-animation.mp4', key: 'test-animation' },
-      { src: 'assets/images/shuffle-images/me-drawing.mp4', key: 'me-drawing' },
       { src: 'assets/images/shuffle-images/3d-printer-working.mp4', key: '3d-printer-working' },
+      { src: 'assets/images/shuffle-images/proton-gif.mov', key: 'proton-gif' },
+      { src: 'assets/images/shuffle-images/proton-gif2.mov', key: 'proton-gif2' },
+      { src: 'assets/images/shuffle-images/me-drawing.mp4', key: 'me-drawing' },
     ];
 
     let currentClipIndex = 0;
@@ -69,8 +71,10 @@ class SinglePagePortfolio {
     let isShuffling = false;
 
     const clipDurationByKey = {
-      'me-drawing': 3000,
+      'me-drawing': 1800,
       '3d-printer-working': 2000,
+      'proton-gif': 2000,
+      'proton-gif2': 2000,
     };
 
     const setClip = (index) => {
