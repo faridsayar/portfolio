@@ -356,19 +356,18 @@ class SinglePagePortfolio {
       };
     });
 
-    // NOTE: Use all currently provided local project images before falling back to placeholders.
+    // NOTE: Uses per-project folder structure under `assets/images/Projects/` for extra grid cards.
     const providedImagePool = [
-      'assets/images/USV.png',
-      'assets/images/H2O.jpg',
-      'assets/images/itac.jpg',
-      'assets/images/Proton.png',
-      'assets/images/Drone2.jpeg',
-      'assets/images/Memorium.jpg',
-      'assets/images/Bike.jpg',
-      'assets/images/Closet-anim.gif',
-      'assets/images/Kalash.jpg',
-      'assets/images/serviett.jpg',
-      'assets/images/ak-background-image.jpg',
+      'assets/images/Projects/Arid/undo process.jpg',
+      'assets/images/Projects/H2O/h2o (1).jpg',
+      'assets/images/Projects/Drone/Monocopter (1).jpg',
+      'assets/images/Projects/Proton/1.png',
+      'assets/images/Projects/Eco-mate-closet/Closet (1).jpg',
+      'assets/images/Projects/Bike/camera1.1.jpg',
+      'assets/images/Projects/Nomos/first page progress.jpg',
+      'assets/images/Projects/Nørdic/food plate 2.jpg',
+      'assets/images/Projects/Rafaels/rafaels-logo.jpg',
+      'assets/images/Projects/Itac process.jpg',
     ];
 
     // NOTE: Keep this limited while the portfolio content is in progress.
