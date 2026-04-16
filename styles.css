@@ -179,6 +179,13 @@
   object-fit: cover; /* NOTE: ensures full-screen cover without exceptions */
   object-position: center;
   filter: saturate(0.8);
+  /* NOTE: Prevent global transition utility from animating clip switches. */
+  transition: none;
+}
+
+/* NOTE: Crop me-drawing clip tighter (~25%) while preserving full-bleed hero sizing. */
+.hero-video[data-hero-video-clip='me-drawing'] {
+  transform: scale(1.25);
 }
 
 .hero-overlay {
@@ -354,6 +361,9 @@
   border-radius: 12px;
   padding: 1.25rem;
   background: var(--color-white);
+  /* NOTE: Shared compact height so all service rectangles are smaller and equal. */
+  height: 9rem;
+  overflow: hidden;
 }
 
 /* Note: highlights Produktdesign card with primary border stroke */
@@ -372,6 +382,20 @@
   margin: 0;
   line-height: 1.6;
   opacity: 0.85;
+}
+
+/* NOTE: Media service card fills the shared card box and crops to match neighboring cards. */
+.service-card--media {
+  padding: 0;
+  overflow: hidden;
+}
+
+.service-card__media-video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 /* About page team section */
@@ -1503,6 +1527,10 @@ section[aria-label='Oss'] .section-inner {
 }
 
 @media (max-width: 768px) {
+  .service-card {
+    height: 8rem;
+  }
+
   .inquiry-footer {
     flex-direction: column;
     align-items: stretch;
