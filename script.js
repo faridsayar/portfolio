@@ -5,122 +5,49 @@
 
 class SinglePagePortfolio {
   constructor() {
+    this.projectCatalogPromise = null;
     this.setupMobileSideNavToggle();
     this.setupHeroVideoShuffle();
     this.setupTimeline();
-    this.setupProjectDetailPage();
-    this.setupProjectsGrid();
-    this.setupProjectTemplateGalleries();
     this.setupProjectPageNavVerticalAlign();
+    this.initializeProjectViews();
   }
 
-  // NOTE: Single source of truth for homepage cards + project detail routing.
-  getProjectCatalog() {
-    return [
-      {
-        slug: 'arid',
-        title: 'Arid: desertification solution',
-        desc: 'Klargjoring for prototype og produksjon',
-        lead: 'Klargjoring for prototype og produksjon - industridesign rettet mot torke og baerekraftige losninger.',
-        images: ['assets/images/Projects/Arid/undo process.jpg'],
-      },
-      {
-        slug: 'h2o',
-        title: 'H2O',
-        desc: 'Utstilling av 3D-modellering',
-        lead: 'Visualisering, iterasjon og detaljarbeid for en tydelig produkthistorie.',
-        images: [
-          'assets/images/Projects/H2O/h2o (1).jpg',
-          'assets/images/Projects/H2O/h2o (2).jpg',
-          'assets/images/Projects/H2O/h2o (3).jpg',
-          'assets/images/Projects/H2O/h2o (4).jpg',
-        ],
-      },
-      {
-        slug: 'drone',
-        title: 'Drone',
-        desc: 'Konsept og presentasjon',
-        lead: 'Fra konsept og materialvalg til visuelle scener for validering.',
-        images: [
-          'assets/images/Projects/Drone/Monocopter (1).jpg',
-          'assets/images/Projects/Drone/Monocopter (2).jpg',
-          'assets/images/Projects/Drone/Monocopter (3).jpg',
-          'assets/images/Projects/Drone/Monocopter (4).jpg',
-        ],
-      },
-      {
-        slug: 'proton',
-        title: 'Proton',
-        desc: 'Industridesign-konsept',
-        lead: 'Konseptretning med tydelig formsprak og produksjonsnaer detaljering.',
-        images: [
-          'assets/images/Projects/Proton/1.png',
-          'assets/images/Projects/Proton/2.png',
-          'assets/images/Projects/Proton/4.png',
-          'assets/images/Projects/Proton/5.png',
-        ],
-      },
-      {
-        slug: 'eco-mate-closet',
-        title: 'Eco Mate Closet',
-        desc: 'Modulbasert oppbevaring',
-        lead: 'Systemtenkning for organisering, brukervennlighet og produksjon.',
-        images: [
-          'assets/images/Projects/Eco-mate-closet/Closet (1).jpg',
-          'assets/images/Projects/Eco-mate-closet/Closet (2).jpg',
-          'assets/images/Projects/Eco-mate-closet/Closet (3).jpg',
-          'assets/images/Projects/Eco-mate-closet/Closet (4).jpg',
-        ],
-      },
-      {
-        slug: 'bike',
-        title: 'Bike',
-        desc: 'Produktvisualisering',
-        lead: 'Detaljstudier av komponenter, helhet og brukeropplevelse.',
-        images: [
-          'assets/images/Projects/Bike/camera1.1.jpg',
-          'assets/images/Projects/Bike/camera2.2.jpg',
-          'assets/images/Projects/Bike/camera3.3.jpg',
-          'assets/images/Projects/Bike/camera4.4.jpg',
-        ],
-      },
-      {
-        slug: 'nomos',
-        title: 'Nomos',
-        desc: 'Designsystem og assets',
-        lead: 'Visuell retning og praktiske leveranser pa tvers av kontaktflater.',
-        images: [
-          'assets/images/Projects/Nomos/first page progress.jpg',
-          'assets/images/Projects/Nomos/cards vis.jpg',
-          'assets/images/Projects/Nomos/web.jpg',
-          'assets/images/Projects/Nomos/cd cover.jpg',
-        ],
-      },
-      {
-        slug: 'nordic',
-        title: 'Nordic',
-        desc: 'Brand og packaging',
-        lead: 'Helhetlig uttrykk fra emballasje til salgsflater.',
-        images: [
-          'assets/images/Projects/Nørdic/food plate 2.jpg',
-          'assets/images/Projects/Nørdic/Food Box Mockup-Recovered.jpg',
-          'assets/images/Projects/Nørdic/Glass Water Bottle Mockup.jpg',
-          'assets/images/Projects/Nørdic/Restaurant Menu Mockup-Recovered.jpg',
-        ],
-      },
-      {
-        slug: 'rafaels',
-        title: 'Rafaels',
-        desc: 'Visuell identitet',
-        lead: 'Logo, typografi og anvendelser bygget som et konsistent system.',
-        images: [
-          'assets/images/Projects/Rafaels/rafaels-logo.jpg',
-          'assets/images/Projects/Rafaels/rafaels-typography.jpg',
-          'assets/images/Projects/Rafaels/rafaels-colors.jpg',
-          'assets/images/Projects/Rafaels/rafaels-applications.jpg',
-        ],
-      },
-    ];
+  // NOTE: Load generated folder manifest so project image lists stay automatic.
+  async loadProjectCatalog() {
+    if (this.projectCatalogPromise) return this.projectCatalogPromise;
+    const normalizeProjects = (manifest) => {
+      const projects = Array.isArray(manifest?.projects) ? manifest.projects : [];
+      return projects.filter(
+        (project) =>
+          project &&
+          typeof project.slug === 'string' &&
+          typeof project.title === 'string' &&
+          Array.isArray(project.images)
+      );
+    };
+
+    const fromGlobal = normalizeProjects(window.__PROJECTS_MANIFEST);
+    if (fromGlobal.length > 0) {
+      this.projectCatalogPromise = Promise.resolve(fromGlobal);
+      return this.projectCatalogPromise;
+    }
+
+    this.projectCatalogPromise = fetch('assets/data/projects-manifest.json', { cache: 'no-store' })
+      .then((response) => {
+        if (!response.ok) throw new Error(`Manifest fetch failed: ${response.status}`);
+        return response.json();
+      })
+      .then((manifest) => normalizeProjects(manifest))
+      .catch(() => []);
+    return this.projectCatalogPromise;
+  }
+
+  async initializeProjectViews() {
+    const catalog = await this.loadProjectCatalog();
+    this.setupProjectDetailPage(catalog);
+    this.setupProjectsGrid(catalog);
+    this.setupProjectTemplateGalleries();
   }
 
   // NOTE: Mobile-only side navigation collapse/expand interaction.
@@ -445,11 +372,9 @@ class SinglePagePortfolio {
   }
 
   // NOTE: Rehydrates the single project template from `?project=<slug>` and wires prev/next routing.
-  setupProjectDetailPage() {
+  setupProjectDetailPage(catalog) {
     const root = document.querySelector('[data-project-page]');
     if (!root) return;
-
-    const catalog = this.getProjectCatalog();
     if (catalog.length === 0) return;
 
     const params = new URLSearchParams(window.location.search);
@@ -504,6 +429,9 @@ class SinglePagePortfolio {
         .join('');
     }
 
+    // NOTE: Paginate thumbnail rail: 4 visible on desktop, 3 visible on mobile.
+    this.setupProjectThumbRailPager(root);
+
     const previousProject = catalog[(currentIndex - 1 + catalog.length) % catalog.length];
     const nextProject = catalog[(currentIndex + 1) % catalog.length];
 
@@ -517,12 +445,71 @@ class SinglePagePortfolio {
     }
   }
 
+  // NOTE: Thumbnail pager controls for project gallery rail (desktop up/down, mobile left/right).
+  setupProjectThumbRailPager(root) {
+    const thumbsContainer = root.querySelector('[data-project-thumbs]');
+    const prevBtn = root.querySelector('[data-project-thumbs-prev]');
+    const nextBtn = root.querySelector('[data-project-thumbs-next]');
+    if (!thumbsContainer || !prevBtn || !nextBtn) return;
+
+    const thumbs = Array.from(thumbsContainer.querySelectorAll('[data-project-thumb]'));
+    if (thumbs.length === 0) return;
+
+    const getPageSize = () => (window.innerWidth < 768 ? 3 : 4);
+    let currentPage = 0;
+
+    const getMaxPage = () => {
+      const pageSize = getPageSize();
+      return Math.max(0, Math.ceil(thumbs.length / pageSize) - 1);
+    };
+
+    const renderPager = () => {
+      const pageSize = getPageSize();
+      const maxPage = getMaxPage();
+      if (currentPage > maxPage) currentPage = maxPage;
+      const start = currentPage * pageSize;
+      const end = start + pageSize;
+
+      thumbs.forEach((thumb, index) => {
+        thumb.style.display = index >= start && index < end ? '' : 'none';
+      });
+
+      const shouldDisablePrev = currentPage === 0;
+      const shouldDisableNext = currentPage >= maxPage;
+      prevBtn.classList.toggle('is-disabled', shouldDisablePrev);
+      nextBtn.classList.toggle('is-disabled', shouldDisableNext);
+      prevBtn.disabled = shouldDisablePrev;
+      nextBtn.disabled = shouldDisableNext;
+    };
+
+    prevBtn.addEventListener('click', () => {
+      if (currentPage === 0) return;
+      currentPage -= 1;
+      renderPager();
+    });
+
+    nextBtn.addEventListener('click', () => {
+      const maxPage = getMaxPage();
+      if (currentPage >= maxPage) return;
+      currentPage += 1;
+      renderPager();
+    });
+
+    window.addEventListener(
+      'resize',
+      this.debounce(() => {
+        renderPager();
+      }, 120)
+    );
+
+    renderPager();
+  }
+
   // NOTE: Projects grid hydration to 20 items.
-  setupProjectsGrid() {
+  setupProjectsGrid(catalog) {
     const grid = document.querySelector('[data-projects-grid]');
     const sentinel = document.querySelector('[data-projects-sentinel]');
     if (!grid || !sentinel) return;
-    const catalog = this.getProjectCatalog();
     if (catalog.length === 0) return;
 
     const fragment = document.createDocumentFragment();

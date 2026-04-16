@@ -1,0 +1,67 @@
+{
+  "projects": [
+    {
+      "slug": "arid",
+      "title": "Arid: desertification solution",
+      "desc": "Klargjoring for prototype og produksjon",
+      "lead": "Klargjoring for prototype og produksjon - industridesign rettet mot torke og baerekraftige losninger.",
+      "folder": "Arid"
+    },
+    {
+      "slug": "h2o",
+      "title": "H2O",
+      "desc": "Utstilling av 3D-modellering",
+      "lead": "Visualisering, iterasjon og detaljarbeid for en tydelig produkthistorie.",
+      "folder": "H2O"
+    },
+    {
+      "slug": "drone",
+      "title": "Drone",
+      "desc": "Konsept og presentasjon",
+      "lead": "Fra konsept og materialvalg til visuelle scener for validering.",
+      "folder": "Drone"
+    },
+    {
+      "slug": "proton",
+      "title": "Proton",
+      "desc": "Industridesign-konsept",
+      "lead": "Konseptretning med tydelig formsprak og produksjonsnaer detaljering.",
+      "folder": "Proton"
+    },
+    {
+      "slug": "eco-mate-closet",
+      "title": "Eco Mate Closet",
+      "desc": "Modulbasert oppbevaring",
+      "lead": "Systemtenkning for organisering, brukervennlighet og produksjon.",
+      "folder": "Eco-mate-closet"
+    },
+    {
+      "slug": "bike",
+      "title": "Bike",
+      "desc": "Produktvisualisering",
+      "lead": "Detaljstudier av komponenter, helhet og brukeropplevelse.",
+      "folder": "Bike"
+    },
+    {
+      "slug": "nomos",
+      "title": "Nomos",
+      "desc": "Designsystem og assets",
+      "lead": "Visuell retning og praktiske leveranser pa tvers av kontaktflater.",
+      "folder": "Nomos"
+    },
+    {
+      "slug": "nordic",
+      "title": "Nordic",
+      "desc": "Brand og packaging",
+      "lead": "Helhetlig uttrykk fra emballasje til salgsflater.",
+      "folder": "Nørdic"
+    },
+    {
+      "slug": "rafaels",
+      "title": "Rafaels",
+      "desc": "Visuell identitet",
+      "lead": "Logo, typografi og anvendelser bygget som et konsistent system.",
+      "folder": "Rafaels"
+    }
+  ]
+}

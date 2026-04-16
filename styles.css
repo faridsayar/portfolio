@@ -1250,12 +1250,10 @@ section[aria-label='Oss'] .section-inner {
 }
 
 .project-template-thumbs {
-  position: absolute;
-  top: 1rem;
-  right: 1.5rem;
+  position: static;
   display: grid;
   gap: 0.65rem;
-  width: clamp(4rem, 9vw, 5.6rem);
+  width: 100%;
 }
 
 .project-template-thumb {
@@ -1286,13 +1284,53 @@ section[aria-label='Oss'] .section-inner {
   transform: translateY(-1px);
 }
 
-/* NOTE: Thumb rail centered in gutter: equal inset from screen left and from text column (`--project-hero-text-start`). */
-.project-hero-stage .project-hero-stage__thumbs {
-  left: max(1.25rem, calc((var(--project-hero-text-start) - var(--project-hero-thumb-w)) / 2));
-  right: auto;
+/* NOTE: Thumb rail pager wraps thumbnail list and places navigation controls around it. */
+.project-thumb-rail {
+  position: absolute;
   top: 50%;
+  left: max(1.25rem, calc((var(--project-hero-text-start) - var(--project-hero-thumb-w)) / 2));
   transform: translateY(-50%);
   width: var(--project-hero-thumb-w);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.project-thumb-rail__nav {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0.2rem;
+}
+
+.project-thumb-rail__nav.is-disabled {
+  opacity: 0.35;
+  cursor: default;
+  pointer-events: none;
+}
+
+.project-thumb-rail__icon {
+  width: 1rem;
+  height: auto;
+  display: block;
+}
+
+.project-thumb-rail__icon--prev {
+  transform: rotate(180deg);
+}
+
+.project-thumb-rail__icon--next {
+  transform: rotate(0deg);
+}
+
+/* NOTE: Thumb rail centered in gutter: equal inset from screen left and from text column (`--project-hero-text-start`). */
+.project-hero-stage .project-hero-stage__thumbs {
+  grid-template-columns: 1fr;
 }
 
 .section--project-cta .section-inner {
@@ -1632,16 +1670,38 @@ section[aria-label='Oss'] .section-inner {
     padding-bottom: 5.75rem;
   }
 
-  /* NOTE: Hero thumbs become a bottom row (avoids conflict with global `position: static` on `.project-template-thumbs`). */
-  .project-hero-stage .project-hero-stage__thumbs {
+  /* NOTE: Mobile thumb rail moves to bottom and uses side arrows with a 3-thumb row. */
+  .project-thumb-rail {
     position: absolute;
     left: 1.25rem;
     right: 1.25rem;
+    width: auto;
     top: auto;
     bottom: 1rem;
     transform: none;
-    width: auto;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: 1fr;
+    align-items: center;
+    gap: 0.45rem;
+  }
+
+  .project-thumb-rail__nav {
+    width: 2rem;
+    min-height: 2rem;
+    padding: 0.25rem;
+  }
+
+  .project-thumb-rail__icon--prev {
+    transform: rotate(90deg);
+  }
+
+  .project-thumb-rail__icon--next {
+    transform: rotate(-90deg);
+  }
+
+  .project-hero-stage .project-hero-stage__thumbs {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 0.45rem;
   }
 }

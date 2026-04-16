@@ -103,54 +103,99 @@
                 omgivelser.
               </p>
             </div>
-            <div
-              class="project-template-thumbs project-hero-stage__thumbs"
-              aria-label="Velg prosjektbilde"
-              data-project-thumbs
-            >
+            <!-- NOTE: Thumbnail rail pager: desktop uses up/down controls, mobile uses left/right controls. -->
+            <div class="project-thumb-rail project-hero-stage__thumb-rail" data-project-thumb-rail>
               <button
-                class="project-template-thumb is-active"
+                class="project-thumb-rail__nav project-thumb-rail__nav--prev"
                 type="button"
-                data-project-thumb
-                data-image-src="assets/images/Projects/Arid/undo process.jpg"
-                data-image-alt="Arid bilde 1"
-                data-image-caption="Første leveranse: visuell retning og materiell lesning for feltbruk i tørre omgivelser."
-                aria-label="Vis bilde 1"
+                aria-label="Forrige miniatyrer"
+                data-project-thumbs-prev
               >
-                <img src="assets/images/Projects/Arid/undo process.jpg" alt="" aria-hidden="true" />
+                <img
+                  class="project-thumb-rail__icon project-thumb-rail__icon--prev"
+                  src="triangle.svg"
+                  alt=""
+                  aria-hidden="true"
+                />
               </button>
-              <button
-                class="project-template-thumb"
-                type="button"
-                data-project-thumb
-                data-image-src="assets/images/Projects/Arid/undo process.jpg"
-                data-image-alt="Arid bilde 2"
-                data-image-caption="Andre fase: modell og skalering av løsningen mot prototype."
-                aria-label="Vis bilde 2"
+              <div
+                class="project-template-thumbs project-hero-stage__thumbs"
+                aria-label="Velg prosjektbilde"
+                data-project-thumbs
               >
-                <img src="assets/images/Projects/Arid/undo process.jpg" alt="" aria-hidden="true" />
-              </button>
+                <button
+                  class="project-template-thumb is-active"
+                  type="button"
+                  data-project-thumb
+                  data-image-src="assets/images/Projects/Arid/undo process.jpg"
+                  data-image-alt="Arid bilde 1"
+                  data-image-caption="Første leveranse: visuell retning og materiell lesning for feltbruk i tørre omgivelser."
+                  aria-label="Vis bilde 1"
+                >
+                  <img
+                    src="assets/images/Projects/Arid/undo process.jpg"
+                    alt=""
+                    aria-hidden="true"
+                  />
+                </button>
+                <button
+                  class="project-template-thumb"
+                  type="button"
+                  data-project-thumb
+                  data-image-src="assets/images/Projects/Arid/undo process.jpg"
+                  data-image-alt="Arid bilde 2"
+                  data-image-caption="Andre fase: modell og skalering av løsningen mot prototype."
+                  aria-label="Vis bilde 2"
+                >
+                  <img
+                    src="assets/images/Projects/Arid/undo process.jpg"
+                    alt=""
+                    aria-hidden="true"
+                  />
+                </button>
+                <button
+                  class="project-template-thumb"
+                  type="button"
+                  data-project-thumb
+                  data-image-src="assets/images/Projects/Arid/undo process.jpg"
+                  data-image-alt="Arid bilde 3"
+                  data-image-caption="Tredje fase: detaljer, iterasjoner og avklaring mot produksjon."
+                  aria-label="Vis bilde 3"
+                >
+                  <img
+                    src="assets/images/Projects/Arid/undo process.jpg"
+                    alt=""
+                    aria-hidden="true"
+                  />
+                </button>
+                <button
+                  class="project-template-thumb"
+                  type="button"
+                  data-project-thumb
+                  data-image-src="assets/images/Projects/Arid/undo process.jpg"
+                  data-image-alt="Arid bilde 4"
+                  data-image-caption="Fjerde fase: presentasjon og overlevering til neste steg i verdikjeden."
+                  aria-label="Vis bilde 4"
+                >
+                  <img
+                    src="assets/images/Projects/Arid/undo process.jpg"
+                    alt=""
+                    aria-hidden="true"
+                  />
+                </button>
+              </div>
               <button
-                class="project-template-thumb"
+                class="project-thumb-rail__nav project-thumb-rail__nav--next"
                 type="button"
-                data-project-thumb
-                data-image-src="assets/images/Projects/Arid/undo process.jpg"
-                data-image-alt="Arid bilde 3"
-                data-image-caption="Tredje fase: detaljer, iterasjoner og avklaring mot produksjon."
-                aria-label="Vis bilde 3"
+                aria-label="Neste miniatyrer"
+                data-project-thumbs-next
               >
-                <img src="assets/images/Projects/Arid/undo process.jpg" alt="" aria-hidden="true" />
-              </button>
-              <button
-                class="project-template-thumb"
-                type="button"
-                data-project-thumb
-                data-image-src="assets/images/Projects/Arid/undo process.jpg"
-                data-image-alt="Arid bilde 4"
-                data-image-caption="Fjerde fase: presentasjon og overlevering til neste steg i verdikjeden."
-                aria-label="Vis bilde 4"
-              >
-                <img src="assets/images/Projects/Arid/undo process.jpg" alt="" aria-hidden="true" />
+                <img
+                  class="project-thumb-rail__icon project-thumb-rail__icon--next"
+                  src="triangle.svg"
+                  alt=""
+                  aria-hidden="true"
+                />
               </button>
             </div>
           </div>
@@ -211,6 +256,7 @@
       </div>
     </footer>
 
+    <script src="assets/data/projects-manifest.js?v=1"></script>
     <script src="script.js?v=5"></script>
   </body>
 </html>
