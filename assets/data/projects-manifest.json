@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-17T08:32:53.728Z",
+  "generatedAt": "2026-04-17T08:50:15.844Z",
   "projects": [
     {
       "slug": "arid",
@@ -49,12 +49,23 @@
       "desc": "Konsept og presentasjon",
       "lead": "Fra konsept og materialvalg til visuelle scener for validering.",
       "folder": "Monocopter",
-      "thumbnail": "assets/images/Projects/Monocopter/Artboard 82@2x-80.jpg",
+      "thumbnail": "assets/images/Projects/Monocopter/Monocopter (7).jpg",
       "images": [
-        "assets/images/Projects/Monocopter/Artboard 82@2x-80.jpg",
-        "assets/images/Projects/Monocopter/Artboard 84@2x-80.jpg",
-        "assets/images/Projects/Monocopter/FromTop_fly.0002.jpeg",
-        "assets/images/Projects/Monocopter/Monocopter (2).jpg"
+        "assets/images/Projects/Monocopter/Monocopter (12).jpg",
+        "assets/images/Projects/Monocopter/Monocopter (8).jpg",
+        "assets/images/Projects/Monocopter/Monocopter (7).jpg",
+        "assets/images/Projects/Monocopter/Monocopter (13).jpg",
+        "assets/images/Projects/Monocopter/Monocopter (19).jpg",
+        "assets/images/Projects/Monocopter/Monocopter (11).jpg",
+        "assets/images/Projects/Monocopter/Monocopter (16).jpg",
+        "assets/images/Projects/Monocopter/Monocopter (17).jpg",
+        "assets/images/Projects/Monocopter/Monocopter (22).jpeg",
+        "assets/images/Projects/Monocopter/Monocopter (14).jpg",
+        "assets/images/Projects/Monocopter/Monocopter (20).jpg",
+        "assets/images/Projects/Monocopter/Monocopter (15).jpg",
+        "assets/images/Projects/Monocopter/Monocopter (21).jpg",
+        "assets/images/Projects/Monocopter/Monocopter (2).jpg",
+        "assets/images/Projects/Monocopter/Monocopter (6).jpg"
       ]
     },
     {
