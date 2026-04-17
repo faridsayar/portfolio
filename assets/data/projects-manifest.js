@@ -1,5 +1,5 @@
 window.__PROJECTS_MANIFEST = {
-  "generatedAt": "2026-04-17T08:50:15.844Z",
+  "generatedAt": "2026-04-17T09:00:32.657Z",
   "projects": [
     {
       "slug": "arid",
@@ -74,12 +74,26 @@ window.__PROJECTS_MANIFEST = {
       "desc": "Industridesign-konsept",
       "lead": "Konseptretning med tydelig formsprak og produksjonsnaer detaljering.",
       "folder": "Proton",
-      "thumbnail": "assets/images/Projects/Proton/1.png",
+      "thumbnail": "assets/images/Projects/Proton/14.png",
       "images": [
-        "assets/images/Projects/Proton/1.png",
-        "assets/images/Projects/Proton/2.png",
+        "assets/images/Projects/Proton/14.png",
+        "assets/images/Projects/Proton/18.png",
+        "assets/images/Projects/Proton/16.png",
+        "assets/images/Projects/Proton/15.png",
+        "assets/images/Projects/Proton/13.png",
+        "assets/images/Projects/Proton/21.png",
+        "assets/images/Projects/Proton/20.png",
+        "assets/images/Projects/Proton/19.png",
+        "assets/images/Projects/Proton/13.png",
+        "assets/images/Projects/Proton/5.png",
         "assets/images/Projects/Proton/4.png",
-        "assets/images/Projects/Proton/5.png"
+        "assets/images/Projects/Proton/2.png",
+        "assets/images/Projects/Proton/12.png",
+        "assets/images/Projects/Proton/11.png",
+        "assets/images/Projects/Proton/10.png",
+        "assets/images/Projects/Proton/1.png",
+        "assets/images/Projects/Proton/6.png",
+        "assets/images/Projects/Proton/Context.jpg"
       ]
     },
     {

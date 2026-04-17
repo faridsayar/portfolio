@@ -68,8 +68,27 @@
       "desc": "Industridesign-konsept",
       "lead": "Konseptretning med tydelig formsprak og produksjonsnaer detaljering.",
       "folder": "Proton",
-      "thumbnail": "1.png",
-      "images": ["1.png", "2.png", "4.png", "5.png"]
+      "thumbnail": "14.png",
+      "images": [
+        "14.png",
+        "18.png",
+        "16.png",
+        "15.png",
+        "13.png",
+        "21.png",
+        "20.png",
+        "19.png",
+        "13.png",
+        "5.png",
+        "4.png",
+        "2.png",
+        "12.png",
+        "11.png",
+        "10.png",
+        "1.png",
+        "6.png",
+        "Context.jpg"
+      ]
     },
     {
       "slug": "eco-mate-closet",
