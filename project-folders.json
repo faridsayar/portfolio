@@ -121,8 +121,17 @@
       "desc": "Produktvisualisering",
       "lead": "Detaljstudier av komponenter, helhet og brukeropplevelse.",
       "folder": "Bike",
-      "thumbnail": "camera1.1.jpg",
-      "images": ["camera1.1.jpg", "camera3.3.jpg", "camera4.4.jpg", "camera5.5.jpg"]
+      "thumbnail": "bike2.jpg",
+      "images": [
+        "bike2.jpg",
+        "bike4.jpg",
+        "bike5.jpg",
+        "bike7.jpg",
+        "bike3.jpg",
+        "bike6.jpg",
+        "bike1.jpg",
+        "bike8.jpg"
+      ]
     },
     {
       "slug": "nomos",

@@ -1,5 +1,5 @@
 window.__PROJECTS_MANIFEST = {
-  "generatedAt": "2026-04-17T09:15:15.077Z",
+  "generatedAt": "2026-04-17T09:33:42.494Z",
   "projects": [
     {
       "slug": "arid",
@@ -127,12 +127,16 @@ window.__PROJECTS_MANIFEST = {
       "desc": "Produktvisualisering",
       "lead": "Detaljstudier av komponenter, helhet og brukeropplevelse.",
       "folder": "Bike",
-      "thumbnail": "assets/images/Projects/Bike/camera1.1.jpg",
+      "thumbnail": "assets/images/Projects/Bike/bike2.jpg",
       "images": [
-        "assets/images/Projects/Bike/camera1.1.jpg",
-        "assets/images/Projects/Bike/camera3.3.jpg",
-        "assets/images/Projects/Bike/camera4.4.jpg",
-        "assets/images/Projects/Bike/camera5.5.jpg"
+        "assets/images/Projects/Bike/bike2.jpg",
+        "assets/images/Projects/Bike/bike4.jpg",
+        "assets/images/Projects/Bike/bike5.jpg",
+        "assets/images/Projects/Bike/bike7.jpg",
+        "assets/images/Projects/Bike/bike3.jpg",
+        "assets/images/Projects/Bike/bike6.jpg",
+        "assets/images/Projects/Bike/bike1.jpg",
+        "assets/images/Projects/Bike/bike8.jpg"
       ]
     },
     {
