@@ -139,8 +139,17 @@
       "desc": "Designsystem og assets",
       "lead": "Visuell retning og praktiske leveranser pa tvers av kontaktflater.",
       "folder": "Nomos",
-      "thumbnail": "cards vis.jpg",
-      "images": ["cards vis.jpg", "cd cover.jpg", "concert poster.jpg", "first page progress.jpg"]
+      "thumbnail": "concert-poster.jpg",
+      "images": [
+        "concert-poster.jpg",
+        "cards-vis.jpg",
+        "promotion-poster.jpg",
+        "logo.jpg",
+        "modern-street-poster.jpg",
+        "cd-cover.jpg",
+        "t-shirt.jpg",
+        "sealed-letter.jpg"
+      ]
     },
     {
       "slug": "nordic",

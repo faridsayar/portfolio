@@ -1,5 +1,5 @@
 window.__PROJECTS_MANIFEST = {
-  "generatedAt": "2026-04-17T09:33:42.494Z",
+  "generatedAt": "2026-04-17T09:41:36.265Z",
   "projects": [
     {
       "slug": "arid",
@@ -145,12 +145,16 @@ window.__PROJECTS_MANIFEST = {
       "desc": "Designsystem og assets",
       "lead": "Visuell retning og praktiske leveranser pa tvers av kontaktflater.",
       "folder": "Nomos",
-      "thumbnail": "assets/images/Projects/Nomos/cards vis.jpg",
+      "thumbnail": "assets/images/Projects/Nomos/concert-poster.jpg",
       "images": [
-        "assets/images/Projects/Nomos/cards vis.jpg",
-        "assets/images/Projects/Nomos/cd cover.jpg",
-        "assets/images/Projects/Nomos/concert poster.jpg",
-        "assets/images/Projects/Nomos/first page progress.jpg"
+        "assets/images/Projects/Nomos/concert-poster.jpg",
+        "assets/images/Projects/Nomos/cards-vis.jpg",
+        "assets/images/Projects/Nomos/promotion-poster.jpg",
+        "assets/images/Projects/Nomos/logo.jpg",
+        "assets/images/Projects/Nomos/modern-street-poster.jpg",
+        "assets/images/Projects/Nomos/cd-cover.jpg",
+        "assets/images/Projects/Nomos/t-shirt.jpg",
+        "assets/images/Projects/Nomos/sealed-letter.jpg"
       ]
     },
     {
