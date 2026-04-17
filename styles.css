@@ -1144,8 +1144,8 @@ section[aria-label='Oss'] .section-inner {
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
   width: auto;
-  min-height: min(100vh, 52rem);
-  min-height: min(100svh, 52rem);
+  min-height: min(100vh, 60rem);
+  min-height: min(100svh, 60rem);
   overflow: hidden;
   display: grid;
   align-items: end;
@@ -1657,7 +1657,7 @@ section[aria-label='Oss'] .section-inner {
   }
 
   .project-hero-stage {
-    min-height: min(75vh, 32rem);
+    min-height: min(85vh, 40rem);
   }
 
   .project-hero-stage__breadcrumb {

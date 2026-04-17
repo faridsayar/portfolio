@@ -97,7 +97,23 @@
       "lead": "Systemtenkning for organisering, brukervennlighet og produksjon.",
       "folder": "Eco-mate-closet",
       "thumbnail": "4.jpg",
-      "images": ["4.jpg", "Closet (1).jpg", "Closet (2).jpg", "Closet (3).jpg"]
+      "images": [
+        "4.jpg",
+        "Closet (12).jpg",
+        "Closet (15).jpg",
+        "Scheme.jpg",
+        "Closet (2).jpg",
+        "Closet (13).jpg",
+        "Closet (3).jpg",
+        "Closet (7).jpg",
+        "Closet (4).jpg",
+        "Closet (8).jpg",
+        "Closet (9).jpg",
+        "Closet (10).jpg",
+        "Closet (11).jpg",
+        "Closet (1).jpg",
+        "Closet (14).jpg"
+      ]
     },
     {
       "slug": "bike",
