@@ -27,8 +27,34 @@ async function listFolderImages(folderName) {
   const entries = await fs.readdir(folderPath, { withFileTypes: true });
   return entries
     .filter((entry) => entry.isFile() && isAllowedAsset(entry.name))
-    .map((entry) => `assets/images/Projects/${folderName}/${entry.name}`)
+    .map((entry) => entry.name)
     .sort(naturalSort);
+}
+
+function toAssetPath(folderName, fileName) {
+  return `assets/images/Projects/${folderName}/${fileName}`;
+}
+
+function assertDefinedProjectMedia(project, availableFiles) {
+  // NOTE: Explicit media mapping per project: homepage thumbnail + ordered detail images.
+  if (typeof project.thumbnail !== 'string' || project.thumbnail.trim() === '') {
+    throw new Error(`Project "${project.slug}" is missing "thumbnail" in project-folders.json`);
+  }
+  if (!Array.isArray(project.images) || project.images.length === 0) {
+    throw new Error(`Project "${project.slug}" must define at least 1 "images" entry`);
+  }
+
+  const requestedFiles = [project.thumbnail, ...project.images];
+  for (const fileName of requestedFiles) {
+    if (!isAllowedAsset(fileName)) {
+      throw new Error(`Project "${project.slug}" has unsupported image type: ${fileName}`);
+    }
+    if (!availableFiles.includes(fileName)) {
+      throw new Error(
+        `Project "${project.slug}" references missing file in "${project.folder}": ${fileName}`
+      );
+    }
+  }
 }
 
 async function main() {
@@ -38,13 +64,18 @@ async function main() {
 
   const manifestProjects = [];
   for (const project of projects) {
-    const images = await listFolderImages(project.folder);
+    const availableFiles = await listFolderImages(project.folder);
+    assertDefinedProjectMedia(project, availableFiles);
+    const thumbnail = toAssetPath(project.folder, project.thumbnail);
+    const images = project.images.map((fileName) => toAssetPath(project.folder, fileName));
+
     manifestProjects.push({
       slug: project.slug,
       title: project.title,
       desc: project.desc,
       lead: project.lead,
       folder: project.folder,
+      thumbnail,
       images,
     });
   }

@@ -5,63 +5,115 @@
       "title": "Arid: desertification solution",
       "desc": "Klargjoring for prototype og produksjon",
       "lead": "Klargjoring for prototype og produksjon - industridesign rettet mot torke og baerekraftige losninger.",
-      "folder": "Arid"
+      "folder": "Arid",
+      "thumbnail": "undo process.jpg",
+      "images": ["undo process.jpg", "undo process.jpg", "undo process.jpg", "undo process.jpg"]
     },
     {
       "slug": "h2o",
       "title": "H2O",
       "desc": "Utstilling av 3D-modellering",
       "lead": "Visualisering, iterasjon og detaljarbeid for en tydelig produkthistorie.",
-      "folder": "H2O"
+      "folder": "H2O",
+      "thumbnail": "h2o (15).jpg",
+      "images": [
+        "h2o (15).jpg",
+        "h2o (20).jpg",
+        "h2o (10).jpg",
+        "h2o (14).jpg",
+        "h2o (13).jpg",
+        "h2o (2).jpg",
+        "h2o (4).jpg",
+        "h2o (5).jpg",
+        "h2o (6).jpg",
+        "h2o (7).jpg",
+        "h2o (8).jpg",
+        "h2o (9).jpg",
+        "h2o (12).jpg",
+        "h2o (16).jpg",
+        "h2o (17).jpg",
+        "h2o (18).jpg",
+        "h2o (19).jpg",
+        "h2o (21).jpg"
+      ]
     },
     {
-      "slug": "drone",
-      "title": "Drone",
+      "slug": "monocopter",
+      "title": "Monocopter",
       "desc": "Konsept og presentasjon",
       "lead": "Fra konsept og materialvalg til visuelle scener for validering.",
-      "folder": "Drone"
+      "folder": "Monocopter",
+      "thumbnail": "Artboard 82@2x-80.jpg",
+      "images": [
+        "Artboard 82@2x-80.jpg",
+        "Artboard 84@2x-80.jpg",
+        "FromTop_fly.0002.jpeg",
+        "Monocopter (2).jpg"
+      ]
     },
     {
       "slug": "proton",
       "title": "Proton",
       "desc": "Industridesign-konsept",
       "lead": "Konseptretning med tydelig formsprak og produksjonsnaer detaljering.",
-      "folder": "Proton"
+      "folder": "Proton",
+      "thumbnail": "1.png",
+      "images": ["1.png", "2.png", "4.png", "5.png"]
     },
     {
       "slug": "eco-mate-closet",
       "title": "Eco Mate Closet",
       "desc": "Modulbasert oppbevaring",
       "lead": "Systemtenkning for organisering, brukervennlighet og produksjon.",
-      "folder": "Eco-mate-closet"
+      "folder": "Eco-mate-closet",
+      "thumbnail": "4.jpg",
+      "images": ["4.jpg", "Closet (1).jpg", "Closet (2).jpg", "Closet (3).jpg"]
     },
     {
       "slug": "bike",
       "title": "Bike",
       "desc": "Produktvisualisering",
       "lead": "Detaljstudier av komponenter, helhet og brukeropplevelse.",
-      "folder": "Bike"
+      "folder": "Bike",
+      "thumbnail": "camera1.1.jpg",
+      "images": ["camera1.1.jpg", "camera3.3.jpg", "camera4.4.jpg", "camera5.5.jpg"]
     },
     {
       "slug": "nomos",
       "title": "Nomos",
       "desc": "Designsystem og assets",
       "lead": "Visuell retning og praktiske leveranser pa tvers av kontaktflater.",
-      "folder": "Nomos"
+      "folder": "Nomos",
+      "thumbnail": "cards vis.jpg",
+      "images": ["cards vis.jpg", "cd cover.jpg", "concert poster.jpg", "first page progress.jpg"]
     },
     {
       "slug": "nordic",
       "title": "Nordic",
       "desc": "Brand og packaging",
       "lead": "Helhetlig uttrykk fra emballasje til salgsflater.",
-      "folder": "Nørdic"
+      "folder": "Nørdic",
+      "thumbnail": "1915-Recovered-Recovered2.jpg",
+      "images": [
+        "1915-Recovered-Recovered2.jpg",
+        "apron Mockup -By Amr Bo Shanab-Recovered.jpg",
+        "Food Box Mockup-Recovered.jpg",
+        "food plate 2.jpg"
+      ]
     },
     {
       "slug": "rafaels",
       "title": "Rafaels",
       "desc": "Visuell identitet",
       "lead": "Logo, typografi og anvendelser bygget som et konsistent system.",
-      "folder": "Rafaels"
+      "folder": "Rafaels",
+      "thumbnail": "rafaels-banner.jpg",
+      "images": [
+        "rafaels-banner.jpg",
+        "rafaels-bottle.jpg",
+        "rafaels-colors.jpg",
+        "rafaels-logo-build.jpg"
+      ]
     }
   ]
 }

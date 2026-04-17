@@ -514,7 +514,8 @@ class SinglePagePortfolio {
 
     const fragment = document.createDocumentFragment();
     catalog.forEach((project, index) => {
-      const imgSrc = project.images[0] || '';
+      // NOTE: Project card image is explicitly configured via `thumbnail` in project-folders.json.
+      const imgSrc = project.thumbnail || project.images[0] || '';
       const card = document.createElement('a');
       card.className = 'project-tile';
       card.href = `advanced-project.html?project=${encodeURIComponent(project.slug)}`;
