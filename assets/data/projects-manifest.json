@@ -1,0 +1,201 @@
+{
+  "generatedAt": "2026-04-21T15:03:55.003Z",
+  "projects": [
+    {
+      "slug": "undo",
+      "title": "Project: Undo desertification",
+      "desc": "Klargjoring for prototype og produksjon",
+      "lead": "Klargjoring for prototype og produksjon - industridesign rettet mot torke og baerekraftige losninger.",
+      "folder": "Undo",
+      "thumbnail": "assets/images/Projects/Undo/2.jpg",
+      "images": [
+        "assets/images/Projects/Undo/1.jpg",
+        "assets/images/Projects/Undo/thumb2.jpg",
+        "assets/images/Projects/Undo/7.jpg",
+        "assets/images/Projects/Undo/4.jpg",
+        "assets/images/Projects/Undo/10.jpg",
+        "assets/images/Projects/Undo/11.jpg",
+        "assets/images/Projects/Undo/6.jpg",
+        "assets/images/Projects/Undo/8.jpg",
+        "assets/images/Projects/Undo/Arid-air-flow.gif"
+      ]
+    },
+    {
+      "slug": "h2o",
+      "title": "H2O: Bottle with mechanical pedometer",
+      "desc": "Utstilling av 3D-modellering",
+      "lead": "Visualisering, iterasjon og detaljarbeid for en tydelig produkthistorie.",
+      "folder": "H2O",
+      "thumbnail": "assets/images/Projects/H2O/h2o (15).jpg",
+      "images": [
+        "assets/images/Projects/H2O/h2o (15).jpg",
+        "assets/images/Projects/H2O/h2o (20).jpg",
+        "assets/images/Projects/H2O/h2o (10).jpg",
+        "assets/images/Projects/H2O/h2o (14).jpg",
+        "assets/images/Projects/H2O/h2o (13).jpg",
+        "assets/images/Projects/H2O/h2o (2).jpg",
+        "assets/images/Projects/H2O/h2o (4).jpg",
+        "assets/images/Projects/H2O/h2o (5).jpg",
+        "assets/images/Projects/H2O/h2o (6).jpg",
+        "assets/images/Projects/H2O/h2o (7).jpg",
+        "assets/images/Projects/H2O/h2o (8).jpg",
+        "assets/images/Projects/H2O/h2o (9).jpg",
+        "assets/images/Projects/H2O/h2o (12).jpg",
+        "assets/images/Projects/H2O/h2o (16).jpg",
+        "assets/images/Projects/H2O/h2o (17).jpg",
+        "assets/images/Projects/H2O/h2o (18).jpg",
+        "assets/images/Projects/H2O/h2o (19).jpg",
+        "assets/images/Projects/H2O/h2o (21).jpg"
+      ]
+    },
+    {
+      "slug": "monocopter",
+      "title": "Monocopter",
+      "desc": "Modular search and rescue drone for high and efficient area coverage",
+      "lead": "Fra konsept og materialvalg til visuelle scener for validering.",
+      "folder": "Monocopter",
+      "thumbnail": "assets/images/Projects/Monocopter/Monocopter (7).jpg",
+      "images": [
+        "assets/images/Projects/Monocopter/Monocopter (12).jpg",
+        "assets/images/Projects/Monocopter/Monocopter (8).jpg",
+        "assets/images/Projects/Monocopter/Monocopter (7).jpg",
+        "assets/images/Projects/Monocopter/Monocopter (13).jpg",
+        "assets/images/Projects/Monocopter/Monocopter (19).jpg",
+        "assets/images/Projects/Monocopter/Monocopter (11).jpg",
+        "assets/images/Projects/Monocopter/Monocopter (16).jpg",
+        "assets/images/Projects/Monocopter/Monocopter (17).jpg",
+        "assets/images/Projects/Monocopter/Monocopter (22).jpeg",
+        "assets/images/Projects/Monocopter/Monocopter (14).jpg",
+        "assets/images/Projects/Monocopter/Monocopter (20).jpg",
+        "assets/images/Projects/Monocopter/Monocopter (15).jpg",
+        "assets/images/Projects/Monocopter/Monocopter (21).jpg",
+        "assets/images/Projects/Monocopter/Monocopter (2).jpg",
+        "assets/images/Projects/Monocopter/Monocopter (6).jpg"
+      ]
+    },
+    {
+      "slug": "proton",
+      "title": "Proton Headphones",
+      "desc": "Industridesign-konsept",
+      "lead": "Konseptretning med tydelig formsprak og produksjonsnaer detaljering.",
+      "folder": "Proton",
+      "thumbnail": "assets/images/Projects/Proton/14.png",
+      "images": [
+        "assets/images/Projects/Proton/14.png",
+        "assets/images/Projects/Proton/18.png",
+        "assets/images/Projects/Proton/16.png",
+        "assets/images/Projects/Proton/15.png",
+        "assets/images/Projects/Proton/13.png",
+        "assets/images/Projects/Proton/21.png",
+        "assets/images/Projects/Proton/20.png",
+        "assets/images/Projects/Proton/19.png",
+        "assets/images/Projects/Proton/13.png",
+        "assets/images/Projects/Proton/5.png",
+        "assets/images/Projects/Proton/4.png",
+        "assets/images/Projects/Proton/2.png",
+        "assets/images/Projects/Proton/12.png",
+        "assets/images/Projects/Proton/11.png",
+        "assets/images/Projects/Proton/10.png",
+        "assets/images/Projects/Proton/1.png",
+        "assets/images/Projects/Proton/6.png",
+        "assets/images/Projects/Proton/Context.jpg"
+      ]
+    },
+    {
+      "slug": "eco-mate-closet",
+      "title": "Søppelsortering skap",
+      "desc": "Skap for kildesortering av søppel hjemme",
+      "lead": "Systemtenkning for organisering, brukervennlighet og produksjon.",
+      "folder": "Eco-mate-closet",
+      "thumbnail": "assets/images/Projects/Eco-mate-closet/4.jpg",
+      "images": [
+        "assets/images/Projects/Eco-mate-closet/4.jpg",
+        "assets/images/Projects/Eco-mate-closet/Closet (12).jpg",
+        "assets/images/Projects/Eco-mate-closet/Closet (15).jpg",
+        "assets/images/Projects/Eco-mate-closet/Scheme.jpg",
+        "assets/images/Projects/Eco-mate-closet/Closet (2).jpg",
+        "assets/images/Projects/Eco-mate-closet/Closet (13).jpg",
+        "assets/images/Projects/Eco-mate-closet/Closet (3).jpg",
+        "assets/images/Projects/Eco-mate-closet/Closet (7).jpg",
+        "assets/images/Projects/Eco-mate-closet/Closet (4).jpg",
+        "assets/images/Projects/Eco-mate-closet/Closet (8).jpg",
+        "assets/images/Projects/Eco-mate-closet/Closet (9).jpg",
+        "assets/images/Projects/Eco-mate-closet/Closet (10).jpg",
+        "assets/images/Projects/Eco-mate-closet/Closet (11).jpg",
+        "assets/images/Projects/Eco-mate-closet/Closet (1).jpg",
+        "assets/images/Projects/Eco-mate-closet/Closet (14).jpg"
+      ]
+    },
+    {
+      "slug": "bike",
+      "title": "Terreng sykkel",
+      "desc": "Produktvisualisering",
+      "lead": "Detaljstudier av komponenter, helhet og brukeropplevelse.",
+      "folder": "Bike",
+      "thumbnail": "assets/images/Projects/Bike/bike2.jpg",
+      "images": [
+        "assets/images/Projects/Bike/bike2.jpg",
+        "assets/images/Projects/Bike/bike4.jpg",
+        "assets/images/Projects/Bike/bike5.jpg",
+        "assets/images/Projects/Bike/bike7.jpg",
+        "assets/images/Projects/Bike/bike3.jpg",
+        "assets/images/Projects/Bike/bike6.jpg",
+        "assets/images/Projects/Bike/bike1.jpg",
+        "assets/images/Projects/Bike/bike8.jpg"
+      ]
+    },
+    {
+      "slug": "nomos",
+      "title": "Nomos: Musikkband branding",
+      "desc": "Designsystem og assets",
+      "lead": "Visuell retning og praktiske leveranser pa tvers av kontaktflater.",
+      "folder": "Nomos",
+      "thumbnail": "assets/images/Projects/Nomos/concert-poster.jpg",
+      "images": [
+        "assets/images/Projects/Nomos/concert-poster.jpg",
+        "assets/images/Projects/Nomos/cards-vis.jpg",
+        "assets/images/Projects/Nomos/promotion-poster.jpg",
+        "assets/images/Projects/Nomos/logo.jpg",
+        "assets/images/Projects/Nomos/modern-street-poster.jpg",
+        "assets/images/Projects/Nomos/cd-cover.jpg",
+        "assets/images/Projects/Nomos/t-shirt.jpg",
+        "assets/images/Projects/Nomos/sealed-letter.jpg"
+      ]
+    },
+    {
+      "slug": "nordic",
+      "title": "Nordic: Norsk restaurant branding",
+      "desc": "Brand og packaging",
+      "lead": "Helhetlig uttrykk fra emballasje til salgsflater.",
+      "folder": "Nørdic",
+      "thumbnail": "assets/images/Projects/Nørdic/nordic2.jpg",
+      "images": [
+        "assets/images/Projects/Nørdic/nordic2.jpg",
+        "assets/images/Projects/Nørdic/nordic1.jpg",
+        "assets/images/Projects/Nørdic/nordic3.jpg",
+        "assets/images/Projects/Nørdic/nordic4.jpg",
+        "assets/images/Projects/Nørdic/nordic5.jpg",
+        "assets/images/Projects/Nørdic/nordic6.jpg",
+        "assets/images/Projects/Nørdic/nordic7.jpg",
+        "assets/images/Projects/Nørdic/nordic8.jpg",
+        "assets/images/Projects/Nørdic/nordic9.jpg"
+      ]
+    },
+    {
+      "slug": "rafaels",
+      "title": "Rafaels: Ren melk",
+      "desc": "Visuell identitet",
+      "lead": "Logo, typografi og anvendelser bygget som et konsistent system.",
+      "folder": "Rafaels",
+      "thumbnail": "assets/images/Projects/Rafaels/rafaels-bottle.jpg",
+      "images": [
+        "assets/images/Projects/Rafaels/rafaels-logo-texture.jpg",
+        "assets/images/Projects/Rafaels/rafaels-bottle.jpg",
+        "assets/images/Projects/Rafaels/rafaels-banner.jpg",
+        "assets/images/Projects/Rafaels/rafaels-visitcard.jpg",
+        "assets/images/Projects/Rafaels/rafaels-logo-build.jpg",
+        "assets/images/Projects/Rafaels/rafaels-typography.jpg"
+      ]
+    }
+  ]
+}

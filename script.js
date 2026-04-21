@@ -5,12 +5,69 @@
 
 class SinglePagePortfolio {
   constructor() {
+    this.projectCatalogPromise = null;
     this.setupMobileSideNavToggle();
     this.setupHeroVideoShuffle();
     this.setupTimeline();
-    this.setupProjectsGrid();
-    this.setupProjectTemplateGalleries();
     this.setupProjectPageNavVerticalAlign();
+    this.initializeProjectViews();
+  }
+
+  // NOTE: Load generated folder manifest so project image lists stay automatic.
+  async loadProjectCatalog() {
+    if (this.projectCatalogPromise) return this.projectCatalogPromise;
+    const normalizeProjects = (manifest) => {
+      // NOTE: Hardcoded project order shared by homepage grid and project detail prev/next navigation.
+      const preferredOrder = [
+        'undo',
+        'nomos',
+        'proton',
+        'nordic',
+        'monocopter',
+        'rafaels',
+        'eco-mate-closet',
+        'h2o',
+      ];
+      const orderRank = new Map(preferredOrder.map((slug, index) => [slug, index]));
+      const projects = Array.isArray(manifest?.projects) ? manifest.projects : [];
+      const validProjects = projects.filter(
+        (project) =>
+          project &&
+          typeof project.slug === 'string' &&
+          typeof project.title === 'string' &&
+          Array.isArray(project.images)
+      );
+      // NOTE: Sykkel/Bike is intentionally disabled in frontend views without removing source data.
+      const enabledProjects = validProjects.filter((project) => project.slug !== 'bike');
+      return enabledProjects.sort((a, b) => {
+        const aRank = orderRank.has(a.slug) ? orderRank.get(a.slug) : Number.MAX_SAFE_INTEGER;
+        const bRank = orderRank.has(b.slug) ? orderRank.get(b.slug) : Number.MAX_SAFE_INTEGER;
+        if (aRank !== bRank) return aRank - bRank;
+        return a.title.localeCompare(b.title);
+      });
+    };
+
+    const fromGlobal = normalizeProjects(window.__PROJECTS_MANIFEST);
+    if (fromGlobal.length > 0) {
+      this.projectCatalogPromise = Promise.resolve(fromGlobal);
+      return this.projectCatalogPromise;
+    }
+
+    this.projectCatalogPromise = fetch('assets/data/projects-manifest.json', { cache: 'no-store' })
+      .then((response) => {
+        if (!response.ok) throw new Error(`Manifest fetch failed: ${response.status}`);
+        return response.json();
+      })
+      .then((manifest) => normalizeProjects(manifest))
+      .catch(() => []);
+    return this.projectCatalogPromise;
+  }
+
+  async initializeProjectViews() {
+    const catalog = await this.loadProjectCatalog();
+    this.setupProjectDetailPage(catalog);
+    this.setupProjectsGrid(catalog);
+    this.setupProjectTemplateGalleries();
   }
 
   // NOTE: Mobile-only side navigation collapse/expand interaction.
@@ -334,114 +391,168 @@ class SinglePagePortfolio {
     }
   }
 
+  // NOTE: Rehydrates the single project template from `?project=<slug>` and wires prev/next routing.
+  setupProjectDetailPage(catalog) {
+    const root = document.querySelector('[data-project-page]');
+    if (!root) return;
+    if (catalog.length === 0) return;
+
+    const params = new URLSearchParams(window.location.search);
+    const requestedSlug = (params.get('project') || '').trim().toLowerCase();
+    const currentIndex = Math.max(
+      0,
+      catalog.findIndex((project) => project.slug === requestedSlug)
+    );
+    const current = catalog[currentIndex];
+
+    const titleEl = root.querySelector('[data-project-title]');
+    const leadEl = root.querySelector('[data-project-lead]');
+    const breadcrumbCurrentEl = root.querySelector('[data-project-breadcrumb-current]');
+    const mainImage = root.querySelector('[data-project-main-image]');
+    const captionEl = root.querySelector('[data-project-image-caption]');
+    const thumbsContainer = root.querySelector('[data-project-thumbs]');
+    // NOTE: Prev/next nav sits outside `[data-project-page]`, so query from document scope.
+    const prevLink = document.querySelector('[data-project-nav-prev]');
+    const nextLink = document.querySelector('[data-project-nav-next]');
+
+    if (titleEl) titleEl.textContent = current.title;
+    if (leadEl) leadEl.textContent = current.lead;
+    if (breadcrumbCurrentEl) breadcrumbCurrentEl.textContent = current.title;
+    document.title = `${current.title} | Industridesign og produktdesign`;
+
+    const detailImages = current.images.length > 0 ? current.images : [catalog[0].images[0]];
+    const firstImage = detailImages[0];
+
+    if (mainImage && firstImage) {
+      mainImage.src = firstImage;
+      mainImage.alt = `${current.title} bilde 1`;
+    }
+    if (captionEl) captionEl.textContent = `Prosjektoversikt: ${current.title}.`;
+
+    if (thumbsContainer) {
+      thumbsContainer.innerHTML = detailImages
+        .map(
+          (src, index) => `
+          <button
+            class="project-template-thumb${index === 0 ? ' is-active' : ''}"
+            type="button"
+            data-project-thumb
+            data-image-src="${src}"
+            data-image-alt="${current.title} bilde ${index + 1}"
+            data-image-caption="${current.title} - bilde ${index + 1}."
+            aria-label="Vis bilde ${index + 1}"
+          >
+            <img src="${src}" alt="" aria-hidden="true" />
+          </button>
+        `
+        )
+        .join('');
+    }
+
+    // NOTE: Paginate thumbnail rail: 4 visible on desktop, 3 visible on mobile.
+    this.setupProjectThumbRailPager(root);
+
+    const previousProject = catalog[(currentIndex - 1 + catalog.length) % catalog.length];
+    const nextProject = catalog[(currentIndex + 1) % catalog.length];
+
+    if (prevLink && previousProject) {
+      prevLink.href = `advanced-project.html?project=${encodeURIComponent(previousProject.slug)}`;
+      prevLink.setAttribute('aria-label', `Forrige prosjekt: ${previousProject.title}`);
+    }
+    if (nextLink && nextProject) {
+      nextLink.href = `advanced-project.html?project=${encodeURIComponent(nextProject.slug)}`;
+      nextLink.setAttribute('aria-label', `Neste prosjekt: ${nextProject.title}`);
+    }
+  }
+
+  // NOTE: Thumbnail pager controls for project gallery rail (desktop up/down, mobile left/right).
+  setupProjectThumbRailPager(root) {
+    const thumbsContainer = root.querySelector('[data-project-thumbs]');
+    const prevBtn = root.querySelector('[data-project-thumbs-prev]');
+    const nextBtn = root.querySelector('[data-project-thumbs-next]');
+    if (!thumbsContainer || !prevBtn || !nextBtn) return;
+
+    const thumbs = Array.from(thumbsContainer.querySelectorAll('[data-project-thumb]'));
+    if (thumbs.length === 0) return;
+
+    const getPageSize = () => (window.innerWidth < 768 ? 3 : 4);
+    let currentPage = 0;
+
+    const getMaxPage = () => {
+      const pageSize = getPageSize();
+      return Math.max(0, Math.ceil(thumbs.length / pageSize) - 1);
+    };
+
+    const renderPager = () => {
+      const pageSize = getPageSize();
+      const maxPage = getMaxPage();
+      if (currentPage > maxPage) currentPage = maxPage;
+      const start = currentPage * pageSize;
+      const end = start + pageSize;
+
+      thumbs.forEach((thumb, index) => {
+        thumb.style.display = index >= start && index < end ? '' : 'none';
+      });
+
+      const shouldDisablePrev = currentPage === 0;
+      const shouldDisableNext = currentPage >= maxPage;
+      prevBtn.classList.toggle('is-disabled', shouldDisablePrev);
+      nextBtn.classList.toggle('is-disabled', shouldDisableNext);
+      prevBtn.disabled = shouldDisablePrev;
+      nextBtn.disabled = shouldDisableNext;
+    };
+
+    prevBtn.addEventListener('click', () => {
+      if (currentPage === 0) return;
+      currentPage -= 1;
+      renderPager();
+    });
+
+    nextBtn.addEventListener('click', () => {
+      const maxPage = getMaxPage();
+      if (currentPage >= maxPage) return;
+      currentPage += 1;
+      renderPager();
+    });
+
+    window.addEventListener(
+      'resize',
+      this.debounce(() => {
+        renderPager();
+      }, 120)
+    );
+
+    renderPager();
+  }
+
   // NOTE: Projects grid hydration to 20 items.
-  setupProjectsGrid() {
+  setupProjectsGrid(catalog) {
     const grid = document.querySelector('[data-projects-grid]');
     const sentinel = document.querySelector('[data-projects-sentinel]');
     if (!grid || !sentinel) return;
+    if (catalog.length === 0) return;
 
-    const baseCards = Array.from(grid.querySelectorAll('.project-tile'));
-    if (baseCards.length === 0) return;
-
-    const source = baseCards.map((card, index) => {
-      const img = card.querySelector('.project-thumb__img');
-      const title = card.querySelector('.project-title');
-      const desc = card.querySelector('.project-desc');
-      return {
-        href: card.getAttribute('href') || 'prosjekter.html',
-        imgSrc: img?.getAttribute('src') || '',
-        imgAlt: img?.getAttribute('alt') || '',
-        title: title?.textContent?.trim() || `Prosjekt ${index + 1}`,
-        desc: desc?.textContent?.trim() || 'Prosjektbeskrivelse',
-      };
-    });
-
-    // NOTE: Use all currently provided local project images before falling back to placeholders.
-    const providedImagePool = [
-      'assets/images/USV.png',
-      'assets/images/H2O.jpg',
-      'assets/images/itac.jpg',
-      'assets/images/Proton.png',
-      'assets/images/Drone2.jpeg',
-      'assets/images/Memorium.jpg',
-      'assets/images/Bike.jpg',
-      'assets/images/Closet-anim.gif',
-      'assets/images/Kalash.jpg',
-      'assets/images/serviett.jpg',
-      'assets/images/ak-background-image.jpg',
-    ];
-
-    // NOTE: Keep this limited while the portfolio content is in progress.
-    const maxItems = 12;
-    let nextIndex = baseCards.length;
-
-    function createCard(item, visualIndex, usePlaceholder = false) {
+    const fragment = document.createDocumentFragment();
+    catalog.forEach((project, index) => {
+      // NOTE: Project card image is explicitly configured via `thumbnail` in project-folders.json.
+      const imgSrc = project.thumbnail || project.images[0] || '';
       const card = document.createElement('a');
       card.className = 'project-tile';
-      card.href = item.href;
-      card.setAttribute('aria-label', `Se prosjekt ${visualIndex + 1}`);
-      if (usePlaceholder) {
-        card.innerHTML = `
-          <div class="project-thumb project-thumb--placeholder" aria-hidden="true"></div>
-          <div class="project-meta">
-            <h3 class="project-title">${item.title}</h3>
-            <p class="project-desc">${item.desc}</p>
-          </div>
-        `;
-      } else {
-        card.innerHTML = `
-          <div class="project-thumb" aria-hidden="true">
-            <img class="project-thumb__img" src="${item.imgSrc}" alt="${item.imgAlt}" loading="lazy" />
-          </div>
-          <div class="project-meta">
-            <h3 class="project-title">${item.title}</h3>
-            <p class="project-desc">${item.desc}</p>
-          </div>
-        `;
-      }
-      return card;
-    }
+      card.href = `advanced-project.html?project=${encodeURIComponent(project.slug)}`;
+      card.setAttribute('aria-label', `Se ${project.title}`);
+      card.innerHTML = `
+        <div class="project-thumb" aria-hidden="true">
+          <img class="project-thumb__img" src="${imgSrc}" alt="${project.title}" loading="lazy" />
+        </div>
+        <div class="project-meta">
+          <h3 class="project-title">${project.title}</h3>
+        </div>
+      `;
+      fragment.appendChild(card);
+    });
 
-    function titleFromPath(path, fallbackIndex) {
-      const file = path.split('/').pop() || '';
-      const withoutExt = file.replace(/\.[^.]+$/, '');
-      const normalized = withoutExt.replace(/[-_]+/g, ' ').trim();
-      if (!normalized) return `Prosjekt ${fallbackIndex + 1}`;
-      return normalized.charAt(0).toUpperCase() + normalized.slice(1);
-    }
-
-    // Render all project cards up to maxItems immediately.
-    const fragment = document.createDocumentFragment();
-    const usedSources = new Set(source.map((item) => item.imgSrc));
-    const additionalRealImages = providedImagePool.filter((src) => !usedSources.has(src));
-
-    // First append all available real images from the provided pool.
-    for (const imgSrc of additionalRealImages) {
-      if (nextIndex >= maxItems) break;
-      const seed = source[nextIndex % source.length];
-      fragment.appendChild(
-        createCard(
-          {
-            ...seed,
-            imgSrc,
-            title: titleFromPath(imgSrc, nextIndex),
-          },
-          nextIndex,
-          false
-        )
-      );
-      nextIndex += 1;
-    }
-
-    // Fill remaining slots with neutral placeholders.
-    while (nextIndex < maxItems) {
-      const item = source[nextIndex % source.length];
-      fragment.appendChild(createCard(item, nextIndex, true));
-      nextIndex += 1;
-    }
+    grid.innerHTML = '';
     grid.appendChild(fragment);
-
-    // Keep sentinel hidden/unused when all items are pre-rendered.
     sentinel.style.display = 'none';
   }
 

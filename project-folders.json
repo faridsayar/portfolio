@@ -1,0 +1,200 @@
+{
+  "projects": [
+    {
+      "slug": "undo",
+      "title": "Project: Undo desertification",
+      "desc": "Klargjoring for prototype og produksjon",
+      "lead": "Klargjoring for prototype og produksjon - industridesign rettet mot torke og baerekraftige losninger.",
+      "folder": "Undo",
+      "thumbnail": "2.jpg",
+      "images": [
+        "1.jpg",
+        "thumb2.jpg",
+        "7.jpg",
+        "4.jpg",
+        "10.jpg",
+        "11.jpg",
+        "6.jpg",
+        "8.jpg",
+        "Arid-air-flow.gif"
+      ]
+    },
+    {
+      "slug": "h2o",
+      "title": "H2O: Bottle with mechanical pedometer",
+      "desc": "Utstilling av 3D-modellering",
+      "lead": "Visualisering, iterasjon og detaljarbeid for en tydelig produkthistorie.",
+      "folder": "H2O",
+      "thumbnail": "h2o (15).jpg",
+      "images": [
+        "h2o (15).jpg",
+        "h2o (20).jpg",
+        "h2o (10).jpg",
+        "h2o (14).jpg",
+        "h2o (13).jpg",
+        "h2o (2).jpg",
+        "h2o (4).jpg",
+        "h2o (5).jpg",
+        "h2o (6).jpg",
+        "h2o (7).jpg",
+        "h2o (8).jpg",
+        "h2o (9).jpg",
+        "h2o (12).jpg",
+        "h2o (16).jpg",
+        "h2o (17).jpg",
+        "h2o (18).jpg",
+        "h2o (19).jpg",
+        "h2o (21).jpg"
+      ]
+    },
+    {
+      "slug": "monocopter",
+      "title": "Monocopter",
+      "desc": "Modular search and rescue drone for high and efficient area coverage",
+      "lead": "Fra konsept og materialvalg til visuelle scener for validering.",
+      "folder": "Monocopter",
+      "thumbnail": "Monocopter (7).jpg",
+      "images": [
+        "Monocopter (12).jpg",
+        "Monocopter (8).jpg",
+        "Monocopter (7).jpg",
+        "Monocopter (13).jpg",
+        "Monocopter (19).jpg",
+        "Monocopter (11).jpg",
+        "Monocopter (16).jpg",
+        "Monocopter (17).jpg",
+        "Monocopter (22).jpeg",
+        "Monocopter (14).jpg",
+        "Monocopter (20).jpg",
+        "Monocopter (15).jpg",
+        "Monocopter (21).jpg",
+        "Monocopter (2).jpg",
+        "Monocopter (6).jpg"
+      ]
+    },
+    {
+      "slug": "proton",
+      "title": "Proton Headphones",
+      "desc": "Industridesign-konsept",
+      "lead": "Konseptretning med tydelig formsprak og produksjonsnaer detaljering.",
+      "folder": "Proton",
+      "thumbnail": "14.png",
+      "images": [
+        "14.png",
+        "18.png",
+        "16.png",
+        "15.png",
+        "13.png",
+        "21.png",
+        "20.png",
+        "19.png",
+        "13.png",
+        "5.png",
+        "4.png",
+        "2.png",
+        "12.png",
+        "11.png",
+        "10.png",
+        "1.png",
+        "6.png",
+        "Context.jpg"
+      ]
+    },
+    {
+      "slug": "eco-mate-closet",
+      "title": "Søppelsortering skap",
+      "desc": "Skap for kildesortering av søppel hjemme",
+      "lead": "Systemtenkning for organisering, brukervennlighet og produksjon.",
+      "folder": "Eco-mate-closet",
+      "thumbnail": "4.jpg",
+      "images": [
+        "4.jpg",
+        "Closet (12).jpg",
+        "Closet (15).jpg",
+        "Scheme.jpg",
+        "Closet (2).jpg",
+        "Closet (13).jpg",
+        "Closet (3).jpg",
+        "Closet (7).jpg",
+        "Closet (4).jpg",
+        "Closet (8).jpg",
+        "Closet (9).jpg",
+        "Closet (10).jpg",
+        "Closet (11).jpg",
+        "Closet (1).jpg",
+        "Closet (14).jpg"
+      ]
+    },
+    {
+      "slug": "bike",
+      "title": "Terreng sykkel",
+      "desc": "Produktvisualisering",
+      "lead": "Detaljstudier av komponenter, helhet og brukeropplevelse.",
+      "folder": "Bike",
+      "thumbnail": "bike2.jpg",
+      "images": [
+        "bike2.jpg",
+        "bike4.jpg",
+        "bike5.jpg",
+        "bike7.jpg",
+        "bike3.jpg",
+        "bike6.jpg",
+        "bike1.jpg",
+        "bike8.jpg"
+      ]
+    },
+    {
+      "slug": "nomos",
+      "title": "Nomos: Musikkband branding",
+      "desc": "Designsystem og assets",
+      "lead": "Visuell retning og praktiske leveranser pa tvers av kontaktflater.",
+      "folder": "Nomos",
+      "thumbnail": "concert-poster.jpg",
+      "images": [
+        "concert-poster.jpg",
+        "cards-vis.jpg",
+        "promotion-poster.jpg",
+        "logo.jpg",
+        "modern-street-poster.jpg",
+        "cd-cover.jpg",
+        "t-shirt.jpg",
+        "sealed-letter.jpg"
+      ]
+    },
+    {
+      "slug": "nordic",
+      "title": "Nordic: Norsk restaurant branding",
+      "desc": "Brand og packaging",
+      "lead": "Helhetlig uttrykk fra emballasje til salgsflater.",
+      "folder": "Nørdic",
+      "thumbnail": "nordic2.jpg",
+      "images": [
+        "nordic2.jpg",
+        "nordic1.jpg",
+        "nordic3.jpg",
+        "nordic4.jpg",
+        "nordic5.jpg",
+        "nordic6.jpg",
+        "nordic7.jpg",
+        "nordic8.jpg",
+        "nordic9.jpg"
+      ]
+    },
+    {
+      "slug": "rafaels",
+      "title": "Rafaels: Ren melk",
+      "desc": "Visuell identitet",
+      "lead": "Logo, typografi og anvendelser bygget som et konsistent system.",
+      "folder": "Rafaels",
+      "thumbnail": "rafaels-bottle.jpg",
+      "images": [
+        "rafaels-logo-texture.jpg",
+        "rafaels-bottle.jpg",
+        "rafaels-banner.jpg",
+        "rafaels-visitcard.jpg",
+        "rafaels-logo-build.jpg",
+        "rafaels-typography.jpg"
+      ]
+    }
+  ]
+}
