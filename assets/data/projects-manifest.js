@@ -1,18 +1,23 @@
 window.__PROJECTS_MANIFEST = {
-  "generatedAt": "2026-04-17T09:45:20.804Z",
+  "generatedAt": "2026-04-21T14:26:54.752Z",
   "projects": [
     {
-      "slug": "arid",
-      "title": "Arid: desertification solution",
+      "slug": "undo",
+      "title": "Undo: desertification",
       "desc": "Klargjoring for prototype og produksjon",
       "lead": "Klargjoring for prototype og produksjon - industridesign rettet mot torke og baerekraftige losninger.",
-      "folder": "Arid",
-      "thumbnail": "assets/images/Projects/Arid/undo process.jpg",
+      "folder": "Undo",
+      "thumbnail": "assets/images/Projects/Undo/2.jpg",
       "images": [
-        "assets/images/Projects/Arid/undo process.jpg",
-        "assets/images/Projects/Arid/undo process.jpg",
-        "assets/images/Projects/Arid/undo process.jpg",
-        "assets/images/Projects/Arid/undo process.jpg"
+        "assets/images/Projects/Undo/1.jpg",
+        "assets/images/Projects/Undo/thumb2.jpg",
+        "assets/images/Projects/Undo/7.jpg",
+        "assets/images/Projects/Undo/4.jpg",
+        "assets/images/Projects/Undo/10.jpg",
+        "assets/images/Projects/Undo/11.jpg",
+        "assets/images/Projects/Undo/6.jpg",
+        "assets/images/Projects/Undo/8.jpg",
+        "assets/images/Projects/Undo/Arid-air-flow.gif"
       ]
     },
     {

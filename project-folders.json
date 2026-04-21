@@ -1,13 +1,23 @@
 {
   "projects": [
     {
-      "slug": "arid",
-      "title": "Arid: desertification solution",
+      "slug": "undo",
+      "title": "Undo: desertification",
       "desc": "Klargjoring for prototype og produksjon",
       "lead": "Klargjoring for prototype og produksjon - industridesign rettet mot torke og baerekraftige losninger.",
-      "folder": "Arid",
-      "thumbnail": "undo process.jpg",
-      "images": ["undo process.jpg", "undo process.jpg", "undo process.jpg", "undo process.jpg"]
+      "folder": "Undo",
+      "thumbnail": "2.jpg",
+      "images": [
+        "1.jpg",
+        "thumb2.jpg",
+        "7.jpg",
+        "4.jpg",
+        "10.jpg",
+        "11.jpg",
+        "6.jpg",
+        "8.jpg",
+        "Arid-air-flow.gif"
+      ]
     },
     {
       "slug": "h2o",
