@@ -1,5 +1,5 @@
 window.__PROJECTS_MANIFEST = {
-  "generatedAt": "2026-04-21T14:26:54.752Z",
+  "generatedAt": "2026-04-21T14:42:32.107Z",
   "projects": [
     {
       "slug": "undo",
@@ -22,7 +22,7 @@ window.__PROJECTS_MANIFEST = {
     },
     {
       "slug": "h2o",
-      "title": "H2O",
+      "title": "H2O: Bottle with mechanical pedometer",
       "desc": "Utstilling av 3D-modellering",
       "lead": "Visualisering, iterasjon og detaljarbeid for en tydelig produkthistorie.",
       "folder": "H2O",
@@ -51,7 +51,7 @@ window.__PROJECTS_MANIFEST = {
     {
       "slug": "monocopter",
       "title": "Monocopter",
-      "desc": "Konsept og presentasjon",
+      "desc": "Modular search and rescue drone for high and efficient area coverage",
       "lead": "Fra konsept og materialvalg til visuelle scener for validering.",
       "folder": "Monocopter",
       "thumbnail": "assets/images/Projects/Monocopter/Monocopter (7).jpg",
@@ -75,7 +75,7 @@ window.__PROJECTS_MANIFEST = {
     },
     {
       "slug": "proton",
-      "title": "Proton",
+      "title": "Proton Headphones",
       "desc": "Industridesign-konsept",
       "lead": "Konseptretning med tydelig formsprak og produksjonsnaer detaljering.",
       "folder": "Proton",
@@ -103,8 +103,8 @@ window.__PROJECTS_MANIFEST = {
     },
     {
       "slug": "eco-mate-closet",
-      "title": "Eco Mate Closet",
-      "desc": "Modulbasert oppbevaring",
+      "title": "Søppelsortering skap",
+      "desc": "Skap for kildesortering av søppel hjemme",
       "lead": "Systemtenkning for organisering, brukervennlighet og produksjon.",
       "folder": "Eco-mate-closet",
       "thumbnail": "assets/images/Projects/Eco-mate-closet/4.jpg",
@@ -128,7 +128,7 @@ window.__PROJECTS_MANIFEST = {
     },
     {
       "slug": "bike",
-      "title": "Bike",
+      "title": "Terreng sykkel",
       "desc": "Produktvisualisering",
       "lead": "Detaljstudier av komponenter, helhet og brukeropplevelse.",
       "folder": "Bike",
@@ -146,7 +146,7 @@ window.__PROJECTS_MANIFEST = {
     },
     {
       "slug": "nomos",
-      "title": "Nomos",
+      "title": "Nomos: Musikkband branding",
       "desc": "Designsystem og assets",
       "lead": "Visuell retning og praktiske leveranser pa tvers av kontaktflater.",
       "folder": "Nomos",
@@ -164,7 +164,7 @@ window.__PROJECTS_MANIFEST = {
     },
     {
       "slug": "nordic",
-      "title": "Nordic",
+      "title": "Nordic: Norsk restaurant branding",
       "desc": "Brand og packaging",
       "lead": "Helhetlig uttrykk fra emballasje til salgsflater.",
       "folder": "Nørdic",
@@ -183,7 +183,7 @@ window.__PROJECTS_MANIFEST = {
     },
     {
       "slug": "rafaels",
-      "title": "Rafaels",
+      "title": "Rafaels: Ren melk produkt branding",
       "desc": "Visuell identitet",
       "lead": "Logo, typografi og anvendelser bygget som et konsistent system.",
       "folder": "Rafaels",

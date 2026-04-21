@@ -526,7 +526,6 @@ class SinglePagePortfolio {
         </div>
         <div class="project-meta">
           <h3 class="project-title">${project.title}</h3>
-          <p class="project-desc">${project.desc || `Prosjekt ${index + 1}`}</p>
         </div>
       `;
       fragment.appendChild(card);
