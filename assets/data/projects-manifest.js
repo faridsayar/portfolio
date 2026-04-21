@@ -1,5 +1,5 @@
 window.__PROJECTS_MANIFEST = {
-  "generatedAt": "2026-04-17T09:41:36.265Z",
+  "generatedAt": "2026-04-17T09:45:20.804Z",
   "projects": [
     {
       "slug": "arid",
@@ -163,12 +163,17 @@ window.__PROJECTS_MANIFEST = {
       "desc": "Brand og packaging",
       "lead": "Helhetlig uttrykk fra emballasje til salgsflater.",
       "folder": "Nørdic",
-      "thumbnail": "assets/images/Projects/Nørdic/1915-Recovered-Recovered2.jpg",
+      "thumbnail": "assets/images/Projects/Nørdic/nordic2.jpg",
       "images": [
-        "assets/images/Projects/Nørdic/1915-Recovered-Recovered2.jpg",
-        "assets/images/Projects/Nørdic/apron Mockup -By Amr Bo Shanab-Recovered.jpg",
-        "assets/images/Projects/Nørdic/Food Box Mockup-Recovered.jpg",
-        "assets/images/Projects/Nørdic/food plate 2.jpg"
+        "assets/images/Projects/Nørdic/nordic2.jpg",
+        "assets/images/Projects/Nørdic/nordic1.jpg",
+        "assets/images/Projects/Nørdic/nordic3.jpg",
+        "assets/images/Projects/Nørdic/nordic4.jpg",
+        "assets/images/Projects/Nørdic/nordic5.jpg",
+        "assets/images/Projects/Nørdic/nordic6.jpg",
+        "assets/images/Projects/Nørdic/nordic7.jpg",
+        "assets/images/Projects/Nørdic/nordic8.jpg",
+        "assets/images/Projects/Nørdic/nordic9.jpg"
       ]
     },
     {
