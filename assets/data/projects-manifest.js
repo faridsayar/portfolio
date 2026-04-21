@@ -1,9 +1,9 @@
 window.__PROJECTS_MANIFEST = {
-  "generatedAt": "2026-04-21T14:42:32.107Z",
+  "generatedAt": "2026-04-21T15:03:55.003Z",
   "projects": [
     {
       "slug": "undo",
-      "title": "Undo: desertification",
+      "title": "Project: Undo desertification",
       "desc": "Klargjoring for prototype og produksjon",
       "lead": "Klargjoring for prototype og produksjon - industridesign rettet mot torke og baerekraftige losninger.",
       "folder": "Undo",
@@ -183,16 +183,18 @@ window.__PROJECTS_MANIFEST = {
     },
     {
       "slug": "rafaels",
-      "title": "Rafaels: Ren melk produkt branding",
+      "title": "Rafaels: Ren melk",
       "desc": "Visuell identitet",
       "lead": "Logo, typografi og anvendelser bygget som et konsistent system.",
       "folder": "Rafaels",
-      "thumbnail": "assets/images/Projects/Rafaels/rafaels-banner.jpg",
+      "thumbnail": "assets/images/Projects/Rafaels/rafaels-bottle.jpg",
       "images": [
-        "assets/images/Projects/Rafaels/rafaels-banner.jpg",
+        "assets/images/Projects/Rafaels/rafaels-logo-texture.jpg",
         "assets/images/Projects/Rafaels/rafaels-bottle.jpg",
-        "assets/images/Projects/Rafaels/rafaels-colors.jpg",
-        "assets/images/Projects/Rafaels/rafaels-logo-build.jpg"
+        "assets/images/Projects/Rafaels/rafaels-banner.jpg",
+        "assets/images/Projects/Rafaels/rafaels-visitcard.jpg",
+        "assets/images/Projects/Rafaels/rafaels-logo-build.jpg",
+        "assets/images/Projects/Rafaels/rafaels-typography.jpg"
       ]
     }
   ]

@@ -17,14 +17,34 @@ class SinglePagePortfolio {
   async loadProjectCatalog() {
     if (this.projectCatalogPromise) return this.projectCatalogPromise;
     const normalizeProjects = (manifest) => {
+      // NOTE: Hardcoded project order shared by homepage grid and project detail prev/next navigation.
+      const preferredOrder = [
+        'undo',
+        'nomos',
+        'proton',
+        'nordic',
+        'monocopter',
+        'rafaels',
+        'eco-mate-closet',
+        'h2o',
+      ];
+      const orderRank = new Map(preferredOrder.map((slug, index) => [slug, index]));
       const projects = Array.isArray(manifest?.projects) ? manifest.projects : [];
-      return projects.filter(
+      const validProjects = projects.filter(
         (project) =>
           project &&
           typeof project.slug === 'string' &&
           typeof project.title === 'string' &&
           Array.isArray(project.images)
       );
+      // NOTE: Sykkel/Bike is intentionally disabled in frontend views without removing source data.
+      const enabledProjects = validProjects.filter((project) => project.slug !== 'bike');
+      return enabledProjects.sort((a, b) => {
+        const aRank = orderRank.has(a.slug) ? orderRank.get(a.slug) : Number.MAX_SAFE_INTEGER;
+        const bRank = orderRank.has(b.slug) ? orderRank.get(b.slug) : Number.MAX_SAFE_INTEGER;
+        if (aRank !== bRank) return aRank - bRank;
+        return a.title.localeCompare(b.title);
+      });
     };
 
     const fromGlobal = normalizeProjects(window.__PROJECTS_MANIFEST);
