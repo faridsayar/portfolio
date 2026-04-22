@@ -42,23 +42,36 @@
   </head>
   <body class="single-page-body">
     <!-- NOTE: Prosjektside (delt hero-mal): fullbreddet bilde, brødsmulesti, miniatyrer og bildetekst per bilde. -->
-    <nav class="side-nav" aria-label="Navigasjon">
-      <a class="side-nav__link" href="index.html">Hjem</a>
-      <a class="side-nav__link" href="oss.html">Oss</a>
-      <a class="side-nav__link" href="advanced-project.html" aria-current="page">Prosjekter</a>
-      <a class="side-nav__link" href="innsikt.html">Innsikt</a>
-      <a class="side-nav__link" href="bli-med.html">Bli med</a>
+    <nav class="side-nav" aria-label="Navigasjon" data-mobile-nav>
+      <button
+        class="side-nav__toggle"
+        type="button"
+        aria-label="Utvid meny"
+        aria-expanded="false"
+        aria-controls="side-nav-content"
+        data-mobile-nav-toggle
+      >
+        <img class="side-nav__toggle-icon" src="triangle.svg" alt="" aria-hidden="true" />
+      </button>
 
-      <div class="side-nav__divider" aria-hidden="true"></div>
+      <div class="side-nav__content" id="side-nav-content" data-mobile-nav-content>
+        <a class="side-nav__link" href="index.html">Hjem</a>
+        <a class="side-nav__link" href="oss.html">Oss</a>
+        <a class="side-nav__link" href="advanced-project.html" aria-current="page">Prosjekter</a>
+        <a class="side-nav__link" href="innsikt.html">Innsikt</a>
+        <a class="side-nav__link" href="bli-med.html">Bli med</a>
 
-      <label class="lang-switch" for="lang-switch">
-        <span class="lang-switch__label">NO</span>
-        <input class="lang-switch__input" type="checkbox" id="lang-switch" />
-        <span class="lang-switch__track" aria-hidden="true">
-          <span class="lang-switch__thumb" aria-hidden="true"></span>
-        </span>
-        <span class="lang-switch__label">EN</span>
-      </label>
+        <div class="side-nav__divider" aria-hidden="true"></div>
+
+        <label class="lang-switch" for="lang-switch">
+          <span class="lang-switch__label">NO</span>
+          <input class="lang-switch__input" type="checkbox" id="lang-switch" />
+          <span class="lang-switch__track" aria-hidden="true">
+            <span class="lang-switch__thumb" aria-hidden="true"></span>
+          </span>
+          <span class="lang-switch__label">EN</span>
+        </label>
+      </div>
     </nav>
 
     <main data-project-page>
@@ -97,10 +110,6 @@
               <p class="project-hero-stage__lead" data-project-lead>
                 Klargjøring for prototype og produksjon — industridesign rettet mot tørke og
                 bærekraftige løsninger.
-              </p>
-              <p class="project-hero-caption" data-project-image-caption>
-                Første leveranse: visuell retning og materiell lesning for feltbruk i tørre
-                omgivelser.
               </p>
             </div>
             <!-- NOTE: Thumbnail rail pager: desktop uses up/down controls, mobile uses left/right controls. -->
@@ -202,6 +211,41 @@
         </div>
       </section>
 
+      <nav class="project-page-nav" aria-label="Forrige og neste prosjekt">
+        <a
+          class="project-page-nav__link project-page-nav__link--prev"
+          href="advanced-project.html?project=rafaels"
+          aria-label="Forrige prosjekt"
+          data-project-nav-prev
+        >
+          <img
+            class="project-page-nav__icon"
+            src="triangle.svg"
+            alt=""
+            width="30"
+            height="26"
+            aria-hidden="true"
+          />
+          <span class="project-page-nav__label" aria-hidden="true">forrige</span>
+        </a>
+        <a
+          class="project-page-nav__link project-page-nav__link--next"
+          href="advanced-project.html?project=h2o"
+          aria-label="Neste prosjekt"
+          data-project-nav-next
+        >
+          <span class="project-page-nav__label" aria-hidden="true">neste</span>
+          <img
+            class="project-page-nav__icon"
+            src="triangle.svg"
+            alt=""
+            width="30"
+            height="26"
+            aria-hidden="true"
+          />
+        </a>
+      </nav>
+
       <section class="section section--white section--project-cta" aria-label="Neste steg">
         <div class="section-inner">
           <h2 class="section-title">Har du et prosjekt du vil realisere?</h2>
@@ -212,41 +256,6 @@
         </div>
       </section>
     </main>
-
-    <nav class="project-page-nav" aria-label="Forrige og neste prosjekt">
-      <a
-        class="project-page-nav__link project-page-nav__link--prev"
-        href="advanced-project.html?project=rafaels"
-        aria-label="Forrige prosjekt"
-        data-project-nav-prev
-      >
-        <img
-          class="project-page-nav__icon"
-          src="triangle.svg"
-          alt=""
-          width="30"
-          height="26"
-          aria-hidden="true"
-        />
-        <span class="project-page-nav__label" aria-hidden="true">forrige</span>
-      </a>
-      <a
-        class="project-page-nav__link project-page-nav__link--next"
-        href="advanced-project.html?project=h2o"
-        aria-label="Neste prosjekt"
-        data-project-nav-next
-      >
-        <span class="project-page-nav__label" aria-hidden="true">neste</span>
-        <img
-          class="project-page-nav__icon"
-          src="triangle.svg"
-          alt=""
-          width="30"
-          height="26"
-          aria-hidden="true"
-        />
-      </a>
-    </nav>
 
     <footer class="site-footer" aria-label="Bunntekst">
       <div class="site-footer__inner">

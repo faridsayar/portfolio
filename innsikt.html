@@ -44,24 +44,37 @@
   </head>
   <body class="single-page-body">
     <!-- NOTE: Blog-style insights page with article cards and preview text. -->
-    <nav class="side-nav" aria-label="Navigasjon">
-      <a class="side-nav__link" href="index.html">Hjem</a>
-      <a class="side-nav__link" href="oss.html">Oss</a>
-      <a class="side-nav__link" href="advanced-project.html">Prosjekter</a>
-      <a class="side-nav__link" href="innsikt.html" aria-current="page">Innsikt</a>
-      <a class="side-nav__link" href="bli-med.html">Bli med</a>
+    <nav class="side-nav" aria-label="Navigasjon" data-mobile-nav>
+      <button
+        class="side-nav__toggle"
+        type="button"
+        aria-label="Utvid meny"
+        aria-expanded="false"
+        aria-controls="side-nav-content"
+        data-mobile-nav-toggle
+      >
+        <img class="side-nav__toggle-icon" src="triangle.svg" alt="" aria-hidden="true" />
+      </button>
 
-      <div class="side-nav__divider" aria-hidden="true"></div>
+      <div class="side-nav__content" id="side-nav-content" data-mobile-nav-content>
+        <a class="side-nav__link" href="index.html">Hjem</a>
+        <a class="side-nav__link" href="oss.html">Oss</a>
+        <a class="side-nav__link" href="advanced-project.html">Prosjekter</a>
+        <a class="side-nav__link" href="innsikt.html" aria-current="page">Innsikt</a>
+        <a class="side-nav__link" href="bli-med.html">Bli med</a>
 
-      <!-- NOTE: Language switch UI only (no functionality yet). -->
-      <label class="lang-switch" for="lang-switch">
-        <span class="lang-switch__label">NO</span>
-        <input class="lang-switch__input" type="checkbox" id="lang-switch" />
-        <span class="lang-switch__track" aria-hidden="true">
-          <span class="lang-switch__thumb" aria-hidden="true"></span>
-        </span>
-        <span class="lang-switch__label">EN</span>
-      </label>
+        <div class="side-nav__divider" aria-hidden="true"></div>
+
+        <!-- NOTE: Language switch UI only (no functionality yet). -->
+        <label class="lang-switch" for="lang-switch">
+          <span class="lang-switch__label">NO</span>
+          <input class="lang-switch__input" type="checkbox" id="lang-switch" />
+          <span class="lang-switch__track" aria-hidden="true">
+            <span class="lang-switch__thumb" aria-hidden="true"></span>
+          </span>
+          <span class="lang-switch__label">EN</span>
+        </label>
+      </div>
     </nav>
 
     <main>

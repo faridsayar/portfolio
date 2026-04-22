@@ -82,6 +82,7 @@
   display: block;
   width: 18px;
   height: 18px;
+  margin-top: 10px;
 }
 
 .side-nav__link {
@@ -758,6 +759,7 @@ section[aria-label='Oss'] .section-inner {
 .timeline-track-wrap {
   position: relative;
   padding-top: 2.75rem;
+  margin-bottom: 1.5rem;
 }
 
 .timeline-track {
@@ -912,13 +914,80 @@ section[aria-label='Oss'] .section-inner {
 }
 
 @media (max-width: 768px) {
+  .timeline-anchors {
+    display: none;
+  }
+
+  .timeline-track-wrap {
+    position: relative;
+    display: block;
+    min-height: 15rem;
+    padding-top: 0;
+    margin-top: 0;
+    margin-bottom: 1.25rem;
+  }
+
+  .timeline-track {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2.25rem;
+    height: auto;
+  }
+
+  .timeline-segments {
+    flex-direction: column-reverse;
+  }
+
+  .timeline-handles {
+    position: absolute;
+    left: 0;
+    right: auto;
+    width: 2.25rem;
+    top: 0;
+    bottom: 0;
+    height: auto;
+  }
+
   .timeline-handle {
     width: 22px;
     height: 22px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    cursor: ns-resize;
+  }
+
+  .timeline-labels {
+    position: absolute;
+    left: calc(2.25rem + 0.75rem);
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: auto;
+    pointer-events: none;
+  }
+
+  .timeline-handle-label {
+    position: absolute;
+    left: 0;
+    transform: translateY(-50%);
+    font-size: 0.8rem;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    border-radius: 0;
+    white-space: normal;
+    text-align: left;
   }
 
   .timeline-summary__grid {
-    grid-template-columns: 1fr;
+    display: none;
+  }
+
+  .timeline-summary-item__name {
+    display: none;
   }
 }
 
@@ -1231,21 +1300,11 @@ section[aria-label='Oss'] .section-inner {
 }
 
 .project-hero-stage__lead {
-  margin: 0;
+  margin: 0 0 1rem 0;
   max-width: 48rem;
   font-size: 1rem;
   line-height: 1.6;
   opacity: 0.9;
-  text-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
-}
-
-/* NOTE: Swap caption — same overlay treatment as hero subtitle block. */
-.project-hero-caption {
-  margin: 1.25rem 0 0 0;
-  max-width: 48rem;
-  font-size: 1rem;
-  line-height: 1.75;
-  opacity: 0.92;
   text-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
 }
 
@@ -1290,6 +1349,7 @@ section[aria-label='Oss'] .section-inner {
   top: 50%;
   left: max(1.25rem, calc((var(--project-hero-text-start) - var(--project-hero-thumb-w)) / 2));
   transform: translateY(-50%);
+  z-index: 3;
   width: var(--project-hero-thumb-w);
   display: grid;
   grid-template-rows: auto 1fr auto;
@@ -1355,6 +1415,58 @@ section[aria-label='Oss'] .section-inner {
 /* NOTE: Prev/next links: fixed overlay, triangle icons (`triangle.svg`), vertical anchor 90% (hero stage sync in script.js); desktop only. */
 .project-page-nav {
   display: none;
+}
+
+@media (max-width: 1023px) {
+  .project-hero-gallery {
+    margin-bottom: 0.75rem;
+  }
+
+  .project-page-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 0.35rem 1.25rem 1.5rem;
+  }
+
+  .project-page-nav__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.2rem 0;
+    background: none;
+    border: none;
+    color: var(--color-dark);
+    text-decoration: none;
+    opacity: 0.75;
+  }
+
+  .project-page-nav__icon {
+    display: block;
+    width: 1.11rem;
+    height: auto;
+    filter: brightness(0) saturate(100%);
+  }
+
+  .project-page-nav__link--prev .project-page-nav__icon {
+    transform: scaleX(-1);
+  }
+
+  .project-page-nav__label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    text-transform: lowercase;
+    color: var(--color-dark);
+    white-space: nowrap;
+  }
+
+  .project-page-nav__link.is-disabled {
+    opacity: 0.28;
+    pointer-events: none;
+    cursor: default;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -1597,31 +1709,34 @@ section[aria-label='Oss'] .section-inner {
   }
 
   .side-nav {
-    --mobile-toggle-size: 1.7rem;
-    right: 0;
+    --mobile-toggle-size: 2.5rem;
+    top: 1rem;
+    right: 1rem;
     padding: 0;
     border-radius: 0;
     background: transparent;
     backdrop-filter: none;
     display: flex;
-    flex-direction: row;
-    align-items: stretch;
+    flex-direction: column;
+    align-items: flex-end;
     gap: 0;
-    transform: translateY(-50%) translateX(calc(100% - var(--mobile-toggle-size)));
-    transition: transform 220ms cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .side-nav.is-open {
-    transform: translateY(-50%) translateX(0);
+    transform: none;
+    transition: none;
   }
 
   .side-nav__content {
-    display: flex;
+    display: none;
     flex-direction: column;
     gap: 0.55rem;
+    margin-top: 0.5rem;
     padding: 0.65rem;
     background: rgba(0, 0, 0, 0.35);
     backdrop-filter: blur(10px);
+    border-radius: 12px;
+  }
+
+  .side-nav.is-open .side-nav__content {
+    display: flex;
   }
 
   .side-nav__toggle {
@@ -1629,26 +1744,31 @@ section[aria-label='Oss'] .section-inner {
     align-items: center;
     justify-content: center;
     width: var(--mobile-toggle-size);
-    min-height: var(--mobile-toggle-size);
-    background: rgba(0, 0, 0, 0.35);
-    backdrop-filter: blur(10px);
+    height: var(--mobile-toggle-size);
+    background: transparent;
+    backdrop-filter: none;
+    border-radius: 0;
+    touch-action: manipulation;
   }
 
   .side-nav__toggle-icon {
     width: 13px;
     height: 13px;
-    /* NOTE: collapsed = vertical edge on right side */
-    transform: rotate(-90deg);
+    transform: rotate(0deg);
     transition: transform 220ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .side-nav.is-open .side-nav__toggle-icon {
-    /* NOTE: expanded = vertical edge on left side */
-    transform: rotate(90deg);
+    transform: rotate(180deg);
   }
 
   .projects-grid {
     grid-template-columns: 1fr;
+  }
+
+  /* NOTE: Reduce mobile bottom spacing in the "Dette gjør vi" start section. */
+  #start .section-inner {
+    padding-bottom: 2rem;
   }
 
   .projects-grid-panel {
@@ -1657,7 +1777,7 @@ section[aria-label='Oss'] .section-inner {
   }
 
   .project-hero-stage {
-    min-height: min(85vh, 40rem);
+    min-height: min(94vh, 46rem);
   }
 
   .project-hero-stage__breadcrumb {
@@ -1665,9 +1785,24 @@ section[aria-label='Oss'] .section-inner {
     right: max(1.25rem, calc((100vw - 70rem) / 2 + 1.25rem));
   }
 
+  /* NOTE: Keep me-drawing clip flush to the right edge on mobile hero shuffle. */
+  .hero-video[data-hero-video-clip='me-drawing'] {
+    object-position: 66% center;
+    transform-origin: 66% center;
+  }
+
   .project-hero-stage__content {
     padding: 4.25rem 1.25rem 1.25rem;
     padding-bottom: 5.75rem;
+  }
+
+  .project-hero-stage__title {
+    font-size: clamp(1.55rem, 6.2vw, 2rem);
+  }
+
+  .project-hero-stage__lead {
+    font-size: 0.9rem;
+    line-height: 1.5;
   }
 
   /* NOTE: Mobile thumb rail moves to bottom and uses side arrows with a 3-thumb row. */
@@ -1692,12 +1827,16 @@ section[aria-label='Oss'] .section-inner {
     padding: 0.25rem;
   }
 
+  .project-thumb-rail__icon {
+    transform: rotate(90deg) !important;
+  }
+
   .project-thumb-rail__icon--prev {
     transform: rotate(90deg);
   }
 
   .project-thumb-rail__icon--next {
-    transform: rotate(-90deg);
+    transform: rotate(90deg);
   }
 
   .project-hero-stage .project-hero-stage__thumbs {
