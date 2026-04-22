@@ -274,8 +274,16 @@ class SinglePagePortfolio {
       });
     }
 
-    function pctFromPointer(clientX) {
+    function isVerticalTimeline() {
+      return window.matchMedia('(max-width: 768px)').matches;
+    }
+
+    function pctFromPointer(clientX, clientY) {
       const rect = track.getBoundingClientRect();
+      if (isVerticalTimeline()) {
+        const yFromBottom = clamp(rect.bottom - clientY, 0, rect.height);
+        return rect.height === 0 ? 0 : (yFromBottom / rect.height) * 100;
+      }
       const x = clamp(clientX - rect.left, 0, rect.width);
       return rect.width === 0 ? 0 : (x / rect.width) * 100;
     }
@@ -292,18 +300,37 @@ class SinglePagePortfolio {
     function render() {
       const percs = computePhasePercents();
       const rounded = computeRoundedPercents(percs);
+      const vertical = isVerticalTimeline();
 
       segments.forEach((seg, i) => {
+        if (vertical) {
+          seg.style.width = '100%';
+          seg.style.height = `${percs[i]}%`;
+          return;
+        }
         seg.style.width = `${percs[i]}%`;
+        seg.style.height = '100%';
       });
 
       handles.forEach((handle, i) => {
-        handle.style.left = `${boundaries[i]}%`;
+        if (vertical) {
+          handle.style.left = '50%';
+          handle.style.top = `${100 - boundaries[i]}%`;
+        } else {
+          handle.style.left = `${boundaries[i]}%`;
+          handle.style.top = '50%';
+        }
         setHandleAria(handle, i);
       });
 
       handleLabels.forEach((labelEl, i) => {
-        labelEl.style.left = `${boundaries[i]}%`;
+        if (vertical) {
+          labelEl.style.top = `${100 - boundaries[i]}%`;
+          labelEl.style.left = '';
+        } else {
+          labelEl.style.left = `${boundaries[i]}%`;
+          labelEl.style.top = '0';
+        }
         labelEl.textContent = `${phases[i]} ${rounded[i]}%`;
       });
 
@@ -346,7 +373,7 @@ class SinglePagePortfolio {
       handle.addEventListener('pointermove', (e) => {
         if (activeHandleIndex !== idx) return;
         if (pointerId !== e.pointerId) return;
-        updateBoundary(idx, pctFromPointer(e.clientX));
+        updateBoundary(idx, pctFromPointer(e.clientX, e.clientY));
       });
 
       handle.addEventListener('pointerup', (e) => {
@@ -363,11 +390,11 @@ class SinglePagePortfolio {
 
       handle.addEventListener('keydown', (e) => {
         const step = e.shiftKey ? 5 : 1;
-        if (e.key === 'ArrowLeft') {
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') {
           e.preventDefault();
           updateBoundary(idx, boundaries[idx] - step);
         }
-        if (e.key === 'ArrowRight') {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowUp') {
           e.preventDefault();
           updateBoundary(idx, boundaries[idx] + step);
         }
@@ -409,7 +436,6 @@ class SinglePagePortfolio {
     const leadEl = root.querySelector('[data-project-lead]');
     const breadcrumbCurrentEl = root.querySelector('[data-project-breadcrumb-current]');
     const mainImage = root.querySelector('[data-project-main-image]');
-    const captionEl = root.querySelector('[data-project-image-caption]');
     const thumbsContainer = root.querySelector('[data-project-thumbs]');
     // NOTE: Prev/next nav sits outside `[data-project-page]`, so query from document scope.
     const prevLink = document.querySelector('[data-project-nav-prev]');
@@ -427,7 +453,6 @@ class SinglePagePortfolio {
       mainImage.src = firstImage;
       mainImage.alt = `${current.title} bilde 1`;
     }
-    if (captionEl) captionEl.textContent = `Prosjektoversikt: ${current.title}.`;
 
     if (thumbsContainer) {
       thumbsContainer.innerHTML = detailImages
@@ -439,7 +464,6 @@ class SinglePagePortfolio {
             data-project-thumb
             data-image-src="${src}"
             data-image-alt="${current.title} bilde ${index + 1}"
-            data-image-caption="${current.title} - bilde ${index + 1}."
             aria-label="Vis bilde ${index + 1}"
           >
             <img src="${src}" alt="" aria-hidden="true" />
@@ -556,7 +580,7 @@ class SinglePagePortfolio {
     sentinel.style.display = 'none';
   }
 
-  // NOTE: Reusable project galleries swap main image from local thumbnail rails; optional data-image-caption updates [data-project-image-caption] in the same gallery.
+  // NOTE: Reusable project galleries swap main image from local thumbnail rails.
   setupProjectTemplateGalleries() {
     const galleries = Array.from(document.querySelectorAll('[data-project-gallery]'));
     if (galleries.length === 0) return;
@@ -564,7 +588,6 @@ class SinglePagePortfolio {
     galleries.forEach((gallery) => {
       const mainImage = gallery.querySelector('[data-project-main-image]');
       const thumbs = Array.from(gallery.querySelectorAll('[data-project-thumb]'));
-      const captionEl = gallery.querySelector('[data-project-image-caption]');
       if (!mainImage || thumbs.length === 0) return;
 
       function setActiveThumb(activeThumb) {
@@ -573,11 +596,6 @@ class SinglePagePortfolio {
           thumb.classList.toggle('is-active', isActive);
           thumb.setAttribute('aria-pressed', isActive ? 'true' : 'false');
         });
-      }
-
-      function applyCaptionFromThumb(thumb) {
-        if (!captionEl || thumb.dataset.imageCaption === undefined) return;
-        captionEl.textContent = thumb.dataset.imageCaption;
       }
 
       thumbs.forEach((thumb, index) => {
@@ -592,12 +610,8 @@ class SinglePagePortfolio {
           mainImage.src = nextSrc;
           mainImage.alt = nextAlt;
           setActiveThumb(thumb);
-          applyCaptionFromThumb(thumb);
         });
       });
-
-      const initialThumb = thumbs.find((t) => t.classList.contains('is-active')) || thumbs[0];
-      applyCaptionFromThumb(initialThumb);
     });
   }
 
