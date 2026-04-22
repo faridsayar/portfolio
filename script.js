@@ -8,9 +8,28 @@ class SinglePagePortfolio {
     this.projectCatalogPromise = null;
     this.setupMobileSideNavToggle();
     this.setupHeroVideoShuffle();
+    this.setupGlobalImageFallback();
     this.setupTimeline();
     this.setupProjectPageNavVerticalAlign();
     this.initializeProjectViews();
+  }
+
+  // NOTE: Global fallback for failed <img> loads; replaces broken images with a plain black rectangle.
+  setupGlobalImageFallback() {
+    const blackFallbackSvg =
+      "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3Crect width='16' height='9' fill='black'/%3E%3C/svg%3E";
+
+    document.addEventListener(
+      'error',
+      (event) => {
+        const target = event.target;
+        if (!(target instanceof HTMLImageElement)) return;
+        if (target.dataset.fallbackApplied === 'true') return;
+        target.dataset.fallbackApplied = 'true';
+        target.src = blackFallbackSvg;
+      },
+      true
+    );
   }
 
   // NOTE: Load generated folder manifest so project image lists stay automatic.
@@ -75,6 +94,7 @@ class SinglePagePortfolio {
     const nav = document.querySelector('[data-mobile-nav]');
     const toggle = document.querySelector('[data-mobile-nav-toggle]');
     if (!nav || !toggle) return;
+    if (nav.dataset.sharedNavHandled === 'true') return;
 
     const closeMenu = () => {
       nav.classList.remove('is-open');
