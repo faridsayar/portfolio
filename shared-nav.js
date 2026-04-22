@@ -1,5 +1,5 @@
 // NOTE: Shared navigation component rendered on every page.
-(function renderSharedNav() {
+function renderSharedNav() {
   const navRoots = Array.from(document.querySelectorAll('nav.side-nav[data-mobile-nav]'));
   if (navRoots.length === 0) return;
 
@@ -77,4 +77,7 @@
       if (event.key === 'Escape') closeMenu();
     });
   });
-})();
+}
+
+renderSharedNav();
+document.addEventListener('components:ready', renderSharedNav);

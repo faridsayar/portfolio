@@ -15,25 +15,7 @@
     <link rel="stylesheet" href="styles.css?v=4" />
   </head>
   <body class="single-page-body">
-    <nav class="side-nav" aria-label="Navigasjon" data-mobile-nav>
-      <button
-        class="side-nav__toggle"
-        type="button"
-        aria-label="Utvid meny"
-        aria-expanded="false"
-        aria-controls="side-nav-content"
-        data-mobile-nav-toggle
-      >
-        <img class="side-nav__toggle-icon" src="triangle.svg" alt="" aria-hidden="true" />
-      </button>
-      <div class="side-nav__content" id="side-nav-content" data-mobile-nav-content>
-        <a class="side-nav__link" href="index.html">Hjem</a
-        ><a class="side-nav__link" href="oss.html">Oss</a
-        ><a class="side-nav__link" href="advanced-project.html">Prosjekter</a
-        ><a class="side-nav__link" href="innsikt.html" aria-current="page">Innsikt</a
-        ><a class="side-nav__link" href="bli-med.html">Bli med</a>
-      </div>
-    </nav>
+    <div data-component="side-nav"></div>
     <main>
       <article class="section section--white section--article-template" aria-label="Artikkel">
         <div class="section-inner">
@@ -91,6 +73,7 @@
         </div>
       </article>
     </main>
+    <script src="components-loader.js?v=1"></script>
     <script src="shared-nav.js?v=1"></script>
   </body>
 </html>

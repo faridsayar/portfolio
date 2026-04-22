@@ -41,38 +41,8 @@
     <link rel="stylesheet" href="styles.css?v=4" />
   </head>
   <body class="single-page-body">
-    <!-- NOTE: Prosjektside (delt hero-mal): fullbreddet bilde, brødsmulesti, miniatyrer og bildetekst per bilde. -->
-    <nav class="side-nav" aria-label="Navigasjon" data-mobile-nav>
-      <button
-        class="side-nav__toggle"
-        type="button"
-        aria-label="Utvid meny"
-        aria-expanded="false"
-        aria-controls="side-nav-content"
-        data-mobile-nav-toggle
-      >
-        <img class="side-nav__toggle-icon" src="triangle.svg" alt="" aria-hidden="true" />
-      </button>
-
-      <div class="side-nav__content" id="side-nav-content" data-mobile-nav-content>
-        <a class="side-nav__link" href="index.html">Hjem</a>
-        <a class="side-nav__link" href="oss.html">Oss</a>
-        <a class="side-nav__link" href="advanced-project.html" aria-current="page">Prosjekter</a>
-        <a class="side-nav__link" href="innsikt.html">Innsikt</a>
-        <a class="side-nav__link" href="bli-med.html">Bli med</a>
-
-        <div class="side-nav__divider" aria-hidden="true"></div>
-
-        <label class="lang-switch" for="lang-switch">
-          <span class="lang-switch__label">NO</span>
-          <input class="lang-switch__input" type="checkbox" id="lang-switch" />
-          <span class="lang-switch__track" aria-hidden="true">
-            <span class="lang-switch__thumb" aria-hidden="true"></span>
-          </span>
-          <span class="lang-switch__label">EN</span>
-        </label>
-      </div>
-    </nav>
+    <!-- NOTE: Shared navigation component slot. -->
+    <div data-component="side-nav"></div>
 
     <main data-project-page>
       <section
@@ -266,6 +236,7 @@
     </footer>
 
     <script src="assets/data/projects-manifest.js?v=1"></script>
+    <script src="components-loader.js?v=1"></script>
     <script src="shared-nav.js?v=1"></script>
     <script src="script.js?v=5"></script>
   </body>
