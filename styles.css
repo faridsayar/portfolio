@@ -1858,6 +1858,16 @@ section[aria-label='Oss'] .section-inner {
   .hero-content {
     padding-top: 5rem;
   }
+
+  .hero-title {
+    font-size: clamp(1.75rem, 8vw, 2.35rem);
+    line-height: 1.1;
+  }
+
+  .hero-subtitle {
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
 }
 
 @media (min-width: 768px) {
