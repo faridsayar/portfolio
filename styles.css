@@ -408,6 +408,13 @@
   transform: translateX(-50%);
 }
 
+/* NOTE: Article template hero image follows content width (no full-bleed). */
+.section--article-template .about-top-graphic {
+  width: 100%;
+  left: auto;
+  transform: none;
+}
+
 .about-top-graphic__img {
   display: block;
   width: 100%;
@@ -599,6 +606,7 @@ section[aria-label='Oss'] .section-inner {
 /* Article template (alternating text/image rows) */
 .section--article-template .section-inner {
   max-width: 70rem;
+  padding-top: 0;
 }
 
 .article-row {
