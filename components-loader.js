@@ -8,14 +8,15 @@
     <div class="section-inner" data-article-layout>
       <figure class="about-top-graphic">
         <img class="about-top-graphic__img" src="assets/images/USV.png" alt="" data-article-hero-image />
-        <div class="about-top-graphic__overlay" aria-hidden="true"></div>
-        <nav class="breadcrumb about-top-graphic__breadcrumb" aria-label="Brødsmulesti">
-          <a class="breadcrumb__link" href="index.html">Formaa</a>
-          <span class="breadcrumb__sep" aria-hidden="true">/</span>
-          <a class="breadcrumb__link" href="innsikt.html">Innsikt</a>
-          <span class="breadcrumb__sep" aria-hidden="true">/</span>
-          <a class="breadcrumb__link" href="#" aria-current="page" data-article-breadcrumb-current>Artikkel</a>
-        </nav>
+        <div class="about-top-graphic__overlay" aria-hidden="true">
+          <nav class="breadcrumb about-top-graphic__breadcrumb" aria-label="Brødsmulesti">
+            <a class="breadcrumb__link" href="index.html">Formaa</a>
+            <span class="breadcrumb__sep" aria-hidden="true">/</span>
+            <a class="breadcrumb__link" href="innsikt.html">Innsikt</a>
+            <span class="breadcrumb__sep" aria-hidden="true">/</span>
+            <a class="breadcrumb__link" href="#" aria-current="page" data-article-breadcrumb-current>Artikkel</a>
+          </nav>
+        </div>
       </figure>
       <p class="section-kicker">Innsikt</p>
       <h1 class="section-title" data-article-title>Artikkel</h1>
