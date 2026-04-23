@@ -1,11 +1,10 @@
 window.__PROJECTS_MANIFEST = {
-  "generatedAt": "2026-04-21T15:03:55.003Z",
+  "generatedAt": "2026-04-23T13:19:08.322Z",
   "projects": [
     {
       "slug": "undo",
       "title": "Project: Undo desertification",
-      "desc": "Klargjoring for prototype og produksjon",
-      "lead": "Klargjoring for prototype og produksjon - industridesign rettet mot torke og baerekraftige losninger.",
+      "desc": "Produkt design konsept for å stoppe vekst av ørken og hjelpe planter og overleve i tørre omgivelser.",
       "folder": "Undo",
       "thumbnail": "assets/images/Projects/Undo/2.jpg",
       "images": [
@@ -23,8 +22,7 @@ window.__PROJECTS_MANIFEST = {
     {
       "slug": "h2o",
       "title": "H2O: Bottle with mechanical pedometer",
-      "desc": "Utstilling av 3D-modellering",
-      "lead": "Visualisering, iterasjon og detaljarbeid for en tydelig produkthistorie.",
+      "desc": "Vannflaske med mekanisk pedometer for bevegelsesdata",
       "folder": "H2O",
       "thumbnail": "assets/images/Projects/H2O/h2o (15).jpg",
       "images": [
@@ -51,8 +49,7 @@ window.__PROJECTS_MANIFEST = {
     {
       "slug": "monocopter",
       "title": "Monocopter",
-      "desc": "Modular search and rescue drone for high and efficient area coverage",
-      "lead": "Fra konsept og materialvalg til visuelle scener for validering.",
+      "desc": "Modulær søkningsdrone for effektiv område dekning",
       "folder": "Monocopter",
       "thumbnail": "assets/images/Projects/Monocopter/Monocopter (7).jpg",
       "images": [
@@ -76,8 +73,7 @@ window.__PROJECTS_MANIFEST = {
     {
       "slug": "proton",
       "title": "Proton Headphones",
-      "desc": "Industridesign-konsept",
-      "lead": "Konseptretning med tydelig formsprak og produksjonsnaer detaljering.",
+      "desc": "Urban Hodetelefoner med robust og solid visuell form",
       "folder": "Proton",
       "thumbnail": "assets/images/Projects/Proton/14.png",
       "images": [
@@ -104,8 +100,7 @@ window.__PROJECTS_MANIFEST = {
     {
       "slug": "eco-mate-closet",
       "title": "Søppelsortering skap",
-      "desc": "Skap for kildesortering av søppel hjemme",
-      "lead": "Systemtenkning for organisering, brukervennlighet og produksjon.",
+      "desc": "Moderne og minimalistisk skap for kildesortering av søppel hjemme",
       "folder": "Eco-mate-closet",
       "thumbnail": "assets/images/Projects/Eco-mate-closet/4.jpg",
       "images": [
@@ -129,8 +124,7 @@ window.__PROJECTS_MANIFEST = {
     {
       "slug": "bike",
       "title": "Terreng sykkel",
-      "desc": "Produktvisualisering",
-      "lead": "Detaljstudier av komponenter, helhet og brukeropplevelse.",
+      "desc": "Detaljstudier av komponenter, helhet og brukeropplevelse.",
       "folder": "Bike",
       "thumbnail": "assets/images/Projects/Bike/bike2.jpg",
       "images": [
@@ -147,8 +141,7 @@ window.__PROJECTS_MANIFEST = {
     {
       "slug": "nomos",
       "title": "Nomos: Musikkband branding",
-      "desc": "Designsystem og assets",
-      "lead": "Visuell retning og praktiske leveranser pa tvers av kontaktflater.",
+      "desc": "Visuell identitet og praktiske leveranse for musikkbands utstilling og salg",
       "folder": "Nomos",
       "thumbnail": "assets/images/Projects/Nomos/concert-poster.jpg",
       "images": [
@@ -165,8 +158,7 @@ window.__PROJECTS_MANIFEST = {
     {
       "slug": "nordic",
       "title": "Nordic: Norsk restaurant branding",
-      "desc": "Brand og packaging",
-      "lead": "Helhetlig uttrykk fra emballasje til salgsflater.",
+      "desc": "Brand identitet og visuell uttrykk for nordisk restaurant",
       "folder": "Nørdic",
       "thumbnail": "assets/images/Projects/Nørdic/nordic2.jpg",
       "images": [
@@ -184,8 +176,7 @@ window.__PROJECTS_MANIFEST = {
     {
       "slug": "rafaels",
       "title": "Rafaels: Ren melk",
-      "desc": "Visuell identitet",
-      "lead": "Logo, typografi og anvendelser bygget som et konsistent system.",
+      "desc": "Helhetlig brand og visuell uttrykk fra emballasje til salgsflater for melkeprodusent.",
       "folder": "Rafaels",
       "thumbnail": "assets/images/Projects/Rafaels/rafaels-bottle.jpg",
       "images": [

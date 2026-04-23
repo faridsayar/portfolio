@@ -462,7 +462,7 @@ class SinglePagePortfolio {
     const nextLink = document.querySelector('[data-project-nav-next]');
 
     if (titleEl) titleEl.textContent = current.title;
-    if (leadEl) leadEl.textContent = current.lead;
+    if (leadEl) leadEl.textContent = current.desc;
     if (breadcrumbCurrentEl) breadcrumbCurrentEl.textContent = current.title;
     document.title = `${current.title} | Industridesign og produktdesign`;
 

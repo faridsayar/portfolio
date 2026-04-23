@@ -73,7 +73,6 @@ async function main() {
       slug: project.slug,
       title: project.title,
       desc: project.desc,
-      lead: project.lead,
       folder: project.folder,
       thumbnail,
       images,
