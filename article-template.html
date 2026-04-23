@@ -3,21 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Artikkel | Innsikt</title>
+    <title>Innsikt: Industridesign forklart enkelt | Formaa</title>
     <meta
       name="description"
-      content="Artikkelmal for innsiktssiden: nyheter, guider og refleksjoner om industridesign og produktdesign."
+      content="En enkel guide til industridesign: hva det er, hvorfor det er viktig, hvordan prosessen ser ut, og hvorfor design lønner seg over tid."
     />
     <meta
       name="keywords"
-      content="artikkel, innsikt, guide, industridesign, produktdesign, produktutvikling, Norge"
+      content="industridesign, produktutvikling, designprosess, crowdfunding, design thinking, fysisk produkt, Norge"
     />
     <meta name="author" content="Formaa" />
 
-    <meta property="og:title" content="Artikkel | Innsikt" />
+    <meta property="og:title" content="Innsikt: Industridesign forklart enkelt | Formaa" />
     <meta
       property="og:description"
-      content="Artikkelmal for innsiktssiden: nyheter, guider og refleksjoner om industridesign og produktdesign."
+      content="En enkel guide til industridesign: hva det er, hvorfor det er viktig, hvordan prosessen ser ut, og hvorfor design lønner seg over tid."
     />
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://formaa.no/article-template.html" />
@@ -26,10 +26,10 @@
     <meta property="og:image:height" content="1080" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Artikkel | Innsikt" />
+    <meta name="twitter:title" content="Innsikt: Industridesign forklart enkelt | Formaa" />
     <meta
       name="twitter:description"
-      content="Artikkelmal for innsiktssiden: nyheter, guider og refleksjoner om industridesign og produktdesign."
+      content="En enkel guide til industridesign: hva det er, hvorfor det er viktig, hvordan prosessen ser ut, og hvorfor design lønner seg over tid."
     />
     <meta name="twitter:image" content="https://formaa.no/assets/images/social-sharing.jpg" />
 
@@ -42,126 +42,22 @@
     <link rel="stylesheet" href="styles.css?v=4" />
   </head>
   <body class="single-page-body">
-    <!-- NOTE: Shared page navigation. -->
-    <nav class="side-nav" aria-label="Navigasjon" data-mobile-nav>
-      <button
-        class="side-nav__toggle"
-        type="button"
-        aria-label="Utvid meny"
-        aria-expanded="false"
-        aria-controls="side-nav-content"
-        data-mobile-nav-toggle
-      >
-        <img class="side-nav__toggle-icon" src="triangle.svg" alt="" aria-hidden="true" />
-      </button>
+    <!-- NOTE: Shared page navigation component slot. -->
+    <div data-component="side-nav"></div>
 
-      <div class="side-nav__content" id="side-nav-content" data-mobile-nav-content>
-        <a class="side-nav__link" href="index.html">Hjem</a>
-        <a class="side-nav__link" href="oss.html">Oss</a>
-        <a class="side-nav__link" href="advanced-project.html">Prosjekter</a>
-        <a class="side-nav__link" href="innsikt.html" aria-current="page">Innsikt</a>
-        <a class="side-nav__link" href="bli-med.html">Bli med</a>
-
-        <div class="side-nav__divider" aria-hidden="true"></div>
-
-        <label class="lang-switch" for="lang-switch">
-          <span class="lang-switch__label">NO</span>
-          <input class="lang-switch__input" type="checkbox" id="lang-switch" />
-          <span class="lang-switch__track" aria-hidden="true">
-            <span class="lang-switch__thumb" aria-hidden="true"></span>
-          </span>
-          <span class="lang-switch__label">EN</span>
-        </label>
-      </div>
-    </nav>
-
-    <main>
-      <article class="section section--white section--article-template" aria-label="Artikkel">
-        <div class="section-inner">
-          <!-- NOTE: Breadcrumb component for quick page hierarchy navigation. -->
-          <nav class="breadcrumb" aria-label="Brødsmulesti">
-            <a class="breadcrumb__link" href="index.html">Formaa</a>
-            <span class="breadcrumb__sep" aria-hidden="true">/</span>
-            <a class="breadcrumb__link" href="innsikt.html">Innsikt</a>
-            <span class="breadcrumb__sep" aria-hidden="true">/</span>
-            <a class="breadcrumb__link" href="article-template.html" aria-current="page"
-              >Article 1</a
-            >
-          </nav>
-
-          <p class="section-kicker">Innsikt</p>
-          <h1 class="section-title">Slik går du fra idé til produksjonsklart produkt</h1>
-          <p class="section-lead">
-            Eksempeltekst for artikkelintro. Her kan du beskrive temaet kort, hva leseren lærer og
-            hvorfor dette er relevant for gründere, små bedrifter og produktteam.
-          </p>
-
-          <!-- NOTE: Alternating article rows keep text readable and visuals contextual. -->
-          <section class="article-row article-row--text-left">
-            <div class="article-row__text">
-              <h2 class="article-row__title">1. Start med behov, ikke med løsning</h2>
-              <p>
-                Før du designer detaljer, må du forstå problemet brukeren faktisk har. En tydelig
-                problemdefinisjon reduserer feilgrep og gjør prosjektet mer treffsikkert.
-              </p>
-              <p>
-                Bruk intervjuer, observasjon og enkle tester for å validere antakelser tidlig. Små
-                avklaringer i denne fasen sparer ofte store kostnader senere.
-              </p>
-            </div>
-            <figure class="article-row__media">
-              <img src="assets/images/USV.png" alt="Eksempelbilde for problemkartlegging" />
-            </figure>
-          </section>
-
-          <section class="article-row article-row--text-right">
-            <div class="article-row__text">
-              <h2 class="article-row__title">2. Test konsept raskt med enkle prototyper</h2>
-              <p>
-                Prototyper trenger ikke være perfekte for å gi verdi. Enkle modeller kan bekrefte
-                bruksmønster, funksjon og prioriteringer før dere går dypere i utvikling.
-              </p>
-              <p>
-                Hold testløpene korte, målrettede og hyppige. Målet er læring per uke, ikke polering
-                per uke.
-              </p>
-            </div>
-            <figure class="article-row__media">
-              <img src="assets/images/H2O.jpg" alt="Eksempelbilde for prototyping og testing" />
-            </figure>
-          </section>
-
-          <section class="article-row article-row--text-left">
-            <div class="article-row__text">
-              <h2 class="article-row__title">3. Planlegg for produksjon tidlig</h2>
-              <p>
-                Produksjonsvalg påvirker form, materialbruk, toleranser og kostnadsnivå. Jo
-                tidligere dette tas inn i designprosessen, desto enklere blir overgangen til
-                leveranse.
-              </p>
-              <p>
-                Samarbeid tett med produksjonspartnere og bruk iterasjoner aktivt for å redusere
-                risiko før sluttgodkjenning.
-              </p>
-            </div>
-            <figure class="article-row__media">
-              <img src="assets/images/itac.jpg" alt="Eksempelbilde for produksjonsforberedelse" />
-            </figure>
-          </section>
-        </div>
-      </article>
-
-      <!-- NOTE: End-of-article CTA to drive inquiry conversion. -->
-      <section class="section section--white section--project-cta" aria-label="Neste steg">
-        <div class="section-inner">
-          <h2 class="section-title">Trenger du produkt utviklet?</h2>
-          <p class="section-lead">
-            Send en kort forespørsel, så vurderer vi muligheter, tidslinje og neste praktiske steg.
-          </p>
-          <a class="inquiry-cta" href="index.html#application-form">Gå til forespørselsskjema</a>
-        </div>
-      </section>
-    </main>
+    <div data-component="article-layout"></div>
+    <script id="article-content" type="application/json">
+      {
+        "title": "Innsikt",
+        "heroAlt": "Innsikt artikkel",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "Velg en artikkel fra Innsikt-siden for å lese fullt innhold."
+          }
+        ]
+      }
+    </script>
 
     <footer class="site-footer" aria-label="Bunntekst">
       <div class="site-footer__inner">
@@ -170,5 +66,9 @@
         </p>
       </div>
     </footer>
+    <script src="components-loader.js?v=1"></script>
+    <script src="shared-nav.js?v=1"></script>
+    <script src="article-image-map.js?v=1"></script>
+    <script src="shared-article.js?v=1"></script>
   </body>
 </html>

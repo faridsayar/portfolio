@@ -49,39 +49,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body class="single-page-body">
-    <!-- NOTE: Empty page placeholder. Content will be added later. -->
-    <nav class="side-nav" aria-label="Navigasjon" data-mobile-nav>
-      <button
-        class="side-nav__toggle"
-        type="button"
-        aria-label="Utvid meny"
-        aria-expanded="false"
-        aria-controls="side-nav-content"
-        data-mobile-nav-toggle
-      >
-        <img class="side-nav__toggle-icon" src="triangle.svg" alt="" aria-hidden="true" />
-      </button>
-
-      <div class="side-nav__content" id="side-nav-content" data-mobile-nav-content>
-        <a class="side-nav__link" href="index.html">Hjem</a>
-        <a class="side-nav__link" href="oss.html" aria-current="page">Oss</a>
-        <a class="side-nav__link" href="advanced-project.html">Prosjekter</a>
-        <a class="side-nav__link" href="innsikt.html">Innsikt</a>
-        <a class="side-nav__link" href="bli-med.html">Bli med</a>
-
-        <div class="side-nav__divider" aria-hidden="true"></div>
-
-        <!-- NOTE: Language switch UI only (no functionality yet). -->
-        <label class="lang-switch" for="lang-switch">
-          <span class="lang-switch__label">NO</span>
-          <input class="lang-switch__input" type="checkbox" id="lang-switch" />
-          <span class="lang-switch__track" aria-hidden="true">
-            <span class="lang-switch__thumb" aria-hidden="true"></span>
-          </span>
-          <span class="lang-switch__label">EN</span>
-        </label>
-      </div>
-    </nav>
+    <!-- NOTE: Shared navigation component slot. -->
+    <div data-component="side-nav"></div>
 
     <main>
       <section class="section section--white" aria-label="Oss">
@@ -245,5 +214,7 @@
         </p>
       </div>
     </footer>
+    <script src="components-loader.js?v=1"></script>
+    <script src="shared-nav.js?v=1"></script>
   </body>
 </html>

@@ -60,39 +60,8 @@
     <link rel="stylesheet" href="styles.css?v=4" />
   </head>
   <body class="single-page-body">
-    <!-- NOTE: Right-side vertical navigation to new pages (content will be filled later). -->
-    <nav class="side-nav" aria-label="Navigasjon" data-mobile-nav>
-      <!-- NOTE: Mobile-only toggle for collapsing/expanding side navigation. -->
-      <button
-        class="side-nav__toggle"
-        type="button"
-        aria-label="Utvid meny"
-        aria-expanded="false"
-        aria-controls="side-nav-content"
-        data-mobile-nav-toggle
-      >
-        <img class="side-nav__toggle-icon" src="triangle.svg" alt="" aria-hidden="true" />
-      </button>
-
-      <div class="side-nav__content" id="side-nav-content" data-mobile-nav-content>
-        <a class="side-nav__link" href="oss.html">Oss</a>
-        <a class="side-nav__link" href="advanced-project.html">Prosjekter</a>
-        <a class="side-nav__link" href="innsikt.html">Innsikt</a>
-        <a class="side-nav__link" href="bli-med.html">Bli med</a>
-
-        <div class="side-nav__divider" aria-hidden="true"></div>
-
-        <!-- NOTE: Language switch UI only (no functionality yet). -->
-        <label class="lang-switch" for="lang-switch">
-          <span class="lang-switch__label">NO</span>
-          <input class="lang-switch__input" type="checkbox" id="lang-switch" />
-          <span class="lang-switch__track" aria-hidden="true">
-            <span class="lang-switch__thumb" aria-hidden="true"></span>
-          </span>
-          <span class="lang-switch__label">EN</span>
-        </label>
-      </div>
-    </nav>
+    <!-- NOTE: Shared navigation component slot. -->
+    <div data-component="side-nav"></div>
 
     <!--
       Redesign layout:
@@ -111,6 +80,7 @@
           loop
           playsinline
           preload="metadata"
+          poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3Crect width='16' height='9' fill='black'/%3E%3C/svg%3E"
         >
           <!-- NOTE: Hero starts with the first local shuffle clip; JS rotates all clips every 2 seconds. -->
           <source src="assets/images/shuffle-images/test-animation.mp4" type="video/mp4" />
@@ -127,13 +97,12 @@
         <h1 class="hero-title">Gjør ideen din til et ekte produkt</h1>
 
         <p class="hero-subtitle">
-          Vi designer og utvikler produkter som er klare for prototyping, produksjon og lansering i
-          markedet.
+          Vi designer produkter som er klare for prototyping, produksjon og lansering.
         </p>
 
         <p class="hero-subtitle">
-          Ingen unødvendige mellomledd i prosessen. Bare tydelig, brukersentrert, funksjonell design
-          som tar ideen din til neste nivå.
+          Ingen unødvendige mellomledd i prosessen. Bare tydelig, brukersentrert, funksjonell
+          design.
         </p>
 
         <a class="hero-cta" href="#application-form">Få designkonsultasjon</a>
@@ -184,7 +153,7 @@
             <div class="service-card">
               <h3 class="service-title">Redesign og ferdigstilling til produksjon</h3>
               <p class="service-text">
-                Endringer, forbedringer og klargjøring av eksisterende produkt for produksjon.
+                Endringer, forbedringer og klargjøring av eksisterende produkt.
               </p>
             </div>
           </div>
@@ -560,6 +529,8 @@
 
     <!-- NOTE: Prebuilt project manifest loaded as JS to support environments where `fetch` from local files is blocked. -->
     <script src="assets/data/projects-manifest.js?v=1"></script>
+    <script src="components-loader.js?v=1"></script>
+    <script src="shared-nav.js?v=1"></script>
     <!-- JavaScript -->
     <script src="script.js?v=5"></script>
   </body>

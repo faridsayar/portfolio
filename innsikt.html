@@ -43,39 +43,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body class="single-page-body">
-    <!-- NOTE: Blog-style insights page with article cards and preview text. -->
-    <nav class="side-nav" aria-label="Navigasjon" data-mobile-nav>
-      <button
-        class="side-nav__toggle"
-        type="button"
-        aria-label="Utvid meny"
-        aria-expanded="false"
-        aria-controls="side-nav-content"
-        data-mobile-nav-toggle
-      >
-        <img class="side-nav__toggle-icon" src="triangle.svg" alt="" aria-hidden="true" />
-      </button>
-
-      <div class="side-nav__content" id="side-nav-content" data-mobile-nav-content>
-        <a class="side-nav__link" href="index.html">Hjem</a>
-        <a class="side-nav__link" href="oss.html">Oss</a>
-        <a class="side-nav__link" href="advanced-project.html">Prosjekter</a>
-        <a class="side-nav__link" href="innsikt.html" aria-current="page">Innsikt</a>
-        <a class="side-nav__link" href="bli-med.html">Bli med</a>
-
-        <div class="side-nav__divider" aria-hidden="true"></div>
-
-        <!-- NOTE: Language switch UI only (no functionality yet). -->
-        <label class="lang-switch" for="lang-switch">
-          <span class="lang-switch__label">NO</span>
-          <input class="lang-switch__input" type="checkbox" id="lang-switch" />
-          <span class="lang-switch__track" aria-hidden="true">
-            <span class="lang-switch__thumb" aria-hidden="true"></span>
-          </span>
-          <span class="lang-switch__label">EN</span>
-        </label>
-      </div>
-    </nav>
+    <!-- NOTE: Shared navigation component slot. -->
+    <div data-component="side-nav"></div>
 
     <main>
       <section class="section section--white" aria-label="Innsikt og artikler">
@@ -97,65 +66,65 @@
           <!-- NOTE: Article grid for blog/news style posts (3 columns desktop). -->
           <div class="articles-grid" aria-label="Artikkeloversikt">
             <article class="article-card">
-              <a class="article-card__link" href="article-template.html">
+              <a class="article-card__link" href="article-1.html">
                 <img class="article-card__img" src="assets/images/USV.png" alt="Artikkelbilde 1" />
                 <div class="article-card__body">
                   <h2 class="article-card__title">
-                    Hvordan validere en produktidé før prototyping
+                    Hva er industridesign? En enkel guide for nybegynnere
                   </h2>
                   <p class="article-card__excerpt">
-                    En enkel metode for å teste behov, brukssituasjon og betalingsvilje før du
-                    bruker tid og penger på utvikling.
+                    En kort og enkel forklaring på hva industridesign er, hvorfor det finnes, og
+                    hvordan det har utviklet seg fra håndverk til moderne produktutvikling.
                   </p>
                 </div>
               </a>
             </article>
 
             <article class="article-card">
-              <a class="article-card__link" href="article-template.html">
+              <a class="article-card__link" href="article-2.html">
                 <img class="article-card__img" src="assets/images/H2O.jpg" alt="Artikkelbilde 2" />
                 <div class="article-card__body">
-                  <h2 class="article-card__title">5 vanlige feil i tidlig produktdesign</h2>
+                  <h2 class="article-card__title">Hvorfor UX tok ordet «produktdesign»</h2>
                   <p class="article-card__excerpt">
-                    Typiske fallgruver vi ser i startup-prosjekter, og hvordan du kan unngå dem med
-                    bedre prioriteringer.
+                    Hvorfor digital UX ofte kalles produktdesign i dag, og hvorfor industridesign
+                    fortsatt er kjernen når du lager fysiske produkter for den virkelige verden.
                   </p>
                 </div>
               </a>
             </article>
 
             <article class="article-card">
-              <a class="article-card__link" href="article-template.html">
+              <a class="article-card__link" href="article-3.html">
                 <img class="article-card__img" src="assets/images/itac.jpg" alt="Artikkelbilde 3" />
                 <div class="article-card__body">
-                  <h2 class="article-card__title">Fra skisse til produksjonsklar modell</h2>
+                  <h2 class="article-card__title">Hvem trenger design, når og hvor mye?</h2>
                   <p class="article-card__excerpt">
-                    Hva som faktisk må avklares før et konsept kan bli til et robust produkt klart
-                    for produksjon.
+                    En praktisk oversikt over hvilke bedrifter som trenger design, hvilke faser som
+                    er viktigst, og hvordan du kan bruke designere smart i hver fase.
                   </p>
                 </div>
               </a>
             </article>
 
             <article class="article-card">
-              <a class="article-card__link" href="article-template.html">
+              <a class="article-card__link" href="article-4.html">
                 <img
                   class="article-card__img"
                   src="assets/images/Proton.png"
                   alt="Artikkelbilde 4"
                 />
                 <div class="article-card__body">
-                  <h2 class="article-card__title">Design for små team med begrenset budsjett</h2>
+                  <h2 class="article-card__title">Hvordan design sparer penger over tid</h2>
                   <p class="article-card__excerpt">
-                    Praktiske grep for å få mest mulig verdi ut av designprosessen når ressursene er
-                    få og tempoet er høyt.
+                    God design reduserer feil, returer og omarbeid. Her er hvorfor design thinking
+                    og brukerfokus gir lavere kostnader på lang sikt.
                   </p>
                 </div>
               </a>
             </article>
 
             <article class="article-card">
-              <a class="article-card__link" href="article-template.html">
+              <a class="article-card__link" href="article-5.html">
                 <img
                   class="article-card__img"
                   src="assets/images/Drone2.jpeg"
@@ -163,28 +132,28 @@
                 />
                 <div class="article-card__body">
                   <h2 class="article-card__title">
-                    Når bør du redesigne i stedet for å starte på nytt?
+                    Industridesign-prosessen: faser fra idé til produkt
                   </h2>
                   <p class="article-card__excerpt">
-                    En vurderingsramme for å avgjøre om eksisterende produkt bør forbedres eller om
-                    ny retning gir bedre resultat.
+                    En enkel gjennomgang av de viktigste fasene, hvorfor de finnes, og hva som gjør
+                    industridesign-prosessen både strukturert og kreativ.
                   </p>
                 </div>
               </a>
             </article>
 
             <article class="article-card">
-              <a class="article-card__link" href="article-template.html">
+              <a class="article-card__link" href="article-6.html">
                 <img
                   class="article-card__img"
                   src="assets/images/Memorium.jpg"
                   alt="Artikkelbilde 6"
                 />
                 <div class="article-card__body">
-                  <h2 class="article-card__title">Nyheter fra studio: hva vi tester akkurat nå</h2>
+                  <h2 class="article-card__title">Hvorfor design er perfekt for crowdfunding</h2>
                   <p class="article-card__excerpt">
-                    Løpende oppdateringer om materialtester, prototypemetoder og læring fra
-                    prosjekter vi jobber med.
+                    Har du idé, men lite kapital? Se hvordan godt design gjør det enklere å bygge
+                    tillit, vise verdi og lykkes i crowdfunding-kampanjer.
                   </p>
                 </div>
               </a>
@@ -212,5 +181,9 @@
         </p>
       </div>
     </footer>
+    <script src="components-loader.js?v=1"></script>
+    <script src="shared-nav.js?v=1"></script>
+    <script src="article-image-map.js?v=1"></script>
+    <script src="shared-innsikt-thumbs.js?v=1"></script>
   </body>
 </html>
