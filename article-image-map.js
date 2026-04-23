@@ -16,6 +16,8 @@
   }
 
   function getArticleImageForKey(key) {
+    // NOTE: Keep article-2 fixed to the dedicated duck image asset.
+    if (String(key) === 'article-2') return 'assets/images/Articles/DUX-article2.avif';
     const n = articleKeyToNumber(key);
     const index = (((n - 1) % imagePool.length) + imagePool.length) % imagePool.length;
     return imagePool[index];
