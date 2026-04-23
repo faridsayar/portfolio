@@ -413,6 +413,15 @@
   width: 100%;
   left: auto;
   transform: none;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+/* NOTE: Crop article hero image to 16:9 frame. */
+.section--article-template .about-top-graphic__img {
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .about-top-graphic__img {
