@@ -24,8 +24,10 @@
     if (String(key) === 'article-3') return 'assets/images/Articles/product-design-image.jpg';
     // NOTE: Keep article-4 fixed to bike7 image asset.
     if (String(key) === 'article-4') return 'assets/images/Articles/bike7.jpg';
-    // NOTE: Keep article-5 fixed to Kalash image asset.
-    if (String(key) === 'article-5') return 'assets/images/Articles/Kalash.jpg';
+    // NOTE: Keep article-5 fixed to serviett image asset.
+    if (String(key) === 'article-5') return 'assets/images/Articles/serviett.jpg';
+    // NOTE: Keep article-6 fixed to Kalash image asset.
+    if (String(key) === 'article-6') return 'assets/images/Articles/Kalash.jpg';
     const n = articleKeyToNumber(key);
     const index = (((n - 1) % imagePool.length) + imagePool.length) % imagePool.length;
     return imagePool[index];
