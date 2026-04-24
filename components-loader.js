@@ -21,6 +21,10 @@
       <p class="section-kicker">Innsikt</p>
       <h1 class="section-title" data-article-title>Artikkel</h1>
       <div class="article-row__text" data-article-body></div>
+      <nav class="article-nav-buttons" aria-label="Artikkelnavigasjon" data-article-nav>
+        <a class="article-nav-button" href="innsikt-design-for-crowdfunding.html" data-article-nav-prev>Forrige artikkel</a>
+        <a class="article-nav-button" href="innsikt-ux-er-ikke-produktdesign.html" data-article-nav-next>Neste artikkel</a>
+      </nav>
     </div>
   </article>
   <section class="section section--white section--project-cta" aria-label="Neste steg">

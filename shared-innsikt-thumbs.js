@@ -3,7 +3,7 @@
   const getImage = window.getArticleImageForKey;
   if (typeof getImage !== 'function') return;
 
-  const links = Array.from(document.querySelectorAll('.article-card__link[href^="article-"]'));
+  const links = Array.from(document.querySelectorAll('.article-card__link'));
   links.forEach((link) => {
     const href = link.getAttribute('href') || '';
     const key = href.replace('.html', '');

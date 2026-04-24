@@ -3,8 +3,16 @@ function renderSharedArticle() {
   const root = document.querySelector('[data-article-layout]');
   if (!root) return;
 
-  const path = window.location.pathname.split('/').pop() || 'article-1.html';
+  const path = window.location.pathname.split('/').pop() || 'innsikt-hva-er-industridesign.html';
   const key = path.replace('.html', '');
+  const articleOrder = [
+    'innsikt-hva-er-industridesign',
+    'innsikt-ux-er-ikke-produktdesign',
+    'innsikt-hvem-trenger-design',
+    'innsikt-hvordan-design-sparer-penger',
+    'innsikt-branding-og-produktdesign',
+    'innsikt-design-for-crowdfunding',
+  ];
   const dataScript = document.getElementById('article-content');
   if (!dataScript) return;
 
@@ -19,6 +27,9 @@ function renderSharedArticle() {
   const currentBreadcrumbEl = root.querySelector('[data-article-breadcrumb-current]');
   const heroImageEl = root.querySelector('[data-article-hero-image]');
   const bodyEl = root.querySelector('[data-article-body]');
+  const navWrapEl = root.querySelector('[data-article-nav]');
+  const prevLinkEl = root.querySelector('[data-article-nav-prev]');
+  const nextLinkEl = root.querySelector('[data-article-nav-next]');
 
   if (titleEl) titleEl.textContent = article.title;
   if (currentBreadcrumbEl) currentBreadcrumbEl.textContent = article.title;
@@ -36,6 +47,20 @@ function renderSharedArticle() {
           : `<p>${block.text}</p>`
       )
       .join('');
+  }
+
+  // NOTE: Keeps previous/next article links synchronized with the current article URL.
+  if (navWrapEl && prevLinkEl && nextLinkEl) {
+    const currentIndex = articleOrder.indexOf(key);
+    if (currentIndex === -1) {
+      navWrapEl.style.display = 'none';
+      return;
+    }
+
+    const prevIndex = (currentIndex - 1 + articleOrder.length) % articleOrder.length;
+    const nextIndex = (currentIndex + 1) % articleOrder.length;
+    prevLinkEl.href = `${articleOrder[prevIndex]}.html`;
+    nextLinkEl.href = `${articleOrder[nextIndex]}.html`;
   }
 }
 
