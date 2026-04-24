@@ -644,6 +644,32 @@ section[aria-label='Oss'] .section-inner {
   opacity: 0.9;
 }
 
+.article-nav-buttons {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.article-nav-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--color-black);
+  border-radius: 0;
+  background: var(--color-white);
+  color: var(--color-black);
+  text-decoration: none;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.article-nav-button:hover {
+  background: rgba(31, 31, 31, 0.04);
+}
+
 /* Features section */
 .section--features .section-inner {
   padding-bottom: 2rem;

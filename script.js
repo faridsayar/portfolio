@@ -455,7 +455,11 @@ class SinglePagePortfolio {
     if (catalog.length === 0) return;
 
     const params = new URLSearchParams(window.location.search);
-    const requestedSlug = (params.get('project') || '').trim().toLowerCase();
+    const querySlug = (params.get('project') || '').trim().toLowerCase();
+    const pathName = window.location.pathname.split('/').pop() || '';
+    const pathMatch = pathName.match(/^project-(.+)\.html$/);
+    const pathSlug = pathMatch ? String(pathMatch[1]).trim().toLowerCase() : '';
+    const requestedSlug = querySlug || pathSlug;
     const currentIndex = Math.max(
       0,
       catalog.findIndex((project) => project.slug === requestedSlug)
@@ -510,11 +514,11 @@ class SinglePagePortfolio {
     const nextProject = catalog[(currentIndex + 1) % catalog.length];
 
     if (prevLink && previousProject) {
-      prevLink.href = `advanced-project.html?project=${encodeURIComponent(previousProject.slug)}`;
+      prevLink.href = this.getProjectSharePath(previousProject.slug);
       prevLink.setAttribute('aria-label', `Forrige prosjekt: ${previousProject.title}`);
     }
     if (nextLink && nextProject) {
-      nextLink.href = `advanced-project.html?project=${encodeURIComponent(nextProject.slug)}`;
+      nextLink.href = this.getProjectSharePath(nextProject.slug);
       nextLink.setAttribute('aria-label', `Neste prosjekt: ${nextProject.title}`);
     }
   }
@@ -592,7 +596,7 @@ class SinglePagePortfolio {
       const imgSrc = project.thumbnail || project.images[0] || '';
       const card = document.createElement('a');
       card.className = 'project-tile';
-      card.href = `advanced-project.html?project=${encodeURIComponent(project.slug)}`;
+      card.href = this.getProjectSharePath(project.slug);
       card.setAttribute('aria-label', `Se ${project.title}`);
       card.innerHTML = `
         <div class="project-thumb" aria-hidden="true">
@@ -608,6 +612,11 @@ class SinglePagePortfolio {
     grid.innerHTML = '';
     grid.appendChild(fragment);
     sentinel.style.display = 'none';
+  }
+
+  // NOTE: Stable per-project page URL used for both navigation and social sharing previews.
+  getProjectSharePath(slug) {
+    return `project-${encodeURIComponent(slug)}.html`;
   }
 
   // NOTE: Reusable project galleries swap main image from local thumbnail rails.

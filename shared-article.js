@@ -5,6 +5,14 @@ function renderSharedArticle() {
 
   const path = window.location.pathname.split('/').pop() || 'article-1.html';
   const key = path.replace('.html', '');
+  const articleOrder = [
+    'article-1',
+    'article-2',
+    'article-3',
+    'article-4',
+    'article-5',
+    'article-6',
+  ];
   const dataScript = document.getElementById('article-content');
   if (!dataScript) return;
 
@@ -19,6 +27,9 @@ function renderSharedArticle() {
   const currentBreadcrumbEl = root.querySelector('[data-article-breadcrumb-current]');
   const heroImageEl = root.querySelector('[data-article-hero-image]');
   const bodyEl = root.querySelector('[data-article-body]');
+  const navWrapEl = root.querySelector('[data-article-nav]');
+  const prevLinkEl = root.querySelector('[data-article-nav-prev]');
+  const nextLinkEl = root.querySelector('[data-article-nav-next]');
 
   if (titleEl) titleEl.textContent = article.title;
   if (currentBreadcrumbEl) currentBreadcrumbEl.textContent = article.title;
@@ -36,6 +47,20 @@ function renderSharedArticle() {
           : `<p>${block.text}</p>`
       )
       .join('');
+  }
+
+  // NOTE: Keeps previous/next article links synchronized with the current article URL.
+  if (navWrapEl && prevLinkEl && nextLinkEl) {
+    const currentIndex = articleOrder.indexOf(key);
+    if (currentIndex === -1) {
+      navWrapEl.style.display = 'none';
+      return;
+    }
+
+    const prevIndex = (currentIndex - 1 + articleOrder.length) % articleOrder.length;
+    const nextIndex = (currentIndex + 1) % articleOrder.length;
+    prevLinkEl.href = `${articleOrder[prevIndex]}.html`;
+    nextLinkEl.href = `${articleOrder[nextIndex]}.html`;
   }
 }
 
