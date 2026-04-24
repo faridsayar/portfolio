@@ -10,6 +10,7 @@ class SinglePagePortfolio {
     this.setupHeroVideoShuffle();
     this.setupGlobalImageFallback();
     this.setupTimeline();
+    this.setupInquiryFormMailto();
     this.setupProjectPageNavVerticalAlign();
     this.initializeProjectViews();
   }
@@ -436,6 +437,56 @@ class SinglePagePortfolio {
         timeframeLabel.textContent = `${timeframeSelect.value} prosjekt`;
       });
     }
+  }
+
+  // NOTE: Converts inquiry form submissions into a prefilled mail draft to the shared inbox.
+  setupInquiryFormMailto() {
+    const inquiryForm = document.querySelector('.inquiry-form');
+    if (!inquiryForm) return;
+
+    inquiryForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const formData = new FormData(inquiryForm);
+      const fullName = (formData.get('full_name') || '').toString().trim();
+      const email = (formData.get('email') || '').toString().trim();
+      const timeframe = (formData.get('timeframe') || '').toString().trim();
+      const budget = (formData.get('budget') || '').toString().trim();
+      const description = (formData.get('description') || '').toString().trim();
+
+      const phaseLabels = [
+        ['Brukeranalyse', 'phase_brukeranalyse'],
+        ['Konseptutvikling', 'phase_konseptutvikling'],
+        ['Prototype', 'phase_prototype'],
+        ['Validering', 'phase_validering'],
+        ['Ferdigstilling', 'phase_ferdigstilling'],
+      ];
+
+      const phaseLines = phaseLabels.map(([label, key]) => {
+        const value = (formData.get(key) || '').toString().trim();
+        return `- ${label}: ${value || 'ikke angitt'}%`;
+      });
+
+      const subject = `Ny foresporsel fra ${fullName || 'nettsted'}`;
+      const lines = [
+        'Ny designkonsultasjon foresporsel',
+        '',
+        `Navn: ${fullName || 'ikke angitt'}`,
+        `E-post: ${email || 'ikke angitt'}`,
+        `Tidshorisont: ${timeframe || 'ikke angitt'}`,
+        `Budsjett: ${budget || 'ikke angitt'}`,
+        '',
+        'Prioriteringer i tidslinje:',
+        ...phaseLines,
+        '',
+        'Beskrivelse:',
+        description || 'ikke angitt',
+      ];
+
+      const body = lines.join('\n');
+      const mailtoUrl = `mailto:hei@formaa.no?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = mailtoUrl;
+    });
   }
 
   // NOTE: Rehydrates the single project template from `?project=<slug>` and wires prev/next routing.
