@@ -3,15 +3,15 @@ function renderSharedArticle() {
   const root = document.querySelector('[data-article-layout]');
   if (!root) return;
 
-  const path = window.location.pathname.split('/').pop() || 'article-1.html';
+  const path = window.location.pathname.split('/').pop() || 'innsikt-hva-er-industridesign.html';
   const key = path.replace('.html', '');
   const articleOrder = [
-    'article-1',
-    'article-2',
-    'article-3',
-    'article-4',
-    'article-5',
-    'article-6',
+    'innsikt-hva-er-industridesign',
+    'innsikt-ux-er-ikke-produktdesign',
+    'innsikt-hvem-trenger-design',
+    'innsikt-hvordan-design-sparer-penger',
+    'innsikt-branding-og-produktdesign',
+    'innsikt-design-for-crowdfunding',
   ];
   const dataScript = document.getElementById('article-content');
   if (!dataScript) return;

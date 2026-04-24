@@ -4,18 +4,25 @@ function renderSharedNav() {
   if (navRoots.length === 0) return;
 
   const path = window.location.pathname.split('/').pop() || 'index.html';
+  const fullPath = window.location.pathname || '';
+  const rootPrefix = fullPath.includes('/category/') ? '../../' : '';
   const isInsightsPage =
-    path === 'innsikt.html' || path.startsWith('article-') || path === 'article-template.html';
+    path === 'innsikt.html' ||
+    path.startsWith('article-') ||
+    path.startsWith('innsikt-') ||
+    path === 'article-template.html';
+  const isProjectPage =
+    path === 'advanced-project.html' || path.startsWith('project-') || path.startsWith('prosjekt-');
 
   const items = [
-    { href: 'index.html', label: 'Hjem', current: path === 'index.html' },
-    { href: 'oss.html', label: 'Oss', current: path === 'oss.html' },
+    { href: `${rootPrefix}index.html`, label: 'Hjem', current: path === 'index.html' },
+    { href: `${rootPrefix}oss.html`, label: 'Oss', current: path === 'oss.html' },
     {
-      href: 'advanced-project.html',
+      href: `${rootPrefix}advanced-project.html`,
       label: 'Prosjekter',
-      current: path === 'advanced-project.html',
+      current: isProjectPage,
     },
-    { href: 'innsikt.html', label: 'Innsikt', current: isInsightsPage },
+    { href: `${rootPrefix}innsikt.html`, label: 'Innsikt', current: isInsightsPage },
   ];
 
   const linksMarkup = items
@@ -36,7 +43,7 @@ function renderSharedNav() {
         aria-controls="side-nav-content"
         data-mobile-nav-toggle
       >
-        <img class="side-nav__toggle-icon" src="triangle.svg" alt="" aria-hidden="true" />
+        <img class="side-nav__toggle-icon" src="${rootPrefix}triangle.svg" alt="" aria-hidden="true" />
       </button>
       <div class="side-nav__content" id="side-nav-content" data-mobile-nav-content>
         ${linksMarkup}

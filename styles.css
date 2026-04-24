@@ -315,6 +315,24 @@
   margin-top: 2rem;
 }
 
+.category-hero-media {
+  position: relative;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  margin-bottom: 1.5rem;
+  background: #000;
+}
+
+.category-hero-video {
+  display: block;
+  width: 100%;
+  height: min(600px, 65vh);
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(0.88);
+  transition: none;
+}
+
 /* Section header helpers */
 .section-head {
   position: relative;
@@ -376,6 +394,15 @@
   overflow: hidden;
 }
 
+.service-card--link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.service-card--link:hover {
+  border-color: rgba(31, 31, 31, 0.28);
+}
+
 /* Note: highlights Produktdesign card with primary border stroke */
 .service-card--primary-stroke {
   border-color: var(--color-primary);
@@ -406,6 +433,32 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
+}
+
+.service-tags {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.service-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0.65rem;
+  border: 1px solid rgba(31, 31, 31, 0.2);
+  border-radius: 999px;
+  background: rgba(31, 31, 31, 0.03);
+  color: var(--color-dark);
+  text-decoration: none;
+  font-size: 0.78rem;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+}
+
+.service-tag:hover {
+  background: rgba(31, 31, 31, 0.08);
 }
 
 /* About page team section */
