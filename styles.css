@@ -461,6 +461,138 @@
   background: rgba(31, 31, 31, 0.08);
 }
 
+.pricing-estimator {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+.pricing-estimator__services {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.7rem;
+}
+
+.pricing-service-card {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.9rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid rgba(31, 31, 31, 0.16);
+  border-radius: 12px;
+  background: var(--color-white);
+  color: var(--color-dark);
+  text-align: left;
+  cursor: pointer;
+}
+
+.pricing-service-card__label {
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.pricing-service-card__price {
+  margin-left: auto;
+  font-size: 0.88rem;
+  opacity: 0.78;
+  white-space: nowrap;
+}
+
+.pricing-service-card__check {
+  width: 1.35rem;
+  height: 1.35rem;
+  min-width: 1.35rem;
+  min-height: 1.35rem;
+  flex: 0 0 1.35rem;
+  aspect-ratio: 1 / 1;
+  border-radius: 999px;
+  border: 1px solid rgba(31, 31, 31, 0.2);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  color: transparent;
+}
+
+.pricing-service-card.is-selected {
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.pricing-service-card.is-selected .pricing-service-card__check {
+  border-color: rgba(255, 255, 255, 0.6);
+  color: var(--color-white);
+}
+
+.pricing-service-card.is-selected .pricing-service-card__price {
+  opacity: 0.95;
+}
+
+.pricing-estimator__summary {
+  border: 1px solid rgba(31, 31, 31, 0.12);
+  border-radius: 12px;
+  padding: 1rem;
+  background: rgba(31, 31, 31, 0.03);
+}
+
+.pricing-estimator__summary-title {
+  margin: 0 0 0.75rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.pricing-estimator__summary-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.pricing-estimator__summary-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.8rem;
+  font-size: 0.95rem;
+}
+
+.pricing-estimator__summary-name {
+  opacity: 0.9;
+}
+
+.pricing-estimator__summary-price {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.pricing-estimator__summary-empty {
+  opacity: 0.7;
+  font-size: 0.92rem;
+}
+
+.pricing-estimator__total {
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(31, 31, 31, 0.14);
+  display: grid;
+  gap: 0.25rem;
+}
+
+.pricing-estimator__total-label {
+  font-size: 0.88rem;
+  opacity: 0.7;
+}
+
+.pricing-estimator__total-value {
+  font-size: 1.45rem;
+  line-height: 1.1;
+  font-weight: 700;
+}
+
 /* About page team section */
 .about-top-graphic {
   position: relative;
@@ -1666,7 +1798,11 @@ section[aria-label='Oss'] .section-inner {
 /* Footer */
 .site-footer {
   border-top: 1px solid rgba(31, 31, 31, 0.12);
-  background: var(--color-white);
+  background: linear-gradient(
+    90deg,
+    var(--color-projects-panel) 0%,
+    var(--color-features-gradient-end) 100%
+  );
 }
 
 .site-footer__inner {
@@ -1675,11 +1811,44 @@ section[aria-label='Oss'] .section-inner {
   padding: 1.1rem 1.25rem 1.35rem;
 }
 
+.site-footer__links {
+  margin-bottom: 0.8rem;
+}
+
+.site-footer__links-title {
+  margin: 0 0 0.45rem 0;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-white);
+  opacity: 0.78;
+}
+
+.site-footer__links-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.8rem;
+}
+
+.site-footer__link {
+  color: var(--color-white);
+  text-decoration: none;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  opacity: 0.9;
+}
+
+.site-footer__link:hover {
+  opacity: 1;
+  color: var(--color-white);
+}
+
 .site-footer__text {
   margin: 0;
   font-size: 0.9rem;
   line-height: 1.5;
-  opacity: 0.75;
+  color: var(--color-white);
+  opacity: 0.86;
 }
 
 @media (max-width: 1024px) {
@@ -1701,6 +1870,35 @@ section[aria-label='Oss'] .section-inner {
 }
 
 @media (max-width: 768px) {
+  .pricing-estimator {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-service-card {
+    justify-content: center;
+    text-align: center;
+    flex-wrap: wrap;
+    row-gap: 0.35rem;
+  }
+
+  .pricing-service-card__label {
+    width: 100%;
+  }
+
+  .pricing-service-card__price {
+    width: 100%;
+    margin-left: 0;
+    font-size: 0.78rem;
+  }
+
+  .pricing-estimator__summary-price {
+    font-size: 0.82rem;
+  }
+
+  .pricing-estimator__total-value {
+    font-size: 1.1rem;
+  }
+
   .service-card {
     height: 8rem;
   }

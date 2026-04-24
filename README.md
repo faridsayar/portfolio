@@ -88,7 +88,7 @@ Structured data:
 
 - `index.html`: company/service JSON-LD
 - `innsikt.html`: blog listing JSON-LD
-- `article-1.html` ... `article-6.html`: article JSON-LD
+- `innsikt-*.html`: article JSON-LD
 
 ## Branding and Icons
 
