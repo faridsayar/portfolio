@@ -27,6 +27,7 @@ No build step is required for runtime.
 - `prosjekter.html` - Placeholder/info page with aligned SEO metadata
 - `innsikt.html` - Articles/insights page with aligned SEO metadata
 - `bli-med.html` - Placeholder/info page with aligned SEO metadata
+- `prisestimat.html` - Interactive pricing estimator page with range totals and SEO metadata
 
 ## Component System
 
@@ -88,7 +89,8 @@ Structured data:
 
 - `index.html`: company/service JSON-LD
 - `innsikt.html`: blog listing JSON-LD
-- `article-1.html` ... `article-6.html`: article JSON-LD
+- `innsikt-*.html`: article JSON-LD
+- `prisestimat.html`: `WebPage` + `BreadcrumbList` JSON-LD
 
 ## Branding and Icons
 

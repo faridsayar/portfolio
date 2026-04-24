@@ -39,6 +39,17 @@
 </main>`,
     'site-footer': `<footer class="site-footer" aria-label="Bunntekst">
   <div class="site-footer__inner">
+    <div class="site-footer__links" aria-label="Links">
+      <p class="site-footer__links-title">Links</p>
+      <div class="site-footer__links-list">
+        <a class="site-footer__link" href="advanced-project.html" data-footer-link="projects">Prosjekter</a>
+        <a class="site-footer__link" href="category/design/norge.html" data-footer-link="categories">Kategorier</a>
+        <a class="site-footer__link" href="innsikt.html" data-footer-link="insights">Innsikt</a>
+        <a class="site-footer__link" href="oss.html" data-footer-link="about">Oss</a>
+        <a class="site-footer__link" href="index.html#application-form" data-footer-link="application">Søknadsskjema</a>
+        <a class="site-footer__link" href="prisestimat.html" data-footer-link="pricing">Prisestimat</a>
+      </div>
+    </div>
     <p class="site-footer__text">
       © 2026 Formaa. Industridesign og produktdesign i Oslo. Alle rettigheter forbeholdt.
     </p>

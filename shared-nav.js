@@ -32,6 +32,15 @@ function renderSharedNav() {
     )
     .join('');
 
+  const footerHrefByKey = {
+    projects: `${rootPrefix}advanced-project.html`,
+    categories: `${rootPrefix}category/design/norge.html`,
+    insights: `${rootPrefix}innsikt.html`,
+    about: `${rootPrefix}oss.html`,
+    application: `${rootPrefix}index.html#application-form`,
+    pricing: `${rootPrefix}prisestimat.html`,
+  };
+
   navRoots.forEach((nav) => {
     nav.dataset.sharedNavHandled = 'true';
     nav.innerHTML = `
@@ -82,6 +91,14 @@ function renderSharedNav() {
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape') closeMenu();
     });
+  });
+
+  // NOTE: Keep shared footer links working from both root pages and nested category pages.
+  const footerLinks = Array.from(document.querySelectorAll('[data-footer-link]'));
+  footerLinks.forEach((link) => {
+    const key = link.getAttribute('data-footer-link');
+    if (!key || !footerHrefByKey[key]) return;
+    link.setAttribute('href', footerHrefByKey[key]);
   });
 }
 

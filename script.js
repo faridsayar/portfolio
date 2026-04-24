@@ -11,6 +11,7 @@ class SinglePagePortfolio {
     this.setupGlobalImageFallback();
     this.setupTimeline();
     this.setupInquiryFormMailto();
+    this.setupPricingEstimator();
     this.setupProjectPageNavVerticalAlign();
     this.initializeProjectViews();
   }
@@ -510,6 +511,94 @@ class SinglePagePortfolio {
       const mailtoUrl = `mailto:hei@formaa.no?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       window.location.href = mailtoUrl;
     });
+  }
+
+  // NOTE: Interactive pricing estimator for selecting multiple services and computing a live total.
+  setupPricingEstimator() {
+    const estimator = document.querySelector('[data-pricing-estimator]');
+    if (!estimator) return;
+
+    const cards = Array.from(estimator.querySelectorAll('[data-pricing-item]'));
+    const summaryList = estimator.querySelector('[data-pricing-summary-list]');
+    const totalEl = estimator.querySelector('[data-pricing-total]');
+    if (cards.length === 0 || !summaryList || !totalEl) return;
+
+    const selected = new Set();
+    const formatKr = (value) => `${value.toLocaleString('nb-NO')} kr`;
+    // NOTE: Each service can define a min-max price range via `data-pricing-min` and `data-pricing-max`.
+    const getCardRange = (card) => {
+      const minParsed = Number(card.dataset.pricingMin || 0);
+      const maxParsed = Number(card.dataset.pricingMax || 0);
+      const fallback = Number(card.dataset.pricingPrice || 0);
+      if (
+        Number.isFinite(minParsed) &&
+        Number.isFinite(maxParsed) &&
+        minParsed > 0 &&
+        maxParsed > 0
+      ) {
+        return {
+          min: Math.min(minParsed, maxParsed),
+          max: Math.max(minParsed, maxParsed),
+        };
+      }
+      if (Number.isFinite(fallback) && fallback > 0) {
+        return { min: fallback, max: fallback };
+      }
+      return { min: 0, max: 0 };
+    };
+    const formatRange = (min, max) => `${formatKr(min)} - ${formatKr(max)}`;
+    const getCardName = (card) => card.dataset.pricingItem || '';
+
+    const render = () => {
+      const selectedCards = cards.filter((card) => selected.has(getCardName(card)));
+      if (selectedCards.length === 0) {
+        summaryList.innerHTML =
+          '<li class="pricing-estimator__summary-empty">Ingen tjenester valgt enda.</li>';
+      } else {
+        summaryList.innerHTML = selectedCards
+          .map(
+            (card) => `
+              <li class="pricing-estimator__summary-item">
+                <span class="pricing-estimator__summary-name">${getCardName(card)}</span>
+                <span class="pricing-estimator__summary-price">${formatRange(getCardRange(card).min, getCardRange(card).max)}</span>
+              </li>
+            `
+          )
+          .join('');
+      }
+
+      const totals = selectedCards.reduce(
+        (acc, card) => {
+          const range = getCardRange(card);
+          return {
+            min: acc.min + range.min,
+            max: acc.max + range.max,
+          };
+        },
+        { min: 0, max: 0 }
+      );
+      totalEl.textContent = formatRange(totals.min, totals.max);
+    };
+
+    cards.forEach((card) => {
+      card.addEventListener('click', () => {
+        const item = getCardName(card);
+        if (!item) return;
+        if (selected.has(item)) {
+          selected.delete(item);
+          card.classList.remove('is-selected');
+          card.setAttribute('aria-pressed', 'false');
+        } else {
+          selected.add(item);
+          card.classList.add('is-selected');
+          card.setAttribute('aria-pressed', 'true');
+        }
+        render();
+      });
+      card.setAttribute('aria-pressed', 'false');
+    });
+
+    render();
   }
 
   // NOTE: Rehydrates the single project template from `?project=<slug>` and wires prev/next routing.
