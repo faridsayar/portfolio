@@ -16,7 +16,6 @@ function renderSharedNav() {
       current: path === 'advanced-project.html',
     },
     { href: 'innsikt.html', label: 'Innsikt', current: isInsightsPage },
-    { href: 'bli-med.html', label: 'Bli med', current: path === 'bli-med.html' },
   ];
 
   const linksMarkup = items

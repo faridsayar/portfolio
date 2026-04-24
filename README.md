@@ -8,13 +8,14 @@ The site is optimized around:
 - A conversion-focused hero section
 - Service and feature sections
 - Interactive project-priority timeline in the inquiry form
-- Project gallery with automatic expansion to 20 items
+- Project gallery driven by a shared project manifest
+- Reusable HTML components loaded into `data-component` slots
 
 ## Tech Stack
 
 - HTML (`index.html`, plus simple secondary pages)
 - CSS (`styles.css`)
-- Vanilla JavaScript (`script.js`)
+- Vanilla JavaScript (`script.js`, `shared-nav.js`, shared article utilities)
 - Static assets in `assets/`
 
 No build step is required for runtime.
@@ -27,49 +28,51 @@ No build step is required for runtime.
 - `innsikt.html` - Articles/insights page with aligned SEO metadata
 - `bli-med.html` - Placeholder/info page with aligned SEO metadata
 
+## Component System
+
+Reusable partials live in `components/` and are loaded by `components-loader.js`.
+
+Current shared components:
+
+- `side-nav.html`
+- `article-layout.html`
+- `project-cta.html`
+- `contact-section-home.html`
+- `contact-section-compact.html`
+- `site-footer.html`
+
+`components-loader.js` supports multi-pass loading so components can contain nested `data-component` slots.
+
 ## Current UX and Features
 
 ### Hero Section
 
-- Full-screen video background (`assets/images/test-animation.mp4`)
-- Dark gradient overlay for text contrast
-- Custom white triangle logo in hero
-- CTA button linking to inquiry section (`#application-form`)
-
-### Service Section ("Dette gjør vi")
-
-- 6 service cards
-- `Produktdesign` card visually highlighted with primary border color
-
-### Features Section ("Fordeler")
-
-- Banner image
-- 4 feature points with icon assets from `assets/icons/`
-- Primary color emphasis on key phrase: `ekte brukerbehov`
+- Full-screen video background with clip shuffle (`script.js`)
+- Dark overlay for text contrast
+- CTA linking to inquiry section (`#application-form`)
 
 ### Inquiry Form + Timeline
 
-- Interactive timeline with 6 phases:
+- Interactive timeline with 5 phases:
   - Brukeranalyse
   - Konseptutvikling
   - Prototype
-  - Finjustering
   - Validering
   - Ferdigstilling
-- 5 draggable handles (mouse/pointer + keyboard arrow support)
+- 4 draggable handles (mouse/pointer + keyboard arrow support)
 - Segment percentages always constrained and normalized to sum to 100%
 - Summary percentages auto-updated
 - Hidden inputs populated with phase percentages for submission integration
+- Form submit builds a prefilled `mailto:` draft to `hei@formaa.no`
 
 ### Projects Grid
 
-- Starts with local real projects in markup
-- JavaScript fills up to 20 tiles total
-- Uses available real image pool first, then neutral placeholders
+- JavaScript hydrates cards from `assets/data/projects-manifest.js` / `.json`
+- Shared detail template supports dynamic `?project=<slug>` rendering
 
 ## SEO and Metadata
 
-All HTML pages are aligned to Norwegian industrial/product design intent:
+All HTML pages are aligned to Norwegian-first industrial/product design intent:
 
 - `lang="no"`
 - optimized title and description tags
@@ -78,8 +81,14 @@ All HTML pages are aligned to Norwegian industrial/product design intent:
 - Twitter card tags
 - canonical URLs
 - shared favicon references
+- robots directive (`index,follow,max-image-preview:large`)
+- locale hints (`og:locale`, `og:locale:alternate`)
 
-`index.html` also contains JSON-LD structured data for service discoverability.
+Structured data:
+
+- `index.html`: company/service JSON-LD
+- `innsikt.html`: blog listing JSON-LD
+- `article-1.html` ... `article-6.html`: article JSON-LD
 
 ## Branding and Icons
 
@@ -94,6 +103,13 @@ All HTML pages are aligned to Norwegian industrial/product design intent:
 
 ```text
 .
+├── components/
+│   ├── side-nav.html
+│   ├── article-layout.html
+│   ├── project-cta.html
+│   ├── contact-section-home.html
+│   ├── contact-section-compact.html
+│   └── site-footer.html
 ├── index.html
 ├── oss.html
 ├── prosjekter.html
@@ -101,10 +117,12 @@ All HTML pages are aligned to Norwegian industrial/product design intent:
 ├── bli-med.html
 ├── styles.css
 ├── script.js
-├── favicon-triangle.svg
+├── shared-nav.js
+├── components-loader.js
 ├── assets/
 │   ├── images/
-│   └── icons/
+│   ├── icons/
+│   └── data/
 └── README.md
 ```
 
@@ -135,9 +153,10 @@ corepack pnpm format
 ## Notes for Future Changes
 
 - Keep Norwegian copy and metadata consistent across all pages.
+- Keep English support secondary (`description:en`, `og:locale:alternate`) instead of replacing NO-primary copy.
 - Reuse existing color variables in `:root` and avoid introducing ad-hoc design tokens.
 - Keep timeline phases and their color mapping in sync between:
   - segment colors
   - summary label/value colors
   - hidden input order
-- Prefer updating existing components/sections rather than adding parallel variants.
+- Prefer updating existing components/sections in `components/` rather than duplicating markup in page files.

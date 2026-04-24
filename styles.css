@@ -246,9 +246,8 @@
   text-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
 }
 
-.hero-cta {
-  display: inline-block;
-  margin-top: 1.75rem;
+.hero-cta,
+.inquiry-cta {
   color: var(--color-white);
   text-decoration: none;
   font-weight: 600;
@@ -257,15 +256,25 @@
   border: none;
   border-radius: 14px;
   padding: 1rem 1.25rem;
+}
+
+.hero-cta {
+  display: inline-block;
+  margin-top: 1.75rem;
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
 }
 
-.hero-cta:hover {
+.hero-cta:hover,
+.inquiry-cta:hover {
   transform: translateY(-1px);
+}
+
+.hero-cta:hover {
   box-shadow: 0 22px 52px rgba(0, 0, 0, 0.32);
 }
 
-.hero-cta:active {
+.hero-cta:active,
+.inquiry-cta:active {
   transform: translateY(0);
 }
 
@@ -618,22 +627,6 @@ section[aria-label='Oss'] .section-inner {
   padding-top: 0;
 }
 
-.article-row {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  align-items: center;
-  gap: 4rem;
-  margin-top: 4rem;
-}
-
-.article-row--text-right .article-row__text {
-  order: 2;
-}
-
-.article-row--text-right .article-row__media {
-  order: 1;
-}
-
 .article-row__text {
   max-width: 37rem; /* NOTE: Keep measure narrow for easier desktop reading. */
   line-height: 1.75;
@@ -649,21 +642,6 @@ section[aria-label='Oss'] .section-inner {
 .article-row__text p {
   margin: 0 0 0.85rem 0;
   opacity: 0.9;
-}
-
-.article-row__media {
-  margin: 0;
-  border-radius: 14px;
-  overflow: hidden;
-  background: rgba(31, 31, 31, 0.06);
-}
-
-.article-row__media img {
-  display: block;
-  width: 100%;
-  height: clamp(14rem, 38vw, 24rem);
-  object-fit: cover;
-  object-position: center;
 }
 
 /* Features section */
@@ -877,13 +855,6 @@ section[aria-label='Oss'] .section-inner {
   padding: 1.25rem;
 }
 
-.timeline-summary__grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.35rem 0.75rem;
-  margin: 1.5rem 0 2rem 0;
-}
-
 .timeline-summary-item {
   display: flex;
   justify-content: space-between;
@@ -999,10 +970,6 @@ section[aria-label='Oss'] .section-inner {
     text-align: left;
   }
 
-  .timeline-summary__grid {
-    display: none;
-  }
-
   .timeline-summary-item__name {
     display: none;
   }
@@ -1075,14 +1042,6 @@ section[aria-label='Oss'] .section-inner {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: #000000;
-  color: var(--color-white);
-  text-decoration: none;
-  border: none;
-  border-radius: 14px;
-  padding: 1rem 1.25rem;
-  font-weight: 600;
-  letter-spacing: -0.01em;
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.14);
   cursor: pointer;
 }
@@ -1097,12 +1056,7 @@ section[aria-label='Oss'] .section-inner {
 }
 
 .inquiry-cta:hover {
-  transform: translateY(-1px);
   box-shadow: 0 22px 52px rgba(0, 0, 0, 0.2);
-}
-
-.inquiry-cta:active {
-  transform: translateY(0);
 }
 
 .inquiry-note {
@@ -1143,10 +1097,6 @@ section[aria-label='Oss'] .section-inner {
   color: var(--color-white);
 }
 
-.projects-grid-panel .project-desc {
-  opacity: 1;
-}
-
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1173,10 +1123,6 @@ section[aria-label='Oss'] .section-inner {
   background: rgba(31, 31, 31, 0.05);
 }
 
-.project-thumb--placeholder {
-  background: #e5e7eb;
-}
-
 .project-thumb__img {
   width: 100%;
   height: 100%;
@@ -1198,18 +1144,11 @@ section[aria-label='Oss'] .section-inner {
   line-height: 1.25;
 }
 
-.project-desc {
-  margin: 0;
-  font-size: 0.95rem;
-  line-height: 1.5;
-  opacity: 0.85;
-}
-
 .project-tile:hover .project-thumb__img {
   transform: scale(1.06);
 }
 
-/* Project pages: shared hero layout (`section--project-hero-template`); thumb rail + captions (see data-project-image-caption in script.js). */
+/* Project pages: shared hero layout (`section--project-hero-template`) with thumbnail rail navigation. */
 .section--project-hero-template {
   padding: 0;
 }
@@ -1677,19 +1616,8 @@ section[aria-label='Oss'] .section-inner {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .article-row {
-    grid-template-columns: 1fr;
-  }
-
-  .article-row__text,
-  .article-row--text-right .article-row__text {
-    order: 2;
+  .article-row__text {
     max-width: none;
-  }
-
-  .article-row__media,
-  .article-row--text-right .article-row__media {
-    order: 1;
   }
 }
 

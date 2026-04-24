@@ -6,7 +6,6 @@
 class SinglePagePortfolio {
   constructor() {
     this.projectCatalogPromise = null;
-    this.setupMobileSideNavToggle();
     this.setupHeroVideoShuffle();
     this.setupGlobalImageFallback();
     this.setupTimeline();
@@ -88,46 +87,6 @@ class SinglePagePortfolio {
     this.setupProjectDetailPage(catalog);
     this.setupProjectsGrid(catalog);
     this.setupProjectTemplateGalleries();
-  }
-
-  // NOTE: Mobile-only side navigation collapse/expand interaction.
-  setupMobileSideNavToggle() {
-    const nav = document.querySelector('[data-mobile-nav]');
-    const toggle = document.querySelector('[data-mobile-nav-toggle]');
-    if (!nav || !toggle) return;
-    if (nav.dataset.sharedNavHandled === 'true') return;
-
-    const closeMenu = () => {
-      nav.classList.remove('is-open');
-      toggle.setAttribute('aria-expanded', 'false');
-      toggle.setAttribute('aria-label', 'Utvid meny');
-    };
-
-    const openMenu = () => {
-      nav.classList.add('is-open');
-      toggle.setAttribute('aria-expanded', 'true');
-      toggle.setAttribute('aria-label', 'Lukk meny');
-    };
-
-    toggle.addEventListener('click', () => {
-      if (nav.classList.contains('is-open')) {
-        closeMenu();
-      } else {
-        openMenu();
-      }
-    });
-
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') closeMenu();
-    });
-
-    // NOTE: Ensure menu is not left open when moving back to desktop layout.
-    window.addEventListener(
-      'resize',
-      this.debounce(() => {
-        if (window.innerWidth > 768) closeMenu();
-      }, 120)
-    );
   }
 
   // NOTE: Interactive timeline (process prioritization)

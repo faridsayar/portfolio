@@ -9,11 +9,18 @@
       content="Praktisk innsikt om industridesign og produktdesign: nyheter, guider, refleksjoner og produksjonsnære råd fra virkelige prosjekter."
     />
     <meta
+      name="description:en"
+      content="Insights, guides, and practical advice about industrial and product design from Formaa."
+    />
+    <meta
       name="keywords"
       content="innsikt, designinnsikt, industridesign, produktdesign, produktutvikling, guider, nyheter, Norge"
     />
     <meta name="author" content="Formaa" />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
 
+    <meta property="og:locale" content="nb_NO" />
+    <meta property="og:locale:alternate" content="en_US" />
     <meta property="og:title" content="Innsikt | Industridesign og produktdesign" />
     <meta
       property="og:description"
@@ -21,9 +28,14 @@
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://formaa.no/innsikt.html" />
+    <meta property="og:site_name" content="Formaa" />
     <meta property="og:image" content="https://formaa.no/assets/images/social-sharing.jpg" />
     <meta property="og:image:width" content="1920" />
     <meta property="og:image:height" content="1080" />
+    <meta
+      property="og:image:alt"
+      content="Formaa innsikt med artikler om industridesign og produktdesign"
+    />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Innsikt | Industridesign og produktdesign" />
@@ -162,25 +174,25 @@
         </div>
       </section>
 
-      <!-- NOTE: End-of-page CTA matching article template section. -->
-      <section class="section section--white section--project-cta" aria-label="Neste steg">
-        <div class="section-inner">
-          <h2 class="section-title">Trenger du produkt utviklet?</h2>
-          <p class="section-lead">
-            Send en kort forespørsel, så vurderer vi muligheter, tidslinje og neste praktiske steg.
-          </p>
-          <a class="inquiry-cta" href="index.html#application-form">Gå til forespørselsskjema</a>
-        </div>
-      </section>
+      <div data-component="project-cta"></div>
     </main>
 
-    <footer class="site-footer" aria-label="Bunntekst">
-      <div class="site-footer__inner">
-        <p class="site-footer__text">
-          © 2026 Formaa. Industridesign og produktdesign i Oslo. Alle rettigheter forbeholdt.
-        </p>
-      </div>
-    </footer>
+    <div data-component="site-footer"></div>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "Formaa Innsikt",
+        "description": "Praktisk innsikt om industridesign og produktdesign.",
+        "url": "https://formaa.no/innsikt.html",
+        "inLanguage": "no",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Formaa",
+          "url": "https://formaa.no/"
+        }
+      }
+    </script>
     <script src="components-loader.js?v=1"></script>
     <script src="shared-nav.js?v=1"></script>
     <script src="article-image-map.js?v=1"></script>
