@@ -3,8 +3,7 @@
     {
       "slug": "undo",
       "title": "Project: Undo desertification",
-      "desc": "Klargjoring for prototype og produksjon",
-      "lead": "Klargjoring for prototype og produksjon - industridesign rettet mot torke og baerekraftige losninger.",
+      "desc": "Produkt design konsept for å stoppe vekst av ørken og hjelpe planter og overleve i tørre omgivelser.",
       "folder": "Undo",
       "thumbnail": "2.jpg",
       "images": [
@@ -22,8 +21,7 @@
     {
       "slug": "h2o",
       "title": "H2O: Bottle with mechanical pedometer",
-      "desc": "Utstilling av 3D-modellering",
-      "lead": "Visualisering, iterasjon og detaljarbeid for en tydelig produkthistorie.",
+      "desc": "Vannflaske med mekanisk pedometer for bevegelsesdata",
       "folder": "H2O",
       "thumbnail": "h2o (15).jpg",
       "images": [
@@ -50,8 +48,7 @@
     {
       "slug": "monocopter",
       "title": "Monocopter",
-      "desc": "Modular search and rescue drone for high and efficient area coverage",
-      "lead": "Fra konsept og materialvalg til visuelle scener for validering.",
+      "desc": "Modulær søkningsdrone for effektiv område dekning",
       "folder": "Monocopter",
       "thumbnail": "Monocopter (7).jpg",
       "images": [
@@ -75,8 +72,7 @@
     {
       "slug": "proton",
       "title": "Proton Headphones",
-      "desc": "Industridesign-konsept",
-      "lead": "Konseptretning med tydelig formsprak og produksjonsnaer detaljering.",
+      "desc": "Urban Hodetelefoner med robust og solid visuell form",
       "folder": "Proton",
       "thumbnail": "14.png",
       "images": [
@@ -103,8 +99,7 @@
     {
       "slug": "eco-mate-closet",
       "title": "Søppelsortering skap",
-      "desc": "Skap for kildesortering av søppel hjemme",
-      "lead": "Systemtenkning for organisering, brukervennlighet og produksjon.",
+      "desc": "Moderne og minimalistisk skap for kildesortering av søppel hjemme",
       "folder": "Eco-mate-closet",
       "thumbnail": "4.jpg",
       "images": [
@@ -128,8 +123,7 @@
     {
       "slug": "bike",
       "title": "Terreng sykkel",
-      "desc": "Produktvisualisering",
-      "lead": "Detaljstudier av komponenter, helhet og brukeropplevelse.",
+      "desc": "Detaljstudier av komponenter, helhet og brukeropplevelse.",
       "folder": "Bike",
       "thumbnail": "bike2.jpg",
       "images": [
@@ -146,8 +140,7 @@
     {
       "slug": "nomos",
       "title": "Nomos: Musikkband branding",
-      "desc": "Designsystem og assets",
-      "lead": "Visuell retning og praktiske leveranser pa tvers av kontaktflater.",
+      "desc": "Visuell identitet og praktiske leveranse for musikkbands utstilling og salg",
       "folder": "Nomos",
       "thumbnail": "concert-poster.jpg",
       "images": [
@@ -164,8 +157,7 @@
     {
       "slug": "nordic",
       "title": "Nordic: Norsk restaurant branding",
-      "desc": "Brand og packaging",
-      "lead": "Helhetlig uttrykk fra emballasje til salgsflater.",
+      "desc": "Brand identitet og visuell uttrykk for nordisk restaurant",
       "folder": "Nørdic",
       "thumbnail": "nordic2.jpg",
       "images": [
@@ -183,8 +175,7 @@
     {
       "slug": "rafaels",
       "title": "Rafaels: Ren melk",
-      "desc": "Visuell identitet",
-      "lead": "Logo, typografi og anvendelser bygget som et konsistent system.",
+      "desc": "Helhetlig brand og visuell uttrykk fra emballasje til salgsflater for melkeprodusent.",
       "folder": "Rafaels",
       "thumbnail": "rafaels-bottle.jpg",
       "images": [

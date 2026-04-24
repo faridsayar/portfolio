@@ -6,10 +6,10 @@
 class SinglePagePortfolio {
   constructor() {
     this.projectCatalogPromise = null;
-    this.setupMobileSideNavToggle();
     this.setupHeroVideoShuffle();
     this.setupGlobalImageFallback();
     this.setupTimeline();
+    this.setupInquiryFormMailto();
     this.setupProjectPageNavVerticalAlign();
     this.initializeProjectViews();
   }
@@ -87,46 +87,6 @@ class SinglePagePortfolio {
     this.setupProjectDetailPage(catalog);
     this.setupProjectsGrid(catalog);
     this.setupProjectTemplateGalleries();
-  }
-
-  // NOTE: Mobile-only side navigation collapse/expand interaction.
-  setupMobileSideNavToggle() {
-    const nav = document.querySelector('[data-mobile-nav]');
-    const toggle = document.querySelector('[data-mobile-nav-toggle]');
-    if (!nav || !toggle) return;
-    if (nav.dataset.sharedNavHandled === 'true') return;
-
-    const closeMenu = () => {
-      nav.classList.remove('is-open');
-      toggle.setAttribute('aria-expanded', 'false');
-      toggle.setAttribute('aria-label', 'Utvid meny');
-    };
-
-    const openMenu = () => {
-      nav.classList.add('is-open');
-      toggle.setAttribute('aria-expanded', 'true');
-      toggle.setAttribute('aria-label', 'Lukk meny');
-    };
-
-    toggle.addEventListener('click', () => {
-      if (nav.classList.contains('is-open')) {
-        closeMenu();
-      } else {
-        openMenu();
-      }
-    });
-
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') closeMenu();
-    });
-
-    // NOTE: Ensure menu is not left open when moving back to desktop layout.
-    window.addEventListener(
-      'resize',
-      this.debounce(() => {
-        if (window.innerWidth > 768) closeMenu();
-      }, 120)
-    );
   }
 
   // NOTE: Interactive timeline (process prioritization)
@@ -438,6 +398,56 @@ class SinglePagePortfolio {
     }
   }
 
+  // NOTE: Converts inquiry form submissions into a prefilled mail draft to the shared inbox.
+  setupInquiryFormMailto() {
+    const inquiryForm = document.querySelector('.inquiry-form');
+    if (!inquiryForm) return;
+
+    inquiryForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const formData = new FormData(inquiryForm);
+      const fullName = (formData.get('full_name') || '').toString().trim();
+      const email = (formData.get('email') || '').toString().trim();
+      const timeframe = (formData.get('timeframe') || '').toString().trim();
+      const budget = (formData.get('budget') || '').toString().trim();
+      const description = (formData.get('description') || '').toString().trim();
+
+      const phaseLabels = [
+        ['Brukeranalyse', 'phase_brukeranalyse'],
+        ['Konseptutvikling', 'phase_konseptutvikling'],
+        ['Prototype', 'phase_prototype'],
+        ['Validering', 'phase_validering'],
+        ['Ferdigstilling', 'phase_ferdigstilling'],
+      ];
+
+      const phaseLines = phaseLabels.map(([label, key]) => {
+        const value = (formData.get(key) || '').toString().trim();
+        return `- ${label}: ${value || 'ikke angitt'}%`;
+      });
+
+      const subject = `Ny foresporsel fra ${fullName || 'nettsted'}`;
+      const lines = [
+        'Ny designkonsultasjon foresporsel',
+        '',
+        `Navn: ${fullName || 'ikke angitt'}`,
+        `E-post: ${email || 'ikke angitt'}`,
+        `Tidshorisont: ${timeframe || 'ikke angitt'}`,
+        `Budsjett: ${budget || 'ikke angitt'}`,
+        '',
+        'Prioriteringer i tidslinje:',
+        ...phaseLines,
+        '',
+        'Beskrivelse:',
+        description || 'ikke angitt',
+      ];
+
+      const body = lines.join('\n');
+      const mailtoUrl = `mailto:hei@formaa.no?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = mailtoUrl;
+    });
+  }
+
   // NOTE: Rehydrates the single project template from `?project=<slug>` and wires prev/next routing.
   setupProjectDetailPage(catalog) {
     const root = document.querySelector('[data-project-page]');
@@ -462,7 +472,7 @@ class SinglePagePortfolio {
     const nextLink = document.querySelector('[data-project-nav-next]');
 
     if (titleEl) titleEl.textContent = current.title;
-    if (leadEl) leadEl.textContent = current.lead;
+    if (leadEl) leadEl.textContent = current.desc;
     if (breadcrumbCurrentEl) breadcrumbCurrentEl.textContent = current.title;
     document.title = `${current.title} | Industridesign og produktdesign`;
 
