@@ -593,6 +593,64 @@
   font-weight: 700;
 }
 
+.pricing-process-list {
+  margin: 0.6rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.pricing-process-list__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  max-width: 62ch;
+}
+
+.pricing-process-list__number {
+  font-size: 2rem;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  flex: 0 0 auto;
+}
+
+.pricing-process-list__text {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+
+.pricing-process-section {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    90deg,
+    var(--color-projects-panel) 0%,
+    var(--color-features-gradient-end) 100%
+  );
+}
+
+.pricing-process-section .section-title,
+.pricing-process-section .section-lead,
+.pricing-process-section .pricing-process-list__item {
+  color: var(--color-white);
+}
+
+.pricing-process-section .inquiry-cta {
+  margin-top: 1.75rem;
+  background: var(--color-white);
+  color: var(--color-dark);
+  border: 1px solid rgba(31, 31, 31, 0.18);
+}
+
+.pricing-process-section .inquiry-cta:hover {
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--color-dark);
+}
+
 /* About page team section */
 .about-top-graphic {
   position: relative;
