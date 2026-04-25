@@ -463,53 +463,76 @@ class SinglePagePortfolio {
     }
   }
 
-  // NOTE: Converts inquiry form submissions into a prefilled mail draft to the shared inbox.
+  // NOTE: Sends inquiry form directly to Web3Forms so users do not need a local mail client.
   setupInquiryFormMailto() {
-    const inquiryForm = document.querySelector('.inquiry-form');
+    const inquiryForm = document.querySelector('[data-inquiry-form]');
     if (!inquiryForm) return;
+    const submitButton = inquiryForm.querySelector('button[type="submit"]');
+    const statusEl = inquiryForm.querySelector('[data-inquiry-status]');
+    const web3FormsEndpoint = 'https://api.web3forms.com/submit';
+    const emailFormat = /^[^\s@]+@[^\s@]+\.(com|no)$/i;
 
-    inquiryForm.addEventListener('submit', (event) => {
+    const setStatus = (message, state) => {
+      if (!statusEl) return;
+      statusEl.textContent = message;
+      statusEl.dataset.state = state;
+    };
+
+    inquiryForm.addEventListener('submit', async (event) => {
       event.preventDefault();
+
+      if (!inquiryForm.reportValidity()) return;
 
       const formData = new FormData(inquiryForm);
       const fullName = (formData.get('full_name') || '').toString().trim();
       const email = (formData.get('email') || '').toString().trim();
-      const timeframe = (formData.get('timeframe') || '').toString().trim();
-      const budget = (formData.get('budget') || '').toString().trim();
       const description = (formData.get('description') || '').toString().trim();
+      const accessKey = (formData.get('access_key') || '').toString().trim();
 
-      const phaseLabels = [
-        ['Brukeranalyse', 'phase_brukeranalyse'],
-        ['Konseptutvikling', 'phase_konseptutvikling'],
-        ['Prototype', 'phase_prototype'],
-        ['Validering', 'phase_validering'],
-        ['Ferdigstilling', 'phase_ferdigstilling'],
-      ];
+      if (!fullName || !email || !description) {
+        setStatus('Vennligst fyll ut navn, e-post og beskrivelse.', 'error');
+        return;
+      }
+      if (!emailFormat.test(email)) {
+        setStatus('Skriv en gyldig e-postadresse som slutter med .com eller .no.', 'error');
+        return;
+      }
+      if (!accessKey || accessKey.startsWith('REPLACE_WITH_')) {
+        setStatus('Web3Forms-nokkel mangler. Legg inn access_key i skjemaet først.', 'error');
+        return;
+      }
 
-      const phaseLines = phaseLabels.map(([label, key]) => {
-        const value = (formData.get(key) || '').toString().trim();
-        return `- ${label}: ${value || 'ikke angitt'}%`;
-      });
+      formData.set('full_name', fullName);
+      formData.set('email', email);
+      formData.set('description', description);
+      formData.set('subject', `Ny foresporsel fra ${fullName}`);
+      formData.set('replyto', email);
+      setStatus('Sender forespørsel ...', 'loading');
 
-      const subject = `Ny foresporsel fra ${fullName || 'nettsted'}`;
-      const lines = [
-        'Ny designkonsultasjon foresporsel',
-        '',
-        `Navn: ${fullName || 'ikke angitt'}`,
-        `E-post: ${email || 'ikke angitt'}`,
-        `Tidshorisont: ${timeframe || 'ikke angitt'}`,
-        `Budsjett: ${budget || 'ikke angitt'}`,
-        '',
-        'Prioriteringer i tidslinje:',
-        ...phaseLines,
-        '',
-        'Beskrivelse:',
-        description || 'ikke angitt',
-      ];
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.setAttribute('aria-busy', 'true');
+      }
 
-      const body = lines.join('\n');
-      const mailtoUrl = `mailto:hei@formaa.no?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      window.location.href = mailtoUrl;
+      try {
+        const response = await fetch(web3FormsEndpoint, {
+          method: 'POST',
+          body: formData,
+        });
+        const result = await response.json();
+        if (!response.ok || !result.success) {
+          throw new Error(result.message || 'Submission failed');
+        }
+        setStatus('Takk! Forespørselen er sendt. Vi svarer deg snart.', 'success');
+        inquiryForm.reset();
+      } catch (error) {
+        setStatus('Kunne ikke sende skjemaet nå. Prøv igjen om litt.', 'error');
+      } finally {
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.removeAttribute('aria-busy');
+        }
+      }
     });
   }
 
