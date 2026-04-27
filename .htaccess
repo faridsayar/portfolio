@@ -1,0 +1,6 @@
+# NOTE: Canonical homepage URL rules and index handling.
+RewriteEngine On
+DirectoryIndex index.html
+
+RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
+RewriteRule ^index\.html$ / [R=301,L]
