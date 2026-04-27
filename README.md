@@ -24,7 +24,7 @@ No build step is required for runtime.
 
 - `index.html` - Main landing page (hero, services, features, inquiry timeline, project grid)
 - `oss.html` - Placeholder/info page with aligned SEO metadata
-- `prosjekter.html` - Placeholder/info page with aligned SEO metadata
+- `advanced-project.html` - Project listing page with aligned SEO metadata
 - `innsikt.html` - Articles/insights page with aligned SEO metadata
 - `bli-med.html` - Placeholder/info page with aligned SEO metadata
 - `prisestimat.html` - Interactive pricing estimator page with range totals and SEO metadata
@@ -64,7 +64,22 @@ Current shared components:
 - Segment percentages always constrained and normalized to sum to 100%
 - Summary percentages auto-updated
 - Hidden inputs populated with phase percentages for submission integration
-- Form submit builds a prefilled `mailto:` draft to `hei@formaa.no`
+- Form submit sends directly via Web3Forms (no local mail client popup)
+
+## Search Indexing Files
+
+<!-- NOTE: Search engines use these root files to discover and crawl the site. -->
+
+- `sitemap.xml` - XML list of all public HTML pages that should be indexed
+- `robots.txt` - crawler policy + sitemap location
+
+### Sitemap Update Workflow
+
+Whenever you add/remove/rename public pages:
+
+1. Update `sitemap.xml` in the repository root.
+2. Deploy changes to production.
+3. Submit/re-submit `https://formaa.no/sitemap.xml` in Google Search Console.
 
 ### Projects Grid
 
