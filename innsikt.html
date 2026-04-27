@@ -51,8 +51,8 @@
     <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
-    <link rel="stylesheet" href="styles.css?v=4" />
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles/base.css?v=2" />
+    <link rel="stylesheet" href="styles/article.css?v=2" />
 
     <!-- NOTE: Google Analytics 4 global site tag for tracking website traffic. -->
     <!-- Google tag (gtag.js) -->
@@ -92,7 +92,13 @@
           <div class="articles-grid" aria-label="Artikkeloversikt">
             <article class="article-card">
               <a class="article-card__link" href="innsikt-hva-er-industridesign.html">
-                <img class="article-card__img" src="assets/images/USV.png" alt="Artikkelbilde 1" />
+                <img
+                  class="article-card__img"
+                  src="assets/images/USV.png"
+                  alt="Artikkelbilde 1"
+                  width="1200"
+                  height="900"
+                />
                 <div class="article-card__body">
                   <h2 class="article-card__title">Hva er industridesign i praksis?</h2>
                   <p class="article-card__excerpt">
@@ -105,7 +111,13 @@
 
             <article class="article-card">
               <a class="article-card__link" href="innsikt-ux-er-ikke-produktdesign.html">
-                <img class="article-card__img" src="assets/images/H2O.jpg" alt="Artikkelbilde 2" />
+                <img
+                  class="article-card__img"
+                  src="assets/images/H2O.jpg"
+                  alt="Artikkelbilde 2"
+                  width="1200"
+                  height="900"
+                />
                 <div class="article-card__body">
                   <h2 class="article-card__title">UX er ikke produktdesign</h2>
                   <p class="article-card__excerpt">
@@ -118,7 +130,13 @@
 
             <article class="article-card">
               <a class="article-card__link" href="innsikt-hvem-trenger-design.html">
-                <img class="article-card__img" src="assets/images/itac.jpg" alt="Artikkelbilde 3" />
+                <img
+                  class="article-card__img"
+                  src="assets/images/itac.jpg"
+                  alt="Artikkelbilde 3"
+                  width="1200"
+                  height="900"
+                />
                 <div class="article-card__body">
                   <h2 class="article-card__title">Hvem trenger design, når og hvor mye?</h2>
                   <p class="article-card__excerpt">
@@ -135,6 +153,8 @@
                   class="article-card__img"
                   src="assets/images/Proton.png"
                   alt="Artikkelbilde 4"
+                  width="1200"
+                  height="900"
                 />
                 <div class="article-card__body">
                   <h2 class="article-card__title">Hvordan design sparer penger i lengden</h2>
@@ -152,6 +172,8 @@
                   class="article-card__img"
                   src="assets/images/Drone2.jpeg"
                   alt="Artikkelbilde 5"
+                  width="1200"
+                  height="900"
                 />
                 <div class="article-card__body">
                   <h2 class="article-card__title">Branding og produktdesign</h2>
@@ -169,6 +191,8 @@
                   class="article-card__img"
                   src="assets/images/Memorium.jpg"
                   alt="Artikkelbilde 6"
+                  width="1200"
+                  height="900"
                 />
                 <div class="article-card__body">
                   <h2 class="article-card__title">Hvorfor design er perfekt for crowdfunding</h2>
@@ -202,9 +226,9 @@
         }
       }
     </script>
-    <script src="components-loader.js?v=1"></script>
-    <script src="shared-nav.js?v=1"></script>
-    <script src="article-image-map.js?v=1"></script>
-    <script src="shared-innsikt-thumbs.js?v=1"></script>
+    <script src="components-loader.js?v=1" defer></script>
+    <script src="shared-nav.js?v=1" defer></script>
+    <script src="article-image-map.js?v=1" defer></script>
+    <script src="shared-innsikt-thumbs.js?v=1" defer></script>
   </body>
 </html>

@@ -1,33 +1,27 @@
 # Industridesign Portfolio (Norwegian Website)
 
-This repository contains a static, Norwegian-focused portfolio website for industrial design and product design services.
-
-The site is optimized around:
-
-- Norwegian content and SEO metadata
-- A conversion-focused hero section
-- Service and feature sections
-- Interactive project-priority timeline in the inquiry form
-- Project gallery driven by a shared project manifest
-- Reusable HTML components loaded into `data-component` slots
+This repository contains a static, Norwegian-focused portfolio website for industrial and product design services.
 
 ## Tech Stack
 
-- HTML (`index.html`, plus simple secondary pages)
-- CSS (`styles.css`)
-- Vanilla JavaScript (`script.js`, `shared-nav.js`, shared article utilities)
+- HTML pages (landing, category/location pages, projects, insights, pricing)
+- CSS split into shared base + page bundles
+- Vanilla JavaScript (`script.js`, `shared-nav.js`, component + article helpers)
 - Static assets in `assets/`
 
-No build step is required for runtime.
+No runtime build step is required.
 
-## Main Pages
+## CSS Structure
 
-- `index.html` - Main landing page (hero, services, features, inquiry timeline, project grid)
-- `oss.html` - Placeholder/info page with aligned SEO metadata
-- `advanced-project.html` - Project listing page with aligned SEO metadata
-- `innsikt.html` - Articles/insights page with aligned SEO metadata
-- `bli-med.html` - Placeholder/info page with aligned SEO metadata
-- `prisestimat.html` - Interactive pricing estimator page with range totals and SEO metadata
+The project now uses a safe split strategy:
+
+- `styles/base.css` - shared global styles (tokens, typography, nav/footer, reusable blocks)
+- `styles/home.css` - homepage-specific style bundle
+- `styles/article.css` - insights/article-specific style bundle
+- `styles/pricing.css` - pricing page bundle
+- `styles/category.css` - category/location page bundle
+
+Keep selectors/class names stable when moving rules between bundles.
 
 ## Component System
 
@@ -44,116 +38,57 @@ Current shared components:
 
 `components-loader.js` supports multi-pass loading so components can contain nested `data-component` slots.
 
-## Current UX and Features
+## Key UX Features
 
-### Hero Section
+- Hero media with clip shuffle (`script.js`)
+- Interactive inquiry timeline with 5 weighted phases
+- Web3Forms-based inquiry submission (no local mail client popup)
+- Project grid hydrated from `assets/data/projects-manifest.js` / `.json`
+- Article cards + shared article layout utilities
 
-- Full-screen video background with clip shuffle (`script.js`)
-- Dark overlay for text contrast
-- CTA linking to inquiry section (`#application-form`)
+## Search Indexing
 
-### Inquiry Form + Timeline
+Search engines use root indexing files:
 
-- Interactive timeline with 5 phases:
-  - Brukeranalyse
-  - Konseptutvikling
-  - Prototype
-  - Validering
-  - Ferdigstilling
-- 4 draggable handles (mouse/pointer + keyboard arrow support)
-- Segment percentages always constrained and normalized to sum to 100%
-- Summary percentages auto-updated
-- Hidden inputs populated with phase percentages for submission integration
-- Form submit sends directly via Web3Forms (no local mail client popup)
+- `sitemap.xml`
+- `robots.txt`
 
-## Search Indexing Files
+### Sitemap Workflow
 
-<!-- NOTE: Search engines use these root files to discover and crawl the site. -->
+Whenever public pages are added/removed/renamed:
 
-- `sitemap.xml` - XML list of all public HTML pages that should be indexed
-- `robots.txt` - crawler policy + sitemap location
+1. Update (or regenerate) `sitemap.xml`.
+2. Deploy to production.
+3. Re-submit `https://formaa.no/sitemap.xml` in Google Search Console.
 
-### Sitemap Update Workflow
+## SEO Conventions
 
-Whenever you add/remove/rename public pages:
+- Keep Norwegian copy and metadata as primary.
+- Maintain one primary `h1` per page.
+- Keep canonical and OG URL aligned with final page URL.
+- Preserve robots directive (`index,follow,max-image-preview:large`).
 
-1. Update `sitemap.xml` in the repository root.
-2. Deploy changes to production.
-3. Submit/re-submit `https://formaa.no/sitemap.xml` in Google Search Console.
-
-### Projects Grid
-
-- JavaScript hydrates cards from `assets/data/projects-manifest.js` / `.json`
-- Shared detail template supports dynamic `?project=<slug>` rendering
-
-## SEO and Metadata
-
-All HTML pages are aligned to Norwegian-first industrial/product design intent:
-
-- `lang="no"`
-- optimized title and description tags
-- keyword tags
-- Open Graph tags
-- Twitter card tags
-- canonical URLs
-- shared favicon references
-- robots directive (`index,follow,max-image-preview:large`)
-- locale hints (`og:locale`, `og:locale:alternate`)
-
-Structured data:
+Structured data currently used:
 
 - `index.html`: company/service JSON-LD
 - `innsikt.html`: blog listing JSON-LD
 - `innsikt-*.html`: article JSON-LD
 - `prisestimat.html`: `WebPage` + `BreadcrumbList` JSON-LD
 
-## Branding and Icons
+## URL Canonicalization
 
-- Favicon: `favicon-triangle.svg`
-- Feature icons:
-  - `assets/icons/produserbar-icon.svg`
-  - `assets/icons/fremdrift-icon.svg`
-  - `assets/icons/bedrift-icon.svg`
-  - `assets/icons/brukerbehov-icon.svg`
-
-## Directory Overview
-
-```text
-.
-├── components/
-│   ├── side-nav.html
-│   ├── article-layout.html
-│   ├── project-cta.html
-│   ├── contact-section-home.html
-│   ├── contact-section-compact.html
-│   └── site-footer.html
-├── index.html
-├── oss.html
-├── prosjekter.html
-├── innsikt.html
-├── bli-med.html
-├── styles.css
-├── script.js
-├── shared-nav.js
-├── components-loader.js
-├── assets/
-│   ├── images/
-│   ├── icons/
-│   └── data/
-└── README.md
-```
+- `.htaccess` is used to canonicalize homepage access:
+  - `/index.html` -> `/` (301)
 
 ## Local Development
 
-Open `index.html` directly in your browser, or run a static file server.
-
-Example:
+Run a static server from project root:
 
 ```bash
 python3 -m http.server 8080
 ```
 
-Then visit:
+Then open:
 
 - `http://localhost:8080/`
 
@@ -166,14 +101,3 @@ Before commit/publish, run:
 ```bash
 corepack pnpm format
 ```
-
-## Notes for Future Changes
-
-- Keep Norwegian copy and metadata consistent across all pages.
-- Keep English support secondary (`description:en`, `og:locale:alternate`) instead of replacing NO-primary copy.
-- Reuse existing color variables in `:root` and avoid introducing ad-hoc design tokens.
-- Keep timeline phases and their color mapping in sync between:
-  - segment colors
-  - summary label/value colors
-  - hidden input order
-- Prefer updating existing components/sections in `components/` rather than duplicating markup in page files.
