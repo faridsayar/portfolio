@@ -801,8 +801,8 @@ section[aria-label='Oss'] .section-inner {
 .about-team-card__img {
   display: block;
   width: 100%;
-  /* NOTE: Reduced profile card image height while keeping consistent card format. */
-  aspect-ratio: 3 / 2;
+  /* NOTE: Enforce stable 3:4 frame with explicit height so intrinsic image ratio does not override crop. */
+  height: clamp(15rem, 26vw, 20rem);
   object-fit: cover;
   object-position: center;
   background: var(--surface-neutral);
@@ -863,8 +863,8 @@ section[aria-label='Oss'] .section-inner {
 .article-card__img {
   display: block;
   width: 100%;
-  /* NOTE: Reduced article card image height while keeping uniform article thumbnails. */
-  aspect-ratio: 20 / 9;
+  /* NOTE: Enforce stable 3:4 frame with explicit height so intrinsic image ratio does not override crop. */
+  height: clamp(14rem, 24vw, 19rem);
   object-fit: cover;
   object-position: center;
   background: var(--surface-neutral);
@@ -1661,7 +1661,7 @@ section[aria-label='Oss'] .section-inner {
   margin-top: 0.75rem;
 }
 
-/* NOTE: Prev/next links: fixed overlay, triangle icons (`triangle.svg`), vertical anchor 90% (hero stage sync in script.js); desktop only. */
+/* NOTE: Prev/next links: fixed overlay, triangle icons (`assets/Triangle.svg`), vertical anchor 90% (hero stage sync in script.js); desktop only. */
 .project-page-nav {
   display: none;
 }

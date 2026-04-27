@@ -36,7 +36,7 @@ function renderSharedArticle() {
   if (heroImageEl) {
     const getImage = window.getArticleImageForKey;
     heroImageEl.src =
-      typeof getImage === 'function' ? getImage(key) : 'assets/images/Articles/USV.png';
+      typeof getImage === 'function' ? getImage(key) : 'assets/images/Articles/USV.webp';
     heroImageEl.alt = typeof article.heroAlt === 'string' ? article.heroAlt : article.title;
   }
   if (bodyEl) {

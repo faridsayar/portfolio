@@ -7,7 +7,7 @@
   <article class="section section--white section--article-template" aria-label="Artikkel">
     <div class="section-inner" data-article-layout>
       <figure class="about-top-graphic">
-        <img class="about-top-graphic__img" src="assets/images/USV.png" alt="" data-article-hero-image />
+        <img class="about-top-graphic__img" src="assets/images/Articles/USV.webp" alt="" data-article-hero-image />
         <div class="about-top-graphic__overlay" aria-hidden="true">
           <nav class="breadcrumb about-top-graphic__breadcrumb" aria-label="Brødsmulesti">
             <a class="breadcrumb__link" href="index.html">Formaa</a>
@@ -91,9 +91,9 @@
         <span class="contact-item__label">Telefon</span>
         <span class="contact-item__value">+47 46 38 18 87</span>
       </a>
-      <a class="contact-item contact-link" href="mailto:hei@formaa.no" itemprop="email">
+      <a class="contact-item contact-link" href="https://formaa.no/index.html#application-form" itemprop="email">
         <span class="contact-item__label">E-post</span>
-        <span class="contact-item__value">hei@formaa.no</span>
+        <span class="contact-item__value">Gå til søknadsskjema</span>
       </a>
     </div>
 
@@ -151,9 +151,9 @@
         <span class="contact-item__label">Telefon</span>
         <span class="contact-item__value">+47 46 38 18 87</span>
       </a>
-      <a class="contact-item contact-link" href="mailto:hei@formaa.no" itemprop="email">
+      <a class="contact-item contact-link" href="https://formaa.no/index.html#application-form" itemprop="email">
         <span class="contact-item__label">E-post</span>
-        <span class="contact-item__value">hei@formaa.no</span>
+        <span class="contact-item__value">Gå til søknadsskjema</span>
       </a>
     </div>
 
