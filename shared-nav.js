@@ -52,7 +52,7 @@ function renderSharedNav() {
         aria-controls="side-nav-content"
         data-mobile-nav-toggle
       >
-        <img class="side-nav__toggle-icon" src="${rootPrefix}triangle.svg" alt="" aria-hidden="true" />
+        <img class="side-nav__toggle-icon" src="${rootPrefix}assets/Triangle.svg" alt="" aria-hidden="true" />
       </button>
       <div class="side-nav__content" id="side-nav-content" data-mobile-nav-content>
         ${linksMarkup}

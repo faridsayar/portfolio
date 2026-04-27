@@ -45,6 +45,7 @@ Current shared components:
 - Web3Forms-based inquiry submission (no local mail client popup)
 - Project grid hydrated from `assets/data/projects-manifest.js` / `.json`
 - Article cards + shared article layout utilities
+- WebP-first image references for improved payload and paint performance
 
 ## Search Indexing
 
@@ -67,6 +68,7 @@ Whenever public pages are added/removed/renamed:
 - Maintain one primary `h1` per page.
 - Keep canonical and OG URL aligned with final page URL.
 - Preserve robots directive (`index,follow,max-image-preview:large`).
+- Keep contact links form-based to avoid exposing a raw email in page markup.
 
 Structured data currently used:
 
