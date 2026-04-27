@@ -1,0 +1,5 @@
+# NOTE: Robots policy and sitemap location for search engine crawlers.
+User-agent: *
+Allow: /
+
+Sitemap: https://formaa.no/sitemap.xml
