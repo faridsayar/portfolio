@@ -801,7 +801,7 @@ section[aria-label='Oss'] .section-inner {
 .about-team-card__img {
   display: block;
   width: 100%;
-  /* NOTE: Reduced card image height (~40%) while keeping a shared profile format. */
+  /* NOTE: Reduced profile card image height while keeping consistent card format. */
   aspect-ratio: 3 / 2;
   object-fit: cover;
   object-position: center;
@@ -863,7 +863,7 @@ section[aria-label='Oss'] .section-inner {
 .article-card__img {
   display: block;
   width: 100%;
-  /* NOTE: Reduced article card image height (~40%) while keeping uniform list thumbnails. */
+  /* NOTE: Reduced article card image height while keeping uniform article thumbnails. */
   aspect-ratio: 20 / 9;
   object-fit: cover;
   object-position: center;
