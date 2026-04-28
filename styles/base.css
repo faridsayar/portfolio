@@ -337,6 +337,15 @@
   margin-top: 2rem;
 }
 
+/* NOTE: Keep inline portfolio summary CTA as plain black text link. */
+.portfolio-summary-link,
+.portfolio-summary-link:visited,
+.portfolio-summary-link:hover,
+.portfolio-summary-link:focus,
+.portfolio-summary-link:active {
+  color: #000;
+}
+
 .category-hero-media {
   position: relative;
   margin-left: calc(50% - 50vw);
@@ -942,6 +951,88 @@ section[aria-label='Oss'] .section-inner {
   padding-bottom: 2rem;
 }
 
+/* Quotes/testimonials section */
+.section--quotes {
+  background: var(--color-white);
+}
+
+.quotes-marquee {
+  overflow: hidden;
+  background: var(--color-white);
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.quotes-track {
+  display: flex;
+  width: max-content;
+  animation: quotes-scroll 48s linear infinite;
+}
+
+.quotes-grid {
+  display: flex;
+  gap: 1rem;
+  padding-right: 1rem;
+}
+
+.quote-card {
+  background: transparent;
+  border: none;
+  padding: 1.25rem;
+  display: grid;
+  grid-template-columns: 5.25rem 1fr;
+  align-items: start;
+  gap: 1rem;
+  width: min(42rem, calc(100vw - 3rem));
+  flex: 0 0 auto;
+}
+
+.quote-card__text {
+  margin: 0;
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+  line-height: var(--line-height-loose);
+  color: var(--color-dark);
+  font-family: 'Readex Pro', cursive;
+  font-style: italic;
+}
+
+.quote-card__media {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.quote-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.quote-card__avatar {
+  width: 5rem;
+  height: 5rem;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 999px;
+  background: var(--surface-neutral);
+}
+
+.quote-card__name {
+  margin: 0;
+  font-size: var(--font-size-caption-sm);
+  color: var(--color-dark);
+  opacity: 0.8;
+}
+
+@keyframes quotes-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 .feature-banner {
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
@@ -983,6 +1074,16 @@ section[aria-label='Oss'] .section-inner {
   opacity: 0.92;
 }
 
+/* NOTE: Keep inline feature link visually consistent with surrounding feature text. */
+.feature-point__inline-link,
+.feature-point__inline-link:visited,
+.feature-point__inline-link:hover,
+.feature-point__inline-link:focus,
+.feature-point__inline-link:active {
+  color: inherit;
+  font-weight: var(--font-weight-semibold);
+}
+
 /* Note: utility for highlighting specific text in primary color */
 .text-primary {
   color: var(--color-primary);
@@ -1019,6 +1120,20 @@ section[aria-label='Oss'] .section-inner {
   .feature-points {
     grid-template-columns: 1fr;
   }
+
+  .quotes-grid {
+    padding-right: 0.75rem;
+  }
+
+  .quote-card {
+    grid-template-columns: 4.5rem 1fr;
+    width: min(32rem, calc(100vw - 2rem));
+  }
+
+  .quote-card__avatar {
+    width: 4.25rem;
+    height: 4.25rem;
+  }
 }
 
 /* Timeline section */
@@ -1042,6 +1157,7 @@ section[aria-label='Oss'] .section-inner {
 
 .timeline-anchor--time {
   opacity: 0.9;
+  display: none;
 }
 
 .timeline-track-wrap {
@@ -1066,6 +1182,11 @@ section[aria-label='Oss'] .section-inner {
   top: 0;
   height: 2.5rem;
   pointer-events: none;
+}
+
+/* NOTE: Dedicated mobile-only start/end labels for timeline scale. */
+.timeline-mobile-anchor {
+  display: none;
 }
 
 .timeline-segments {
@@ -1203,16 +1324,41 @@ section[aria-label='Oss'] .section-inner {
     position: relative;
     display: block;
     min-height: 15rem;
-    padding-top: 0;
+    /* NOTE: Reserve space for fixed start/end labels around the vertical scale. */
+    padding-top: 1.5rem;
+    padding-bottom: 1.75rem;
     margin-top: 0;
     margin-bottom: 1.25rem;
+  }
+
+  .timeline-mobile-anchor {
+    position: absolute;
+    left: calc(2.25rem / 2);
+    transform: translateX(-50%);
+    font-size: 0.9rem;
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: -0.01em;
+    color: var(--color-dark);
+    opacity: 0.85;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 3;
+    display: block;
+  }
+
+  .timeline-mobile-anchor--end {
+    top: 0;
+  }
+
+  .timeline-mobile-anchor--start {
+    bottom: 0;
   }
 
   .timeline-track {
     position: absolute;
     left: 0;
-    top: 0;
-    bottom: 0;
+    top: 1.5rem;
+    bottom: 1.75rem;
     width: 2.25rem;
     height: auto;
   }
@@ -1226,8 +1372,8 @@ section[aria-label='Oss'] .section-inner {
     left: 0;
     right: auto;
     width: 2.25rem;
-    top: 0;
-    bottom: 0;
+    top: 1.5rem;
+    bottom: 1.75rem;
     height: auto;
   }
 
@@ -1275,6 +1421,16 @@ section[aria-label='Oss'] .section-inner {
   border: none;
   background: var(--surface-neutral);
   padding: 1.25rem;
+}
+
+/* NOTE: Application form heading displayed in top-left on desktop and mobile. */
+.inquiry-form__title {
+  margin: 0 0 1rem 0;
+  font-size: var(--font-size-section-title);
+  line-height: var(--line-height-title);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: -0.01em;
+  color: var(--color-dark);
 }
 
 .inquiry-grid {

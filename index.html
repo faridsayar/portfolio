@@ -244,8 +244,14 @@
                   aria-hidden="true"
                 />
                 <span class="feature-point__text">
-                  <strong>Design som faktisk kan produseres:</strong> Produktutvikling med fokus på
-                  form og funksjon, materialvalg og produksjon, transport og resirkulering.
+                  <strong>Design som faktisk kan produseres:</strong>
+                  <a
+                    class="feature-point__inline-link"
+                    href="https://formaa.no/category/produktdesign/norge.html"
+                    >Produktutvikling</a
+                  >
+                  med fokus på form og funksjon, materialvalg og produksjon, transport og
+                  resirkulering.
                 </span>
               </p>
               <p class="feature-point">
@@ -259,8 +265,12 @@
                 />
                 <span class="feature-point__text">
                   <strong>Ingen unødvendig kompleksitet:</strong> Tydelige prosesser og raske
-                  iterasjoner som gjøre ideer til konkrete resultater. Rask og direkte
-                  kommunikasjon.
+                  <a
+                    class="feature-point__inline-link"
+                    href="https://formaa.no/category/prototyping/norge.html"
+                    >iterasjoner</a
+                  >
+                  som gjøre ideer til konkrete resultater. Rask og direkte kommunikasjon.
                 </span>
               </p>
               <p class="feature-point">
@@ -290,8 +300,13 @@
                   <strong
                     >Design basert på <span class="text-primary">ekte brukerbehov</span>:</strong
                   >
-                  Grundig research av brukerne og brukernes mål, kontekst, bruksmåte, ergonomi og
-                  begrensninger.
+                  Grundig
+                  <a
+                    class="feature-point__inline-link"
+                    href="https://formaa.no/category/brukerundersokelse/norge.html"
+                    >research</a
+                  >
+                  av brukerne og brukernes mål, kontekst, bruksmåte, ergonomi og begrensninger.
                 </span>
               </p>
             </div>
@@ -316,6 +331,8 @@
 
           <!-- NOTE: One combined inquiry form section submitted via Web3Forms API (no mail client popup). -->
           <form class="inquiry-form" method="post" data-inquiry-form>
+            <!-- NOTE: Static form title shown at top-left on all breakpoints. -->
+            <p class="inquiry-form__title">Min prosjekt</p>
             <!-- NOTE: Web3Forms public access key used by the static form submission endpoint. -->
             <input type="hidden" name="access_key" value="c21cafeb-72cf-4e8b-b66c-69384a07c888" />
             <input type="hidden" name="subject" value="Ny designkonsultasjon foresporsel" />
@@ -336,6 +353,13 @@
                 <span class="timeline-anchor timeline-anchor--end">Ferdigstilling</span>
               </div>
               <div class="timeline-track-wrap">
+                <!-- NOTE: Fixed mobile boundary labels for timeline scale visibility. -->
+                <span class="timeline-mobile-anchor timeline-mobile-anchor--end"
+                  >Ferdigstilling</span
+                >
+                <span class="timeline-mobile-anchor timeline-mobile-anchor--start"
+                  >Konsultasjon</span
+                >
                 <div class="timeline-labels" aria-hidden="true">
                   <div class="timeline-handle-label" data-handle-label="0"></div>
                   <div class="timeline-handle-label" data-handle-label="1"></div>
@@ -478,6 +502,149 @@
           <!-- NOTE: Portfolio tiles are rendered from assets/data/projects-manifest.js to keep titles and media in sync with project data. -->
           <div class="projects-grid" aria-label="Prosjektliste" data-projects-grid></div>
           <div class="projects-sentinel" data-projects-sentinel aria-hidden="true"></div>
+        </div>
+        <!-- NOTE: SEO summary text placed after portfolio grid to describe project stages and service scope. -->
+        <p class="section-lead section-lead--after-grid">
+          Våre prosjekter inkluderer ulike faser og scenarier i flere felt av produktutvikling,
+          industridesign og produktdesign. Vi har jobbet med produktutvikling fra tidlig idé og
+          tekniske tegninger for China eller India, til utvikling av prototyper, visualisering og en
+          tydelig plan for lansering. Vi har også utført forberedelse til crowdfunding-kampanjer,
+          lansering av produkt, branding og enkle ulike visualiseringer som hjelper prosjekter
+          lettere å vise frem og kommunisere for team, partnere og investorer.
+          <a class="portfolio-summary-link" href="advanced-project.html"
+            ><strong>se arbeidet vårt</strong></a
+          >
+        </p>
+      </div>
+    </section>
+
+    <!-- NOTE: Quote/testimonial strip placed after portfolio; images are placeholders to be replaced later. -->
+    <section class="section section--white section--quotes" aria-label="Kundeuttalelser">
+      <div class="section-inner">
+        <div class="quotes-marquee" aria-label="Kundeuttalelser ruller">
+          <div class="quotes-track">
+            <div class="quotes-grid">
+              <article class="quote-card">
+                <div class="quote-card__media">
+                  <img
+                    class="quote-card__avatar"
+                    src="assets/images/quotes/person-1.jpg"
+                    alt="Portrett av kunde 1"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div class="quote-card__content">
+                  <p class="quote-card__text">
+                    "Hjalp oss med å lage vår første serie av 200 steinprodukter, katalogen og
+                    branding."
+                  </p>
+                  <p class="quote-card__name">Memorium AS</p>
+                </div>
+              </article>
+
+              <article class="quote-card">
+                <div class="quote-card__media">
+                  <img
+                    class="quote-card__avatar"
+                    src="assets/images/quotes/person-2.jpg"
+                    alt="Portrett av kunde 2"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div class="quote-card__content">
+                  <p class="quote-card__text">
+                    "Vi fikk hjelp til å lage nye og kule visualiseringer av vårt primære produkt -
+                    Utstyr for ubemannede båter - til investorgruppen. Bra leveranse og veldig god
+                    kommunikasjon hele veien."
+                  </p>
+                  <p class="quote-card__name">Carl Zeabuz</p>
+                </div>
+              </article>
+
+              <article class="quote-card">
+                <div class="quote-card__media">
+                  <img
+                    class="quote-card__avatar"
+                    src="assets/images/quotes/person-3.jpg"
+                    alt="Portrett av kunde 3"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div class="quote-card__content">
+                  <p class="quote-card__text">
+                    " De har formet våre tanker og ideer samtidig som de på en smidig måte selv også
+                    har fremmet forslag på eget initativ. På den måten har vi kommet frem til gode
+                    løsninger. Dyktig designere som det er lett å samarbeide med. De arbeider godt
+                    for team jeg vil anbefale dere til fremtidige oppdrag. "
+                  </p>
+                  <p class="quote-card__name">Trond Syversen</p>
+                </div>
+              </article>
+            </div>
+
+            <div class="quotes-grid" aria-hidden="true">
+              <article class="quote-card">
+                <div class="quote-card__media">
+                  <img
+                    class="quote-card__avatar"
+                    src="assets/images/quotes/person-1.jpg"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div class="quote-card__content">
+                  <p class="quote-card__text">
+                    "Hjalp oss i startfasen med å lage vår første serie av 200 steinprodukter, med
+                    tkeniske tegninger til produksjonsteam i India. Ny nettside og branding med
+                    katalogen som resulterte i bra salg av hele serien."
+                  </p>
+                  <p class="quote-card__name">Memorium AS</p>
+                </div>
+              </article>
+
+              <article class="quote-card">
+                <div class="quote-card__media">
+                  <img
+                    class="quote-card__avatar"
+                    src="assets/images/quotes/person-2.jpg"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div class="quote-card__content">
+                  <p class="quote-card__text">
+                    "Vi fikk hjelp til å lage visualiseringer av vår primære produkt til
+                    investorgruppen. Bra leveranse veldig god kommunikasjon hele veien."
+                  </p>
+                  <p class="quote-card__name">Carl Zeabuz</p>
+                </div>
+              </article>
+
+              <article class="quote-card">
+                <div class="quote-card__media">
+                  <img
+                    class="quote-card__avatar"
+                    src="assets/images/quotes/person-3.jpg"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div class="quote-card__content">
+                  <p class="quote-card__text">
+                    "Veldig effektiv prosess fra idé til prototype. Vi fikk tydelige leveranser og
+                    god oppfølging hele veien."
+                  </p>
+                  <p class="quote-card__name">Navn kommer</p>
+                </div>
+              </article>
+            </div>
+          </div>
         </div>
       </div>
     </section>
