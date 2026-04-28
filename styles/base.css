@@ -1803,6 +1803,27 @@ section[aria-label='Oss'] .section-inner {
   padding-bottom: 4rem;
 }
 
+/* NOTE: Problem / Solution / Outcome narrative block shown below project hero/nav. */
+.section--project-summary .section-inner {
+  padding-top: 0;
+  padding-bottom: 1rem;
+}
+
+.project-summary {
+  max-width: 70rem;
+  margin: 0 auto;
+}
+
+.project-summary__item {
+  margin: 0 0 0.8rem 0;
+  line-height: var(--line-height-relaxed);
+  color: var(--color-dark);
+}
+
+.project-summary__item strong {
+  font-weight: var(--font-weight-semibold);
+}
+
 /* NOTE: CTA sections stay transparent so global page gradient flows continuously. */
 .section--project-cta {
   background: transparent;

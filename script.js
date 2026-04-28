@@ -16,6 +16,84 @@ class SinglePagePortfolio {
     this.initializeProjectViews();
   }
 
+  // NOTE: Per-project narrative copy for Problem / Løsning / Resultat block on project pages.
+  getProjectNarratives() {
+    return {
+      undo: {
+        problem:
+          'Ørkener er ikke statiske, de vokser raskt ut sprer seg. Hvordan kan vi stoppe dem?',
+        solution:
+          'Prosjektet utviklet et produktkonsept som styrer luft- og fuktflyt nær roten for å støtte plantevekst i tørre miljøer.',
+        outcome:
+          'Løsningen gir et tydelig grunnlag for videre prototypeutvikling og visualiserte en skalerbar retning for desertifisering.',
+      },
+      h2o: {
+        problem:
+          'Mange brukere glemmer både jevn hydrering og daglig aktivitetsnivå når data er spredt på flere produkter.',
+        solution:
+          'Vi kombinerte vannflaske og mekanisk skritteller i ett produkt med tydelig fysisk interaksjon og robust hverdagsbruk.',
+        outcome:
+          'Konseptet ga en enklere brukerreise og et sterkere produktgrunnlag for videre testing av funksjon, ergonomi og produksjon.',
+      },
+      monocopter: {
+        problem:
+          'Søkeoppdrag i store områder krever ofte tunge systemer med begrenset mobilitet og krevende logistikk.',
+        solution:
+          'Designet fokuserte på en modulær VTOL-droneplattform med effektiv områdedekning, som kombinerer enkel vertikal løfteevne med en mer aerodynamisk form for lengre turer.',
+        outcome:
+          'Prosjektet resulterte i et beslutningsklart konsept med visualiseringer som støtter videre utvikling og validering.',
+      },
+      proton: {
+        problem:
+          'Markedet for hodetelefoner er mettet, og det er en mangel på robust design uten at det ser teit ut.',
+        solution:
+          'Vi utviklet et urbant designuttrykk med robust form, klare linjer og detaljering som støtter både komfort og merkevareprofil.',
+        outcome:
+          'Resultatet ble et helhetlig konsept som styrker produktets posisjonering og gir et tydelig grunnlag for prototypefase.',
+      },
+      'eco-mate-closet': {
+        problem:
+          'Kildesortering hjemme oppleves ofte rotete og lite integrert i interiøret, noe som reduserer faktisk bruk.',
+        solution:
+          'Prosjektet utformet et minimalistisk sorteringsskap med tydelig struktur, enkel tilgang og minimalistisk utseende som passer designmæssigt til fleste rom.',
+        outcome:
+          'Konseptet forbedret både funksjon og visuell kvalitet, og ga et konkret utgangspunkt for videre produksjonsforberedelse.',
+      },
+      nomos: {
+        problem:
+          'Bandet manglet en helhetlig visuell identitet som kunne fungere konsekvent på tvers av plakater, merch og digitale flater.',
+        solution:
+          'Vi utviklet et samlet branding-system med logo, typografi, fargebruk og anvendelser tilpasset musikkmiljø og promotering.',
+        outcome:
+          'Leveransen ga en tydeligere merkevareopplevelse og mer konsistent kommunikasjon i både salg, event og profilering.',
+      },
+      nordic: {
+        problem:
+          'Restauranten trengte et tydelig nordisk uttrykk som kunne løfte helhetsinntrykket uten å miste lokal relevans.',
+        solution:
+          'Designarbeidet etablerte en visuell identitet med nordisk tonalitet, strukturert typografi og fleksible brand-elementer.',
+        outcome:
+          'Prosjektet ga en mer gjenkjennelig profil og et praktisk designgrunnlag for videre bruk i menyer, interiør og kampanjer.',
+      },
+      rafaels: {
+        problem:
+          'Melkeprodusenten trengte en sterkere merkevare som kunne binde moderne og det autentiske uttrykket til produktet og merkevaren.',
+        solution:
+          'Vi utviklet en helhetlig brandpakke fra logo og visuell retning til emballasjeelementer og trykklare flater.',
+        outcome:
+          'Resultatet var en mer samlet markedsprofil som styrket produktpresentasjon og ga bedre grunnlag for kommersiell vekst.',
+      },
+      bike: {
+        problem:
+          'Tidlige sykkelkonsepter manglet en tydelig balanse mellom komponentdetaljer, helhetlig uttrykk og brukeropplevelse.',
+        solution:
+          'Prosjektet gjennomførte strukturerte detaljstudier av geometri, komponentintegrasjon og visuell sammenheng i produktet.',
+        outcome:
+          'Arbeidet ga bedre beslutningsgrunnlag for videre iterasjoner og en mer konsistent retning for design og funksjon.',
+      },
+    };
+  }
+
   // NOTE: Global fallback for failed <img> loads; replaces broken images with a plain black rectangle.
   setupGlobalImageFallback() {
     const blackFallbackSvg =
@@ -647,6 +725,9 @@ class SinglePagePortfolio {
     const breadcrumbCurrentEl = root.querySelector('[data-project-breadcrumb-current]');
     const mainImage = root.querySelector('[data-project-main-image]');
     const thumbsContainer = root.querySelector('[data-project-thumbs]');
+    const problemEl = root.querySelector('[data-project-problem]');
+    const solutionEl = root.querySelector('[data-project-solution]');
+    const outcomeEl = root.querySelector('[data-project-outcome]');
     // NOTE: Prev/next nav sits outside `[data-project-page]`, so query from document scope.
     const prevLink = document.querySelector('[data-project-nav-prev]');
     const nextLink = document.querySelector('[data-project-nav-next]');
@@ -663,6 +744,17 @@ class SinglePagePortfolio {
       mainImage.src = firstImage;
       mainImage.alt = `${current.title} bilde 1`;
     }
+
+    const narratives = this.getProjectNarratives();
+    const fallbackText = `${current.title} ble utviklet med fokus på tydelig problemforståelse, praktisk løsning og et konkret resultat.`;
+    const narrative = narratives[current.slug] || {
+      problem: fallbackText,
+      solution: fallbackText,
+      outcome: fallbackText,
+    };
+    if (problemEl) problemEl.textContent = narrative.problem;
+    if (solutionEl) solutionEl.textContent = narrative.solution;
+    if (outcomeEl) outcomeEl.textContent = narrative.outcome;
 
     if (thumbsContainer) {
       thumbsContainer.innerHTML = detailImages
