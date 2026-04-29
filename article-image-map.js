@@ -19,7 +19,7 @@
     if (String(key) === 'innsikt-hvordan-design-sparer-penger')
       return 'assets/images/Articles/bike7.webp';
     if (String(key) === 'innsikt-branding-og-produktdesign')
-      return 'assets/images/Articles/serviett.webp';
+      return 'assets/images/Articles/Memorium-branding.webp';
     if (String(key) === 'innsikt-design-for-crowdfunding')
       return 'assets/images/Articles/Kalash.webp';
     return imagePool[0];
