@@ -174,22 +174,34 @@ class SinglePagePortfolio {
     const heroVideo = document.querySelector('[data-hero-video-shuffle]');
     if (!heroVideo) return;
 
-    // NOTE: Hero background clip list from `assets/images/shuffle-images/`, shuffled in a fixed 2-second cadence.
+    // NOTE: Hero background clip list from `assets/images/shuffle-images/`, shuffled in a fixed cadence.
     const clipSources = [
       { src: 'assets/images/shuffle-images/proton-gif.mov', key: 'proton-gif' },
       { src: 'assets/images/shuffle-images/proton-gif2.mov', key: 'proton-gif2' },
       { src: 'assets/images/shuffle-images/me-drawing.mp4', key: 'me-drawing' },
+      { src: 'assets/images/shuffle-images/process.mp4', key: 'process' },
+      { src: 'assets/images/shuffle-images/wall-sketches.mp4', key: 'wall-sketches' },
       { src: 'assets/images/shuffle-images/3d-printer-working.mp4', key: '3d-printer-working' },
+      { src: 'assets/images/shuffle-images/prototyping.mp4', key: 'prototyping' },
       { src: 'assets/images/shuffle-images/test-animation.mp4', key: 'test-animation' },
+      { src: 'assets/images/shuffle-images/testing.mp4', key: 'testing' },
+      { src: 'assets/images/shuffle-images/validating.mp4', key: 'validating' },
     ];
 
     let currentClipIndex = 0;
     let shuffleTimer = null;
     let isShuffling = false;
+    const useIntrinsicDurationKeys = new Set(['process', 'wall-sketches', 'testing', 'validating']);
 
     const clipDurationByKey = {
       'me-drawing': 1800,
+      process: 2000,
+      'wall-sketches': 3000,
       '3d-printer-working': 2000,
+      prototyping: 5000,
+      'test-animation': 3000,
+      testing: 3000,
+      validating: 3000,
       'proton-gif': 2000,
       'proton-gif2': 2000,
     };
@@ -214,8 +226,7 @@ class SinglePagePortfolio {
     const getClipDurationMs = () => {
       const clip = clipSources[currentClipIndex];
       if (!clip) return 2000;
-      if (clip.key === 'test-animation') {
-        // NOTE: Let test-animation run for its full intrinsic duration when metadata is available.
+      if (useIntrinsicDurationKeys.has(clip.key)) {
         const seconds = Number(heroVideo.duration);
         return Number.isFinite(seconds) && seconds > 0 ? Math.round(seconds * 1000) : 2000;
       }
@@ -246,9 +257,11 @@ class SinglePagePortfolio {
     setClip(currentClipIndex);
     startShuffle();
 
-    // NOTE: If metadata for test-animation arrives after initial load, reschedule to honor full duration.
+    // NOTE: When intrinsic-duration clips load metadata, reschedule so timing matches real clip length.
     heroVideo.addEventListener('loadedmetadata', () => {
       if (!isShuffling) return;
+      const clip = clipSources[currentClipIndex];
+      if (!clip || !useIntrinsicDurationKeys.has(clip.key)) return;
       scheduleNextClip();
     });
 
