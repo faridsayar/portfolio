@@ -6,7 +6,7 @@
     <title>Industridesign og produktdesign i Norge | 3D og prototyping</title>
     <meta
       name="description"
-      content="Få hjelp med industridesign og produktdesign i Norge. Vi følger deg fra markedsanalyse og konsept til prototyping, produksjonsklare modeller, 3D-visualisering og tydelig plan for lansering."
+      content="Industridesign og produktdesign i Norge fra idé til prototype. Formaa leverer konseptutvikling, 3D-visualisering og produksjonsklare løsninger."
     />
     <meta
       name="description:en"
@@ -52,9 +52,54 @@
     />
     <meta name="twitter:image" content="https://formaa.no/assets/images/social-sharing.webp" />
 
+    <!-- NOTE: Local SEO schema describing Formaa as a professional design service in Norway. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "@id": "https://formaa.no/#professional-service",
+        "name": "Formaa",
+        "url": "https://formaa.no/",
+        "logo": "https://formaa.no/assets/formaa-logo.svg",
+        "image": "https://formaa.no/assets/images/social-sharing.webp",
+        "description": "Industridesign og produktdesign tjenester for konseptutvikling, prototyping, validering og produksjonsklare leveranser i Norge.",
+        "areaServed": [
+          { "@type": "Country", "name": "Norge" },
+          { "@type": "City", "name": "Oslo" },
+          { "@type": "AdministrativeArea", "name": "Akershus" },
+          { "@type": "AdministrativeArea", "name": "Buskerud" },
+          { "@type": "AdministrativeArea", "name": "Østfold" }
+        ],
+        "serviceType": [
+          "Industridesign",
+          "Produktdesign",
+          "Konseptutvikling",
+          "Prototyping",
+          "Brukerundersøkelser",
+          "Validering",
+          "3D-visualisering",
+          "Produksjonsforberedelse"
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Tjenester",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Konseptutvikling" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Produktdesign" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Prototyping" } },
+            {
+              "@type": "Offer",
+              "itemOffered": { "@type": "Service", "name": "Brukerundersøkelser" }
+            },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Validering" } }
+          ]
+        }
+      }
+    </script>
+
     <!-- Favicon -->
     <!-- NOTE: SVG favicon using the same triangle mark as the hero logo -->
-    <link rel="icon" type="image/svg+xml" href="/assets/Favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
     <!-- Google Fonts -->
@@ -108,11 +153,10 @@
           muted
           loop
           playsinline
-          preload="metadata"
+          preload="none"
           poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3Crect width='16' height='9' fill='black'/%3E%3C/svg%3E"
         >
-          <!-- NOTE: Hero starts with the first local shuffle clip; JS rotates all clips every 2 seconds. -->
-          <source src="assets/images/shuffle-images/test-animation.mp4" type="video/mp4" />
+          <!-- NOTE: Source is injected by JS on desktop only to reduce initial mobile payload. -->
         </video>
         <div class="hero-overlay"></div>
       </div>
@@ -175,7 +219,7 @@
                 muted
                 loop
                 playsinline
-                preload="metadata"
+                preload="none"
                 aria-label="3D-printer i arbeid"
               ></video>
             </div>
@@ -222,6 +266,12 @@
 
       <section class="section section--white section--features" aria-label="Fordeler">
         <div class="section-inner">
+          <!-- NOTE: One-line full-width idea strip; media is rendered from assets/data/grid-media-manifest.js. -->
+          <div class="ideas-strip" aria-label="Ideer og skisser">
+            <a class="ideas-strip__link" href="gallery.html" aria-label="Se hele idegalleriet">
+              <div class="ideas-strip__grid" data-ideas-strip></div>
+            </a>
+          </div>
           <div class="section-head">
             <p class="section-kicker">Hvordan vi jobber</p>
             <h2 class="section-title">Fordeler du får</h2>
@@ -529,8 +579,8 @@
                 <div class="quote-card__media">
                   <img
                     class="quote-card__avatar"
-                    src="assets/images/quotes/person-1.jpg"
-                    alt="Portrett av kunde 1"
+                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Ccircle cx='40' cy='40' r='40' fill='%23000'/%3E%3C/svg%3E"
+                    alt=""
                     loading="lazy"
                     decoding="async"
                   />
@@ -548,8 +598,8 @@
                 <div class="quote-card__media">
                   <img
                     class="quote-card__avatar"
-                    src="assets/images/quotes/person-2.jpg"
-                    alt="Portrett av kunde 2"
+                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Ccircle cx='40' cy='40' r='40' fill='%23000'/%3E%3C/svg%3E"
+                    alt=""
                     loading="lazy"
                     decoding="async"
                   />
@@ -568,8 +618,8 @@
                 <div class="quote-card__media">
                   <img
                     class="quote-card__avatar"
-                    src="assets/images/quotes/person-3.jpg"
-                    alt="Portrett av kunde 3"
+                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Ccircle cx='40' cy='40' r='40' fill='%23000'/%3E%3C/svg%3E"
+                    alt=""
                     loading="lazy"
                     decoding="async"
                   />
@@ -591,7 +641,7 @@
                 <div class="quote-card__media">
                   <img
                     class="quote-card__avatar"
-                    src="assets/images/quotes/person-1.jpg"
+                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Ccircle cx='40' cy='40' r='40' fill='%23000'/%3E%3C/svg%3E"
                     alt=""
                     loading="lazy"
                     decoding="async"
@@ -611,7 +661,7 @@
                 <div class="quote-card__media">
                   <img
                     class="quote-card__avatar"
-                    src="assets/images/quotes/person-2.jpg"
+                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Ccircle cx='40' cy='40' r='40' fill='%23000'/%3E%3C/svg%3E"
                     alt=""
                     loading="lazy"
                     decoding="async"
@@ -630,7 +680,7 @@
                 <div class="quote-card__media">
                   <img
                     class="quote-card__avatar"
-                    src="assets/images/quotes/person-3.jpg"
+                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Ccircle cx='40' cy='40' r='40' fill='%23000'/%3E%3C/svg%3E"
                     alt=""
                     loading="lazy"
                     decoding="async"
@@ -696,6 +746,7 @@
     </script>
 
     <!-- NOTE: Prebuilt project manifest loaded as JS to support environments where `fetch` from local files is blocked. -->
+    <script src="assets/data/grid-media-manifest.js?v=1" defer></script>
     <script src="assets/data/projects-manifest.js?v=1" defer></script>
     <script src="components-loader.js?v=1" defer></script>
     <script src="shared-nav.js?v=1" defer></script>

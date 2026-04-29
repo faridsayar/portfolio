@@ -3,7 +3,8 @@ function renderSharedArticle() {
   const root = document.querySelector('[data-article-layout]');
   if (!root) return;
 
-  const path = window.location.pathname.split('/').pop() || 'innsikt-hva-er-industridesign.html';
+  const pathname = window.location.pathname.replace(/\/+$/, '');
+  const path = pathname.split('/').pop() || 'innsikt-hva-er-industridesign';
   const key = path.replace('.html', '');
   const articleOrder = [
     'innsikt-hva-er-industridesign',
@@ -36,7 +37,7 @@ function renderSharedArticle() {
   if (heroImageEl) {
     const getImage = window.getArticleImageForKey;
     heroImageEl.src =
-      typeof getImage === 'function' ? getImage(key) : 'assets/images/Articles/USV.webp';
+      typeof getImage === 'function' ? getImage(key) : 'assets/images/Articles/usv.png';
     heroImageEl.alt = typeof article.heroAlt === 'string' ? article.heroAlt : article.title;
   }
   if (bodyEl) {
@@ -59,8 +60,8 @@ function renderSharedArticle() {
 
     const prevIndex = (currentIndex - 1 + articleOrder.length) % articleOrder.length;
     const nextIndex = (currentIndex + 1) % articleOrder.length;
-    prevLinkEl.href = `${articleOrder[prevIndex]}.html`;
-    nextLinkEl.href = `${articleOrder[nextIndex]}.html`;
+    prevLinkEl.href = `/innsikt/${articleOrder[prevIndex]}`;
+    nextLinkEl.href = `/innsikt/${articleOrder[nextIndex]}`;
   }
 }
 

@@ -6,6 +6,7 @@
 class SinglePagePortfolio {
   constructor() {
     this.projectCatalogPromise = null;
+    this.gridMediaCatalog = null;
     this.setupHeroVideoShuffle();
     this.setupCategoryHeroVideoShuffle();
     this.setupGlobalImageFallback();
@@ -14,6 +15,7 @@ class SinglePagePortfolio {
     this.setupPricingEstimator();
     this.setupProjectPageNavVerticalAlign();
     this.initializeProjectViews();
+    this.initializeGridIdeasViews();
   }
 
   // NOTE: Per-project narrative copy for Problem / Løsning / Resultat block on project pages.
@@ -169,10 +171,175 @@ class SinglePagePortfolio {
     this.setupProjectTemplateGalleries();
   }
 
+  loadGridMediaCatalog() {
+    if (this.gridMediaCatalog) return this.gridMediaCatalog;
+    const fromGlobal = Array.isArray(window.__GRID_MEDIA_MANIFEST?.items)
+      ? window.__GRID_MEDIA_MANIFEST.items
+      : [];
+    const normalizedItems = fromGlobal
+      .filter((item) => item && typeof item.src === 'string')
+      .filter((item) => !item.src.toLowerCase().endsWith('.gif'))
+      .map((item) => {
+        const src = String(item.src);
+        const normalizedType = String(item.type || '').toLowerCase();
+        const isVideo = normalizedType === 'video' || /\.(mp4|mov|webm)$/i.test(src);
+        return {
+          src,
+          type: isVideo ? 'video' : 'image',
+          alt: item.name ? `Grid media: ${item.name}` : 'Grid media',
+        };
+      });
+
+    const videos = normalizedItems.filter((item) => item.type === 'video');
+    const images = normalizedItems.filter((item) => item.type === 'image');
+    const alternatingItems = [];
+    const maxLen = Math.max(videos.length, images.length);
+
+    for (let i = 0; i < maxLen; i += 1) {
+      if (videos[i]) alternatingItems.push(videos[i]);
+      if (images[i]) alternatingItems.push(images[i]);
+    }
+
+    this.gridMediaCatalog = alternatingItems;
+    return this.gridMediaCatalog;
+  }
+
+  createGridMediaElement(item, className) {
+    if (item.type === 'video') {
+      const video = document.createElement('video');
+      video.className = className;
+      video.src = item.src;
+      video.muted = true;
+      video.loop = true;
+      video.autoplay = true;
+      video.playsInline = true;
+      video.preload = 'metadata';
+      video.setAttribute('aria-label', item.alt);
+      return video;
+    }
+    const img = document.createElement('img');
+    img.className = className;
+    img.src = item.src;
+    img.alt = item.alt;
+    img.loading = 'lazy';
+    return img;
+  }
+
+  initializeGridIdeasViews() {
+    const mediaItems = this.loadGridMediaCatalog();
+    this.setupIdeasStrip(mediaItems);
+    this.setupGalleryPage(mediaItems);
+  }
+
+  setupIdeasStrip(mediaItems) {
+    const strip = document.querySelector('[data-ideas-strip]');
+    if (!strip) return;
+    if (!Array.isArray(mediaItems) || mediaItems.length === 0) return;
+
+    const fragment = document.createDocumentFragment();
+    mediaItems.forEach((item) => {
+      const cell = document.createElement('div');
+      cell.className = 'ideas-strip__item';
+      cell.appendChild(this.createGridMediaElement(item, 'ideas-strip__media'));
+      fragment.appendChild(cell);
+    });
+
+    strip.innerHTML = '';
+    strip.appendChild(fragment);
+  }
+
+  setupGalleryPage(mediaItems) {
+    const page = document.querySelector('[data-gallery-page]');
+    const grid = document.querySelector('[data-gallery-grid]');
+    if (!page || !grid) return;
+    if (!Array.isArray(mediaItems) || mediaItems.length === 0) return;
+
+    const lightbox = document.querySelector('[data-gallery-lightbox]');
+    const lightboxMedia = document.querySelector('[data-gallery-lightbox-media]');
+    const closeBtn = document.querySelector('[data-gallery-close]');
+    const prevBtn = document.querySelector('[data-gallery-prev]');
+    const nextBtn = document.querySelector('[data-gallery-next]');
+    if (!lightbox || !lightboxMedia || !closeBtn || !prevBtn || !nextBtn) return;
+
+    let activeIndex = 0;
+
+    const renderLightboxMedia = () => {
+      const item = mediaItems[activeIndex];
+      if (!item) return;
+      lightboxMedia.innerHTML = '';
+      lightboxMedia.appendChild(this.createGridMediaElement(item, 'gallery-lightbox__asset'));
+    };
+
+    const openLightbox = (index) => {
+      activeIndex = index;
+      renderLightboxMedia();
+      lightbox.hidden = false;
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const closeLightbox = () => {
+      lightbox.hidden = true;
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      lightboxMedia.innerHTML = '';
+    };
+
+    const showPrev = () => {
+      activeIndex = (activeIndex - 1 + mediaItems.length) % mediaItems.length;
+      renderLightboxMedia();
+    };
+
+    const showNext = () => {
+      activeIndex = (activeIndex + 1) % mediaItems.length;
+      renderLightboxMedia();
+    };
+
+    const fragment = document.createDocumentFragment();
+    mediaItems.forEach((item, index) => {
+      const trigger = document.createElement('button');
+      trigger.type = 'button';
+      trigger.className = 'gallery-grid__item';
+      trigger.setAttribute('aria-label', `Åpne media ${index + 1}`);
+      trigger.appendChild(this.createGridMediaElement(item, 'gallery-grid__media'));
+      trigger.addEventListener('click', () => openLightbox(index));
+      fragment.appendChild(trigger);
+    });
+
+    grid.innerHTML = '';
+    grid.appendChild(fragment);
+
+    closeBtn.addEventListener('click', closeLightbox);
+    prevBtn.addEventListener('click', showPrev);
+    nextBtn.addEventListener('click', showNext);
+
+    lightbox.addEventListener('click', (event) => {
+      if (event.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (lightbox.hidden) return;
+      if (event.key === 'Escape') closeLightbox();
+      if (event.key === 'ArrowLeft') showPrev();
+      if (event.key === 'ArrowRight') showNext();
+    });
+  }
+
   // NOTE: Interactive timeline (process prioritization)
   setupHeroVideoShuffle() {
     const heroVideo = document.querySelector('[data-hero-video-shuffle]');
     if (!heroVideo) return;
+    const skipHeavyHeroVideo =
+      window.matchMedia('(max-width: 767px)').matches ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // NOTE: Keep a lightweight static hero on mobile/reduced-motion to improve first-load performance.
+    if (skipHeavyHeroVideo) {
+      heroVideo.pause();
+      heroVideo.removeAttribute('src');
+      heroVideo.load();
+      return;
+    }
 
     // NOTE: Hero background clip list from `assets/images/shuffle-images/`, shuffled in a fixed cadence.
     const clipSources = [
@@ -182,25 +349,21 @@ class SinglePagePortfolio {
       { src: 'assets/images/shuffle-images/process.mp4', key: 'process' },
       { src: 'assets/images/shuffle-images/wall-sketches.mp4', key: 'wall-sketches' },
       { src: 'assets/images/shuffle-images/3d-printer-working.mp4', key: '3d-printer-working' },
-      { src: 'assets/images/shuffle-images/prototyping.mp4', key: 'prototyping' },
       { src: 'assets/images/shuffle-images/test-animation.mp4', key: 'test-animation' },
-      { src: 'assets/images/shuffle-images/testing.mp4', key: 'testing' },
       { src: 'assets/images/shuffle-images/validating.mp4', key: 'validating' },
     ];
 
     let currentClipIndex = 0;
     let shuffleTimer = null;
     let isShuffling = false;
-    const useIntrinsicDurationKeys = new Set(['process', 'wall-sketches', 'testing', 'validating']);
+    const useIntrinsicDurationKeys = new Set(['process', 'wall-sketches', 'validating']);
 
     const clipDurationByKey = {
       'me-drawing': 1800,
       process: 2000,
       'wall-sketches': 3000,
       '3d-printer-working': 2000,
-      prototyping: 5000,
       'test-animation': 3000,
-      testing: 3000,
       validating: 3000,
       'proton-gif': 2000,
       'proton-gif2': 2000,
@@ -280,6 +443,17 @@ class SinglePagePortfolio {
   setupCategoryHeroVideoShuffle() {
     const categoryVideo = document.querySelector('[data-category-hero-video-shuffle]');
     if (!categoryVideo) return;
+    const skipHeavyCategoryVideo =
+      window.matchMedia('(max-width: 767px)').matches ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // NOTE: Disable decorative category hero video on mobile/reduced-motion to cut transfer and CPU usage.
+    if (skipHeavyCategoryVideo) {
+      categoryVideo.pause();
+      categoryVideo.removeAttribute('src');
+      categoryVideo.load();
+      return;
+    }
 
     const clipSources = [
       { src: '../../assets/images/shuffle-images/proton-gif.mov', key: 'proton-gif' },

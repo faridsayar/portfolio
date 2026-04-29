@@ -1555,6 +1555,155 @@ section[aria-label='Oss'] .section-inner {
   color: var(--color-white);
 }
 
+.ideas-strip {
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  margin-bottom: 1rem;
+}
+
+.ideas-strip__link {
+  display: block;
+  text-decoration: none;
+}
+
+.ideas-strip__grid {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(8rem, 1fr);
+  gap: 0;
+  overflow: hidden;
+}
+
+.ideas-strip__item {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;
+  background: var(--surface-neutral);
+}
+
+.ideas-strip__item img,
+.ideas-strip__item video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.gallery-page-body {
+  background: linear-gradient(
+    90deg,
+    var(--color-projects-panel) 0%,
+    var(--color-features-gradient-end) 100%
+  );
+}
+
+.gallery-page {
+  margin: 0;
+  padding: 0;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.gallery-grid__item {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: none;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.gallery-grid__item img,
+.gallery-grid__item video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
+.gallery-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  background: rgba(0, 0, 0, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery-lightbox[hidden] {
+  display: none;
+}
+
+.gallery-lightbox__media {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery-lightbox__media img,
+.gallery-lightbox__media video {
+  max-width: 100vw;
+  max-height: 100vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.gallery-lightbox__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 3;
+  border: none;
+  background: transparent;
+  color: var(--color-white);
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.gallery-lightbox__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  border: none;
+  background: transparent;
+  padding: 0.4rem;
+  cursor: pointer;
+}
+
+.gallery-lightbox__nav img {
+  width: 1.2rem;
+  height: auto;
+  filter: invert(1);
+  display: block;
+}
+
+.gallery-lightbox__nav--prev {
+  left: 0.75rem;
+}
+
+.gallery-lightbox__nav--prev img {
+  transform: scaleX(-1);
+}
+
+.gallery-lightbox__nav--next {
+  right: 0.75rem;
+}
+
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1847,7 +1996,7 @@ section[aria-label='Oss'] .section-inner {
   margin-top: 0.75rem;
 }
 
-/* NOTE: Prev/next links: fixed overlay, triangle icons (`assets/Triangle.svg`), vertical anchor 90% (hero stage sync in script.js); desktop only. */
+/* NOTE: Prev/next links: fixed overlay, triangle icons (`assets/triangle.svg`), vertical anchor 90% (hero stage sync in script.js); desktop only. */
 .project-page-nav {
   display: none;
 }
@@ -2267,6 +2416,10 @@ section[aria-label='Oss'] .section-inner {
 
   .projects-grid {
     grid-template-columns: 1fr;
+  }
+
+  .ideas-strip__grid {
+    grid-auto-columns: minmax(6.5rem, 1fr);
   }
 
   /* NOTE: Reduce mobile bottom spacing in the "Dette gjør vi" start section. */
