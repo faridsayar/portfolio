@@ -7,7 +7,7 @@
   <article class="section section--white section--article-template" aria-label="Artikkel">
     <div class="section-inner" data-article-layout>
       <figure class="about-top-graphic">
-        <img class="about-top-graphic__img" src="assets/images/Articles/USV.webp" alt="" data-article-hero-image />
+        <img class="about-top-graphic__img" src="assets/images/Articles/usv.png" alt="" data-article-hero-image />
         <div class="about-top-graphic__overlay" aria-hidden="true">
           <nav class="breadcrumb about-top-graphic__breadcrumb" aria-label="Brødsmulesti">
             <a class="breadcrumb__link" href="index.html">Formaa</a>
@@ -45,6 +45,7 @@
         <a class="site-footer__link" href="advanced-project.html" data-footer-link="projects">Prosjekter</a>
         <a class="site-footer__link" href="category/design/norge.html" data-footer-link="categories">Kategorier</a>
         <a class="site-footer__link" href="innsikt.html" data-footer-link="insights">Innsikt</a>
+        <a class="site-footer__link" href="gallery.html" data-footer-link="gallery">Galleri</a>
         <a class="site-footer__link" href="oss.html" data-footer-link="about">Oss</a>
         <a class="site-footer__link" href="index.html#application-form" data-footer-link="application">Søknadsskjema</a>
         <a class="site-footer__link" href="prisestimat.html" data-footer-link="pricing">Prisestimat</a>
@@ -93,7 +94,7 @@
       </a>
       <a class="contact-item contact-link" href="https://formaa.no/index.html#application-form" itemprop="email">
         <span class="contact-item__label">E-post</span>
-        <span class="contact-item__value">Gå til søknadsskjema</span>
+        <span class="contact-item__value">Send e-post</span>
       </a>
     </div>
 
@@ -153,7 +154,7 @@
       </a>
       <a class="contact-item contact-link" href="https://formaa.no/index.html#application-form" itemprop="email">
         <span class="contact-item__label">E-post</span>
-        <span class="contact-item__value">Gå til søknadsskjema</span>
+        <span class="contact-item__value">Send e-post</span>
       </a>
     </div>
 

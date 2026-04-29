@@ -44,6 +44,7 @@ Current shared components:
 - Interactive inquiry timeline with 5 weighted phases
 - Web3Forms-based inquiry submission (no local mail client popup)
 - Project grid hydrated from `assets/data/projects-manifest.js` / `.json`
+- Ideas/gallery grid hydrated from `assets/data/grid-media-manifest.js`
 - Article cards + shared article layout utilities
 - WebP-first image references for improved payload and paint performance
 
@@ -77,10 +78,21 @@ Structured data currently used:
 - `innsikt-*.html`: article JSON-LD
 - `prisestimat.html`: `WebPage` + `BreadcrumbList` JSON-LD
 
+## Ideas Gallery Media Workflow
+
+- Source folder for gallery assets: `assets/images/grid`.
+- Runtime data file: `assets/data/grid-media-manifest.js` (used by homepage strip + `gallery.html`).
+- If GIF files are added to `assets/images/grid`, convert them to MP4 before publishing and ensure the `.mp4` file is included in the manifest.
+- Gallery UI rules:
+  - homepage strip: one-line, full-width, 16:9 thumbs, no gaps
+  - `gallery.html`: edge-to-edge 3-column grid on desktop and mobile
+  - fullscreen viewer includes prev/next triangle controls and close (`X`)
+
 ## URL Canonicalization
 
 - `.htaccess` is used to canonicalize homepage access:
   - `/index.html` -> `/` (301)
+- Public routes are exposed as friendly extensionless URLs (for example `/gallery`, `/prosjekter`, `/innsikt`), while legacy `.html` paths are redirected.
 
 ## Local Development
 

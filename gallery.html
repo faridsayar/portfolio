@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Idegalleri | Formaa</title>
+    <meta
+      name="description"
+      content="Galleri med designideer, skisser, renderinger og animasjoner fra Formaa."
+    />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <meta property="og:title" content="Idegalleri | Formaa" />
+    <meta
+      property="og:description"
+      content="Galleri med designideer, skisser, renderinger og animasjoner fra Formaa."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://formaa.no/gallery" />
+    <meta property="og:site_name" content="Formaa" />
+    <meta property="og:image" content="https://formaa.no/assets/images/social-sharing.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Idegalleri | Formaa" />
+    <meta
+      name="twitter:description"
+      content="Galleri med designideer, skisser, renderinger og animasjoner fra Formaa."
+    />
+    <meta name="twitter:image" content="https://formaa.no/assets/images/social-sharing.webp" />
+    <link rel="canonical" href="https://formaa.no/gallery" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="styles/base.css?v=2" />
+  </head>
+  <body class="single-page-body gallery-page-body">
+    <div data-component="side-nav"></div>
+
+    <main class="gallery-page" data-gallery-page>
+      <section class="gallery-grid" aria-label="Idegalleri" data-gallery-grid></section>
+      <!-- NOTE: SEO-focused gallery description block placed after media grid for crawlable context. -->
+      <section class="section section--white" aria-label="Om idegalleriet">
+        <div class="section-inner">
+          <p class="section-kicker">Idegalleri</p>
+          <h1 class="section-title">Designprosesser, prototyper og visualiseringer</h1>
+          <p class="section-lead">
+            Dette galleriet viser et utvalg av prosjekter innen industridesign og produktdesign,
+            inkludert konseptutvikling, prototyping, brukertesting, materialutforskning og
+            produksjonsnære visualiseringer.
+          </p>
+          <p class="section-lead">
+            Formaa hjelper bedrifter i Norge med å utvikle produkter fra tidlig idé til
+            produksjonsklar løsning. Trenger du hjelp med produktutvikling, emballasjedesign,
+            validering eller 3D-visualisering, kan du sende inn en søknad via kontaktskjemaet.
+          </p>
+          <a class="hero-cta" href="/#application-form">Gå til søknadsskjema</a>
+        </div>
+      </section>
+    </main>
+
+    <div class="gallery-lightbox" data-gallery-lightbox hidden aria-hidden="true">
+      <button class="gallery-lightbox__close" type="button" data-gallery-close aria-label="Lukk">
+        <span aria-hidden="true">×</span>
+      </button>
+      <button
+        class="gallery-lightbox__nav gallery-lightbox__nav--prev"
+        type="button"
+        data-gallery-prev
+        aria-label="Forrige media"
+      >
+        <img src="assets/triangle.svg" alt="" width="30" height="26" aria-hidden="true" />
+      </button>
+      <div class="gallery-lightbox__media" data-gallery-lightbox-media></div>
+      <button
+        class="gallery-lightbox__nav gallery-lightbox__nav--next"
+        type="button"
+        data-gallery-next
+        aria-label="Neste media"
+      >
+        <img src="assets/triangle.svg" alt="" width="30" height="26" aria-hidden="true" />
+      </button>
+    </div>
+
+    <!-- NOTE: Shared application/contact section for lead capture on gallery page. -->
+    <div data-component="contact-section-home"></div>
+
+    <!-- NOTE: Shared footer component to keep global navigation consistent. -->
+    <div data-component="site-footer"></div>
+
+    <script src="assets/data/grid-media-manifest.js?v=1" defer></script>
+    <script src="components-loader.js?v=1" defer></script>
+    <script src="shared-nav.js?v=1" defer></script>
+    <script src="script.js?v=5" defer></script>
+  </body>
+</html>
