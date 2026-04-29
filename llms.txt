@@ -1,0 +1,19 @@
+# NOTE: LLM discovery file describing Formaa website scope and important public URLs.
+site: https://formaa.no
+name: Formaa
+language: no
+description: Designstudio i Industridesign og produktdesign i Norge med fokus pa konseptutvikling, prototyping, validering, visualisering og produksjonsklare leveranser.
+
+important_urls:
+- https://formaa.no/
+- https://formaa.no/prosjekter
+- https://formaa.no/gallery
+- https://formaa.no/innsikt
+- https://formaa.no/oss
+- https://formaa.no/prisestimat
+- https://formaa.no/sitemap.xml
+
+policies:
+- content_usage: public_website_content
+- attribution: required
+- pii: do_not_collect
