@@ -40,12 +40,12 @@
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
 
-  /* Timeline phase colors (5 phases, yellow removed) */
-  --timeline-phase-0: #b0df3a; /* Brukeranalyse */
-  --timeline-phase-1: #50da00; /* Konseptutvikling */
-  --timeline-phase-2: #00cf9f; /* Prototype */
-  --timeline-phase-3: #00b9da; /* Validering */
-  --timeline-phase-4: #4876bb; /* Ferdigstilling */
+  /* Timeline phase colors (5 phases): dark greys to orange scale */
+  --timeline-phase-0: #383838; /* Brukeranalyse */
+  --timeline-phase-1: #4a4a4a; /* Konseptutvikling */
+  --timeline-phase-2: #5c5c5c; /* Prototype */
+  --timeline-phase-3: #ff9a3d; /* Validering */
+  --timeline-phase-4: #ff7300; /* Ferdigstilling */
 }
 
 /* NOTE: One box model everywhere; pages that load Tailwind already use border-box—this keeps plain CSS pages aligned. */
@@ -238,6 +238,36 @@
   height: 100%;
   width: auto;
   display: block;
+}
+
+.not-found-page {
+  min-height: 100vh;
+  min-height: 100svh;
+  margin: 0;
+  position: relative;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(
+    90deg,
+    var(--color-projects-panel) 0%,
+    var(--color-features-gradient-end) 100%
+  );
+}
+
+.not-found-graphic {
+  width: min(70vw, 420px);
+  height: auto;
+  display: block;
+}
+
+.not-found-logo {
+  position: fixed;
+  top: 1.25rem;
+  left: max(1.25rem, calc((100vw - 70rem) / 2));
+  pointer-events: auto;
+  z-index: 20;
+  transform: scale(0.75);
+  transform-origin: top left;
 }
 
 .hero-content {
@@ -559,9 +589,12 @@ section[aria-label='Kategori side'] .ideas-strip {
 
 .pricing-service-card {
   width: 100%;
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    'label check'
+    'price check';
   align-items: center;
-  justify-content: space-between;
   gap: 0.9rem;
   padding: 1rem 1.1rem;
   border: 1px solid var(--border-neutral);
@@ -573,18 +606,23 @@ section[aria-label='Kategori side'] .ideas-strip {
 }
 
 .pricing-service-card__label {
+  grid-area: label;
   font-weight: var(--font-weight-medium);
   letter-spacing: -0.01em;
+  text-align: left;
 }
 
 .pricing-service-card__price {
-  margin-left: auto;
+  grid-area: price;
+  margin-left: 0;
   font-size: 0.88rem;
   opacity: 0.78;
   white-space: nowrap;
+  text-align: left;
 }
 
 .pricing-service-card__check {
+  grid-area: check;
   width: 1.35rem;
   height: 1.35rem;
   min-width: 1.35rem;
@@ -2352,18 +2390,20 @@ section[aria-label='Oss'] .section-inner {
   }
 
   .pricing-service-card {
-    justify-content: center;
-    text-align: center;
-    flex-wrap: wrap;
-    row-gap: 0.35rem;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      'label check'
+      'price check';
+    text-align: left;
+    row-gap: 0.25rem;
   }
 
   .pricing-service-card__label {
-    width: 100%;
+    width: auto;
   }
 
   .pricing-service-card__price {
-    width: 100%;
+    width: auto;
     margin-left: 0;
     font-size: var(--font-size-breadcrumb);
   }

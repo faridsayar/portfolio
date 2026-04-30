@@ -81,7 +81,7 @@
       </p>
     </div>
     <form class="inquiry-form" method="post" data-inquiry-form>
-      <p class="inquiry-form__title">Min prosjekt</p>
+      <p class="inquiry-form__title">Mitt prosjekt</p>
       <input type="hidden" name="access_key" value="c21cafeb-72cf-4e8b-b66c-69384a07c888" />
       <input type="hidden" name="subject" value="Ny designkonsultasjon foresporsel" />
       <input type="hidden" name="from_name" value="Formaa nettside" />
