@@ -551,6 +551,9 @@ class SinglePagePortfolio {
   setupCategoryHeroVideoShuffle() {
     const categoryVideo = document.querySelector('[data-category-hero-video-shuffle]');
     if (!categoryVideo) return;
+    const pathname = window.location.pathname.toLowerCase();
+    const isPrototypingOrProduksjonCategory =
+      pathname.includes('/category/prototyping/') || pathname.includes('/category/produksjon/');
     const skipHeavyCategoryVideo =
       window.matchMedia('(max-width: 767px)').matches ||
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -563,10 +566,17 @@ class SinglePagePortfolio {
       return;
     }
 
-    const clipSources = [
-      { src: '../../assets/images/shuffle-images/proton-gif.mov', key: 'proton-gif' },
-      { src: '../../assets/images/shuffle-images/proton-gif2.mov', key: 'proton-gif2' },
-    ];
+    const clipSources = isPrototypingOrProduksjonCategory
+      ? [
+          {
+            src: '../../assets/images/shuffle-images/3d-printer-working.mp4',
+            key: '3d-printer-working',
+          },
+        ]
+      : [
+          { src: '../../assets/images/shuffle-images/proton-gif.mov', key: 'proton-gif' },
+          { src: '../../assets/images/shuffle-images/proton-gif2.mov', key: 'proton-gif2' },
+        ];
 
     let currentClipIndex = 0;
     let shuffleTimer = null;
@@ -590,11 +600,14 @@ class SinglePagePortfolio {
     const scheduleNextClip = () => {
       clearShuffleTimer();
       if (!isShuffling) return;
-      shuffleTimer = window.setTimeout(() => {
-        currentClipIndex = (currentClipIndex + 1) % clipSources.length;
-        setClip(currentClipIndex);
-        scheduleNextClip();
-      }, 2000);
+      shuffleTimer = window.setTimeout(
+        () => {
+          currentClipIndex = (currentClipIndex + 1) % clipSources.length;
+          setClip(currentClipIndex);
+          scheduleNextClip();
+        },
+        clipSources.length > 1 ? 2000 : 10000
+      );
     };
 
     const startShuffle = () => {
