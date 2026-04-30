@@ -1158,6 +1158,14 @@ class SinglePagePortfolio {
 }
 
 // NOTE: Initialize page behaviors when DOM is ready.
-document.addEventListener('DOMContentLoaded', () => {
+function initializePortfolioApp() {
+  if (window.singlePagePortfolio) return;
   window.singlePagePortfolio = new SinglePagePortfolio();
+}
+
+document.addEventListener('components:ready', initializePortfolioApp, { once: true });
+
+document.addEventListener('DOMContentLoaded', () => {
+  // NOTE: If no dynamic components are present, initialize immediately on DOM ready.
+  if (!document.querySelector('[data-component]')) initializePortfolioApp();
 });
