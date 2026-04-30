@@ -24,11 +24,11 @@ class SinglePagePortfolio {
     return {
       undo: {
         problem:
-          'Ørkener er ikke statiske, de vokser raskt ut sprer seg. Hvordan kan vi stoppe dem?',
+          'Ørkener på jorden er ikke statiske, de vokser og sprer seg raskt. Ørkener endrer omgivelser og klima, og fører til økologiske og økonomiske problemer for millioner av mennesker. Hva kan gjøres for å hindre ørkenvekst?',
         solution:
-          'Prosjektet utviklet et produktkonsept som styrer luft- og fuktflyt nær roten for å støtte plantevekst i tørre miljøer.',
+          'Mange land bruker ulike metoder for å hindre ørkenvekst. Den mest effektive løsningen er å bruke planter, gi dem vann og hjelpe dem med å overleve i tørre omgivelser.',
         outcome:
-          'Løsningen gir et tydelig grunnlag for videre prototypeutvikling og visualiserte en skalerbar retning for desertifisering.',
+          'Vår designløsning foreslår et produkt som kan hjelpe i denne kampen. Ved å etterligne frø som faller fra trær, har vi kommet til en løsning som kan droppes fra fly eller drone, på en måte som "bombing" av ørken. Selve formen er bygget av biokomposittplast som fordøyes av naturen etter hvert. Frøet "UNDO" inneholder vann, kompost med frø, mycelium og næring for planter, og er prefylt med vann - alt det nødvendige for å sikre overlevelse av planter i tørre omgivelser. Samtidig er Undo bygget slik at den ved fall utløser vinger som roterer objektet og bremser akselerasjonen. Når den treffer bakken, vil kjernen knekke den innvendige beskyttelsesskorpen og lage relativ skygge (beskyttelse mot direkte sollys) med vingene og den knekte skorpen. På den måten gir vi alt det nødvendige (for spesifikke planter i økosystemet) for å overleve, og som resultat forsterkes jorda og gir nytt grunnlag for beplantning.',
       },
       h2o: {
         problem:
@@ -42,7 +42,7 @@ class SinglePagePortfolio {
         problem:
           'Søkeoppdrag i store områder krever ofte tunge systemer med begrenset mobilitet og krevende logistikk.',
         solution:
-          'Designet fokuserte på en modulær VTOL-droneplattform med effektiv områdedekning, som kombinerer enkel vertikal løfteevne med en mer aerodynamisk form for lengre turer.',
+          'Modulær VTOL-drone med effektiv områdedekning, som kombinerer enkel vertikal løfteevne med en mer aerodynamisk form for lengre energieffektive turer. Den enkle trekantformen gir mulighet til å sette flere droner i ett element og styre dem som ett objekt for enkelhet, før de splittes opp ved ankomst til målområde for mer effektiv områdedekning.',
         outcome:
           'Prosjektet resulterte i et beslutningsklart konsept med visualiseringer som støtter videre utvikling og validering.',
       },
@@ -50,15 +50,15 @@ class SinglePagePortfolio {
         problem:
           'Markedet for hodetelefoner er mettet, og det er en mangel på robust design uten at det ser teit ut.',
         solution:
-          'Vi utviklet et urbant designuttrykk med robust form, klare linjer og detaljering som støtter både komfort og merkevareprofil.',
+          'Vi har utviklet et urbant designuttrykk med robust form, klare linjer og detaljering som støtter både komfort og merkevareprofil. Hele profilen kan lages av en enkel metallplate, enten aluminium eller rustfritt stål. Elektronikken kan enkelt festes til profilen i spesiallagde hulrom.',
         outcome:
           'Resultatet ble et helhetlig konsept som styrker produktets posisjonering og gir et tydelig grunnlag for prototypefase.',
       },
       'eco-mate-closet': {
         problem:
-          'Kildesortering hjemme oppleves ofte rotete og lite integrert i interiøret, noe som reduserer faktisk bruk.',
+          'Kildesortering hjemme oppleves ofte rotete og lite integrert i interiøret, noe som reduserer faktisk bruk. Samtidig er det lite tilbud i markedet av "alt i ett"-løsninger.',
         solution:
-          'Prosjektet utformet et minimalistisk sorteringsskap med tydelig struktur, enkel tilgang og minimalistisk utseende som passer designmæssigt til fleste rom.',
+          'Vi har laget konsept av et minimalistisk sorteringsskap med tydelig struktur, enkel tilgang og et nøytralt utseende som passer de fleste interiør. To dører gir tilgang til hele skapet og til de mest brukte avfallsposene. I stedet for håndtak er det et hull i døren, slik at fingerspor ved skitne fingre settes igjen på innsiden av skapet. Skapet inneholder beholdere for tre hovedtyper avfall: mat, plast og rest, en større boks for papp og papir (som klarer å ta imot en pizzaboks!), en flaskesorteringsboks, og 4 små bokser for diverse avfall som brukeren kan definere selv. For eksempel batterier, farlig avfall, glass, metall eller pærer. I tillegg har skapet en hylle på toppen som kan brukes til småting, for eksempel rengjøringsmidler eller poseruller.',
         outcome:
           'Konseptet forbedret både funksjon og visuell kvalitet, og ga et konkret utgangspunkt for videre produksjonsforberedelse.',
       },
