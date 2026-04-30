@@ -7,6 +7,7 @@ class SinglePagePortfolio {
   constructor() {
     this.projectCatalogPromise = null;
     this.gridMediaCatalog = null;
+    this.ideasStripMarkupPromise = null;
     this.setupHeroVideoShuffle();
     this.setupCategoryHeroVideoShuffle();
     this.setupGlobalImageFallback();
@@ -171,8 +172,76 @@ class SinglePagePortfolio {
     this.setupProjectTemplateGalleries();
   }
 
-  loadGridMediaCatalog() {
+  async ensureGridManifestLoaded() {
+    if (Array.isArray(window.__GRID_MEDIA_MANIFEST?.items)) return;
+    if (this.gridManifestLoadPromise) {
+      await this.gridManifestLoadPromise;
+      return;
+    }
+
+    const existingScript = document.querySelector('script[src*="grid-media-manifest.js"]');
+    if (existingScript) {
+      await new Promise((resolve) => {
+        if (Array.isArray(window.__GRID_MEDIA_MANIFEST?.items)) {
+          resolve();
+          return;
+        }
+        existingScript.addEventListener('load', () => resolve(), { once: true });
+        existingScript.addEventListener('error', () => resolve(), { once: true });
+      });
+      return;
+    }
+
+    const sources = [
+      'assets/data/grid-media-manifest.js?v=1',
+      '/assets/data/grid-media-manifest.js?v=1',
+      '../../assets/data/grid-media-manifest.js?v=1',
+    ];
+
+    this.gridManifestLoadPromise = (async () => {
+      for (const src of sources) {
+        const loaded = await new Promise((resolve) => {
+          const script = document.createElement('script');
+          script.src = src;
+          script.defer = true;
+          script.onload = () => resolve(true);
+          script.onerror = () => {
+            script.remove();
+            resolve(false);
+          };
+          document.head.appendChild(script);
+        });
+        if (loaded && Array.isArray(window.__GRID_MEDIA_MANIFEST?.items)) return;
+      }
+    })();
+
+    await this.gridManifestLoadPromise;
+  }
+
+  async loadGridMediaCatalog() {
     if (this.gridMediaCatalog) return this.gridMediaCatalog;
+    await this.ensureGridManifestLoaded();
+    const scriptTag = document.querySelector('script[src*="script.js"]');
+    const scriptSrcRaw = scriptTag?.getAttribute('src') || '';
+    const scriptSrcNoQuery = scriptSrcRaw.split('?')[0];
+    const scriptBasePrefix = scriptSrcNoQuery.endsWith('script.js')
+      ? scriptSrcNoQuery.slice(0, -'script.js'.length)
+      : '';
+    const normalizeAssetSrc = (src) => {
+      if (typeof src !== 'string') return '';
+      const trimmed = src.trim();
+      if (!trimmed) return '';
+      if (/^(https?:)?\/\//i.test(trimmed) || trimmed.startsWith('data:')) return trimmed;
+      if (trimmed.startsWith('/')) {
+        // NOTE: Keep absolute paths for hosted environments, but support file-based previews.
+        if (window.location.protocol === 'file:')
+          return `${scriptBasePrefix}${trimmed.replace(/^\//, '')}`;
+        return trimmed;
+      }
+      if (trimmed.startsWith('./') || trimmed.startsWith('../')) return trimmed;
+      // NOTE: Manifest paths are project-root relative (`assets/...`); prefix from script location.
+      return `${scriptBasePrefix}${trimmed.replace(/^\.?\//, '')}`;
+    };
     const fromGlobal = Array.isArray(window.__GRID_MEDIA_MANIFEST?.items)
       ? window.__GRID_MEDIA_MANIFEST.items
       : [];
@@ -180,7 +249,7 @@ class SinglePagePortfolio {
       .filter((item) => item && typeof item.src === 'string')
       .filter((item) => !item.src.toLowerCase().endsWith('.gif'))
       .map((item) => {
-        const src = String(item.src);
+        const src = normalizeAssetSrc(String(item.src));
         const normalizedType = String(item.type || '').toLowerCase();
         const isVideo = normalizedType === 'video' || /\.(mp4|mov|webm)$/i.test(src);
         return {
@@ -225,10 +294,49 @@ class SinglePagePortfolio {
     return img;
   }
 
-  initializeGridIdeasViews() {
-    const mediaItems = this.loadGridMediaCatalog();
+  async initializeGridIdeasViews() {
+    const mediaItems = await this.loadGridMediaCatalog();
+    await this.mountCategoryIdeasStripComponent();
     this.setupIdeasStrip(mediaItems);
     this.setupGalleryPage(mediaItems);
+  }
+
+  async loadIdeasStripMarkup() {
+    if (this.ideasStripMarkupPromise) return this.ideasStripMarkupPromise;
+    const fallbackMarkup = `<section class="section section--white category-ideas-strip-section" aria-label="Ideer og skisser">
+  <div class="section-inner">
+    <div class="ideas-strip" aria-label="Ideer og skisser">
+      <a class="ideas-strip__link" href="/gallery.html" aria-label="Se hele idegalleriet">
+        <div class="ideas-strip__grid" data-ideas-strip></div>
+      </a>
+    </div>
+  </div>
+</section>`;
+    this.ideasStripMarkupPromise = (async () => {
+      try {
+        let response = await fetch('/components/ideas-strip.html', { cache: 'no-store' });
+        if (!response.ok) {
+          response = await fetch('components/ideas-strip.html', { cache: 'no-store' });
+        }
+        if (!response.ok) return fallbackMarkup;
+        return await response.text();
+      } catch (_error) {
+        return fallbackMarkup;
+      }
+    })();
+    return this.ideasStripMarkupPromise;
+  }
+
+  async mountCategoryIdeasStripComponent() {
+    const isCategoryPage =
+      document.body.classList.contains('page--category') ||
+      window.location.pathname.includes('/category/');
+    if (!isCategoryPage) return;
+    if (document.querySelector('[data-ideas-strip]')) return;
+    const applicationFormSection = document.querySelector('#application-form');
+    if (!applicationFormSection) return;
+    const markup = await this.loadIdeasStripMarkup();
+    applicationFormSection.insertAdjacentHTML('beforebegin', markup);
   }
 
   setupIdeasStrip(mediaItems) {

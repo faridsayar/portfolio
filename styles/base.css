@@ -346,6 +346,16 @@
   color: #000;
 }
 
+/* NOTE: Shared visual style for all inline internal text links across page copy. */
+.internal-text-link,
+.internal-text-link:visited,
+.internal-text-link:hover,
+.internal-text-link:focus,
+.internal-text-link:active {
+  color: #000;
+  font-weight: 700;
+}
+
 .category-hero-media {
   position: relative;
   margin-left: calc(50% - 50vw);
@@ -362,6 +372,48 @@
   object-position: center;
   filter: saturate(0.88);
   transition: none;
+}
+
+/* NOTE: Category pages start hero media at top; breadcrumb stays overlaid on the image. */
+section[aria-label='Kategori side'] .section-inner {
+  padding-top: 0;
+}
+
+section[aria-label='Kategori side'] .breadcrumb {
+  position: absolute;
+  top: 1.25rem;
+  z-index: 4;
+  left: max(1.25rem, calc((100vw - 70rem) / 2 + 1.25rem));
+  right: max(1.25rem, calc((100vw - 70rem) / 2 + 1.25rem));
+  margin: 0;
+}
+
+section[aria-label='Kategori side'] .breadcrumb .breadcrumb__link {
+  color: var(--color-white);
+  opacity: 0.82;
+}
+
+section[aria-label='Kategori side'] .breadcrumb .breadcrumb__link:hover {
+  opacity: 1;
+}
+
+section[aria-label='Kategori side'] .breadcrumb .breadcrumb__link[aria-current='page'] {
+  opacity: 0.95;
+}
+
+section[aria-label='Kategori side'] .breadcrumb .breadcrumb__sep {
+  color: var(--color-white);
+  opacity: 0.58;
+}
+
+/* NOTE: Keeps strip spacing consistent with other content gaps on category pages. */
+.category-ideas-strip-section {
+  margin-top: 2rem;
+}
+
+/* NOTE: Enforce top spacing for injected strip on category pages (also covers fallback markup). */
+section[aria-label='Kategori side'] .ideas-strip {
+  margin-top: 2rem;
 }
 
 /* Section header helpers */
