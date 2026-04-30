@@ -46,6 +46,7 @@
         <a class="site-footer__link" href="category/design/norge.html" data-footer-link="categories">Kategorier</a>
         <a class="site-footer__link" href="innsikt.html" data-footer-link="insights">Innsikt</a>
         <a class="site-footer__link" href="gallery.html" data-footer-link="gallery">Galleri</a>
+        <a class="site-footer__link" href="designstudio-oslo.html" data-footer-link="designstudio-oslo">Designstudio Oslo</a>
         <a class="site-footer__link" href="oss.html" data-footer-link="about">Oss</a>
         <a class="site-footer__link" href="index.html#application-form" data-footer-link="application">Søknadsskjema</a>
         <a class="site-footer__link" href="prisestimat.html" data-footer-link="pricing">Prisestimat</a>
@@ -63,6 +64,106 @@
       Send en kort forespørsel, så vurderer vi muligheter, tidslinje og neste praktiske steg.
     </p>
     <a class="inquiry-cta" href="index.html#application-form">Gå til forespørselsskjema</a>
+  </div>
+</section>`,
+    'application-form': `<section
+  class="section section--white section--timeline"
+  id="application-form"
+  aria-label="Send forespørsel"
+>
+  <div class="section-inner">
+    <div class="section-head">
+      <p class="section-kicker">Konsultasjon forespørsel</p>
+      <h2 class="section-title">Gratis designkonsultasjon</h2>
+      <p class="section-lead">
+        Dra punktene langs linjen for å vekte prioriteringene (Dette er en grov oversikt og ikke
+        forpliktende)
+      </p>
+    </div>
+    <form class="inquiry-form" method="post" data-inquiry-form>
+      <p class="inquiry-form__title">Mitt prosjekt</p>
+      <input type="hidden" name="access_key" value="c21cafeb-72cf-4e8b-b66c-69384a07c888" />
+      <input type="hidden" name="subject" value="Ny designkonsultasjon foresporsel" />
+      <input type="hidden" name="from_name" value="Formaa nettside" />
+      <input type="hidden" name="botcheck" value="" />
+      <div class="timeline" data-timeline>
+        <div class="timeline-anchors">
+          <span class="timeline-anchor timeline-anchor--start">Konsultasjon</span>
+          <span class="timeline-anchor timeline-anchor--time" data-timeframe-label>2 mnd prosjekt</span>
+          <span class="timeline-anchor timeline-anchor--end">Ferdigstilling</span>
+        </div>
+        <div class="timeline-track-wrap">
+          <span class="timeline-mobile-anchor timeline-mobile-anchor--end">Ferdigstilling</span>
+          <span class="timeline-mobile-anchor timeline-mobile-anchor--start">Konsultasjon</span>
+          <div class="timeline-labels" aria-hidden="true">
+            <div class="timeline-handle-label" data-handle-label="0"></div>
+            <div class="timeline-handle-label" data-handle-label="1"></div>
+            <div class="timeline-handle-label" data-handle-label="2"></div>
+            <div class="timeline-handle-label" data-handle-label="3"></div>
+          </div>
+          <div class="timeline-track" data-timeline-track aria-label="Tidslinje">
+            <div class="timeline-segments" aria-hidden="true">
+              <div class="timeline-segment" data-segment="0"></div>
+              <div class="timeline-segment" data-segment="1"></div>
+              <div class="timeline-segment" data-segment="2"></div>
+              <div class="timeline-segment" data-segment="3"></div>
+              <div class="timeline-segment" data-segment="4"></div>
+            </div>
+          </div>
+          <div class="timeline-handles" aria-label="Juster grenser mellom faser">
+            <div class="timeline-handle" data-handle="0" role="slider" tabindex="0"></div>
+            <div class="timeline-handle" data-handle="1" role="slider" tabindex="0"></div>
+            <div class="timeline-handle" data-handle="2" role="slider" tabindex="0"></div>
+            <div class="timeline-handle" data-handle="3" role="slider" tabindex="0"></div>
+          </div>
+        </div>
+        <div class="timeline-hidden" aria-hidden="true">
+          <input type="hidden" name="phase_brukeranalyse" data-phase-input="0" />
+          <input type="hidden" name="phase_konseptutvikling" data-phase-input="1" />
+          <input type="hidden" name="phase_prototype" data-phase-input="2" />
+          <input type="hidden" name="phase_validering" data-phase-input="3" />
+          <input type="hidden" name="phase_ferdigstilling" data-phase-input="4" />
+        </div>
+      </div>
+      <div class="inquiry-grid">
+        <div class="field">
+          <label class="field__label" for="full-name">Ditt navn</label>
+          <input class="field__input" id="full-name" name="full_name" type="text" required autocomplete="name" placeholder="Kari Nordmann" />
+        </div>
+        <div class="field">
+          <label class="field__label" for="email">Din e-post</label>
+          <input class="field__input" id="email" name="email" type="email" required autocomplete="email" inputmode="email" pattern="^[^\\s@]+@[^\\s@]+\\.(com|no)$" placeholder="kari.nordmann@example.com" />
+        </div>
+        <div class="field">
+          <label class="field__label" for="timeframe">Ca. tid vi har</label>
+          <select class="field__input" id="timeframe" name="timeframe" required data-timeframe-select>
+            <option value="1 mnd">1 mnd</option>
+            <option value="2 mnd" selected>2 mnd</option>
+            <option value="3 mnd">3 mnd</option>
+            <option value="4 mnd">4 mnd</option>
+            <option value="5 mnd">5 mnd</option>
+            <option value="6+ mnd">6+ mnd</option>
+          </select>
+        </div>
+        <div class="field">
+          <label class="field__label" for="budget">Ca. budsjett (ikke obligatorisk)</label>
+          <input class="field__input" id="budget" name="budget" type="text" autocomplete="organization" placeholder="30 000 NOK" />
+        </div>
+      </div>
+      <div class="field field--full">
+        <label class="field__label" for="description">Beskrivelse – hva trenger du hjelp med</label>
+        <textarea class="field__textarea" id="description" name="description" rows="6" required autocomplete="on" placeholder="F.eks. vi er et lite startup team som trenger hjelp med design og utvikling av vår geniale konsept."></textarea>
+      </div>
+      <div class="inquiry-footer">
+        <button class="inquiry-cta" type="submit">Send forespørsel</button>
+        <p class="inquiry-note" data-inquiry-status aria-live="polite"></p>
+        <p class="inquiry-note">
+          *Forespørselen er uforpliktende og er kun for orientering. Vi vil ta kontakt med deg
+          snarest for å finne ut hvordan vi best kan hjelpe deg og ditt prosjekt, for å gi deg et
+          konkret tilbud.
+        </p>
+      </div>
+    </form>
   </div>
 </section>`,
     'contact-section-home': `<section class="section section--white section--contact" aria-label="Ta kontakt">
@@ -201,7 +302,11 @@
       if (!name) return;
       const fallbackMarkup = inlineComponents[name];
       try {
-        const response = await fetch(`components/${name}.html`, { cache: 'no-store' });
+        // NOTE: Try root-relative first, then relative path fallback for local environments.
+        let response = await fetch(`/components/${name}.html`, { cache: 'no-store' });
+        if (!response.ok) {
+          response = await fetch(`components/${name}.html`, { cache: 'no-store' });
+        }
         if (!response.ok) throw new Error(`Component fetch failed: ${name}`);
         const markup = await response.text();
         slot.outerHTML = markup;

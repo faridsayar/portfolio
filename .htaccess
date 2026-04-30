@@ -18,6 +18,7 @@ RewriteRule ^index\.html$ / [R=301,L]
 # NOTE: Canonical friendly routes for primary sections.
 RewriteRule ^advanced-project/?$ /prosjekter [R=301,L]
 RewriteRule ^innsikt\.html$ /innsikt [R=301,L]
+RewriteRule ^designstudio-oslo\.html$ /designstudio-oslo [R=301,L]
 
 # NOTE: Move legacy flat article/project slugs into section-based URLs.
 RewriteRule ^prosjekt-([a-z0-9-]+)/?$ /prosjekter/$1 [R=301,L]

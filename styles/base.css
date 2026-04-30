@@ -40,12 +40,12 @@
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
 
-  /* Timeline phase colors (5 phases, yellow removed) */
-  --timeline-phase-0: #b0df3a; /* Brukeranalyse */
-  --timeline-phase-1: #50da00; /* Konseptutvikling */
-  --timeline-phase-2: #00cf9f; /* Prototype */
-  --timeline-phase-3: #00b9da; /* Validering */
-  --timeline-phase-4: #4876bb; /* Ferdigstilling */
+  /* Timeline phase colors (5 phases): dark greys to orange scale */
+  --timeline-phase-0: #383838; /* Brukeranalyse */
+  --timeline-phase-1: #4a4a4a; /* Konseptutvikling */
+  --timeline-phase-2: #5c5c5c; /* Prototype */
+  --timeline-phase-3: #ff9a3d; /* Validering */
+  --timeline-phase-4: #ff7300; /* Ferdigstilling */
 }
 
 /* NOTE: One box model everywhere; pages that load Tailwind already use border-box—this keeps plain CSS pages aligned. */
@@ -240,6 +240,36 @@
   display: block;
 }
 
+.not-found-page {
+  min-height: 100vh;
+  min-height: 100svh;
+  margin: 0;
+  position: relative;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(
+    90deg,
+    var(--color-projects-panel) 0%,
+    var(--color-features-gradient-end) 100%
+  );
+}
+
+.not-found-graphic {
+  width: min(70vw, 420px);
+  height: auto;
+  display: block;
+}
+
+.not-found-logo {
+  position: fixed;
+  top: 1.25rem;
+  left: max(1.25rem, calc((100vw - 70rem) / 2));
+  pointer-events: auto;
+  z-index: 20;
+  transform: scale(0.75);
+  transform-origin: top left;
+}
+
 .hero-content {
   position: relative;
   z-index: 1;
@@ -346,6 +376,16 @@
   color: #000;
 }
 
+/* NOTE: Shared visual style for all inline internal text links across page copy. */
+.internal-text-link,
+.internal-text-link:visited,
+.internal-text-link:hover,
+.internal-text-link:focus,
+.internal-text-link:active {
+  color: #000;
+  font-weight: 700;
+}
+
 .category-hero-media {
   position: relative;
   margin-left: calc(50% - 50vw);
@@ -362,6 +402,48 @@
   object-position: center;
   filter: saturate(0.88);
   transition: none;
+}
+
+/* NOTE: Category pages start hero media at top; breadcrumb stays overlaid on the image. */
+section[aria-label='Kategori side'] .section-inner {
+  padding-top: 0;
+}
+
+section[aria-label='Kategori side'] .breadcrumb {
+  position: absolute;
+  top: 1.25rem;
+  z-index: 4;
+  left: max(1.25rem, calc((100vw - 70rem) / 2 + 1.25rem));
+  right: max(1.25rem, calc((100vw - 70rem) / 2 + 1.25rem));
+  margin: 0;
+}
+
+section[aria-label='Kategori side'] .breadcrumb .breadcrumb__link {
+  color: var(--color-white);
+  opacity: 0.82;
+}
+
+section[aria-label='Kategori side'] .breadcrumb .breadcrumb__link:hover {
+  opacity: 1;
+}
+
+section[aria-label='Kategori side'] .breadcrumb .breadcrumb__link[aria-current='page'] {
+  opacity: 0.95;
+}
+
+section[aria-label='Kategori side'] .breadcrumb .breadcrumb__sep {
+  color: var(--color-white);
+  opacity: 0.58;
+}
+
+/* NOTE: Keeps strip spacing consistent with other content gaps on category pages. */
+.category-ideas-strip-section {
+  margin-top: 2rem;
+}
+
+/* NOTE: Enforce top spacing for injected strip on category pages (also covers fallback markup). */
+section[aria-label='Kategori side'] .ideas-strip {
+  margin-top: 2rem;
 }
 
 /* Section header helpers */
@@ -507,9 +589,12 @@
 
 .pricing-service-card {
   width: 100%;
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    'label check'
+    'price check';
   align-items: center;
-  justify-content: space-between;
   gap: 0.9rem;
   padding: 1rem 1.1rem;
   border: 1px solid var(--border-neutral);
@@ -521,18 +606,23 @@
 }
 
 .pricing-service-card__label {
+  grid-area: label;
   font-weight: var(--font-weight-medium);
   letter-spacing: -0.01em;
+  text-align: left;
 }
 
 .pricing-service-card__price {
-  margin-left: auto;
+  grid-area: price;
+  margin-left: 0;
   font-size: 0.88rem;
   opacity: 0.78;
   white-space: nowrap;
+  text-align: left;
 }
 
 .pricing-service-card__check {
+  grid-area: check;
   width: 1.35rem;
   height: 1.35rem;
   min-width: 1.35rem;
@@ -1325,6 +1415,10 @@ section[aria-label='Oss'] .section-inner {
 }
 
 @media (max-width: 768px) {
+  :root {
+    --timeline-mobile-left-gap: 0.9rem;
+  }
+
   .timeline-anchors {
     display: none;
   }
@@ -1334,6 +1428,9 @@ section[aria-label='Oss'] .section-inner {
     display: block;
     min-height: 15rem;
     /* NOTE: Reserve space for fixed start/end labels around the vertical scale. */
+    padding-left: var(
+      --timeline-mobile-left-gap
+    ); /* NOTE: Keeps the vertical timeline column offset from the left edge. */
     padding-top: 1.5rem;
     padding-bottom: 1.75rem;
     margin-top: 0;
@@ -1342,14 +1439,15 @@ section[aria-label='Oss'] .section-inner {
 
   .timeline-mobile-anchor {
     position: absolute;
-    left: calc(2.25rem / 2);
-    transform: translateX(-50%);
+    left: var(--timeline-mobile-left-gap);
+    transform: none;
     font-size: 0.9rem;
     font-weight: var(--font-weight-semibold);
     letter-spacing: -0.01em;
     color: var(--color-dark);
     opacity: 0.85;
-    white-space: nowrap;
+    white-space: normal;
+    text-align: left;
     pointer-events: none;
     z-index: 3;
     display: block;
@@ -1365,7 +1463,7 @@ section[aria-label='Oss'] .section-inner {
 
   .timeline-track {
     position: absolute;
-    left: 0;
+    left: var(--timeline-mobile-left-gap);
     top: 1.5rem;
     bottom: 1.75rem;
     width: 2.25rem;
@@ -1378,7 +1476,7 @@ section[aria-label='Oss'] .section-inner {
 
   .timeline-handles {
     position: absolute;
-    left: 0;
+    left: var(--timeline-mobile-left-gap);
     right: auto;
     width: 2.25rem;
     top: 1.5rem;
@@ -1397,7 +1495,7 @@ section[aria-label='Oss'] .section-inner {
 
   .timeline-labels {
     position: absolute;
-    left: calc(2.25rem + 0.75rem);
+    left: calc(var(--timeline-mobile-left-gap) + 2.25rem + 0.75rem);
     right: 0;
     top: 0;
     bottom: 0;
@@ -2292,18 +2390,20 @@ section[aria-label='Oss'] .section-inner {
   }
 
   .pricing-service-card {
-    justify-content: center;
-    text-align: center;
-    flex-wrap: wrap;
-    row-gap: 0.35rem;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      'label check'
+      'price check';
+    text-align: left;
+    row-gap: 0.25rem;
   }
 
   .pricing-service-card__label {
-    width: 100%;
+    width: auto;
   }
 
   .pricing-service-card__price {
-    width: 100%;
+    width: auto;
     margin-left: 0;
     font-size: var(--font-size-breadcrumb);
   }

@@ -56,15 +56,6 @@ function renderSharedNav() {
       </button>
       <div class="side-nav__content" id="side-nav-content" data-mobile-nav-content>
         ${linksMarkup}
-        <div class="side-nav__divider" aria-hidden="true"></div>
-        <label class="lang-switch" for="lang-switch">
-          <span class="lang-switch__label">NO</span>
-          <input class="lang-switch__input" type="checkbox" id="lang-switch" />
-          <span class="lang-switch__track" aria-hidden="true">
-            <span class="lang-switch__thumb" aria-hidden="true"></span>
-          </span>
-          <span class="lang-switch__label">EN</span>
-        </label>
       </div>
     `;
 

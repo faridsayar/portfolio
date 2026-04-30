@@ -7,6 +7,7 @@ class SinglePagePortfolio {
   constructor() {
     this.projectCatalogPromise = null;
     this.gridMediaCatalog = null;
+    this.ideasStripMarkupPromise = null;
     this.setupHeroVideoShuffle();
     this.setupCategoryHeroVideoShuffle();
     this.setupGlobalImageFallback();
@@ -23,11 +24,11 @@ class SinglePagePortfolio {
     return {
       undo: {
         problem:
-          'Ørkener er ikke statiske, de vokser raskt ut sprer seg. Hvordan kan vi stoppe dem?',
+          'Ørkener på jorden er ikke statiske, de vokser og sprer seg raskt. Ørkener endrer omgivelser og klima, og fører til økologiske og økonomiske problemer for millioner av mennesker. Hva kan gjøres for å hindre ørkenvekst?',
         solution:
-          'Prosjektet utviklet et produktkonsept som styrer luft- og fuktflyt nær roten for å støtte plantevekst i tørre miljøer.',
+          'Mange land bruker ulike metoder for å hindre ørkenvekst. Den mest effektive løsningen er å bruke planter, gi dem vann og hjelpe dem med å overleve i tørre omgivelser.',
         outcome:
-          'Løsningen gir et tydelig grunnlag for videre prototypeutvikling og visualiserte en skalerbar retning for desertifisering.',
+          'Vår designløsning foreslår et produkt som kan hjelpe i denne kampen. Ved å etterligne frø som faller fra trær, har vi kommet til en løsning som kan droppes fra fly eller drone, på en måte som "bombing" av ørken. Selve formen er bygget av biokomposittplast som fordøyes av naturen etter hvert. Frøet "UNDO" inneholder vann, kompost med frø, mycelium og næring for planter, og er prefylt med vann - alt det nødvendige for å sikre overlevelse av planter i tørre omgivelser. Samtidig er Undo bygget slik at den ved fall utløser vinger som roterer objektet og bremser akselerasjonen. Når den treffer bakken, vil kjernen knekke den innvendige beskyttelsesskorpen og lage relativ skygge (beskyttelse mot direkte sollys) med vingene og den knekte skorpen. På den måten gir vi alt det nødvendige (for spesifikke planter i økosystemet) for å overleve, og som resultat forsterkes jorda og gir nytt grunnlag for beplantning.',
       },
       h2o: {
         problem:
@@ -41,7 +42,7 @@ class SinglePagePortfolio {
         problem:
           'Søkeoppdrag i store områder krever ofte tunge systemer med begrenset mobilitet og krevende logistikk.',
         solution:
-          'Designet fokuserte på en modulær VTOL-droneplattform med effektiv områdedekning, som kombinerer enkel vertikal løfteevne med en mer aerodynamisk form for lengre turer.',
+          'Modulær VTOL-drone med effektiv områdedekning, som kombinerer enkel vertikal løfteevne med en mer aerodynamisk form for lengre energieffektive turer. Den enkle trekantformen gir mulighet til å sette flere droner i ett element og styre dem som ett objekt for enkelhet, før de splittes opp ved ankomst til målområde for mer effektiv områdedekning.',
         outcome:
           'Prosjektet resulterte i et beslutningsklart konsept med visualiseringer som støtter videre utvikling og validering.',
       },
@@ -49,15 +50,15 @@ class SinglePagePortfolio {
         problem:
           'Markedet for hodetelefoner er mettet, og det er en mangel på robust design uten at det ser teit ut.',
         solution:
-          'Vi utviklet et urbant designuttrykk med robust form, klare linjer og detaljering som støtter både komfort og merkevareprofil.',
+          'Vi har utviklet et urbant designuttrykk med robust form, klare linjer og detaljering som støtter både komfort og merkevareprofil. Hele profilen kan lages av en enkel metallplate, enten aluminium eller rustfritt stål. Elektronikken kan enkelt festes til profilen i spesiallagde hulrom.',
         outcome:
           'Resultatet ble et helhetlig konsept som styrker produktets posisjonering og gir et tydelig grunnlag for prototypefase.',
       },
       'eco-mate-closet': {
         problem:
-          'Kildesortering hjemme oppleves ofte rotete og lite integrert i interiøret, noe som reduserer faktisk bruk.',
+          'Kildesortering hjemme oppleves ofte rotete og lite integrert i interiøret, noe som reduserer faktisk bruk. Samtidig er det lite tilbud i markedet av "alt i ett"-løsninger.',
         solution:
-          'Prosjektet utformet et minimalistisk sorteringsskap med tydelig struktur, enkel tilgang og minimalistisk utseende som passer designmæssigt til fleste rom.',
+          'Vi har laget konsept av et minimalistisk sorteringsskap med tydelig struktur, enkel tilgang og et nøytralt utseende som passer de fleste interiør. To dører gir tilgang til hele skapet og til de mest brukte avfallsposene. I stedet for håndtak er det et hull i døren, slik at fingerspor ved skitne fingre settes igjen på innsiden av skapet. Skapet inneholder beholdere for tre hovedtyper avfall: mat, plast og rest, en større boks for papp og papir (som klarer å ta imot en pizzaboks!), en flaskesorteringsboks, og 4 små bokser for diverse avfall som brukeren kan definere selv. For eksempel batterier, farlig avfall, glass, metall eller pærer. I tillegg har skapet en hylle på toppen som kan brukes til småting, for eksempel rengjøringsmidler eller poseruller.',
         outcome:
           'Konseptet forbedret både funksjon og visuell kvalitet, og ga et konkret utgangspunkt for videre produksjonsforberedelse.',
       },
@@ -171,8 +172,76 @@ class SinglePagePortfolio {
     this.setupProjectTemplateGalleries();
   }
 
-  loadGridMediaCatalog() {
+  async ensureGridManifestLoaded() {
+    if (Array.isArray(window.__GRID_MEDIA_MANIFEST?.items)) return;
+    if (this.gridManifestLoadPromise) {
+      await this.gridManifestLoadPromise;
+      return;
+    }
+
+    const existingScript = document.querySelector('script[src*="grid-media-manifest.js"]');
+    if (existingScript) {
+      await new Promise((resolve) => {
+        if (Array.isArray(window.__GRID_MEDIA_MANIFEST?.items)) {
+          resolve();
+          return;
+        }
+        existingScript.addEventListener('load', () => resolve(), { once: true });
+        existingScript.addEventListener('error', () => resolve(), { once: true });
+      });
+      return;
+    }
+
+    const sources = [
+      'assets/data/grid-media-manifest.js?v=1',
+      '/assets/data/grid-media-manifest.js?v=1',
+      '../../assets/data/grid-media-manifest.js?v=1',
+    ];
+
+    this.gridManifestLoadPromise = (async () => {
+      for (const src of sources) {
+        const loaded = await new Promise((resolve) => {
+          const script = document.createElement('script');
+          script.src = src;
+          script.defer = true;
+          script.onload = () => resolve(true);
+          script.onerror = () => {
+            script.remove();
+            resolve(false);
+          };
+          document.head.appendChild(script);
+        });
+        if (loaded && Array.isArray(window.__GRID_MEDIA_MANIFEST?.items)) return;
+      }
+    })();
+
+    await this.gridManifestLoadPromise;
+  }
+
+  async loadGridMediaCatalog() {
     if (this.gridMediaCatalog) return this.gridMediaCatalog;
+    await this.ensureGridManifestLoaded();
+    const scriptTag = document.querySelector('script[src*="script.js"]');
+    const scriptSrcRaw = scriptTag?.getAttribute('src') || '';
+    const scriptSrcNoQuery = scriptSrcRaw.split('?')[0];
+    const scriptBasePrefix = scriptSrcNoQuery.endsWith('script.js')
+      ? scriptSrcNoQuery.slice(0, -'script.js'.length)
+      : '';
+    const normalizeAssetSrc = (src) => {
+      if (typeof src !== 'string') return '';
+      const trimmed = src.trim();
+      if (!trimmed) return '';
+      if (/^(https?:)?\/\//i.test(trimmed) || trimmed.startsWith('data:')) return trimmed;
+      if (trimmed.startsWith('/')) {
+        // NOTE: Keep absolute paths for hosted environments, but support file-based previews.
+        if (window.location.protocol === 'file:')
+          return `${scriptBasePrefix}${trimmed.replace(/^\//, '')}`;
+        return trimmed;
+      }
+      if (trimmed.startsWith('./') || trimmed.startsWith('../')) return trimmed;
+      // NOTE: Manifest paths are project-root relative (`assets/...`); prefix from script location.
+      return `${scriptBasePrefix}${trimmed.replace(/^\.?\//, '')}`;
+    };
     const fromGlobal = Array.isArray(window.__GRID_MEDIA_MANIFEST?.items)
       ? window.__GRID_MEDIA_MANIFEST.items
       : [];
@@ -180,7 +249,7 @@ class SinglePagePortfolio {
       .filter((item) => item && typeof item.src === 'string')
       .filter((item) => !item.src.toLowerCase().endsWith('.gif'))
       .map((item) => {
-        const src = String(item.src);
+        const src = normalizeAssetSrc(String(item.src));
         const normalizedType = String(item.type || '').toLowerCase();
         const isVideo = normalizedType === 'video' || /\.(mp4|mov|webm)$/i.test(src);
         return {
@@ -225,10 +294,49 @@ class SinglePagePortfolio {
     return img;
   }
 
-  initializeGridIdeasViews() {
-    const mediaItems = this.loadGridMediaCatalog();
+  async initializeGridIdeasViews() {
+    const mediaItems = await this.loadGridMediaCatalog();
+    await this.mountCategoryIdeasStripComponent();
     this.setupIdeasStrip(mediaItems);
     this.setupGalleryPage(mediaItems);
+  }
+
+  async loadIdeasStripMarkup() {
+    if (this.ideasStripMarkupPromise) return this.ideasStripMarkupPromise;
+    const fallbackMarkup = `<section class="section section--white category-ideas-strip-section" aria-label="Ideer og skisser">
+  <div class="section-inner">
+    <div class="ideas-strip" aria-label="Ideer og skisser">
+      <a class="ideas-strip__link" href="/gallery.html" aria-label="Se hele idegalleriet">
+        <div class="ideas-strip__grid" data-ideas-strip></div>
+      </a>
+    </div>
+  </div>
+</section>`;
+    this.ideasStripMarkupPromise = (async () => {
+      try {
+        let response = await fetch('/components/ideas-strip.html', { cache: 'no-store' });
+        if (!response.ok) {
+          response = await fetch('components/ideas-strip.html', { cache: 'no-store' });
+        }
+        if (!response.ok) return fallbackMarkup;
+        return await response.text();
+      } catch (_error) {
+        return fallbackMarkup;
+      }
+    })();
+    return this.ideasStripMarkupPromise;
+  }
+
+  async mountCategoryIdeasStripComponent() {
+    const isCategoryPage =
+      document.body.classList.contains('page--category') ||
+      window.location.pathname.includes('/category/');
+    if (!isCategoryPage) return;
+    if (document.querySelector('[data-ideas-strip]')) return;
+    const applicationFormSection = document.querySelector('#application-form');
+    if (!applicationFormSection) return;
+    const markup = await this.loadIdeasStripMarkup();
+    applicationFormSection.insertAdjacentHTML('beforebegin', markup);
   }
 
   setupIdeasStrip(mediaItems) {
@@ -443,6 +551,9 @@ class SinglePagePortfolio {
   setupCategoryHeroVideoShuffle() {
     const categoryVideo = document.querySelector('[data-category-hero-video-shuffle]');
     if (!categoryVideo) return;
+    const pathname = window.location.pathname.toLowerCase();
+    const isPrototypingOrProduksjonCategory =
+      pathname.includes('/category/prototyping/') || pathname.includes('/category/produksjon/');
     const skipHeavyCategoryVideo =
       window.matchMedia('(max-width: 767px)').matches ||
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -455,10 +566,17 @@ class SinglePagePortfolio {
       return;
     }
 
-    const clipSources = [
-      { src: '../../assets/images/shuffle-images/proton-gif.mov', key: 'proton-gif' },
-      { src: '../../assets/images/shuffle-images/proton-gif2.mov', key: 'proton-gif2' },
-    ];
+    const clipSources = isPrototypingOrProduksjonCategory
+      ? [
+          {
+            src: '../../assets/images/shuffle-images/3d-printer-working.mp4',
+            key: '3d-printer-working',
+          },
+        ]
+      : [
+          { src: '../../assets/images/shuffle-images/proton-gif.mov', key: 'proton-gif' },
+          { src: '../../assets/images/shuffle-images/proton-gif2.mov', key: 'proton-gif2' },
+        ];
 
     let currentClipIndex = 0;
     let shuffleTimer = null;
@@ -482,11 +600,14 @@ class SinglePagePortfolio {
     const scheduleNextClip = () => {
       clearShuffleTimer();
       if (!isShuffling) return;
-      shuffleTimer = window.setTimeout(() => {
-        currentClipIndex = (currentClipIndex + 1) % clipSources.length;
-        setClip(currentClipIndex);
-        scheduleNextClip();
-      }, 2000);
+      shuffleTimer = window.setTimeout(
+        () => {
+          currentClipIndex = (currentClipIndex + 1) % clipSources.length;
+          setClip(currentClipIndex);
+          scheduleNextClip();
+        },
+        clipSources.length > 1 ? 2000 : 10000
+      );
     };
 
     const startShuffle = () => {
@@ -1158,6 +1279,14 @@ class SinglePagePortfolio {
 }
 
 // NOTE: Initialize page behaviors when DOM is ready.
-document.addEventListener('DOMContentLoaded', () => {
+function initializePortfolioApp() {
+  if (window.singlePagePortfolio) return;
   window.singlePagePortfolio = new SinglePagePortfolio();
+}
+
+document.addEventListener('components:ready', initializePortfolioApp, { once: true });
+
+document.addEventListener('DOMContentLoaded', () => {
+  // NOTE: If no dynamic components are present, initialize immediately on DOM ready.
+  if (!document.querySelector('[data-component]')) initializePortfolioApp();
 });
