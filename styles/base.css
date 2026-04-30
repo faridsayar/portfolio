@@ -1325,6 +1325,10 @@ section[aria-label='Oss'] .section-inner {
 }
 
 @media (max-width: 768px) {
+  :root {
+    --timeline-mobile-left-gap: 0.9rem;
+  }
+
   .timeline-anchors {
     display: none;
   }
@@ -1334,6 +1338,9 @@ section[aria-label='Oss'] .section-inner {
     display: block;
     min-height: 15rem;
     /* NOTE: Reserve space for fixed start/end labels around the vertical scale. */
+    padding-left: var(
+      --timeline-mobile-left-gap
+    ); /* NOTE: Keeps the vertical timeline column offset from the left edge. */
     padding-top: 1.5rem;
     padding-bottom: 1.75rem;
     margin-top: 0;
@@ -1342,14 +1349,15 @@ section[aria-label='Oss'] .section-inner {
 
   .timeline-mobile-anchor {
     position: absolute;
-    left: calc(2.25rem / 2);
-    transform: translateX(-50%);
+    left: var(--timeline-mobile-left-gap);
+    transform: none;
     font-size: 0.9rem;
     font-weight: var(--font-weight-semibold);
     letter-spacing: -0.01em;
     color: var(--color-dark);
     opacity: 0.85;
-    white-space: nowrap;
+    white-space: normal;
+    text-align: left;
     pointer-events: none;
     z-index: 3;
     display: block;
@@ -1365,7 +1373,7 @@ section[aria-label='Oss'] .section-inner {
 
   .timeline-track {
     position: absolute;
-    left: 0;
+    left: var(--timeline-mobile-left-gap);
     top: 1.5rem;
     bottom: 1.75rem;
     width: 2.25rem;
@@ -1378,7 +1386,7 @@ section[aria-label='Oss'] .section-inner {
 
   .timeline-handles {
     position: absolute;
-    left: 0;
+    left: var(--timeline-mobile-left-gap);
     right: auto;
     width: 2.25rem;
     top: 1.5rem;
@@ -1397,7 +1405,7 @@ section[aria-label='Oss'] .section-inner {
 
   .timeline-labels {
     position: absolute;
-    left: calc(2.25rem + 0.75rem);
+    left: calc(var(--timeline-mobile-left-gap) + 2.25rem + 0.75rem);
     right: 0;
     top: 0;
     bottom: 0;

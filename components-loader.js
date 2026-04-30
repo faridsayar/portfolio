@@ -46,6 +46,7 @@
         <a class="site-footer__link" href="category/design/norge.html" data-footer-link="categories">Kategorier</a>
         <a class="site-footer__link" href="innsikt.html" data-footer-link="insights">Innsikt</a>
         <a class="site-footer__link" href="gallery.html" data-footer-link="gallery">Galleri</a>
+        <a class="site-footer__link" href="designstudio-oslo.html" data-footer-link="designstudio-oslo">Designstudio Oslo</a>
         <a class="site-footer__link" href="oss.html" data-footer-link="about">Oss</a>
         <a class="site-footer__link" href="index.html#application-form" data-footer-link="application">Søknadsskjema</a>
         <a class="site-footer__link" href="prisestimat.html" data-footer-link="pricing">Prisestimat</a>
