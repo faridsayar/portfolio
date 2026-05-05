@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- NOTE: XML sitemap for Google/Bing indexing of all public pages. -->
+<!-- NOTE: XML sitemap for Google/Bing: one entry per public route. Update when slugs are added,
+     removed, or renamed; copy-only changes (e.g. internal links in HTML) do not require edits. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://formaa.no/</loc></url>
   <url><loc>https://formaa.no/robots.txt</loc></url>

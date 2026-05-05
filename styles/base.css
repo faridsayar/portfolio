@@ -1710,6 +1710,16 @@ section[aria-label='Oss'] .section-inner {
   padding: 0;
 }
 
+/* NOTE: Gallery copy block under grid: less padding above; more space between category tags and kicker. */
+main.gallery-page section[aria-label='Om idegalleriet'] .section-inner {
+  padding-top: 2rem;
+}
+
+main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
