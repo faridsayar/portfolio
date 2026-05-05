@@ -367,6 +367,15 @@
   margin-top: 2rem;
 }
 
+/* NOTE: Responsive section banner image that never scales wider than its original width. */
+.section-banner-image {
+  display: block;
+  width: 100%;
+  max-width: 1920px;
+  height: auto;
+  margin: 0 0 1.5rem 0;
+}
+
 /* NOTE: Keep inline portfolio summary CTA as plain black text link. */
 .portfolio-summary-link,
 .portfolio-summary-link:visited,
