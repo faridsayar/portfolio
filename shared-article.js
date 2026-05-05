@@ -4,8 +4,10 @@ function renderSharedArticle() {
   if (!root) return;
 
   const pathname = window.location.pathname.replace(/\/+$/, '');
-  const path = pathname.split('/').pop() || 'innsikt-hva-er-industridesign';
-  const key = path.replace('.html', '');
+  const path = pathname.split('/').pop() || 'innsikt-hva-er-industridesign.html';
+  const fileStem = path.replace('.html', '');
+  // NOTE: Public URLs are /innsikt/{slug}; filenames stay innsikt-{slug}.html (see .htaccess).
+  const key = fileStem.startsWith('innsikt-') ? fileStem : `innsikt-${fileStem}`;
   const articleOrder = [
     'innsikt-hva-er-industridesign',
     'innsikt-ux-er-ikke-produktdesign',
@@ -60,8 +62,9 @@ function renderSharedArticle() {
 
     const prevIndex = (currentIndex - 1 + articleOrder.length) % articleOrder.length;
     const nextIndex = (currentIndex + 1) % articleOrder.length;
-    prevLinkEl.href = `/innsikt/${articleOrder[prevIndex]}`;
-    nextLinkEl.href = `/innsikt/${articleOrder[nextIndex]}`;
+    const publicSlug = (k) => k.replace(/^innsikt-/, '');
+    prevLinkEl.href = `/innsikt/${publicSlug(articleOrder[prevIndex])}`;
+    nextLinkEl.href = `/innsikt/${publicSlug(articleOrder[nextIndex])}`;
   }
 }
 

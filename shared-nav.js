@@ -3,26 +3,32 @@ function renderSharedNav() {
   const navRoots = Array.from(document.querySelectorAll('nav.side-nav[data-mobile-nav]'));
   if (navRoots.length === 0) return;
 
-  const path = window.location.pathname.split('/').pop() || 'index.html';
-  const fullPath = window.location.pathname || '';
-  const rootPrefix = fullPath.includes('/category/') ? '../../' : '';
+  const rawPath = window.location.pathname.replace(/\/+$/, '');
+  const segments = rawPath.split('/').filter(Boolean);
+  const path = segments.length ? segments[segments.length - 1] : '';
+
   const isInsightsPage =
+    segments[0] === 'innsikt' ||
     path === 'innsikt.html' ||
-    path.startsWith('article-') ||
     path.startsWith('innsikt-') ||
+    path.startsWith('article-') ||
     path === 'article-template.html';
+
   const isProjectPage =
-    path === 'advanced-project.html' || path.startsWith('project-') || path.startsWith('prosjekt-');
+    segments[0] === 'prosjekter' ||
+    path === 'advanced-project.html' ||
+    path.startsWith('project-') ||
+    path.startsWith('prosjekt-');
 
   const items = [
-    { href: `${rootPrefix}index.html`, label: 'Hjem', current: path === 'index.html' },
-    { href: `${rootPrefix}oss.html`, label: 'Oss', current: path === 'oss.html' },
+    { href: '/', label: 'Hjem', current: segments.length === 0 },
     {
-      href: `${rootPrefix}advanced-project.html`,
-      label: 'Prosjekter',
-      current: isProjectPage,
+      href: '/oss',
+      label: 'Oss',
+      current: path === 'oss.html' || (segments.length === 1 && segments[0] === 'oss'),
     },
-    { href: `${rootPrefix}innsikt.html`, label: 'Innsikt', current: isInsightsPage },
+    { href: '/prosjekter', label: 'Prosjekter', current: isProjectPage },
+    { href: '/innsikt', label: 'Innsikt', current: isInsightsPage },
   ];
 
   const linksMarkup = items
@@ -32,13 +38,16 @@ function renderSharedNav() {
     )
     .join('');
 
+  // NOTE: Root-absolute hrefs match .htaccess canonical URLs from any directory depth.
   const footerHrefByKey = {
-    projects: `${rootPrefix}advanced-project.html`,
-    categories: `${rootPrefix}category/design/norge.html`,
-    insights: `${rootPrefix}innsikt.html`,
-    about: `${rootPrefix}oss.html`,
-    application: `${rootPrefix}index.html#application-form`,
-    pricing: `${rootPrefix}prisestimat.html`,
+    projects: '/prosjekter',
+    categories: '/category/design/norge',
+    insights: '/innsikt',
+    gallery: '/gallery',
+    'designstudio-oslo': '/designstudio-oslo',
+    about: '/oss',
+    application: '/#application-form',
+    pricing: '/prisestimat',
   };
 
   navRoots.forEach((nav) => {
@@ -52,7 +61,7 @@ function renderSharedNav() {
         aria-controls="side-nav-content"
         data-mobile-nav-toggle
       >
-        <img class="side-nav__toggle-icon" src="${rootPrefix}assets/triangle.svg" alt="" aria-hidden="true" />
+        <img class="side-nav__toggle-icon" src="/assets/triangle.svg" alt="" aria-hidden="true" />
       </button>
       <div class="side-nav__content" id="side-nav-content" data-mobile-nav-content>
         ${linksMarkup}
@@ -84,7 +93,7 @@ function renderSharedNav() {
     });
   });
 
-  // NOTE: Keep shared footer links working from both root pages and nested category pages.
+  // NOTE: Keep shared footer links aligned with canonical routes (see .htaccess).
   const footerLinks = Array.from(document.querySelectorAll('[data-footer-link]'));
   footerLinks.forEach((link) => {
     const key = link.getAttribute('data-footer-link');

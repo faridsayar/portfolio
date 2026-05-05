@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- NOTE: XML sitemap for Google/Bing indexing of all public pages. -->
+<!-- NOTE: XML sitemap for Google/Bing: one entry per public route. Innsikt articles use
+     /innsikt/{slug} where slug matches innsikt-{slug}.html on disk (.htaccess). Update when
+     slugs are added, removed, or renamed. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://formaa.no/</loc></url>
-  <url><loc>https://formaa.no/robots.txt</loc></url>
-  <url><loc>https://formaa.no/llms.txt</loc></url>
   <url><loc>https://formaa.no/prosjekter</loc></url>
   <url><loc>https://formaa.no/gallery</loc></url>
   <url><loc>https://formaa.no/designstudio-oslo</loc></url>
-  <url><loc>https://formaa.no/article-template</loc></url>
   <url><loc>https://formaa.no/bli-med</loc></url>
   <url><loc>https://formaa.no/category/branding/akershus</loc></url>
   <url><loc>https://formaa.no/category/branding/buskerud</loc></url>
@@ -84,12 +83,12 @@
   <url><loc>https://formaa.no/category/visualisering/norge</loc></url>
   <url><loc>https://formaa.no/category/visualisering/oslo</loc></url>
   <url><loc>https://formaa.no/category/visualisering/ostfold</loc></url>
-  <url><loc>https://formaa.no/innsikt/innsikt-branding-og-produktdesign</loc></url>
-  <url><loc>https://formaa.no/innsikt/innsikt-design-for-crowdfunding</loc></url>
-  <url><loc>https://formaa.no/innsikt/innsikt-hva-er-industridesign</loc></url>
-  <url><loc>https://formaa.no/innsikt/innsikt-hvem-trenger-design</loc></url>
-  <url><loc>https://formaa.no/innsikt/innsikt-hvordan-design-sparer-penger</loc></url>
-  <url><loc>https://formaa.no/innsikt/innsikt-ux-er-ikke-produktdesign</loc></url>
+  <url><loc>https://formaa.no/innsikt/branding-og-produktdesign</loc></url>
+  <url><loc>https://formaa.no/innsikt/design-for-crowdfunding</loc></url>
+  <url><loc>https://formaa.no/innsikt/hva-er-industridesign</loc></url>
+  <url><loc>https://formaa.no/innsikt/hvem-trenger-design</loc></url>
+  <url><loc>https://formaa.no/innsikt/hvordan-design-sparer-penger</loc></url>
+  <url><loc>https://formaa.no/innsikt/ux-er-ikke-produktdesign</loc></url>
   <url><loc>https://formaa.no/innsikt</loc></url>
   <url><loc>https://formaa.no/oss</loc></url>
   <url><loc>https://formaa.no/prisestimat</loc></url>

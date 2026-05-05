@@ -385,14 +385,14 @@
   color: #000;
 }
 
-/* NOTE: Shared visual style for all inline internal text links across page copy. */
+/* NOTE: Shared visual style for all inline internal text links across page copy (semibold weight). */
 .internal-text-link,
 .internal-text-link:visited,
 .internal-text-link:hover,
 .internal-text-link:focus,
 .internal-text-link:active {
   color: #000;
-  font-weight: 700;
+  font-weight: var(--font-weight-semibold);
 }
 
 .category-hero-media {
@@ -1708,6 +1708,16 @@ section[aria-label='Oss'] .section-inner {
 .gallery-page {
   margin: 0;
   padding: 0;
+}
+
+/* NOTE: Gallery copy block under grid: less padding above; more space between category tags and kicker. */
+main.gallery-page section[aria-label='Om idegalleriet'] .section-inner {
+  padding-top: 2rem;
+}
+
+main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
 }
 
 .gallery-grid {

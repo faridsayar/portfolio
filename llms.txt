@@ -8,6 +8,7 @@ important_urls:
 - https://formaa.no/
 - https://formaa.no/prosjekter
 - https://formaa.no/gallery
+- https://formaa.no/designstudio-oslo
 - https://formaa.no/innsikt
 - https://formaa.no/oss
 - https://formaa.no/prisestimat

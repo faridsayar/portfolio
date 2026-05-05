@@ -24,6 +24,23 @@ RewriteRule ^designstudio-oslo\.html$ /designstudio-oslo [R=301,L]
 RewriteRule ^prosjekt-([a-z0-9-]+)/?$ /prosjekter/$1 [R=301,L]
 RewriteRule ^innsikt-([a-z0-9-]+)/?$ /innsikt/$1 [R=301,L]
 
+# NOTE: Heal legacy 404s from Search Console: duplicate Innsikt paths, bad /category/…
+# relatives, renamed produksjon → teknisk-tegning, and non-existent “index” hubs.
+RewriteRule ^innsikt/innsikt-([a-z0-9-]+)/?$ /innsikt/$1 [R=301,L]
+RewriteRule ^category/([a-z0-9-]+)/category/(.*)$ /category/$2 [R=301,L]
+RewriteRule ^category/([a-z0-9-]+)/index\.html$ /category/$1/norge [R=301,L]
+RewriteRule ^category/([a-z0-9-]+)/index/?$ /category/$1/norge [R=301,L]
+RewriteRule ^category/([a-z0-9-]+)/innsikt\.html$ /innsikt [R=301,L]
+RewriteRule ^category/([a-z0-9-]+)/innsikt/?$ /innsikt [R=301,L]
+RewriteRule ^category/([a-z0-9-]+)/oss\.html$ /oss [R=301,L]
+RewriteRule ^category/([a-z0-9-]+)/oss/?$ /oss [R=301,L]
+RewriteRule ^category/([a-z0-9-]+)/prisestimat\.html$ /prisestimat [R=301,L]
+RewriteRule ^category/([a-z0-9-]+)/prisestimat/?$ /prisestimat [R=301,L]
+RewriteRule ^category/([a-z0-9-]+)/advanced-project\.html$ /prosjekter [R=301,L]
+RewriteRule ^category/([a-z0-9-]+)/advanced-project/?$ /prosjekter [R=301,L]
+RewriteRule ^category/produksjon/?$ /category/teknisk-tegning/norge [R=301,L]
+RewriteRule ^category/produksjon/(.*)$ /category/teknisk-tegning/$1 [R=301,L]
+
 # NOTE: Remove `.html` from all public URLs.
 RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
 RewriteRule ^(.+)\.html$ /$1 [R=301,L]
