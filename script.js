@@ -456,25 +456,19 @@ class SinglePagePortfolio {
       { src: 'assets/images/shuffle-images/proton-gif.mov', key: 'proton-gif' },
       { src: 'assets/images/shuffle-images/proton-gif2.mov', key: 'proton-gif2' },
       { src: 'assets/images/shuffle-images/me-drawing.mp4', key: 'me-drawing' },
-      { src: 'assets/images/shuffle-images/process.mp4', key: 'process' },
-      { src: 'assets/images/shuffle-images/wall-sketches.mp4', key: 'wall-sketches' },
       { src: 'assets/images/shuffle-images/3d-printer-working.mp4', key: '3d-printer-working' },
       { src: 'assets/images/shuffle-images/test-animation.mp4', key: 'test-animation' },
-      { src: 'assets/images/shuffle-images/validating.mp4', key: 'validating' },
     ];
 
     let currentClipIndex = 0;
     let shuffleTimer = null;
     let isShuffling = false;
-    const useIntrinsicDurationKeys = new Set(['process', 'wall-sketches', 'validating']);
+    const useIntrinsicDurationKeys = new Set();
 
     const clipDurationByKey = {
       'me-drawing': 1800,
-      process: 2000,
-      'wall-sketches': 3000,
       '3d-printer-working': 2000,
       'test-animation': 3000,
-      validating: 3000,
       'proton-gif': 2000,
       'proton-gif2': 2000,
     };
@@ -555,7 +549,8 @@ class SinglePagePortfolio {
     if (!categoryVideo) return;
     const pathname = window.location.pathname.toLowerCase();
     const isPrototypingOrProduksjonCategory =
-      pathname.includes('/category/prototyping/') || pathname.includes('/category/produksjon/');
+      pathname.includes('/category/prototyping/') ||
+      pathname.includes('/category/teknisk-tegning/');
     const skipHeavyCategoryVideo =
       window.matchMedia('(max-width: 767px)').matches ||
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
