@@ -94,7 +94,7 @@ Use this checklist after structural updates (new pages, renamed slugs, new categ
 Use existing patterns only; do not invent new link colors or button styles.
 
 - **Inline copy links:** `a.internal-text-link` (global style in `styles/base.css`: black, semibold). Use for words or phrases inside paragraphs on pages such as `index.html`, `prisestimat.html`, `designstudio-oslo.html`, `oss.html`, and for HTML inside innsikt article JSON `blocks[].text`.
-- **Category chips:** `div.service-tags` + `a.service-tag`, same markup as category pages; from the site root, `href` values look like `category/{tjeneste}/oslo.html` (see `gallery.html` and `category/*/oslo.html`).
+- **Category chips:** `div.service-tags` + `a.service-tag`, same markup as category pages; public URLs are extensionless (for example `/category/{tjeneste}/oslo`). Prefer root-absolute `href` values like `/category/design/norge` so links resolve correctly from any path; on-disk files remain `category/.../*.html` (see `.htaccess`).
 - **Insights articles:** `shared-article.js` renders `blocks` as `<p>` / `<h2>`; embed full `<a class="internal-text-link" href="...">` strings in JSON where needed.
 - **Sitemap:** Adding or changing internal links does not change public URLs; update `sitemap.xml` only when routes (paths) change.
 
@@ -103,7 +103,7 @@ Use existing patterns only; do not invent new link colors or button styles.
 - Keep Norwegian copy and metadata as primary.
 - Maintain one primary `h1` per page.
 - Keep canonical and OG URL aligned with final page URL.
-- Preserve robots directive (`index,follow,max-image-preview:large`).
+- Preserve robots directive (`index,follow,max-image-preview:large`) on indexable pages; `article-template.html` is `noindex` and omitted from `sitemap.xml` (layout shell only).
 - Keep contact links form-based to avoid exposing a raw email in page markup.
 
 Structured data currently used:
@@ -125,9 +125,9 @@ Structured data currently used:
 
 ## URL Canonicalization
 
-- `.htaccess` is used to canonicalize homepage access:
-  - `/index.html` -> `/` (301)
-- Public routes are exposed as friendly extensionless URLs (for example `/gallery`, `/prosjekter`, `/innsikt`), while legacy `.html` paths are redirected.
+- `.htaccess` (Apache) canonicalizes HTTP → HTTPS, strips `.html` from URLs, maps `/prosjekter/{slug}` and `/innsikt/{slug}` to the legacy `prosjekt-*.html` / `innsikt-*.html` files, and includes 301s for Search Console legacy paths (duplicate `/innsikt/innsikt-*`, bad `/category/.../index`, `produksjon` → `teknisk-tegning`, etc.). If you deploy on a host that ignores `.htaccess`, replicate these rules in that platform’s redirect config.
+- Homepage: `/index.html` → `/` (301).
+- Public routes are extensionless (for example `/gallery`, `/prosjekter`, `/innsikt`); legacy flat filenames redirect into those namespaces.
 
 ## Local Development
 
