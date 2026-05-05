@@ -245,7 +245,9 @@ class SinglePagePortfolio {
     const fromGlobal = Array.isArray(window.__GRID_MEDIA_MANIFEST?.items)
       ? window.__GRID_MEDIA_MANIFEST.items
       : [];
-    const normalizedItems = fromGlobal
+    // NOTE: Reverse manifest order so newly appended media appears earlier in gallery/strip grids.
+    const prioritizedItems = [...fromGlobal].reverse();
+    const normalizedItems = prioritizedItems
       .filter((item) => item && typeof item.src === 'string')
       .filter((item) => !item.src.toLowerCase().endsWith('.gif'))
       .map((item) => {
