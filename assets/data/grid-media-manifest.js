@@ -1,9 +1,10 @@
+// NOTE: Gallery/home grid strip media list; script.js reads this to build tiles and hero shuffle.
 window.__GRID_MEDIA_MANIFEST = {
   "items": [
     {
-      "src": "assets/images/grid/1artboard-19-copy-at-2x-100.webp",
+      "src": "assets/images/grid/Lunar-clock.jpg",
       "type": "image",
-      "name": "1artboard 19 copy at 2x 100"
+      "name": "Lunar clock"
     },
     {
       "src": "assets/images/grid/3d-print.webp",
@@ -386,9 +387,9 @@ window.__GRID_MEDIA_MANIFEST = {
       "name": "utstilling glasses"
     },
     {
-      "src": "assets/images/grid/via-ferrata-loen.webp",
+      "src": "assets/images/grid/Urban-car.jpg",
       "type": "image",
-      "name": "via ferrata loen"
+      "name": "Urban car"
     }
   ]
 };

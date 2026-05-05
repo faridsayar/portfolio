@@ -385,14 +385,14 @@
   color: #000;
 }
 
-/* NOTE: Shared visual style for all inline internal text links across page copy. */
+/* NOTE: Shared visual style for all inline internal text links across page copy (semibold weight). */
 .internal-text-link,
 .internal-text-link:visited,
 .internal-text-link:hover,
 .internal-text-link:focus,
 .internal-text-link:active {
   color: #000;
-  font-weight: 700;
+  font-weight: var(--font-weight-semibold);
 }
 
 .category-hero-media {
