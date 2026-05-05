@@ -2,6 +2,8 @@
 <!-- NOTE: XML sitemap for Google/Bing indexing of all public pages. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://formaa.no/</loc></url>
+  <url><loc>https://formaa.no/robots.txt</loc></url>
+  <url><loc>https://formaa.no/llms.txt</loc></url>
   <url><loc>https://formaa.no/prosjekter</loc></url>
   <url><loc>https://formaa.no/gallery</loc></url>
   <url><loc>https://formaa.no/designstudio-oslo</loc></url>

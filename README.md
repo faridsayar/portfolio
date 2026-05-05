@@ -54,14 +54,40 @@ Search engines use root indexing files:
 
 - `sitemap.xml`
 - `robots.txt`
+- `llms.txt` (LLM/discovery metadata file)
 
 ### Sitemap Workflow
 
 Whenever public pages are added/removed/renamed:
 
 1. Update (or regenerate) `sitemap.xml`.
-2. Deploy to production.
-3. Re-submit `https://formaa.no/sitemap.xml` in Google Search Console.
+2. Verify old URLs were removed (avoid stale `404` entries).
+3. Verify all new canonical routes are included once.
+4. Ensure renamed category URLs are fully replaced in links (for example `produksjon` -> `teknisk-tegning`).
+5. Deploy to production.
+6. Re-submit `https://formaa.no/sitemap.xml` in Google Search Console.
+
+### SEO / Indexing Maintenance Checklist
+
+Use this checklist after structural updates (new pages, renamed slugs, new categories):
+
+1. `sitemap.xml`
+   - Add new public URLs.
+   - Remove deprecated URLs.
+   - Keep URL style consistent (extensionless public routes).
+2. `robots.txt`
+   - Keep `Allow: /` and one canonical sitemap declaration.
+3. Page metadata
+   - Keep one canonical URL per page.
+   - Ensure `<title>`, `meta description`, OG/Twitter title+description match page intent.
+4. Structured data
+   - Keep JSON-LD valid and aligned with canonical URL.
+5. Internal linking
+   - Add relevant contextual links with existing shared classes.
+   - Avoid over-linking repeated terms in the same paragraph.
+6. Final validation
+   - Run `corepack pnpm format`.
+   - Spot-check key pages in browser and re-submit sitemap if needed.
 
 ## SEO Conventions
 
