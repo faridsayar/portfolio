@@ -4,10 +4,12 @@
   "description": "Static portfolio site. Includes a `pnpm format` script to keep HTML/CSS/JS consistently formatted before commits.",
   "scripts": {
     "generate:projects-manifest": "node scripts/generate-projects-manifest.mjs",
+    "dev": "serve . -l 3000",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },
   "devDependencies": {
-    "prettier": "^3.6.2"
+    "prettier": "^3.6.2",
+    "serve": "^14.2.6"
   }
 }

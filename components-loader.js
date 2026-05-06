@@ -12,7 +12,7 @@
           <nav class="breadcrumb about-top-graphic__breadcrumb" aria-label="Brødsmulesti">
             <a class="breadcrumb__link" href="/">Formaa</a>
             <span class="breadcrumb__sep" aria-hidden="true">/</span>
-            <a class="breadcrumb__link" href="/innsikt">Innsikt</a>
+            <a class="breadcrumb__link" href="/innsikt.html">Innsikt</a>
             <span class="breadcrumb__sep" aria-hidden="true">/</span>
             <a class="breadcrumb__link" href="#" aria-current="page" data-article-breadcrumb-current>Artikkel</a>
           </nav>
@@ -22,8 +22,8 @@
       <h1 class="section-title" data-article-title>Artikkel</h1>
       <div class="article-row__text" data-article-body></div>
       <nav class="article-nav-buttons" aria-label="Artikkelnavigasjon" data-article-nav>
-        <a class="article-nav-button" href="/innsikt/design-for-crowdfunding" data-article-nav-prev>Forrige artikkel</a>
-        <a class="article-nav-button" href="/innsikt/ux-er-ikke-produktdesign" data-article-nav-next>Neste artikkel</a>
+        <a class="article-nav-button" href="/innsikt-design-for-crowdfunding.html" data-article-nav-prev>Forrige artikkel</a>
+        <a class="article-nav-button" href="/innsikt-ux-er-ikke-produktdesign.html" data-article-nav-next>Neste artikkel</a>
       </nav>
     </div>
   </article>
@@ -42,14 +42,14 @@
     <div class="site-footer__links" aria-label="Links">
       <p class="site-footer__links-title">Links</p>
       <div class="site-footer__links-list">
-        <a class="site-footer__link" href="/prosjekter" data-footer-link="projects">Prosjekter</a>
-        <a class="site-footer__link" href="/category/design/norge" data-footer-link="categories">Kategorier</a>
-        <a class="site-footer__link" href="/innsikt" data-footer-link="insights">Innsikt</a>
-        <a class="site-footer__link" href="/gallery" data-footer-link="gallery">Galleri</a>
-        <a class="site-footer__link" href="/designstudio-oslo" data-footer-link="designstudio-oslo">Designstudio Oslo</a>
-        <a class="site-footer__link" href="/oss" data-footer-link="about">Oss</a>
+        <a class="site-footer__link" href="/advanced-project.html" data-footer-link="projects">Prosjekter</a>
+        <a class="site-footer__link" href="/category/design/norge.html" data-footer-link="categories">Kategorier</a>
+        <a class="site-footer__link" href="/innsikt.html" data-footer-link="insights">Innsikt</a>
+        <a class="site-footer__link" href="/gallery.html" data-footer-link="gallery">Galleri</a>
+        <a class="site-footer__link" href="/designstudio-oslo.html" data-footer-link="designstudio-oslo">Designstudio Oslo</a>
+        <a class="site-footer__link" href="/oss.html" data-footer-link="about">Oss</a>
         <a class="site-footer__link" href="/#application-form" data-footer-link="application">Søknadsskjema</a>
-        <a class="site-footer__link" href="/prisestimat" data-footer-link="pricing">Prisestimat</a>
+        <a class="site-footer__link" href="/prisestimat.html" data-footer-link="pricing">Prisestimat</a>
       </div>
     </div>
     <p class="site-footer__text">

@@ -390,6 +390,11 @@ window.__GRID_MEDIA_MANIFEST = {
       "src": "assets/images/grid/Urban-car.jpg",
       "type": "image",
       "name": "Urban car"
+    },
+    {
+      "src": "assets/images/grid/lunar-watch.mp4",
+      "type": "video",
+      "name": "lunar watch"
     }
   ]
 };
