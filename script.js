@@ -193,9 +193,9 @@ class SinglePagePortfolio {
     }
 
     const sources = [
-      'assets/data/grid-media-manifest.js?v=1',
-      '/assets/data/grid-media-manifest.js?v=1',
-      '../../assets/data/grid-media-manifest.js?v=1',
+      'assets/data/grid-media-manifest.js?v=2',
+      '/assets/data/grid-media-manifest.js?v=2',
+      '../../assets/data/grid-media-manifest.js?v=2',
     ];
 
     this.gridManifestLoadPromise = (async () => {
@@ -455,9 +455,12 @@ class SinglePagePortfolio {
     const clipSources = [
       { src: 'assets/images/shuffle-images/proton-gif.mov', key: 'proton-gif' },
       { src: 'assets/images/shuffle-images/proton-gif2.mov', key: 'proton-gif2' },
-      { src: 'assets/images/shuffle-images/me-drawing.mp4', key: 'me-drawing' },
+      // NOTE: Lunar watch clip is inserted right after proton-gif2 in the hero shuffle order.
+      { src: 'assets/images/shuffle-images/lunar-watch.mp4', key: 'lunar-watch' },
       { src: 'assets/images/shuffle-images/3d-printer-working.mp4', key: '3d-printer-working' },
       { src: 'assets/images/shuffle-images/test-animation.mp4', key: 'test-animation' },
+      // NOTE: me-drawing is intentionally last in the hero shuffle sequence.
+      { src: 'assets/images/shuffle-images/me-drawing.mp4', key: 'me-drawing' },
     ];
 
     let currentClipIndex = 0;
@@ -573,6 +576,8 @@ class SinglePagePortfolio {
       : [
           { src: '../../assets/images/shuffle-images/proton-gif.mov', key: 'proton-gif' },
           { src: '../../assets/images/shuffle-images/proton-gif2.mov', key: 'proton-gif2' },
+          // NOTE: Lunar watch clip is inserted right after proton-gif2 for category hero shuffle.
+          { src: '../../assets/images/shuffle-images/lunar-watch.mp4', key: 'lunar-watch' },
         ];
 
     let currentClipIndex = 0;

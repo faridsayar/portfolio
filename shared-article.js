@@ -6,7 +6,7 @@ function renderSharedArticle() {
   const pathname = window.location.pathname.replace(/\/+$/, '');
   const path = pathname.split('/').pop() || 'innsikt-hva-er-industridesign.html';
   const fileStem = path.replace('.html', '');
-  // NOTE: Public URLs are /innsikt/{slug}; filenames stay innsikt-{slug}.html (see .htaccess).
+  // NOTE: Article files are innsikt-{slug}.html at repo root; hrefs use that shape for static local servers.
   const key = fileStem.startsWith('innsikt-') ? fileStem : `innsikt-${fileStem}`;
   const articleOrder = [
     'innsikt-hva-er-industridesign',
@@ -62,9 +62,8 @@ function renderSharedArticle() {
 
     const prevIndex = (currentIndex - 1 + articleOrder.length) % articleOrder.length;
     const nextIndex = (currentIndex + 1) % articleOrder.length;
-    const publicSlug = (k) => k.replace(/^innsikt-/, '');
-    prevLinkEl.href = `/innsikt/${publicSlug(articleOrder[prevIndex])}`;
-    nextLinkEl.href = `/innsikt/${publicSlug(articleOrder[nextIndex])}`;
+    prevLinkEl.href = `/${articleOrder[prevIndex]}.html`;
+    nextLinkEl.href = `/${articleOrder[nextIndex]}.html`;
   }
 }
 

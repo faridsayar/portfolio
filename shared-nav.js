@@ -20,15 +20,16 @@ function renderSharedNav() {
     path.startsWith('project-') ||
     path.startsWith('prosjekt-');
 
+  // NOTE: Nav uses real *.html paths so python http.server and other static hosts work; production Apache 301s to extensionless URLs.
   const items = [
     { href: '/', label: 'Hjem', current: segments.length === 0 },
     {
-      href: '/oss',
+      href: '/oss.html',
       label: 'Oss',
       current: path === 'oss.html' || (segments.length === 1 && segments[0] === 'oss'),
     },
-    { href: '/prosjekter', label: 'Prosjekter', current: isProjectPage },
-    { href: '/innsikt', label: 'Innsikt', current: isInsightsPage },
+    { href: '/advanced-project.html', label: 'Prosjekter', current: isProjectPage },
+    { href: '/innsikt.html', label: 'Innsikt', current: isInsightsPage },
   ];
 
   const linksMarkup = items
@@ -38,16 +39,16 @@ function renderSharedNav() {
     )
     .join('');
 
-  // NOTE: Root-absolute hrefs match .htaccess canonical URLs from any directory depth.
+  // NOTE: Root-absolute *.html paths work on static local servers; live site rewrites still canonicalize without extension.
   const footerHrefByKey = {
-    projects: '/prosjekter',
-    categories: '/category/design/norge',
-    insights: '/innsikt',
-    gallery: '/gallery',
-    'designstudio-oslo': '/designstudio-oslo',
-    about: '/oss',
+    projects: '/advanced-project.html',
+    categories: '/category/design/norge.html',
+    insights: '/innsikt.html',
+    gallery: '/gallery.html',
+    'designstudio-oslo': '/designstudio-oslo.html',
+    about: '/oss.html',
     application: '/#application-form',
-    pricing: '/prisestimat',
+    pricing: '/prisestimat.html',
   };
 
   navRoots.forEach((nav) => {
@@ -93,7 +94,7 @@ function renderSharedNav() {
     });
   });
 
-  // NOTE: Keep shared footer links aligned with canonical routes (see .htaccess).
+  // NOTE: Keep shared footer hrefs aligned with on-disk HTML files for local preview.
   const footerLinks = Array.from(document.querySelectorAll('[data-footer-link]'));
   footerLinks.forEach((link) => {
     const key = link.getAttribute('data-footer-link');
