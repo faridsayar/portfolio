@@ -435,16 +435,20 @@ class SinglePagePortfolio {
     });
   }
 
+  // NOTE: Skip multi-clip hero shuffle when Data Saver is on (Network Information API) or user prefers reduced motion; otherwise shuffle on every viewport size.
+  shouldSkipHeavyVideoShuffle() {
+    const saveDataOn = typeof navigator !== 'undefined' && navigator.connection?.saveData === true;
+    if (saveDataOn) return true;
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  }
+
   // NOTE: Interactive timeline (process prioritization)
   setupHeroVideoShuffle() {
     const heroVideo = document.querySelector('[data-hero-video-shuffle]');
     if (!heroVideo) return;
-    const skipHeavyHeroVideo =
-      window.matchMedia('(max-width: 767px)').matches ||
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // NOTE: Keep a lightweight static hero on mobile/reduced-motion to improve first-load performance.
-    if (skipHeavyHeroVideo) {
+    // NOTE: Static hero (no clip cycling) when saving data or reduced motion; avoids large downloads in those modes.
+    if (this.shouldSkipHeavyVideoShuffle()) {
       heroVideo.pause();
       heroVideo.removeAttribute('src');
       heroVideo.load();
@@ -554,12 +558,9 @@ class SinglePagePortfolio {
     const isPrototypingOrProduksjonCategory =
       pathname.includes('/category/prototyping/') ||
       pathname.includes('/category/teknisk-tegning/');
-    const skipHeavyCategoryVideo =
-      window.matchMedia('(max-width: 767px)').matches ||
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // NOTE: Disable decorative category hero video on mobile/reduced-motion to cut transfer and CPU usage.
-    if (skipHeavyCategoryVideo) {
+    // NOTE: Same gating as home hero: no shuffle under Data Saver or reduced motion.
+    if (this.shouldSkipHeavyVideoShuffle()) {
       categoryVideo.pause();
       categoryVideo.removeAttribute('src');
       categoryVideo.load();
