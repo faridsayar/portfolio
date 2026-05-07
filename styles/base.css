@@ -1059,6 +1059,11 @@ section[aria-label='Oss'] .section-inner {
   padding-bottom: 2rem;
 }
 
+/* NOTE: Keep gallery strip directly attached to the four-feature banner on home page. */
+.section--features .feature-banner {
+  margin-bottom: 0;
+}
+
 /* Quotes/testimonials section */
 .section--quotes {
   background: var(--color-white);
