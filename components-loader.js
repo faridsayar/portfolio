@@ -21,6 +21,10 @@
       <p class="section-kicker">Innsikt</p>
       <h1 class="section-title" data-article-title>Artikkel</h1>
       <div class="article-row__text" data-article-body></div>
+      <!-- NOTE: Shared like/share strip stays tied to the article, not a specific image variant. -->
+      <div class="like-share-strip-shell like-share-strip-shell--article" data-article-like-share>
+        <div data-component="like-share-strip"></div>
+      </div>
       <nav class="article-nav-buttons" aria-label="Artikkelnavigasjon" data-article-nav>
         <a class="article-nav-button" href="/innsikt-design-for-crowdfunding.html" data-article-nav-prev>Forrige artikkel</a>
         <a class="article-nav-button" href="/innsikt-ux-er-ikke-produktdesign.html" data-article-nav-next>Neste artikkel</a>
@@ -36,7 +40,8 @@
     <a class="inquiry-cta" href="/#application-form">Gå til forespørselsskjema</a>
   </div>
 </section>
-</main>`,
+</main>
+<div data-component="site-footer"></div>`,
     'site-footer': `<footer class="site-footer" aria-label="Bunntekst">
   <div class="site-footer__inner">
     <div class="site-footer__links" aria-label="Links">
@@ -291,6 +296,23 @@
     </div>
   </div>
 </section>`,
+    'like-share-strip': `<!-- NOTE: Reusable like/share strip used below project and article hero media. -->
+<div class="like-share-strip" data-like-share-strip>
+  <div class="like-share-strip__cluster">
+    <button class="like-share-strip__button" type="button" data-like-share-like aria-label="Lik denne siden" aria-pressed="false">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M9.5 21H6.75A2.75 2.75 0 0 1 4 18.25v-7.5A2.75 2.75 0 0 1 6.75 8h2.72a1.25 1.25 0 0 1 1.03.54l.2.28 2.07-4.69A2.44 2.44 0 0 1 15 2.7c1.4 0 2.53 1.17 2.47 2.57l-.17 3.73h1.61A3.1 3.1 0 0 1 22 12.29l-1.09 5.88A3.5 3.5 0 0 1 17.47 21H9.5Zm-2.75-11A.75.75 0 0 0 6 10.75v7.5c0 .41.34.75.75.75H9V10H6.75Zm4.25 9h6.47c.72 0 1.34-.51 1.47-1.22l1.09-5.88A1.1 1.1 0 0 0 18.91 11H16.3a1 1 0 0 1-1-1.05l.2-4.77a.47.47 0 0 0-.94-.16L12.03 10H11v9Z" />
+      </svg>
+    </button>
+    <span class="like-share-strip__count" data-like-share-count>0</span>
+  </div>
+  <button class="like-share-strip__button like-share-strip__button--share" type="button" data-like-share-share aria-label="Del denne siden">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M17.5 15.5a3.46 3.46 0 0 0-2.37.94L9.28 13.3a3.7 3.7 0 0 0 0-2.6l5.85-3.14a3.5 3.5 0 1 0-.95-1.76L8.33 8.94a3.5 3.5 0 1 0 0 6.12l5.85 3.14a3.5 3.5 0 1 0 3.32-2.7Zm0-12a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM6.5 10.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm11 10a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Z" />
+    </svg>
+  </button>
+  <span class="like-share-strip__status" data-like-share-status aria-live="polite"></span>
+</div>`,
   };
 
   async function renderPass() {

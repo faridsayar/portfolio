@@ -1,4 +1,117 @@
 // NOTE: Shared article template renderer; one layout reused across all article pages.
+function getBrowserStorageValue(storage, key) {
+  try {
+    return storage?.getItem(key) ?? null;
+  } catch (_error) {
+    return null;
+  }
+}
+
+function setBrowserStorageValue(storage, key, value) {
+  try {
+    storage?.setItem(key, value);
+    return true;
+  } catch (_error) {
+    return false;
+  }
+}
+
+function setLikeShareStatus(statusEl, message) {
+  if (!statusEl) return;
+  statusEl.textContent = message;
+}
+
+// NOTE: Seed a stable browser-local starting count so each project/article can show social proof before manual likes are added.
+function readLikeShareCount(storageKey) {
+  const storedValue = getBrowserStorageValue(window.localStorage, storageKey);
+  const parsed = Number.parseInt(storedValue || '', 10);
+  if (Number.isFinite(parsed) && parsed >= 80) return parsed;
+
+  const seededCount = Math.floor(Math.random() * (250 - 80 + 1)) + 80;
+  setBrowserStorageValue(window.localStorage, storageKey, String(seededCount));
+  return seededCount;
+}
+
+async function shareLikeShareUrl({ title, url, statusEl }) {
+  try {
+    if (navigator.share) {
+      await navigator.share({ title, url });
+      setLikeShareStatus(statusEl, 'Siden ble delt.');
+      return;
+    }
+
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(url);
+      setLikeShareStatus(statusEl, 'Lenken er kopiert.');
+      return;
+    }
+
+    window.prompt('Kopier lenken:', url);
+    setLikeShareStatus(statusEl, 'Kopier lenken fra dialogen.');
+  } catch (error) {
+    if (error?.name === 'AbortError') {
+      setLikeShareStatus(statusEl, 'Deling avbrutt.');
+      return;
+    }
+    setLikeShareStatus(statusEl, 'Kunne ikke dele siden akkurat nå.');
+  }
+}
+
+function initializeLikeShareStrip(strip, options) {
+  if (!strip || strip.dataset.likeShareInitialized === 'true') return;
+
+  const likeButton = strip.querySelector('[data-like-share-like]');
+  const countEl = strip.querySelector('[data-like-share-count]');
+  const shareButton = strip.querySelector('[data-like-share-share]');
+  const statusEl = strip.querySelector('[data-like-share-status]');
+  if (!likeButton || !countEl || !shareButton) return;
+
+  const {
+    storageKey,
+    sessionKey,
+    likeLabel,
+    shareLabel,
+    shareTitle,
+    shareUrl,
+    alreadyLikedMessage,
+  } = options;
+  let count = readLikeShareCount(storageKey);
+  let likedThisSession = getBrowserStorageValue(window.sessionStorage, sessionKey) === '1';
+
+  const render = () => {
+    countEl.textContent = `${count} likes`;
+    countEl.setAttribute('aria-label', `${count} likes`);
+    likeButton.setAttribute('aria-pressed', likedThisSession ? 'true' : 'false');
+  };
+
+  if (likeLabel) likeButton.setAttribute('aria-label', likeLabel);
+  if (shareLabel) shareButton.setAttribute('aria-label', shareLabel);
+
+  likeButton.addEventListener('click', () => {
+    if (likedThisSession) {
+      setLikeShareStatus(
+        statusEl,
+        alreadyLikedMessage || 'Du har allerede registrert en like i denne økten.'
+      );
+      return;
+    }
+
+    count += 1;
+    likedThisSession = true;
+    setBrowserStorageValue(window.localStorage, storageKey, String(count));
+    setBrowserStorageValue(window.sessionStorage, sessionKey, '1');
+    render();
+    setLikeShareStatus(statusEl, 'Takk! Liken er registrert.');
+  });
+
+  shareButton.addEventListener('click', async () => {
+    await shareLikeShareUrl({ title: shareTitle, url: shareUrl, statusEl });
+  });
+
+  render();
+  strip.dataset.likeShareInitialized = 'true';
+}
+
 function renderSharedArticle() {
   const root = document.querySelector('[data-article-layout]');
   if (!root) return;
@@ -57,14 +170,24 @@ function renderSharedArticle() {
     const currentIndex = articleOrder.indexOf(key);
     if (currentIndex === -1) {
       navWrapEl.style.display = 'none';
-      return;
+    } else {
+      const prevIndex = (currentIndex - 1 + articleOrder.length) % articleOrder.length;
+      const nextIndex = (currentIndex + 1) % articleOrder.length;
+      prevLinkEl.href = `/${articleOrder[prevIndex]}.html`;
+      nextLinkEl.href = `/${articleOrder[nextIndex]}.html`;
     }
-
-    const prevIndex = (currentIndex - 1 + articleOrder.length) % articleOrder.length;
-    const nextIndex = (currentIndex + 1) % articleOrder.length;
-    prevLinkEl.href = `/${articleOrder[prevIndex]}.html`;
-    nextLinkEl.href = `/${articleOrder[nextIndex]}.html`;
   }
+
+  const likeShareStrip = root.querySelector('[data-article-like-share] [data-like-share-strip]');
+  initializeLikeShareStrip(likeShareStrip, {
+    storageKey: `formaa-like-count:article:${key}`,
+    sessionKey: `formaa-like-session:article:${key}`,
+    likeLabel: `Lik artikkelen ${article.title}`,
+    shareLabel: `Del artikkelen ${article.title}`,
+    shareTitle: article.title,
+    shareUrl: new URL(path, window.location.href).href,
+    alreadyLikedMessage: 'Du har allerede likt denne artikkelen i denne økten.',
+  });
 }
 
 renderSharedArticle();

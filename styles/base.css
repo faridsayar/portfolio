@@ -418,6 +418,11 @@ section[aria-label='Kategori side'] .section-inner {
   padding-top: 0;
 }
 
+/* NOTE: Designstudio Oslo page also starts with a full-width hero media block. */
+section[aria-label='Designstudio i Oslo'] .section-inner {
+  padding-top: 0;
+}
+
 section[aria-label='Kategori side'] .breadcrumb {
   position: absolute;
   top: 1.25rem;
@@ -443,6 +448,10 @@ section[aria-label='Kategori side'] .breadcrumb .breadcrumb__link[aria-current='
 section[aria-label='Kategori side'] .breadcrumb .breadcrumb__sep {
   color: var(--color-white);
   opacity: 0.58;
+}
+
+section[aria-label='Designstudio i Oslo'] .section-banner-image {
+  margin-top: 0;
 }
 
 /* NOTE: Keeps strip spacing consistent with other content gaps on category pages. */
@@ -797,6 +806,7 @@ section[aria-label='Kategori side'] .ideas-strip {
   transform: none;
   aspect-ratio: 16 / 9;
   overflow: hidden;
+  margin-bottom: 0.75rem;
 }
 
 /* NOTE: Crop article hero image to 16:9 frame. */
@@ -892,6 +902,87 @@ section[aria-label='Kategori side'] .ideas-strip {
 /* NOTE: Om oss starts with full-bleed hero artwork, so remove default section top padding. */
 section[aria-label='Oss'] .section-inner {
   padding-top: 0;
+}
+
+/* NOTE: Reusable strip for local like/share actions under project and article hero media. */
+.like-share-strip {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+
+.like-share-strip__cluster {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.like-share-strip__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--color-dark);
+  cursor: pointer;
+  opacity: 0.8;
+  line-height: 1;
+  transition:
+    color 180ms ease,
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.like-share-strip__button svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  fill: currentColor;
+}
+
+.like-share-strip__button:hover,
+.like-share-strip__button[aria-pressed='true'] {
+  color: var(--color-primary);
+  opacity: 1;
+}
+
+.like-share-strip__button:active {
+  transform: translateY(1px);
+}
+
+.like-share-strip__button:focus-visible {
+  outline: 2px solid rgba(255, 115, 0, 0.28);
+  outline-offset: 4px;
+}
+
+.like-share-strip__count {
+  min-width: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--color-dark);
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.2;
+  text-align: center;
+}
+
+.like-share-strip__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.like-share-strip-shell--article {
+  margin: 1.25rem 0 0;
 }
 
 .about-team-grid {
@@ -1880,6 +1971,7 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
 /* Project pages: shared hero layout (`section--project-hero-template`) with thumbnail rail navigation. */
 .section--project-hero-template {
   padding: 0;
+  background: transparent;
 }
 
 .project-hero-gallery {
@@ -2118,6 +2210,13 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
   margin-top: 0.75rem;
 }
 
+/* NOTE: Project strip stays below the hero image and above the summary/navigation content. */
+.like-share-strip-shell--project {
+  max-width: 70rem;
+  margin: 0 auto;
+  padding: 0 1.25rem 1rem;
+}
+
 /* NOTE: Prev/next links: fixed overlay, triangle icons (`assets/triangle.svg`), vertical anchor 90% (hero stage sync in script.js); desktop only. */
 .project-page-nav {
   display: none;
@@ -2166,6 +2265,19 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
     text-transform: lowercase;
     color: var(--color-dark);
     white-space: nowrap;
+  }
+
+  .like-share-strip {
+    gap: 0.75rem;
+  }
+
+  .like-share-strip__button svg {
+    width: 1.1rem;
+    height: 1.1rem;
+  }
+
+  .like-share-strip-shell--project {
+    padding-bottom: 0.75rem;
   }
 
   .project-page-nav__link.is-disabled {

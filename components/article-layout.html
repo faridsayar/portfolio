@@ -24,6 +24,10 @@
       <p class="section-kicker">Innsikt</p>
       <h1 class="section-title" data-article-title>Artikkel</h1>
       <div class="article-row__text" data-article-body></div>
+      <!-- NOTE: Shared like/share strip stays tied to the article, not a specific image variant. -->
+      <div class="like-share-strip-shell like-share-strip-shell--article" data-article-like-share>
+        <div data-component="like-share-strip"></div>
+      </div>
       <!-- NOTE: Article-to-article navigation buttons shown after article content. -->
       <nav class="article-nav-buttons" aria-label="Artikkelnavigasjon" data-article-nav>
         <a
@@ -52,3 +56,5 @@
     </div>
   </section>
 </main>
+
+<div data-component="site-footer"></div>
