@@ -49,25 +49,36 @@
     <main>
       <section class="section section--white" aria-label="Designstudio i Oslo">
         <div class="section-inner">
-          <nav class="breadcrumb" aria-label="Brødsmulesti">
-            <a class="breadcrumb__link" href="/">Formaa</a>
-            <span class="breadcrumb__sep" aria-hidden="true">/</span>
-            <a class="breadcrumb__link" href="/designstudio-oslo.html" aria-current="page"
-              >Designstudio Oslo</a
+          <!-- NOTE: Reuse the homepage hero shuffle media at the top of the designstudio page with overlayed breadcrumb and title. -->
+          <div class="category-hero-media" aria-label="Designstudio Oslo hero">
+            <video
+              class="hero-video"
+              data-hero-video-shuffle
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="none"
+              poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3Crect width='16' height='9' fill='black'/%3E%3C/svg%3E"
             >
-          </nav>
+              <!-- NOTE: Clip sources are set by shared hero shuffle JS. -->
+            </video>
+            <div class="hero-overlay"></div>
+            <nav class="breadcrumb project-hero-stage__breadcrumb" aria-label="Brødsmulesti">
+              <a class="breadcrumb__link" href="/">Formaa</a>
+              <span class="breadcrumb__sep" aria-hidden="true">/</span>
+              <a class="breadcrumb__link" href="/designstudio-oslo.html" aria-current="page"
+                >Designstudio Oslo</a
+              >
+            </nav>
+            <div class="project-hero-stage__content">
+              <h1 class="project-hero-stage__title">Vi designer produkter</h1>
+            </div>
+          </div>
 
-          <p class="section-kicker">Designstudio i Oslo</p>
-          <h1 class="section-title">Vi designer produkter</h1>
-          <!-- NOTE: Hero banner image for the Oslo designstudio page, placed between title and intro text. -->
-          <img
-            class="section-banner-image"
-            src="assets/formaa-banner.jpg"
-            alt="Formaa designstudio banner"
-          />
           <p class="section-lead">
             Formaa er et nytt designstudio i Oslo som hjelper gründere, startups og små og
-            mellomstore bedrifter med å utvikle egne produkter og lansere dem i markedet. Vår primær
+            mellomstore bedrifter med produktutvikling og lansering i markedet. Vår primær
             kompetanse er
             <a class="internal-text-link" href="/category/industridesign/oslo.html"
               >industridesign</a
@@ -78,18 +89,14 @@
             og <a class="internal-text-link" href="/category/branding/oslo.html">branding</a>. Vi
             bruker Design Thinking metodikken og utvikler
             <a class="internal-text-link" href="/category/konseptutvikling/oslo.html">konsepter</a>
-            og ideér ut i fra bedriftens mål med fokus på brukerens behov. Vi er engasjerende og
-            initiativrike, og vil bruke vårt best kompetanse og erfaring til å hjelpe deg å lykkes
-            med produktet ditt. Du får en strukturert prosess som kombinerer
-            <a class="internal-text-link" href="/category/brukerundersokelse/oslo.html"
-              >brukerinnsikt</a
-            >, produktstrategi,
-            <a class="internal-text-link" href="/category/design/oslo.html">design</a>
-            og teknisk realisme.
+            og ideér ut i fra bedriftens mål med fokus på brukerens behov. Vi er engasjerer og tar
+            initiativ på en god måte, og vil bruke vårt best kompetanse og erfaring til å hjelpe deg
+            å lykkes med produktet ditt. Hvor mye vi gjør og når, avhenger av hvor dere står i
+            prosjektet, hva som må være klart til når, og hva dere faktisk trenger hjelp til.
           </p>
           <p class="section-lead section-lead--after-grid">
             Enten du trenger et komplett team eller ekstra kapasitet inn i et eksisterende prosjekt,
-            kan vi tilpasse til dine nåværende og fremtidige mål ogbehov. Vi tilbyr raske
+            kan vi tilpasse til dine nåværende og fremtidige mål og behov. Vi tilbyr raske
             iterasjoner og løsninger som kan
             <a class="internal-text-link" href="/category/validering/oslo.html">testes</a> og
             produseres. Se også
@@ -102,14 +109,24 @@
 
       <section class="section section--white" aria-label="Hva vi hjelper med">
         <div class="section-inner">
+          <!-- NOTE: Former intro banner image is reused before the services section heading. -->
+          <img
+            class="section-banner-image"
+            src="assets/formaa-banner.jpg"
+            alt="Formaa designstudio banner"
+          />
           <p class="section-kicker">Tjenester</p>
           <h2 class="section-title">Hva du får fra oss</h2>
           <p class="section-lead">
-            Hvor mye vi gjør og når, avhenger av hvor dere står i prosjektet, hva som må være klart
-            til når, og hva dere faktisk trenger hjelp til. Vi snakker rett fram om det hele veien:
-            hva som er realistisk, hva som koster tid og penger, og hvor det gir mening at vi
-            bidrar. Vi går ikke inn med en ferdig «pakke» som ikke passer — vi avklarer sammen hvor
-            vi kan være nyttige ut fra det vi kan innen
+            Produksjonsklar og gjennomtenkt produkt! Du får en forståelig prosess som kombinerer
+            <a class="internal-text-link" href="/category/brukerundersokelse/oslo.html"
+              >brukerinnsikt</a
+            >, produktstrategi,
+            <a class="internal-text-link" href="/category/design/oslo.html">design</a>
+            og teknisk realisme. Vi snakker rett fram om det hele veien: hva som er realistisk, hva
+            som koster tid og penger, og hvor det gir mening at vi bidrar. Vi går ikke inn med en
+            ferdig «pakke» som ikke passer — vi avklarer sammen hvor vi kan være nyttige ut fra det
+            vi kan innen
             <a class="internal-text-link" href="/category/produktdesign/oslo.html">produktdesign</a
             >, fra idé og
             <a class="internal-text-link" href="/category/konseptutvikling/oslo.html">konsept</a>
@@ -129,6 +146,91 @@
             <a class="service-tag" href="/category/teknisk-tegning/oslo.html"
               >Produksjonsforberedelse</a
             >
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--white section--features" aria-label="Fordeler">
+        <div class="section-inner">
+          <!-- NOTE: Reuse the homepage full-bleed benefits band on the designstudio page after the services overview. -->
+          <div class="feature-banner" aria-label="Fordeler">
+            <div class="feature-points">
+              <p class="feature-point">
+                <img
+                  class="feature-icon"
+                  src="assets/icons/produserbar-icon.svg"
+                  alt=""
+                  width="64"
+                  height="64"
+                  aria-hidden="true"
+                />
+                <span class="feature-point__text">
+                  <strong>Design som faktisk kan produseres:</strong>
+                  <a
+                    class="feature-point__inline-link"
+                    href="https://formaa.no/category/produktdesign/norge"
+                    >Produktutvikling</a
+                  >
+                  med fokus på form og funksjon, materialvalg og produksjon, transport og
+                  resirkulering.
+                </span>
+              </p>
+              <p class="feature-point">
+                <img
+                  class="feature-icon"
+                  src="assets/icons/fremdrift-icon.svg"
+                  alt=""
+                  width="64"
+                  height="64"
+                  aria-hidden="true"
+                />
+                <span class="feature-point__text">
+                  <strong>Ingen unødvendig kompleksitet:</strong> Tydelige prosesser og raske
+                  <a
+                    class="feature-point__inline-link"
+                    href="https://formaa.no/category/prototyping/norge"
+                    >iterasjoner</a
+                  >
+                  som gjøre ideer til konkrete resultater. Rask og direkte kommunikasjon.
+                </span>
+              </p>
+              <p class="feature-point">
+                <img
+                  class="feature-icon"
+                  src="assets/icons/bedrift-icon.svg"
+                  alt=""
+                  width="64"
+                  height="64"
+                  aria-hidden="true"
+                />
+                <span class="feature-point__text">
+                  <strong>Skapt verdi for bedriften garantert:</strong> Hver beslutning tar hensyn
+                  til kostnader, tid, produksjon, pakkning, marked og posisjonering.
+                </span>
+              </p>
+              <p class="feature-point">
+                <img
+                  class="feature-icon"
+                  src="assets/icons/brukerbehov-icon.svg"
+                  alt=""
+                  width="64"
+                  height="64"
+                  aria-hidden="true"
+                />
+                <span class="feature-point__text">
+                  <strong
+                    >Design basert på <span class="text-primary">ekte brukerbehov</span>:</strong
+                  >
+                  Grundig
+                  <a
+                    class="feature-point__inline-link"
+                    href="https://formaa.no/category/brukerundersokelse/norge"
+                    >research</a
+                  >
+                  av brukerne og brukernes mål, kontekst, bruksmåte, ergonomi og begrensninger.
+                </span>
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -194,8 +296,10 @@
             3. Jobber dere kun med selskaper i Oslo?
           </h3>
           <p class="section-lead">
-            Nei. Vi leverer både i Oslo og nasjonalt. Prosjekter med behov for fysisk workshop kan
-            kjøres lokalt, mens resten kan gjennomføres effektivt digitalt.
+            Nei. Vi Kan møte og arbeide med dere i Oslo, Akershus (Viken), Buskerud og Østfold, mens
+            resten av Norge kan vi hjelpe digitalt og med begrenset fysisk samhandling. Produksjon
+            av prototype kan også løses via post, men legger på tid for gjennomføring og må regnes
+            på, og generelt vil være vanskeligere, men ikke umulig.
           </p>
 
           <h3 class="section-title" style="font-size: 1.5rem">
@@ -216,7 +320,8 @@
           </h3>
           <p class="section-lead">
             Dere får konkrete leveranser som beslutningsgrunnlag, konsepter, modeller, prototyper og
-            anbefalinger for videre utvikling og produksjon. Du kan se eksempler i
+            anbefalinger, test resultater, tekniske tegninger og produksjonsplan for videre
+            utvikling og produksjon. Du kan se eksempler i
             <a class="internal-text-link" href="/gallery.html">galleriet</a> og på våre
             <a class="internal-text-link" href="/advanced-project.html">prosjektsider</a>.
           </p>
@@ -225,8 +330,9 @@
             6. Hvordan starter vi et samarbeid?
           </h3>
           <p class="section-lead">
-            Send en kort forespørsel via skjemaet. Vi tar en innledende samtale, avklarer mål og
-            foreslår et praktisk oppsett for første fase. Du kan også lese mer
+            Send en kort forespørsel via skjemaet. Eller send en epost til hei@formaa.no Vi tar en
+            innledende samtale, avklarer mål og foreslår et praktisk oppsett for første fase. Du kan
+            også lese mer
             <a class="internal-text-link" href="/oss.html">om oss</a> før du sender inn.
           </p>
         </div>
@@ -295,5 +401,6 @@
 
     <script src="components-loader.js?v=1" defer></script>
     <script src="shared-nav.js?v=1" defer></script>
+    <script src="script.js?v=6" defer></script>
   </body>
 </html>
