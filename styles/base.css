@@ -732,6 +732,147 @@ section[aria-label='Kategori side'] .ideas-strip {
   font-weight: var(--font-weight-bold);
 }
 
+/* NOTE: Fixed-price package cards on the pricing page offer a shorter inline request path for smaller projects. */
+.pricing-package-section {
+  margin: 2rem 0;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.pricing-package-section__intro {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.pricing-package-section__title {
+  margin: 0;
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  line-height: var(--line-height-title);
+}
+
+.pricing-package-section__lead {
+  margin: 0;
+  max-width: 58ch;
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-relaxed);
+  opacity: 0.85;
+}
+
+.pricing-package-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.pricing-package-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border-neutral);
+  background: var(--color-white);
+  min-height: 100%;
+}
+
+.pricing-package-card__image {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  display: block;
+}
+
+.pricing-package-card__content {
+  display: grid;
+  gap: 0.8rem;
+  padding: 1rem;
+  flex: 1 1 auto;
+}
+
+.pricing-package-card__title,
+.pricing-package-card__price,
+.pricing-package-card__description {
+  margin: 0;
+}
+
+.pricing-package-card__title {
+  font-size: var(--font-size-card-title);
+  font-weight: var(--font-weight-semibold);
+}
+
+.pricing-package-card__price {
+  color: var(--color-primary);
+  font-weight: var(--font-weight-bold);
+}
+
+.pricing-package-card__description {
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-relaxed);
+  opacity: 0.88;
+}
+
+.pricing-package-card__list {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.45rem;
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-relaxed);
+}
+
+.pricing-package-card__form {
+  margin-top: auto;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.pricing-package-card__request {
+  display: grid;
+  gap: 0.6rem;
+  padding-top: 0.1rem;
+  border-top: 1px solid var(--border-neutral);
+}
+
+.pricing-package-card__textarea {
+  min-height: 7rem;
+}
+
+.pricing-package-card__hint {
+  margin: 0;
+  font-size: var(--font-size-breadcrumb);
+  line-height: var(--line-height-relaxed);
+  opacity: 0.75;
+}
+
+.pricing-package-card__status {
+  min-height: 1.4em;
+  font-size: var(--font-size-breadcrumb);
+}
+
+.pricing-package-card__status[data-state='success'] {
+  color: var(--color-primary);
+  opacity: 1;
+}
+
+.pricing-package-card__status[data-state='loading'],
+.pricing-package-card__status[data-state='error'] {
+  opacity: 0.85;
+}
+
+.pricing-package-card__cta {
+  width: 100%;
+  box-shadow: none;
+}
+
+.pricing-package-card__cta:hover {
+  box-shadow: none;
+}
+
+.pricing-package-card__cta.is-inactive,
+.pricing-package-card__cta:disabled {
+  background: rgba(18, 7, 0, 0.28);
+  box-shadow: none;
+  cursor: not-allowed;
+  transform: none;
+}
+
 .pricing-process-list {
   margin: 0.6rem 0 0;
   padding: 0;
@@ -806,6 +947,7 @@ section[aria-label='Kategori side'] .ideas-strip {
   transform: none;
   aspect-ratio: 16 / 9;
   overflow: hidden;
+  background: var(--color-black);
   margin-bottom: 0.75rem;
 }
 
@@ -2002,6 +2144,7 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
   position: absolute;
   inset: 0;
   z-index: 0;
+  background: var(--color-black);
 }
 
 .project-hero-stage__media img,
@@ -2521,6 +2664,14 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
 }
 
 @media (max-width: 768px) {
+  .pricing-package-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-package-section {
+    margin: 1.5rem 0;
+  }
+
   .pricing-estimator {
     grid-template-columns: 1fr;
   }

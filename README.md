@@ -105,6 +105,7 @@ Use existing patterns only; do not invent new link colors or button styles.
 - Keep canonical and OG URL aligned with final page URL.
 - Preserve robots directive (`index,follow,max-image-preview:large`) on indexable pages; `article-template.html` is `noindex` and omitted from `sitemap.xml` (layout shell only).
 - Keep contact links form-based to avoid exposing a raw email in page markup.
+- Keep the active brand social profiles aligned across visible social buttons and structured data `sameAs` links. Current X profile: `https://x.com/FormaaDesignAS`.
 
 Structured data currently used:
 
