@@ -20,6 +20,9 @@ RewriteRule ^advanced-project/?$ /prosjekter [R=301,L]
 RewriteRule ^innsikt\.html$ /innsikt [R=301,L]
 RewriteRule ^designstudio-oslo\.html$ /designstudio-oslo [R=301,L]
 
+# NOTE: Redirect legacy favicon asset requests to the current Google-friendly SVG favicon.
+RewriteRule ^assets/favicon\.svg$ /assets/Favicon-google-search.svg [R=301,L]
+
 # NOTE: Move legacy flat article/project slugs into section-based URLs.
 RewriteRule ^prosjekt-([a-z0-9-]+)/?$ /prosjekter/$1 [R=301,L]
 RewriteRule ^innsikt-([a-z0-9-]+)/?$ /innsikt/$1 [R=301,L]

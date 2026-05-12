@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- NOTE: XML sitemap for Google/Bing: one entry per public route. Innsikt articles use
-     /innsikt/{slug} where slug matches innsikt-{slug}.html on disk (.htaccess). Update when
-     slugs are added, removed, or renamed. -->
+<!-- NOTE: XML sitemap for Google/Bing: one entry per public route only. Innsikt articles use
+     /innsikt/{slug} where slug matches innsikt-{slug}.html on disk (.htaccess). Static assets
+     such as gallery images, favicon files, and social profile URLs are intentionally excluded. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://formaa.no/</loc></url>
   <url><loc>https://formaa.no/prosjekter</loc></url>

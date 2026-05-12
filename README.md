@@ -80,6 +80,7 @@ Use this checklist after structural updates (new pages, renamed slugs, new categ
 3. Page metadata
    - Keep one canonical URL per page.
    - Ensure `<title>`, `meta description`, OG/Twitter title+description match page intent.
+   - Keep the site favicon aligned across all page heads. Current search favicon asset: `/assets/Favicon-google-search.svg`.
 4. Structured data
    - Keep JSON-LD valid and aligned with canonical URL.
 5. Internal linking
@@ -118,6 +119,7 @@ Structured data currently used:
 
 - Source folder for gallery assets: `assets/images/grid`.
 - Runtime data file: `assets/data/grid-media-manifest.js` (used by homepage strip + `gallery.html`).
+- When new grid assets are added, append them to `assets/data/grid-media-manifest.js` and bump the manifest query string where it is loaded (`index.html`, `gallery.html`, and the script fallback loader in `script.js`).
 - If GIF files are added to `assets/images/grid`, convert them to MP4 before publishing and ensure the `.mp4` file is included in the manifest.
 - Gallery UI rules:
   - homepage strip: one-line, full-width, 16:9 thumbs, no gaps
