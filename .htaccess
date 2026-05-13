@@ -1,9 +1,18 @@
 # NOTE: Canonical homepage URL rules and index handling.
 RewriteEngine On
 
+# NOTE: One hop for legacy http://www → canonical https://formaa.no (Search Console / duplicate host cleanup).
+RewriteCond %{HTTP_HOST} ^www\.formaa\.no$ [NC]
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://formaa.no%{REQUEST_URI} [L,R=301]
+
 # NOTE: Force HTTPS for all requests before other canonical rules.
 RewriteCond %{HTTPS} !=on
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# NOTE: Canonical host is apex formaa.no (strip www on HTTPS after scheme is correct).
+RewriteCond %{HTTP_HOST} ^www\.formaa\.no$ [NC]
+RewriteRule ^ https://formaa.no%{REQUEST_URI} [L,R=301]
 
 # NOTE: Send HSTS header on HTTPS responses to enforce secure transport.
 <IfModule mod_headers.c>
@@ -27,6 +36,10 @@ RewriteRule ^assets/favicon\.svg$ /assets/Favicon-google-search.svg [R=301,L]
 # NOTE: Move legacy flat article/project slugs into section-based URLs.
 RewriteRule ^prosjekt-([a-z0-9-]+)/?$ /prosjekter/$1 [R=301,L]
 RewriteRule ^innsikt-([a-z0-9-]+)/?$ /innsikt/$1 [R=301,L]
+
+# NOTE: Legacy `.html` flat URLs (e.g. Search Console) → same canonical `/prosjekter/{slug}` and `/innsikt/{slug}` before generic `.html` strip.
+RewriteRule ^prosjekt-([a-z0-9-]+)\.html$ /prosjekter/$1 [R=301,L]
+RewriteRule ^innsikt-([a-z0-9-]+)\.html$ /innsikt/$1 [R=301,L]
 
 # NOTE: Heal legacy 404s from Search Console: duplicate Innsikt paths, bad /category/…
 # relatives, renamed produksjon → teknisk-tegning, and non-existent “index” hubs.
