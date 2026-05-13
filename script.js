@@ -1547,10 +1547,25 @@ class SinglePagePortfolio {
   }
 }
 
+// NOTE: Deep links such as `/#application-form` fail to scroll on first paint because `id="application-form"` lives inside HTML injected by the component loader; re-scroll once that fragment exists.
+function scrollToApplicationFormHashIfPresent() {
+  if (window.location.hash !== '#application-form') return;
+  const scrollToTarget = () => {
+    const target = document.getElementById('application-form');
+    if (!target) return;
+    target.scrollIntoView({ block: 'start', behavior: 'auto' });
+  };
+  scrollToTarget();
+  requestAnimationFrame(() => {
+    requestAnimationFrame(scrollToTarget);
+  });
+}
+
 // NOTE: Initialize page behaviors when DOM is ready.
 function initializePortfolioApp() {
   if (window.singlePagePortfolio) return;
   window.singlePagePortfolio = new SinglePagePortfolio();
+  scrollToApplicationFormHashIfPresent();
 }
 
 document.addEventListener('components:ready', initializePortfolioApp, { once: true });
