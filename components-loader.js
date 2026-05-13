@@ -7,7 +7,7 @@
   <article class="section section--white section--article-template" aria-label="Artikkel">
     <div class="section-inner" data-article-layout>
       <figure class="about-top-graphic">
-        <img class="about-top-graphic__img" src="assets/images/Articles/usv.png" alt="" data-article-hero-image />
+        <img class="about-top-graphic__img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3Crect width='16' height='9' fill='black'/%3E%3C/svg%3E" alt="" data-article-hero-image />
         <div class="about-top-graphic__overlay" aria-hidden="true">
           <nav class="breadcrumb about-top-graphic__breadcrumb" aria-label="Brødsmulesti">
             <a class="breadcrumb__link" href="/">Formaa</a>
@@ -226,7 +226,7 @@
           />
         </svg>
       </a>
-      <a class="social-link" href="#" aria-label="X">
+      <a class="social-link" href="https://x.com/FormaaDesignAS" target="_blank" rel="noopener noreferrer" aria-label="X">
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <path
             d="M18.9 3h2.98l-6.52 7.45L23 21h-5.95l-4.66-6.1L7.05 21H4.06l6.97-7.96L1 3h6.1l4.21 5.53L18.9 3Zm-1.04 16.2h1.65L6.2 4.72H4.42L17.86 19.2Z"
@@ -286,7 +286,7 @@
           />
         </svg>
       </a>
-      <a class="social-link" href="#" aria-label="X">
+      <a class="social-link" href="https://x.com/FormaaDesignAS" target="_blank" rel="noopener noreferrer" aria-label="X">
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <path
             d="M18.9 3h2.98l-6.52 7.45L23 21h-5.95l-4.66-6.1L7.05 21H4.06l6.97-7.96L1 3h6.1l4.21 5.53L18.9 3Zm-1.04 16.2h1.65L6.2 4.72H4.42L17.86 19.2Z"

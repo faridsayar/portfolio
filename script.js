@@ -128,6 +128,7 @@ class SinglePagePortfolio {
     this.setupTimeline();
     this.setupInquiryFormMailto();
     this.setupPricingEstimator();
+    this.setupPricingPackages();
     this.setupProjectPageNavVerticalAlign();
     this.initializeProjectViews();
     this.initializeGridIdeasViews();
@@ -307,9 +308,9 @@ class SinglePagePortfolio {
     }
 
     const sources = [
-      'assets/data/grid-media-manifest.js?v=2',
-      '/assets/data/grid-media-manifest.js?v=2',
-      '../../assets/data/grid-media-manifest.js?v=2',
+      'assets/data/grid-media-manifest.js?v=3',
+      '/assets/data/grid-media-manifest.js?v=3',
+      '../../assets/data/grid-media-manifest.js?v=3',
     ];
 
     this.gridManifestLoadPromise = (async () => {
@@ -1125,6 +1126,146 @@ class SinglePagePortfolio {
     });
 
     render();
+  }
+
+  // NOTE: Fixed-price package cards on the pricing page expand inline and send a short package request through Web3Forms.
+  setupPricingPackages() {
+    const packageForms = Array.from(document.querySelectorAll('[data-pricing-package-form]'));
+    if (packageForms.length === 0) return;
+
+    const web3FormsEndpoint = 'https://api.web3forms.com/submit';
+
+    packageForms.forEach((form) => {
+      const cta = form.querySelector('[data-pricing-package-cta]');
+      const panel = form.querySelector('[data-pricing-package-panel]');
+      const emailInput = form.querySelector('[data-pricing-package-email]');
+      const textarea = form.querySelector('[data-pricing-package-text]');
+      const statusEl = form.querySelector('[data-pricing-package-status]');
+      const accessKeyInput = form.querySelector('input[name="access_key"]');
+      if (!cta || !panel || !emailInput || !textarea || !statusEl || !accessKeyInput) return;
+
+      const packageTitle = (form.dataset.packageTitle || '').trim();
+      const packagePrice = (form.dataset.packagePrice || '').trim();
+      let isOpen = true;
+      let isSending = false;
+      let isSent = false;
+
+      const setStatus = (message, state) => {
+        statusEl.textContent = message;
+        if (state) {
+          statusEl.dataset.state = state;
+        } else {
+          delete statusEl.dataset.state;
+        }
+      };
+
+      const render = () => {
+        const hasValidEmail = emailInput.value.trim().length > 0 && emailInput.checkValidity();
+        const hasText = textarea.value.trim().length > 0;
+        const shouldDisable = isSent || !hasValidEmail || !hasText || isSending;
+
+        panel.hidden = !isOpen;
+        emailInput.disabled = isSending || isSent;
+        textarea.disabled = isSending || isSent;
+        cta.disabled = shouldDisable;
+        cta.classList.toggle('is-inactive', shouldDisable);
+        cta.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        cta.textContent = 'Forespørsel';
+      };
+
+      const sendPackageRequest = async () => {
+        const email = emailInput.value.trim();
+        const description = textarea.value.trim();
+        const accessKey = accessKeyInput.value.trim();
+
+        if (!email || !emailInput.checkValidity()) {
+          setStatus('Skriv en gyldig e-postadresse først.', 'error');
+          render();
+          return;
+        }
+
+        if (!description) {
+          setStatus('Skriv en kort beskrivelse først.', 'error');
+          render();
+          return;
+        }
+
+        if (!accessKey || accessKey.startsWith('REPLACE_WITH_')) {
+          setStatus('Web3Forms-nokkel mangler. Legg inn access_key i pakken først.', 'error');
+          render();
+          return;
+        }
+
+        const formData = new FormData(form);
+        const fullDescription = [
+          `Pakke: ${packageTitle}`,
+          packagePrice ? `Pris: ${packagePrice}` : '',
+          `Side: ${window.location.href}`,
+          '',
+          'Beskrivelse:',
+          description,
+        ]
+          .filter(Boolean)
+          .join('\n');
+
+        formData.set('subject', `Ny pakkeforesporsel: ${packageTitle}`);
+        formData.set('email', email);
+        formData.set('package_title', packageTitle);
+        if (packagePrice) formData.set('package_price', packagePrice);
+        formData.set('description', fullDescription);
+        formData.set('replyto', email);
+
+        isSending = true;
+        setStatus('Sender forespørsel ...', 'loading');
+        render();
+
+        try {
+          const response = await fetch(web3FormsEndpoint, {
+            method: 'POST',
+            body: formData,
+          });
+          const result = await response.json();
+          if (!response.ok || !result.success) {
+            throw new Error(result.message || 'Submission failed');
+          }
+
+          isSending = false;
+          isSent = true;
+          form.reset();
+          setStatus('Takk! Pakkeforespørselen er sendt. Vi svarer deg snart.', 'success');
+          render();
+        } catch (_error) {
+          isSending = false;
+          setStatus('Kunne ikke sende pakken nå. Prøv igjen om litt.', 'error');
+          render();
+        }
+      };
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+      });
+
+      cta.addEventListener('click', async () => {
+        if (isSending || isSent || cta.disabled) return;
+        await sendPackageRequest();
+      });
+
+      textarea.addEventListener('input', () => {
+        if (statusEl.dataset.state !== 'success') {
+          setStatus('', '');
+        }
+        render();
+      });
+
+      emailInput.addEventListener('input', () => {
+        if (statusEl.dataset.state !== 'success') {
+          setStatus('', '');
+        }
+        render();
+      });
+
+      render();
+    });
   }
 
   // NOTE: Rehydrates the single project template from `?project=<slug>` and wires prev/next routing.

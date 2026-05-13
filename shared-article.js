@@ -115,6 +115,8 @@ function initializeLikeShareStrip(strip, options) {
 function renderSharedArticle() {
   const root = document.querySelector('[data-article-layout]');
   if (!root) return;
+  const blackPlaceholderImage =
+    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3Crect width='16' height='9' fill='black'/%3E%3C/svg%3E";
 
   const pathname = window.location.pathname.replace(/\/+$/, '');
   const path = pathname.split('/').pop() || 'innsikt-hva-er-industridesign.html';
@@ -151,8 +153,7 @@ function renderSharedArticle() {
   if (currentBreadcrumbEl) currentBreadcrumbEl.textContent = article.title;
   if (heroImageEl) {
     const getImage = window.getArticleImageForKey;
-    heroImageEl.src =
-      typeof getImage === 'function' ? getImage(key) : 'assets/images/Articles/usv.png';
+    heroImageEl.src = typeof getImage === 'function' ? getImage(key) : blackPlaceholderImage;
     heroImageEl.alt = typeof article.heroAlt === 'string' ? article.heroAlt : article.title;
   }
   if (bodyEl) {

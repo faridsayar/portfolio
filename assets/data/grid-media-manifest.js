@@ -395,6 +395,41 @@ window.__GRID_MEDIA_MANIFEST = {
       "src": "assets/images/grid/lunar-watch.mp4",
       "type": "video",
       "name": "lunar watch"
+    },
+    {
+      "src": "assets/images/grid/26-done.jpg",
+      "type": "image",
+      "name": "26 done"
+    },
+    {
+      "src": "assets/images/grid/9-done.jpg",
+      "type": "image",
+      "name": "9 done"
+    },
+    {
+      "src": "assets/images/grid/drone2.webp",
+      "type": "image",
+      "name": "drone2"
+    },
+    {
+      "src": "assets/images/grid/h2o.webp",
+      "type": "image",
+      "name": "h2o"
+    },
+    {
+      "src": "assets/images/grid/proton.webp",
+      "type": "image",
+      "name": "proton"
+    },
+    {
+      "src": "assets/images/grid/social-sharing.webp",
+      "type": "image",
+      "name": "social sharing"
+    },
+    {
+      "src": "assets/images/grid/testing-product.webp",
+      "type": "image",
+      "name": "testing product"
     }
   ]
 };
