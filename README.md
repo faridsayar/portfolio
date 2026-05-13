@@ -4,7 +4,7 @@ This repository contains a static, Norwegian-focused portfolio website for indus
 
 ## Tech Stack
 
-- HTML pages (landing, category/location pages, projects, insights, pricing)
+- HTML pages (landing, category/location pages, projects, insights, pricing, dedicated inquiry at `application-form.html`)
 - CSS split into shared base + page bundles
 - Vanilla JavaScript (`script.js`, `shared-nav.js`, component + article helpers)
 - Static assets in `assets/`
@@ -30,6 +30,7 @@ Reusable partials live in `components/` and are loaded by `components-loader.js`
 Current shared components:
 
 - `side-nav.html`
+- `application-form.html` (design consultation inquiry + timeline; public URL `/application-form`)
 - `article-layout.html`
 - `project-cta.html`
 - `contact-section-home.html`
@@ -95,6 +96,7 @@ Use this checklist after structural updates (new pages, renamed slugs, new categ
 Use existing patterns only; do not invent new link colors or button styles.
 
 - **Inline copy links:** `a.internal-text-link` (global style in `styles/base.css`: black, semibold). Use for words or phrases inside paragraphs on pages such as `index.html`, `prisestimat.html`, `designstudio-oslo.html`, `oss.html`, and for HTML inside innsikt article JSON `blocks[].text`.
+- **Inquiry page links:** use `/application-form.html` for CTA/contact links that should open the dedicated form page directly (instead of homepage hash links).
 - **Category chips:** `div.service-tags` + `a.service-tag`, same markup as category pages; public URLs are extensionless (for example `/category/{tjeneste}/oslo`). Prefer root-absolute `href` values like `/category/design/norge` so links resolve correctly from any path; on-disk files remain `category/.../*.html` (see `.htaccess`).
 - **Insights articles:** `shared-article.js` renders `blocks` as `<p>` / `<h2>`; embed full `<a class="internal-text-link" href="...">` strings in JSON where needed.
 - **Sitemap:** Adding or changing internal links does not change public URLs; update `sitemap.xml` only when routes (paths) change.
@@ -114,6 +116,7 @@ Structured data currently used:
 - `innsikt.html`: blog listing JSON-LD
 - `innsikt-*.html`: article JSON-LD
 - `prisestimat.html`: `WebPage` + `BreadcrumbList` JSON-LD
+- `application-form.html`: `WebPage` + `BreadcrumbList` JSON-LD (canonical `/application-form`)
 
 ## Ideas Gallery Media Workflow
 
@@ -128,9 +131,9 @@ Structured data currently used:
 
 ## URL Canonicalization
 
-- `.htaccess` (Apache) canonicalizes HTTP → HTTPS, strips `.html` from URLs, maps `/prosjekter/{slug}` and `/innsikt/{slug}` to the legacy `prosjekt-*.html` / `innsikt-*.html` files, and includes 301s for Search Console legacy paths (duplicate `/innsikt/innsikt-*`, bad `/category/.../index`, `produksjon` → `teknisk-tegning`, etc.). If you deploy on a host that ignores `.htaccess`, replicate these rules in that platform’s redirect config.
+- `.htaccess` (Apache) canonicalizes HTTP → HTTPS, strips `.html` from URLs, maps `/prosjekter/{slug}` and `/innsikt/{slug}` to the legacy `prosjekt-*.html` / `innsikt-*.html` files, and includes explicit 301s for friendly top-level routes such as `/designstudio-oslo` and `/application-form` (plus Search Console legacy paths: duplicate `/innsikt/innsikt-*`, bad `/category/.../index`, `produksjon` → `teknisk-tegning`, etc.). If you deploy on a host that ignores `.htaccess`, replicate these rules in that platform’s redirect config.
 - Homepage: `/index.html` → `/` (301).
-- Public routes are extensionless (for example `/gallery`, `/prosjekter`, `/innsikt`); legacy flat filenames redirect into those namespaces.
+- Public routes are extensionless (for example `/gallery`, `/prosjekter`, `/innsikt`, `/application-form`); legacy flat filenames redirect into those namespaces.
 
 ## Local Development
 

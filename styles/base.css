@@ -401,6 +401,53 @@
   margin-right: calc(50% - 50vw);
   margin-bottom: 1.5rem;
   background: #000;
+  /* NOTE: Single fixed viewport for all banner clips so object-fit crops consistently (no per-clip height drift). */
+  overflow: hidden;
+  height: min(600px, 65vh);
+}
+
+/* NOTE: Shuffle variant stacks overlay + title on the video; pin copy to the bottom of the fixed-height frame. */
+.category-hero-media:has([data-hero-video-shuffle]) {
+  /* NOTE: Half the default category banner height on søknadsskjema + designstudio shuffle heroes only. */
+  height: min(300px, 32.5vh);
+  margin-bottom: 0;
+}
+
+/* NOTE: Restore breathing room after the designstudio shuffle banner (application page stays flush to the form). */
+section[aria-label='Designstudio i Oslo'] .category-hero-media:has([data-hero-video-shuffle]) {
+  margin-bottom: 1.5rem;
+}
+
+/* NOTE: Formaa wordmark on the designstudio shuffle hero only; left edge matches `.project-hero-stage__content` padding column. */
+section[aria-label='Designstudio i Oslo'] .project-hero-stage__logo {
+  display: block;
+  width: auto;
+  height: 27px;
+  margin: 0;
+}
+
+.category-hero-media:has([data-hero-video-shuffle]) .hero-video {
+  z-index: 0;
+}
+
+.category-hero-media:has([data-hero-video-shuffle]) .hero-overlay {
+  z-index: 1;
+}
+
+.category-hero-media:has([data-hero-video-shuffle]) .project-hero-stage__content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 70rem;
+  box-sizing: border-box;
+}
+
+/* NOTE: me-drawing zoom is for full-viewport home hero only; scaling here overflows the fixed banner and shows the page background. */
+.category-hero-media .hero-video[data-hero-video-clip='me-drawing'] {
+  transform: none;
 }
 
 .category-hero-video {
@@ -421,6 +468,12 @@ section[aria-label='Kategori side'] .section-inner {
 /* NOTE: Designstudio Oslo page also starts with a full-width hero media block. */
 section[aria-label='Designstudio i Oslo'] .section-inner {
   padding-top: 0;
+}
+
+/* NOTE: Application form page hero is full-bleed shuffle media only; no vertical inset on the inner wrapper. */
+section[aria-label='Søknadsskjema'] .section-inner {
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 section[aria-label='Kategori side'] .breadcrumb {
@@ -1771,10 +1824,13 @@ section[aria-label='Oss'] .section-inner {
 /* Inquiry form */
 .inquiry-form {
   margin-top: 2rem;
+  /* NOTE: Full-viewport-width grey panel while content padding matches `.section-inner` (70rem column). */
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
   border-radius: 16px;
   border: none;
   background: var(--surface-neutral);
-  padding: 1.25rem;
+  padding: 1.25rem max(1.25rem, calc((100vw - 70rem) / 2 + 1.25rem));
 }
 
 /* NOTE: Application form heading displayed in top-left on desktop and mobile. */

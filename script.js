@@ -1547,7 +1547,7 @@ class SinglePagePortfolio {
   }
 }
 
-// NOTE: Deep links such as `/#application-form` fail to scroll on first paint because `id="application-form"` lives inside HTML injected by the component loader; re-scroll once that fragment exists.
+// NOTE: Hash links to `#application-form` can resolve before component injection; re-scroll once that fragment exists.
 function scrollToApplicationFormHashIfPresent() {
   if (window.location.hash !== '#application-form') return;
   const scrollToTarget = () => {

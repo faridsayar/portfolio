@@ -6,7 +6,7 @@
   <div class="section-inner">
     <div class="section-head">
       <p class="section-kicker">Konsultasjon forespørsel</p>
-      <h2 class="section-title">Gratis designkonsultasjon</h2>
+      <h2 class="section-title">Designkonsultasjon</h2>
       <p class="section-lead">
         Produktutvikling inkluderer ulike faser og scenarier og hver designprosjekt trenger
         individuell tilnærming. Hvordan vi fodeler fasene kan du
@@ -27,6 +27,8 @@
       <input type="hidden" name="subject" value="Ny designkonsultasjon foresporsel" />
       <input type="hidden" name="from_name" value="Formaa nettside" />
       <input type="hidden" name="botcheck" value="" />
+      <!-- NOTE: Default timeframe for Web3Forms; visible select removed for simpler UX (timeline label stays "2 mnd prosjekt"). -->
+      <input type="hidden" name="timeframe" value="2 mnd" />
       <!--
               NOTE: Interactive timeline.
               - 4 draggable boundary handles between fixed start/end.
@@ -106,36 +108,6 @@
             inputmode="email"
             pattern="^[^\s@]+@[^\s@]+\.(com|no)$"
             placeholder="kari.nordmann@example.com"
-          />
-        </div>
-
-        <div class="field">
-          <label class="field__label" for="timeframe">Ca. tid vi har</label>
-          <select
-            class="field__input"
-            id="timeframe"
-            name="timeframe"
-            required
-            data-timeframe-select
-          >
-            <option value="1 mnd">1 mnd</option>
-            <option value="2 mnd" selected>2 mnd</option>
-            <option value="3 mnd">3 mnd</option>
-            <option value="4 mnd">4 mnd</option>
-            <option value="5 mnd">5 mnd</option>
-            <option value="6+ mnd">6+ mnd</option>
-          </select>
-        </div>
-
-        <div class="field">
-          <label class="field__label" for="budget">Ca. budsjett (ikke obligatorisk)</label>
-          <input
-            class="field__input"
-            id="budget"
-            name="budget"
-            type="text"
-            autocomplete="organization"
-            placeholder="30 000 NOK"
           />
         </div>
       </div>

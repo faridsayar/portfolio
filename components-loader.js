@@ -37,7 +37,7 @@
       <p class="section-lead">
         Send en kort forespørsel, så vurderer vi muligheter, tidslinje og neste praktiske steg.
       </p>
-    <a class="inquiry-cta" href="/#application-form">Gå til forespørselsskjema</a>
+    <a class="inquiry-cta" href="/application-form.html">Gå til forespørselsskjema</a>
   </div>
 </section>
 </main>
@@ -53,7 +53,7 @@
         <a class="site-footer__link" href="/gallery.html" data-footer-link="gallery">Galleri</a>
         <a class="site-footer__link" href="/designstudio-oslo.html" data-footer-link="designstudio-oslo">Designstudio Oslo</a>
         <a class="site-footer__link" href="/oss.html" data-footer-link="about">Oss</a>
-        <a class="site-footer__link" href="/#application-form" data-footer-link="application">Søknadsskjema</a>
+        <a class="site-footer__link" href="/application-form.html" data-footer-link="application">Søknadsskjema</a>
         <a class="site-footer__link" href="/prisestimat.html" data-footer-link="pricing">Prisestimat</a>
       </div>
     </div>
@@ -68,7 +68,7 @@
     <p class="section-lead">
       Send en kort forespørsel, så vurderer vi muligheter, tidslinje og neste praktiske steg.
     </p>
-    <a class="inquiry-cta" href="/#application-form">Gå til forespørselsskjema</a>
+    <a class="inquiry-cta" href="/application-form.html">Gå til forespørselsskjema</a>
   </div>
 </section>`,
     'application-form': `<section
@@ -79,7 +79,7 @@
   <div class="section-inner">
     <div class="section-head">
       <p class="section-kicker">Konsultasjon forespørsel</p>
-      <h2 class="section-title">Gratis designkonsultasjon</h2>
+      <h2 class="section-title">Designkonsultasjon</h2>
       <p class="section-lead">
         Dra punktene langs linjen for å vekte prioriteringene (Dette er en grov oversikt og ikke
         forpliktende)
@@ -91,6 +91,8 @@
       <input type="hidden" name="subject" value="Ny designkonsultasjon foresporsel" />
       <input type="hidden" name="from_name" value="Formaa nettside" />
       <input type="hidden" name="botcheck" value="" />
+      <!-- NOTE: Default timeframe for Web3Forms; visible select removed (matches components/application-form.html). -->
+      <input type="hidden" name="timeframe" value="2 mnd" />
       <div class="timeline" data-timeline>
         <div class="timeline-anchors">
           <span class="timeline-anchor timeline-anchor--start">Konsultasjon</span>
@@ -139,21 +141,6 @@
           <label class="field__label" for="email">Din e-post</label>
           <input class="field__input" id="email" name="email" type="email" required autocomplete="email" inputmode="email" pattern="^[^\\s@]+@[^\\s@]+\\.(com|no)$" placeholder="kari.nordmann@example.com" />
         </div>
-        <div class="field">
-          <label class="field__label" for="timeframe">Ca. tid vi har</label>
-          <select class="field__input" id="timeframe" name="timeframe" required data-timeframe-select>
-            <option value="1 mnd">1 mnd</option>
-            <option value="2 mnd" selected>2 mnd</option>
-            <option value="3 mnd">3 mnd</option>
-            <option value="4 mnd">4 mnd</option>
-            <option value="5 mnd">5 mnd</option>
-            <option value="6+ mnd">6+ mnd</option>
-          </select>
-        </div>
-        <div class="field">
-          <label class="field__label" for="budget">Ca. budsjett (ikke obligatorisk)</label>
-          <input class="field__input" id="budget" name="budget" type="text" autocomplete="organization" placeholder="30 000 NOK" />
-        </div>
       </div>
       <div class="field field--full">
         <label class="field__label" for="description">Beskrivelse – hva trenger du hjelp med</label>
@@ -198,7 +185,7 @@
         <span class="contact-item__label">Telefon</span>
         <span class="contact-item__value">+47 46 38 18 87</span>
       </a>
-      <a class="contact-item contact-link" href="https://formaa.no/#application-form" itemprop="email">
+      <a class="contact-item contact-link" href="/application-form.html" itemprop="email">
         <span class="contact-item__label">E-post</span>
         <span class="contact-item__value">Send e-post</span>
       </a>
@@ -258,7 +245,7 @@
         <span class="contact-item__label">Telefon</span>
         <span class="contact-item__value">+47 46 38 18 87</span>
       </a>
-      <a class="contact-item contact-link" href="https://formaa.no/#application-form" itemprop="email">
+      <a class="contact-item contact-link" href="/application-form.html" itemprop="email">
         <span class="contact-item__label">E-post</span>
         <span class="contact-item__value">Send e-post</span>
       </a>
