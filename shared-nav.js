@@ -47,7 +47,7 @@ function renderSharedNav() {
     gallery: '/gallery.html',
     'designstudio-oslo': '/designstudio-oslo.html',
     about: '/oss.html',
-    application: '/#application-form',
+    application: '/application-form.html',
     pricing: '/prisestimat.html',
   };
 
