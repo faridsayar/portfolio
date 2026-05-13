@@ -131,7 +131,7 @@ Structured data currently used:
 
 ## URL Canonicalization
 
-- `.htaccess` (Apache) canonicalizes HTTP → HTTPS, strips `.html` from URLs, maps `/prosjekter/{slug}` and `/innsikt/{slug}` to the legacy `prosjekt-*.html` / `innsikt-*.html` files, and includes explicit 301s for friendly top-level routes such as `/designstudio-oslo` and `/application-form` (plus Search Console legacy paths: duplicate `/innsikt/innsikt-*`, bad `/category/.../index`, `produksjon` → `teknisk-tegning`, etc.). If you deploy on a host that ignores `.htaccess`, replicate these rules in that platform’s redirect config.
+- `.htaccess` (Apache) canonicalizes HTTP → HTTPS, 301s `www.formaa.no` to apex `https://formaa.no`, strips `.html` from URLs, maps `/prosjekter/{slug}` and `/innsikt/{slug}` to the legacy `prosjekt-*.html` / `innsikt-*.html` files, 301s legacy `prosjekt-*.html` / `innsikt-*.html` to `/prosjekter/{slug}` / `/innsikt/{slug}` (before the generic `.html` strip), and includes explicit 301s for friendly top-level routes such as `/designstudio-oslo` and `/application-form` (plus Search Console legacy paths: duplicate `/innsikt/innsikt-*`, bad `/category/.../index`, `produksjon` → `teknisk-tegning`, etc.). If you deploy on a host that ignores `.htaccess`, replicate these rules in that platform’s redirect config.
 - Homepage: `/index.html` → `/` (301).
 - Public routes are extensionless (for example `/gallery`, `/prosjekter`, `/innsikt`, `/application-form`); legacy flat filenames redirect into those namespaces.
 
