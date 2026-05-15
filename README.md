@@ -107,12 +107,16 @@ Use existing patterns only; do not invent new link colors or button styles.
 
 English service pages live under `en/` (for example `/en/product-rendering`). They are **not** translations of Norwegian category pages: separate copy, keywords, structure, and CTAs for international search intent.
 
-- Files: `en/product-rendering.html`, `en/cad-modeling.html`, `en/product-animation.html`
-- Styles: `styles/en-landing.css` + shared `styles/base.css` only (no `script.js`, no hero video)
-- Forms: `en/en-landing.js` + inline Web3Forms on each page
-- Do **not** add EN links to `side-nav` or `site-footer`; use contextual cross-links in page copy and matching links on related `category/*/norge.html` pages
+- **Layout (shared):** `components/en-landing-layout.html` — hero, form shell, footer; loaded via `components-loader.js`
+- **Copy per page:** `assets/data/en-landing-pages.js` — title, lead, deliverables, turnaround, price, hero image, SEO blocks, crosslinks, JSON-LD
+- **Thin HTML routes:** `en/{slug}.html` — only `<head>` SEO metadata + `data-en-landing-page="{slug}"` + layout slot
+- **Hydration:** `en/en-landing-render.js` (after `components:ready`)
+- Styles: `styles/en-landing.css` + `styles/base.css` only (no `script.js`, no hero video)
+- Do **not** add EN links to `side-nav` or `site-footer`; use contextual cross-links in `crosslinksHtml` / NO category pages
 - Do **not** use `hreflang` between NO category URLs and EN landings
 - Add new `/en/*` routes to `sitemap.xml` when published
+
+To add or edit a service: extend `EN_LANDING_PAGES` in `en-landing-pages.js`, add a thin `en/{slug}.html` with matching meta, and sitemap entry.
 
 ## SEO Conventions
 

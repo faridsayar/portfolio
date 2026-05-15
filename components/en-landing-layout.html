@@ -1,0 +1,134 @@
+<!-- NOTE: Shared EN intent landing shell; copy and media are hydrated from assets/data/en-landing-pages.js. -->
+<main data-en-landing-layout>
+  <section class="section en-landing-section" data-en-landing-section>
+    <div class="en-landing-hero" data-en-landing-hero>
+      <img
+        class="en-landing-hero__media"
+        data-en-landing-hero-img
+        alt=""
+        width="1600"
+        height="900"
+        decoding="async"
+      />
+      <div class="en-landing-hero__overlay" aria-hidden="true"></div>
+      <div class="en-landing-hero__chrome">
+        <a class="en-landing-hero__logo" href="/">
+          <img src="/assets/formaa-logo.svg" alt="Formaa" width="40" height="27" decoding="async" />
+        </a>
+        <nav class="breadcrumb en-landing-hero__breadcrumb" aria-label="Breadcrumb">
+          <a class="breadcrumb__link" href="/">Formaa</a>
+          <span class="breadcrumb__sep" aria-hidden="true">/</span>
+          <a
+            class="breadcrumb__link"
+            href="#"
+            aria-current="page"
+            data-en-landing-breadcrumb-current
+            >Service</a
+          >
+        </nav>
+      </div>
+      <!-- NOTE: Hero copy column starts at horizontal center of the image (left edge at 50%). -->
+      <div class="en-landing-hero__copy">
+        <h1 class="section-title en-landing-hero__title" data-en-landing-title></h1>
+        <p class="section-lead en-landing-hero__lead" data-en-landing-lead></p>
+        <ul
+          class="en-landing-deliverables en-landing-hero__deliverables"
+          aria-label="What you receive"
+          data-en-landing-deliverables
+        ></ul>
+        <p class="en-landing-price en-landing-hero__price" data-en-landing-price hidden></p>
+        <a class="hero-cta en-landing-hero__cta" href="#en-landing-quote" data-en-landing-hero-cta
+          >Request quote</a
+        >
+      </div>
+    </div>
+
+    <!-- NOTE: Supported upload formats listed directly under the hero image. -->
+    <div class="en-landing-formats-wrap">
+      <p class="en-landing-formats section-inner">
+        <strong>Supported formats:</strong>
+        STEP (.step, .stp) STL (.stl) FBX (.fbx) OBJ (.obj) GLTF (.gltf) GLB (.glb) USD (.usd) USDZ
+        (.usdz) DXF (.dxf) IGES (.iges, .igs)
+      </p>
+    </div>
+
+    <div class="section-inner en-landing-content">
+      <p class="en-landing-turnaround" data-en-landing-turnaround hidden></p>
+
+      <form class="en-landing-form" id="en-landing-quote" data-en-landing-form>
+        <input type="hidden" name="access_key" value="c21cafeb-72cf-4e8b-b66c-69384a07c888" />
+        <input type="hidden" name="from_name" value="Formaa EN landing" />
+        <input type="hidden" name="botcheck" value="" />
+        <input
+          class="field__input"
+          name="email"
+          type="email"
+          required
+          autocomplete="email"
+          inputmode="email"
+          placeholder="Work email"
+          aria-label="Work email"
+          data-en-landing-email
+        />
+        <textarea
+          class="field__textarea"
+          name="message"
+          rows="4"
+          required
+          placeholder="Project brief"
+          aria-label="Project brief"
+          data-en-landing-message
+        ></textarea>
+        <button
+          class="hero-cta en-landing-form__cta is-inactive"
+          type="button"
+          data-en-landing-submit
+        >
+          Request quote
+        </button>
+        <p
+          class="inquiry-note en-landing-form__status"
+          data-en-landing-status
+          aria-live="polite"
+        ></p>
+      </form>
+
+      <div class="en-landing-seo" data-en-landing-seo></div>
+      <p class="section-lead en-landing-crosslinks" data-en-landing-crosslinks></p>
+    </div>
+  </section>
+</main>
+
+<!-- NOTE: Plain keyword tags for search discoverability (no links). -->
+<div class="en-landing-keywords-wrap">
+  <div class="section-inner en-landing-keywords" aria-label="Related search topics">
+    <p class="en-landing-keywords__label">Related topics</p>
+    <ul class="en-landing-keywords__list">
+      <li><span class="en-landing-keyword">3D product rendering service</span></li>
+      <li><span class="en-landing-keyword">CAD designer for product</span></li>
+      <li><span class="en-landing-keyword">consumer product visualization</span></li>
+      <li><span class="en-landing-keyword">3D animation for product</span></li>
+      <li><span class="en-landing-keyword">industrial design freelancer</span></li>
+      <li><span class="en-landing-keyword">prototype CAD modeling</span></li>
+      <li><span class="en-landing-keyword">product render for amazon</span></li>
+      <li><span class="en-landing-keyword">kickstarter product render</span></li>
+      <li><span class="en-landing-keyword">3D modeling for manufacturing</span></li>
+      <li><span class="en-landing-keyword">mechanical enclosure design</span></li>
+      <li><span class="en-landing-keyword">Fusion 360</span></li>
+      <li><span class="en-landing-keyword">Blender</span></li>
+      <li><span class="en-landing-keyword">high quality renders</span></li>
+      <li><span class="en-landing-keyword">3D modeling</span></li>
+      <li><span class="en-landing-keyword">3D model</span></li>
+      <li><span class="en-landing-keyword">realistic model</span></li>
+      <li><span class="en-landing-keyword">product presentation</span></li>
+      <li><span class="en-landing-keyword">product visualization</span></li>
+      <li><span class="en-landing-keyword">CAD rendering</span></li>
+      <li><span class="en-landing-keyword">photorealistic rendering</span></li>
+      <li><span class="en-landing-keyword">studio product render</span></li>
+    </ul>
+  </div>
+</div>
+
+<footer class="en-landing-footer">
+  <p>© 2026 Formaa. Product visualization studio · Oslo, Norway. All rights reserved.</p>
+</footer>
