@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- NOTE: XML sitemap for Google/Bing: one entry per public route only. Innsikt articles use
-     /innsikt/{slug} where slug matches innsikt-{slug}.html on disk (.htaccess). Includes
-     /application-form (dedicated design inquiry). Static assets such as gallery images, favicon
-     files, and social profile URLs are intentionally excluded. -->
+<!-- NOTE: XML sitemap for Google/Bing: one entry per public route only. Project URLs use
+     /prosjekter/{slug} where slug matches prosjekt-{slug}.html on disk (.htaccess), ordered like
+     the homepage catalog (Obseed first). Innsikt articles use /innsikt/{slug}. Includes
+     /application-form (dedicated design inquiry). Static assets are intentionally excluded. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://formaa.no/</loc></url>
   <url><loc>https://formaa.no/prosjekter</loc></url>
+  <url><loc>https://formaa.no/prosjekter/obseed-custom-8-string-guitar</loc></url>
+  <url><loc>https://formaa.no/prosjekter/undo-desertification</loc></url>
+  <url><loc>https://formaa.no/prosjekter/nomos-branding</loc></url>
+  <url><loc>https://formaa.no/prosjekter/proton-headphones</loc></url>
+  <url><loc>https://formaa.no/prosjekter/nordic-restaurant-branding</loc></url>
+  <url><loc>https://formaa.no/prosjekter/monocopter-drone</loc></url>
+  <url><loc>https://formaa.no/prosjekter/rafaels-ren-melk</loc></url>
+  <url><loc>https://formaa.no/prosjekter/eco-mate-closet</loc></url>
+  <url><loc>https://formaa.no/prosjekter/h2o-bottle-pedometer</loc></url>
   <url><loc>https://formaa.no/gallery</loc></url>
   <url><loc>https://formaa.no/designstudio-oslo</loc></url>
   <url><loc>https://formaa.no/bli-med</loc></url>
@@ -94,13 +103,4 @@
   <url><loc>https://formaa.no/innsikt</loc></url>
   <url><loc>https://formaa.no/oss</loc></url>
   <url><loc>https://formaa.no/prisestimat</loc></url>
-  <url><loc>https://formaa.no/prosjekter/obseed-custom-8-string-guitar</loc></url>
-  <url><loc>https://formaa.no/prosjekter/eco-mate-closet</loc></url>
-  <url><loc>https://formaa.no/prosjekter/h2o-bottle-pedometer</loc></url>
-  <url><loc>https://formaa.no/prosjekter/monocopter-drone</loc></url>
-  <url><loc>https://formaa.no/prosjekter/nomos-branding</loc></url>
-  <url><loc>https://formaa.no/prosjekter/nordic-restaurant-branding</loc></url>
-  <url><loc>https://formaa.no/prosjekter/proton-headphones</loc></url>
-  <url><loc>https://formaa.no/prosjekter/rafaels-ren-melk</loc></url>
-  <url><loc>https://formaa.no/prosjekter/undo-desertification</loc></url>
 </urlset>
