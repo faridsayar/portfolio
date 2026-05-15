@@ -2,5 +2,6 @@
 User-agent: *
 Allow: /
 Allow: /llms.txt
+Disallow: /article-template
 
 Sitemap: https://formaa.no/sitemap.xml
