@@ -62,8 +62,8 @@ RewriteRule ^category/produksjon/(.*)$ /category/teknisk-tegning/$1 [R=301,L]
 RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
 RewriteRule ^(.+)\.html$ /$1 [R=301,L]
 
-# NOTE: Resolve friendly section URLs to legacy source files.
-RewriteRule ^prosjekter/([a-z0-9-]+)/?$ /prosjekt-$1.html [L]
+# NOTE: Project case studies use one template; seoSlug maps to catalog slug in JS (no redirect stub for crawlers).
+RewriteRule ^prosjekter/([a-z0-9-]+)/?$ /advanced-project.html?seoSlug=$1 [L,QSA]
 RewriteRule ^innsikt/([a-z0-9-]+)/?$ /innsikt-$1.html [L]
 RewriteRule ^prosjekter/?$ /advanced-project.html [L]
 RewriteRule ^innsikt/?$ /innsikt.html [L]

@@ -317,9 +317,9 @@ class SinglePagePortfolio {
     }
 
     const sources = [
-      'assets/data/grid-media-manifest.js?v=3',
-      '/assets/data/grid-media-manifest.js?v=3',
-      '../../assets/data/grid-media-manifest.js?v=3',
+      'assets/data/grid-media-manifest.js?v=4',
+      '/assets/data/grid-media-manifest.js?v=4',
+      '../../assets/data/grid-media-manifest.js?v=4',
     ];
 
     this.gridManifestLoadPromise = (async () => {
@@ -1283,17 +1283,19 @@ class SinglePagePortfolio {
     if (!root) return;
     if (catalog.length === 0) return;
 
-    const params = new URLSearchParams(window.location.search);
-    const querySlug = (params.get('project') || '').trim().toLowerCase();
-    const pathName = window.location.pathname.split('/').pop() || '';
-    const pathMatch = pathName.match(/^prosjekt-(.+)\.html$/);
-    const pathSlug = pathMatch ? String(pathMatch[1]).trim().toLowerCase() : '';
-    const requestedSlug = querySlug || pathSlug;
+    const requestedSlug =
+      window.FormaaProjectOpenGraph?.resolveCatalogSlug?.() ||
+      (() => {
+        const params = new URLSearchParams(window.location.search);
+        return (params.get('project') || '').trim().toLowerCase();
+      })();
     const currentIndex = Math.max(
       0,
       catalog.findIndex((project) => project.slug === requestedSlug)
     );
     const current = catalog[currentIndex];
+
+    window.FormaaProjectOpenGraph?.applyFromProject?.(current);
 
     const titleEl = root.querySelector('[data-project-title]');
     const leadEl = root.querySelector('[data-project-lead]');
@@ -1470,18 +1472,19 @@ class SinglePagePortfolio {
 
   // NOTE: Stable per-project page URL used for both navigation and social sharing previews.
   getProjectSharePath(slug) {
-    const slugToSeoPath = {
-      obseed: 'prosjekt-obseed-custom-8-string-guitar.html',
-      undo: 'prosjekt-undo-desertification.html',
-      nomos: 'prosjekt-nomos-branding.html',
-      proton: 'prosjekt-proton-headphones.html',
-      nordic: 'prosjekt-nordic-restaurant-branding.html',
-      monocopter: 'prosjekt-monocopter-drone.html',
-      rafaels: 'prosjekt-rafaels-ren-melk.html',
-      'eco-mate-closet': 'prosjekt-eco-mate-closet.html',
-      h2o: 'prosjekt-h2o-bottle-pedometer.html',
+    const slugToSeoSlug = {
+      obseed: 'obseed-custom-8-string-guitar',
+      undo: 'undo-desertification',
+      nomos: 'nomos-branding',
+      proton: 'proton-headphones',
+      nordic: 'nordic-restaurant-branding',
+      monocopter: 'monocopter-drone',
+      rafaels: 'rafaels-ren-melk',
+      'eco-mate-closet': 'eco-mate-closet',
+      h2o: 'h2o-bottle-pedometer',
     };
-    return slugToSeoPath[slug] || `prosjekt-${encodeURIComponent(slug)}.html`;
+    const seoSlug = slugToSeoSlug[slug] || encodeURIComponent(slug);
+    return `/prosjekter/${seoSlug}`;
   }
 
   // NOTE: Reusable project galleries swap main image from local thumbnail rails.
