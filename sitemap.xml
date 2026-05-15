@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- NOTE: XML sitemap for Google/Bing: one entry per public route only. Project URLs use
      /prosjekter/{slug} (see prosjekt-*.html on disk). Innsikt hub + articles use /innsikt/{slug}.
-     /application-form is the design-samtale kontaktform. /gallery is retired (301 → home) and
-     omitted here. Static assets are intentionally excluded. -->
+     /application-form is the design-samtale kontaktform. Includes /en/* intent landings.
+     /gallery is retired (301 → home) and omitted here. Static assets are intentionally excluded. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://formaa.no/</loc></url>
   <url><loc>https://formaa.no/prosjekter</loc></url>
@@ -18,6 +18,9 @@
   <url><loc>https://formaa.no/designstudio-oslo</loc></url>
   <url><loc>https://formaa.no/bli-med</loc></url>
   <url><loc>https://formaa.no/application-form</loc></url>
+  <url><loc>https://formaa.no/en/product-rendering</loc></url>
+  <url><loc>https://formaa.no/en/cad-modeling</loc></url>
+  <url><loc>https://formaa.no/en/product-animation</loc></url>
   <url><loc>https://formaa.no/category/branding/akershus</loc></url>
   <url><loc>https://formaa.no/category/branding/buskerud</loc></url>
   <url><loc>https://formaa.no/category/branding/norge</loc></url>

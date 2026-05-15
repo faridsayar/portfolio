@@ -1,0 +1,129 @@
+/* NOTE: Lightweight styles for English intent landing pages (/en/*). */
+
+.en-landing-header {
+  max-width: 70rem;
+  margin: 0 auto;
+  padding: 1.25rem 1.25rem 0;
+}
+
+.en-landing-header__logo {
+  display: block;
+  width: 2.5rem;
+  height: auto;
+}
+
+.en-landing-hero__media {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin: 0 0 1.5rem;
+  background: var(--color-black);
+  border: none;
+}
+
+.en-landing-deliverables {
+  margin: 1.25rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.en-landing-deliverables li {
+  position: relative;
+  padding-left: 1.35rem;
+  margin: 0.5rem 0;
+  line-height: var(--line-height-relaxed);
+  font-weight: var(--font-weight-semibold);
+}
+
+.en-landing-deliverables li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 0.45rem;
+  height: 0.45rem;
+  background: var(--color-black);
+}
+
+.en-landing-turnaround {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 0.85rem;
+  font-size: 0.95rem;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: -0.01em;
+  border: 1px solid var(--border-neutral);
+}
+
+.en-landing-form {
+  margin-top: 1.75rem;
+  max-width: 36rem;
+}
+
+.en-landing-form .field__input,
+.en-landing-form .field__textarea {
+  width: 100%;
+  margin-bottom: 0.75rem;
+}
+
+.en-landing-form__cta {
+  margin-top: 0.25rem;
+  width: 100%;
+  max-width: 20rem;
+  cursor: pointer;
+}
+
+.en-landing-form__cta:disabled,
+.en-landing-form__cta.is-inactive {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.en-landing-form__status {
+  margin-top: 0.75rem;
+}
+
+.en-landing-form__status[data-state='error'] {
+  color: #8b1a1a;
+}
+
+.en-landing-form__status[data-state='success'] {
+  color: #1a5c2e;
+}
+
+.en-landing-seo {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-neutral);
+}
+
+.en-landing-seo h2 {
+  margin: 1.5rem 0 0.75rem;
+  font-size: 1.25rem;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: -0.02em;
+}
+
+.en-landing-seo h2:first-child {
+  margin-top: 0;
+}
+
+.en-landing-seo p {
+  margin: 0 0 1rem;
+  line-height: var(--line-height-relaxed);
+}
+
+.en-landing-crosslinks {
+  margin-top: 1.5rem;
+}
+
+.en-landing-footer {
+  max-width: 70rem;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 3rem;
+  font-size: 0.9rem;
+  line-height: var(--line-height-relaxed);
+  opacity: 0.75;
+}

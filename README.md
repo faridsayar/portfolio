@@ -103,6 +103,17 @@ Use existing patterns only; do not invent new link colors or button styles.
 - **Insights articles:** `shared-article.js` renders `blocks` as `<p>` / `<h2>`; embed full `<a class="internal-text-link" href="...">` strings in JSON where needed.
 - **Sitemap:** Adding or changing internal links does not change public URLs; update `sitemap.xml` only when routes (paths) change.
 
+## EN intent landings
+
+English service pages live under `en/` (for example `/en/product-rendering`). They are **not** translations of Norwegian category pages: separate copy, keywords, structure, and CTAs for international search intent.
+
+- Files: `en/product-rendering.html`, `en/cad-modeling.html`, `en/product-animation.html`
+- Styles: `styles/en-landing.css` + shared `styles/base.css` only (no `script.js`, no hero video)
+- Forms: `en/en-landing.js` + inline Web3Forms on each page
+- Do **not** add EN links to `side-nav` or `site-footer`; use contextual cross-links in page copy and matching links on related `category/*/norge.html` pages
+- Do **not** use `hreflang` between NO category URLs and EN landings
+- Add new `/en/*` routes to `sitemap.xml` when published
+
 ## SEO Conventions
 
 - Keep Norwegian copy and metadata as primary.
@@ -119,6 +130,7 @@ Structured data currently used:
 - `innsikt-*.html`: article JSON-LD
 - `prisestimat.html`: `WebPage` + `BreadcrumbList` JSON-LD
 - `application-form.html`: `WebPage` + `BreadcrumbList` JSON-LD (canonical `/application-form`, design samtale kontaktform)
+- `en/*.html`: `Service` + `WebPage` + `BreadcrumbList` JSON-LD (`inLanguage: en`)
 
 ## Ideas grid media workflow
 
