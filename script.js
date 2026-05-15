@@ -137,6 +137,14 @@ class SinglePagePortfolio {
   // NOTE: Per-project narrative copy for Problem / Løsning / Resultat block on project pages.
   getProjectNarratives() {
     return {
+      obseed: {
+        problem:
+          'Ferdigproduserte gitarer dekker sjelden behovet for åtte strenger, lav stemming og et uttrykk som matcher både spillestil og kropp — uten kompromiss på ergonomi og balanse.',
+        solution:
+          'Obseed ble utviklet som et skreddersydd konsept: kropp og halsgeometri tilpasset ekstra strenger, tydelig plassering av hardware, materialvalg og visuell identitet — fra skisse til produksjonsklare detaljer.',
+        outcome:
+          'Resultatet er et helhetlig designgrunnlag for en custom 8-strengers gitar, klart for videre prototyping, lutheri og ferdigstilling.',
+      },
       undo: {
         problem:
           'Ørkener på jorden er ikke statiske, de vokser og sprer seg raskt. Ørkener endrer omgivelser og klima, og fører til økologiske og økonomiske problemer for millioner av mennesker. Hva kan gjøres for å hindre ørkenvekst?',
@@ -236,6 +244,7 @@ class SinglePagePortfolio {
     const normalizeProjects = (manifest) => {
       // NOTE: Hardcoded project order shared by homepage grid and project detail prev/next navigation.
       const preferredOrder = [
+        'obseed',
         'undo',
         'nomos',
         'proton',
@@ -1462,6 +1471,7 @@ class SinglePagePortfolio {
   // NOTE: Stable per-project page URL used for both navigation and social sharing previews.
   getProjectSharePath(slug) {
     const slugToSeoPath = {
+      obseed: 'prosjekt-obseed-custom-8-string-guitar.html',
       undo: 'prosjekt-undo-desertification.html',
       nomos: 'prosjekt-nomos-branding.html',
       proton: 'prosjekt-proton-headphones.html',
