@@ -2357,11 +2357,11 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
 }
 
 .project-thumb-rail__icon--prev {
-  transform: rotate(180deg);
+  transform: rotate(0deg);
 }
 
 .project-thumb-rail__icon--next {
-  transform: rotate(0deg);
+  transform: rotate(180deg);
 }
 
 /* NOTE: Thumb rail centered in gutter: equal inset from screen left and from text column (`--project-hero-text-start`). */
@@ -2454,7 +2454,11 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
   }
 
   .project-page-nav__link--prev .project-page-nav__icon {
-    transform: scaleX(-1);
+    transform: rotate(60deg);
+  }
+
+  .project-page-nav__link--next .project-page-nav__icon {
+    transform: rotate(-60deg);
   }
 
   .project-page-nav__label {
@@ -2550,7 +2554,11 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
   }
 
   .project-page-nav__link--prev .project-page-nav__icon {
-    transform: scaleX(-1);
+    transform: rotate(60deg);
+  }
+
+  .project-page-nav__link--next .project-page-nav__icon {
+    transform: rotate(-60deg);
   }
 
   /* NOTE: Small side labels (lowercase); paired with triangle — link `aria-label` covers screen readers. */
@@ -2926,12 +2934,8 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
     padding: 0.25rem;
   }
 
-  .project-thumb-rail__icon {
-    transform: rotate(90deg) !important;
-  }
-
   .project-thumb-rail__icon--prev {
-    transform: rotate(90deg);
+    transform: rotate(-90deg);
   }
 
   .project-thumb-rail__icon--next {
