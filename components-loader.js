@@ -37,7 +37,7 @@
       <p class="section-lead">
         Send en kort forespørsel, så vurderer vi muligheter, tidslinje og neste praktiske steg.
       </p>
-    <a class="inquiry-cta" href="/application-form.html">Gå til forespørselsskjema</a>
+    <a class="inquiry-cta" href="/application-form.html">Gå til kontaktform</a>
   </div>
 </section>
 </main>
@@ -53,7 +53,7 @@
         <a class="site-footer__link" href="/gallery.html" data-footer-link="gallery">Galleri</a>
         <a class="site-footer__link" href="/designstudio-oslo.html" data-footer-link="designstudio-oslo">Designstudio Oslo</a>
         <a class="site-footer__link" href="/oss.html" data-footer-link="about">Oss</a>
-        <a class="site-footer__link" href="/application-form.html" data-footer-link="application">Søknadsskjema</a>
+        <a class="site-footer__link" href="/application-form.html" data-footer-link="application">Kontaktform</a>
         <a class="site-footer__link" href="/prisestimat.html" data-footer-link="pricing">Prisestimat</a>
       </div>
     </div>
@@ -68,7 +68,7 @@
     <p class="section-lead">
       Send en kort forespørsel, så vurderer vi muligheter, tidslinje og neste praktiske steg.
     </p>
-    <a class="inquiry-cta" href="/application-form.html">Gå til forespørselsskjema</a>
+    <a class="inquiry-cta" href="/application-form.html">Gå til kontaktform</a>
   </div>
 </section>`,
     'application-form': `<section
