@@ -1472,19 +1472,8 @@ class SinglePagePortfolio {
 
   // NOTE: Stable per-project page URL used for both navigation and social sharing previews.
   getProjectSharePath(slug) {
-    const slugToSeoSlug = {
-      obseed: 'obseed-custom-8-string-guitar',
-      undo: 'undo-desertification',
-      nomos: 'nomos-branding',
-      proton: 'proton-headphones',
-      nordic: 'nordic-restaurant-branding',
-      monocopter: 'monocopter-drone',
-      rafaels: 'rafaels-ren-melk',
-      'eco-mate-closet': 'eco-mate-closet',
-      h2o: 'h2o-bottle-pedometer',
-    };
-    const seoSlug = slugToSeoSlug[slug] || encodeURIComponent(slug);
-    return `/prosjekter/${seoSlug}`;
+    // NOTE: Query param works on static hosts and Apache; /prosjekter/{seo-slug} is canonical for OG only.
+    return `/advanced-project.html?project=${encodeURIComponent(slug)}`;
   }
 
   // NOTE: Reusable project galleries swap main image from local thumbnail rails.

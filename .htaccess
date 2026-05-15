@@ -21,6 +21,9 @@ RewriteRule ^ https://formaa.no%{REQUEST_URI} [L,R=301]
 
 DirectoryIndex index.html
 
+# NOTE: Custom 404 with root-absolute assets (see 404.html).
+ErrorDocument 404 /404.html
+
 RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
 RewriteRule ^index\.html$ / [R=301,L]
 
@@ -62,8 +65,8 @@ RewriteRule ^category/produksjon/(.*)$ /category/teknisk-tegning/$1 [R=301,L]
 RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
 RewriteRule ^(.+)\.html$ /$1 [R=301,L]
 
-# NOTE: Project case studies use one template; seoSlug maps to catalog slug in JS (no redirect stub for crawlers).
-RewriteRule ^prosjekter/([a-z0-9-]+)/?$ /advanced-project.html?seoSlug=$1 [L,QSA]
+# NOTE: Project case studies resolve to legacy stub files (OG tags) that hand off to advanced-project.html.
+RewriteRule ^prosjekter/([a-z0-9-]+)/?$ /prosjekt-$1.html [L]
 RewriteRule ^innsikt/([a-z0-9-]+)/?$ /innsikt-$1.html [L]
 RewriteRule ^prosjekter/?$ /advanced-project.html [L]
 RewriteRule ^innsikt/?$ /innsikt.html [L]
