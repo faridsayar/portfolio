@@ -430,6 +430,41 @@ window.__GRID_MEDIA_MANIFEST = {
       "src": "assets/images/grid/testing-product.webp",
       "type": "image",
       "name": "testing product"
+    },
+    {
+      "src": "assets/images/grid/monocopter-2.webp",
+      "type": "image",
+      "name": "monocopter 2"
+    },
+    {
+      "src": "assets/images/grid/proton-11.webp",
+      "type": "image",
+      "name": "proton 11"
+    },
+    {
+      "src": "assets/images/grid/proton-12.webp",
+      "type": "image",
+      "name": "proton 12"
+    },
+    {
+      "src": "assets/images/grid/obseed1.JPG",
+      "type": "image",
+      "name": "obseed 1"
+    },
+    {
+      "src": "assets/images/grid/obseed2.JPG",
+      "type": "image",
+      "name": "obseed 2"
+    },
+    {
+      "src": "assets/images/grid/obseed6.JPG",
+      "type": "image",
+      "name": "obseed 6"
+    },
+    {
+      "src": "assets/images/grid/obseed8.JPG",
+      "type": "image",
+      "name": "obseed 8"
     }
   ]
 };
