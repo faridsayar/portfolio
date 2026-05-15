@@ -1,6 +1,24 @@
 window.__PROJECTS_MANIFEST = {
-  "generatedAt": "2026-04-23T13:19:08.322Z",
+  "generatedAt": "2026-05-15T16:15:00.000Z",
   "projects": [
+    {
+      "slug": "obseed",
+      "title": "Obseed: Custom made guitar 8 strings",
+      "desc": "Skreddersydd 8-strengers elektrisk gitar — form, ergonomi, hardware og produksjonsklart konsept.",
+      "folder": "Obseed",
+      "thumbnail": "assets/images/Projects/Obseed/obseed1.JPG",
+      "images": [
+        "assets/images/Projects/Obseed/obseed1.JPG",
+        "assets/images/Projects/Obseed/obseed2.JPG",
+        "assets/images/Projects/Obseed/obseed3.JPG",
+        "assets/images/Projects/Obseed/obseed4.JPG",
+        "assets/images/Projects/Obseed/obseed5.JPG",
+        "assets/images/Projects/Obseed/obseed6.JPG",
+        "assets/images/Projects/Obseed/obseed7.JPG",
+        "assets/images/Projects/Obseed/obseed8.JPG",
+        "assets/images/Projects/Obseed/obseed9.JPG"
+      ]
+    },
     {
       "slug": "undo",
       "title": "Project: Undo desertification",

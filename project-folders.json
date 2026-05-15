@@ -1,6 +1,24 @@
 {
   "projects": [
     {
+      "slug": "obseed",
+      "title": "Obseed: Custom made guitar 8 strings",
+      "desc": "Skreddersydd 8-strengers elektrisk gitar — form, ergonomi, hardware og produksjonsklart konsept.",
+      "folder": "Obseed",
+      "thumbnail": "obseed1.JPG",
+      "images": [
+        "obseed1.JPG",
+        "obseed2.JPG",
+        "obseed3.JPG",
+        "obseed4.JPG",
+        "obseed5.JPG",
+        "obseed6.JPG",
+        "obseed7.JPG",
+        "obseed8.JPG",
+        "obseed9.JPG"
+      ]
+    },
+    {
       "slug": "undo",
       "title": "Project: Undo desertification",
       "desc": "Produkt design konsept for å stoppe vekst av ørken og hjelpe planter og overleve i tørre omgivelser.",
