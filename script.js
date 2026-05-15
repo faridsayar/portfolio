@@ -1472,8 +1472,8 @@ class SinglePagePortfolio {
 
   // NOTE: Stable per-project page URL used for both navigation and social sharing previews.
   getProjectSharePath(slug) {
-    // NOTE: Query param works on static hosts and Apache; /prosjekter/{seo-slug} is canonical for OG only.
-    return `/advanced-project.html?project=${encodeURIComponent(slug)}`;
+    // NOTE: Extensionless path keeps ?project= on local `serve` (`.html` triggers a 301 that drops the query).
+    return `/advanced-project?project=${encodeURIComponent(slug)}`;
   }
 
   // NOTE: Reusable project galleries swap main image from local thumbnail rails.

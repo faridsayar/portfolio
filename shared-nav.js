@@ -20,16 +20,16 @@ function renderSharedNav() {
     path.startsWith('project-') ||
     path.startsWith('prosjekt-');
 
-  // NOTE: Nav uses real *.html paths so python http.server and other static hosts work; production Apache 301s to extensionless URLs.
+  // NOTE: Extensionless hrefs match sitemap/canonical URLs; GitHub Pages and Apache both resolve them to *.html files.
   const items = [
     { href: '/', label: 'Hjem', current: segments.length === 0 },
     {
-      href: '/oss.html',
+      href: '/oss',
       label: 'Oss',
       current: path === 'oss.html' || (segments.length === 1 && segments[0] === 'oss'),
     },
-    { href: '/advanced-project.html', label: 'Prosjekter', current: isProjectPage },
-    { href: '/innsikt.html', label: 'Innsikt', current: isInsightsPage },
+    { href: '/prosjekter', label: 'Prosjekter', current: isProjectPage },
+    { href: '/innsikt', label: 'Innsikt', current: isInsightsPage },
   ];
 
   const linksMarkup = items
@@ -39,16 +39,16 @@ function renderSharedNav() {
     )
     .join('');
 
-  // NOTE: Root-absolute *.html paths work on static local servers; live site rewrites still canonicalize without extension.
+  // NOTE: Root-absolute extensionless paths match public canonical URLs in sitemap.xml.
   const footerHrefByKey = {
-    projects: '/advanced-project.html',
-    categories: '/category/design/norge.html',
-    insights: '/innsikt.html',
-    gallery: '/gallery.html',
-    'designstudio-oslo': '/designstudio-oslo.html',
-    about: '/oss.html',
-    application: '/application-form.html',
-    pricing: '/prisestimat.html',
+    projects: '/prosjekter',
+    categories: '/category/design/norge',
+    insights: '/innsikt',
+    gallery: '/gallery',
+    'designstudio-oslo': '/designstudio-oslo',
+    about: '/oss',
+    application: '/application-form',
+    pricing: '/prisestimat',
   };
 
   navRoots.forEach((nav) => {

@@ -408,7 +408,7 @@
 
 /* NOTE: Shuffle variant stacks overlay + title on the video; pin copy to the bottom of the fixed-height frame. */
 .category-hero-media:has([data-hero-video-shuffle]) {
-  /* NOTE: Half the default category banner height on søknadsskjema + designstudio shuffle heroes only. */
+  /* NOTE: Half the default category banner height on kontaktform + designstudio shuffle heroes only. */
   height: min(300px, 32.5vh);
   margin-bottom: 0;
 }
@@ -471,7 +471,7 @@ section[aria-label='Designstudio i Oslo'] .section-inner {
 }
 
 /* NOTE: Application form page hero is full-bleed shuffle media only; no vertical inset on the inner wrapper. */
-section[aria-label='Søknadsskjema'] .section-inner {
+section[aria-label='Kontaktform'] .section-inner {
   padding-top: 0;
   padding-bottom: 0;
 }

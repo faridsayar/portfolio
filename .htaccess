@@ -27,7 +27,8 @@ ErrorDocument 404 /404.html
 RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
 RewriteRule ^index\.html$ / [R=301,L]
 
-# NOTE: Canonical friendly routes for primary sections.
+# NOTE: Canonical friendly routes for primary sections (keep ?project= detail URLs on advanced-project).
+RewriteCond %{QUERY_STRING} ^$
 RewriteRule ^advanced-project/?$ /prosjekter [R=301,L]
 RewriteRule ^innsikt\.html$ /innsikt [R=301,L]
 RewriteRule ^designstudio-oslo\.html$ /designstudio-oslo [R=301,L]
@@ -35,6 +36,9 @@ RewriteRule ^application-form\.html$ /application-form [R=301,L]
 
 # NOTE: Redirect legacy favicon asset requests to the current Google-friendly SVG favicon.
 RewriteRule ^assets/favicon\.svg$ /assets/Favicon-google-search.svg [R=301,L]
+
+# NOTE: Dev article shell is not a public page; send crawlers to Innsikt hub.
+RewriteRule ^article-template/?$ /innsikt [R=301,L]
 
 # NOTE: Move legacy flat article/project slugs into section-based URLs.
 RewriteRule ^prosjekt-([a-z0-9-]+)/?$ /prosjekter/$1 [R=301,L]
@@ -65,8 +69,12 @@ RewriteRule ^category/produksjon/(.*)$ /category/teknisk-tegning/$1 [R=301,L]
 RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
 RewriteRule ^(.+)\.html$ /$1 [R=301,L]
 
-# NOTE: Project case studies resolve to legacy stub files (OG tags) that hand off to advanced-project.html.
-RewriteRule ^prosjekter/([a-z0-9-]+)/?$ /prosjekt-$1.html [L]
+# NOTE: On Apache-only hosts without prosjekter/{slug}/index.html, serve advanced-project directly.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^prosjekter/([a-z0-9-]+)/?$ /advanced-project.html?seoSlug=$1 [L,QSA]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^innsikt/([a-z0-9-]+)/?$ /innsikt-$1.html [L]
 RewriteRule ^prosjekter/?$ /advanced-project.html [L]
 RewriteRule ^innsikt/?$ /innsikt.html [L]

@@ -39,6 +39,14 @@
     <meta property="og:image:alt" content="Formaa industridesign og produktdesign i Norge" />
 
     <link rel="canonical" href="https://formaa.no/" />
+    <!-- NOTE: GitHub Pages has no .htaccess; nudge duplicate homepage URLs toward the canonical origin. -->
+    <script>
+      (function () {
+        var path = window.location.pathname.replace(/\/index\.html$/i, '/');
+        var target = 'https://formaa.no' + path + window.location.search + window.location.hash;
+        if (window.location.href !== target) window.location.replace(target);
+      })();
+    </script>
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -225,17 +233,17 @@
           <h2 class="section-title">Dette gjør vi</h2>
 
           <div class="service-grid">
-            <a class="service-card service-card--link" href="category/konseptutvikling/norge.html">
+            <a class="service-card service-card--link" href="/category/konseptutvikling/norge">
               <h3 class="service-title">Konseptutvikling</h3>
               <p class="service-text">Tidlig idéarbeid, rammer og tydelig retning.</p>
             </a>
-            <a class="service-card service-card--link" href="category/produktdesign/norge.html">
+            <a class="service-card service-card--link" href="/category/produktdesign/norge">
               <h3 class="service-title">Produktdesign</h3>
               <p class="service-text">
                 Form, funksjon, brukervennlighet og detaljer som kan produseres.
               </p>
             </a>
-            <a class="service-card service-card--link" href="category/prototyping/norge.html">
+            <a class="service-card service-card--link" href="/category/prototyping/norge">
               <h3 class="service-title">Prototyping</h3>
               <p class="service-text">Prototyper, iterasjoner og klargjøring for produksjon.</p>
             </a>
@@ -252,17 +260,14 @@
                 aria-label="3D-printer i arbeid"
               ></video>
             </div>
-            <a
-              class="service-card service-card--link"
-              href="category/brukerundersokelse/norge.html"
-            >
+            <a class="service-card service-card--link" href="/category/brukerundersokelse/norge">
               <h3 class="service-title">Brukerundersøkelser</h3>
               <p class="service-text">
                 Intervjuer og testing som gir bedre beslutninger for funksjon, flyt og
                 brukervennlighet.
               </p>
             </a>
-            <a class="service-card service-card--link" href="category/validering/norge.html">
+            <a class="service-card service-card--link" href="/category/validering/norge">
               <h3 class="service-title">Validering</h3>
               <p class="service-text">
                 Test, kvalitetssikring og beslutningsgrunnlag før produksjon.
@@ -271,40 +276,38 @@
           </div>
 
           <div class="service-tags" aria-label="Flere fagområder">
-            <a class="service-tag" href="category/industridesign/norge.html">Industridesign</a>
-            <a class="service-tag" href="category/design/norge.html">Design</a>
-            <a class="service-tag" href="category/branding/norge.html">Branding</a>
-            <a class="service-tag" href="category/markedsundersokelse/norge.html"
+            <a class="service-tag" href="/category/industridesign/norge">Industridesign</a>
+            <a class="service-tag" href="/category/design/norge">Design</a>
+            <a class="service-tag" href="/category/branding/norge">Branding</a>
+            <a class="service-tag" href="/category/markedsundersokelse/norge"
               >Markedsundersøkelse</a
             >
-            <a class="service-tag" href="category/visualisering/norge.html">Visualisering</a>
-            <a class="service-tag" href="category/redesign/norge.html">Redesign</a>
-            <a class="service-tag" href="category/teknisk-tegning/norge.html">Teknisk tegning</a>
-            <a class="service-tag" href="category/emballasjedesign/norge.html">Emballasjedesign</a>
+            <a class="service-tag" href="/category/visualisering/norge">Visualisering</a>
+            <a class="service-tag" href="/category/redesign/norge">Redesign</a>
+            <a class="service-tag" href="/category/teknisk-tegning/norge">Teknisk tegning</a>
+            <a class="service-tag" href="/category/emballasjedesign/norge">Emballasjedesign</a>
           </div>
 
           <!-- NOTE: Inline lenker til Oslo-tjenester i avsnittet under (samme ord som i brødteksten). -->
           <p class="section-lead section-lead--after-grid">
             Designstudio som kan hjelpe deg på veien fra idé til produkt som er klart for
-            <a class="internal-text-link" href="category/prototyping/oslo.html">prototype</a> og
+            <a class="internal-text-link" href="/category/prototyping/oslo">prototype</a> og
             produksjon. Vi gjør industriell
-            <a class="internal-text-link" href="category/produktdesign/oslo.html">produktdesign</a>
+            <a class="internal-text-link" href="/category/produktdesign/oslo">produktdesign</a>
             og
-            <a class="internal-text-link" href="category/konseptutvikling/oslo.html"
+            <a class="internal-text-link" href="/category/konseptutvikling/oslo"
               >konseptutvikling</a
             >
             basert på
-            <a class="internal-text-link" href="category/markedsundersokelse/oslo.html"
+            <a class="internal-text-link" href="/category/markedsundersokelse/oslo"
               >markedsanalyse</a
             >, vi følger deg i hele prosessen med
-            <a class="internal-text-link" href="category/prototyping/oslo.html">prototype</a> og
-            <a class="internal-text-link" href="category/teknisk-tegning/oslo.html"
+            <a class="internal-text-link" href="/category/prototyping/oslo">prototype</a> og
+            <a class="internal-text-link" href="/category/teknisk-tegning/oslo"
               >produksjonsklarhet</a
             >, og vi lager høy-kvalitets
-            <a class="internal-text-link" href="category/visualisering/oslo.html"
-              >3D-visualisering</a
-            >
-            og <a class="internal-text-link" href="category/branding/oslo.html">branding</a> som
+            <a class="internal-text-link" href="/category/visualisering/oslo">3D-visualisering</a>
+            og <a class="internal-text-link" href="/category/branding/oslo">branding</a> som
             tiltrekker kunder og investorer.
           </p>
         </div>
@@ -314,7 +317,7 @@
         <div class="section-inner">
           <div class="section-head">
             <p class="section-kicker">Fordeler</p>
-            <h2 class="section-title">Hvem vi passeer for</h2>
+            <h2 class="section-title">Hvem vi passer for</h2>
             <!-- NOTE: «designbyrå» peker til designstudio-siden (Oslo). -->
             <p class="section-lead">
               Er du en oppfinner i hjertet, eller har en god og nyttig idé som du vet kan lykkes,
@@ -323,7 +326,7 @@
               sette opp en crowdfunding-kampanje eller lage presentasjon for investorer. Vi er åpne
               for samarbeid, utveksling av kunnskap og erfaring, og er fleksible i hvor langt vi kan
               strekke oss som
-              <a class="internal-text-link" href="designstudio-oslo.html">designbyrå</a>.
+              <a class="internal-text-link" href="/designstudio-oslo">designbyrå</a>.
             </p>
           </div>
           <!--
@@ -411,7 +414,7 @@
           </div>
           <!-- NOTE: One-line full-width idea strip moved directly under the four-feature banner. -->
           <div class="ideas-strip" aria-label="Ideer og skisser">
-            <a class="ideas-strip__link" href="gallery.html" aria-label="Se hele idegalleriet">
+            <a class="ideas-strip__link" href="/gallery" aria-label="Se hele idegalleriet">
               <div class="ideas-strip__grid" data-ideas-strip></div>
             </a>
           </div>
@@ -443,15 +446,13 @@
         </div>
         <!-- NOTE: Static fallback links ensure core project/category navigation remains crawlable without JS. -->
         <nav class="service-tags" aria-label="Snarveier til viktige sider">
-          <a class="service-tag" href="/advanced-project.html">Alle prosjekter</a>
-          <a class="service-tag" href="/gallery.html">Idegalleri</a>
-          <a class="service-tag" href="/innsikt.html">Innsikt</a>
-          <a class="service-tag" href="/designstudio-oslo.html">Designstudio i Oslo</a>
-          <a class="service-tag" href="/category/produktdesign/norge.html">Produktdesign i Norge</a>
-          <a class="service-tag" href="/category/industridesign/norge.html"
-            >Industridesign i Norge</a
-          >
-          <a class="service-tag" href="/category/prototyping/norge.html">Prototyping i Norge</a>
+          <a class="service-tag" href="/advanced-project">Alle prosjekter</a>
+          <a class="service-tag" href="/gallery">Idegalleri</a>
+          <a class="service-tag" href="/innsikt">Innsikt</a>
+          <a class="service-tag" href="/designstudio-oslo">Designstudio i Oslo</a>
+          <a class="service-tag" href="/category/produktdesign/norge">Produktdesign i Norge</a>
+          <a class="service-tag" href="/category/industridesign/norge">Industridesign i Norge</a>
+          <a class="service-tag" href="/category/prototyping/norge">Prototyping i Norge</a>
         </nav>
       </div>
     </section>
@@ -649,6 +650,6 @@
     <script src="components-loader.js?v=1" defer></script>
     <script src="shared-nav.js?v=1" defer></script>
     <!-- JavaScript -->
-    <script src="script.js?v=11" defer></script>
+    <script src="script.js?v=12" defer></script>
   </body>
 </html>
