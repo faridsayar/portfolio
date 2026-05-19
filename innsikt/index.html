@@ -3,12 +3,237 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Innsikt | Formaa</title>
+    <title>Innsikt | Industridesign og produktdesign</title>
+    <meta
+      name="description"
+      content="Praktisk innsikt om industridesign og produktdesign: nyheter, guider, refleksjoner og produksjonsnære råd fra virkelige prosjekter."
+    />
+    <meta
+      name="description:en"
+      content="Insights, guides, and practical advice about industrial and product design from Formaa."
+    />
+    <meta
+      name="keywords"
+      content="innsikt, designinnsikt, industridesign, produktdesign, produktutvikling, guider, nyheter, Norge"
+    />
+    <meta name="author" content="Formaa" />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+
+    <meta property="og:locale" content="nb_NO" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:title" content="Innsikt | Industridesign og produktdesign" />
+    <meta
+      property="og:description"
+      content="Praktisk innsikt om industridesign og produktdesign: nyheter, guider, refleksjoner og produksjonsnære råd fra virkelige prosjekter."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://formaa.no/innsikt" />
+    <meta property="og:site_name" content="Formaa" />
+    <meta property="og:image" content="https://formaa.no/assets/images/social-sharing.webp" />
+    <meta property="og:image:width" content="1920" />
+    <meta property="og:image:height" content="1080" />
+    <meta
+      property="og:image:alt"
+      content="Formaa innsikt med artikler om industridesign og produktdesign"
+    />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Innsikt | Industridesign og produktdesign" />
+    <meta
+      name="twitter:description"
+      content="Praktisk innsikt om industridesign og produktdesign: nyheter, guider, refleksjoner og produksjonsnære råd fra virkelige prosjekter."
+    />
+    <meta name="twitter:image" content="https://formaa.no/assets/images/social-sharing.webp" />
+
     <link rel="canonical" href="https://formaa.no/innsikt" />
-    <meta http-equiv="refresh" content="0; url=../innsikt.html" />
+
+    <!-- NOTE: SVG favicon using the same triangle mark as the hero logo -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/assets/Favicon-google-search.svg?v=1"
+      sizes="any"
+    />
+    <link rel="icon" href="/assets/Favicon-google-search.svg?v=1" sizes="192x192" />
+
+    <link rel="stylesheet" href="../styles/base.css?v=9" />
+    <link rel="stylesheet" href="../styles/article.css?v=2" />
+
+    <!-- NOTE: Google Analytics 4 global site tag for tracking website traffic. -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JSX18YWHXS"></script>
     <script>
-      window.location.replace('../innsikt.html');
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'G-JSX18YWHXS');
     </script>
   </head>
-  <body></body>
+  <body class="single-page-body">
+    <!-- NOTE: Shared navigation component slot. -->
+    <div data-component="side-nav"></div>
+
+    <main>
+      <section class="section section--white" aria-label="Innsikt og artikler">
+        <div class="section-inner">
+          <!-- NOTE: Breadcrumb component for quick page hierarchy navigation. -->
+          <nav class="breadcrumb" aria-label="Brødsmulesti">
+            <a class="breadcrumb__link" href="/">Formaa</a>
+            <span class="breadcrumb__sep" aria-hidden="true">/</span>
+            <a class="breadcrumb__link" href="/innsikt.html" aria-current="page">Innsikt</a>
+          </nav>
+
+          <p class="section-kicker">Innhold</p>
+          <h1 class="section-title">Tips, guider og designinnsikt</h1>
+          <p class="section-lead">
+            Her publiserer vi nyheter, praktiske tips, korte guider og tanker fra designarbeid i
+            virkelige prosjekter.
+          </p>
+
+          <!-- NOTE: Article grid for blog/news style posts (3 columns desktop). -->
+          <div class="articles-grid" aria-label="Artikkeloversikt">
+            <article class="article-card">
+              <a class="article-card__link" href="/innsikt-hva-er-industridesign.html">
+                <img
+                  class="article-card__img"
+                  src="../assets/images/Articles/usv.png"
+                  alt="Artikkelbilde 1"
+                  width="1200"
+                  height="900"
+                />
+                <div class="article-card__body">
+                  <h2 class="article-card__title">Hva er industridesign i praksis?</h2>
+                  <p class="article-card__excerpt">
+                    En kort og enkel forklaring på hva industridesign er, hvorfor det finnes, og
+                    hvordan det har utviklet seg fra håndverk til moderne produktutvikling.
+                  </p>
+                </div>
+              </a>
+            </article>
+
+            <article class="article-card">
+              <a class="article-card__link" href="/innsikt-ux-er-ikke-produktdesign.html">
+                <img
+                  class="article-card__img"
+                  src="../assets/images/h2o.webp"
+                  alt="Artikkelbilde 2"
+                  width="1200"
+                  height="900"
+                />
+                <div class="article-card__body">
+                  <h2 class="article-card__title">UX er ikke produktdesign</h2>
+                  <p class="article-card__excerpt">
+                    Hvorfor digital UX ofte kalles produktdesign i dag, og hvorfor industridesign
+                    fortsatt er kjernen når du lager fysiske produkter for den virkelige verden.
+                  </p>
+                </div>
+              </a>
+            </article>
+
+            <article class="article-card">
+              <a class="article-card__link" href="/innsikt-hvem-trenger-design.html">
+                <img
+                  class="article-card__img"
+                  src="../assets/images/Articles/itac.webp"
+                  alt="Artikkelbilde 3"
+                  width="1200"
+                  height="900"
+                />
+                <div class="article-card__body">
+                  <h2 class="article-card__title">Hvem trenger design, når og hvor mye?</h2>
+                  <p class="article-card__excerpt">
+                    En praktisk oversikt over hvilke bedrifter som trenger design, hvilke faser som
+                    er viktigst, og hvordan du kan bruke designere smart i hver fase.
+                  </p>
+                </div>
+              </a>
+            </article>
+
+            <article class="article-card">
+              <a class="article-card__link" href="/innsikt-hvordan-design-sparer-penger.html">
+                <img
+                  class="article-card__img"
+                  src="../assets/images/proton.webp"
+                  alt="Artikkelbilde 4"
+                  width="1200"
+                  height="900"
+                />
+                <div class="article-card__body">
+                  <h2 class="article-card__title">Hvordan design sparer penger i lengden</h2>
+                  <p class="article-card__excerpt">
+                    God design reduserer feil, returer og omarbeid. Her er hvorfor design thinking
+                    og brukerfokus gir lavere kostnader på lang sikt.
+                  </p>
+                </div>
+              </a>
+            </article>
+
+            <article class="article-card">
+              <a class="article-card__link" href="/innsikt-branding-og-produktdesign.html">
+                <img
+                  class="article-card__img"
+                  src="../assets/images/drone2.webp"
+                  alt="Artikkelbilde 5"
+                  width="1200"
+                  height="900"
+                />
+                <div class="article-card__body">
+                  <h2 class="article-card__title">Branding og produktdesign</h2>
+                  <p class="article-card__excerpt">
+                    En enkel gjennomgang av de viktigste fasene, hvorfor de finnes, og hva som gjør
+                    industridesign-prosessen både strukturert og kreativ.
+                  </p>
+                </div>
+              </a>
+            </article>
+
+            <article class="article-card">
+              <a class="article-card__link" href="/innsikt-design-for-crowdfunding.html">
+                <img
+                  class="article-card__img"
+                  src="../assets/images/Articles/Memorium.jpg"
+                  alt="Artikkelbilde 6"
+                  width="1200"
+                  height="900"
+                />
+                <div class="article-card__body">
+                  <h2 class="article-card__title">Hvorfor design er perfekt for crowdfunding</h2>
+                  <p class="article-card__excerpt">
+                    Har du idé, men lite kapital? Se hvordan godt design gjør det enklere å bygge
+                    tillit, vise verdi og lykkes i crowdfunding-kampanjer.
+                  </p>
+                </div>
+              </a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <div data-component="project-cta"></div>
+    </main>
+
+    <div data-component="site-footer"></div>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "Formaa Innsikt",
+        "description": "Praktisk innsikt om industridesign og produktdesign.",
+        "url": "https://formaa.no/innsikt",
+        "inLanguage": "no",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Formaa",
+          "url": "https://formaa.no/"
+        }
+      }
+    </script>
+    <script src="../components-loader.js?v=1" defer></script>
+    <script src="../shared-nav.js?v=1" defer></script>
+    <script src="../article-image-map.js?v=1" defer></script>
+    <script src="../shared-innsikt-thumbs.js?v=1" defer></script>
+  </body>
 </html>

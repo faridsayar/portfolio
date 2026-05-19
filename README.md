@@ -45,7 +45,7 @@ Current shared components:
 - Interactive inquiry timeline with 5 weighted phases
 - Web3Forms-based inquiry submission (no local mail client popup)
 - Project grid hydrated from `assets/data/projects-manifest.js` / `.json`
-- Ideas/gallery grid hydrated from `assets/data/grid-media-manifest.js`
+- Ideas grid strip hydrated from `assets/data/grid-media-manifest.js`
 - Article cards + shared article layout utilities
 - WebP-first image references for improved payload and paint performance
 
@@ -62,11 +62,12 @@ Search engines use root indexing files:
 Whenever public pages are added/removed/renamed:
 
 1. Update (or regenerate) `sitemap.xml`.
-2. Verify old URLs were removed (avoid stale `404` entries).
+2. Verify old URLs were removed (avoid stale `404` entries; `/gallery` must not be listed).
 3. Verify all new canonical routes are included once.
-4. Ensure renamed category URLs are fully replaced in links (for example `produksjon` -> `teknisk-tegning`).
-5. Deploy to production.
-6. Re-submit `https://formaa.no/sitemap.xml` in Google Search Console.
+4. Run `pnpm generate:innsikt-indexes` and `pnpm generate:prosjekter-indexes` so folder routes match sitemap paths on GitHub Pages.
+5. Ensure renamed category URLs are fully replaced in links (for example `produksjon` -> `teknisk-tegning`).
+6. Deploy to production.
+7. Re-submit `https://formaa.no/sitemap.xml` in Google Search Console.
 
 ### SEO / Indexing Maintenance Checklist
 
@@ -78,6 +79,7 @@ Use this checklist after structural updates (new pages, renamed slugs, new categ
    - Keep URL style consistent (extensionless public routes).
 2. `robots.txt`
    - Keep `Allow: /` and one canonical sitemap declaration.
+   - Keep retired routes blocked (for example `/gallery`, `/article-template`).
 3. Page metadata
    - Keep one canonical URL per page.
    - Ensure `<title>`, `meta description`, OG/Twitter title+description match page intent.
@@ -116,24 +118,21 @@ Structured data currently used:
 - `innsikt.html`: blog listing JSON-LD
 - `innsikt-*.html`: article JSON-LD
 - `prisestimat.html`: `WebPage` + `BreadcrumbList` JSON-LD
-- `application-form.html`: `WebPage` + `BreadcrumbList` JSON-LD (canonical `/application-form`)
+- `application-form.html`: `WebPage` + `BreadcrumbList` JSON-LD (canonical `/application-form`, design samtale kontaktform)
 
-## Ideas Gallery Media Workflow
+## Ideas grid media workflow
 
-- Source folder for gallery assets: `assets/images/grid`.
-- Runtime data file: `assets/data/grid-media-manifest.js` (used by homepage strip + `gallery.html`).
-- When new grid assets are added, append them to `assets/data/grid-media-manifest.js` and bump the manifest query string where it is loaded (`index.html`, `gallery.html`, and the script fallback loader in `script.js`).
+- Source folder for grid assets: `assets/images/grid`.
+- Runtime data file: `assets/data/grid-media-manifest.js` (homepage ideas strip, category ideas strip, and `script.js` fallback loader).
+- When new grid assets are added, append them to `assets/data/grid-media-manifest.js` and bump the manifest query string where it is loaded (`index.html`, category pages via `script.js`).
 - If GIF files are added to `assets/images/grid`, convert them to MP4 before publishing and ensure the `.mp4` file is included in the manifest.
-- Gallery UI rules:
-  - homepage strip: one-line, full-width, 16:9 thumbs, no gaps
-  - `gallery.html`: edge-to-edge 3-column grid on desktop and mobile
-  - fullscreen viewer includes prev/next triangle controls and close (`X`)
+- The standalone `/gallery` page is retired (`gallery.html` redirects to `/`; omit from `sitemap.xml`).
 
 ## URL Canonicalization
 
 - `.htaccess` (Apache) canonicalizes HTTP → HTTPS, 301s `www.formaa.no` to apex `https://formaa.no`, strips `.html` from URLs, maps `/prosjekter/{slug}` and `/innsikt/{slug}` to the legacy `prosjekt-*.html` / `innsikt-*.html` files, 301s legacy `prosjekt-*.html` / `innsikt-*.html` to `/prosjekter/{slug}` / `/innsikt/{slug}` (before the generic `.html` strip), and includes explicit 301s for friendly top-level routes such as `/designstudio-oslo` and `/application-form` (plus Search Console legacy paths: duplicate `/innsikt/innsikt-*`, bad `/category/.../index`, `produksjon` → `teknisk-tegning`, etc.). If you deploy on a host that ignores `.htaccess`, replicate these rules in that platform’s redirect config.
 - Homepage: `/index.html` → `/` (301).
-- Public routes are extensionless (for example `/gallery`, `/prosjekter`, `/innsikt`, `/application-form`); legacy flat filenames redirect into those namespaces.
+- Public routes are extensionless (for example `/prosjekter`, `/innsikt`, `/application-form`); legacy flat filenames redirect into those namespaces. Retired `/gallery` and `/gallery.html` redirect to `/`.
 
 ## Local Development
 

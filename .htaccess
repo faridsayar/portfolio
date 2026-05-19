@@ -40,6 +40,10 @@ RewriteRule ^assets/favicon\.svg$ /assets/Favicon-google-search.svg [R=301,L]
 # NOTE: Dev article shell is not a public page; send crawlers to Innsikt hub.
 RewriteRule ^article-template/?$ /innsikt [R=301,L]
 
+# NOTE: Idegalleri page retired; send old /gallery URLs to homepage (extensionless and .html).
+RewriteRule ^gallery\.html$ / [R=301,L]
+RewriteRule ^gallery/?$ / [R=301,L]
+
 # NOTE: Move legacy flat article/project slugs into section-based URLs.
 RewriteRule ^prosjekt-([a-z0-9-]+)/?$ /prosjekter/$1 [R=301,L]
 RewriteRule ^innsikt-([a-z0-9-]+)/?$ /innsikt/$1 [R=301,L]

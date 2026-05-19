@@ -7,12 +7,9 @@ function renderSharedNav() {
   const segments = rawPath.split('/').filter(Boolean);
   const path = segments.length ? segments[segments.length - 1] : '';
 
-  const isInsightsPage =
-    segments[0] === 'innsikt' ||
-    path === 'innsikt.html' ||
-    path.startsWith('innsikt-') ||
-    path.startsWith('article-') ||
-    path === 'article-template.html';
+  const isApplicationFormPage =
+    path === 'application-form.html' ||
+    (segments.length === 1 && segments[0] === 'application-form');
 
   const isProjectPage =
     segments[0] === 'prosjekter' ||
@@ -29,7 +26,11 @@ function renderSharedNav() {
       current: path === 'oss.html' || (segments.length === 1 && segments[0] === 'oss'),
     },
     { href: '/prosjekter', label: 'Prosjekter', current: isProjectPage },
-    { href: '/innsikt', label: 'Innsikt', current: isInsightsPage },
+    {
+      href: '/application-form',
+      label: 'Kontaktform',
+      current: isApplicationFormPage,
+    },
   ];
 
   const linksMarkup = items
@@ -44,7 +45,6 @@ function renderSharedNav() {
     projects: '/prosjekter',
     categories: '/category/design/norge',
     insights: '/innsikt',
-    gallery: '/gallery',
     'designstudio-oslo': '/designstudio-oslo',
     about: '/oss',
     application: '/application-form',

@@ -5,16 +5,16 @@
 >
   <div class="section-inner">
     <div class="section-head">
-      <p class="section-kicker">Konsultasjon forespørsel</p>
-      <h2 class="section-title">Designkonsultasjon</h2>
+      <p class="section-kicker">Design samtale forespørsel</p>
+      <h2 class="section-title">Design samtale</h2>
       <p class="section-lead">
-        Produktutvikling inkluderer ulike faser og scenarier og hver designprosjekt trenger
-        individuell tilnærming. Hvordan vi fodeler fasene kan du
+        Det koster ingenting å starte dialogen med oss. Vi er åpne og direkte og vil være ærlige
+        hvis vi ikke kan hjelpe deg. Produktutvikling inkluderer ulike faser og hver designprosjekt
+        trenger individuell tilnærming. Hvordan vi fodeler fasene kan du
         <a class="internal-text-link" href="https://formaa.no/innsikt-hva-er-industridesign.html"
           >se her</a
         >
-        og velge hva som passer for deg akkurat nå. Dra punktene langs linjen for å vekte
-        prioriteringene
+        .
       </p>
     </div>
 
@@ -22,9 +22,12 @@
     <form class="inquiry-form" method="post" data-inquiry-form>
       <!-- NOTE: Static form title shown at top-left on all breakpoints. -->
       <p class="inquiry-form__title">Mitt prosjekt</p>
+      <p class="inquiry-form__hint">
+        Dra punktene langs linjen for å vekte prioriteringene (kun for orientering)
+      </p>
       <!-- NOTE: Web3Forms public access key used by the static form submission endpoint. -->
       <input type="hidden" name="access_key" value="c21cafeb-72cf-4e8b-b66c-69384a07c888" />
-      <input type="hidden" name="subject" value="Ny designkonsultasjon foresporsel" />
+      <input type="hidden" name="subject" value="Ny design samtale foresporsel" />
       <input type="hidden" name="from_name" value="Formaa nettside" />
       <input type="hidden" name="botcheck" value="" />
       <!-- NOTE: Default timeframe for Web3Forms; visible select removed for simpler UX (timeline label stays "2 mnd prosjekt"). -->
@@ -130,9 +133,8 @@
         <!-- NOTE: Submission feedback area populated by JS after Web3Forms validation/send. -->
         <p class="inquiry-note" data-inquiry-status aria-live="polite"></p>
         <p class="inquiry-note">
-          *Forespørselen er uforpliktende og er kun for orientering. Vi vil ta kontakt med deg
-          snarest for å finne ut hvordan vi best kan hjelpe deg og ditt prosjekt, for å gi deg et
-          konkret tilbud.
+          *Forespørselen er uforpliktende. Vi vil svare deg snarest for å finne ut hvordan vi best
+          kan hjelpe deg og ditt prosjekt, og å gi deg et konkret tilbud.
         </p>
       </div>
     </form>
