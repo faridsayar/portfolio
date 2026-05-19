@@ -1315,6 +1315,36 @@ section[aria-label='Oss'] .section-inner {
   opacity: 1;
 }
 
+/* NOTE: Three-column competence lists on Om oss (education, production, technical depth). */
+.about-competence-grid {
+  display: grid;
+  gap: 1.5rem 2rem;
+  margin-top: 1.25rem;
+}
+
+.about-competence-grid--three {
+  grid-template-columns: 1fr;
+}
+
+.about-competence-block__title {
+  margin: 0 0 0.65rem;
+  font-size: var(--font-size-body-md);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+.about-competence-list {
+  margin: 0;
+  padding-left: 1.15rem;
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-loose);
+}
+
+.about-competence-list li + li {
+  margin-top: 0.45rem;
+}
+
 /* Tips/news page article cards */
 .articles-grid {
   display: grid;
@@ -2798,6 +2828,18 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
   line-height: 1.5;
   color: var(--color-white);
   opacity: 0.86;
+}
+
+@media (min-width: 720px) {
+  .about-competence-grid--three {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .about-competence-grid--three {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 1024px) {

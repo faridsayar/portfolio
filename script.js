@@ -552,6 +552,7 @@ class SinglePagePortfolio {
       // NOTE: Lunar watch clip is inserted right after proton-gif2 in the hero shuffle order.
       { src: 'assets/images/shuffle-images/lunar-watch.mp4', key: 'lunar-watch' },
       { src: 'assets/images/shuffle-images/obseed.mp4', key: 'obseed' },
+      { src: 'assets/images/shuffle-images/obseed-head.mp4', key: 'obseed-head' },
       { src: 'assets/images/shuffle-images/3d-printer-working.mp4', key: '3d-printer-working' },
       { src: 'assets/images/shuffle-images/test-animation.mp4', key: 'test-animation' },
       // NOTE: me-drawing is intentionally last in the hero shuffle sequence.
@@ -562,7 +563,7 @@ class SinglePagePortfolio {
     let shuffleTimer = null;
     let isShuffling = false;
     // NOTE: Clips in this set advance after the file’s real duration (see loadedmetadata reschedule).
-    const useIntrinsicDurationKeys = new Set(['obseed']);
+    const useIntrinsicDurationKeys = new Set(['obseed', 'obseed-head']);
 
     const clipDurationByKey = {
       'me-drawing': 1800,
@@ -672,12 +673,13 @@ class SinglePagePortfolio {
           // NOTE: Lunar watch clip is inserted right after proton-gif2 for category hero shuffle.
           { src: '../../assets/images/shuffle-images/lunar-watch.mp4', key: 'lunar-watch' },
           { src: '../../assets/images/shuffle-images/obseed.mp4', key: 'obseed' },
+          { src: '../../assets/images/shuffle-images/obseed-head.mp4', key: 'obseed-head' },
         ];
 
     let currentClipIndex = 0;
     let shuffleTimer = null;
     let isShuffling = false;
-    const useIntrinsicDurationKeys = new Set(['obseed']);
+    const useIntrinsicDurationKeys = new Set(['obseed', 'obseed-head']);
 
     const setClip = (index) => {
       const nextClip = clipSources[index];
