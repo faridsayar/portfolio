@@ -334,7 +334,7 @@ class SinglePagePortfolio {
     return this.getIdeasStripLocationSlugs().includes(last) ? last : null;
   }
 
-  // NOTE: Spread videos evenly among images (one video per region on category pages; all videos on homepage).
+  // NOTE: Spread videos evenly among images across the full-bleed ideas strip.
   interleaveIdeasStripMedia(videos, images) {
     if (!videos.length) return [...images];
     if (!images.length) return [...videos];
@@ -451,18 +451,8 @@ class SinglePagePortfolio {
     const allVideos = normalizedItems.filter((item) => item.type === 'video');
     const images = normalizedItems.filter((item) => item.type === 'image');
 
-    const isCategoryPage = window.location.pathname.includes('/category/');
-    const pageLocation = this.getIdeasStripLocationSlugFromPath();
-    let videosForStrip = allVideos;
-
-    if (isCategoryPage && pageLocation) {
-      const locationVideo = allVideos.find((item) => item.location === pageLocation);
-      videosForStrip = locationVideo
-        ? [locationVideo]
-        : allVideos.filter((item) => item.location).slice(0, 1);
-    }
-
-    this.ideasStripMediaCatalog = this.interleaveIdeasStripMedia(videosForStrip, images);
+    // NOTE: Use the full video + image catalog on every page so the strip matches the homepage count.
+    this.ideasStripMediaCatalog = this.interleaveIdeasStripMedia(allVideos, images);
     return this.ideasStripMediaCatalog;
   }
 
@@ -490,6 +480,7 @@ class SinglePagePortfolio {
   async initializeGridIdeasViews() {
     const mediaItems = await this.loadIdeasStripMediaCatalog();
     await this.mountCategoryHeroProcessFlowComponent();
+    await this.mountCategoryProjectsLink();
     await this.mountCategoryPreFormSections();
     this.setupIdeasStrip(mediaItems);
   }
@@ -565,7 +556,7 @@ class SinglePagePortfolio {
 
   async loadCategoryFeatureBannerMarkup() {
     if (this.categoryFeatureBannerMarkupPromise) return this.categoryFeatureBannerMarkupPromise;
-    const fallbackMarkup = `<section class="section section--white section--features category-feature-banner-section" aria-label="Fordeler"><div class="section-inner"><div class="feature-banner" aria-label="Fordeler"></div></div></section>`;
+    const fallbackMarkup = `<section class="section section--white section--features category-feature-banner-section" aria-label="Fordeler"><div class="section-inner"><div class="feature-banner" aria-label="Fordeler"></div><div class="ideas-strip" aria-label="Ideer og skisser"><div class="ideas-strip__grid" data-ideas-strip></div></div></div></section>`;
     this.categoryFeatureBannerMarkupPromise = (async () => {
       try {
         let response = await fetch('/components/category-feature-banner.html', {
@@ -588,6 +579,54 @@ class SinglePagePortfolio {
     return this.categoryFeatureBannerMarkupPromise;
   }
 
+  async loadCategoryProjectsLinkMarkup() {
+    if (this.categoryProjectsLinkMarkupPromise) return this.categoryProjectsLinkMarkupPromise;
+    const fallbackMarkup = `<nav class="category-inline-links" aria-label="Nyttige lenker"><p class="category-inline-links__item"><a class="category-projects-link" href="/prosjekter">Se våre prosjekter<img class="category-projects-link__arrow" src="/assets/small-arrow-right.svg" alt="" width="12" height="12" aria-hidden="true" /></a></p><p class="category-inline-links__item"><a class="category-projects-link" href="/oss">Bli kjent med oss<img class="category-projects-link__arrow" src="/assets/small-arrow-right.svg" alt="" width="12" height="12" aria-hidden="true" /></a></p><p class="category-inline-links__item"><a class="category-projects-link" href="/application-form">Spørr oss<img class="category-projects-link__arrow" src="/assets/small-arrow-right.svg" alt="" width="12" height="12" aria-hidden="true" /></a></p><p class="category-inline-links__item"><a class="category-projects-link" href="/prisestimat">Prisoversikt<img class="category-projects-link__arrow" src="/assets/small-arrow-right.svg" alt="" width="12" height="12" aria-hidden="true" /></a></p></nav>`;
+    this.categoryProjectsLinkMarkupPromise = (async () => {
+      try {
+        let response = await fetch('/components/category-projects-link.html', {
+          cache: 'no-store',
+        });
+        if (!response.ok) {
+          response = await fetch('../../components/category-projects-link.html', {
+            cache: 'no-store',
+          });
+        }
+        if (!response.ok) {
+          response = await fetch('components/category-projects-link.html', { cache: 'no-store' });
+        }
+        if (!response.ok) return fallbackMarkup;
+        return await response.text();
+      } catch (_error) {
+        return fallbackMarkup;
+      }
+    })();
+    return this.categoryProjectsLinkMarkupPromise;
+  }
+
+  async mountCategoryProjectsLink() {
+    const pathname = window.location.pathname;
+    const isCategoryPage = pathname.includes('/category/');
+    const isDesignStudioPage = /designstudio-oslo/i.test(pathname);
+    if (!isCategoryPage && !isDesignStudioPage) return;
+
+    const introSection = isDesignStudioPage
+      ? document.querySelector('section[aria-label="Designstudio i Oslo"] .section-inner')
+      : document.querySelector('section[aria-label="Formaa"] .section-inner');
+    if (!introSection || introSection.querySelector('.category-inline-links')) return;
+
+    const afterGridLeads = introSection.querySelectorAll('.section-lead--after-grid');
+    const anchor =
+      afterGridLeads.length > 0
+        ? afterGridLeads[afterGridLeads.length - 1]
+        : introSection.querySelector('.section-lead:last-of-type') ||
+          introSection.querySelector('.section-title');
+    if (!anchor) return;
+
+    const markup = await this.loadCategoryProjectsLinkMarkup();
+    anchor.insertAdjacentHTML('afterend', markup);
+  }
+
   async mountCategoryPreFormSections() {
     const isCategoryPage = window.location.pathname.includes('/category/');
     if (!isCategoryPage) return;
@@ -597,12 +636,8 @@ class SinglePagePortfolio {
       return;
     }
 
-    const [featureMarkup, ideasMarkup] = await Promise.all([
-      this.loadCategoryFeatureBannerMarkup(),
-      this.loadIdeasStripMarkup(),
-    ]);
+    const featureMarkup = await this.loadCategoryFeatureBannerMarkup();
 
-    applicationFormSection.insertAdjacentHTML('beforebegin', ideasMarkup);
     applicationFormSection.insertAdjacentHTML('beforebegin', featureMarkup);
     applicationFormSection.dataset.preFormBlocksMounted = 'true';
   }

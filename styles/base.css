@@ -630,13 +630,55 @@ section[aria-label='Designstudio i Oslo'] .section-banner-image {
   margin-top: 0.4rem;
 }
 
-/* NOTE: Feature banner + ideas strip stack flush before application form on category pages. */
+/* NOTE: Category page inline CTAs after intro copy column. */
+.category-inline-links {
+  margin: 0 0 2rem 0;
+  max-width: 48rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.category-inline-links__item {
+  margin: 0;
+}
+
+.category-projects-link,
+.category-projects-link:visited {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 1.4rem;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: -0.02em;
+  line-height: var(--line-height-title);
+  color: var(--color-dark);
+  text-decoration: none;
+}
+
+.category-projects-link:hover,
+.category-projects-link:focus {
+  color: var(--color-primary);
+}
+
+.category-projects-link:active {
+  color: var(--color-secondary);
+}
+
+.category-projects-link__arrow {
+  flex: 0 0 auto;
+  width: 0.65em;
+  height: 0.65em;
+  opacity: 0.4;
+}
+
+/* NOTE: Category pre-form block: feature band + ideas strip in one section, flush like homepage. */
 .category-feature-banner-section {
   margin-top: 0;
   margin-bottom: 0;
 }
 
-.category-feature-banner-section .section-inner {
+.category-feature-banner-section.section--features .section-inner {
   padding-top: 0;
   padding-bottom: 0;
 }
@@ -645,34 +687,9 @@ section[aria-label='Designstudio i Oslo'] .section-banner-image {
   margin-bottom: 0;
 }
 
-.category-feature-banner-section + .category-ideas-strip-section {
-  margin-top: 0;
-}
-
-.category-feature-banner-section + .category-ideas-strip-section .section-inner {
-  padding-top: 0;
-}
-
-.category-feature-banner-section + .category-ideas-strip-section .ideas-strip {
+.category-feature-banner-section .ideas-strip {
   margin-top: 0;
   margin-bottom: 0;
-}
-
-/* NOTE: Ideas strip without a preceding feature banner keeps prior spacing. */
-.category-ideas-strip-section {
-  margin-top: 2rem;
-}
-
-/* NOTE: Enforce top spacing for injected strip on category pages (also covers fallback markup). */
-section[aria-label='Formaa'] .ideas-strip {
-  margin-top: 2rem;
-}
-
-section[aria-label='Formaa']
-  .category-feature-banner-section
-  + .category-ideas-strip-section
-  .ideas-strip {
-  margin-top: 0;
 }
 
 /* Section header helpers */
