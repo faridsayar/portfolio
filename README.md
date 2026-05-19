@@ -61,13 +61,14 @@ Search engines use root indexing files:
 
 Whenever public pages are added/removed/renamed:
 
-1. Update (or regenerate) `sitemap.xml`.
-2. Verify old URLs were removed (avoid stale `404` entries; `/gallery` must not be listed).
-3. Verify all new canonical routes are included once.
-4. Run `pnpm generate:innsikt-indexes` and `pnpm generate:prosjekter-indexes` so folder routes match sitemap paths on GitHub Pages.
-5. Ensure renamed category URLs are fully replaced in links (for example `produksjon` -> `teknisk-tegning`).
-6. Deploy to production.
-7. Re-submit `https://formaa.no/sitemap.xml` in Google Search Console.
+1. Regenerate `sitemap.xml` with `pnpm generate:sitemap` (or edit manually).
+2. Run `pnpm sync:meta-descriptions` so `meta description` / OG / Twitter text match each page’s `section-lead` (or hero / article JSON).
+3. Verify old URLs were removed (avoid stale `404` entries; `/gallery` must not be listed).
+4. Verify all new canonical routes are included once.
+5. Run `pnpm generate:innsikt-indexes` and `pnpm generate:prosjekter-indexes` so folder routes match sitemap paths on GitHub Pages.
+6. Ensure renamed category URLs are fully replaced in links (for example `produksjon` -> `teknisk-tegning`).
+7. Deploy to production.
+8. Re-submit `https://formaa.no/sitemap.xml` in Google Search Console.
 
 ### SEO / Indexing Maintenance Checklist
 
