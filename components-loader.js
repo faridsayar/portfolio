@@ -50,7 +50,6 @@
         <a class="site-footer__link" href="/advanced-project.html" data-footer-link="projects">Prosjekter</a>
         <a class="site-footer__link" href="/category/design/norge.html" data-footer-link="categories">Kategorier</a>
         <a class="site-footer__link" href="/innsikt.html" data-footer-link="insights">Innsikt</a>
-        <a class="site-footer__link" href="/gallery.html" data-footer-link="gallery">Galleri</a>
         <a class="site-footer__link" href="/designstudio-oslo.html" data-footer-link="designstudio-oslo">Designstudio Oslo</a>
         <a class="site-footer__link" href="/oss.html" data-footer-link="about">Oss</a>
         <a class="site-footer__link" href="/application-form.html" data-footer-link="application">Kontaktform</a>
@@ -81,12 +80,13 @@
       <p class="section-kicker">Konsultasjon forespørsel</p>
       <h2 class="section-title">Designkonsultasjon</h2>
       <p class="section-lead">
-        Dra punktene langs linjen for å vekte prioriteringene (Dette er en grov oversikt og ikke
-        forpliktende)
+        Produktutvikling inkluderer ulike faser og scenarier og hver designprosjekt trenger
+        individuell tilnærming.
       </p>
     </div>
     <form class="inquiry-form" method="post" data-inquiry-form>
       <p class="inquiry-form__title">Mitt prosjekt</p>
+      <p class="inquiry-form__hint">Dra punktene langs linjen for å vekte prioriteringene</p>
       <input type="hidden" name="access_key" value="c21cafeb-72cf-4e8b-b66c-69384a07c888" />
       <input type="hidden" name="subject" value="Ny designkonsultasjon foresporsel" />
       <input type="hidden" name="from_name" value="Formaa nettside" />
@@ -283,6 +283,18 @@
     </div>
   </div>
 </section>`,
+    'hero-process-flow': `<!-- NOTE: One-line process summary (Concept → CAD → Prototype → Production). -->
+<div class="hero-process-flow" aria-label="Fra konsept til produksjon">
+  <p class="hero-process-flow__text">
+    <span class="hero-process-flow__step">Concept</span>
+    <img class="hero-process-flow__arrow hero-process-flow__arrow--lead" src="/assets/small-arrow-right.svg" alt="" width="12" height="12" aria-hidden="true" />
+    <span class="hero-process-flow__step">CAD</span>
+    <img class="hero-process-flow__arrow" src="/assets/small-arrow-right.svg" alt="" width="10" height="10" aria-hidden="true" />
+    <span class="hero-process-flow__step">Prototype</span>
+    <img class="hero-process-flow__arrow" src="/assets/small-arrow-right.svg" alt="" width="10" height="10" aria-hidden="true" />
+    <span class="hero-process-flow__step">Production</span>
+  </p>
+</div>`,
     'like-share-strip': `<!-- NOTE: Reusable like/share strip used below project and article hero media. -->
 <div class="like-share-strip" data-like-share-strip>
   <div class="like-share-strip__cluster">

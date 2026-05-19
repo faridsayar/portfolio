@@ -1,0 +1,10 @@
+<!-- NOTE: Small right chevron for inline process flow labels (homepage hero strip). -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+  <path
+    d="M4.25 2.5 8.75 6 4.25 9.5"
+    stroke="#c4c4c4"
+    stroke-width="1.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>

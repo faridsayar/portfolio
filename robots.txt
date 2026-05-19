@@ -3,5 +3,6 @@ User-agent: *
 Allow: /
 Allow: /llms.txt
 Disallow: /article-template
+Disallow: /gallery
 
 Sitemap: https://formaa.no/sitemap.xml

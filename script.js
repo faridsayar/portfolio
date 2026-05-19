@@ -422,9 +422,54 @@ class SinglePagePortfolio {
 
   async initializeGridIdeasViews() {
     const mediaItems = await this.loadGridMediaCatalog();
+    await this.mountCategoryHeroProcessFlowComponent();
     await this.mountCategoryIdeasStripComponent();
     this.setupIdeasStrip(mediaItems);
-    this.setupGalleryPage(mediaItems);
+  }
+
+  async loadHeroProcessFlowMarkup() {
+    if (this.heroProcessFlowMarkupPromise) return this.heroProcessFlowMarkupPromise;
+    const fallbackMarkup = `<div class="hero-process-flow" aria-label="Fra konsept til produksjon">
+  <p class="hero-process-flow__text">
+    <span class="hero-process-flow__step">Concept</span>
+    <img class="hero-process-flow__arrow hero-process-flow__arrow--lead" src="../../assets/small-arrow-right.svg" alt="" width="12" height="12" aria-hidden="true" />
+    <span class="hero-process-flow__step">CAD</span>
+    <img class="hero-process-flow__arrow" src="../../assets/small-arrow-right.svg" alt="" width="10" height="10" aria-hidden="true" />
+    <span class="hero-process-flow__step">Prototype</span>
+    <img class="hero-process-flow__arrow" src="../../assets/small-arrow-right.svg" alt="" width="10" height="10" aria-hidden="true" />
+    <span class="hero-process-flow__step">Production</span>
+  </p>
+</div>`;
+    this.heroProcessFlowMarkupPromise = (async () => {
+      try {
+        let response = await fetch('/components/hero-process-flow.html', { cache: 'no-store' });
+        if (!response.ok) {
+          response = await fetch('../../components/hero-process-flow.html', { cache: 'no-store' });
+        }
+        if (!response.ok) {
+          response = await fetch('components/hero-process-flow.html', { cache: 'no-store' });
+        }
+        if (!response.ok) return fallbackMarkup;
+        return await response.text();
+      } catch (_error) {
+        return fallbackMarkup;
+      }
+    })();
+    return this.heroProcessFlowMarkupPromise;
+  }
+
+  async mountCategoryHeroProcessFlowComponent() {
+    const pathname = window.location.pathname;
+    const isCategoryPage = pathname.includes('/category/');
+    const isDesignStudioPage = /designstudio-oslo/i.test(pathname);
+    const isApplicationFormPage = /application-form/i.test(pathname);
+    if (!isCategoryPage && !isDesignStudioPage && !isApplicationFormPage) return;
+    const heroMedia = document.querySelector('.category-hero-media');
+    if (!heroMedia) return;
+    if (heroMedia.nextElementSibling?.classList?.contains('hero-process-flow')) return;
+
+    const markup = await this.loadHeroProcessFlowMarkup();
+    heroMedia.insertAdjacentHTML('afterend', markup);
   }
 
   async loadIdeasStripMarkup() {
@@ -432,9 +477,7 @@ class SinglePagePortfolio {
     const fallbackMarkup = `<section class="section section--white category-ideas-strip-section" aria-label="Ideer og skisser">
   <div class="section-inner">
     <div class="ideas-strip" aria-label="Ideer og skisser">
-      <a class="ideas-strip__link" href="/gallery.html" aria-label="Se hele idegalleriet">
-        <div class="ideas-strip__grid" data-ideas-strip></div>
-      </a>
+      <div class="ideas-strip__grid" data-ideas-strip></div>
     </div>
   </div>
 </section>`;
@@ -482,83 +525,6 @@ class SinglePagePortfolio {
     strip.appendChild(fragment);
   }
 
-  setupGalleryPage(mediaItems) {
-    const page = document.querySelector('[data-gallery-page]');
-    const grid = document.querySelector('[data-gallery-grid]');
-    if (!page || !grid) return;
-    if (!Array.isArray(mediaItems) || mediaItems.length === 0) return;
-
-    const lightbox = document.querySelector('[data-gallery-lightbox]');
-    const lightboxMedia = document.querySelector('[data-gallery-lightbox-media]');
-    const closeBtn = document.querySelector('[data-gallery-close]');
-    const prevBtn = document.querySelector('[data-gallery-prev]');
-    const nextBtn = document.querySelector('[data-gallery-next]');
-    if (!lightbox || !lightboxMedia || !closeBtn || !prevBtn || !nextBtn) return;
-
-    let activeIndex = 0;
-
-    const renderLightboxMedia = () => {
-      const item = mediaItems[activeIndex];
-      if (!item) return;
-      lightboxMedia.innerHTML = '';
-      lightboxMedia.appendChild(this.createGridMediaElement(item, 'gallery-lightbox__asset'));
-    };
-
-    const openLightbox = (index) => {
-      activeIndex = index;
-      renderLightboxMedia();
-      lightbox.hidden = false;
-      lightbox.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-    };
-
-    const closeLightbox = () => {
-      lightbox.hidden = true;
-      lightbox.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-      lightboxMedia.innerHTML = '';
-    };
-
-    const showPrev = () => {
-      activeIndex = (activeIndex - 1 + mediaItems.length) % mediaItems.length;
-      renderLightboxMedia();
-    };
-
-    const showNext = () => {
-      activeIndex = (activeIndex + 1) % mediaItems.length;
-      renderLightboxMedia();
-    };
-
-    const fragment = document.createDocumentFragment();
-    mediaItems.forEach((item, index) => {
-      const trigger = document.createElement('button');
-      trigger.type = 'button';
-      trigger.className = 'gallery-grid__item';
-      trigger.setAttribute('aria-label', `Åpne media ${index + 1}`);
-      trigger.appendChild(this.createGridMediaElement(item, 'gallery-grid__media'));
-      trigger.addEventListener('click', () => openLightbox(index));
-      fragment.appendChild(trigger);
-    });
-
-    grid.innerHTML = '';
-    grid.appendChild(fragment);
-
-    closeBtn.addEventListener('click', closeLightbox);
-    prevBtn.addEventListener('click', showPrev);
-    nextBtn.addEventListener('click', showNext);
-
-    lightbox.addEventListener('click', (event) => {
-      if (event.target === lightbox) closeLightbox();
-    });
-
-    document.addEventListener('keydown', (event) => {
-      if (lightbox.hidden) return;
-      if (event.key === 'Escape') closeLightbox();
-      if (event.key === 'ArrowLeft') showPrev();
-      if (event.key === 'ArrowRight') showNext();
-    });
-  }
-
   // NOTE: Skip multi-clip hero shuffle when Data Saver is on (Network Information API) or user prefers reduced motion; otherwise shuffle on every viewport size.
   shouldSkipHeavyVideoShuffle() {
     const saveDataOn = typeof navigator !== 'undefined' && navigator.connection?.saveData === true;
@@ -585,6 +551,7 @@ class SinglePagePortfolio {
       { src: 'assets/images/shuffle-images/proton-gif2.mov', key: 'proton-gif2' },
       // NOTE: Lunar watch clip is inserted right after proton-gif2 in the hero shuffle order.
       { src: 'assets/images/shuffle-images/lunar-watch.mp4', key: 'lunar-watch' },
+      { src: 'assets/images/shuffle-images/obseed.mp4', key: 'obseed' },
       { src: 'assets/images/shuffle-images/3d-printer-working.mp4', key: '3d-printer-working' },
       { src: 'assets/images/shuffle-images/test-animation.mp4', key: 'test-animation' },
       // NOTE: me-drawing is intentionally last in the hero shuffle sequence.
@@ -594,7 +561,8 @@ class SinglePagePortfolio {
     let currentClipIndex = 0;
     let shuffleTimer = null;
     let isShuffling = false;
-    const useIntrinsicDurationKeys = new Set();
+    // NOTE: Clips in this set advance after the file’s real duration (see loadedmetadata reschedule).
+    const useIntrinsicDurationKeys = new Set(['obseed']);
 
     const clipDurationByKey = {
       'me-drawing': 1800,
@@ -703,11 +671,13 @@ class SinglePagePortfolio {
           { src: '../../assets/images/shuffle-images/proton-gif2.mov', key: 'proton-gif2' },
           // NOTE: Lunar watch clip is inserted right after proton-gif2 for category hero shuffle.
           { src: '../../assets/images/shuffle-images/lunar-watch.mp4', key: 'lunar-watch' },
+          { src: '../../assets/images/shuffle-images/obseed.mp4', key: 'obseed' },
         ];
 
     let currentClipIndex = 0;
     let shuffleTimer = null;
     let isShuffling = false;
+    const useIntrinsicDurationKeys = new Set(['obseed']);
 
     const setClip = (index) => {
       const nextClip = clipSources[index];
@@ -724,17 +694,24 @@ class SinglePagePortfolio {
       shuffleTimer = null;
     };
 
+    const getClipDurationMs = () => {
+      const clip = clipSources[currentClipIndex];
+      if (!clip) return clipSources.length > 1 ? 2000 : 10000;
+      if (useIntrinsicDurationKeys.has(clip.key)) {
+        const seconds = Number(categoryVideo.duration);
+        return Number.isFinite(seconds) && seconds > 0 ? Math.round(seconds * 1000) : 2000;
+      }
+      return clipSources.length > 1 ? 2000 : 10000;
+    };
+
     const scheduleNextClip = () => {
       clearShuffleTimer();
       if (!isShuffling) return;
-      shuffleTimer = window.setTimeout(
-        () => {
-          currentClipIndex = (currentClipIndex + 1) % clipSources.length;
-          setClip(currentClipIndex);
-          scheduleNextClip();
-        },
-        clipSources.length > 1 ? 2000 : 10000
-      );
+      shuffleTimer = window.setTimeout(() => {
+        currentClipIndex = (currentClipIndex + 1) % clipSources.length;
+        setClip(currentClipIndex);
+        scheduleNextClip();
+      }, getClipDurationMs());
     };
 
     const startShuffle = () => {
@@ -750,6 +727,13 @@ class SinglePagePortfolio {
 
     setClip(currentClipIndex);
     startShuffle();
+
+    categoryVideo.addEventListener('loadedmetadata', () => {
+      if (!isShuffling) return;
+      const clip = clipSources[currentClipIndex];
+      if (!clip || !useIntrinsicDurationKeys.has(clip.key)) return;
+      scheduleNextClip();
+    });
 
     document.addEventListener('visibilitychange', () => {
       if (document.hidden) {

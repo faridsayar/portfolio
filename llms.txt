@@ -7,7 +7,6 @@ description: Designstudio i Industridesign og produktdesign i Norge med fokus pa
 important_urls:
 - https://formaa.no/
 - https://formaa.no/prosjekter
-- https://formaa.no/gallery
 - https://formaa.no/designstudio-oslo
 - https://formaa.no/application-form
 - https://formaa.no/innsikt
