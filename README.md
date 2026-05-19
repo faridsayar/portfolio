@@ -45,7 +45,7 @@ Current shared components:
 - Interactive inquiry timeline with 5 weighted phases
 - Web3Forms-based inquiry submission (no local mail client popup)
 - Project grid hydrated from `assets/data/projects-manifest.js` / `.json`
-- Ideas grid strip hydrated from `assets/data/grid-media-manifest.js`
+- Ideas grid strip hydrated from `assets/data/grid-strip-media-manifest.js` (`assets/images/grid-strip/` only)
 - Article cards + shared article layout utilities
 - WebP-first image references for improved payload and paint performance
 
@@ -139,8 +139,9 @@ Structured data currently used:
 ## Ideas grid media workflow
 
 - Source folder for grid assets: `assets/images/grid`.
-- Runtime data file: `assets/data/grid-media-manifest.js` (homepage ideas strip, category ideas strip, and `script.js` fallback loader).
-- When new grid assets are added, append them to `assets/data/grid-media-manifest.js` and bump the manifest query string where it is loaded (`index.html`, category pages via `script.js`).
+- Runtime data file: `assets/data/grid-strip-media-manifest.js` (homepage ideas strip + category ideas strip via `script.js`).
+- When new strip assets are added under `assets/images/grid-strip/`, append them to `grid-strip-media-manifest.js` and bump the manifest query string on `index.html` / in `script.js`.
+- Category pages show one mp4 per region (`akershus`, `buskerud`, `norge`, `oslo`, `ostfold`); homepage shows all strip mp4s evenly interleaved with images.
 - If GIF files are added to `assets/images/grid`, convert them to MP4 before publishing and ensure the `.mp4` file is included in the manifest.
 - The standalone `/gallery` page is retired (`gallery.html` redirects to `/`; omit from `sitemap.xml`).
 

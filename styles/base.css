@@ -466,8 +466,9 @@
   margin-bottom: 0;
 }
 
-/* NOTE: Restore breathing room after the designstudio shuffle banner (application page stays flush to the form). */
+/* NOTE: Designstudio shuffle hero uses a fixed 640px frame; kontaktform keeps the shared shuffle default. */
 section[aria-label='Designstudio i Oslo'] .category-hero-media:has([data-hero-video-shuffle]) {
+  height: 640px;
   margin-bottom: 1.5rem;
 }
 
@@ -514,7 +515,7 @@ section[aria-label='Designstudio i Oslo'] .project-hero-stage__logo {
 }
 
 /* NOTE: Category pages start hero media at top; breadcrumb stays overlaid on the image. */
-section[aria-label='Kategori side'] .section-inner {
+section[aria-label='Formaa'] .section-inner {
   padding-top: 0;
 }
 
@@ -548,7 +549,7 @@ section[aria-label='Kontaktform'] {
   padding-top: 2rem;
 }
 
-section[aria-label='Kategori side'] .breadcrumb {
+section[aria-label='Formaa'] .breadcrumb {
   position: absolute;
   top: 1.25rem;
   z-index: 4;
@@ -557,20 +558,20 @@ section[aria-label='Kategori side'] .breadcrumb {
   margin: 0;
 }
 
-section[aria-label='Kategori side'] .breadcrumb .breadcrumb__link {
+section[aria-label='Formaa'] .breadcrumb .breadcrumb__link {
   color: var(--color-white);
   opacity: 0.82;
 }
 
-section[aria-label='Kategori side'] .breadcrumb .breadcrumb__link:hover {
+section[aria-label='Formaa'] .breadcrumb .breadcrumb__link:hover {
   opacity: 1;
 }
 
-section[aria-label='Kategori side'] .breadcrumb .breadcrumb__link[aria-current='page'] {
+section[aria-label='Formaa'] .breadcrumb .breadcrumb__link[aria-current='page'] {
   opacity: 0.95;
 }
 
-section[aria-label='Kategori side'] .breadcrumb .breadcrumb__sep {
+section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
   color: var(--color-white);
   opacity: 0.58;
 }
@@ -579,13 +580,63 @@ section[aria-label='Designstudio i Oslo'] .section-banner-image {
   margin-top: 0;
 }
 
+/* NOTE: Full-bleed H2O block between Tjenester and Prosess on designstudio-oslo. */
+.designstudio-full-width-media {
+  position: relative;
+  width: 100vw;
+  margin: 0 calc(50% - 50vw);
+  overflow: hidden;
+}
+
+.designstudio-full-width-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.designstudio-full-width-media__overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* NOTE: Overlay copy uses the same horizontal column as `.section-inner`; anchored to the image bottom. */
+.designstudio-full-width-media__column {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 70rem;
+  margin: 0;
+  padding: 1.5rem 1.25rem 3.25rem;
+}
+
+.designstudio-competence-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: 20rem;
+  color: rgba(255, 255, 255, 0.72);
+  font-weight: var(--font-weight-semibold);
+  font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+  line-height: 1.55;
+  letter-spacing: -0.01em;
+}
+
+.designstudio-competence-list li + li {
+  margin-top: 0.4rem;
+}
+
 /* NOTE: Keeps strip spacing consistent with other content gaps on category pages. */
 .category-ideas-strip-section {
   margin-top: 2rem;
 }
 
 /* NOTE: Enforce top spacing for injected strip on category pages (also covers fallback markup). */
-section[aria-label='Kategori side'] .ideas-strip {
+section[aria-label='Formaa'] .ideas-strip {
   margin-top: 2rem;
 }
 

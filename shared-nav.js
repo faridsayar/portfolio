@@ -28,7 +28,7 @@ function renderSharedNav() {
     { href: '/prosjekter', label: 'Prosjekter', current: isProjectPage },
     {
       href: '/application-form',
-      label: 'Kontaktform',
+      label: 'Kontakt',
       current: isApplicationFormPage,
     },
   ];
