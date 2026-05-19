@@ -77,18 +77,18 @@
 >
   <div class="section-inner">
     <div class="section-head">
-      <p class="section-kicker">Konsultasjon forespørsel</p>
-      <h2 class="section-title">Designkonsultasjon</h2>
+      <p class="section-kicker">Design samtale forespørsel</p>
+      <h2 class="section-title">Design samtale</h2>
       <p class="section-lead">
-        Produktutvikling inkluderer ulike faser og scenarier og hver designprosjekt trenger
-        individuell tilnærming.
+        Det koster ingenting å starte dialogen med oss. Vi er åpne og direkte og vil være ærlige hvis
+        vi ikke kan hjelpe deg.
       </p>
     </div>
     <form class="inquiry-form" method="post" data-inquiry-form>
       <p class="inquiry-form__title">Mitt prosjekt</p>
       <p class="inquiry-form__hint">Dra punktene langs linjen for å vekte prioriteringene</p>
       <input type="hidden" name="access_key" value="c21cafeb-72cf-4e8b-b66c-69384a07c888" />
-      <input type="hidden" name="subject" value="Ny designkonsultasjon foresporsel" />
+      <input type="hidden" name="subject" value="Ny design samtale foresporsel" />
       <input type="hidden" name="from_name" value="Formaa nettside" />
       <input type="hidden" name="botcheck" value="" />
       <!-- NOTE: Default timeframe for Web3Forms; visible select removed (matches components/application-form.html). -->

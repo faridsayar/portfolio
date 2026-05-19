@@ -2,7 +2,7 @@
 site: https://formaa.no
 name: Formaa
 language: no
-description: Designstudio i Industridesign og produktdesign i Norge med fokus pa konseptutvikling, prototyping, validering, visualisering og produksjonsklare leveranser.
+description: Designstudio for industridesign og produktdesign i Norge — fra konsept og CAD til prototype og produksjon. Kontakt via design samtale (kontaktform), prosjekter, innsikt og prisestimat.
 
 important_urls:
 - https://formaa.no/
@@ -13,6 +13,9 @@ important_urls:
 - https://formaa.no/oss
 - https://formaa.no/prisestimat
 - https://formaa.no/sitemap.xml
+
+retired_urls:
+- https://formaa.no/gallery
 
 policies:
 - content_usage: public_website_content
