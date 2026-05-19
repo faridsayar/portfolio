@@ -33,7 +33,7 @@
   </article>
   <section class="section section--white section--project-cta" aria-label="Neste steg">
     <div class="section-inner">
-      <h2 class="section-title">Trenger du produkt utviklet?</h2>
+      <h2 class="section-title">Trenger du hjelp med produktet ditt?</h2>
       <p class="section-lead">
         Send en kort forespørsel, så vurderer vi muligheter, tidslinje og neste praktiske steg.
       </p>
@@ -42,7 +42,7 @@
 </section>
 </main>
 <div data-component="site-footer"></div>`,
-    'site-footer': `<footer class="site-footer" aria-label="Bunntekst">
+    'site-footer': `<footer class="site-footer site-footer--expanded" aria-label="Bunntekst">
   <div class="site-footer__inner">
     <div class="site-footer__links" aria-label="Links">
       <p class="site-footer__links-title">Links</p>
@@ -63,7 +63,7 @@
 </footer>`,
     'project-cta': `<section class="section section--white section--project-cta" aria-label="Neste steg">
   <div class="section-inner">
-    <h2 class="section-title">Trenger du produkt utviklet?</h2>
+    <h2 class="section-title">Trenger du hjelp med produktet ditt?</h2>
     <p class="section-lead">
       Send en kort forespørsel, så vurderer vi muligheter, tidslinje og neste praktiske steg.
     </p>

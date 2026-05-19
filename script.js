@@ -122,6 +122,7 @@ class SinglePagePortfolio {
     this.projectCatalogPromise = null;
     this.ideasStripMediaCatalog = null;
     this.ideasStripMarkupPromise = null;
+    this.categoryFeatureBannerMarkupPromise = null;
     this.setupHeroVideoShuffle();
     this.setupCategoryHeroVideoShuffle();
     this.setupGlobalImageFallback();
@@ -132,6 +133,32 @@ class SinglePagePortfolio {
     this.setupProjectPageNavVerticalAlign();
     this.initializeProjectViews();
     this.initializeGridIdeasViews();
+    this.setupCategoryEnServiceTags();
+  }
+
+  // NOTE: Appends English intent landing links to the shared “Velg kategori” tag row on category pages.
+  setupCategoryEnServiceTags() {
+    if (!window.location.pathname.includes('/category/')) return;
+
+    const categoryTagsRow = document.querySelector('.service-tags[aria-label="Velg kategori"]');
+    if (!categoryTagsRow || categoryTagsRow.dataset.enServiceTagsAdded === 'true') return;
+
+    const enServiceTags = [
+      { href: '/en/product-rendering', label: '3D Product Renders' },
+      { href: '/en/cad-modeling', label: 'CAD modeling' },
+      { href: '/en/product-animation', label: 'Product animation' },
+    ];
+
+    enServiceTags.forEach(({ href, label }) => {
+      const link = document.createElement('a');
+      link.className = 'service-tag';
+      link.href = href;
+      link.textContent = label;
+      link.setAttribute('hreflang', 'en');
+      categoryTagsRow.appendChild(link);
+    });
+
+    categoryTagsRow.dataset.enServiceTagsAdded = 'true';
   }
 
   // NOTE: Per-project narrative copy for Problem / Løsning / Resultat block on project pages.
@@ -463,7 +490,7 @@ class SinglePagePortfolio {
   async initializeGridIdeasViews() {
     const mediaItems = await this.loadIdeasStripMediaCatalog();
     await this.mountCategoryHeroProcessFlowComponent();
-    await this.mountCategoryIdeasStripComponent();
+    await this.mountCategoryPreFormSections();
     this.setupIdeasStrip(mediaItems);
   }
 
@@ -536,16 +563,48 @@ class SinglePagePortfolio {
     return this.ideasStripMarkupPromise;
   }
 
-  async mountCategoryIdeasStripComponent() {
-    const isCategoryPage =
-      document.body.classList.contains('page--category') ||
-      window.location.pathname.includes('/category/');
+  async loadCategoryFeatureBannerMarkup() {
+    if (this.categoryFeatureBannerMarkupPromise) return this.categoryFeatureBannerMarkupPromise;
+    const fallbackMarkup = `<section class="section section--white section--features category-feature-banner-section" aria-label="Fordeler"><div class="section-inner"><div class="feature-banner" aria-label="Fordeler"></div></div></section>`;
+    this.categoryFeatureBannerMarkupPromise = (async () => {
+      try {
+        let response = await fetch('/components/category-feature-banner.html', {
+          cache: 'no-store',
+        });
+        if (!response.ok) {
+          response = await fetch('../../components/category-feature-banner.html', {
+            cache: 'no-store',
+          });
+        }
+        if (!response.ok) {
+          response = await fetch('components/category-feature-banner.html', { cache: 'no-store' });
+        }
+        if (!response.ok) return fallbackMarkup;
+        return await response.text();
+      } catch (_error) {
+        return fallbackMarkup;
+      }
+    })();
+    return this.categoryFeatureBannerMarkupPromise;
+  }
+
+  async mountCategoryPreFormSections() {
+    const isCategoryPage = window.location.pathname.includes('/category/');
     if (!isCategoryPage) return;
-    if (document.querySelector('[data-ideas-strip]')) return;
+
     const applicationFormSection = document.querySelector('#application-form');
-    if (!applicationFormSection) return;
-    const markup = await this.loadIdeasStripMarkup();
-    applicationFormSection.insertAdjacentHTML('beforebegin', markup);
+    if (!applicationFormSection || applicationFormSection.dataset.preFormBlocksMounted === 'true') {
+      return;
+    }
+
+    const [featureMarkup, ideasMarkup] = await Promise.all([
+      this.loadCategoryFeatureBannerMarkup(),
+      this.loadIdeasStripMarkup(),
+    ]);
+
+    applicationFormSection.insertAdjacentHTML('beforebegin', ideasMarkup);
+    applicationFormSection.insertAdjacentHTML('beforebegin', featureMarkup);
+    applicationFormSection.dataset.preFormBlocksMounted = 'true';
   }
 
   setupIdeasStrip(mediaItems) {

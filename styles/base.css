@@ -630,7 +630,35 @@ section[aria-label='Designstudio i Oslo'] .section-banner-image {
   margin-top: 0.4rem;
 }
 
-/* NOTE: Keeps strip spacing consistent with other content gaps on category pages. */
+/* NOTE: Feature banner + ideas strip stack flush before application form on category pages. */
+.category-feature-banner-section {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.category-feature-banner-section .section-inner {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.category-feature-banner-section .feature-banner {
+  margin-bottom: 0;
+}
+
+.category-feature-banner-section + .category-ideas-strip-section {
+  margin-top: 0;
+}
+
+.category-feature-banner-section + .category-ideas-strip-section .section-inner {
+  padding-top: 0;
+}
+
+.category-feature-banner-section + .category-ideas-strip-section .ideas-strip {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* NOTE: Ideas strip without a preceding feature banner keeps prior spacing. */
 .category-ideas-strip-section {
   margin-top: 2rem;
 }
@@ -638,6 +666,13 @@ section[aria-label='Designstudio i Oslo'] .section-banner-image {
 /* NOTE: Enforce top spacing for injected strip on category pages (also covers fallback markup). */
 section[aria-label='Formaa'] .ideas-strip {
   margin-top: 2rem;
+}
+
+section[aria-label='Formaa']
+  .category-feature-banner-section
+  + .category-ideas-strip-section
+  .ideas-strip {
+  margin-top: 0;
 }
 
 /* Section header helpers */
@@ -1584,6 +1619,49 @@ section[aria-label='Oss'] .section-inner {
   }
   to {
     transform: translateX(-50%);
+  }
+}
+
+/* NOTE: Homepage trust/privacy block after testimonials; four named principles on neutral panel. */
+.section--privacy-trust .section-inner {
+  padding-top: clamp(2.5rem, 6vw, 4rem);
+  padding-bottom: clamp(2.5rem, 6vw, 4rem);
+}
+
+.section--privacy-trust .section-lead {
+  max-width: 52rem;
+}
+
+.privacy-statement {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.5rem, 3vw, 2.25rem) clamp(1.75rem, 4vw, 3rem);
+  margin-top: clamp(1.75rem, 4vw, 2.5rem);
+  padding: clamp(1.5rem, 4vw, 2.25rem);
+  background: var(--surface-neutral);
+}
+
+.privacy-statement__title {
+  margin: 0 0 0.55rem 0;
+  font-size: clamp(1.05rem, 1.8vw, 1.2rem);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-dark);
+}
+
+.privacy-statement__text {
+  margin: 0;
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-loose);
+  color: var(--color-dark);
+  opacity: 0.88;
+  max-width: 42ch;
+}
+
+@media (max-width: 768px) {
+  .privacy-statement {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -2839,6 +2917,68 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
   max-width: 70rem;
   margin: 0 auto;
   padding: 1.1rem 1.25rem 1.35rem;
+}
+
+/* NOTE: Expanded footer stacks contact, navigation links, and copyright on the dark band. */
+.site-footer--expanded .site-footer__inner {
+  padding: clamp(2.25rem, 5vw, 3.25rem) 1.25rem clamp(1.35rem, 3vw, 1.75rem);
+}
+
+.site-footer__contact {
+  margin-bottom: clamp(1.75rem, 4vw, 2.5rem);
+}
+
+.site-footer__kicker {
+  margin: 0 0 0.5rem 0;
+  font-size: var(--font-size-section-kicker);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-white);
+  opacity: 0.78;
+}
+
+.site-footer__title {
+  margin: 0 0 1.25rem 0;
+  font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-white);
+}
+
+.site-footer .contact-item {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.site-footer .contact-item__label {
+  color: var(--color-white);
+  opacity: 0.72;
+}
+
+.site-footer .contact-item__value {
+  color: var(--color-white);
+}
+
+.site-footer .contact-link:hover {
+  border-color: rgba(255, 115, 0, 0.55);
+  background: rgba(255, 115, 0, 0.12);
+}
+
+.site-footer .contact-link:hover .contact-item__value {
+  color: var(--color-primary);
+}
+
+.site-footer .social-link {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--color-white);
+}
+
+.site-footer .social-link:hover {
+  border-color: rgba(255, 115, 0, 0.55);
+  color: var(--color-primary);
+  background: rgba(255, 115, 0, 0.12);
 }
 
 .site-footer__links {
