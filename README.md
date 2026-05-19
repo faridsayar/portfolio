@@ -34,6 +34,7 @@ Current shared components:
 - `article-layout.html`
 - `project-cta.html`
 - `contact-section-compact.html`
+- `privacy-trust-section.html` (personvern og konfidensialitet block)
 - `site-footer.html`
 
 `components-loader.js` supports multi-pass loading so components can contain nested `data-component` slots.

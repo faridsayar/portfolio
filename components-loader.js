@@ -232,6 +232,80 @@
     <span class="hero-process-flow__step">Production</span>
   </p>
 </div>`,
+    'privacy-trust-section': `<!-- NOTE: Shared trust/privacy block (no cookies, confidentiality, portfolio consent) — same copy as homepage. -->
+<section
+  class="section section--white section--privacy-trust"
+  aria-label="Personvern og konfidensialitet"
+>
+  <div class="section-inner">
+    <div class="section-head">
+      <p class="section-kicker">Personvern og konfidensialitet</p>
+      <h2 class="section-title">Trygghet for idéer og forretningshemmeligheter</h2>
+      <p class="section-lead">
+        Formaa er et uavhengig designstudio. Vi bygger tillit gjennom tydelige rammer — ikke
+        gjennom datainnsamling på nettsiden. Slik forholder vi oss til personvern, informasjon du
+        deler og taushetsplikt i oppdrag.
+      </p>
+    </div>
+
+    <div class="privacy-statement" aria-label="Våre personvern- og taushetsprinsipper">
+      <article class="privacy-statement__item">
+        <h3 class="privacy-statement__title">Ingen cookies eller sporing</h3>
+        <p class="privacy-statement__text">
+          Nettstedet bruker ikke informasjonskapsler (cookies), sporingsskript eller analyseverktøy
+          som følger deg på tvers av sider. Du kan lese innholdet uten sporingsbannere eller
+          samtykkevinduer.
+        </p>
+      </article>
+
+      <article class="privacy-statement__item">
+        <h3 class="privacy-statement__title">Ingen lagring eller deling av besøksdata</h3>
+        <p class="privacy-statement__text">
+          Vi samler ikke inn, lagrer ikke og selger ikke data om besøk på formaa.no, og vi deler
+          ikke slik informasjon med tredjeparter. Opplysninger du sender via kontaktskjema brukes
+          kun til å besvare henvendelsen — ikke til profilering eller markedsføring.
+        </p>
+      </article>
+
+      <article class="privacy-statement__item">
+        <h3 class="privacy-statement__title">Uavhengig designstudio</h3>
+        <p class="privacy-statement__text">
+          Vi er et selvstendig industridesign- og produktdesignstudio uten konsernstruktur som kan
+          kreve deling av prosjektinformasjon på tvers av porteføljer. Dine oppdrag og beslutninger
+          forblir hos oss og hos deg.
+        </p>
+      </article>
+
+      <article class="privacy-statement__item">
+        <h3 class="privacy-statement__title">Taushet etter norsk rett</h3>
+        <p class="privacy-statement__text">
+          Prosjektinformasjon, skisser og forretningshemmeligheter behandles med profesjonell taushet
+          og i tråd med norsk rett, herunder reglene om forretningshemmeligheter og alminnelig
+          taushetsplikt i oppdragsforhold. Skriftlig taushetsavtale kan avtales der prosjektet
+          krever det.
+        </p>
+      </article>
+
+      <article class="privacy-statement__item">
+        <h3 class="privacy-statement__title">Varemerker og Forbrukerrådets regler</h3>
+        <p class="privacy-statement__text">
+          Vi følger gjeldende regler for varemerker, opphavsrett og rettigheter, og forholder oss
+          til Forbrukerrådets retningslinjer og god forretningsskikk i markedsføring og
+          kundeforhold.
+        </p>
+      </article>
+
+      <article class="privacy-statement__item">
+        <h3 class="privacy-statement__title">Portefølje kun etter ditt samtykke</h3>
+        <p class="privacy-statement__text">
+          Vi publiserer ikke ferdig arbeid, arbeid underveis eller annen prosjektrelatert
+          informasjon — verken på nett eller i presentasjoner — med mindre du uttrykkelig
+          godkjenner hva som kan vises, og når det kan publiseres som del av porteføljen vår.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>`,
     'like-share-strip': `<!-- NOTE: Reusable like/share strip used below project and article hero media. -->
 <div class="like-share-strip" data-like-share-strip>
   <div class="like-share-strip__cluster">
