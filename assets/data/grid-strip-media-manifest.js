@@ -20,9 +20,9 @@ window.__GRID_STRIP_MEDIA_MANIFEST = {
       location: 'norge',
     },
     {
-      src: 'assets/images/grid-strip/prototyping.mp4',
+      src: 'assets/images/grid-strip/lunar-watch.mp4',
       type: 'video',
-      name: 'prototyping',
+      name: 'lunar watch',
       location: 'oslo',
     },
     {
@@ -32,14 +32,14 @@ window.__GRID_STRIP_MEDIA_MANIFEST = {
       location: 'ostfold',
     },
     {
-      src: 'assets/images/grid-strip/lunar-watch.mp4',
-      type: 'video',
-      name: 'lunar watch',
+      src: 'assets/images/grid-strip/bike.jpg',
+      type: 'image',
+      name: 'bike',
     },
     {
-      src: 'assets/images/grid-strip/mockup.webp',
+      src: 'assets/images/grid-strip/mockup-glasses.webp',
       type: 'image',
-      name: 'mockup',
+      name: 'mockup glasses',
     },
     {
       src: 'assets/images/grid-strip/obseed6.JPG',
@@ -52,14 +52,14 @@ window.__GRID_STRIP_MEDIA_MANIFEST = {
       name: 'proton 11',
     },
     {
-      src: 'assets/images/grid-strip/rafaels-logo-build.webp',
-      type: 'image',
-      name: 'rafaels logo build',
-    },
-    {
       src: 'assets/images/grid-strip/undo-10.webp',
       type: 'image',
       name: 'undo 10',
+    },
+    {
+      src: 'assets/images/grid-strip/user-testing.webp',
+      type: 'image',
+      name: 'user testing',
     },
     {
       src: 'assets/images/grid-strip/usv.webp',

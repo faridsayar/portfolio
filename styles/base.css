@@ -355,6 +355,32 @@
   font-weight: var(--font-weight-semibold);
 }
 
+/* NOTE: Section heading as inline link with small right arrow (e.g. homepage Prosjekter). */
+.section-title-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: inherit;
+  text-decoration: none;
+}
+
+.section-title-link:hover,
+.section-title-link:focus {
+  color: var(--color-primary);
+}
+
+.section-title-link:active {
+  color: var(--color-secondary);
+}
+
+.section-title-link__arrow {
+  flex: 0 0 auto;
+  width: 0.75em;
+  height: 0.75em;
+  opacity: 0.4;
+  transform: translateY(2px);
+}
+
 .section-lead {
   margin: 0 0 2rem 0;
   max-width: 48rem;
@@ -2203,11 +2229,27 @@ section[aria-label='Oss'] .section-inner {
   padding-top: 0;
 }
 
-/* NOTE: Breakout wrapper: dark band sits under section heading; padding-top adds grey strip above image row. */
+/* NOTE: Homepage portfolio values line — larger than hero h1, low-contrast display text. */
+.section--projects .section-head {
+  background: var(--color-white);
+}
+
+.section--projects .section-lead--portfolio-values {
+  max-width: none;
+  margin: 0;
+  padding: clamp(3.5rem, 10vw, 7rem) 0;
+  font-size: clamp(2.75rem, 7.5vw, 5.5rem);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: -0.03em;
+  line-height: var(--line-height-tight);
+  opacity: 0.2;
+}
+
+/* NOTE: Breakout wrapper: grey band starts at project tiles only; heading area stays on white. */
 .projects-grid-panel {
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
-  padding-top: 2rem;
+  padding-top: 0;
   padding-left: 1.25rem;
   padding-right: 1.25rem;
   padding-bottom: 2.5rem;

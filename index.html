@@ -177,7 +177,7 @@
     />
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles/base.css?v=12" />
+    <link rel="stylesheet" href="styles/base.css?v=25" />
     <link rel="stylesheet" href="styles/home.css?v=3" />
 
     <!-- NOTE: Google Analytics 4 global site tag for tracking website traffic. -->
@@ -450,11 +450,25 @@
     >
       <div class="section-inner">
         <div class="section-head">
+          <p class="section-lead section-lead--portfolio-values">
+            Vi tenker på enkelhet, bærekraft, innovasjon og unikhet.
+          </p>
           <p class="section-kicker">Portfolio</p>
-          <h2 class="section-title">Prosjekter</h2>
-          <p class="section-lead">Vi tenker på enkelhet, bærekraft, innovasjon og unikhet.</p>
+          <h2 class="section-title">
+            <a class="section-title-link" href="/prosjekter">
+              Alle Prosjekter
+              <img
+                class="section-title-link__arrow"
+                src="assets/small-arrow-right.svg"
+                alt=""
+                width="12"
+                height="12"
+                aria-hidden="true"
+              />
+            </a>
+          </h2>
         </div>
-        <!-- NOTE: Full-bleed dark band includes grey strip above grid; captions use panel text color via CSS. -->
+        <!-- NOTE: Full-bleed dark band behind project tiles only; captions use panel text color via CSS. -->
         <div class="projects-grid-panel">
           <!-- NOTE: Portfolio tiles are rendered from assets/data/projects-manifest.js to keep titles and media in sync with project data. -->
           <div class="projects-grid" aria-label="Prosjektliste" data-projects-grid></div>
@@ -733,7 +747,7 @@
     </script>
 
     <!-- NOTE: Prebuilt project manifest loaded as JS to support environments where `fetch` from local files is blocked. -->
-    <script src="assets/data/grid-strip-media-manifest.js?v=2" defer></script>
+    <script src="assets/data/grid-strip-media-manifest.js?v=3" defer></script>
     <script src="assets/data/projects-manifest.js?v=3" defer></script>
     <script src="components-loader.js?v=2" defer></script>
     <script src="shared-nav.js?v=1" defer></script>

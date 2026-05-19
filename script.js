@@ -381,9 +381,9 @@ class SinglePagePortfolio {
     }
 
     const sources = [
-      'assets/data/grid-strip-media-manifest.js?v=2',
-      '/assets/data/grid-strip-media-manifest.js?v=2',
-      '../../assets/data/grid-strip-media-manifest.js?v=2',
+      'assets/data/grid-strip-media-manifest.js?v=3',
+      '/assets/data/grid-strip-media-manifest.js?v=3',
+      '../../assets/data/grid-strip-media-manifest.js?v=3',
     ];
 
     this.ideasStripManifestLoadPromise = (async () => {
