@@ -121,7 +121,6 @@ class SinglePagePortfolio {
   constructor() {
     this.projectCatalogPromise = null;
     this.ideasStripMediaCatalog = null;
-    this.ideasStripMarkupPromise = null;
     this.categoryFeatureBannerMarkupPromise = null;
     this.setupHeroVideoShuffle();
     this.setupCategoryHeroVideoShuffle();
@@ -530,30 +529,6 @@ class SinglePagePortfolio {
     heroMedia.insertAdjacentHTML('afterend', markup);
   }
 
-  async loadIdeasStripMarkup() {
-    if (this.ideasStripMarkupPromise) return this.ideasStripMarkupPromise;
-    const fallbackMarkup = `<section class="section section--white category-ideas-strip-section" aria-label="Ideer og skisser">
-  <div class="section-inner">
-    <div class="ideas-strip" aria-label="Ideer og skisser">
-      <div class="ideas-strip__grid" data-ideas-strip></div>
-    </div>
-  </div>
-</section>`;
-    this.ideasStripMarkupPromise = (async () => {
-      try {
-        let response = await fetch('/components/ideas-strip.html', { cache: 'no-store' });
-        if (!response.ok) {
-          response = await fetch('components/ideas-strip.html', { cache: 'no-store' });
-        }
-        if (!response.ok) return fallbackMarkup;
-        return await response.text();
-      } catch (_error) {
-        return fallbackMarkup;
-      }
-    })();
-    return this.ideasStripMarkupPromise;
-  }
-
   async loadCategoryFeatureBannerMarkup() {
     if (this.categoryFeatureBannerMarkupPromise) return this.categoryFeatureBannerMarkupPromise;
     const fallbackMarkup = `<section class="section section--white section--features category-feature-banner-section" aria-label="Fordeler"><div class="section-inner"><div class="feature-banner" aria-label="Fordeler"></div><div class="ideas-strip" aria-label="Ideer og skisser"><div class="ideas-strip__grid" data-ideas-strip></div></div></div></section>`;
@@ -581,7 +556,7 @@ class SinglePagePortfolio {
 
   async loadCategoryProjectsLinkMarkup() {
     if (this.categoryProjectsLinkMarkupPromise) return this.categoryProjectsLinkMarkupPromise;
-    const fallbackMarkup = `<nav class="category-inline-links" aria-label="Nyttige lenker"><p class="category-inline-links__item"><a class="category-projects-link" href="/prosjekter">Se våre prosjekter<img class="category-projects-link__arrow" src="/assets/small-arrow-right.svg" alt="" width="12" height="12" aria-hidden="true" /></a></p><p class="category-inline-links__item"><a class="category-projects-link" href="/oss">Bli kjent med oss<img class="category-projects-link__arrow" src="/assets/small-arrow-right.svg" alt="" width="12" height="12" aria-hidden="true" /></a></p><p class="category-inline-links__item"><a class="category-projects-link" href="/application-form">Spørr oss<img class="category-projects-link__arrow" src="/assets/small-arrow-right.svg" alt="" width="12" height="12" aria-hidden="true" /></a></p><p class="category-inline-links__item"><a class="category-projects-link" href="/prisestimat">Prisoversikt<img class="category-projects-link__arrow" src="/assets/small-arrow-right.svg" alt="" width="12" height="12" aria-hidden="true" /></a></p></nav>`;
+    const fallbackMarkup = `<nav class="category-inline-links" aria-label="Nyttige lenker"><p class="category-inline-links__item"><a class="category-projects-link" href="/prosjekter">Alle prosjekter<img class="category-projects-link__arrow" src="/assets/small-arrow-right.svg" alt="" width="12" height="12" aria-hidden="true" /></a></p><p class="category-inline-links__item"><a class="category-projects-link" href="/oss">Bli kjent med oss<img class="category-projects-link__arrow" src="/assets/small-arrow-right.svg" alt="" width="12" height="12" aria-hidden="true" /></a></p><p class="category-inline-links__item"><a class="category-projects-link" href="/application-form">Kontakt oss<img class="category-projects-link__arrow" src="/assets/small-arrow-right.svg" alt="" width="12" height="12" aria-hidden="true" /></a></p><p class="category-inline-links__item"><a class="category-projects-link" href="/prisestimat">Prisoversikt<img class="category-projects-link__arrow" src="/assets/small-arrow-right.svg" alt="" width="12" height="12" aria-hidden="true" /></a></p></nav>`;
     this.categoryProjectsLinkMarkupPromise = (async () => {
       try {
         let response = await fetch('/components/category-projects-link.html', {
@@ -1592,8 +1567,20 @@ class SinglePagePortfolio {
 
   // NOTE: Stable per-project page URL used for both navigation and social sharing previews.
   getProjectSharePath(slug) {
-    // NOTE: Extensionless path keeps ?project= on local `serve` (`.html` triggers a 301 that drops the query).
-    return `/advanced-project?project=${encodeURIComponent(slug)}`;
+    const prosjekterPathBySlug = {
+      obseed: 'obseed-custom-8-string-guitar',
+      undo: 'undo-desertification',
+      h2o: 'h2o-bottle-pedometer',
+      monocopter: 'monocopter-drone',
+      proton: 'proton-headphones',
+      'eco-mate-closet': 'eco-mate-closet',
+      nomos: 'nomos-branding',
+      nordic: 'nordic-restaurant-branding',
+      rafaels: 'rafaels-ren-melk',
+    };
+    const prosjekterPath = prosjekterPathBySlug[slug];
+    if (prosjekterPath) return `/prosjekter/${prosjekterPath}`;
+    return `/prosjekter?project=${encodeURIComponent(slug)}`;
   }
 
   // NOTE: Reusable project galleries swap main image from local thumbnail rails.

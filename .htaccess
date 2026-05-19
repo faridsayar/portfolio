@@ -73,9 +73,7 @@ RewriteRule ^category/produksjon/(.*)$ /category/teknisk-tegning/$1 [R=301,L]
 RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
 RewriteRule ^(.+)\.html$ /$1 [R=301,L]
 
-# NOTE: On Apache-only hosts without prosjekter/{slug}/index.html, serve advanced-project directly.
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
+# NOTE: Always serve project template for /prosjekter URLs (even when prosjekter/{slug}/ exists for static hosts).
 RewriteRule ^prosjekter/([a-z0-9-]+)/?$ /advanced-project.html?seoSlug=$1 [L,QSA]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

@@ -33,7 +33,6 @@ Current shared components:
 - `application-form.html` (design consultation inquiry + timeline; public URL `/application-form`)
 - `article-layout.html`
 - `project-cta.html`
-- `contact-section-home.html`
 - `contact-section-compact.html`
 - `site-footer.html`
 

@@ -177,7 +177,7 @@
     />
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles/base.css?v=25" />
+    <link rel="stylesheet" href="styles/base.css?v=30" />
     <link rel="stylesheet" href="styles/home.css?v=3" />
 
     <!-- NOTE: Google Analytics 4 global site tag for tracking website traffic. -->
@@ -251,7 +251,6 @@
     <main>
       <section class="section section--white" id="start" aria-label="Dette gjør vi">
         <div class="section-inner">
-          <p class="section-kicker">Fysisk produktdesign</p>
           <h2 class="section-title">Dette gjør vi</h2>
 
           <div class="service-grid">
@@ -297,19 +296,6 @@
             </a>
           </div>
 
-          <div class="service-tags" aria-label="Flere fagområder">
-            <a class="service-tag" href="/category/industridesign/norge">Industridesign</a>
-            <a class="service-tag" href="/category/design/norge">Design</a>
-            <a class="service-tag" href="/category/branding/norge">Branding</a>
-            <a class="service-tag" href="/category/markedsundersokelse/norge"
-              >Markedsundersøkelse</a
-            >
-            <a class="service-tag" href="/category/visualisering/norge">Visualisering</a>
-            <a class="service-tag" href="/category/redesign/norge">Redesign</a>
-            <a class="service-tag" href="/category/teknisk-tegning/norge">Teknisk tegning</a>
-            <a class="service-tag" href="/category/emballasjedesign/norge">Emballasjedesign</a>
-          </div>
-
           <!-- NOTE: Inline lenker til Oslo-tjenester i avsnittet under (samme ord som i brødteksten). -->
           <p class="section-lead section-lead--after-grid">
             Designstudio som kan hjelpe deg på veien fra idé til produkt som er klart for
@@ -332,13 +318,25 @@
             og <a class="internal-text-link" href="/category/branding/oslo">branding</a> som
             tiltrekker kunder og investorer.
           </p>
+
+          <div class="service-tags" aria-label="Flere fagområder">
+            <a class="service-tag" href="/category/industridesign/norge">Industridesign</a>
+            <a class="service-tag" href="/category/design/norge">Design</a>
+            <a class="service-tag" href="/category/branding/norge">Branding</a>
+            <a class="service-tag" href="/category/markedsundersokelse/norge"
+              >Markedsundersøkelse</a
+            >
+            <a class="service-tag" href="/category/visualisering/norge">Visualisering</a>
+            <a class="service-tag" href="/category/redesign/norge">Redesign</a>
+            <a class="service-tag" href="/category/teknisk-tegning/norge">Teknisk tegning</a>
+            <a class="service-tag" href="/category/emballasjedesign/norge">Emballasjedesign</a>
+          </div>
         </div>
       </section>
 
       <section class="section section--white section--features" aria-label="Fordeler">
         <div class="section-inner">
           <div class="section-head">
-            <p class="section-kicker">Fordeler</p>
             <h2 class="section-title">Hvem vi passer for</h2>
             <!-- NOTE: «designbyrå» peker til designstudio-siden (Oslo). -->
             <p class="section-lead">
@@ -368,9 +366,7 @@
                 />
                 <span class="feature-point__text">
                   <strong>Design som faktisk kan produseres:</strong>
-                  <a
-                    class="feature-point__inline-link"
-                    href="https://formaa.no/category/produktdesign/norge"
+                  <a class="feature-point__inline-link" href="/category/produktdesign/norge"
                     >Produktutvikling</a
                   >
                   med fokus på form og funksjon, materialvalg og produksjon, transport og
@@ -388,12 +384,10 @@
                 />
                 <span class="feature-point__text">
                   <strong>Ingen unødvendig kompleksitet:</strong> Tydelige prosesser og raske
-                  <a
-                    class="feature-point__inline-link"
-                    href="https://formaa.no/category/prototyping/norge"
+                  <a class="feature-point__inline-link" href="/category/prototyping/norge"
                     >iterasjoner</a
                   >
-                  som gjøre ideer til konkrete resultater. Rask og direkte kommunikasjon.
+                  som gjør ideer til konkrete resultater. Rask og direkte kommunikasjon.
                 </span>
               </p>
               <p class="feature-point">
@@ -424,19 +418,13 @@
                     >Design basert på <span class="text-primary">ekte brukerbehov</span>:</strong
                   >
                   Grundig
-                  <a
-                    class="feature-point__inline-link"
-                    href="https://formaa.no/category/brukerundersokelse/norge"
+                  <a class="feature-point__inline-link" href="/category/brukerundersokelse/norge"
                     >research</a
                   >
                   av brukerne og brukernes mål, kontekst, bruksmåte, ergonomi og begrensninger.
                 </span>
               </p>
             </div>
-          </div>
-          <!-- NOTE: One-line full-width idea strip moved directly under the four-feature banner. -->
-          <div class="ideas-strip" aria-label="Ideer og skisser">
-            <div class="ideas-strip__grid" data-ideas-strip></div>
           </div>
         </div>
       </section>
@@ -453,10 +441,9 @@
           <p class="section-lead section-lead--portfolio-values">
             Vi tenker på enkelhet, bærekraft, innovasjon og unikhet.
           </p>
-          <p class="section-kicker">Portfolio</p>
           <h2 class="section-title">
             <a class="section-title-link" href="/prosjekter">
-              Alle Prosjekter
+              Alle prosjekter
               <img
                 class="section-title-link__arrow"
                 src="assets/small-arrow-right.svg"
@@ -476,7 +463,7 @@
         </div>
         <!-- NOTE: Static fallback links ensure core project/category navigation remains crawlable without JS. -->
         <nav class="service-tags" aria-label="Snarveier til viktige sider">
-          <a class="service-tag" href="/advanced-project">Alle prosjekter</a>
+          <a class="service-tag" href="/prosjekter">Alle prosjekter</a>
           <a class="service-tag" href="/innsikt">Innsikt</a>
           <a class="service-tag" href="/designstudio-oslo">Designstudio i Oslo</a>
           <a class="service-tag" href="/category/produktdesign/norge">Produktdesign i Norge</a>
@@ -694,6 +681,11 @@
       </div>
     </section>
 
+    <!-- NOTE: Full-width idea strip after personvern, before contact form. -->
+    <div class="ideas-strip" aria-label="Ideer og skisser">
+      <div class="ideas-strip__grid" data-ideas-strip></div>
+    </div>
+
     <div data-component="application-form"></div>
 
     <!-- NOTE: Expanded footer (contact, links, copyright) — same component as prisestimat. -->
@@ -749,7 +741,7 @@
     <!-- NOTE: Prebuilt project manifest loaded as JS to support environments where `fetch` from local files is blocked. -->
     <script src="assets/data/grid-strip-media-manifest.js?v=3" defer></script>
     <script src="assets/data/projects-manifest.js?v=3" defer></script>
-    <script src="components-loader.js?v=2" defer></script>
+    <script src="components-loader.js?v=3" defer></script>
     <script src="shared-nav.js?v=1" defer></script>
     <!-- JavaScript -->
     <script src="script.js?v=12" defer></script>
