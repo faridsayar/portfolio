@@ -37,7 +37,7 @@ window.EN_LANDING_PAGES = {
       },
     ],
     crosslinksHtml:
-      'Based in Norway — <a class="internal-text-link" href="/category/visualisering/norge.html">3D visualization services</a> for local clients. See <a class="internal-text-link" href="/advanced-project.html">product design projects</a> and our <a class="internal-text-link" href="/gallery.html">visual gallery</a>.',
+      'Based in Norway — <a class="internal-text-link" href="/category/visualisering/norge">3D visualization services</a> for local clients. See <a class="internal-text-link" href="/prosjekter">product design projects</a> and our <a class="internal-text-link" href="/">visual gallery</a>.',
     jsonLd: {
       service: {
         '@context': 'https://schema.org',
@@ -117,7 +117,7 @@ window.EN_LANDING_PAGES = {
       },
       {
         heading: 'Who this is for',
-        html: 'Founders preparing for injection molding, mechanical engineers who need industrial design support, and teams stuck between a pretty render and a part that can actually be made. If you only need marketing images, see our <a class="internal-text-link" href="/en/product-rendering.html">3D Product Renders service</a>.',
+        html: 'Founders preparing for injection molding, mechanical engineers who need industrial design support, and teams stuck between a pretty render and a part that can actually be made. If you only need marketing images, see our <a class="internal-text-link" href="/en/product-rendering">3D Product Renders service</a>.',
       },
       {
         heading: 'How it works',
@@ -125,7 +125,7 @@ window.EN_LANDING_PAGES = {
       },
     ],
     crosslinksHtml:
-      'Norway-based <a class="internal-text-link" href="/category/cad-modelering/norge.html">CAD modeling for product development</a>. Explore <a class="internal-text-link" href="/advanced-project.html">hardware projects</a> and <a class="internal-text-link" href="/gallery.html">visual work</a>.',
+      'Norway-based <a class="internal-text-link" href="/category/cad-modelering/norge">CAD modeling for product development</a>. Explore <a class="internal-text-link" href="/prosjekter">hardware projects</a> and <a class="internal-text-link" href="/">visual work</a>.',
     jsonLd: {
       service: {
         '@context': 'https://schema.org',
@@ -205,7 +205,7 @@ window.EN_LANDING_PAGES = {
       },
       {
         heading: 'Who this is for',
-        html: 'Teams launching hardware on crowdfunding, SaaS-with-hardware brands, and marketers who need a credible product clip before physical samples ship. Need stills instead? <a class="internal-text-link" href="/en/product-rendering.html">3D Product Renders service</a> is the better entry point.',
+        html: 'Teams launching hardware on crowdfunding, SaaS-with-hardware brands, and marketers who need a credible product clip before physical samples ship. Need stills instead? <a class="internal-text-link" href="/en/product-rendering">3D Product Renders service</a> is the better entry point.',
       },
       {
         heading: 'How it works',
@@ -213,7 +213,7 @@ window.EN_LANDING_PAGES = {
       },
     ],
     crosslinksHtml:
-      'Also see <a class="internal-text-link" href="/category/visualisering/norge.html">3D visualization in Norway</a>, <a class="internal-text-link" href="/advanced-project.html">design projects</a>, and <a class="internal-text-link" href="/gallery.html">gallery</a>.',
+      'Also see <a class="internal-text-link" href="/category/visualisering/norge">3D visualization in Norway</a>, <a class="internal-text-link" href="/prosjekter">design projects</a>, and <a class="internal-text-link" href="/">gallery</a>.',
     jsonLd: {
       service: {
         '@context': 'https://schema.org',

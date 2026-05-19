@@ -33,8 +33,8 @@ Current shared components:
 - `application-form.html` (design consultation inquiry + timeline; public URL `/application-form`)
 - `article-layout.html`
 - `project-cta.html`
-- `contact-section-home.html`
 - `contact-section-compact.html`
+- `privacy-trust-section.html` (personvern og konfidensialitet block)
 - `site-footer.html`
 
 `components-loader.js` supports multi-pass loading so components can contain nested `data-component` slots.
@@ -45,7 +45,7 @@ Current shared components:
 - Interactive inquiry timeline with 5 weighted phases
 - Web3Forms-based inquiry submission (no local mail client popup)
 - Project grid hydrated from `assets/data/projects-manifest.js` / `.json`
-- Ideas grid strip hydrated from `assets/data/grid-media-manifest.js`
+- Ideas grid strip hydrated from `assets/data/grid-strip-media-manifest.js` (`assets/images/grid-strip/` only)
 - Article cards + shared article layout utilities
 - WebP-first image references for improved payload and paint performance
 
@@ -61,13 +61,14 @@ Search engines use root indexing files:
 
 Whenever public pages are added/removed/renamed:
 
-1. Update (or regenerate) `sitemap.xml`.
-2. Verify old URLs were removed (avoid stale `404` entries; `/gallery` must not be listed).
-3. Verify all new canonical routes are included once.
-4. Run `pnpm generate:innsikt-indexes` and `pnpm generate:prosjekter-indexes` so folder routes match sitemap paths on GitHub Pages.
-5. Ensure renamed category URLs are fully replaced in links (for example `produksjon` -> `teknisk-tegning`).
-6. Deploy to production.
-7. Re-submit `https://formaa.no/sitemap.xml` in Google Search Console.
+1. Regenerate `sitemap.xml` with `pnpm generate:sitemap` (or edit manually).
+2. Run `pnpm sync:meta-descriptions` so `meta description` / OG / Twitter text match each page’s `section-lead` (or hero / article JSON).
+3. Verify old URLs were removed (avoid stale `404` entries; `/gallery` must not be listed).
+4. Verify all new canonical routes are included once.
+5. Run `pnpm generate:innsikt-indexes` and `pnpm generate:prosjekter-indexes` so folder routes match sitemap paths on GitHub Pages.
+6. Ensure renamed category URLs are fully replaced in links (for example `produksjon` -> `teknisk-tegning`).
+7. Deploy to production.
+8. Re-submit `https://formaa.no/sitemap.xml` in Google Search Console.
 
 ### SEO / Indexing Maintenance Checklist
 
@@ -139,8 +140,9 @@ Structured data currently used:
 ## Ideas grid media workflow
 
 - Source folder for grid assets: `assets/images/grid`.
-- Runtime data file: `assets/data/grid-media-manifest.js` (homepage ideas strip, category ideas strip, and `script.js` fallback loader).
-- When new grid assets are added, append them to `assets/data/grid-media-manifest.js` and bump the manifest query string where it is loaded (`index.html`, category pages via `script.js`).
+- Runtime data file: `assets/data/grid-strip-media-manifest.js` (homepage ideas strip + category ideas strip via `script.js`).
+- When new strip assets are added under `assets/images/grid-strip/`, append them to `grid-strip-media-manifest.js` and bump the manifest query string on `index.html` / in `script.js`.
+- Category pages show one mp4 per region (`akershus`, `buskerud`, `norge`, `oslo`, `ostfold`); homepage shows all strip mp4s evenly interleaved with images.
 - If GIF files are added to `assets/images/grid`, convert them to MP4 before publishing and ensure the `.mp4` file is included in the manifest.
 - The standalone `/gallery` page is retired (`gallery.html` redirects to `/`; omit from `sitemap.xml`).
 

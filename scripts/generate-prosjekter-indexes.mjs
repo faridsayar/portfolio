@@ -17,6 +17,16 @@ if (stubs.length === 0) {
   process.exit(1);
 }
 
+/** NOTE: Replace self-loop /prosjekter redirects with advanced-project.html?seoSlug=… */
+function applyRedirect(html, redirectTarget) {
+  return html
+    .replace(
+      /<meta\s+http-equiv="refresh"\s+content="[^"]*"\s*\/?>/i,
+      `<meta http-equiv="refresh" content="0; url=${redirectTarget}" />`
+    )
+    .replace(/window\.location\.replace\([^)]+\)/, `window.location.replace('${redirectTarget}')`);
+}
+
 const prosjekterDir = path.join(root, 'prosjekter');
 fs.mkdirSync(prosjekterDir, { recursive: true });
 
@@ -33,28 +43,16 @@ for (const stubName of stubs) {
     continue;
   }
   const seoSlug = canonicalMatch[1];
-  const projectMatch = html.match(/advanced-project\?project=([a-z0-9-]+)/i);
-  const catalogSlug = projectMatch ? projectMatch[1] : '';
+  const stubRedirect = `advanced-project.html?seoSlug=${seoSlug}`;
+  const prosjekterRedirect = `../../advanced-project.html?seoSlug=${seoSlug}`;
+
+  fs.writeFileSync(stubPath, applyRedirect(html, stubRedirect));
 
   const targetDir = path.join(prosjekterDir, seoSlug);
   fs.mkdirSync(targetDir, { recursive: true });
 
-  const redirectTarget = catalogSlug
-    ? `../../advanced-project.html?project=${catalogSlug}`
-    : '../../advanced-project.html';
-
-  const outHtml = html
-    .replace(
-      /content="0;\s*url=advanced-project\?project=[^"]+"/i,
-      `content="0; url=${redirectTarget}"`
-    )
-    .replace(
-      /window\.location\.replace\('advanced-project\?project=[^']+'\)/i,
-      `window.location.replace('${redirectTarget}')`
-    );
-
   const outPath = path.join(targetDir, 'index.html');
-  fs.writeFileSync(outPath, outHtml);
+  fs.writeFileSync(outPath, applyRedirect(html, prosjekterRedirect));
   written += 1;
   console.log(`Wrote prosjekter/${seoSlug}/index.html`);
 }

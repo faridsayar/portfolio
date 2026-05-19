@@ -12,7 +12,7 @@
           <nav class="breadcrumb about-top-graphic__breadcrumb" aria-label="Brødsmulesti">
             <a class="breadcrumb__link" href="/">Formaa</a>
             <span class="breadcrumb__sep" aria-hidden="true">/</span>
-            <a class="breadcrumb__link" href="/innsikt.html">Innsikt</a>
+            <a class="breadcrumb__link" href="/innsikt">Innsikt</a>
             <span class="breadcrumb__sep" aria-hidden="true">/</span>
             <a class="breadcrumb__link" href="#" aria-current="page" data-article-breadcrumb-current>Artikkel</a>
           </nav>
@@ -26,34 +26,34 @@
         <div data-component="like-share-strip"></div>
       </div>
       <nav class="article-nav-buttons" aria-label="Artikkelnavigasjon" data-article-nav>
-        <a class="article-nav-button" href="/innsikt-design-for-crowdfunding.html" data-article-nav-prev>Forrige artikkel</a>
-        <a class="article-nav-button" href="/innsikt-ux-er-ikke-produktdesign.html" data-article-nav-next>Neste artikkel</a>
+        <a class="article-nav-button" href="/innsikt/design-for-crowdfunding" data-article-nav-prev>Forrige artikkel</a>
+        <a class="article-nav-button" href="/innsikt/ux-er-ikke-produktdesign" data-article-nav-next>Neste artikkel</a>
       </nav>
     </div>
   </article>
   <section class="section section--white section--project-cta" aria-label="Neste steg">
     <div class="section-inner">
-      <h2 class="section-title">Trenger du produkt utviklet?</h2>
+      <h2 class="section-title">Trenger du hjelp med produktet ditt?</h2>
       <p class="section-lead">
         Send en kort forespørsel, så vurderer vi muligheter, tidslinje og neste praktiske steg.
       </p>
-    <a class="inquiry-cta" href="/application-form.html">Gå til kontaktform</a>
+    <a class="inquiry-cta" href="/application-form">Gå til kontaktform</a>
   </div>
 </section>
 </main>
 <div data-component="site-footer"></div>`,
-    'site-footer': `<footer class="site-footer" aria-label="Bunntekst">
+    'site-footer': `<footer class="site-footer site-footer--expanded" aria-label="Bunntekst">
   <div class="site-footer__inner">
     <div class="site-footer__links" aria-label="Links">
       <p class="site-footer__links-title">Links</p>
       <div class="site-footer__links-list">
-        <a class="site-footer__link" href="/advanced-project.html" data-footer-link="projects">Prosjekter</a>
-        <a class="site-footer__link" href="/category/design/norge.html" data-footer-link="categories">Kategorier</a>
-        <a class="site-footer__link" href="/innsikt.html" data-footer-link="insights">Innsikt</a>
-        <a class="site-footer__link" href="/designstudio-oslo.html" data-footer-link="designstudio-oslo">Designstudio Oslo</a>
-        <a class="site-footer__link" href="/oss.html" data-footer-link="about">Oss</a>
-        <a class="site-footer__link" href="/application-form.html" data-footer-link="application">Kontaktform</a>
-        <a class="site-footer__link" href="/prisestimat.html" data-footer-link="pricing">Prisestimat</a>
+        <a class="site-footer__link" href="/prosjekter" data-footer-link="projects">Prosjekter</a>
+        <a class="site-footer__link" href="/category/design/norge" data-footer-link="categories">Kategorier</a>
+        <a class="site-footer__link" href="/innsikt" data-footer-link="insights">Innsikt</a>
+        <a class="site-footer__link" href="/designstudio-oslo" data-footer-link="designstudio-oslo">Designstudio Oslo</a>
+        <a class="site-footer__link" href="/oss" data-footer-link="about">Oss</a>
+        <a class="site-footer__link" href="/application-form" data-footer-link="application">Kontaktform</a>
+        <a class="site-footer__link" href="/prisestimat" data-footer-link="pricing">Prisestimat</a>
       </div>
     </div>
     <p class="site-footer__text">
@@ -63,11 +63,11 @@
 </footer>`,
     'project-cta': `<section class="section section--white section--project-cta" aria-label="Neste steg">
   <div class="section-inner">
-    <h2 class="section-title">Trenger du produkt utviklet?</h2>
+    <h2 class="section-title">Trenger du hjelp med produktet ditt?</h2>
     <p class="section-lead">
       Send en kort forespørsel, så vurderer vi muligheter, tidslinje og neste praktiske steg.
     </p>
-    <a class="inquiry-cta" href="/application-form.html">Gå til kontaktform</a>
+    <a class="inquiry-cta" href="/application-form">Gå til kontaktform</a>
   </div>
 </section>`,
     'application-form': `<section
@@ -77,7 +77,6 @@
 >
   <div class="section-inner">
     <div class="section-head">
-      <p class="section-kicker">Design samtale forespørsel</p>
       <h2 class="section-title">Design samtale</h2>
       <p class="section-lead">
         Det koster ingenting å starte dialogen med oss. Vi er åpne og direkte og vil være ærlige hvis
@@ -143,7 +142,10 @@
         </div>
       </div>
       <div class="field field--full">
-        <label class="field__label" for="description">Beskrivelse – hva trenger du hjelp med</label>
+        <label class="field__label" for="description"
+          >Beskrivelse
+          <span class="field__label-hint">– hva trenger du hjelp med</span></label
+        >
         <textarea class="field__textarea" id="description" name="description" rows="6" required autocomplete="on" placeholder="F.eks. vi er et lite startup team som trenger hjelp med design og utvikling av vår geniale konsept."></textarea>
       </div>
       <div class="inquiry-footer">
@@ -156,71 +158,6 @@
         </p>
       </div>
     </form>
-  </div>
-</section>`,
-    'contact-section-home': `<section class="section section--white section--contact" aria-label="Ta kontakt">
-  <div class="section-inner">
-    <div class="section-head">
-      <p class="section-kicker">Kontakt</p>
-      <h2 class="section-title">Ta kontakt</h2>
-      <p class="section-lead">
-        Vi er åpne for prosjekter og oppdrag i alle størrelser og på tvers av bransjer, og ved større
-        behov har vi tilgang til profesjonelle i nettverket vårt. Har du en idé til en collab eller et
-        felles prosjekt, ønsker samarbeid, eller vil utvide nettverket ditt? Ta kontakt.
-      </p>
-    </div>
-
-    <div class="contact-grid" itemscope itemtype="https://schema.org/ProfessionalService">
-      <a
-        class="contact-item contact-link"
-        href="https://www.google.com/maps/search/?api=1&query=Oslo%2C+Helsfyr"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Apne kart for Oslo, Helsfyr"
-      >
-        <span class="contact-item__label">Lokasjon</span>
-        <span class="contact-item__value" itemprop="areaServed">Oslo, Helsfyr</span>
-      </a>
-      <a class="contact-item contact-link" href="tel:+4746381887" itemprop="telephone">
-        <span class="contact-item__label">Telefon</span>
-        <span class="contact-item__value">+47 46 38 18 87</span>
-      </a>
-      <a class="contact-item contact-link" href="/application-form.html" itemprop="email">
-        <span class="contact-item__label">E-post</span>
-        <span class="contact-item__value">Send e-post</span>
-      </a>
-    </div>
-
-    <div class="social-links" aria-label="Sosiale medier">
-      <a class="social-link" href="#" aria-label="Telegram">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path
-            d="M21.75 4.2a1 1 0 0 0-1.02-.14L2.8 11.44a1 1 0 0 0 .08 1.87l4.28 1.56 1.7 5.2a1 1 0 0 0 1.78.28l2.38-3.14 3.9 2.87a1 1 0 0 0 1.58-.59l3.35-14.31a1 1 0 0 0-.5-.98ZM9.32 14.12l8.56-6.27-6.88 7.83-.95 1.26-.73-2.82Z"
-          />
-        </svg>
-      </a>
-      <a class="social-link" href="#" aria-label="LinkedIn">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path
-            d="M6.94 8.5H3.56V20h3.38V8.5Zm.24-3.54A1.96 1.96 0 0 0 5.2 3a1.95 1.95 0 0 0-1.95 1.96c0 1.08.86 1.96 1.95 1.96 1.09 0 1.98-.88 1.98-1.96ZM20.44 13.3c0-3.08-1.64-4.52-3.83-4.52-1.77 0-2.56.97-3 1.65V8.5h-3.38V20h3.38v-6.4c0-.34.02-.68.13-.93.27-.68.88-1.39 1.9-1.39 1.35 0 1.9 1.03 1.9 2.55V20h3.38v-6.7Z"
-          />
-        </svg>
-      </a>
-      <a class="social-link" href="#" aria-label="Instagram">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path
-            d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 1.8A3.7 3.7 0 0 0 3.8 7.5v9a3.7 3.7 0 0 0 3.7 3.7h9a3.7 3.7 0 0 0 3.7-3.7v-9a3.7 3.7 0 0 0-3.7-3.7h-9Zm10.1 1.37a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4Z"
-          />
-        </svg>
-      </a>
-      <a class="social-link" href="https://x.com/FormaaDesignAS" target="_blank" rel="noopener noreferrer" aria-label="X">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path
-            d="M18.9 3h2.98l-6.52 7.45L23 21h-5.95l-4.66-6.1L7.05 21H4.06l6.97-7.96L1 3h6.1l4.21 5.53L18.9 3Zm-1.04 16.2h1.65L6.2 4.72H4.42L17.86 19.2Z"
-          />
-        </svg>
-      </a>
-    </div>
   </div>
 </section>`,
     'contact-section-compact': `<section class="section section--white section--contact" aria-label="Ta kontakt">
@@ -245,7 +182,7 @@
         <span class="contact-item__label">Telefon</span>
         <span class="contact-item__value">+47 46 38 18 87</span>
       </a>
-      <a class="contact-item contact-link" href="/application-form.html" itemprop="email">
+      <a class="contact-item contact-link" href="/application-form" itemprop="email">
         <span class="contact-item__label">E-post</span>
         <span class="contact-item__value">Send e-post</span>
       </a>
@@ -295,6 +232,80 @@
     <span class="hero-process-flow__step">Production</span>
   </p>
 </div>`,
+    'privacy-trust-section': `<!-- NOTE: Shared trust/privacy block (no cookies, confidentiality, portfolio consent) — same copy as homepage. -->
+<section
+  class="section section--white section--privacy-trust"
+  aria-label="Personvern og konfidensialitet"
+>
+  <div class="section-inner">
+    <div class="section-head">
+      <p class="section-kicker">Personvern og konfidensialitet</p>
+      <h2 class="section-title">Trygghet for idéer og forretningshemmeligheter</h2>
+      <p class="section-lead">
+        Formaa er et uavhengig designstudio. Vi bygger tillit gjennom tydelige rammer — ikke
+        gjennom datainnsamling på nettsiden. Slik forholder vi oss til personvern, informasjon du
+        deler og taushetsplikt i oppdrag.
+      </p>
+    </div>
+
+    <div class="privacy-statement" aria-label="Våre personvern- og taushetsprinsipper">
+      <article class="privacy-statement__item">
+        <h3 class="privacy-statement__title">Ingen cookies eller sporing</h3>
+        <p class="privacy-statement__text">
+          Nettstedet bruker ikke informasjonskapsler (cookies), sporingsskript eller analyseverktøy
+          som følger deg på tvers av sider. Du kan lese innholdet uten sporingsbannere eller
+          samtykkevinduer.
+        </p>
+      </article>
+
+      <article class="privacy-statement__item">
+        <h3 class="privacy-statement__title">Ingen lagring eller deling av besøksdata</h3>
+        <p class="privacy-statement__text">
+          Vi samler ikke inn, lagrer ikke og selger ikke data om besøk på formaa.no, og vi deler
+          ikke slik informasjon med tredjeparter. Opplysninger du sender via kontaktskjema brukes
+          kun til å besvare henvendelsen — ikke til profilering eller markedsføring.
+        </p>
+      </article>
+
+      <article class="privacy-statement__item">
+        <h3 class="privacy-statement__title">Uavhengig designstudio</h3>
+        <p class="privacy-statement__text">
+          Vi er et selvstendig industridesign- og produktdesignstudio uten konsernstruktur som kan
+          kreve deling av prosjektinformasjon på tvers av porteføljer. Dine oppdrag og beslutninger
+          forblir hos oss og hos deg.
+        </p>
+      </article>
+
+      <article class="privacy-statement__item">
+        <h3 class="privacy-statement__title">Taushet etter norsk rett</h3>
+        <p class="privacy-statement__text">
+          Prosjektinformasjon, skisser og forretningshemmeligheter behandles med profesjonell taushet
+          og i tråd med norsk rett, herunder reglene om forretningshemmeligheter og alminnelig
+          taushetsplikt i oppdragsforhold. Skriftlig taushetsavtale kan avtales der prosjektet
+          krever det.
+        </p>
+      </article>
+
+      <article class="privacy-statement__item">
+        <h3 class="privacy-statement__title">Varemerker og Forbrukerrådets regler</h3>
+        <p class="privacy-statement__text">
+          Vi følger gjeldende regler for varemerker, opphavsrett og rettigheter, og forholder oss
+          til Forbrukerrådets retningslinjer og god forretningsskikk i markedsføring og
+          kundeforhold.
+        </p>
+      </article>
+
+      <article class="privacy-statement__item">
+        <h3 class="privacy-statement__title">Portefølje kun etter ditt samtykke</h3>
+        <p class="privacy-statement__text">
+          Vi publiserer ikke ferdig arbeid, arbeid underveis eller annen prosjektrelatert
+          informasjon — verken på nett eller i presentasjoner — med mindre du uttrykkelig
+          godkjenner hva som kan vises, og når det kan publiseres som del av porteføljen vår.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>`,
     'like-share-strip': `<!-- NOTE: Reusable like/share strip used below project and article hero media. -->
 <div class="like-share-strip" data-like-share-strip>
   <div class="like-share-strip__cluster">

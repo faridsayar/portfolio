@@ -355,6 +355,32 @@
   font-weight: var(--font-weight-semibold);
 }
 
+/* NOTE: Section heading as inline link with small right arrow (e.g. homepage Prosjekter). */
+.section-title-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: inherit;
+  text-decoration: none;
+}
+
+.section-title-link:hover,
+.section-title-link:focus {
+  color: var(--color-primary);
+}
+
+.section-title-link:active {
+  color: var(--color-secondary);
+}
+
+.section-title-link__arrow {
+  flex: 0 0 auto;
+  width: 0.75em;
+  height: 0.75em;
+  opacity: 0.4;
+  transform: translateY(2px);
+}
+
 .section-lead {
   margin: 0 0 2rem 0;
   max-width: 48rem;
@@ -466,8 +492,9 @@
   margin-bottom: 0;
 }
 
-/* NOTE: Restore breathing room after the designstudio shuffle banner (application page stays flush to the form). */
+/* NOTE: Designstudio shuffle hero uses a fixed 640px frame; kontaktform keeps the shared shuffle default. */
 section[aria-label='Designstudio i Oslo'] .category-hero-media:has([data-hero-video-shuffle]) {
+  height: 640px;
   margin-bottom: 1.5rem;
 }
 
@@ -514,7 +541,7 @@ section[aria-label='Designstudio i Oslo'] .project-hero-stage__logo {
 }
 
 /* NOTE: Category pages start hero media at top; breadcrumb stays overlaid on the image. */
-section[aria-label='Kategori side'] .section-inner {
+section[aria-label='Formaa'] .section-inner {
   padding-top: 0;
 }
 
@@ -545,10 +572,18 @@ section[aria-label='Kontaktform'] {
 }
 
 #application-form > .section-inner {
-  padding-top: 2rem;
+  /* NOTE: Double the former 2rem top inset above “Design samtale” (was 4rem default section-inner). */
+  padding-top: 4rem;
+  /* NOTE: No white band between grey inquiry panel and footer. */
+  padding-bottom: 0;
 }
 
-section[aria-label='Kategori side'] .breadcrumb {
+/* NOTE: Same top inset when ideas strip sits directly above the form. */
+.ideas-strip + [data-component='application-form'] #application-form > .section-inner {
+  padding-top: 4rem;
+}
+
+section[aria-label='Formaa'] .breadcrumb {
   position: absolute;
   top: 1.25rem;
   z-index: 4;
@@ -557,20 +592,20 @@ section[aria-label='Kategori side'] .breadcrumb {
   margin: 0;
 }
 
-section[aria-label='Kategori side'] .breadcrumb .breadcrumb__link {
+section[aria-label='Formaa'] .breadcrumb .breadcrumb__link {
   color: var(--color-white);
   opacity: 0.82;
 }
 
-section[aria-label='Kategori side'] .breadcrumb .breadcrumb__link:hover {
+section[aria-label='Formaa'] .breadcrumb .breadcrumb__link:hover {
   opacity: 1;
 }
 
-section[aria-label='Kategori side'] .breadcrumb .breadcrumb__link[aria-current='page'] {
+section[aria-label='Formaa'] .breadcrumb .breadcrumb__link[aria-current='page'] {
   opacity: 0.95;
 }
 
-section[aria-label='Kategori side'] .breadcrumb .breadcrumb__sep {
+section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
   color: var(--color-white);
   opacity: 0.58;
 }
@@ -579,14 +614,116 @@ section[aria-label='Designstudio i Oslo'] .section-banner-image {
   margin-top: 0;
 }
 
-/* NOTE: Keeps strip spacing consistent with other content gaps on category pages. */
-.category-ideas-strip-section {
-  margin-top: 2rem;
+/* NOTE: Full-bleed H2O block between Tjenester and Prosess on designstudio-oslo. */
+.designstudio-full-width-media {
+  position: relative;
+  width: 100vw;
+  margin: 0 calc(50% - 50vw);
+  overflow: hidden;
 }
 
-/* NOTE: Enforce top spacing for injected strip on category pages (also covers fallback markup). */
-section[aria-label='Kategori side'] .ideas-strip {
-  margin-top: 2rem;
+.designstudio-full-width-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.designstudio-full-width-media__overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* NOTE: Overlay copy uses the same horizontal column as `.section-inner`; anchored to the image bottom. */
+.designstudio-full-width-media__column {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 70rem;
+  margin: 0;
+  padding: 1.5rem 1.25rem 3.25rem;
+}
+
+.designstudio-competence-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: 20rem;
+  color: rgba(255, 255, 255, 0.72);
+  font-weight: var(--font-weight-semibold);
+  font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+  line-height: 1.55;
+  letter-spacing: -0.01em;
+}
+
+.designstudio-competence-list li + li {
+  margin-top: 0.4rem;
+}
+
+/* NOTE: Category page inline CTAs after intro copy column. */
+.category-inline-links {
+  margin: 0 0 2rem 0;
+  max-width: 48rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.category-inline-links__item {
+  margin: 0;
+}
+
+.category-projects-link,
+.category-projects-link:visited {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 1.4rem;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: -0.02em;
+  line-height: var(--line-height-title);
+  color: var(--color-dark);
+  text-decoration: none;
+}
+
+.category-projects-link:hover,
+.category-projects-link:focus {
+  color: var(--color-primary);
+}
+
+.category-projects-link:active {
+  color: var(--color-secondary);
+}
+
+.category-projects-link__arrow {
+  flex: 0 0 auto;
+  width: 0.65em;
+  height: 0.65em;
+  opacity: 0.4;
+}
+
+/* NOTE: Category pre-form block: feature band + ideas strip in one section, flush like homepage. */
+.category-feature-banner-section {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.category-feature-banner-section.section--features .section-inner {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.category-feature-banner-section .feature-banner {
+  margin-bottom: 0;
+}
+
+.category-feature-banner-section .ideas-strip {
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 /* Section header helpers */
@@ -1536,6 +1673,49 @@ section[aria-label='Oss'] .section-inner {
   }
 }
 
+/* NOTE: Homepage trust/privacy block after testimonials; four named principles on neutral panel. */
+.section--privacy-trust .section-inner {
+  padding-top: clamp(2.5rem, 6vw, 4rem);
+  padding-bottom: clamp(2.5rem, 6vw, 4rem);
+}
+
+.section--privacy-trust .section-lead {
+  max-width: 52rem;
+}
+
+.privacy-statement {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.5rem, 3vw, 2.25rem) clamp(1.75rem, 4vw, 3rem);
+  margin-top: clamp(1.75rem, 4vw, 2.5rem);
+  padding: clamp(1.5rem, 4vw, 2.25rem);
+  background: var(--surface-neutral);
+}
+
+.privacy-statement__title {
+  margin: 0 0 0.55rem 0;
+  font-size: clamp(1.05rem, 1.8vw, 1.2rem);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-dark);
+}
+
+.privacy-statement__text {
+  margin: 0;
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-loose);
+  color: var(--color-dark);
+  opacity: 0.88;
+  max-width: 42ch;
+}
+
+@media (max-width: 768px) {
+  .privacy-statement {
+    grid-template-columns: 1fr;
+  }
+}
+
 .feature-banner {
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
@@ -1945,9 +2125,10 @@ section[aria-label='Oss'] .section-inner {
 }
 
 /* NOTE: Application form heading displayed in top-left on desktop and mobile. */
+/* NOTE: “Mitt prosjekt” label in the application form — smaller than section titles, brand accent. */
 .inquiry-form__title {
   margin: 0 0 0.35rem 0;
-  font-size: var(--font-size-section-title);
+  font-size: var(--font-size-card-title);
   line-height: var(--line-height-title);
   font-weight: var(--font-weight-semibold);
   letter-spacing: -0.01em;
@@ -1961,7 +2142,7 @@ section[aria-label='Oss'] .section-inner {
   line-height: var(--line-height-relaxed);
   font-weight: var(--font-weight-medium);
   color: var(--color-dark);
-  opacity: 0.5;
+  opacity: 0.1;
 }
 
 .inquiry-grid {
@@ -1983,6 +2164,12 @@ section[aria-label='Oss'] .section-inner {
   font-weight: var(--font-weight-semibold);
   letter-spacing: -0.01em;
   margin-bottom: 0.5rem;
+}
+
+/* NOTE: Secondary phrase on description label in application form (10% opacity). */
+.field__label-hint {
+  font-weight: var(--font-weight-medium);
+  opacity: 0.1;
 }
 
 .field__input,
@@ -2057,11 +2244,27 @@ section[aria-label='Oss'] .section-inner {
   padding-top: 0;
 }
 
-/* NOTE: Breakout wrapper: dark band sits under section heading; padding-top adds grey strip above image row. */
+/* NOTE: Homepage portfolio values line — larger than hero h1, low-contrast display text. */
+.section--projects .section-head {
+  background: var(--color-white);
+}
+
+.section--projects .section-lead--portfolio-values {
+  max-width: none;
+  margin: 0;
+  padding: clamp(3.5rem, 10vw, 7rem) 0;
+  font-size: clamp(2.75rem, 7.5vw, 5.5rem);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: -0.03em;
+  line-height: var(--line-height-tight);
+  opacity: 0.2;
+}
+
+/* NOTE: Breakout wrapper: grey band starts at project tiles only; heading area stays on white. */
 .projects-grid-panel {
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
-  padding-top: 2rem;
+  padding-top: 0;
   padding-left: 1.25rem;
   padding-right: 1.25rem;
   padding-bottom: 2.5rem;
@@ -2080,7 +2283,7 @@ section[aria-label='Oss'] .section-inner {
 .ideas-strip {
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
-  margin-bottom: 1rem;
+  margin-bottom: 0;
 }
 
 .ideas-strip__link {
@@ -2788,6 +2991,68 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
   max-width: 70rem;
   margin: 0 auto;
   padding: 1.1rem 1.25rem 1.35rem;
+}
+
+/* NOTE: Expanded footer stacks contact, navigation links, and copyright on the dark band. */
+.site-footer--expanded .site-footer__inner {
+  padding: clamp(2.25rem, 5vw, 3.25rem) 1.25rem clamp(1.35rem, 3vw, 1.75rem);
+}
+
+.site-footer__contact {
+  margin-bottom: clamp(1.75rem, 4vw, 2.5rem);
+}
+
+.site-footer__kicker {
+  margin: 0 0 0.5rem 0;
+  font-size: var(--font-size-section-kicker);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-white);
+  opacity: 0.78;
+}
+
+.site-footer__title {
+  margin: 0 0 1.25rem 0;
+  font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-white);
+}
+
+.site-footer .contact-item {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.site-footer .contact-item__label {
+  color: var(--color-white);
+  opacity: 0.72;
+}
+
+.site-footer .contact-item__value {
+  color: var(--color-white);
+}
+
+.site-footer .contact-link:hover {
+  border-color: rgba(255, 115, 0, 0.55);
+  background: rgba(255, 115, 0, 0.12);
+}
+
+.site-footer .contact-link:hover .contact-item__value {
+  color: var(--color-primary);
+}
+
+.site-footer .social-link {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--color-white);
+}
+
+.site-footer .social-link:hover {
+  border-color: rgba(255, 115, 0, 0.55);
+  color: var(--color-primary);
+  background: rgba(255, 115, 0, 0.12);
 }
 
 .site-footer__links {

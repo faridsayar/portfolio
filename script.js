@@ -120,8 +120,8 @@ function initializeLikeShareStrip(strip, options) {
 class SinglePagePortfolio {
   constructor() {
     this.projectCatalogPromise = null;
-    this.gridMediaCatalog = null;
-    this.ideasStripMarkupPromise = null;
+    this.ideasStripMediaCatalog = null;
+    this.categoryFeatureBannerMarkupPromise = null;
     this.setupHeroVideoShuffle();
     this.setupCategoryHeroVideoShuffle();
     this.setupGlobalImageFallback();
@@ -132,6 +132,32 @@ class SinglePagePortfolio {
     this.setupProjectPageNavVerticalAlign();
     this.initializeProjectViews();
     this.initializeGridIdeasViews();
+    this.setupCategoryEnServiceTags();
+  }
+
+  // NOTE: Appends English intent landing links to the shared “Velg kategori” tag row on category pages.
+  setupCategoryEnServiceTags() {
+    if (!window.location.pathname.includes('/category/')) return;
+
+    const categoryTagsRow = document.querySelector('.service-tags[aria-label="Velg kategori"]');
+    if (!categoryTagsRow || categoryTagsRow.dataset.enServiceTagsAdded === 'true') return;
+
+    const enServiceTags = [
+      { href: '/en/product-rendering', label: '3D Product Renders' },
+      { href: '/en/cad-modeling', label: 'CAD modeling' },
+      { href: '/en/product-animation', label: 'Product animation' },
+    ];
+
+    enServiceTags.forEach(({ href, label }) => {
+      const link = document.createElement('a');
+      link.className = 'service-tag';
+      link.href = href;
+      link.textContent = label;
+      link.setAttribute('hreflang', 'en');
+      categoryTagsRow.appendChild(link);
+    });
+
+    categoryTagsRow.dataset.enServiceTagsAdded = 'true';
   }
 
   // NOTE: Per-project narrative copy for Problem / Løsning / Resultat block on project pages.
@@ -296,17 +322,54 @@ class SinglePagePortfolio {
     this.setupProjectTemplateGalleries();
   }
 
-  async ensureGridManifestLoaded() {
-    if (Array.isArray(window.__GRID_MEDIA_MANIFEST?.items)) return;
-    if (this.gridManifestLoadPromise) {
-      await this.gridManifestLoadPromise;
+  // NOTE: Category location slugs map 1:1 to mp4 entries in grid-strip-media-manifest.js (equal video distribution).
+  getIdeasStripLocationSlugs() {
+    return ['akershus', 'buskerud', 'norge', 'oslo', 'ostfold'];
+  }
+
+  getIdeasStripLocationSlugFromPath() {
+    const segments = window.location.pathname.replace(/\/+$/, '').split('/').filter(Boolean);
+    const last = segments[segments.length - 1]?.toLowerCase() || '';
+    return this.getIdeasStripLocationSlugs().includes(last) ? last : null;
+  }
+
+  // NOTE: Spread videos evenly among images across the full-bleed ideas strip.
+  interleaveIdeasStripMedia(videos, images) {
+    if (!videos.length) return [...images];
+    if (!images.length) return [...videos];
+
+    const items = [];
+    let imageIndex = 0;
+    const imagesPerGap = images.length / (videos.length + 1);
+
+    for (let videoIndex = 0; videoIndex <= videos.length; videoIndex += 1) {
+      const targetImageCount =
+        videoIndex === videos.length
+          ? images.length - imageIndex
+          : Math.round(imagesPerGap * (videoIndex + 1)) - imageIndex;
+
+      for (let count = 0; count < targetImageCount && imageIndex < images.length; count += 1) {
+        items.push(images[imageIndex]);
+        imageIndex += 1;
+      }
+
+      if (videoIndex < videos.length) items.push(videos[videoIndex]);
+    }
+
+    return items;
+  }
+
+  async ensureIdeasStripManifestLoaded() {
+    if (Array.isArray(window.__GRID_STRIP_MEDIA_MANIFEST?.items)) return;
+    if (this.ideasStripManifestLoadPromise) {
+      await this.ideasStripManifestLoadPromise;
       return;
     }
 
-    const existingScript = document.querySelector('script[src*="grid-media-manifest.js"]');
+    const existingScript = document.querySelector('script[src*="grid-strip-media-manifest.js"]');
     if (existingScript) {
       await new Promise((resolve) => {
-        if (Array.isArray(window.__GRID_MEDIA_MANIFEST?.items)) {
+        if (Array.isArray(window.__GRID_STRIP_MEDIA_MANIFEST?.items)) {
           resolve();
           return;
         }
@@ -317,12 +380,12 @@ class SinglePagePortfolio {
     }
 
     const sources = [
-      'assets/data/grid-media-manifest.js?v=4',
-      '/assets/data/grid-media-manifest.js?v=4',
-      '../../assets/data/grid-media-manifest.js?v=4',
+      'assets/data/grid-strip-media-manifest.js?v=3',
+      '/assets/data/grid-strip-media-manifest.js?v=3',
+      '../../assets/data/grid-strip-media-manifest.js?v=3',
     ];
 
-    this.gridManifestLoadPromise = (async () => {
+    this.ideasStripManifestLoadPromise = (async () => {
       for (const src of sources) {
         const loaded = await new Promise((resolve) => {
           const script = document.createElement('script');
@@ -335,16 +398,16 @@ class SinglePagePortfolio {
           };
           document.head.appendChild(script);
         });
-        if (loaded && Array.isArray(window.__GRID_MEDIA_MANIFEST?.items)) return;
+        if (loaded && Array.isArray(window.__GRID_STRIP_MEDIA_MANIFEST?.items)) return;
       }
     })();
 
-    await this.gridManifestLoadPromise;
+    await this.ideasStripManifestLoadPromise;
   }
 
-  async loadGridMediaCatalog() {
-    if (this.gridMediaCatalog) return this.gridMediaCatalog;
-    await this.ensureGridManifestLoaded();
+  async loadIdeasStripMediaCatalog() {
+    if (this.ideasStripMediaCatalog) return this.ideasStripMediaCatalog;
+    await this.ensureIdeasStripManifestLoaded();
     const scriptTag = document.querySelector('script[src*="script.js"]');
     const scriptSrcRaw = scriptTag?.getAttribute('src') || '';
     const scriptSrcNoQuery = scriptSrcRaw.split('?')[0];
@@ -366,12 +429,10 @@ class SinglePagePortfolio {
       // NOTE: Manifest paths are project-root relative (`assets/...`); prefix from script location.
       return `${scriptBasePrefix}${trimmed.replace(/^\.?\//, '')}`;
     };
-    const fromGlobal = Array.isArray(window.__GRID_MEDIA_MANIFEST?.items)
-      ? window.__GRID_MEDIA_MANIFEST.items
+    const fromGlobal = Array.isArray(window.__GRID_STRIP_MEDIA_MANIFEST?.items)
+      ? window.__GRID_STRIP_MEDIA_MANIFEST.items
       : [];
-    // NOTE: Reverse manifest order so newly appended media appears earlier in gallery/strip grids.
-    const prioritizedItems = [...fromGlobal].reverse();
-    const normalizedItems = prioritizedItems
+    const normalizedItems = fromGlobal
       .filter((item) => item && typeof item.src === 'string')
       .filter((item) => !item.src.toLowerCase().endsWith('.gif'))
       .map((item) => {
@@ -381,22 +442,17 @@ class SinglePagePortfolio {
         return {
           src,
           type: isVideo ? 'video' : 'image',
-          alt: item.name ? `Grid media: ${item.name}` : 'Grid media',
+          alt: item.name ? `Ideas strip: ${item.name}` : 'Ideas strip media',
+          location: typeof item.location === 'string' ? item.location.toLowerCase() : '',
         };
       });
 
-    const videos = normalizedItems.filter((item) => item.type === 'video');
+    const allVideos = normalizedItems.filter((item) => item.type === 'video');
     const images = normalizedItems.filter((item) => item.type === 'image');
-    const alternatingItems = [];
-    const maxLen = Math.max(videos.length, images.length);
 
-    for (let i = 0; i < maxLen; i += 1) {
-      if (videos[i]) alternatingItems.push(videos[i]);
-      if (images[i]) alternatingItems.push(images[i]);
-    }
-
-    this.gridMediaCatalog = alternatingItems;
-    return this.gridMediaCatalog;
+    // NOTE: Use the full video + image catalog on every page so the strip matches the homepage count.
+    this.ideasStripMediaCatalog = this.interleaveIdeasStripMedia(allVideos, images);
+    return this.ideasStripMediaCatalog;
   }
 
   createGridMediaElement(item, className) {
@@ -421,9 +477,10 @@ class SinglePagePortfolio {
   }
 
   async initializeGridIdeasViews() {
-    const mediaItems = await this.loadGridMediaCatalog();
+    const mediaItems = await this.loadIdeasStripMediaCatalog();
     await this.mountCategoryHeroProcessFlowComponent();
-    await this.mountCategoryIdeasStripComponent();
+    await this.mountCategoryProjectsLink();
+    await this.mountCategoryPreFormSections();
     this.setupIdeasStrip(mediaItems);
   }
 
@@ -472,20 +529,21 @@ class SinglePagePortfolio {
     heroMedia.insertAdjacentHTML('afterend', markup);
   }
 
-  async loadIdeasStripMarkup() {
-    if (this.ideasStripMarkupPromise) return this.ideasStripMarkupPromise;
-    const fallbackMarkup = `<section class="section section--white category-ideas-strip-section" aria-label="Ideer og skisser">
-  <div class="section-inner">
-    <div class="ideas-strip" aria-label="Ideer og skisser">
-      <div class="ideas-strip__grid" data-ideas-strip></div>
-    </div>
-  </div>
-</section>`;
-    this.ideasStripMarkupPromise = (async () => {
+  async loadCategoryFeatureBannerMarkup() {
+    if (this.categoryFeatureBannerMarkupPromise) return this.categoryFeatureBannerMarkupPromise;
+    const fallbackMarkup = `<section class="section section--white section--features category-feature-banner-section" aria-label="Fordeler"><div class="section-inner"><div class="feature-banner" aria-label="Fordeler"></div><div class="ideas-strip" aria-label="Ideer og skisser"><div class="ideas-strip__grid" data-ideas-strip></div></div></div></section>`;
+    this.categoryFeatureBannerMarkupPromise = (async () => {
       try {
-        let response = await fetch('/components/ideas-strip.html', { cache: 'no-store' });
+        let response = await fetch('/components/category-feature-banner.html', {
+          cache: 'no-store',
+        });
         if (!response.ok) {
-          response = await fetch('components/ideas-strip.html', { cache: 'no-store' });
+          response = await fetch('../../components/category-feature-banner.html', {
+            cache: 'no-store',
+          });
+        }
+        if (!response.ok) {
+          response = await fetch('components/category-feature-banner.html', { cache: 'no-store' });
         }
         if (!response.ok) return fallbackMarkup;
         return await response.text();
@@ -493,19 +551,70 @@ class SinglePagePortfolio {
         return fallbackMarkup;
       }
     })();
-    return this.ideasStripMarkupPromise;
+    return this.categoryFeatureBannerMarkupPromise;
   }
 
-  async mountCategoryIdeasStripComponent() {
-    const isCategoryPage =
-      document.body.classList.contains('page--category') ||
-      window.location.pathname.includes('/category/');
+  async loadCategoryProjectsLinkMarkup() {
+    if (this.categoryProjectsLinkMarkupPromise) return this.categoryProjectsLinkMarkupPromise;
+    const fallbackMarkup = `<nav class="category-inline-links" aria-label="Nyttige lenker"><p class="category-inline-links__item"><a class="category-projects-link" href="/prosjekter">Alle prosjekter<img class="category-projects-link__arrow" src="/assets/small-arrow-right.svg" alt="" width="12" height="12" aria-hidden="true" /></a></p><p class="category-inline-links__item"><a class="category-projects-link" href="/oss">Bli kjent med oss<img class="category-projects-link__arrow" src="/assets/small-arrow-right.svg" alt="" width="12" height="12" aria-hidden="true" /></a></p><p class="category-inline-links__item"><a class="category-projects-link" href="/application-form">Kontakt oss<img class="category-projects-link__arrow" src="/assets/small-arrow-right.svg" alt="" width="12" height="12" aria-hidden="true" /></a></p><p class="category-inline-links__item"><a class="category-projects-link" href="/prisestimat">Prisoversikt<img class="category-projects-link__arrow" src="/assets/small-arrow-right.svg" alt="" width="12" height="12" aria-hidden="true" /></a></p></nav>`;
+    this.categoryProjectsLinkMarkupPromise = (async () => {
+      try {
+        let response = await fetch('/components/category-projects-link.html', {
+          cache: 'no-store',
+        });
+        if (!response.ok) {
+          response = await fetch('../../components/category-projects-link.html', {
+            cache: 'no-store',
+          });
+        }
+        if (!response.ok) {
+          response = await fetch('components/category-projects-link.html', { cache: 'no-store' });
+        }
+        if (!response.ok) return fallbackMarkup;
+        return await response.text();
+      } catch (_error) {
+        return fallbackMarkup;
+      }
+    })();
+    return this.categoryProjectsLinkMarkupPromise;
+  }
+
+  async mountCategoryProjectsLink() {
+    const pathname = window.location.pathname;
+    const isCategoryPage = pathname.includes('/category/');
+    const isDesignStudioPage = /designstudio-oslo/i.test(pathname);
+    if (!isCategoryPage && !isDesignStudioPage) return;
+
+    const introSection = isDesignStudioPage
+      ? document.querySelector('section[aria-label="Designstudio i Oslo"] .section-inner')
+      : document.querySelector('section[aria-label="Formaa"] .section-inner');
+    if (!introSection || introSection.querySelector('.category-inline-links')) return;
+
+    const afterGridLeads = introSection.querySelectorAll('.section-lead--after-grid');
+    const anchor =
+      afterGridLeads.length > 0
+        ? afterGridLeads[afterGridLeads.length - 1]
+        : introSection.querySelector('.section-lead:last-of-type') ||
+          introSection.querySelector('.section-title');
+    if (!anchor) return;
+
+    const markup = await this.loadCategoryProjectsLinkMarkup();
+    anchor.insertAdjacentHTML('afterend', markup);
+  }
+
+  async mountCategoryPreFormSections() {
+    const isCategoryPage = window.location.pathname.includes('/category/');
     if (!isCategoryPage) return;
-    if (document.querySelector('[data-ideas-strip]')) return;
+
     const applicationFormSection = document.querySelector('#application-form');
-    if (!applicationFormSection) return;
-    const markup = await this.loadIdeasStripMarkup();
-    applicationFormSection.insertAdjacentHTML('beforebegin', markup);
+    if (!applicationFormSection || applicationFormSection.dataset.preFormBlocksMounted === 'true') {
+      return;
+    }
+
+    const featureMarkup = await this.loadCategoryFeatureBannerMarkup();
+
+    applicationFormSection.insertAdjacentHTML('beforebegin', featureMarkup);
+    applicationFormSection.dataset.preFormBlocksMounted = 'true';
   }
 
   setupIdeasStrip(mediaItems) {
@@ -1458,8 +1567,20 @@ class SinglePagePortfolio {
 
   // NOTE: Stable per-project page URL used for both navigation and social sharing previews.
   getProjectSharePath(slug) {
-    // NOTE: Extensionless path keeps ?project= on local `serve` (`.html` triggers a 301 that drops the query).
-    return `/advanced-project?project=${encodeURIComponent(slug)}`;
+    const prosjekterPathBySlug = {
+      obseed: 'obseed-custom-8-string-guitar',
+      undo: 'undo-desertification',
+      h2o: 'h2o-bottle-pedometer',
+      monocopter: 'monocopter-drone',
+      proton: 'proton-headphones',
+      'eco-mate-closet': 'eco-mate-closet',
+      nomos: 'nomos-branding',
+      nordic: 'nordic-restaurant-branding',
+      rafaels: 'rafaels-ren-melk',
+    };
+    const prosjekterPath = prosjekterPathBySlug[slug];
+    if (prosjekterPath) return `/prosjekter/${prosjekterPath}`;
+    return `/prosjekter?project=${encodeURIComponent(slug)}`;
   }
 
   // NOTE: Reusable project galleries swap main image from local thumbnail rails.
