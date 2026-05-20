@@ -1,3 +1,7 @@
 .cursor/
 node_modules/
 .DS_Store
+
+# NOTE: macOS Finder “Duplicate” copies use a space and “2” before the extension (or as the whole suffix).
+* 2.*
+* 2
