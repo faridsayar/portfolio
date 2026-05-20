@@ -76,16 +76,8 @@
   aria-label="Send forespørsel"
 >
   <div class="section-inner">
-    <div class="section-head">
-      <h2 class="section-title">Design samtale</h2>
-      <p class="section-lead">
-        Det koster ingenting å starte dialogen med oss. Vi er åpne og direkte og vil være ærlige hvis
-        vi ikke kan hjelpe deg.
-      </p>
-    </div>
     <form class="inquiry-form" method="post" data-inquiry-form>
-      <p class="inquiry-form__title">Mitt prosjekt</p>
-      <p class="inquiry-form__hint">Dra punktene langs linjen for å vekte prioriteringene</p>
+      <p class="inquiry-form__title">Kontaktform</p>
       <input type="hidden" name="access_key" value="c21cafeb-72cf-4e8b-b66c-69384a07c888" />
       <input type="hidden" name="subject" value="Ny design samtale foresporsel" />
       <input type="hidden" name="from_name" value="Formaa nettside" />
@@ -93,11 +85,6 @@
       <!-- NOTE: Default timeframe for Web3Forms; visible select removed (matches components/application-form.html). -->
       <input type="hidden" name="timeframe" value="2 mnd" />
       <div class="timeline" data-timeline>
-        <div class="timeline-anchors">
-          <span class="timeline-anchor timeline-anchor--start">Konsultasjon</span>
-          <span class="timeline-anchor timeline-anchor--time" data-timeframe-label>2 mnd prosjekt</span>
-          <span class="timeline-anchor timeline-anchor--end">Ferdigstilling</span>
-        </div>
         <div class="timeline-track-wrap">
           <span class="timeline-mobile-anchor timeline-mobile-anchor--end">Ferdigstilling</span>
           <span class="timeline-mobile-anchor timeline-mobile-anchor--start">Konsultasjon</span>
@@ -122,6 +109,12 @@
             <div class="timeline-handle" data-handle="2" role="slider" tabindex="0"></div>
             <div class="timeline-handle" data-handle="3" role="slider" tabindex="0"></div>
           </div>
+        </div>
+        <div class="timeline-caption-row">
+          <span class="timeline-anchor timeline-anchor--start">Konsultasjon</span>
+          <p class="inquiry-form__hint">Dra punktene langs linjen for å vekte prioriteringene (kun for orientering)</p>
+          <span class="timeline-anchor timeline-anchor--end">Ferdigstilling</span>
+          <span class="timeline-anchor timeline-anchor--time" data-timeframe-label>2 mnd prosjekt</span>
         </div>
         <div class="timeline-hidden" aria-hidden="true">
           <input type="hidden" name="phase_brukeranalyse" data-phase-input="0" />
@@ -152,9 +145,17 @@
         <button class="inquiry-cta" type="submit">Send forespørsel</button>
         <p class="inquiry-note" data-inquiry-status aria-live="polite"></p>
         <p class="inquiry-note">
-          *Forespørselen er uforpliktende og er kun for orientering. Vi vil ta kontakt med deg
-          snarest for å finne ut hvordan vi best kan hjelpe deg og ditt prosjekt, for å gi deg et
-          konkret tilbud.
+          *Forespørselen er uforpliktende. Vi vil svare deg snarest!
+        </p>
+      </div>
+      <div class="section-head section-head--after-inquiry-cta">
+        <h2 class="section-title">Design samtale</h2>
+        <p class="section-lead">
+          Det koster ingenting å starte dialogen med oss. Vi er åpne og direkte og vil være ærlige hvis
+          vi ikke kan hjelpe deg. Produktutvikling inkluderer ulike faser og hver designprosjekt
+          trenger individuell tilnærming. Hvordan vi fodeler fasene kan du
+          <a class="internal-text-link" href="/innsikt/hva-er-industridesign">se her</a>
+          .
         </p>
       </div>
     </form>
