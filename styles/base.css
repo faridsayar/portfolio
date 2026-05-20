@@ -36,6 +36,8 @@
   --line-height-relaxed: 1.6;
   --line-height-loose: 1.7;
   --line-height-kicker: 1.35;
+  /* NOTE: Regular (400) is the lightest Readex Pro weight loaded on the site; use for lighter copy in forms/timeline. */
+  --font-weight-regular: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
@@ -1831,16 +1833,24 @@ section[aria-label='Oss'] .section-inner {
   margin-top: 2rem;
 }
 
-.timeline-anchors {
-  display: flex;
-  justify-content: space-between;
+/* NOTE: Under the track: endpoints + hint share one baseline row on desktop (`grid-template-columns: auto 1fr auto`). */
+.timeline-caption-row {
+  display: grid;
+  grid-template-columns: max-content 1fr max-content;
   align-items: baseline;
+  column-gap: 0.75rem;
+  margin-top: 0.65rem;
+  margin-bottom: 1.25rem;
   font-size: 0.9rem;
-  margin-bottom: 0.9rem;
+}
+
+.timeline-caption-row .inquiry-form__hint {
+  margin: 0;
+  min-width: 0;
 }
 
 .timeline-anchor {
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-regular);
   letter-spacing: -0.01em;
   opacity: 0.85;
 }
@@ -1850,10 +1860,18 @@ section[aria-label='Oss'] .section-inner {
   display: none;
 }
 
+/* NOTE: Scale endpoints (Konsultasjon / Ferdigstilling) use brand primary. */
+.timeline-anchor--start,
+.timeline-anchor--end {
+  color: var(--color-primary);
+  opacity: 1;
+}
+
 .timeline-track-wrap {
   position: relative;
   padding-top: 2.75rem;
-  margin-bottom: 1.5rem;
+  /* NOTE: Spacing after the track is handled by `.timeline-caption-row`. */
+  margin-bottom: 0;
 }
 
 .timeline-track {
@@ -1940,7 +1958,7 @@ section[aria-label='Oss'] .section-inner {
   top: 0;
   transform: translateX(-50%);
   font-size: var(--font-size-section-kicker);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-regular);
   letter-spacing: -0.01em;
   color: var(--color-dark);
   background: rgba(255, 255, 255, 0.85);
@@ -1970,7 +1988,7 @@ section[aria-label='Oss'] .section-inner {
 }
 
 .timeline-summary-item__name {
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-regular);
   letter-spacing: -0.01em;
 }
 
@@ -2010,8 +2028,20 @@ section[aria-label='Oss'] .section-inner {
     --timeline-mobile-left-gap: 0.9rem;
   }
 
-  .timeline-anchors {
+  .timeline-caption-row {
+    display: block;
+    margin-top: 0.65rem;
+    margin-bottom: 1.25rem;
+  }
+
+  /* NOTE: Same copy as desktop row, without duplicate endpoint labels next to the vertical scale. */
+  .timeline-caption-row .timeline-anchor--start,
+  .timeline-caption-row .timeline-anchor--end {
     display: none;
+  }
+
+  .timeline-caption-row .inquiry-form__hint {
+    text-align: center;
   }
 
   .timeline-track-wrap {
@@ -2025,7 +2055,7 @@ section[aria-label='Oss'] .section-inner {
     padding-top: 1.5rem;
     padding-bottom: 1.75rem;
     margin-top: 0;
-    margin-bottom: 1.25rem;
+    margin-bottom: 0;
   }
 
   .timeline-mobile-anchor {
@@ -2033,10 +2063,10 @@ section[aria-label='Oss'] .section-inner {
     left: var(--timeline-mobile-left-gap);
     transform: none;
     font-size: 0.9rem;
-    font-weight: var(--font-weight-semibold);
+    font-weight: var(--font-weight-regular);
     letter-spacing: -0.01em;
-    color: var(--color-dark);
-    opacity: 0.85;
+    color: var(--color-primary);
+    opacity: 1;
     white-space: normal;
     text-align: left;
     pointer-events: none;
@@ -2125,7 +2155,7 @@ section[aria-label='Oss'] .section-inner {
 }
 
 /* NOTE: Application form heading displayed in top-left on desktop and mobile. */
-/* NOTE: “Mitt prosjekt” label in the application form — smaller than section titles, brand accent. */
+/* NOTE: “Kontaktform” label in the application form — smaller than section titles, brand accent. */
 .inquiry-form__title {
   margin: 0 0 0.35rem 0;
   font-size: var(--font-size-card-title);
@@ -2135,12 +2165,13 @@ section[aria-label='Oss'] .section-inner {
   color: var(--color-dark);
 }
 
-/* NOTE: Timeline helper copy shown under “Mitt prosjekt” in the application form. */
+/* NOTE: Timeline helper copy lives in `.timeline-caption-row`; typography only here (row sets outer spacing). */
 .inquiry-form__hint {
-  margin: 0 0 1rem 0;
+  margin: 0;
+  text-align: center;
   font-size: var(--font-size-body-sm);
   line-height: var(--line-height-relaxed);
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-regular);
   color: var(--color-dark);
   opacity: 0.1;
 }
@@ -2184,6 +2215,7 @@ section[aria-label='Oss'] .section-inner {
   font-family: inherit;
   font-size: var(--font-size-body-md);
   line-height: 1.4;
+  font-weight: var(--font-weight-regular);
 }
 
 .field__textarea {
@@ -2230,7 +2262,17 @@ section[aria-label='Oss'] .section-inner {
   margin: 0;
   max-width: 52rem;
   line-height: var(--line-height-relaxed);
+  font-weight: var(--font-weight-regular);
   opacity: 0.85;
+}
+
+/* NOTE: “Design samtale” title + lead below submit row. */
+.inquiry-form .section-head--after-inquiry-cta {
+  margin-top: 1.75rem;
+}
+
+.inquiry-form .section-head--after-inquiry-cta .section-title {
+  margin-bottom: 0.75rem;
 }
 
 @media (min-width: 768px) {
