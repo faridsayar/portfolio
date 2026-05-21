@@ -837,6 +837,17 @@ section[aria-label='Designstudio i Oslo'] .section-banner-image {
   gap: 0.55rem;
 }
 
+/* NOTE: Homepage start section — space after tag row matches `.section-lead` bottom (2rem). */
+#start .service-tags {
+  margin-bottom: 4rem;
+}
+
+/* NOTE: Homepage start section — display line vertical rhythm (84px top/bottom). */
+#start .big-text {
+  padding-top: 5.25rem;
+  padding-bottom: 5.25rem;
+}
+
 .service-tag {
   display: inline-flex;
   align-items: center;
@@ -1310,6 +1321,39 @@ section[aria-label='Oss'] .section-inner {
   padding-top: 0;
 }
 
+/* NOTE: Om oss — even text-block rhythm; larger space before each section/column title. */
+section[aria-label='Oss'] .section-lead--after-grid {
+  margin-top: 3.5rem;
+}
+
+section[aria-label='Oss'] .section-lead--after-grid > .section-lead:last-child {
+  margin-bottom: 0;
+}
+
+section[aria-label='Oss'] .about-top-graphic + .section-title {
+  margin-top: 2.5rem;
+}
+
+section[aria-label='Oss'] .about-team-grid {
+  margin-top: 3.5rem;
+}
+
+section[aria-label='Oss'] .about-competence-grid {
+  margin-top: 2.5rem;
+}
+
+section[aria-label='Oss'] .about-competence-block:not(:first-child) .about-competence-block__title {
+  margin-top: 2.5rem;
+}
+
+@media (min-width: 720px) {
+  section[aria-label='Oss']
+    .about-competence-block:not(:first-child)
+    .about-competence-block__title {
+    margin-top: 0;
+  }
+}
+
 /* NOTE: Reusable strip for local like/share actions under project and article hero media. */
 .like-share-strip {
   position: relative;
@@ -1583,11 +1627,22 @@ section[aria-label='Oss'] .section-inner {
 
 /* Features section */
 .section--features .section-inner {
+  /* NOTE: No top inset so full-bleed feature banner sits flush under the section edge. */
+  padding-top: 0;
   padding-bottom: 2rem;
 }
 
 /* NOTE: Keep gallery strip directly attached to the four-feature banner on home page. */
 .section--features .feature-banner {
+  margin-bottom: 0;
+}
+
+/* NOTE: “For hvem” title + lead below the four-feature banner on homepage. */
+.section--features .section-head--after-feature-banner {
+  margin-top: 2rem;
+}
+
+.section--features .section-head--after-feature-banner .section-lead {
   margin-bottom: 0;
 }
 
@@ -1779,6 +1834,18 @@ section[aria-label='Oss'] .section-inner {
 /* Note: utility for highlighting specific text in primary color */
 .text-primary {
   color: var(--color-primary);
+}
+
+/* NOTE: Large low-contrast display text (e.g. homepage portfolio values line). */
+.big-text {
+  max-width: none;
+  margin: 0;
+  padding: 5.25rem 0;
+  font-size: clamp(2.75rem, 7.5vw, 5.5rem);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: -0.03em;
+  line-height: var(--line-height-tight);
+  opacity: 0.2;
 }
 
 .feature-icon {
@@ -2286,20 +2353,8 @@ section[aria-label='Oss'] .section-inner {
   padding-top: 0;
 }
 
-/* NOTE: Homepage portfolio values line — larger than hero h1, low-contrast display text. */
 .section--projects .section-head {
   background: var(--color-white);
-}
-
-.section--projects .section-lead--portfolio-values {
-  max-width: none;
-  margin: 0;
-  padding: clamp(3.5rem, 10vw, 7rem) 0;
-  font-size: clamp(2.75rem, 7.5vw, 5.5rem);
-  font-weight: var(--font-weight-semibold);
-  letter-spacing: -0.03em;
-  line-height: var(--line-height-tight);
-  opacity: 0.2;
 }
 
 /* NOTE: Breakout wrapper: grey band starts at project tiles only; heading area stays on white. */
@@ -3313,9 +3368,9 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
     grid-auto-columns: minmax(6.5rem, 1fr);
   }
 
-  /* NOTE: Reduce mobile bottom spacing in the "Dette gjør vi" start section. */
+  /* NOTE: No extra bottom inset on the "Dette gjør vi" start section (uses default section-inner sides only). */
   #start .section-inner {
-    padding-bottom: 2rem;
+    padding-bottom: 0;
   }
 
   .projects-grid-panel {
