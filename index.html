@@ -457,7 +457,13 @@
         <!-- NOTE: Full-bleed dark band behind project tiles only; captions use panel text color via CSS. -->
         <div class="projects-grid-panel">
           <!-- NOTE: Portfolio tiles are rendered from assets/data/projects-manifest.js to keep titles and media in sync with project data. -->
-          <div class="projects-grid" aria-label="Prosjektliste" data-projects-grid></div>
+          <!-- NOTE: Homepage shows four featured tiles only; full list lives on /prosjekter (see data-projects-limit). -->
+          <div
+            class="projects-grid"
+            aria-label="Prosjektliste"
+            data-projects-grid
+            data-projects-limit="4"
+          ></div>
           <div class="projects-sentinel" data-projects-sentinel aria-hidden="true"></div>
         </div>
         <!-- NOTE: Static fallback links ensure core project/category navigation remains crawlable without JS. -->
@@ -671,6 +677,6 @@
     <script src="components-loader.js?v=5" defer></script>
     <script src="shared-nav.js?v=1" defer></script>
     <!-- JavaScript -->
-    <script src="script.js?v=12" defer></script>
+    <script src="script.js?v=13" defer></script>
   </body>
 </html>

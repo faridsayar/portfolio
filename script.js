@@ -1534,15 +1534,19 @@ class SinglePagePortfolio {
     renderPager();
   }
 
-  // NOTE: Projects grid hydration to 20 items.
+  // NOTE: Projects grid hydration; optional data-projects-limit caps tiles (homepage only).
   setupProjectsGrid(catalog) {
     const grid = document.querySelector('[data-projects-grid]');
     const sentinel = document.querySelector('[data-projects-sentinel]');
     if (!grid || !sentinel) return;
     if (catalog.length === 0) return;
 
+    const limitAttr = grid.getAttribute('data-projects-limit');
+    const limit = limitAttr ? Math.max(0, parseInt(limitAttr, 10) || 0) : catalog.length;
+    const visibleCatalog = limit > 0 ? catalog.slice(0, limit) : catalog;
+
     const fragment = document.createDocumentFragment();
-    catalog.forEach((project, index) => {
+    visibleCatalog.forEach((project, index) => {
       // NOTE: Project card image is explicitly configured via `thumbnail` in project-folders.json.
       const imgSrc = project.thumbnail || project.images[0] || '';
       const card = document.createElement('a');
