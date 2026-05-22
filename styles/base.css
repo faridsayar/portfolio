@@ -837,15 +837,35 @@ section[aria-label='Designstudio i Oslo'] .section-banner-image {
   gap: 0.55rem;
 }
 
-/* NOTE: Homepage start section — space after tag row matches `.section-lead` bottom (2rem). */
-#start .service-tags {
-  margin-bottom: 4rem;
+/* NOTE: Homepage start — studio intro block (title and lead). */
+#start .hero-text {
+  margin-bottom: 0;
 }
 
-/* NOTE: Homepage start section — display line vertical rhythm (84px top/bottom). */
+#start .hero-text__title {
+  margin: 0 0 1rem 0;
+  font-size: var(--font-size-section-title);
+  line-height: var(--line-height-title);
+  letter-spacing: -0.01em;
+  font-weight: var(--font-weight-semibold);
+}
+
+/* NOTE: Homepage start — display line directly below `.hero-text`. */
 #start .big-text {
-  padding-top: 5.25rem;
-  padding-bottom: 5.25rem;
+  padding-top: 7.5rem;
+  padding-bottom: 7.5rem;
+}
+
+/* NOTE: Homepage start — Tjenester block spacing below the display line. */
+#start .start-tjenester {
+  margin-bottom: 0;
+}
+
+/* NOTE: Homepage start — category tags after the Tjenester service grid. */
+#start .service-tags {
+  margin-top: 0;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 .service-tag {
@@ -1639,7 +1659,9 @@ section[aria-label='Oss'] .about-competence-block:not(:first-child) .about-compe
 
 /* NOTE: “For hvem” title + lead below the four-feature banner on homepage. */
 .section--features .section-head--after-feature-banner {
-  margin-top: 2rem;
+  margin-top: 0;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 .section--features .section-head--after-feature-banner .section-lead {
