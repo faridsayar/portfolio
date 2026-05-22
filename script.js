@@ -169,7 +169,7 @@ class SinglePagePortfolio {
         solution:
           'Obseed ble utviklet som et skreddersydd konsept: kropp og halsgeometri tilpasset ekstra strenger, tydelig plassering av hardware, materialvalg og visuell identitet — fra skisse til produksjonsklare detaljer.',
         outcome:
-          'Resultatet er et helhetlig designgrunnlag for en custom 8-strengers gitar, klart for videre prototyping, lutheri og ferdigstilling.',
+          'Resultatet er et helhetlig CAD-modell for en custom 8-strengers gitar, klart for produksjon med CNC-maskin.',
       },
       undo: {
         problem:

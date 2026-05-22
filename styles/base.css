@@ -384,7 +384,7 @@
 }
 
 .section-lead {
-  margin: 0 0 2rem 0;
+  margin: 0;
   max-width: 48rem;
   line-height: var(--line-height-loose);
   opacity: 0.9;
@@ -837,15 +837,35 @@ section[aria-label='Designstudio i Oslo'] .section-banner-image {
   gap: 0.55rem;
 }
 
-/* NOTE: Homepage start section — space after tag row matches `.section-lead` bottom (2rem). */
-#start .service-tags {
-  margin-bottom: 4rem;
+/* NOTE: Homepage start — studio intro block (title and lead). */
+#start .hero-text {
+  margin-bottom: 0;
 }
 
-/* NOTE: Homepage start section — display line vertical rhythm (84px top/bottom). */
+#start .hero-text__title {
+  margin: 0 0 1rem 0;
+  font-size: var(--font-size-section-title);
+  line-height: var(--line-height-title);
+  letter-spacing: -0.01em;
+  font-weight: var(--font-weight-semibold);
+}
+
+/* NOTE: Homepage start — display line directly below `.hero-text`. */
 #start .big-text {
-  padding-top: 5.25rem;
-  padding-bottom: 5.25rem;
+  padding-top: 7.5rem;
+  padding-bottom: 7.5rem;
+}
+
+/* NOTE: Homepage start — Tjenester block spacing below the display line. */
+#start .start-tjenester {
+  margin-bottom: 0;
+}
+
+/* NOTE: Homepage start — category tags after the Tjenester service grid. */
+#start .service-tags {
+  margin-top: 0;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 .service-tag {
@@ -1599,6 +1619,22 @@ section[aria-label='Oss'] .about-competence-block:not(:first-child) .about-compe
   opacity: 0.9;
 }
 
+/* NOTE: Bullet lists inside shared article body copy. */
+.article-row__text .article-row__list {
+  margin: 0 0 0.85rem 0;
+  padding-left: 1.25rem;
+  opacity: 0.9;
+}
+
+.article-row__text .article-row__list li {
+  margin: 0 0 0.35rem 0;
+}
+
+/* NOTE: Semibold first sentence (or lead clause) in article bullet lists. */
+.article-row__text .article-row__list-lead {
+  font-weight: var(--font-weight-semibold);
+}
+
 .article-nav-buttons {
   margin-top: 2rem;
   display: flex;
@@ -1639,7 +1675,9 @@ section[aria-label='Oss'] .about-competence-block:not(:first-child) .about-compe
 
 /* NOTE: “For hvem” title + lead below the four-feature banner on homepage. */
 .section--features .section-head--after-feature-banner {
-  margin-top: 2rem;
+  margin-top: 0;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 .section--features .section-head--after-feature-banner .section-lead {
@@ -2640,11 +2678,12 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
   inset: 0;
   z-index: 1;
   pointer-events: none;
+  /* NOTE: ~50% lighter than former overlay so hero images stay visible behind title/lead. */
   background: linear-gradient(
     to top,
-    rgba(0, 0, 0, 0.78),
-    rgba(0, 0, 0, 0.15) 60%,
-    rgba(0, 0, 0, 0.05)
+    rgba(0, 0, 0, 0.39),
+    rgba(0, 0, 0, 0.08) 60%,
+    rgba(0, 0, 0, 0.03)
   );
 }
 
@@ -2835,6 +2874,19 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
   max-width: 70rem;
   margin: 0 auto;
   padding: 0 1.25rem 1rem;
+}
+
+/* NOTE: Desktop — post-hero text column is half the default 70rem width (summary, CTA, like/share). */
+@media (min-width: 1024px) {
+  [data-project-page] .section--project-summary .section-inner,
+  [data-project-page] .section--project-cta .section-inner,
+  [data-project-page] .like-share-strip-shell--project {
+    max-width: 35rem;
+  }
+
+  [data-project-page] .project-summary {
+    max-width: none;
+  }
 }
 
 /* NOTE: Prev/next links: fixed overlay, triangle icons (`assets/triangle.svg`), vertical anchor 90% (hero stage sync in script.js); desktop only. */

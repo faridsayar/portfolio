@@ -1492,11 +1492,12 @@ section[aria-label='Oss'] .section-inner {
   inset: 0;
   z-index: 1;
   pointer-events: none;
+  /* NOTE: ~50% lighter than former overlay so hero images stay visible behind title/lead. */
   background: linear-gradient(
     to top,
-    rgba(0, 0, 0, 0.78),
-    rgba(0, 0, 0, 0.15) 60%,
-    rgba(0, 0, 0, 0.05)
+    rgba(0, 0, 0, 0.39),
+    rgba(0, 0, 0, 0.08) 60%,
+    rgba(0, 0, 0, 0.03)
   );
 }
 
