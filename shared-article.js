@@ -112,6 +112,20 @@ function initializeLikeShareStrip(strip, options) {
   strip.dataset.likeShareInitialized = 'true';
 }
 
+// NOTE: Semibold lead in list items — first sentence, or text before « — » / «: » when there is no period.
+function formatArticleListItem(item) {
+  const text = String(item);
+  const sentenceMatch = text.match(/^([\s\S]*?[.!?])(\s+)([\s\S]+)$/);
+  if (sentenceMatch) {
+    return `<span class="article-row__list-lead">${sentenceMatch[1]}</span>${sentenceMatch[2]}${sentenceMatch[3]}`;
+  }
+  const clauseMatch = text.match(/^([\s\S]+?)(\s+[—:]\s+)([\s\S]+)$/);
+  if (clauseMatch) {
+    return `<span class="article-row__list-lead">${clauseMatch[1]}</span>${clauseMatch[2]}${clauseMatch[3]}`;
+  }
+  return `<span class="article-row__list-lead">${text}</span>`;
+}
+
 function renderSharedArticle() {
   const root = document.querySelector('[data-article-layout]');
   if (!root) return;
@@ -124,6 +138,7 @@ function renderSharedArticle() {
   // NOTE: Article files are innsikt-{slug}.html at repo root; hrefs use that shape for static local servers.
   const key = fileStem.startsWith('innsikt-') ? fileStem : `innsikt-${fileStem}`;
   const articleOrder = [
+    'innsikt-sok-stotte-innovasjon-norge',
     'innsikt-hva-er-industridesign',
     'innsikt-ux-er-ikke-produktdesign',
     'innsikt-hvem-trenger-design',
@@ -157,12 +172,20 @@ function renderSharedArticle() {
     heroImageEl.alt = typeof article.heroAlt === 'string' ? article.heroAlt : article.title;
   }
   if (bodyEl) {
+    // NOTE: Article blocks support headings, paragraphs, and bullet lists (`items` on `ul`).
     bodyEl.innerHTML = article.blocks
-      .map((block) =>
-        block.type === 'h2'
-          ? `<h2 class="article-row__title">${block.text}</h2>`
-          : `<p>${block.text}</p>`
-      )
+      .map((block) => {
+        if (block.type === 'h2') {
+          return `<h2 class="article-row__title">${block.text}</h2>`;
+        }
+        if (block.type === 'ul' && Array.isArray(block.items)) {
+          const items = block.items
+            .map((item) => `<li>${formatArticleListItem(item)}</li>`)
+            .join('');
+          return `<ul class="article-row__list">${items}</ul>`;
+        }
+        return `<p>${block.text}</p>`;
+      })
       .join('');
   }
 

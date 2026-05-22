@@ -1619,6 +1619,22 @@ section[aria-label='Oss'] .about-competence-block:not(:first-child) .about-compe
   opacity: 0.9;
 }
 
+/* NOTE: Bullet lists inside shared article body copy. */
+.article-row__text .article-row__list {
+  margin: 0 0 0.85rem 0;
+  padding-left: 1.25rem;
+  opacity: 0.9;
+}
+
+.article-row__text .article-row__list li {
+  margin: 0 0 0.35rem 0;
+}
+
+/* NOTE: Semibold first sentence (or lead clause) in article bullet lists. */
+.article-row__text .article-row__list-lead {
+  font-weight: var(--font-weight-semibold);
+}
+
 .article-nav-buttons {
   margin-top: 2rem;
   display: flex;

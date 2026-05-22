@@ -11,6 +11,8 @@
 
   function getArticleImageForKey(key) {
     // NOTE: Maps each SEO slug to a fixed image used in shares and insight cards.
+    if (String(key) === 'innsikt-sok-stotte-innovasjon-norge')
+      return 'assets/images/Projects/H2O/h2o-18.webp';
     if (String(key) === 'innsikt-hva-er-industridesign') return 'assets/images/Articles/itac.webp';
     if (String(key) === 'innsikt-ux-er-ikke-produktdesign')
       return 'assets/images/Articles/dux-article2.avif';
