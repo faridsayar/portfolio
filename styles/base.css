@@ -2640,11 +2640,12 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
   inset: 0;
   z-index: 1;
   pointer-events: none;
+  /* NOTE: ~50% lighter than former overlay so hero images stay visible behind title/lead. */
   background: linear-gradient(
     to top,
-    rgba(0, 0, 0, 0.78),
-    rgba(0, 0, 0, 0.15) 60%,
-    rgba(0, 0, 0, 0.05)
+    rgba(0, 0, 0, 0.39),
+    rgba(0, 0, 0, 0.08) 60%,
+    rgba(0, 0, 0, 0.03)
   );
 }
 
@@ -2835,6 +2836,19 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
   max-width: 70rem;
   margin: 0 auto;
   padding: 0 1.25rem 1rem;
+}
+
+/* NOTE: Desktop — post-hero text column is half the default 70rem width (summary, CTA, like/share). */
+@media (min-width: 1024px) {
+  [data-project-page] .section--project-summary .section-inner,
+  [data-project-page] .section--project-cta .section-inner,
+  [data-project-page] .like-share-strip-shell--project {
+    max-width: 35rem;
+  }
+
+  [data-project-page] .project-summary {
+    max-width: none;
+  }
 }
 
 /* NOTE: Prev/next links: fixed overlay, triangle icons (`assets/triangle.svg`), vertical anchor 90% (hero stage sync in script.js); desktop only. */
