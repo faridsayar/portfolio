@@ -126,6 +126,12 @@ function formatArticleListItem(item) {
   return `<span class="article-row__list-lead">${text}</span>`;
 }
 
+// NOTE: Article keys (innsikt-{slug}) map to public /innsikt/{slug} routes.
+function articleKeyToHref(key) {
+  const slug = String(key).replace(/^innsikt-/, '');
+  return `/innsikt/${slug}`;
+}
+
 function renderSharedArticle() {
   const root = document.querySelector('[data-article-layout]');
   if (!root) return;
@@ -168,7 +174,11 @@ function renderSharedArticle() {
   if (currentBreadcrumbEl) currentBreadcrumbEl.textContent = article.title;
   if (heroImageEl) {
     const getImage = window.getArticleImageForKey;
-    heroImageEl.src = typeof getImage === 'function' ? getImage(key) : blackPlaceholderImage;
+    let heroSrc = typeof getImage === 'function' ? getImage(key) : blackPlaceholderImage;
+    if (heroSrc && !heroSrc.startsWith('/') && !/^https?:/i.test(heroSrc)) {
+      heroSrc = `/${heroSrc.replace(/^\.\//, '')}`;
+    }
+    heroImageEl.src = heroSrc;
     heroImageEl.alt = typeof article.heroAlt === 'string' ? article.heroAlt : article.title;
   }
   if (bodyEl) {
@@ -197,8 +207,8 @@ function renderSharedArticle() {
     } else {
       const prevIndex = (currentIndex - 1 + articleOrder.length) % articleOrder.length;
       const nextIndex = (currentIndex + 1) % articleOrder.length;
-      prevLinkEl.href = `/${articleOrder[prevIndex]}.html`;
-      nextLinkEl.href = `/${articleOrder[nextIndex]}.html`;
+      prevLinkEl.href = articleKeyToHref(articleOrder[prevIndex]);
+      nextLinkEl.href = articleKeyToHref(articleOrder[nextIndex]);
     }
   }
 
