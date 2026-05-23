@@ -8,6 +8,7 @@
     "generate:innsikt-indexes": "node scripts/generate-innsikt-indexes.mjs",
     "sync:meta-descriptions": "node scripts/sync-meta-descriptions.mjs",
     "generate:sitemap": "node scripts/generate-sitemap.mjs",
+    "generate:schema-markup": "node scripts/generate-schema-markup.mjs",
     "dev": "serve . -l 3000",
     "format": "prettier --write .",
     "format:check": "prettier --check ."

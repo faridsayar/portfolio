@@ -80,78 +80,6 @@
     />
     <meta name="twitter:image" content="https://formaa.no/assets/images/social-sharing.webp" />
 
-    <!-- NOTE: Local SEO schema describing Formaa as a professional design service in Norway. -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "ProfessionalService",
-        "@id": "https://formaa.no/#professional-service",
-        "name": "Formaa",
-        "url": "https://formaa.no/",
-        "logo": "https://formaa.no/assets/formaa-logo.svg",
-        "image": "https://formaa.no/assets/images/social-sharing.webp",
-        "description": "Industridesign og produktdesign tjenester for konseptutvikling, prototyping, validering og produksjonsklare leveranser i Norge.",
-        "areaServed": [
-          { "@type": "Country", "name": "Norge" },
-          { "@type": "City", "name": "Oslo" },
-          { "@type": "AdministrativeArea", "name": "Akershus" },
-          { "@type": "AdministrativeArea", "name": "Buskerud" },
-          { "@type": "AdministrativeArea", "name": "Østfold" }
-        ],
-        "serviceType": [
-          "Produktutvikling",
-          "Markedsanalyse",
-          "Emballasjedesign",
-          "Branding",
-          "Rendering",
-          "Redesign",
-          "Produksjon",
-          "Industridesign",
-          "Produktdesign",
-          "Konseptutvikling",
-          "Prototyping",
-          "Brukerundersøkelser",
-          "Validering",
-          "3D-visualisering",
-          "Produksjonsforberedelse",
-          "Teknisk design"
-        ],
-        "hasOfferCatalog": {
-          "@type": "OfferCatalog",
-          "name": "Tjenester",
-          "itemListElement": [
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Konseptutvikling" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Produktdesign" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Prototyping" } },
-            {
-              "@type": "Offer",
-              "itemOffered": { "@type": "Service", "name": "Brukerundersøkelser" }
-            },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Validering" } }
-          ]
-        }
-      }
-    </script>
-    <!-- NOTE: Identity schema makes site ownership explicit for search engines and LLMs. -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "@id": "https://formaa.no/#organization",
-        "name": "Formaa",
-        "url": "https://formaa.no/",
-        "logo": "https://formaa.no/assets/formaa-logo.svg",
-        "image": "https://formaa.no/assets/images/social-sharing.webp",
-        "description": "Formaa er et designstudio i Norge som leverer industridesign og produktdesign fra ide til produksjonsklar leveranse.",
-        "sameAs": [
-          "https://www.linkedin.com/company/formaaa/",
-          "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
-          "https://t.me/designformaa",
-          "https://x.com/FormaaDesignAS"
-        ]
-      }
-    </script>
-
     <!-- Favicon -->
     <!-- NOTE: SVG favicon using the same triangle mark as the hero logo -->
     <link
@@ -632,55 +560,183 @@
     <div data-component="site-footer"></div>
 
     <!-- Structured Data -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Company",
-        "name": "Formaa",
-        "jobTitle": "Industridesigner og produktdesigner",
-        "description": "Få hjelp med industridesign og produktdesign i Norge. Designbyrå som leverer produktutvikling, markedsanalyse og konsept til prototyping, produksjonsklare modeller, 3D-visualisering og tydelig plan for lansering.",
-        "url": "https://formaa.no",
-        "telephone": "+47 46 38 18 87",
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "telephone": "+47 46 38 18 87",
-          "contactType": "customer service",
-          "areaServed": "NO",
-          "availableLanguage": ["no", "en"]
-        },
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Helsfyr",
-          "addressLocality": "Oslo",
-          "addressCountry": "Norge"
-        },
-        "knowsAbout": [
-          "Industridesign",
-          "Produktdesign",
-          "Produktutvikling",
-          "Prototyping",
-          "3D-visualisering",
-          "Konseptutvikling",
-          "Markedsanalyse",
-          "Emballasjedesign",
-          "Branding",
-          "Rendering",
-          "Redesign",
-          "Produksjon",
-          "Teknisk design"
-        ],
-        "hasCredential": {
-          "@type": "EducationalOccupationalCredential",
-          "credentialCategory": "degree",
-          "educationalLevel": "Mastergrad i industridesign"
-        },
-        "sameAs": ["https://www.behance.net/formaa", "https://x.com/FormaaDesignAS"]
-      }
-    </script>
 
     <!-- NOTE: Prebuilt project manifest loaded as JS to support environments where `fetch` from local files is blocked. -->
     <script src="assets/data/grid-strip-media-manifest.js?v=3" defer></script>
     <script src="assets/data/projects-manifest.js?v=3" defer></script>
+    <!-- NOTE: JSON-LD @graph for Google Search and AI Overviews — generated by scripts/generate-schema-markup.mjs; re-run after SEO/meta changes. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://formaa.no/#website",
+            "name": "Formaa",
+            "url": "https://formaa.no/",
+            "publisher": {
+              "@id": "https://formaa.no/#organization"
+            },
+            "inLanguage": ["nb-NO", "en"]
+          },
+          {
+            "@type": "LocalBusiness",
+            "@id": "https://formaa.no/#local-business",
+            "name": "Formaa",
+            "description": "Få hjelp med industridesign og produktdesign i Norge. Designbyrå som leverer produktutvikling, markedsanalyse og konsept til prototyping, produksjonsklare modeller, 3D-visualisering og tydelig plan for lansering.",
+            "url": "https://formaa.no",
+            "telephone": "+47 46 38 18 87",
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+47 46 38 18 87",
+              "contactType": "customer service",
+              "areaServed": "NO",
+              "availableLanguage": ["no", "en"]
+            },
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Helsfyr",
+              "addressLocality": "Oslo",
+              "addressCountry": "NO"
+            },
+            "sameAs": ["https://www.behance.net/formaa", "https://x.com/FormaaDesignAS"],
+            "parentOrganization": {
+              "@id": "https://formaa.no/#organization"
+            }
+          },
+          {
+            "@type": "ProfessionalService",
+            "@id": "https://formaa.no/#professional-service",
+            "name": "Formaa",
+            "url": "https://formaa.no/",
+            "logo": "https://formaa.no/assets/formaa-logo.svg",
+            "image": "https://formaa.no/assets/images/social-sharing.webp",
+            "description": "Industridesign og produktdesign tjenester for konseptutvikling, prototyping, validering og produksjonsklare leveranser i Norge.",
+            "areaServed": [
+              {
+                "@type": "Country",
+                "name": "Norge"
+              },
+              {
+                "@type": "City",
+                "name": "Oslo"
+              },
+              {
+                "@type": "AdministrativeArea",
+                "name": "Akershus"
+              },
+              {
+                "@type": "AdministrativeArea",
+                "name": "Buskerud"
+              },
+              {
+                "@type": "AdministrativeArea",
+                "name": "Østfold"
+              }
+            ],
+            "serviceType": [
+              "Produktutvikling",
+              "Markedsanalyse",
+              "Emballasjedesign",
+              "Branding",
+              "Rendering",
+              "Redesign",
+              "Produksjon",
+              "Industridesign",
+              "Produktdesign",
+              "Konseptutvikling",
+              "Prototyping",
+              "Brukerundersøkelser",
+              "Validering",
+              "3D-visualisering",
+              "Produksjonsforberedelse",
+              "Teknisk design"
+            ],
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Tjenester",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Konseptutvikling"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Produktdesign"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Prototyping"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Brukerundersøkelser"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Validering"
+                  }
+                }
+              ]
+            },
+            "publisher": {
+              "@id": "https://formaa.no/#organization"
+            }
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://formaa.no/#organization",
+            "name": "Formaa",
+            "url": "https://formaa.no/",
+            "logo": "https://formaa.no/assets/formaa-logo.svg",
+            "image": "https://formaa.no/assets/images/social-sharing.webp",
+            "description": "Formaa er et designstudio i Norge som leverer industridesign og produktdesign fra ide til produksjonsklar leveranse.",
+            "sameAs": [
+              "https://www.linkedin.com/company/formaaa/",
+              "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+              "https://t.me/designformaa",
+              "https://x.com/FormaaDesignAS"
+            ]
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://formaa.no/",
+            "name": "Industridesign og produktdesign i Norge | 3D-Design og prototyping",
+            "url": "https://formaa.no/",
+            "description": "Gjør ideen din til et ekte produkt. Designbyrå som lager produkter. Ingen mellomledd. Bare tydelig, brukersentrert, funksjonell design.",
+            "inLanguage": "nb-NO",
+            "isPartOf": {
+              "@id": "https://formaa.no/#website"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "@id": "https://formaa.no/#organization",
+              "name": "Formaa",
+              "url": "https://formaa.no/",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://formaa.no/assets/formaa-logo.svg"
+              }
+            }
+          }
+        ]
+      }
+    </script>
+
     <script src="components-loader.js?v=5" defer></script>
     <script src="shared-nav.js?v=1" defer></script>
     <!-- JavaScript -->

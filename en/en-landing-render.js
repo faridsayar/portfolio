@@ -10,14 +10,47 @@
       .replace(/"/g, '&quot;');
   }
 
+  // NOTE: Single @graph JSON-LD for EN landings — links Service/WebPage to formaa.no/#organization for Google Search and AI Overviews.
   function injectJsonLd(page) {
     if (!page.jsonLd) return;
+    const site = 'https://formaa.no';
+    const orgId = `${site}/#organization`;
+    const websiteId = `${site}/#website`;
+    const publisher = {
+      '@type': 'Organization',
+      '@id': orgId,
+      name: 'Formaa',
+      url: `${site}/`,
+      logo: { '@type': 'ImageObject', url: `${site}/assets/formaa-logo.svg` },
+    };
+    const graph = [
+      {
+        '@type': 'WebSite',
+        '@id': websiteId,
+        name: 'Formaa',
+        url: `${site}/`,
+        publisher: { '@id': orgId },
+        inLanguage: ['nb-NO', 'en'],
+      },
+    ];
+
     Object.values(page.jsonLd).forEach((payload) => {
-      const script = document.createElement('script');
-      script.type = 'application/ld+json';
-      script.textContent = JSON.stringify(payload);
-      document.head.appendChild(script);
+      const node = { ...payload };
+      delete node['@context'];
+      if (node['@type'] === 'Service') {
+        node.provider = publisher;
+      }
+      if (node['@type'] === 'WebPage') {
+        node.publisher = publisher;
+        node.isPartOf = { '@id': websiteId };
+      }
+      graph.push(node);
     });
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.textContent = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph });
+    document.head.appendChild(script);
   }
 
   function hydrateEnLanding() {
