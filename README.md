@@ -87,6 +87,7 @@ Use this checklist after structural updates (new pages, renamed slugs, new categ
    - Keep the site favicon aligned across all page heads. Current search favicon asset: `/assets/Favicon-google-search.svg`.
 4. Structured data
    - Keep JSON-LD valid and aligned with canonical URL.
+   - After SEO or route changes, run `corepack pnpm generate:schema-markup` (writes `@graph` JSON-LD on indexable HTML; updates `assets/data/project-schema-by-slug.js`).
 5. Internal linking
    - Add relevant contextual links with existing shared classes (see **Internal linking** below).
    - Avoid over-linking repeated terms in the same paragraph.
@@ -128,14 +129,17 @@ To add or edit a service: extend `EN_LANDING_PAGES` in `en-landing-pages.js`, ad
 - Keep contact links form-based to avoid exposing a raw email in page markup.
 - Keep the active brand social profiles aligned across visible social buttons and structured data `sameAs` links. Current X profile: `https://x.com/FormaaDesignAS`.
 
-Structured data currently used:
+Structured data currently used (regenerate with `pnpm generate:schema-markup`):
 
-- `index.html`: company/service JSON-LD
-- `innsikt.html`: blog listing JSON-LD
-- `innsikt-*.html`: article JSON-LD
-- `prisestimat.html`: `WebPage` + `BreadcrumbList` JSON-LD
-- `application-form.html`: `WebPage` + `BreadcrumbList` JSON-LD (canonical `/application-form`, design samtale kontaktform)
-- `en/*.html`: `Service` + `WebPage` + `BreadcrumbList` JSON-LD (`inLanguage: en`)
+- All indexable pages: single JSON-LD `@graph` with `WebSite`, entity-linked `Organization` (`https://formaa.no/#organization`), and page-type nodes
+- `index.html`: `WebSite`, `LocalBusiness`, `ProfessionalService`, `Organization`, `WebPage`
+- Category pages: `BreadcrumbList`, `WebPage`, `Service`
+- `innsikt*.html` / `innsikt/*/index.html`: `BlogPosting` (+ `HowTo` when the article has multiple `h2` steps)
+- `designstudio-oslo.html`: `WebPage` + existing `FAQPage` questions
+- `prisestimat.html`: `WebPage`, `BreadcrumbList`, package `Service` offers
+- `advanced-project.html`: hub `CollectionPage`; per-project `CreativeWork` injected via `assets/js/project-schema-inject.js` + `project-schema-by-slug.js`
+- `en/*.html`: merged `@graph` via `en/en-landing-render.js` (`inLanguage: en`)
+- Skipped: redirects (`prosjekt-*.html` stubs), `404.html`, `gallery.html`, `article-template.html`, `components/*`
 
 ## Ideas grid media workflow
 
