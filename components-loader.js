@@ -57,7 +57,7 @@
       </div>
     </div>
     <p class="site-footer__text">
-      © 2026 Formaa. Industridesign og produktdesign i Oslo. Alle rettigheter forbeholdt.
+      © 2026 Formaa AS. Industridesign og produktdesign i Oslo. Alle rettigheter forbeholdt. Org.nr. 937 772 505.
     </p>
   </div>
 </footer>`,
