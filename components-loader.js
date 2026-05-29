@@ -307,6 +307,21 @@
     </div>
   </div>
 </section>`,
+    'cooperation-partners': `<!-- NOTE: Partner cooperation cards (name + description) — hydrated from company-partners-manifest.js on Om oss. -->
+<div class="cooperation-partners" data-cooperation-partners aria-label="Samarbeidspartnere"></div>`,
+    'partner-logos-section': `<!-- NOTE: Reusable partner logo strip — logos from assets/company-logos, hydrated by shared-partner-logos.js. -->
+<section
+  class="section section--white section--partner-logos"
+  aria-label="Samarbeidspartnere"
+  data-partner-logos-section
+>
+  <div class="section-inner">
+    <div class="section-head section-head--partner-logos">
+      <h2 class="section-title">Samarbeidspartnere</h2>
+    </div>
+    <ul class="partner-logos" data-partner-logos-grid aria-label="Samarbeidspartnere"></ul>
+  </div>
+</section>`,
     'like-share-strip': `<!-- NOTE: Reusable like/share strip used below project and article hero media. -->
 <div class="like-share-strip" data-like-share-strip>
   <div class="like-share-strip__cluster">

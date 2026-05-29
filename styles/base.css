@@ -401,7 +401,7 @@
   width: 100%;
   max-width: 1920px;
   height: auto;
-  margin: 0 0 1.5rem 0;
+  margin: 36px 0 0 0;
 }
 
 /* NOTE: Keep inline portfolio summary CTA as plain black text link. */
@@ -451,6 +451,7 @@
   letter-spacing: -0.01em;
   line-height: 1.2;
   color: var(--color-dark);
+  opacity: 0.5;
   white-space: nowrap;
 }
 
@@ -666,9 +667,57 @@ section[aria-label='Designstudio i Oslo'] .section-banner-image {
   margin-top: 0.4rem;
 }
 
+/* NOTE: Cooperation partner cards on Om oss — name + short description (data from company-partners.json). */
+.cooperation-partners {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 2.5vw, 1.5rem);
+  margin: 2rem 0 0;
+  max-width: 48rem;
+}
+
+.cooperation-card {
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  background: var(--surface-neutral);
+}
+
+.cooperation-card__head {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.cooperation-card__logo {
+  flex: 0 0 auto;
+  display: block;
+  height: 2.5rem;
+  width: auto;
+  max-width: 8rem;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.62;
+}
+
+.cooperation-card__name {
+  margin: 0;
+  font-size: clamp(1.05rem, 1.8vw, 1.2rem);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-title);
+  letter-spacing: -0.01em;
+}
+
+.cooperation-card__text {
+  margin: 0;
+  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+  line-height: var(--line-height-loose);
+  color: var(--color-dark);
+  opacity: 0.72;
+}
+
 /* NOTE: Category page inline CTAs after intro copy column. */
 .category-inline-links {
-  margin: 0 0 2rem 0;
+  margin: 2rem 0 2rem 0;
   max-width: 48rem;
   display: flex;
   flex-direction: column;
@@ -837,6 +886,12 @@ section[aria-label='Designstudio i Oslo'] .section-banner-image {
   gap: 0.55rem;
 }
 
+/* NOTE: Homepage start — vertical inset for the "Dette gjør vi" section inner column. */
+#start .section-inner {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
 /* NOTE: Homepage start — studio intro block (title and lead). */
 #start .hero-text {
   margin-bottom: 0;
@@ -852,13 +907,17 @@ section[aria-label='Designstudio i Oslo'] .section-banner-image {
 
 /* NOTE: Homepage start — display line directly below `.hero-text`. */
 #start .big-text {
-  padding-top: 7.5rem;
-  padding-bottom: 7.5rem;
+  padding-top: 8.75rem;
+  padding-bottom: 8.75rem;
 }
 
 /* NOTE: Homepage start — Tjenester block spacing below the display line. */
 #start .start-tjenester {
   margin-bottom: 0;
+}
+
+#start .start-tjenester .section-lead {
+  margin-bottom: 2rem;
 }
 
 /* NOTE: Homepage start — category tags after the Tjenester service grid. */
@@ -1689,23 +1748,24 @@ section[aria-label='Oss'] .about-competence-block:not(:first-child) .about-compe
   background: var(--color-white);
 }
 
-.quotes-marquee {
-  overflow: hidden;
-  background: var(--color-white);
+/* NOTE: Homepage quotes — stepped carousel (center focus, side peeks); driven by shared-quotes-carousel.js. */
+.quotes-carousel {
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
+  background: var(--color-white);
 }
 
-.quotes-track {
-  display: flex;
-  width: max-content;
-  animation: quotes-scroll 48s linear infinite;
+.quotes-carousel__viewport {
+  overflow: hidden;
+  width: 100%;
 }
 
-.quotes-grid {
+.quotes-carousel__track {
   display: flex;
-  gap: 1rem;
-  padding-right: 1rem;
+  align-items: center;
+  gap: clamp(1rem, 3vw, 2rem);
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
 }
 
 .quote-card {
@@ -1716,8 +1776,18 @@ section[aria-label='Oss'] .about-competence-block:not(:first-child) .about-compe
   grid-template-columns: 5.25rem 1fr;
   align-items: start;
   gap: 1rem;
-  width: min(42rem, calc(100vw - 3rem));
-  flex: 0 0 auto;
+  flex: 0 0 min(42rem, 78vw);
+  width: min(42rem, 78vw);
+  opacity: 0.42;
+  transform: scale(0.94);
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.quote-card--active {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .quote-card__text {
@@ -1759,19 +1829,100 @@ section[aria-label='Oss'] .about-competence-block:not(:first-child) .about-compe
   opacity: 0.5;
 }
 
-@keyframes quotes-scroll {
-  from {
-    transform: translateX(0);
+@media (prefers-reduced-motion: reduce) {
+  .quotes-carousel__track {
+    transition: none;
   }
-  to {
-    transform: translateX(-50%);
+
+  .quote-card {
+    transition: none;
   }
+}
+
+/* NOTE: Reusable partner logo strip (Samarbeidspartnere) — left title, center-aligned grayscale logos. */
+.section--partner-logos .section-inner {
+  padding-top: clamp(2rem, 5vw, 3rem);
+  padding-bottom: clamp(2rem, 5vw, 3rem);
+}
+
+/* NOTE: On homepage, partner block sits inside .section--features (after feature banner) — drop nested horizontal padding so the title aligns with “For hvem”. */
+.section--features .section--partner-logos > .section-inner {
+  max-width: none;
+  margin: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.section-head--partner-logos {
+  text-align: left;
+  width: 100%;
+}
+
+.section-head--partner-logos .section-title {
+  margin-bottom: clamp(1.25rem, 3vw, 2rem);
+  text-align: left;
+}
+
+.partner-logos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1.5rem, 4vw, 2.75rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.partner-logos__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.partner-logos__link,
+.partner-logos__mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.partner-logos__link {
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.partner-logos__link:hover,
+.partner-logos__link:focus-visible {
+  opacity: 0.85;
+  outline: none;
+}
+
+.partner-logos__link:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+}
+
+.partner-logos__img {
+  display: block;
+  height: var(--partner-logo-height, 72px);
+  width: auto;
+  max-width: min(10rem, 28vw);
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.62;
+  transition: opacity 0.2s ease;
+}
+
+.partner-logos__link:hover .partner-logos__img,
+.partner-logos__link:focus-visible .partner-logos__img {
+  opacity: 0.88;
 }
 
 /* NOTE: Homepage trust/privacy block after testimonials; four named principles on neutral panel. */
 .section--privacy-trust .section-inner {
-  padding-top: clamp(2.5rem, 6vw, 4rem);
-  padding-bottom: clamp(2.5rem, 6vw, 4rem);
+  padding-top: 6rem;
+  padding-bottom: 6rem;
 }
 
 .section--privacy-trust .section-lead {
@@ -1874,11 +2025,16 @@ section[aria-label='Oss'] .about-competence-block:not(:first-child) .about-compe
   color: var(--color-primary);
 }
 
+/* NOTE: Homepage portfolio — display line above “Alle prosjekter” (extra top spacing). */
+#portfolio .big-text {
+  padding-top: 10rem;
+}
+
 /* NOTE: Large low-contrast display text (e.g. homepage portfolio values line). */
 .big-text {
   max-width: none;
   margin: 0;
-  padding: 5.25rem 0;
+  padding: 6rem 0;
   font-size: clamp(2.75rem, 7.5vw, 5.5rem);
   font-weight: var(--font-weight-semibold);
   letter-spacing: -0.03em;
@@ -1918,13 +2074,10 @@ section[aria-label='Oss'] .about-competence-block:not(:first-child) .about-compe
     grid-template-columns: 1fr;
   }
 
-  .quotes-grid {
-    padding-right: 0.75rem;
-  }
-
   .quote-card {
     grid-template-columns: 4.5rem 1fr;
-    width: min(32rem, calc(100vw - 2rem));
+    flex-basis: min(32rem, 88vw);
+    width: min(32rem, 88vw);
   }
 
   .quote-card__avatar {
@@ -2129,120 +2282,13 @@ section[aria-label='Oss'] .about-competence-block:not(:first-child) .about-compe
 }
 
 @media (max-width: 768px) {
-  :root {
-    --timeline-mobile-left-gap: 0.9rem;
-  }
-
-  .timeline-caption-row {
-    display: block;
-    margin-top: 0.65rem;
-    margin-bottom: 1.25rem;
-  }
-
-  /* NOTE: Same copy as desktop row, without duplicate endpoint labels next to the vertical scale. */
-  .timeline-caption-row .timeline-anchor--start,
-  .timeline-caption-row .timeline-anchor--end {
-    display: none;
-  }
-
-  .timeline-caption-row .inquiry-form__hint {
-    text-align: center;
-  }
-
-  .timeline-track-wrap {
-    position: relative;
-    display: block;
-    min-height: 15rem;
-    /* NOTE: Reserve space for fixed start/end labels around the vertical scale. */
-    padding-left: var(
-      --timeline-mobile-left-gap
-    ); /* NOTE: Keeps the vertical timeline column offset from the left edge. */
-    padding-top: 1.5rem;
-    padding-bottom: 1.75rem;
+  /* NOTE: Draggable timeline + helper copy hidden on small screens; phase values still submit via hidden inputs. */
+  .timeline {
     margin-top: 0;
-    margin-bottom: 0;
   }
 
-  .timeline-mobile-anchor {
-    position: absolute;
-    left: var(--timeline-mobile-left-gap);
-    transform: none;
-    font-size: 0.9rem;
-    font-weight: var(--font-weight-regular);
-    letter-spacing: -0.01em;
-    color: var(--color-primary);
-    opacity: 1;
-    white-space: normal;
-    text-align: left;
-    pointer-events: none;
-    z-index: 3;
-    display: block;
-  }
-
-  .timeline-mobile-anchor--end {
-    top: 0;
-  }
-
-  .timeline-mobile-anchor--start {
-    bottom: 0;
-  }
-
-  .timeline-track {
-    position: absolute;
-    left: var(--timeline-mobile-left-gap);
-    top: 1.5rem;
-    bottom: 1.75rem;
-    width: 2.25rem;
-    height: auto;
-  }
-
-  .timeline-segments {
-    flex-direction: column-reverse;
-  }
-
-  .timeline-handles {
-    position: absolute;
-    left: var(--timeline-mobile-left-gap);
-    right: auto;
-    width: 2.25rem;
-    top: 1.5rem;
-    bottom: 1.75rem;
-    height: auto;
-  }
-
-  .timeline-handle {
-    width: 22px;
-    height: 22px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    cursor: ns-resize;
-  }
-
-  .timeline-labels {
-    position: absolute;
-    left: calc(var(--timeline-mobile-left-gap) + 2.25rem + 0.75rem);
-    right: 0;
-    top: 0;
-    bottom: 0;
-    height: auto;
-    pointer-events: none;
-  }
-
-  .timeline-handle-label {
-    position: absolute;
-    left: 0;
-    transform: translateY(-50%);
-    font-size: 0.8rem;
-    background: transparent;
-    border: 0;
-    padding: 0;
-    border-radius: 0;
-    white-space: normal;
-    text-align: left;
-  }
-
-  .timeline-summary-item__name {
+  .timeline-track-wrap,
+  .timeline-caption-row {
     display: none;
   }
 }
@@ -2374,6 +2420,8 @@ section[aria-label='Oss'] .about-competence-block:not(:first-child) .about-compe
 /* NOTE: “Design samtale” title + lead below submit row. */
 .inquiry-form .section-head--after-inquiry-cta {
   margin-top: 1.75rem;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
 }
 
 .inquiry-form .section-head--after-inquiry-cta .section-title {

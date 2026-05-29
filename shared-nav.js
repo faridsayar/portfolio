@@ -17,6 +17,9 @@ function renderSharedNav() {
     path.startsWith('project-') ||
     path.startsWith('prosjekt-');
 
+  const isInnsiktPage =
+    path === 'innsikt.html' || path.startsWith('innsikt-') || segments[0] === 'innsikt';
+
   // NOTE: Extensionless hrefs match sitemap/canonical URLs; GitHub Pages and Apache both resolve them to *.html files.
   const items = [
     { href: '/', label: 'Hjem', current: segments.length === 0 },
@@ -26,6 +29,7 @@ function renderSharedNav() {
       current: path === 'oss.html' || (segments.length === 1 && segments[0] === 'oss'),
     },
     { href: '/prosjekter', label: 'Prosjekter', current: isProjectPage },
+    { href: '/innsikt', label: 'Innsikt', current: isInnsiktPage },
     {
       href: '/application-form',
       label: 'Kontakt',

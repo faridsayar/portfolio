@@ -9,12 +9,15 @@
     "sync:meta-descriptions": "node scripts/sync-meta-descriptions.mjs",
     "generate:sitemap": "node scripts/generate-sitemap.mjs",
     "generate:schema-markup": "node scripts/generate-schema-markup.mjs",
+    "generate:company-partners-manifest": "node scripts/generate-company-partners-manifest.mjs",
+    "process:company-logos": "node scripts/process-company-logos.mjs && node scripts/generate-company-partners-manifest.mjs",
     "dev": "serve . -l 3000",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },
   "devDependencies": {
     "prettier": "^3.6.2",
-    "serve": "^14.2.6"
+    "serve": "^14.2.6",
+    "sharp": "^0.34.5"
   }
 }

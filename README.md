@@ -95,6 +95,13 @@ Use this checklist after structural updates (new pages, renamed slugs, new categ
    - Run `corepack pnpm format`.
    - Spot-check key pages in browser and re-submit sitemap if needed.
 
+## Partner logos (`Samarbeidspartnere`)
+
+- **Component:** `components/partner-logos-section.html` — slot: `<div data-component="partner-logos-section"></div>`
+- **Data:** `assets/data/company-partners.json` → run `corepack pnpm generate:company-partners-manifest`
+- **Assets:** `assets/company-logos/` — run `corepack pnpm process:company-logos` after adding a source file (grayscale + equal height `.webp`)
+- **Scripts on page:** `company-partners-manifest.js` + `shared-partner-logos.js` (see `oss.html`)
+
 ## Internal linking
 
 Use existing patterns only; do not invent new link colors or button styles.
