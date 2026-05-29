@@ -181,9 +181,8 @@
           <div class="hero-text">
             <h2 class="hero-text__title">Formaa</h2>
             <p class="section-lead">
-              Designstudio som hjelper deg på veien fra idé til ekte produkt. Lage en
-              <a class="internal-text-link" href="/category/prototyping/oslo">prototype</a> og
-              forberede til produksjon. Vi hjelper deg med industriell
+              Designbyrå som vil få ideen din til å ta form. Er du en gründer eller driver en
+              startup? Vi hjelper deg med
               <a class="internal-text-link" href="/category/produktdesign/oslo">produktdesign</a>
               og
               <a class="internal-text-link" href="/category/konseptutvikling/oslo"
@@ -192,7 +191,10 @@
               basert på
               <a class="internal-text-link" href="/category/markedsundersokelse/oslo"
                 >markedsanalyse</a
-              >, vi følger deg i hele prosessen, og fikser for deg høy-kvalitets
+              >, lager en
+              <a class="internal-text-link" href="/category/prototyping/oslo">prototype</a> og
+              forbereder deg til produksjon. Vi følger deg i hele veien, og fikser for deg
+              høy-kvalitets
               <a class="internal-text-link" href="/category/visualisering/oslo">3D-visualisering</a>
               og <a class="internal-text-link" href="/category/branding/oslo">branding</a> som
               tiltrekker kunder og investorer.
@@ -205,6 +207,10 @@
           <!-- NOTE: Tjenester block — service cards below the studio intro. -->
           <div class="start-tjenester">
             <h2 class="section-title">Tjenester</h2>
+            <p class="section-lead">
+              Enkelte tjenester eller komplett prosjekt — vi bistår der du trenger det, og tilpasser
+              vårt tilbud for å oppnå målene du setter på best mulig måte.
+            </p>
 
             <div class="service-grid">
               <a class="service-card service-card--link" href="/category/konseptutvikling/norge">
@@ -344,6 +350,7 @@
               </p>
             </div>
           </div>
+          <div data-component="partner-logos-section"></div>
           <!-- NOTE: “For hvem” title + lead below the four-feature banner. -->
           <div class="section-head section-head--after-feature-banner">
             <h2 class="section-title">For hvem</h2>
@@ -412,10 +419,11 @@
     <!-- NOTE: Quote/testimonial strip placed after portfolio; images are placeholders to be replaced later. -->
     <section class="section section--white section--quotes" aria-label="Kundeuttalelser">
       <div class="section-inner">
-        <div class="quotes-marquee" aria-label="Kundeuttalelser ruller">
-          <div class="quotes-track">
-            <div class="quotes-grid">
-              <article class="quote-card">
+        <!-- NOTE: Stepped quote carousel — one centered card, peers partly visible; advances every 4s (shared-quotes-carousel.js). -->
+        <div class="quotes-carousel" data-quotes-carousel aria-label="Kundeuttalelser">
+          <div class="quotes-carousel__viewport">
+            <div class="quotes-carousel__track" data-quotes-track>
+              <article class="quote-card quote-card--active">
                 <div class="quote-card__media">
                   <img
                     class="quote-card__avatar"
@@ -475,48 +483,6 @@
                   <p class="quote-card__name">Trond Syversen</p>
                 </div>
               </article>
-            </div>
-
-            <div class="quotes-grid" aria-hidden="true">
-              <article class="quote-card">
-                <div class="quote-card__media">
-                  <img
-                    class="quote-card__avatar"
-                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Ccircle cx='40' cy='40' r='40' fill='%23000'/%3E%3C/svg%3E"
-                    alt=""
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-                <div class="quote-card__content">
-                  <p class="quote-card__text">
-                    "De hjalp oss med å lage vår første serie av 200 steinprodukter, katalogen og
-                    branding for våres startup i Østfold. Ny nettside og branding med
-                    produktkatalogen som resulterte i bra salg av hele serien."
-                  </p>
-                  <p class="quote-card__name">Memorium AS</p>
-                </div>
-              </article>
-
-              <article class="quote-card">
-                <div class="quote-card__media">
-                  <img
-                    class="quote-card__avatar"
-                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Ccircle cx='40' cy='40' r='40' fill='%23000'/%3E%3C/svg%3E"
-                    alt=""
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-                <div class="quote-card__content">
-                  <p class="quote-card__text">
-                    "Vi fikk hjelp til å lage nye og høy-kvalitet visualiseringer av vårt primære
-                    produkt - Utstyr for ubemannede båter - til investorgruppen. Bra leveranse og
-                    veldig god kommunikasjon hele veien."
-                  </p>
-                  <p class="quote-card__name">Carl Zeabuz</p>
-                </div>
-              </article>
 
               <article class="quote-card">
                 <div class="quote-card__media">
@@ -542,15 +508,15 @@
       </div>
     </section>
 
-    <!-- NOTE: Trust/privacy block loaded from components/privacy-trust-section.html (homepage copy). -->
-    <div data-component="privacy-trust-section"></div>
+    <div data-component="application-form"></div>
 
-    <!-- NOTE: Full-width idea strip after personvern, before contact form. -->
+    <!-- NOTE: Full-width idea strip after contact form, before personvern. -->
     <div class="ideas-strip" aria-label="Ideer og skisser">
       <div class="ideas-strip__grid" data-ideas-strip></div>
     </div>
 
-    <div data-component="application-form"></div>
+    <!-- NOTE: Trust/privacy block loaded from components/privacy-trust-section.html (homepage copy). -->
+    <div data-component="privacy-trust-section"></div>
 
     <!-- NOTE: Expanded footer (contact, links, copyright) — same component as prisestimat. -->
     <div data-component="site-footer"></div>
@@ -558,6 +524,7 @@
     <!-- Structured Data -->
 
     <!-- NOTE: Prebuilt project manifest loaded as JS to support environments where `fetch` from local files is blocked. -->
+    <script src="shared-quotes-carousel.js?v=1" defer></script>
     <script src="assets/data/grid-strip-media-manifest.js?v=3" defer></script>
     <script src="assets/data/projects-manifest.js?v=3" defer></script>
     <!-- NOTE: JSON-LD @graph for Google Search and AI Overviews — generated by scripts/generate-schema-markup.mjs; re-run after SEO/meta changes. -->
@@ -733,8 +700,10 @@
       }
     </script>
 
+    <script src="assets/data/company-partners-manifest.js?v=1" defer></script>
     <script src="components-loader.js?v=5" defer></script>
     <script src="shared-nav.js?v=1" defer></script>
+    <script src="shared-partner-logos.js?v=1" defer></script>
     <!-- JavaScript -->
     <script src="script.js?v=13" defer></script>
   </body>
