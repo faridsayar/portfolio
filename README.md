@@ -35,6 +35,9 @@ Current shared components:
 - `project-cta.html`
 - `contact-section-compact.html`
 - `privacy-trust-section.html` (personvern og konfidensialitet block)
+- `partner-logos-section.html` (Samarbeidspartnere logo strip)
+- `cooperation-partners.html` (partner cards on Om oss)
+- `hero-process-flow.html` (process strip under homepage hero)
 - `site-footer.html`
 
 `components-loader.js` supports multi-pass loading so components can contain nested `data-component` slots.
@@ -59,16 +62,28 @@ Search engines use root indexing files:
 
 ### Sitemap Workflow
 
-Whenever public pages are added/removed/renamed:
+Whenever public pages are added/removed/renamed, run the full SEO publish sequence:
 
-1. Regenerate `sitemap.xml` with `pnpm generate:sitemap` (or edit manually).
+```bash
+corepack pnpm sync:meta-descriptions
+corepack pnpm generate:innsikt-indexes
+corepack pnpm generate:prosjekter-indexes
+corepack pnpm generate:schema-markup
+corepack pnpm generate:sitemap
+corepack pnpm format
+```
+
+Or step by step:
+
+1. Regenerate `sitemap.xml` with `pnpm generate:sitemap` (auto-discovers `innsikt-*.html` stubs and category pages).
 2. Run `pnpm sync:meta-descriptions` so `meta description` / OG / Twitter text match each page’s `section-lead` (or hero / article JSON).
-3. Verify old URLs were removed (avoid stale `404` entries; `/gallery` must not be listed).
-4. Verify all new canonical routes are included once.
-5. Run `pnpm generate:innsikt-indexes` and `pnpm generate:prosjekter-indexes` so folder routes match sitemap paths on GitHub Pages.
-6. Ensure renamed category URLs are fully replaced in links (for example `produksjon` -> `teknisk-tegning`).
-7. Deploy to production.
-8. Re-submit `https://formaa.no/sitemap.xml` in Google Search Console.
+3. Run `pnpm generate:innsikt-indexes` and `pnpm generate:prosjekter-indexes` so folder routes match sitemap paths on GitHub Pages.
+4. Run `pnpm generate:schema-markup` after title/description or FAQ changes.
+5. Verify old URLs were removed (avoid stale `404` entries; `/gallery` must not be listed).
+6. Verify all new canonical routes are included once in `sitemap.xml`.
+7. Ensure renamed category URLs are fully replaced in links (for example `produksjon` -> `teknisk-tegning`).
+8. Deploy to production.
+9. Re-submit `https://formaa.no/sitemap.xml` in Google Search Console.
 
 ### SEO / Indexing Maintenance Checklist
 
@@ -84,7 +99,7 @@ Use this checklist after structural updates (new pages, renamed slugs, new categ
 3. Page metadata
    - Keep one canonical URL per page.
    - Ensure `<title>`, `meta description`, OG/Twitter title+description match page intent.
-   - Keep the site favicon aligned across all page heads. Current search favicon asset: `/assets/Favicon-google-search.svg`.
+   - Keep the site favicon aligned across all page heads. Current assets: `/assets/square-favicon.svg` (primary) and `/assets/square-favicon-fallback.png` (PNG fallback for Google Search).
 4. Structured data
    - Keep JSON-LD valid and aligned with canonical URL.
    - After SEO or route changes, run `corepack pnpm generate:schema-markup` (writes `@graph` JSON-LD on indexable HTML; updates `assets/data/project-schema-by-slug.js`).
@@ -148,6 +163,43 @@ Structured data currently used (regenerate with `pnpm generate:schema-markup`):
 - `en/*.html`: merged `@graph` via `en/en-landing-render.js` (`inLanguage: en`)
 - Skipped: redirects (`prosjekt-*.html` stubs), `404.html`, `gallery.html`, `article-template.html`, `components/*`
 
+### Target SEO phrases (page ownership)
+
+Use one primary page per phrase cluster; link contextually from other pages. Do not repeat the same exact phrase on every page.
+
+| Phrase cluster                                                            | Primary URL                                                         |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| produktutvikling, produktutviklingsbyrå, produktutvikling startup         | `/` (homepage), `/designstudio-oslo`                                |
+| hjelp med produktidé, utvikle produktidé, designe egen, lage eget produkt | `/category/konseptutvikling/norge`, `/category/produktdesign/norge` |
+| hvordan lage prototype, prototypeutvikling                                | `/category/prototyping/norge`, `/innsikt/hvordan-lage-prototype`    |
+| få produsert oppfinnelse                                                  | `/designstudio-oslo`, `/innsikt/fra-oppfinnelse-til-produksjon`     |
+| hardware startup norge                                                    | `/designstudio-oslo`, `/innsikt/produktutvikling-hardware-startup`  |
+| CAD designer, CAD-modelering                                              | `/category/cad-modelering/norge`                                    |
+| tekniske tegninger                                                        | `/category/teknisk-tegning/norge`                                   |
+| 3D modellering, visualisering                                             | `/category/3d-modelering/norge`, `/category/visualisering/norge`    |
+| prototype / produktutvikling pricing intent                               | `/prisestimat`                                                      |
+
+Homepage also has an FAQ block (`aria-label="Vanlige spørsmål om produktutvikling"`) targeting question-style queries with links to category and Innsikt pages.
+
+### Innsikt articles
+
+Source files are root stubs `innsikt-{slug}.html` with canonical `/innsikt/{slug}`. Run `pnpm generate:innsikt-indexes` to write `innsikt/{slug}/index.html` for static hosts. Add new stubs to `innsikt.html` grid and `article-image-map.js`.
+
+| Slug                                | Source stub                                      | Topic                    |
+| ----------------------------------- | ------------------------------------------------ | ------------------------ |
+| `sok-stotte-innovasjon-norge`       | `innsikt-sok-stotte-innovasjon-norge.html`       | Innovasjon Norge søknad  |
+| `hva-er-industridesign`             | `innsikt-hva-er-industridesign.html`             | Industridesign intro     |
+| `ux-er-ikke-produktdesign`          | `innsikt-ux-er-ikke-produktdesign.html`          | UX vs produktdesign      |
+| `hvem-trenger-design`               | `innsikt-hvem-trenger-design.html`               | Hvem trenger design      |
+| `hvordan-design-sparer-penger`      | `innsikt-hvordan-design-sparer-penger.html`      | Design sparer penger     |
+| `branding-og-produktdesign`         | `innsikt-branding-og-produktdesign.html`         | Branding + produktdesign |
+| `design-for-crowdfunding`           | `innsikt-design-for-crowdfunding.html`           | Crowdfunding + design    |
+| `hvordan-lage-prototype`            | `innsikt-hvordan-lage-prototype.html`            | Hvordan lage prototype   |
+| `fra-oppfinnelse-til-produksjon`    | `innsikt-fra-oppfinnelse-til-produksjon.html`    | Oppfinnelse → produksjon |
+| `produktutvikling-hardware-startup` | `innsikt-produktutvikling-hardware-startup.html` | Hardware startup Norge   |
+
+Legacy flat URLs `innsikt-{slug}` and `innsikt-{slug}.html` 301 to `/innsikt/{slug}` via `.htaccess`.
+
 ## Ideas grid media workflow
 
 - Source folder for grid assets: `assets/images/grid`.
@@ -160,20 +212,28 @@ Structured data currently used (regenerate with `pnpm generate:schema-markup`):
 ## URL Canonicalization
 
 - `.htaccess` (Apache) canonicalizes HTTP → HTTPS, 301s `www.formaa.no` to apex `https://formaa.no`, strips `.html` from URLs, maps `/prosjekter/{slug}` and `/innsikt/{slug}` to the legacy `prosjekt-*.html` / `innsikt-*.html` files, 301s legacy `prosjekt-*.html` / `innsikt-*.html` to `/prosjekter/{slug}` / `/innsikt/{slug}` (before the generic `.html` strip), and includes explicit 301s for friendly top-level routes such as `/designstudio-oslo` and `/application-form` (plus Search Console legacy paths: duplicate `/innsikt/innsikt-*`, bad `/category/.../index`, `produksjon` → `teknisk-tegning`, etc.). If you deploy on a host that ignores `.htaccess`, replicate these rules in that platform’s redirect config.
+- **Innsikt routing:** public URL `/innsikt/{slug}` is served from root stub `innsikt-{slug}.html` (internal rewrite). Adding a new article = add `innsikt-{slug}.html` + run `generate:innsikt-indexes`; no `.htaccess` change needed unless the slug pattern changes.
+- **Favicon:** `/assets/favicon.svg` and `/assets/Favicon-google-search.svg` redirect to `/assets/square-favicon.svg`. Pages link SVG + PNG fallback (`square-favicon-fallback.png`).
 - Homepage: `/index.html` → `/` (301).
 - Public routes are extensionless (for example `/prosjekter`, `/innsikt`, `/application-form`); legacy flat filenames redirect into those namespaces. Retired `/gallery` and `/gallery.html` redirect to `/`.
 
 ## Local Development
 
-Run a static server from project root:
+Run the static dev server from project root:
+
+```bash
+corepack pnpm dev
+```
+
+Then open `http://localhost:3000/` (uses `serve` on port 3000).
+
+Alternative:
 
 ```bash
 python3 -m http.server 8080
 ```
 
-Then open:
-
-- `http://localhost:8080/`
+Then open `http://localhost:8080/`.
 
 ## Formatting
 

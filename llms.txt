@@ -2,16 +2,25 @@
 site: https://formaa.no
 name: Formaa
 language: no
-description: Gjør ideen din til et ekte produkt. Formaa er et designbyrå for industridesign og produktdesign i Norge — fra idé og konsept til prototype, 3D-visualisering og produksjon. Kontakt via design samtale, prosjekter, innsikt og prisestimat.
+description: Produktutviklingsbyrå i Norge for gründere og startups — fra produktidé og prototype til CAD, 3D-visualisering, tekniske tegninger og produksjon. Designbyrå for fysiske produkter og hardware-startups.
 
 important_urls:
 - https://formaa.no/
-- https://formaa.no/prosjekter
 - https://formaa.no/designstudio-oslo
+- https://formaa.no/prosjekter
+- https://formaa.no/prisestimat
 - https://formaa.no/application-form
 - https://formaa.no/innsikt
 - https://formaa.no/oss
-- https://formaa.no/prisestimat
+- https://formaa.no/category/prototyping/norge
+- https://formaa.no/category/konseptutvikling/norge
+- https://formaa.no/category/cad-modelering/norge
+- https://formaa.no/category/teknisk-tegning/norge
+- https://formaa.no/category/3d-modelering/norge
+- https://formaa.no/category/visualisering/norge
+- https://formaa.no/innsikt/hvordan-lage-prototype
+- https://formaa.no/innsikt/fra-oppfinnelse-til-produksjon
+- https://formaa.no/innsikt/produktutvikling-hardware-startup
 - https://formaa.no/sitemap.xml
 
 retired_urls:

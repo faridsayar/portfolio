@@ -34,8 +34,9 @@ RewriteRule ^innsikt\.html$ /innsikt [R=301,L]
 RewriteRule ^designstudio-oslo\.html$ /designstudio-oslo [R=301,L]
 RewriteRule ^application-form\.html$ /application-form [R=301,L]
 
-# NOTE: Redirect legacy favicon asset requests to the current Google-friendly SVG favicon.
-RewriteRule ^assets/favicon\.svg$ /assets/Favicon-google-search.svg [R=301,L]
+# NOTE: Redirect legacy favicon asset requests to the current square full-bleed favicon.
+RewriteRule ^assets/favicon\.svg$ /assets/square-favicon.svg [R=301,L]
+RewriteRule ^assets/Favicon-google-search\.svg$ /assets/square-favicon.svg [R=301,L]
 
 # NOTE: Dev article shell is not a public page; send crawlers to Innsikt hub.
 RewriteRule ^article-template/?$ /innsikt [R=301,L]
@@ -45,6 +46,7 @@ RewriteRule ^gallery\.html$ / [R=301,L]
 RewriteRule ^gallery/?$ / [R=301,L]
 
 # NOTE: Move legacy flat article/project slugs into section-based URLs.
+# New Innsikt stubs (innsikt-{slug}.html) auto-map to /innsikt/{slug} — no per-article rules needed.
 RewriteRule ^prosjekt-([a-z0-9-]+)/?$ /prosjekter/$1 [R=301,L]
 RewriteRule ^innsikt-([a-z0-9-]+)/?$ /innsikt/$1 [R=301,L]
 
@@ -77,6 +79,7 @@ RewriteRule ^(.+)\.html$ /$1 [R=301,L]
 RewriteRule ^prosjekter/([a-z0-9-]+)/?$ /advanced-project.html?seoSlug=$1 [L,QSA]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
+# NOTE: Serve Innsikt articles from root stubs innsikt-{slug}.html (see scripts/generate-innsikt-indexes.mjs).
 RewriteRule ^innsikt/([a-z0-9-]+)/?$ /innsikt-$1.html [L]
 RewriteRule ^prosjekter/?$ /advanced-project.html [L]
 RewriteRule ^innsikt/?$ /innsikt.html [L]
