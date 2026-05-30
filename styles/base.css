@@ -395,6 +395,12 @@
   margin-top: 2rem;
 }
 
+/* NOTE: FAQ sections — vertical gap before each question title (homepage and similar blocks). */
+.section--faq h2.section-title + h3.section-title,
+.section--faq .section-lead + h3.section-title {
+  margin-top: 2rem;
+}
+
 /* NOTE: Responsive section banner image that never scales wider than its original width. */
 .section-banner-image {
   display: block;
@@ -575,8 +581,8 @@ section[aria-label='Kontaktform'] {
 }
 
 #application-form > .section-inner {
-  /* NOTE: Double the former 2rem top inset above “Design samtale” (was 4rem default section-inner). */
-  padding-top: 4rem;
+  /* NOTE: Flush with the section above — no extra top inset on the inquiry form inner wrapper. */
+  padding-top: 0;
   /* NOTE: No white band between grey inquiry panel and footer. */
   padding-bottom: 0;
 }

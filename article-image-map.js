@@ -36,7 +36,7 @@
     if (String(key) === 'innsikt-fra-oppfinnelse-til-produksjon')
       return toRootAssetPath('assets/images/drone2.webp');
     if (String(key) === 'innsikt-produktutvikling-hardware-startup')
-      return toRootAssetPath('assets/images/Projects/H2O/h2o-18.webp');
+      return toRootAssetPath('assets/images/social-sharing.webp');
     return imagePool[0];
   }
 
