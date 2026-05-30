@@ -1,5 +1,6 @@
 # NOTE: Robots policy and sitemap location for search engine crawlers. Public routes are extensionless;
 # legacy .html and flat prosjekt-/innsikt- slugs redirect via .htaccess (see sitemap.xml for canonical URLs).
+# LLM discovery: /llms.txt lists primary hubs and key SEO landing pages.
 User-agent: *
 Allow: /
 Allow: /llms.txt

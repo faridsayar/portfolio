@@ -46,6 +46,7 @@ RewriteRule ^gallery\.html$ / [R=301,L]
 RewriteRule ^gallery/?$ / [R=301,L]
 
 # NOTE: Move legacy flat article/project slugs into section-based URLs.
+# New Innsikt stubs (innsikt-{slug}.html) auto-map to /innsikt/{slug} — no per-article rules needed.
 RewriteRule ^prosjekt-([a-z0-9-]+)/?$ /prosjekter/$1 [R=301,L]
 RewriteRule ^innsikt-([a-z0-9-]+)/?$ /innsikt/$1 [R=301,L]
 
@@ -78,6 +79,7 @@ RewriteRule ^(.+)\.html$ /$1 [R=301,L]
 RewriteRule ^prosjekter/([a-z0-9-]+)/?$ /advanced-project.html?seoSlug=$1 [L,QSA]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
+# NOTE: Serve Innsikt articles from root stubs innsikt-{slug}.html (see scripts/generate-innsikt-indexes.mjs).
 RewriteRule ^innsikt/([a-z0-9-]+)/?$ /innsikt-$1.html [L]
 RewriteRule ^prosjekter/?$ /advanced-project.html [L]
 RewriteRule ^innsikt/?$ /innsikt.html [L]

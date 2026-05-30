@@ -31,6 +31,12 @@
       return toRootAssetPath('assets/images/Articles/memorium-branding.webp');
     if (String(key) === 'innsikt-design-for-crowdfunding')
       return toRootAssetPath('assets/images/Articles/kalash.webp');
+    if (String(key) === 'innsikt-hvordan-lage-prototype')
+      return toRootAssetPath('assets/images/Projects/H2O/h2o-15.webp');
+    if (String(key) === 'innsikt-fra-oppfinnelse-til-produksjon')
+      return toRootAssetPath('assets/images/drone2.webp');
+    if (String(key) === 'innsikt-produktutvikling-hardware-startup')
+      return toRootAssetPath('assets/images/Projects/H2O/h2o-18.webp');
     return imagePool[0];
   }
 

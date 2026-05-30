@@ -156,7 +156,7 @@ function buildIndexGraph() {
       '@id': `${SITE}/#local-business`,
       name: 'Formaa',
       description:
-        'Få hjelp med industridesign og produktdesign i Norge. Designbyrå som leverer produktutvikling, markedsanalyse og konsept til prototyping, produksjonsklare modeller, 3D-visualisering og tydelig plan for lansering.',
+        'Få hjelp med produktdesign og industridesign i Norge. Designbyrå som leverer produktutvikling, prototype, CAD-modelering, 3D-visualisering og tydelig plan for lansering.',
       url: SITE,
       telephone: '+47 46 38 18 87',
       contactPoint: {
@@ -183,7 +183,7 @@ function buildIndexGraph() {
       logo: `${SITE}/assets/formaa-logo.svg`,
       image: `${SITE}/assets/images/social-sharing.webp`,
       description:
-        'Industridesign og produktdesign tjenester for konseptutvikling, prototyping, validering og produksjonsklare leveranser i Norge.',
+        'Industridesign og produktdesign tjenester for konseptutvikling, prototyping, 3D-modelering, CAD-modelering og produksjonsklare leveranser i Norge.',
       areaServed: [
         { '@type': 'Country', name: 'Norge' },
         { '@type': 'City', name: 'Oslo' },
@@ -203,8 +203,8 @@ function buildIndexGraph() {
         'Produktdesign',
         'Konseptutvikling',
         'Prototyping',
-        'Brukerundersøkelser',
-        'Validering',
+        '3D-modelering',
+        'CAD-modelering',
         '3D-visualisering',
         'Produksjonsforberedelse',
         'Teknisk design',
@@ -216,11 +216,8 @@ function buildIndexGraph() {
           { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Konseptutvikling' } },
           { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Produktdesign' } },
           { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Prototyping' } },
-          {
-            '@type': 'Offer',
-            itemOffered: { '@type': 'Service', name: 'Brukerundersøkelser' },
-          },
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Validering' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: '3D-modelering' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'CAD-modelering' } },
         ],
       },
       publisher: { '@id': ORG_ID },
@@ -243,9 +240,9 @@ function buildIndexGraph() {
     },
     webPage({
       url: `${SITE}/`,
-      name: 'Industridesign og produktdesign i Norge | 3D-Design og prototyping',
+      name: 'Produktutvikling for startups i Norge | Prototype, CAD og 3D-visualisering | Formaa',
       description:
-        'Gjør ideen din til et ekte produkt. Designbyrå som lager produkter. Ingen mellomledd. Bare tydelig, brukersentrert, funksjonell design.',
+        'Få hjelp med produktidé og produktutvikling — fra konsept til prototype og produksjon. Designbyrå for gründere og startups: 3D-modellering, visualisering, CAD og tekniske tegninger.',
     }),
   ]);
 }
