@@ -84,7 +84,7 @@ Use this checklist after structural updates (new pages, renamed slugs, new categ
 3. Page metadata
    - Keep one canonical URL per page.
    - Ensure `<title>`, `meta description`, OG/Twitter title+description match page intent.
-   - Keep the site favicon aligned across all page heads. Current search favicon asset: `/assets/Favicon-google-search.svg`.
+   - Keep the site favicon aligned across all page heads. Current assets: `/assets/square-favicon.svg` (primary) and `/assets/square-favicon-fallback.png` (PNG fallback for Google Search).
 4. Structured data
    - Keep JSON-LD valid and aligned with canonical URL.
    - After SEO or route changes, run `corepack pnpm generate:schema-markup` (writes `@graph` JSON-LD on indexable HTML; updates `assets/data/project-schema-by-slug.js`).

@@ -34,8 +34,9 @@ RewriteRule ^innsikt\.html$ /innsikt [R=301,L]
 RewriteRule ^designstudio-oslo\.html$ /designstudio-oslo [R=301,L]
 RewriteRule ^application-form\.html$ /application-form [R=301,L]
 
-# NOTE: Redirect legacy favicon asset requests to the current Google-friendly SVG favicon.
-RewriteRule ^assets/favicon\.svg$ /assets/Favicon-google-search.svg [R=301,L]
+# NOTE: Redirect legacy favicon asset requests to the current square full-bleed favicon.
+RewriteRule ^assets/favicon\.svg$ /assets/square-favicon.svg [R=301,L]
+RewriteRule ^assets/Favicon-google-search\.svg$ /assets/square-favicon.svg [R=301,L]
 
 # NOTE: Dev article shell is not a public page; send crawlers to Innsikt hub.
 RewriteRule ^article-template/?$ /innsikt [R=301,L]
