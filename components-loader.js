@@ -221,11 +221,13 @@
     </div>
   </div>
 </section>`,
-    'hero-process-flow': `<!-- NOTE: One-line process summary (Concept → CAD → Prototype → Production). -->
+    'hero-process-flow': `<!-- NOTE: One-line process summary (Concept → 3D → CAD → Prototype → Production). -->
 <div class="hero-process-flow" aria-label="Fra konsept til produksjon">
   <p class="hero-process-flow__text">
     <span class="hero-process-flow__step">Concept</span>
     <img class="hero-process-flow__arrow hero-process-flow__arrow--lead" src="/assets/small-arrow-right.svg" alt="" width="12" height="12" aria-hidden="true" />
+    <span class="hero-process-flow__step">3D</span>
+    <img class="hero-process-flow__arrow" src="/assets/small-arrow-right.svg" alt="" width="10" height="10" aria-hidden="true" />
     <span class="hero-process-flow__step">CAD</span>
     <img class="hero-process-flow__arrow" src="/assets/small-arrow-right.svg" alt="" width="10" height="10" aria-hidden="true" />
     <span class="hero-process-flow__step">Prototype</span>
@@ -309,8 +311,8 @@
 </section>`,
     'cooperation-partners': `<!-- NOTE: Partner cooperation cards (name + description) — hydrated from company-partners-manifest.js on Om oss. -->
 <div class="cooperation-partners" data-cooperation-partners aria-label="Samarbeidspartnere"></div>`,
-    'partner-logos-section': `<!-- NOTE: Reusable partner logo strip — logos from assets/company-logos, hydrated by shared-partner-logos.js. -->
-<section
+    'partner-logos-section': `<!-- NOTE: Reusable partner logo strip — div.section (not nested section) for 4rem vertical margin; hydrated by shared-partner-logos.js. -->
+<div
   class="section section--white section--partner-logos"
   aria-label="Samarbeidspartnere"
   data-partner-logos-section
@@ -321,7 +323,54 @@
     </div>
     <ul class="partner-logos" data-partner-logos-grid aria-label="Samarbeidspartnere"></ul>
   </div>
-</section>`,
+</div>`,
+    'hva-du-far-section': `<!-- NOTE: “Hva du får” block — title, feature banner, and lead copy in one div.section (homepage). -->
+<div class="section section--profesjonalisme" aria-label="Hva du får">
+  <div class="section-inner">
+    <h2 class="section-title">Hva du får</h2>
+    <div class="feature-banner" aria-label="Fordeler">
+      <div class="feature-points">
+        <p class="feature-point">
+          <img class="feature-icon" src="assets/icons/produserbar-icon.svg" alt="" width="64" height="64" aria-hidden="true" />
+          <span class="feature-point__text">
+            <strong>Design som faktisk kan produseres:</strong>
+            <a class="feature-point__inline-link" href="/category/produktdesign/norge">Produktutvikling</a>
+            med fokus på form og funksjon, materialvalg og produksjon, transport og resirkulering.
+          </span>
+        </p>
+        <p class="feature-point">
+          <img class="feature-icon" src="assets/icons/fremdrift-icon.svg" alt="" width="64" height="64" aria-hidden="true" />
+          <span class="feature-point__text">
+            <strong>Ingen unødvendig kompleksitet:</strong> Tydelige prosesser og raske
+            <a class="feature-point__inline-link" href="/category/prototyping/norge">iterasjoner</a>
+            som gjør ideer til konkrete resultater. Rask og direkte kommunikasjon.
+          </span>
+        </p>
+        <p class="feature-point">
+          <img class="feature-icon" src="assets/icons/bedrift-icon.svg" alt="" width="64" height="64" aria-hidden="true" />
+          <span class="feature-point__text">
+            <strong>Skapt verdi for bedriften garantert:</strong> Hver beslutning tar hensyn til kostnader, tid, produksjon, pakkning, marked og posisjonering.
+          </span>
+        </p>
+        <p class="feature-point">
+          <img class="feature-icon" src="assets/icons/brukerbehov-icon.svg" alt="" width="64" height="64" aria-hidden="true" />
+          <span class="feature-point__text">
+            <strong>Design basert på <span class="text-primary">ekte brukerbehov</span>:</strong>
+            Grundig
+            <a class="feature-point__inline-link" href="/category/brukerundersokelse/norge">research</a>
+            av brukerne og brukernes mål, kontekst, bruksmåte, ergonomi og begrensninger.
+          </span>
+        </p>
+      </div>
+    </div>
+    <p class="section-lead">
+      Ferdidesignet produkt! Forståelig prosess som kombinerer
+      <a class="internal-text-link" href="/category/brukerundersokelse/norge">brukerinnsikt</a>, produktstrategi,
+      <a class="internal-text-link" href="/category/design/norge">design</a>
+      og teknisk realisme. Vi snakker rett fram om det hele veien: hva som er realistisk, hva som koster tid og penger, og hvor det gir mening at vi bidrar. Sammen med dere bestemmer vi hva som passer for dere.
+    </p>
+  </div>
+</div>`,
     'like-share-strip': `<!-- NOTE: Reusable like/share strip used below project and article hero media. -->
 <div class="like-share-strip" data-like-share-strip>
   <div class="like-share-strip__cluster">

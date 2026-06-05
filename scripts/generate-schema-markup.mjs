@@ -156,7 +156,7 @@ function buildIndexGraph() {
       '@id': `${SITE}/#local-business`,
       name: 'Formaa',
       description:
-        'Få hjelp med produktdesign og industridesign i Norge. Designbyrå som leverer produktutvikling, prototype, CAD-modelering, 3D-visualisering og tydelig plan for lansering.',
+        '3D-visualisering og produktdesign for startups og bedrifter i Norge. Vi gjør ideen din synlig på dager — hele veien til prototype og produksjon.',
       url: SITE,
       telephone: '+47 46 38 18 87',
       contactPoint: {
@@ -183,7 +183,7 @@ function buildIndexGraph() {
       logo: `${SITE}/assets/formaa-logo.svg`,
       image: `${SITE}/assets/images/social-sharing.webp`,
       description:
-        'Industridesign og produktdesign tjenester for konseptutvikling, prototyping, 3D-modelering, CAD-modelering og produksjonsklare leveranser i Norge.',
+        '3D-visualisering, produktdesign, prototyping og CAD-modelering for startups og bedrifter. Rask leveranse fra konsept til produksjonsklar leveranse i Norge.',
       areaServed: [
         { '@type': 'Country', name: 'Norge' },
         { '@type': 'City', name: 'Oslo' },
@@ -230,7 +230,7 @@ function buildIndexGraph() {
       logo: `${SITE}/assets/formaa-logo.svg`,
       image: `${SITE}/assets/images/social-sharing.webp`,
       description:
-        'Formaa er et designstudio i Norge som leverer industridesign og produktdesign fra ide til produksjonsklar leveranse.',
+        'Formaa er et designstudio i Norge som leverer 3D-visualisering og produktdesign for startups og bedrifter — fra ide til produksjon.',
       sameAs: [
         'https://www.linkedin.com/company/formaaa/',
         'https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr',
@@ -240,9 +240,9 @@ function buildIndexGraph() {
     },
     webPage({
       url: `${SITE}/`,
-      name: 'Produktutvikling for startups i Norge | Prototype, CAD og 3D-visualisering | Formaa',
+      name: '3D-visualisering og produktdesign for startups og bedrifter | Formaa',
       description:
-        'Få hjelp med produktidé og produktutvikling — fra konsept til prototype og produksjon. Designbyrå for gründere og startups: 3D-modellering, visualisering, CAD og tekniske tegninger.',
+        '3D-visualisering og produktdesign for startups og bedrifter. Vi gjør ideen din synlig på dager — hele veien til prototype og produksjon. Designbyrå i Norge.',
     }),
   ]);
 }

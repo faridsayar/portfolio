@@ -490,6 +490,8 @@ class SinglePagePortfolio {
   <p class="hero-process-flow__text">
     <span class="hero-process-flow__step">Concept</span>
     <img class="hero-process-flow__arrow hero-process-flow__arrow--lead" src="../../assets/small-arrow-right.svg" alt="" width="12" height="12" aria-hidden="true" />
+    <span class="hero-process-flow__step">3D</span>
+    <img class="hero-process-flow__arrow" src="../../assets/small-arrow-right.svg" alt="" width="10" height="10" aria-hidden="true" />
     <span class="hero-process-flow__step">CAD</span>
     <img class="hero-process-flow__arrow" src="../../assets/small-arrow-right.svg" alt="" width="10" height="10" aria-hidden="true" />
     <span class="hero-process-flow__step">Prototype</span>

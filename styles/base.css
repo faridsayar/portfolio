@@ -623,7 +623,7 @@ section[aria-label='Designstudio i Oslo'] .section-banner-image {
   margin-top: 0;
 }
 
-/* NOTE: Full-bleed H2O block between Tjenester and Prosess on designstudio-oslo. */
+/* NOTE: Full-bleed H2O block with competence overlay (designstudio-oslo and homepage after Tjenester). */
 .designstudio-full-width-media {
   position: relative;
   width: 100vw;
@@ -898,35 +898,101 @@ section[aria-label='Designstudio i Oslo'] .section-banner-image {
   padding-bottom: 6rem;
 }
 
-/* NOTE: Homepage start — studio intro block (title and lead). */
-#start .hero-text {
+/* NOTE: Homepage #start intro — div.section-1 with title, bullets left, 16:9 visual right. */
+.section-1 {
+  margin-top: 0;
+  margin-bottom: 4rem;
+}
+
+.section-1 .section-inner {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+#start .section-1 > .section-inner {
+  max-width: none;
+  margin: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+#start .start-intro__eyebrow {
+  margin: 0 0 clamp(1.5rem, 4vw, 2.5rem);
+  max-width: 37rem;
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-relaxed);
+  opacity: 0.85;
+}
+
+#start .start-intro {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+  align-items: center;
   margin-bottom: 0;
 }
 
-#start .hero-text__title {
-  margin: 0 0 1rem 0;
-  font-size: var(--font-size-section-title);
-  line-height: var(--line-height-title);
-  letter-spacing: -0.01em;
-  font-weight: var(--font-weight-semibold);
+#start .start-intro__content .section-title {
+  margin-bottom: 1rem;
 }
 
-/* NOTE: Homepage start — display line directly below `.hero-text`. */
+/* NOTE: Bold dash markers instead of circle bullets in start intro list. */
+#start .start-intro__content .article-row__list {
+  list-style: none;
+  padding-left: 0;
+}
+
+#start .start-intro__content .article-row__list li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+}
+
+#start .start-intro__content .article-row__list li::before {
+  content: '-';
+  flex: 0 0 auto;
+  font-weight: var(--font-weight-bold);
+  font-size: 1.25em;
+  line-height: 1;
+}
+
+#start .start-intro__media {
+  margin: 0;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--surface-neutral);
+}
+
+#start .start-intro__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (min-width: 768px) {
+  #start .start-intro {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+}
+
+/* NOTE: Homepage start — display line directly below `.start-intro`. */
 #start .big-text {
-  padding-top: 8.75rem;
-  padding-bottom: 8.75rem;
+  padding-top: 12.5rem;
+  padding-bottom: 12.5rem;
 }
 
-/* NOTE: Homepage start — Tjenester block spacing below the display line. */
-#start .start-tjenester {
+/* NOTE: Homepage start — “For hvem” block spacing below the display line. */
+#start .section-head--after-feature-banner {
   margin-bottom: 0;
 }
 
-#start .start-tjenester .section-lead {
+#start .section-head--after-feature-banner .section-lead {
   margin-bottom: 2rem;
 }
 
-/* NOTE: Homepage start — category tags after the Tjenester service grid. */
+/* NOTE: Homepage start — category tags after the “For hvem” block. */
 #start .service-tags {
   margin-top: 0;
   padding-top: 2rem;
@@ -1728,9 +1794,9 @@ section[aria-label='Oss'] .about-competence-block:not(:first-child) .about-compe
 
 /* Features section */
 .section--features .section-inner {
-  /* NOTE: No top inset so full-bleed feature banner sits flush under the section edge. */
-  padding-top: 0;
-  padding-bottom: 2rem;
+  /* NOTE: Top inset above the full-bleed feature banner on the homepage. */
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 
 /* NOTE: Keep gallery strip directly attached to the four-feature banner on home page. */
@@ -1738,15 +1804,19 @@ section[aria-label='Oss'] .about-competence-block:not(:first-child) .about-compe
   margin-bottom: 0;
 }
 
-/* NOTE: “For hvem” title + lead below the four-feature banner on homepage. */
-.section--features .section-head--after-feature-banner {
+/* NOTE: Tjenester block in the homepage features section. */
+.section--features .start-tjenester {
   margin-top: 0;
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
 
-.section--features .section-head--after-feature-banner .section-lead {
-  margin-bottom: 0;
+.section--features > .section-inner > .start-tjenester:first-child {
+  padding-top: 0;
+}
+
+.section--features .start-tjenester .section-lead {
+  margin-bottom: 2rem;
 }
 
 /* Quotes/testimonials section */
@@ -1845,10 +1915,51 @@ section[aria-label='Oss'] .about-competence-block:not(:first-child) .about-compe
   }
 }
 
-/* NOTE: Reusable partner logo strip (Samarbeidspartnere) — left title, center-aligned grayscale logos. */
+/* NOTE: “Hva du får” block — title, feature banner, and lead in one div.section. */
+.section--profesjonalisme {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
+.section--features > .section-inner > .section--profesjonalisme:first-child {
+  margin-top: 0;
+}
+
+.section--profesjonalisme .section-inner {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.section--profesjonalisme .section-title {
+  margin-bottom: clamp(1.25rem, 3vw, 2rem);
+}
+
+.section--profesjonalisme .feature-banner {
+  margin-bottom: 0;
+}
+
+.section--profesjonalisme .section-lead {
+  margin-top: 2rem;
+  margin-bottom: 0;
+}
+
+/* NOTE: Nested in homepage features — align with sibling blocks (partner logos, “For hvem”). */
+.section--features .section--profesjonalisme > .section-inner {
+  max-width: none;
+  margin: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* NOTE: Reusable partner logo strip (Samarbeidspartnere) — div.section with consistent vertical rhythm. */
+.section--partner-logos {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
 .section--partner-logos .section-inner {
-  padding-top: clamp(2rem, 5vw, 3rem);
-  padding-bottom: clamp(2rem, 5vw, 3rem);
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 /* NOTE: On homepage, partner block sits inside .section--features (after feature banner) — drop nested horizontal padding so the title aligns with “For hvem”. */
