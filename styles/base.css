@@ -501,20 +501,6 @@
   margin-bottom: 0;
 }
 
-/* NOTE: Designstudio shuffle hero uses a fixed 640px frame; kontaktform keeps the shared shuffle default. */
-section[aria-label='Designstudio i Oslo'] .category-hero-media:has([data-hero-video-shuffle]) {
-  height: 640px;
-  margin-bottom: 1.5rem;
-}
-
-/* NOTE: Formaa wordmark on the designstudio shuffle hero only; left edge matches `.project-hero-stage__content` padding column. */
-section[aria-label='Designstudio i Oslo'] .project-hero-stage__logo {
-  display: block;
-  width: auto;
-  height: 27px;
-  margin: 0;
-}
-
 .category-hero-media:has([data-hero-video-shuffle]) .hero-video {
   z-index: 0;
 }
@@ -551,11 +537,6 @@ section[aria-label='Designstudio i Oslo'] .project-hero-stage__logo {
 
 /* NOTE: Category pages start hero media at top; breadcrumb stays overlaid on the image. */
 section[aria-label='Formaa'] .section-inner {
-  padding-top: 0;
-}
-
-/* NOTE: Designstudio Oslo page also starts with a full-width hero media block. */
-section[aria-label='Designstudio i Oslo'] .section-inner {
   padding-top: 0;
 }
 
@@ -619,11 +600,7 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
   opacity: 0.58;
 }
 
-section[aria-label='Designstudio i Oslo'] .section-banner-image {
-  margin-top: 0;
-}
-
-/* NOTE: Full-bleed H2O block with competence overlay (designstudio-oslo and homepage after Tjenester). */
+/* NOTE: Full-bleed H2O block with competence overlay (homepage after Tjenester). */
 .designstudio-full-width-media {
   position: relative;
   width: 100vw;
@@ -898,21 +875,27 @@ section[aria-label='Designstudio i Oslo'] .section-banner-image {
   padding-bottom: 6rem;
 }
 
-/* NOTE: Homepage #start section blocks — div.section-1 / section-2 with title, bullets left, 16:9 media right. */
+/* NOTE: Homepage #start section blocks — div.section-1 / section-2 / section-3 / section-4 with title, bullets left, 16:9 media right (section-4: project grid). */
 .section-1,
-.section-2 {
+.section-2,
+.section-3,
+.section-4 {
   margin-top: 0;
   margin-bottom: 4rem;
 }
 
 .section-1 .section-inner,
-.section-2 .section-inner {
+.section-2 .section-inner,
+.section-3 .section-inner,
+.section-4 .section-inner {
   padding-top: 0;
   padding-bottom: 0;
 }
 
 #start .section-1 > .section-inner,
-#start .section-2 > .section-inner {
+#start .section-2 > .section-inner,
+#start .section-3 > .section-inner,
+#start .section-4 > .section-inner {
   max-width: none;
   margin: 0;
   padding-left: 0;
@@ -944,8 +927,22 @@ section[aria-label='Designstudio i Oslo'] .section-banner-image {
 }
 
 #start .section-1 .hero-cta,
-#start .section-2 .hero-cta {
+#start .section-2 .hero-cta,
+#start .section-3 .hero-cta {
   margin-top: 1.25rem;
+}
+
+/* NOTE: CTA row — primary button + inline text link beside each other in #start intro blocks. */
+#start .start-intro__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.25rem 1.75rem;
+  margin-top: 1.25rem;
+}
+
+#start .start-intro__actions .hero-cta {
+  margin-top: 0;
 }
 
 /* NOTE: Bold dash markers instead of circle bullets in start intro list. */
@@ -989,9 +986,10 @@ section[aria-label='Designstudio i Oslo'] .section-banner-image {
   object-position: center;
 }
 
-/* NOTE: xs category hashtag links under section-1 / section-2 media (30% opacity). */
+/* NOTE: xs category hashtag links under section-1 / section-2 / section-3 media (30% opacity). */
 .section-1__hashtags,
-.section-2__hashtags {
+.section-2__hashtags,
+.section-3__hashtags {
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem 0.65rem;
@@ -1000,8 +998,10 @@ section[aria-label='Designstudio i Oslo'] .section-banner-image {
 
 .section-1__hashtag,
 .section-2__hashtag,
+.section-3__hashtag,
 .section-1__hashtag:visited,
-.section-2__hashtag:visited {
+.section-2__hashtag:visited,
+.section-3__hashtag:visited {
   font-size: var(--font-size-breadcrumb);
   line-height: var(--line-height-kicker);
   color: inherit;
@@ -1011,8 +1011,10 @@ section[aria-label='Designstudio i Oslo'] .section-banner-image {
 
 .section-1__hashtag:hover,
 .section-2__hashtag:hover,
+.section-3__hashtag:hover,
 .section-1__hashtag:focus-visible,
-.section-2__hashtag:focus-visible {
+.section-2__hashtag:focus-visible,
+.section-3__hashtag:focus-visible {
   opacity: 0.55;
   color: var(--color-primary);
 }
@@ -1029,17 +1031,17 @@ section[aria-label='Designstudio i Oslo'] .section-banner-image {
   padding-bottom: 12.5rem;
 }
 
-/* NOTE: Homepage start — “For hvem” block spacing below section-2. */
-#start .section-head--after-feature-banner {
+/* NOTE: Homepage “For hvem” block — spacing before category tags (before kontaktform). */
+.section-head--after-feature-banner {
   margin-bottom: 0;
 }
 
-#start .section-head--after-feature-banner .section-lead {
+.section-head--after-feature-banner .section-lead {
   margin-bottom: 2rem;
 }
 
-/* NOTE: Homepage start — category tags after the “For hvem” block. */
-#start .service-tags {
+/* NOTE: Category tags after the “For hvem” block. */
+.section-head--after-feature-banner + .service-tags {
   margin-top: 0;
   padding-top: 2rem;
   padding-bottom: 2rem;
@@ -2013,7 +2015,7 @@ section[aria-label='Oss'] .about-competence-block:not(:first-child) .about-compe
   margin-bottom: 0;
 }
 
-/* NOTE: Tjenester service grid block (designstudio-oslo). */
+/* NOTE: Tjenester service grid block. */
 section[aria-label='Tjenester'] .start-tjenester {
   padding-top: 2rem;
   padding-bottom: 2rem;
@@ -2119,7 +2121,7 @@ section[aria-label='Tjenester'] .start-tjenester {
   }
 }
 
-/* NOTE: “Hva du får” block — title, feature banner, and lead in one div.section. */
+/* NOTE: “Hva du får” block — title, lead, Prosess link, then feature banner. */
 .section--profesjonalisme {
   margin-top: 4rem;
   margin-bottom: 4rem;
@@ -2138,12 +2140,16 @@ section[aria-label='Tjenester'] .start-tjenester {
   margin-bottom: clamp(1.25rem, 3vw, 2rem);
 }
 
-.section--profesjonalisme .feature-banner {
-  margin-bottom: 0;
+.section--profesjonalisme .section-lead {
+  margin-top: 0;
+  margin-bottom: 1.25rem;
 }
 
-.section--profesjonalisme .section-lead {
-  margin-top: 2rem;
+.section--profesjonalisme .category-projects-link {
+  margin-bottom: clamp(1.25rem, 3vw, 2rem);
+}
+
+.section--profesjonalisme .feature-banner {
   margin-bottom: 0;
 }
 
@@ -2155,15 +2161,30 @@ section[aria-label='Tjenester'] .start-tjenester {
   padding-right: 0;
 }
 
-/* NOTE: Reusable partner logo strip (Samarbeidspartnere) — div.section with consistent vertical rhythm. */
+/* NOTE: Reusable partner logo strip (Samarbeidspartnere) — white band when standalone; no vertical margin (margin exposed page grey). */
 .section--partner-logos {
-  margin-top: 4rem;
-  margin-bottom: 4rem;
+  background: var(--color-white);
+  color: var(--color-dark);
+}
+
+.section--features .section--partner-logos {
+  background: transparent;
 }
 
 .section--partner-logos .section-inner {
   padding-top: 0;
   padding-bottom: 0;
+}
+
+/* NOTE: Standalone on main (e.g. oss) — vertical rhythm via inner padding, flush with adjacent white sections. */
+main > .section--partner-logos > .section-inner {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+/* NOTE: Partner block before feature banner on category pages. */
+.section--features .section-inner > .section--partner-logos:first-child > .section-inner {
+  padding-bottom: 2rem;
 }
 
 /* NOTE: On homepage, partner block sits inside .section--features (after feature banner) — drop nested horizontal padding so the title aligns with “For hvem”. */
@@ -2346,9 +2367,10 @@ section[aria-label='Tjenester'] .start-tjenester {
   color: var(--color-primary);
 }
 
-/* NOTE: Homepage portfolio — display line above “Alle prosjekter” (extra top spacing). */
-#portfolio .big-text {
-  padding-top: 10rem;
+/* NOTE: Homepage #start section-4 portfolio — display line uses shared #start .big-text spacing. */
+#start .section-4 .big-text {
+  padding-top: 12.5rem;
+  padding-bottom: 12.5rem;
 }
 
 /* NOTE: Large low-contrast display text (e.g. homepage portfolio values line). */
@@ -2755,8 +2777,8 @@ section[aria-label='Tjenester'] .start-tjenester {
   }
 }
 
-/* Projects grid */
-.section--projects .section-inner {
+/* Projects grid — override #start .section-inner top inset on homepage portfolio block. */
+#start .section--projects .section-inner {
   padding-top: 0;
 }
 
@@ -2771,7 +2793,7 @@ section[aria-label='Tjenester'] .start-tjenester {
   padding-top: 0;
   padding-left: 1.25rem;
   padding-right: 1.25rem;
-  padding-bottom: 2.5rem;
+  padding-bottom: 0;
   /* Same left→right greys as `.feature-banner` (“Hvordan vi jobber”). */
   background: linear-gradient(
     90deg,
@@ -3590,6 +3612,8 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem 0.8rem;
+  padding-top: 32px;
+  padding-bottom: 32px;
 }
 
 .site-footer__link {
@@ -3611,6 +3635,30 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
   line-height: 1.5;
   color: var(--color-white);
   opacity: 0.86;
+}
+
+/* NOTE: xs footer copy block (designstudio intro) — breadcrumb scale on dark band. */
+.site-footer__intro {
+  margin: 0 0 0.85rem 0;
+}
+
+.site-footer__text--xs {
+  font-size: var(--font-size-breadcrumb);
+  line-height: var(--line-height-kicker);
+}
+
+.site-footer__text--xs + .site-footer__text--xs {
+  margin-top: 0.55rem;
+}
+
+.site-footer__intro .internal-text-link,
+.site-footer__intro .internal-text-link:visited {
+  color: var(--color-white);
+}
+
+.site-footer__intro .internal-text-link:hover,
+.site-footer__intro .internal-text-link:focus {
+  color: var(--color-primary);
 }
 
 @media (min-width: 720px) {

@@ -31,7 +31,6 @@ RewriteRule ^index\.html$ / [R=301,L]
 RewriteCond %{QUERY_STRING} ^$
 RewriteRule ^advanced-project/?$ /prosjekter [R=301,L]
 RewriteRule ^innsikt\.html$ /innsikt [R=301,L]
-RewriteRule ^designstudio-oslo\.html$ /designstudio-oslo [R=301,L]
 RewriteRule ^application-form\.html$ /application-form [R=301,L]
 
 # NOTE: Redirect legacy favicon asset requests to the current square full-bleed favicon.
@@ -44,6 +43,10 @@ RewriteRule ^article-template/?$ /innsikt [R=301,L]
 # NOTE: Idegalleri page retired; send old /gallery URLs to homepage (extensionless and .html).
 RewriteRule ^gallery\.html$ / [R=301,L]
 RewriteRule ^gallery/?$ / [R=301,L]
+
+# NOTE: Designstudio Oslo page retired; send old /designstudio-oslo URLs to homepage (extensionless and .html).
+RewriteRule ^designstudio-oslo\.html$ / [R=301,L]
+RewriteRule ^designstudio-oslo/?$ / [R=301,L]
 
 # NOTE: Move legacy flat article/project slugs into section-based URLs.
 # New Innsikt stubs (innsikt-{slug}.html) auto-map to /innsikt/{slug} — no per-article rules needed.

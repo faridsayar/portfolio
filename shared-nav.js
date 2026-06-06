@@ -56,7 +56,6 @@ function renderSharedNav() {
     projects: '/prosjekter',
     categories: '/category/design/norge',
     insights: '/innsikt',
-    'designstudio-oslo': '/designstudio-oslo',
     'tjenester-prosess': '/tjenester-prosess',
     about: '/oss',
     application: '/application-form',

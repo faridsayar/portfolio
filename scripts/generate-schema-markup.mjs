@@ -337,26 +337,6 @@ function processFile(absPath, relPath) {
     return { updated: true, type: 'pricing' };
   }
 
-  if (relPath === 'designstudio-oslo.html') {
-    const faq = extractFaqPage(html);
-    const pageUrl = url || `${SITE}/designstudio-oslo`;
-    graph = wrapGraph([
-      websiteRef(),
-      breadcrumbList(
-        [
-          { name: 'Formaa', url: `${SITE}/` },
-          { name: 'Designstudio Oslo', url: pageUrl },
-        ],
-        pageUrl
-      ),
-      webPage({ url: pageUrl, name: title, description }),
-      ...(faq ? [{ ...faq, '@id': `${pageUrl}#faq` }] : []),
-    ]);
-    html = insertSchemaFromGraph(html, graph);
-    write(absPath, html);
-    return { updated: true, type: 'designstudio' };
-  }
-
   if (relPath === 'innsikt.html' || relPath === 'innsikt/index.html') {
     graph = buildInnsiktHubGraph({
       url: url || `${SITE}/innsikt`,

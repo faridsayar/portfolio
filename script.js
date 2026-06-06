@@ -520,9 +520,8 @@ class SinglePagePortfolio {
   async mountCategoryHeroProcessFlowComponent() {
     const pathname = window.location.pathname;
     const isCategoryPage = pathname.includes('/category/');
-    const isDesignStudioPage = /designstudio-oslo/i.test(pathname);
     const isApplicationFormPage = /application-form/i.test(pathname);
-    if (!isCategoryPage && !isDesignStudioPage && !isApplicationFormPage) return;
+    if (!isCategoryPage && !isApplicationFormPage) return;
     const heroMedia = document.querySelector('.category-hero-media');
     if (!heroMedia) return;
     if (heroMedia.nextElementSibling?.classList?.contains('hero-process-flow')) return;
@@ -584,12 +583,9 @@ class SinglePagePortfolio {
   async mountCategoryProjectsLink() {
     const pathname = window.location.pathname;
     const isCategoryPage = pathname.includes('/category/');
-    const isDesignStudioPage = /designstudio-oslo/i.test(pathname);
-    if (!isCategoryPage && !isDesignStudioPage) return;
+    if (!isCategoryPage) return;
 
-    const introSection = isDesignStudioPage
-      ? document.querySelector('section[aria-label="Designstudio i Oslo"] .section-inner')
-      : document.querySelector('section[aria-label="Formaa"] .section-inner');
+    const introSection = document.querySelector('section[aria-label="Formaa"] .section-inner');
     if (!introSection || introSection.querySelector('.category-inline-links')) return;
 
     const afterGridLeads = introSection.querySelectorAll('.section-lead--after-grid');

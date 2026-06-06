@@ -121,7 +121,7 @@ Use this checklist after structural updates (new pages, renamed slugs, new categ
 
 Use existing patterns only; do not invent new link colors or button styles.
 
-- **Inline copy links:** `a.internal-text-link` (global style in `styles/base.css`: black, semibold). Use for words or phrases inside paragraphs on pages such as `index.html`, `prisestimat.html`, `designstudio-oslo.html`, `oss.html`, and for HTML inside innsikt article JSON `blocks[].text`.
+- **Inline copy links:** `a.internal-text-link` (global style in `styles/base.css`: black, semibold). Use for words or phrases inside paragraphs on pages such as `index.html`, `prisestimat.html`, `oss.html`, and for HTML inside innsikt article JSON `blocks[].text`.
 - **Inquiry page links:** use `/application-form.html` for CTA/contact links that should open the dedicated form page directly (instead of homepage hash links).
 - **Category chips:** `div.service-tags` + `a.service-tag`, same markup as category pages; public URLs are extensionless (for example `/category/{tjeneste}/oslo`). Prefer root-absolute `href` values like `/category/design/norge` so links resolve correctly from any path; on-disk files remain `category/.../*.html` (see `.htaccess`).
 - **Insights articles:** `shared-article.js` renders `blocks` as `<p>` / `<h2>`; embed full `<a class="internal-text-link" href="...">` strings in JSON where needed.
@@ -154,10 +154,9 @@ To add or edit a service: extend `EN_LANDING_PAGES` in `en-landing-pages.js`, ad
 Structured data currently used (regenerate with `pnpm generate:schema-markup`):
 
 - All indexable pages: single JSON-LD `@graph` with `WebSite`, entity-linked `Organization` (`https://formaa.no/#organization`), and page-type nodes
-- `index.html`: `WebSite`, `LocalBusiness`, `ProfessionalService`, `Organization`, `WebPage`
+- `index.html`: `WebSite`, `LocalBusiness`, `ProfessionalService`, `Organization`, `WebPage`, `FAQPage`
 - Category pages: `BreadcrumbList`, `WebPage`, `Service`
 - `innsikt*.html` / `innsikt/*/index.html`: `BlogPosting` (+ `HowTo` when the article has multiple `h2` steps)
-- `designstudio-oslo.html`: `WebPage` + existing `FAQPage` questions
 - `prisestimat.html`: `WebPage`, `BreadcrumbList`, package `Service` offers
 - `advanced-project.html`: hub `CollectionPage`; per-project `CreativeWork` injected via `assets/js/project-schema-inject.js` + `project-schema-by-slug.js`
 - `en/*.html`: merged `@graph` via `en/en-landing-render.js` (`inLanguage: en`)
@@ -169,11 +168,11 @@ Use one primary page per phrase cluster; link contextually from other pages. Do 
 
 | Phrase cluster                                                            | Primary URL                                                         |
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| produktutvikling, produktutviklingsbyrå, produktutvikling startup         | `/` (homepage), `/designstudio-oslo`                                |
+| produktutvikling, produktutviklingsbyrå, produktutvikling startup         | `/` (homepage)                                                      |
 | hjelp med produktidé, utvikle produktidé, designe egen, lage eget produkt | `/category/konseptutvikling/norge`, `/category/produktdesign/norge` |
 | hvordan lage prototype, prototypeutvikling                                | `/category/prototyping/norge`, `/innsikt/hvordan-lage-prototype`    |
-| få produsert oppfinnelse                                                  | `/designstudio-oslo`, `/innsikt/fra-oppfinnelse-til-produksjon`     |
-| hardware startup norge                                                    | `/designstudio-oslo`, `/innsikt/produktutvikling-hardware-startup`  |
+| få produsert oppfinnelse                                                  | `/`, `/innsikt/fra-oppfinnelse-til-produksjon`                      |
+| hardware startup norge                                                    | `/`, `/innsikt/produktutvikling-hardware-startup`                   |
 | CAD designer, CAD-modelering                                              | `/category/cad-modelering/norge`                                    |
 | tekniske tegninger                                                        | `/category/teknisk-tegning/norge`                                   |
 | 3D modellering, visualisering                                             | `/category/3d-modelering/norge`, `/category/visualisering/norge`    |
@@ -211,7 +210,7 @@ Legacy flat URLs `innsikt-{slug}` and `innsikt-{slug}.html` 301 to `/innsikt/{sl
 
 ## URL Canonicalization
 
-- `.htaccess` (Apache) canonicalizes HTTP → HTTPS, 301s `www.formaa.no` to apex `https://formaa.no`, strips `.html` from URLs, maps `/prosjekter/{slug}` and `/innsikt/{slug}` to the legacy `prosjekt-*.html` / `innsikt-*.html` files, 301s legacy `prosjekt-*.html` / `innsikt-*.html` to `/prosjekter/{slug}` / `/innsikt/{slug}` (before the generic `.html` strip), and includes explicit 301s for friendly top-level routes such as `/designstudio-oslo` and `/application-form` (plus Search Console legacy paths: duplicate `/innsikt/innsikt-*`, bad `/category/.../index`, `produksjon` → `teknisk-tegning`, etc.). If you deploy on a host that ignores `.htaccess`, replicate these rules in that platform’s redirect config.
+- `.htaccess` (Apache) canonicalizes HTTP → HTTPS, 301s `www.formaa.no` to apex `https://formaa.no`, strips `.html` from URLs, maps `/prosjekter/{slug}` and `/innsikt/{slug}` to the legacy `prosjekt-*.html` / `innsikt-*.html` files, 301s legacy `prosjekt-*.html` / `innsikt-*.html` to `/prosjekter/{slug}` / `/innsikt/{slug}` (before the generic `.html` strip), and includes explicit 301s for friendly top-level routes such as `/application-form`, retired `/gallery` and `/designstudio-oslo` → `/` (plus Search Console legacy paths: duplicate `/innsikt/innsikt-*`, bad `/category/.../index`, `produksjon` → `teknisk-tegning`, etc.). If you deploy on a host that ignores `.htaccess`, replicate these rules in that platform’s redirect config.
 - **Innsikt routing:** public URL `/innsikt/{slug}` is served from root stub `innsikt-{slug}.html` (internal rewrite). Adding a new article = add `innsikt-{slug}.html` + run `generate:innsikt-indexes`; no `.htaccess` change needed unless the slug pattern changes.
 - **Favicon:** `/assets/favicon.svg` and `/assets/Favicon-google-search.svg` redirect to `/assets/square-favicon.svg`. Pages link SVG + PNG fallback (`square-favicon-fallback.png`).
 - Homepage: `/index.html` → `/` (301).

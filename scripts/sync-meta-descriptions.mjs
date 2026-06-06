@@ -127,10 +127,6 @@ function resolveDescription(filePath, html) {
     return buildDescription(heroTitle, `${heroSubs} ${stripHtml(afterGrid)}`.trim());
   }
 
-  if (rel === 'designstudio-oslo.html') {
-    return buildDescription(extractHeadline(html), extractLead(html));
-  }
-
   if (rel === 'oss.html') {
     const lead1 = extractLead(html);
     const lead2 = extractFirst(
@@ -269,7 +265,6 @@ function collectHtmlFiles(dir, out = []) {
 
 const files = [
   path.join(root, 'index.html'),
-  path.join(root, 'designstudio-oslo.html'),
   path.join(root, 'oss.html'),
   path.join(root, 'application-form.html'),
   path.join(root, 'prisestimat.html'),

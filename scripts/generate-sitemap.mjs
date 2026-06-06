@@ -56,7 +56,6 @@ function collectProsjektRoutes() {
 
 const staticRoutes = [
   '/',
-  '/designstudio-oslo',
   '/tjenester-prosess',
   '/oss',
   '/prisestimat',

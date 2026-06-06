@@ -6,7 +6,6 @@ description: Produktutviklingsbyrå i Norge for gründere og startups — fra pr
 
 important_urls:
 - https://formaa.no/
-- https://formaa.no/designstudio-oslo
 - https://formaa.no/prosjekter
 - https://formaa.no/prisestimat
 - https://formaa.no/application-form
@@ -25,6 +24,7 @@ important_urls:
 
 retired_urls:
 - https://formaa.no/gallery
+- https://formaa.no/designstudio-oslo
 
 policies:
 - content_usage: public_website_content

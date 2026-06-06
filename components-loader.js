@@ -51,7 +51,6 @@
         <a class="site-footer__link" href="/category/design/norge" data-footer-link="categories">Kategorier</a>
         <a class="site-footer__link" href="/innsikt" data-footer-link="insights">Innsikt</a>
         <a class="site-footer__link" href="/tjenester-prosess" data-footer-link="tjenester-prosess">Tjenester</a>
-        <a class="site-footer__link" href="/designstudio-oslo" data-footer-link="designstudio-oslo">Designstudio Oslo</a>
         <a class="site-footer__link" href="/oss" data-footer-link="about">Oss</a>
         <a class="site-footer__link" href="/application-form" data-footer-link="application">Kontaktform</a>
         <a class="site-footer__link" href="/prisestimat" data-footer-link="pricing">Prisestimat</a>
@@ -312,9 +311,9 @@
 </section>`,
     'cooperation-partners': `<!-- NOTE: Partner cooperation cards (name + description) — hydrated from company-partners-manifest.js on Om oss. -->
 <div class="cooperation-partners" data-cooperation-partners aria-label="Samarbeidspartnere"></div>`,
-    'partner-logos-section': `<!-- NOTE: Reusable partner logo strip — div.section (not nested section) for 4rem vertical margin; hydrated by shared-partner-logos.js. -->
+    'partner-logos-section': `<!-- NOTE: Reusable partner logo strip — div.section (not nested section); white band via .section--partner-logos; hydrated by shared-partner-logos.js. -->
 <div
-  class="section section--white section--partner-logos"
+  class="section section--partner-logos"
   aria-label="Samarbeidspartnere"
   data-partner-logos-section
 >
