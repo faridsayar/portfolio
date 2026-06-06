@@ -1495,6 +1495,77 @@ section[aria-label='Prosess'] .section-inner {
   padding-top: 2rem;
 }
 
+section[aria-label='Prosess i bilder'] .section-inner {
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+}
+
+/* NOTE: Tjenester Prosess page — two-column image grid; images span full column width with natural height. */
+.prosess-image-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(0.75rem, 1.5vw, 1.25rem);
+}
+
+.prosess-image-grid__item {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+}
+
+.prosess-image-grid__img,
+.prosess-image-grid__media {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.prosess-image-grid__media--placeholder {
+  background: var(--color-black);
+}
+
+.prosess-image-grid__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.35rem;
+  padding: 1.25rem 1.5rem 1.5rem;
+  color: var(--color-white);
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.72),
+    rgba(0, 0, 0, 0.18) 55%,
+    rgba(0, 0, 0, 0.04)
+  );
+}
+
+.prosess-image-grid__title {
+  margin: 0;
+  font-size: var(--font-size-card-title);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  text-shadow: 0 6px 18px var(--overlay-black-35);
+}
+
+.prosess-image-grid__text {
+  margin: 0;
+  max-width: 28rem;
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-relaxed);
+  opacity: 0.9;
+  text-shadow: 0 4px 14px var(--overlay-black-35);
+}
+
+@media (min-width: 768px) {
+  .prosess-image-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 /* About page team section */
 .about-top-graphic {
   position: relative;
