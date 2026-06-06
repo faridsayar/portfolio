@@ -50,6 +50,7 @@
         <a class="site-footer__link" href="/prosjekter" data-footer-link="projects">Prosjekter</a>
         <a class="site-footer__link" href="/category/design/norge" data-footer-link="categories">Kategorier</a>
         <a class="site-footer__link" href="/innsikt" data-footer-link="insights">Innsikt</a>
+        <a class="site-footer__link" href="/tjenester-prosess" data-footer-link="tjenester-prosess">Tjenester</a>
         <a class="site-footer__link" href="/designstudio-oslo" data-footer-link="designstudio-oslo">Designstudio Oslo</a>
         <a class="site-footer__link" href="/oss" data-footer-link="about">Oss</a>
         <a class="site-footer__link" href="/application-form" data-footer-link="application">Kontaktform</a>

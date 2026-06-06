@@ -1403,6 +1403,98 @@ section[aria-label='Designstudio i Oslo'] .section-banner-image {
   color: var(--color-dark);
 }
 
+/* NOTE: Tjenester Prosess page — horizontal phase cards (vertical stack on mobile); strip breaks out to full viewport width. */
+.prosess-phase-strip {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4rem;
+}
+
+.prosess-phase-card {
+  position: relative;
+  overflow: hidden;
+  flex: 1 1 9rem;
+  min-width: 9rem;
+  max-width: 11rem;
+  width: 100%;
+  min-height: 7.5rem;
+  padding: 0.85rem 0.75rem;
+}
+
+.prosess-phase-card__number {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: top;
+  padding-left: 0rem;
+  font-size: clamp(3.5rem, 8vw, 5rem);
+  line-height: 1;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: -0.04em;
+  opacity: 0.1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.prosess-phase-card__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  min-height: 100%;
+}
+
+.prosess-phase-card__title {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.25;
+  font-weight: var(--font-weight-bold);
+}
+
+.prosess-phase-card__text {
+  margin: 0.35rem 0 0;
+  font-size: var(--font-size-breadcrumb);
+  line-height: var(--line-height-relaxed);
+}
+
+@media (min-width: 768px) {
+  .prosess-phase-strip {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .prosess-phase-card {
+    width: auto;
+  }
+}
+
+/* NOTE: Tjenester Prosess page — equal gaps between intro, display line, and prosess block. */
+section[aria-label='Tjenester'] .section-inner {
+  padding-bottom: 2rem;
+}
+
+section[aria-label='Tjenester display line'] .section-inner {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+section[aria-label='Tjenester display line'] .big-text {
+  padding: 4rem 0;
+}
+
+section[aria-label='Prosess'] .section-inner {
+  padding-top: 2rem;
+}
+
 /* About page team section */
 .about-top-graphic {
   position: relative;
