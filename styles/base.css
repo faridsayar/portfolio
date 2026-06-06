@@ -898,18 +898,21 @@ section[aria-label='Designstudio i Oslo'] .section-banner-image {
   padding-bottom: 6rem;
 }
 
-/* NOTE: Homepage #start intro — div.section-1 with title, bullets left, 16:9 visual right. */
-.section-1 {
+/* NOTE: Homepage #start section blocks — div.section-1 / section-2 with title, bullets left, 16:9 media right. */
+.section-1,
+.section-2 {
   margin-top: 0;
   margin-bottom: 4rem;
 }
 
-.section-1 .section-inner {
+.section-1 .section-inner,
+.section-2 .section-inner {
   padding-top: 0;
   padding-bottom: 0;
 }
 
-#start .section-1 > .section-inner {
+#start .section-1 > .section-inner,
+#start .section-2 > .section-inner {
   max-width: none;
   margin: 0;
   padding-left: 0;
@@ -936,6 +939,15 @@ section[aria-label='Designstudio i Oslo'] .section-banner-image {
   margin-bottom: 1rem;
 }
 
+#start .start-intro__content .section-lead {
+  margin-bottom: 1rem;
+}
+
+#start .section-1 .hero-cta,
+#start .section-2 .hero-cta {
+  margin-top: 1.25rem;
+}
+
 /* NOTE: Bold dash markers instead of circle bullets in start intro list. */
 #start .start-intro__content .article-row__list {
   list-style: none;
@@ -956,6 +968,11 @@ section[aria-label='Designstudio i Oslo'] .section-banner-image {
   line-height: 1;
 }
 
+#start .start-intro__media-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
 #start .start-intro__media {
   margin: 0;
   aspect-ratio: 16 / 9;
@@ -963,12 +980,41 @@ section[aria-label='Designstudio i Oslo'] .section-banner-image {
   background: var(--surface-neutral);
 }
 
-#start .start-intro__image {
+#start .start-intro__image,
+#start .start-intro__video {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
+}
+
+/* NOTE: xs category hashtag links under section-1 / section-2 media (30% opacity). */
+.section-1__hashtags,
+.section-2__hashtags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.65rem;
+  margin: 0.5rem 0 0;
+}
+
+.section-1__hashtag,
+.section-2__hashtag,
+.section-1__hashtag:visited,
+.section-2__hashtag:visited {
+  font-size: var(--font-size-breadcrumb);
+  line-height: var(--line-height-kicker);
+  color: inherit;
+  text-decoration: none;
+  opacity: 0.3;
+}
+
+.section-1__hashtag:hover,
+.section-2__hashtag:hover,
+.section-1__hashtag:focus-visible,
+.section-2__hashtag:focus-visible {
+  opacity: 0.55;
+  color: var(--color-primary);
 }
 
 @media (min-width: 768px) {
@@ -977,13 +1023,13 @@ section[aria-label='Designstudio i Oslo'] .section-banner-image {
   }
 }
 
-/* NOTE: Homepage start — display line directly below `.start-intro`. */
+/* NOTE: Homepage start — display line between section-1 and section-2. */
 #start .big-text {
   padding-top: 12.5rem;
   padding-bottom: 12.5rem;
 }
 
-/* NOTE: Homepage start — “For hvem” block spacing below the display line. */
+/* NOTE: Homepage start — “For hvem” block spacing below section-2. */
 #start .section-head--after-feature-banner {
   margin-bottom: 0;
 }
@@ -1804,18 +1850,13 @@ section[aria-label='Oss'] .about-competence-block:not(:first-child) .about-compe
   margin-bottom: 0;
 }
 
-/* NOTE: Tjenester block in the homepage features section. */
-.section--features .start-tjenester {
-  margin-top: 0;
+/* NOTE: Tjenester service grid block (designstudio-oslo). */
+section[aria-label='Tjenester'] .start-tjenester {
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
 
-.section--features > .section-inner > .start-tjenester:first-child {
-  padding-top: 0;
-}
-
-.section--features .start-tjenester .section-lead {
+.start-tjenester .section-lead {
   margin-bottom: 2rem;
 }
 
