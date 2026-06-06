@@ -965,6 +965,11 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
   line-height: 1;
 }
 
+/* NOTE: Keep dash + copy on one flex row; inline links stay in normal text flow inside the span. */
+#start .start-intro__content .article-row__list li > span {
+  min-width: 0;
+}
+
 #start .start-intro__media-wrap {
   display: flex;
   flex-direction: column;
