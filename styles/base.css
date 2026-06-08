@@ -904,6 +904,8 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
 
 #start .start-intro__eyebrow {
   margin: 0 0 clamp(1.5rem, 4vw, 2.5rem);
+  padding-top: 64px;
+  padding-bottom: 64px;
   max-width: 37rem;
   font-size: var(--font-size-body-sm);
   line-height: var(--line-height-relaxed);
@@ -1032,8 +1034,8 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
 
 /* NOTE: Homepage start — display line between section-1 and section-2. */
 #start .big-text {
-  padding-top: 12.5rem;
-  padding-bottom: 12.5rem;
+  padding-top: 192px;
+  padding-bottom: 192px;
 }
 
 /* NOTE: Homepage “For hvem” block — spacing before category tags (before kontaktform). */
@@ -1573,6 +1575,23 @@ section[aria-label='Prosess i bilder'] .section-inner {
   }
 }
 
+/* NOTE: Tjenester Prosess page — verksteder + Kina-produksjon block after image grid. */
+section[aria-label='Verksteder og produksjon'] .section-inner {
+  padding-top: 0;
+  padding-bottom: 4rem;
+}
+
+.prosess-produksjon-section {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.prosess-produksjon-section__partner {
+  margin: 0;
+  max-width: 48rem;
+}
+
 /* About page team section */
 .about-top-graphic {
   position: relative;
@@ -2010,8 +2029,8 @@ section[aria-label='Oss'] .about-competence-block:not(:first-child) .about-compe
 
 /* Features section */
 .section--features .section-inner {
-  /* NOTE: Top inset above the full-bleed feature banner on the homepage. */
-  padding-top: 4rem;
+  /* NOTE: “Hva du får” leads with copy before the banner — no top inset (category pages zero via .category-feature-banner-section). */
+  padding-top: 0;
   padding-bottom: 4rem;
 }
 
@@ -2374,8 +2393,8 @@ main > .section--partner-logos > .section-inner {
 
 /* NOTE: Homepage #start section-4 portfolio — display line uses shared #start .big-text spacing. */
 #start .section-4 .big-text {
-  padding-top: 12.5rem;
-  padding-bottom: 12.5rem;
+  padding-top: 192px;
+  padding-bottom: 192px;
 }
 
 /* NOTE: Large low-contrast display text (e.g. homepage portfolio values line). */
@@ -2785,6 +2804,14 @@ main > .section--partner-logos > .section-inner {
 /* Projects grid — override #start .section-inner top inset on homepage portfolio block. */
 #start .section--projects .section-inner {
   padding-top: 0;
+}
+
+/* NOTE: Bottom spacing after portfolio grid stays on white #start — margin would collapse and expose page grey before “Hva du får”. */
+#start .section-4.section--projects,
+#portfolio {
+  margin-bottom: 0;
+  padding-top: 96px;
+  padding-bottom: 96px;
 }
 
 .section--projects .section-head {
