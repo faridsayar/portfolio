@@ -1412,7 +1412,7 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
   color: var(--color-dark);
 }
 
-/* NOTE: Tjenester Prosess page — horizontal phase cards (vertical stack on mobile); strip breaks out to full viewport width. */
+/* NOTE: Tjenester Prosess page — two-column grid on mobile, horizontal row on desktop; strip breaks out to full viewport width. */
 .prosess-phase-strip {
   width: 100vw;
   margin-left: calc(50% - 50vw);
@@ -1420,20 +1420,18 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
   margin-top: 1.5rem;
   padding-top: 64px;
   padding-bottom: 64px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 4rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem 1rem;
+  align-items: stretch;
 }
 
 .prosess-phase-card {
   position: relative;
   overflow: hidden;
-  flex: 1 1 9rem;
-  min-width: 9rem;
-  max-width: 11rem;
+  min-width: 0;
   width: 100%;
   min-height: 7.5rem;
   padding: 0.85rem 0.75rem;
@@ -1479,11 +1477,19 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
 
 @media (min-width: 768px) {
   .prosess-phase-strip {
+    display: flex;
     flex-direction: row;
-    align-items: stretch;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4rem;
+    padding-left: 0;
+    padding-right: 0;
   }
 
   .prosess-phase-card {
+    flex: 1 1 9rem;
+    min-width: 9rem;
+    max-width: 11rem;
     width: auto;
   }
 }
