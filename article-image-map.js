@@ -32,9 +32,9 @@
     if (String(key) === 'innsikt-design-for-crowdfunding')
       return toRootAssetPath('assets/images/Articles/kalash.webp');
     if (String(key) === 'innsikt-hvordan-lage-prototype')
-      return toRootAssetPath('assets/images/Projects/H2O/h2o-15.webp');
+      return toRootAssetPath('assets/images/Articles/prototype2.webp');
     if (String(key) === 'innsikt-fra-oppfinnelse-til-produksjon')
-      return toRootAssetPath('assets/images/drone2.webp');
+      return toRootAssetPath('assets/images/Articles/CAD.webp');
     if (String(key) === 'innsikt-produktutvikling-hardware-startup')
       return toRootAssetPath('assets/images/social-sharing.webp');
     return imagePool[0];
