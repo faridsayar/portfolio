@@ -22,7 +22,9 @@ import {
   buildDefaultWebGraph,
   buildProjectGraph,
   buildProjectsHubGraph,
+  stripHtml,
 } from './lib/schema-markup.mjs';
+import { seoSlugForCatalog } from './lib/project-seo-slugs.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -87,23 +89,6 @@ function extractArticleContent(html) {
   }
 }
 
-function extractFaqPage(html) {
-  const scripts = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/gi)];
-  for (const match of scripts) {
-    try {
-      const data = JSON.parse(match[1]);
-      if (data['@type'] === 'FAQPage') return data;
-      if (data['@graph']) {
-        const faq = data['@graph'].find((n) => n['@type'] === 'FAQPage');
-        if (faq) return faq;
-      }
-    } catch {
-      /* ignore */
-    }
-  }
-  return null;
-}
-
 function removeJsonLd(html) {
   return html
     .replace(
@@ -148,15 +133,75 @@ function parseInnsiktArticle(relPath) {
   return null;
 }
 
-function buildIndexGraph() {
+function extractHomeFaq(html) {
+  const sectionMatch = html.match(
+    /aria-label="Vanlige spørsmål om produktutvikling"[\s\S]*?<\/section>/i
+  );
+  if (!sectionMatch) return null;
+
+  const section = sectionMatch[0];
+  const pairs = [];
+  for (const h3 of section.matchAll(/<h3 class="section-title"[^>]*>([\s\S]*?)<\/h3>/gi)) {
+    const after = section.slice((h3.index ?? 0) + h3[0].length);
+    const pMatch = after.match(/<p class="section-lead"[^>]*>([\s\S]*?)<\/p>/i);
+    if (!pMatch) continue;
+    const question = stripHtml(h3[1]).replace(/^\d+\.\s*/, '');
+    const answer = stripHtml(pMatch[1]);
+    if (question && answer) pairs.push({ question, answer });
+  }
+
+  if (!pairs.length) return null;
+
+  return {
+    '@type': 'FAQPage',
+    '@id': `${SITE}/#faq`,
+    mainEntity: pairs.map(({ question, answer }) => ({
+      '@type': 'Question',
+      name: question,
+      acceptedAnswer: { '@type': 'Answer', text: answer },
+    })),
+  };
+}
+
+function buildTjenesterGraph({ url, title, description }) {
+  return wrapGraph([
+    websiteRef(),
+    breadcrumbList(
+      [
+        { name: 'Formaa', url: `${SITE}/` },
+        { name: 'Tjenester', url },
+      ],
+      url
+    ),
+    webPage({ url, name: title, description }),
+    {
+      '@type': 'Service',
+      '@id': `${url}#service`,
+      name: 'Produktutvikling og 3D-visualisering',
+      serviceType: ['Produktutvikling', '3D-visualisering', 'Prototyping', '3D-modellering'],
+      description,
+      url,
+      inLanguage: 'nb-NO',
+      provider: publisherRef(),
+      areaServed: { '@type': 'Country', name: 'Norge' },
+      image: `${SITE}/assets/images/social-sharing.webp`,
+    },
+  ]);
+}
+
+function buildIndexGraph(html) {
+  const homeTitle = 'Formaa: Produktutvikling og 3D-visualisering for startups i Norge';
+  const homeDescription =
+    'Designbyrå som vil få ideen din til å ta form. Er du en gründer eller driver en startup? Vi hjelper deg med produktutvikling, 3D/CAD, visualisering og prototype.';
+  const faq = extractHomeFaq(html);
+
   return wrapGraph([
     websiteRef(),
     {
       '@type': 'LocalBusiness',
       '@id': `${SITE}/#local-business`,
       name: 'Formaa',
-      description:
-        'Få hjelp med produktdesign og industridesign i Norge. Designbyrå som leverer produktutvikling, prototype, CAD-modelering, 3D-visualisering og tydelig plan for lansering.',
+      description: homeDescription,
       url: SITE,
       telephone: '+47 46 38 18 87',
       contactPoint: {
@@ -172,7 +217,13 @@ function buildIndexGraph() {
         addressLocality: 'Oslo',
         addressCountry: 'NO',
       },
-      sameAs: ['https://www.behance.net/formaa', 'https://x.com/FormaaDesignAS'],
+      sameAs: [
+        'https://www.linkedin.com/company/formaaa/',
+        'https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr',
+        'https://t.me/designformaa',
+        'https://www.behance.net/formaa',
+        'https://x.com/FormaaDesignAS',
+      ],
       parentOrganization: { '@id': ORG_ID },
     },
     {
@@ -183,7 +234,7 @@ function buildIndexGraph() {
       logo: `${SITE}/assets/formaa-logo.svg`,
       image: `${SITE}/assets/images/social-sharing.webp`,
       description:
-        'Industridesign og produktdesign tjenester for konseptutvikling, prototyping, 3D-modelering, CAD-modelering og produksjonsklare leveranser i Norge.',
+        'Produktutvikling og 3D-visualisering for startups i Norge — prototyping, 3D-modellering, CAD-modelering og produksjonsforberedelse.',
       areaServed: [
         { '@type': 'Country', name: 'Norge' },
         { '@type': 'City', name: 'Oslo' },
@@ -230,7 +281,7 @@ function buildIndexGraph() {
       logo: `${SITE}/assets/formaa-logo.svg`,
       image: `${SITE}/assets/images/social-sharing.webp`,
       description:
-        'Formaa er et designstudio i Norge som leverer industridesign og produktdesign fra ide til produksjonsklar leveranse.',
+        'Formaa er et designstudio i Norge for produktutvikling og 3D-visualisering — fra idé og prototype til produksjon.',
       sameAs: [
         'https://www.linkedin.com/company/formaaa/',
         'https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr',
@@ -240,10 +291,10 @@ function buildIndexGraph() {
     },
     webPage({
       url: `${SITE}/`,
-      name: 'Produktutvikling for startups i Norge | Prototype, CAD og 3D-visualisering | Formaa',
-      description:
-        'Få hjelp med produktidé og produktutvikling — fra konsept til prototype og produksjon. Designbyrå for gründere og startups: 3D-modellering, visualisering, CAD og tekniske tegninger.',
+      name: homeTitle,
+      description: homeDescription,
     }),
+    ...(faq ? [faq] : []),
   ]);
 }
 
@@ -313,7 +364,8 @@ function processFile(absPath, relPath) {
       /\s*<!-- Structured Data -->\s*<script type="application\/ld\+json">[\s\S]*?<\/script>\s*/i,
       '\n'
     );
-    graph = buildIndexGraph();
+    html = html.replace(/\s*<!-- Structured Data -->\s*/i, '\n');
+    graph = buildIndexGraph(html);
     html = insertSchemaFromGraph(html, graph);
     write(absPath, html);
     return { updated: true, type: 'home' };
@@ -337,24 +389,16 @@ function processFile(absPath, relPath) {
     return { updated: true, type: 'pricing' };
   }
 
-  if (relPath === 'designstudio-oslo.html') {
-    const faq = extractFaqPage(html);
-    const pageUrl = url || `${SITE}/designstudio-oslo`;
-    graph = wrapGraph([
-      websiteRef(),
-      breadcrumbList(
-        [
-          { name: 'Formaa', url: `${SITE}/` },
-          { name: 'Designstudio Oslo', url: pageUrl },
-        ],
-        pageUrl
-      ),
-      webPage({ url: pageUrl, name: title, description }),
-      ...(faq ? [{ ...faq, '@id': `${pageUrl}#faq` }] : []),
-    ]);
+  if (relPath === 'tjenester-prosess.html') {
+    const pageUrl = url || `${SITE}/tjenester-prosess`;
+    graph = buildTjenesterGraph({
+      url: pageUrl,
+      title,
+      description,
+    });
     html = insertSchemaFromGraph(html, graph);
     write(absPath, html);
-    return { updated: true, type: 'designstudio' };
+    return { updated: true, type: 'tjenester' };
   }
 
   if (relPath === 'innsikt.html' || relPath === 'innsikt/index.html') {
@@ -446,20 +490,9 @@ function loadProjectsManifest() {
 
 function writeProjectSchemaJs() {
   const manifest = loadProjectsManifest();
-  const seoByCatalog = {
-    obseed: 'obseed-custom-8-string-guitar',
-    undo: 'undo-desertification',
-    nomos: 'nomos-branding',
-    proton: 'proton-headphones',
-    nordic: 'nordic-restaurant-branding',
-    monocopter: 'monocopter-drone',
-    rafaels: 'rafaels-ren-melk',
-    'eco-mate-closet': 'eco-mate-closet',
-    h2o: 'h2o-bottle-pedometer',
-  };
 
   const projects = manifest.projects.map((p) => {
-    const seoSlug = seoByCatalog[p.slug] || p.slug;
+    const seoSlug = seoSlugForCatalog(p.slug);
     const thumb = p.thumbnail?.startsWith('http')
       ? p.thumbnail
       : `${SITE}/${p.thumbnail.replace(/^\//, '')}`;

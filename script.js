@@ -133,6 +133,70 @@ class SinglePagePortfolio {
     this.initializeProjectViews();
     this.initializeGridIdeasViews();
     this.setupCategoryEnServiceTags();
+    this.setupProsessImageGridColumns();
+  }
+
+  // NOTE: Tjenester Prosess page — split image grid into two independent columns on desktop (no shared row heights).
+  setupProsessImageGridColumns() {
+    const grid = document.querySelector('.prosess-image-grid');
+    if (!grid) return;
+
+    const mediaQuery = window.matchMedia('(min-width: 768px)');
+
+    const collectItems = () => {
+      const directItems = [...grid.querySelectorAll(':scope > .prosess-image-grid__item')];
+      if (directItems.length) return directItems;
+      return [
+        ...grid.querySelectorAll(
+          ':scope > .prosess-image-grid__column > .prosess-image-grid__item'
+        ),
+      ];
+    };
+
+    const unwrapColumns = () => {
+      const columns = [...grid.querySelectorAll(':scope > .prosess-image-grid__column')];
+      if (!columns.length) return;
+
+      const leftItems = [...(columns[0]?.children || [])];
+      const rightItems = [...(columns[1]?.children || [])];
+      const maxLength = Math.max(leftItems.length, rightItems.length);
+
+      for (let index = 0; index < maxLength; index += 1) {
+        if (leftItems[index]) grid.appendChild(leftItems[index]);
+        if (rightItems[index]) grid.appendChild(rightItems[index]);
+      }
+
+      columns.forEach((column) => column.remove());
+    };
+
+    const wrapColumns = () => {
+      const items = collectItems();
+      if (!items.length) return;
+
+      unwrapColumns();
+
+      const columnLeft = document.createElement('div');
+      const columnRight = document.createElement('div');
+      columnLeft.className = 'prosess-image-grid__column';
+      columnRight.className = 'prosess-image-grid__column';
+
+      items.forEach((item, index) => {
+        (index % 2 === 0 ? columnLeft : columnRight).appendChild(item);
+      });
+
+      grid.append(columnLeft, columnRight);
+    };
+
+    const syncLayout = () => {
+      if (mediaQuery.matches) {
+        wrapColumns();
+        return;
+      }
+      unwrapColumns();
+    };
+
+    syncLayout();
+    mediaQuery.addEventListener('change', syncLayout);
   }
 
   // NOTE: Appends English intent landing links to the shared “Velg kategori” tag row on category pages.
@@ -488,13 +552,15 @@ class SinglePagePortfolio {
     if (this.heroProcessFlowMarkupPromise) return this.heroProcessFlowMarkupPromise;
     const fallbackMarkup = `<div class="hero-process-flow" aria-label="Fra konsept til produksjon">
   <p class="hero-process-flow__text">
-    <span class="hero-process-flow__step">Concept</span>
+    <a class="hero-process-flow__step" href="/tjenester-prosess">Konsept</a>
     <img class="hero-process-flow__arrow hero-process-flow__arrow--lead" src="../../assets/small-arrow-right.svg" alt="" width="12" height="12" aria-hidden="true" />
-    <span class="hero-process-flow__step">CAD</span>
+    <a class="hero-process-flow__step" href="/tjenester-prosess">3D</a>
     <img class="hero-process-flow__arrow" src="../../assets/small-arrow-right.svg" alt="" width="10" height="10" aria-hidden="true" />
-    <span class="hero-process-flow__step">Prototype</span>
+    <a class="hero-process-flow__step" href="/tjenester-prosess">CAD</a>
     <img class="hero-process-flow__arrow" src="../../assets/small-arrow-right.svg" alt="" width="10" height="10" aria-hidden="true" />
-    <span class="hero-process-flow__step">Production</span>
+    <a class="hero-process-flow__step" href="/tjenester-prosess">Prototype</a>
+    <img class="hero-process-flow__arrow" src="../../assets/small-arrow-right.svg" alt="" width="10" height="10" aria-hidden="true" />
+    <a class="hero-process-flow__step" href="/tjenester-prosess">Produksjon</a>
   </p>
 </div>`;
     this.heroProcessFlowMarkupPromise = (async () => {
@@ -518,9 +584,8 @@ class SinglePagePortfolio {
   async mountCategoryHeroProcessFlowComponent() {
     const pathname = window.location.pathname;
     const isCategoryPage = pathname.includes('/category/');
-    const isDesignStudioPage = /designstudio-oslo/i.test(pathname);
     const isApplicationFormPage = /application-form/i.test(pathname);
-    if (!isCategoryPage && !isDesignStudioPage && !isApplicationFormPage) return;
+    if (!isCategoryPage && !isApplicationFormPage) return;
     const heroMedia = document.querySelector('.category-hero-media');
     if (!heroMedia) return;
     if (heroMedia.nextElementSibling?.classList?.contains('hero-process-flow')) return;
@@ -556,7 +621,7 @@ class SinglePagePortfolio {
 
   async loadCategoryProjectsLinkMarkup() {
     if (this.categoryProjectsLinkMarkupPromise) return this.categoryProjectsLinkMarkupPromise;
-    const fallbackMarkup = `<nav class="category-inline-links" aria-label="Nyttige lenker"><p class="category-inline-links__item"><a class="category-projects-link" href="/prosjekter">Alle prosjekter<img class="category-projects-link__arrow" src="/assets/small-arrow-right.svg" alt="" width="12" height="12" aria-hidden="true" /></a></p><p class="category-inline-links__item"><a class="category-projects-link" href="/oss">Bli kjent med oss<img class="category-projects-link__arrow" src="/assets/small-arrow-right.svg" alt="" width="12" height="12" aria-hidden="true" /></a></p><p class="category-inline-links__item"><a class="category-projects-link" href="/application-form">Kontakt oss<img class="category-projects-link__arrow" src="/assets/small-arrow-right.svg" alt="" width="12" height="12" aria-hidden="true" /></a></p><p class="category-inline-links__item"><a class="category-projects-link" href="/prisestimat">Prisoversikt<img class="category-projects-link__arrow" src="/assets/small-arrow-right.svg" alt="" width="12" height="12" aria-hidden="true" /></a></p></nav>`;
+    const fallbackMarkup = `<nav class="category-inline-links" aria-label="Nyttige lenker"><p class="category-inline-links__item"><a class="category-projects-link" href="/prosjekter">Alle prosjekter<img class="category-projects-link__arrow" src="/assets/small-arrow-right.svg" alt="" width="12" height="12" aria-hidden="true" /></a></p><p class="category-inline-links__item"><a class="category-projects-link" href="/tjenester-prosess">Prosess<img class="category-projects-link__arrow" src="/assets/small-arrow-right.svg" alt="" width="12" height="12" aria-hidden="true" /></a></p><p class="category-inline-links__item"><a class="category-projects-link" href="/innsikt">Innsikt<img class="category-projects-link__arrow" src="/assets/small-arrow-right.svg" alt="" width="12" height="12" aria-hidden="true" /></a></p><p class="category-inline-links__item"><a class="category-projects-link" href="/oss">Bli kjent med oss<img class="category-projects-link__arrow" src="/assets/small-arrow-right.svg" alt="" width="12" height="12" aria-hidden="true" /></a></p><p class="category-inline-links__item"><a class="category-projects-link" href="/application-form">Kontakt oss<img class="category-projects-link__arrow" src="/assets/small-arrow-right.svg" alt="" width="12" height="12" aria-hidden="true" /></a></p><p class="category-inline-links__item"><a class="category-projects-link" href="/prisestimat">Prisoversikt<img class="category-projects-link__arrow" src="/assets/small-arrow-right.svg" alt="" width="12" height="12" aria-hidden="true" /></a></p></nav>`;
     this.categoryProjectsLinkMarkupPromise = (async () => {
       try {
         let response = await fetch('/components/category-projects-link.html', {
@@ -582,12 +647,9 @@ class SinglePagePortfolio {
   async mountCategoryProjectsLink() {
     const pathname = window.location.pathname;
     const isCategoryPage = pathname.includes('/category/');
-    const isDesignStudioPage = /designstudio-oslo/i.test(pathname);
-    if (!isCategoryPage && !isDesignStudioPage) return;
+    if (!isCategoryPage) return;
 
-    const introSection = isDesignStudioPage
-      ? document.querySelector('section[aria-label="Designstudio i Oslo"] .section-inner')
-      : document.querySelector('section[aria-label="Formaa"] .section-inner');
+    const introSection = document.querySelector('section[aria-label="Formaa"] .section-inner');
     if (!introSection || introSection.querySelector('.category-inline-links')) return;
 
     const afterGridLeads = introSection.querySelectorAll('.section-lead--after-grid');

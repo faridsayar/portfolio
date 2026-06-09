@@ -144,6 +144,9 @@ function renderSharedArticle() {
   // NOTE: Article files are innsikt-{slug}.html at repo root; hrefs use that shape for static local servers.
   const key = fileStem.startsWith('innsikt-') ? fileStem : `innsikt-${fileStem}`;
   const articleOrder = [
+    'innsikt-hvordan-lage-prototype',
+    'innsikt-fra-oppfinnelse-til-produksjon',
+    'innsikt-produktutvikling-hardware-startup',
     'innsikt-sok-stotte-innovasjon-norge',
     'innsikt-hva-er-industridesign',
     'innsikt-ux-er-ikke-produktdesign',

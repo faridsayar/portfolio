@@ -4,9 +4,33 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { catalogSlugForSeo } from './lib/project-seo-slugs.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const MAX_LEN = 158;
+
+/** NOTE: Curated SERP copy for key pages — not overwritten by hero/lead extraction. */
+const CURATED_SEO = {
+  'index.html': {
+    title: 'Formaa: Produktutvikling og 3D-visualisering for startups i Norge',
+    description:
+      'Designbyrå som vil få ideen din til å ta form. Er du en gründer eller driver en startup? Vi hjelper deg med produktutvikling, 3D/CAD, visualisering og prototype.',
+  },
+};
+
+/** NOTE: Prefer one studio term per meta sentence (never both designstudio and designbyrå together). */
+function sanitizeStudioTerms(text, prefer = 'designbyrå') {
+  return text
+    .replace(/designstudio og designbyrå/gi, prefer)
+    .replace(/designbyrå og designstudio/gi, prefer);
+}
+
+function studioTermPreference(rel) {
+  if (rel.startsWith('category/visualisering/')) return 'designstudio';
+  if (rel.startsWith('category/design/')) return 'designbyrå';
+  if (rel === 'index.html') return 'designbyrå';
+  return 'designbyrå';
+}
 
 function stripHtml(html) {
   return html
@@ -21,9 +45,17 @@ function stripHtml(html) {
     .trim();
 }
 
+function normalizeMetaText(text) {
+  return text
+    .replace(/\s+([.,!?…])/g, '$1')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 function truncateMeta(text) {
-  if (text.length <= MAX_LEN) return text;
-  const cut = text.slice(0, MAX_LEN - 1);
+  const normalized = normalizeMetaText(text);
+  if (normalized.length <= MAX_LEN) return normalized;
+  const cut = normalized.slice(0, MAX_LEN - 1);
   const lastSpace = cut.lastIndexOf(' ');
   return `${(lastSpace > 60 ? cut.slice(0, lastSpace) : cut).trim()}…`;
 }
@@ -97,50 +129,19 @@ function loadEnLandings() {
   return fn(sandbox);
 }
 
-const SEO_SLUG_TO_CATALOG = {
-  'obseed-custom-8-string-guitar': 'obseed',
-  'undo-desertification': 'undo',
-  'nomos-branding': 'nomos',
-  'proton-headphones': 'proton',
-  'nordic-restaurant-branding': 'nordic',
-  'monocopter-drone': 'monocopter',
-  'rafaels-ren-melk': 'rafaels',
-  'eco-mate-closet': 'eco-mate-closet',
-  'h2o-bottle-pedometer': 'h2o',
-};
-
 function resolveDescription(filePath, html) {
   const rel = path.relative(root, filePath).replace(/\\/g, '/');
 
-  if (rel === 'index.html') {
-    const heroTitle = extractFirst(
-      /<h1[^>]*class="[^"]*hero-title[^"]*"[^>]*>([\s\S]*?)<\/h1>/i,
-      html
-    );
-    const heroSubs = [...html.matchAll(/<p\s+class="hero-subtitle"[^>]*>([\s\S]*?)<\/p>/gi)]
-      .map((m) => stripHtml(m[1]))
-      .join(' ');
-    const afterGrid = extractFirst(
-      /<p\s+class="section-lead section-lead--after-grid"[^>]*>([\s\S]*?)<\/p>/i,
-      html
-    );
-    return buildDescription(heroTitle, `${heroSubs} ${stripHtml(afterGrid)}`.trim());
-  }
-
-  if (rel === 'designstudio-oslo.html') {
-    return buildDescription(extractHeadline(html), extractLead(html));
+  if (CURATED_SEO[rel]?.description) {
+    return CURATED_SEO[rel].description;
   }
 
   if (rel === 'oss.html') {
-    const lead1 = extractLead(html);
-    const lead2 = extractFirst(
-      /<p\s+class="section-lead section-lead--after-grid"[^>]*>([\s\S]*?)<\/p>/i,
-      html
+    const lead1 = stripHtml(extractLead(html));
+    const lead2 = stripHtml(
+      extractFirst(/<p\s+class="section-lead section-lead--after-grid"[^>]*>([\s\S]*?)<\/p>/i, html)
     );
-    return buildDescription(
-      extractHeadline(html),
-      `${stripHtml(lead1)} ${stripHtml(lead2)}`.trim()
-    );
+    return truncateMeta(`Produktutvikling og 3D-visualisering. ${lead1} ${lead2}`.trim());
   }
 
   if (rel === 'application-form.html') {
@@ -153,6 +154,11 @@ function resolveDescription(filePath, html) {
 
   if (rel === 'prisestimat.html') {
     return buildDescription(extractHeadline(html), extractLead(html));
+  }
+
+  if (rel === 'tjenester-prosess.html') {
+    const lead = stripHtml(extractLead(html));
+    return truncateMeta(`Produktutvikling og 3D-visualisering. ${lead}`);
   }
 
   if (rel === 'innsikt.html' || rel === 'innsikt/index.html') {
@@ -168,7 +174,10 @@ function resolveDescription(filePath, html) {
   }
 
   if (rel.startsWith('category/')) {
-    return buildDescription(extractHeadline(html), extractLead(html));
+    return sanitizeStudioTerms(
+      buildDescription(extractHeadline(html), extractLead(html)),
+      studioTermPreference(rel)
+    );
   }
 
   if (rel.startsWith('en/') && rel.endsWith('.html')) {
@@ -197,9 +206,9 @@ function resolveDescription(filePath, html) {
     const folderMatch = rel.match(/prosjekter\/([a-z0-9-]+)\//);
     if (stubMatch) {
       const seoSlug = stubMatch[1];
-      catalogSlug = SEO_SLUG_TO_CATALOG[seoSlug] || '';
+      catalogSlug = catalogSlugForSeo(seoSlug) || '';
     } else if (folderMatch) {
-      catalogSlug = SEO_SLUG_TO_CATALOG[folderMatch[1]] || folderMatch[1];
+      catalogSlug = catalogSlugForSeo(folderMatch[1]) || folderMatch[1];
     }
     const project = manifest.projects.find((p) => p.slug === catalogSlug);
     if (project) return buildDescription(project.title, project.desc);
@@ -211,7 +220,42 @@ function resolveDescription(filePath, html) {
 
   const headline = extractHeadline(html);
   const lead = extractLead(html);
-  if (headline || lead) return buildDescription(headline, lead);
+  if (headline || lead) {
+    return sanitizeStudioTerms(buildDescription(headline, lead), studioTermPreference(rel));
+  }
+
+  return '';
+}
+
+function resolveTitle(filePath, html) {
+  const rel = path.relative(root, filePath).replace(/\\/g, '/');
+  if (CURATED_SEO[rel]?.title) return CURATED_SEO[rel].title;
+
+  if (rel === 'tjenester-prosess.html') {
+    return 'Produktutvikling og 3D-visualisering | Tjenester | Formaa';
+  }
+
+  if (rel === 'oss.html') {
+    return 'Om oss | Produktutvikling og 3D-visualisering | Formaa';
+  }
+
+  if (rel.startsWith('category/')) {
+    const h1 = stripHtml(extractHeadline(html));
+    if (!h1) return '';
+    const service = rel.match(/^category\/([^/]+)\//)?.[1] || '';
+    const primaryServices = new Set([
+      'visualisering',
+      'prototyping',
+      'produktdesign',
+      'industridesign',
+      '3d-modelering',
+      'cad-modelering',
+      'konseptutvikling',
+      'design',
+    ]);
+    const hint = primaryServices.has(service) ? ' — produktutvikling og 3D-visualisering' : '';
+    return `${h1}${hint} | Formaa`;
+  }
 
   return '';
 }
@@ -226,6 +270,31 @@ function setMetaContent(html, nameOrProperty, value) {
     if (re.test(html)) return html.replace(re, `$1${escaped}$2`);
   }
   return html;
+}
+
+function setTitleTag(html, title) {
+  if (!title) return html;
+  const escaped = title.replace(/</g, '&lt;');
+  if (/<title>[\s\S]*?<\/title>/i.test(html)) {
+    return html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${escaped}</title>`);
+  }
+  return html;
+}
+
+function updateTitles(filePath, title) {
+  if (!title) return false;
+  let html = fs.readFileSync(filePath, 'utf8');
+  const before = html.match(/<title>([\s\S]*?)<\/title>/i)?.[1];
+  html = setTitleTag(html, title);
+  html = setMetaContent(html, 'og:title', title);
+  html = setMetaContent(html, 'twitter:title', title);
+  fs.writeFileSync(filePath, html);
+  const rel = path.relative(root, filePath);
+  if (before !== title) {
+    console.log(`title updated: ${rel}`);
+    return true;
+  }
+  return false;
 }
 
 function updateDescriptions(filePath, description) {
@@ -269,8 +338,8 @@ function collectHtmlFiles(dir, out = []) {
 
 const files = [
   path.join(root, 'index.html'),
-  path.join(root, 'designstudio-oslo.html'),
   path.join(root, 'oss.html'),
+  path.join(root, 'tjenester-prosess.html'),
   path.join(root, 'application-form.html'),
   path.join(root, 'prisestimat.html'),
   path.join(root, 'innsikt.html'),
@@ -291,6 +360,7 @@ const files = [
 ];
 
 let updated = 0;
+let titlesUpdated = 0;
 const seen = new Set();
 for (const file of files) {
   if (seen.has(file)) continue;
@@ -299,6 +369,8 @@ for (const file of files) {
   if (!/name="description"/i.test(html)) continue;
   const description = resolveDescription(file, html);
   if (updateDescriptions(file, description)) updated += 1;
+  const title = resolveTitle(file, html);
+  if (updateTitles(file, title)) titlesUpdated += 1;
 }
 
-console.log(`\nDone. ${updated} file(s) with new descriptions.`);
+console.log(`\nDone. ${updated} description(s) and ${titlesUpdated} title(s) updated.`);

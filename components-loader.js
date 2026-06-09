@@ -50,7 +50,7 @@
         <a class="site-footer__link" href="/prosjekter" data-footer-link="projects">Prosjekter</a>
         <a class="site-footer__link" href="/category/design/norge" data-footer-link="categories">Kategorier</a>
         <a class="site-footer__link" href="/innsikt" data-footer-link="insights">Innsikt</a>
-        <a class="site-footer__link" href="/designstudio-oslo" data-footer-link="designstudio-oslo">Designstudio Oslo</a>
+        <a class="site-footer__link" href="/tjenester-prosess" data-footer-link="tjenester-prosess">Tjenester</a>
         <a class="site-footer__link" href="/oss" data-footer-link="about">Oss</a>
         <a class="site-footer__link" href="/application-form" data-footer-link="application">Kontaktform</a>
         <a class="site-footer__link" href="/prisestimat" data-footer-link="pricing">Prisestimat</a>
@@ -221,16 +221,18 @@
     </div>
   </div>
 </section>`,
-    'hero-process-flow': `<!-- NOTE: One-line process summary (Concept → CAD → Prototype → Production). -->
+    'hero-process-flow': `<!-- NOTE: One-line process summary (Konsept → 3D → CAD → Prototype → Produksjon); each step links to the process page. -->
 <div class="hero-process-flow" aria-label="Fra konsept til produksjon">
   <p class="hero-process-flow__text">
-    <span class="hero-process-flow__step">Concept</span>
+    <a class="hero-process-flow__step" href="/tjenester-prosess">Konsept</a>
     <img class="hero-process-flow__arrow hero-process-flow__arrow--lead" src="/assets/small-arrow-right.svg" alt="" width="12" height="12" aria-hidden="true" />
-    <span class="hero-process-flow__step">CAD</span>
+    <a class="hero-process-flow__step" href="/tjenester-prosess">3D</a>
     <img class="hero-process-flow__arrow" src="/assets/small-arrow-right.svg" alt="" width="10" height="10" aria-hidden="true" />
-    <span class="hero-process-flow__step">Prototype</span>
+    <a class="hero-process-flow__step" href="/tjenester-prosess">CAD</a>
     <img class="hero-process-flow__arrow" src="/assets/small-arrow-right.svg" alt="" width="10" height="10" aria-hidden="true" />
-    <span class="hero-process-flow__step">Production</span>
+    <a class="hero-process-flow__step" href="/tjenester-prosess">Prototype</a>
+    <img class="hero-process-flow__arrow" src="/assets/small-arrow-right.svg" alt="" width="10" height="10" aria-hidden="true" />
+    <a class="hero-process-flow__step" href="/tjenester-prosess">Produksjon</a>
   </p>
 </div>`,
     'privacy-trust-section': `<!-- NOTE: Shared trust/privacy block (no cookies, confidentiality, portfolio consent) — same copy as homepage. -->
@@ -309,9 +311,9 @@
 </section>`,
     'cooperation-partners': `<!-- NOTE: Partner cooperation cards (name + description) — hydrated from company-partners-manifest.js on Om oss. -->
 <div class="cooperation-partners" data-cooperation-partners aria-label="Samarbeidspartnere"></div>`,
-    'partner-logos-section': `<!-- NOTE: Reusable partner logo strip — logos from assets/company-logos, hydrated by shared-partner-logos.js. -->
-<section
-  class="section section--white section--partner-logos"
+    'partner-logos-section': `<!-- NOTE: Reusable partner logo strip — div.section (not nested section); white band via .section--partner-logos; hydrated by shared-partner-logos.js. -->
+<div
+  class="section section--partner-logos"
   aria-label="Samarbeidspartnere"
   data-partner-logos-section
 >
@@ -321,7 +323,54 @@
     </div>
     <ul class="partner-logos" data-partner-logos-grid aria-label="Samarbeidspartnere"></ul>
   </div>
-</section>`,
+</div>`,
+    'hva-du-far-section': `<!-- NOTE: “Hva du får” block — title, feature banner, and lead copy in one div.section (homepage). -->
+<div class="section section--profesjonalisme" aria-label="Hva du får">
+  <div class="section-inner">
+    <h2 class="section-title">Hva du får</h2>
+    <div class="feature-banner" aria-label="Fordeler">
+      <div class="feature-points">
+        <p class="feature-point">
+          <img class="feature-icon" src="assets/icons/produserbar-icon.svg" alt="" width="64" height="64" aria-hidden="true" />
+          <span class="feature-point__text">
+            <strong>Design som faktisk kan produseres:</strong>
+            <a class="feature-point__inline-link" href="/tjenester-prosess">Produktutvikling</a>
+            med fokus på form og funksjon, materialvalg og produksjon, transport og resirkulering.
+          </span>
+        </p>
+        <p class="feature-point">
+          <img class="feature-icon" src="assets/icons/fremdrift-icon.svg" alt="" width="64" height="64" aria-hidden="true" />
+          <span class="feature-point__text">
+            <strong>Ingen unødvendig kompleksitet:</strong> Tydelige prosesser og raske
+            <a class="feature-point__inline-link" href="/innsikt/hvordan-lage-prototype">iterasjoner</a>
+            som gjør ideer til konkrete resultater. Rask og direkte kommunikasjon.
+          </span>
+        </p>
+        <p class="feature-point">
+          <img class="feature-icon" src="assets/icons/bedrift-icon.svg" alt="" width="64" height="64" aria-hidden="true" />
+          <span class="feature-point__text">
+            <strong>Skapt verdi for bedriften garantert:</strong> Hver beslutning tar hensyn til kostnader, tid, produksjon, pakkning, marked og posisjonering.
+          </span>
+        </p>
+        <p class="feature-point">
+          <img class="feature-icon" src="assets/icons/brukerbehov-icon.svg" alt="" width="64" height="64" aria-hidden="true" />
+          <span class="feature-point__text">
+            <strong>Design basert på <span class="text-primary">ekte brukerbehov</span>:</strong>
+            Grundig
+            <a class="feature-point__inline-link" href="/innsikt/hvem-trenger-design">research</a>
+            av brukerne og brukernes mål, kontekst, bruksmåte, ergonomi og begrensninger.
+          </span>
+        </p>
+      </div>
+    </div>
+    <p class="section-lead">
+      Ferdidesignet produkt! Forståelig prosess som kombinerer
+      <a class="internal-text-link" href="/innsikt/hvem-trenger-design">brukerinnsikt</a>, produktstrategi,
+      <a class="internal-text-link" href="/">design</a>
+      og teknisk realisme. Vi snakker rett fram om det hele veien: hva som er realistisk, hva som koster tid og penger, og hvor det gir mening at vi bidrar. Sammen med dere bestemmer vi hva som passer for dere.
+    </p>
+  </div>
+</div>`,
     'like-share-strip': `<!-- NOTE: Reusable like/share strip used below project and article hero media. -->
 <div class="like-share-strip" data-like-share-strip>
   <div class="like-share-strip__cluster">

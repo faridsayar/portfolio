@@ -461,6 +461,17 @@
   white-space: nowrap;
 }
 
+/* NOTE: Process steps link to /tjenester-prosess; reset anchors so they match the original span appearance. */
+.hero-process-flow__step,
+.hero-process-flow__step:visited,
+.hero-process-flow__step:hover,
+.hero-process-flow__step:focus,
+.hero-process-flow__step:active {
+  color: inherit;
+  font-weight: inherit;
+  text-decoration: none;
+}
+
 .hero-process-flow__arrow {
   flex: 0 0 auto;
   width: 0.7em;
@@ -501,20 +512,6 @@
   margin-bottom: 0;
 }
 
-/* NOTE: Designstudio shuffle hero uses a fixed 640px frame; kontaktform keeps the shared shuffle default. */
-section[aria-label='Designstudio i Oslo'] .category-hero-media:has([data-hero-video-shuffle]) {
-  height: 640px;
-  margin-bottom: 1.5rem;
-}
-
-/* NOTE: Formaa wordmark on the designstudio shuffle hero only; left edge matches `.project-hero-stage__content` padding column. */
-section[aria-label='Designstudio i Oslo'] .project-hero-stage__logo {
-  display: block;
-  width: auto;
-  height: 27px;
-  margin: 0;
-}
-
 .category-hero-media:has([data-hero-video-shuffle]) .hero-video {
   z-index: 0;
 }
@@ -551,11 +548,6 @@ section[aria-label='Designstudio i Oslo'] .project-hero-stage__logo {
 
 /* NOTE: Category pages start hero media at top; breadcrumb stays overlaid on the image. */
 section[aria-label='Formaa'] .section-inner {
-  padding-top: 0;
-}
-
-/* NOTE: Designstudio Oslo page also starts with a full-width hero media block. */
-section[aria-label='Designstudio i Oslo'] .section-inner {
   padding-top: 0;
 }
 
@@ -619,11 +611,7 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
   opacity: 0.58;
 }
 
-section[aria-label='Designstudio i Oslo'] .section-banner-image {
-  margin-top: 0;
-}
-
-/* NOTE: Full-bleed H2O block between Tjenester and Prosess on designstudio-oslo. */
+/* NOTE: Full-bleed H2O block with competence overlay (homepage after Tjenester). */
 .designstudio-full-width-media {
   position: relative;
   width: 100vw;
@@ -719,6 +707,12 @@ section[aria-label='Designstudio i Oslo'] .section-banner-image {
   line-height: var(--line-height-loose);
   color: var(--color-dark);
   opacity: 0.72;
+}
+
+/* NOTE: Yanmee partner card between section-lead and contact form on validering category pages. */
+.category-yanmee-partner-banner {
+  margin: clamp(1.25rem, 3vw, 2rem) 0;
+  max-width: 48rem;
 }
 
 /* NOTE: Category page inline CTAs after intro copy column. */
@@ -898,36 +892,180 @@ section[aria-label='Designstudio i Oslo'] .section-banner-image {
   padding-bottom: 6rem;
 }
 
-/* NOTE: Homepage start — studio intro block (title and lead). */
-#start .hero-text {
+/* NOTE: Homepage #start section blocks — div.section-1 / section-2 / section-3 / section-4 with title, bullets left, 16:9 media right (section-4: project grid). */
+.section-1,
+.section-2,
+.section-3,
+.section-4 {
+  margin-top: 0;
+  margin-bottom: 4rem;
+}
+
+.section-1 .section-inner,
+.section-2 .section-inner,
+.section-3 .section-inner,
+.section-4 .section-inner {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+#start .section-1 > .section-inner,
+#start .section-2 > .section-inner,
+#start .section-3 > .section-inner,
+#start .section-4 > .section-inner {
+  max-width: none;
+  margin: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+#start .start-intro__eyebrow {
+  margin: 0 0 clamp(1.5rem, 4vw, 2.5rem);
+  padding-top: 64px;
+  padding-bottom: 64px;
+  max-width: 37rem;
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-relaxed);
+  opacity: 0.85;
+}
+
+#start .start-intro {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+  align-items: center;
   margin-bottom: 0;
 }
 
-#start .hero-text__title {
-  margin: 0 0 1rem 0;
-  font-size: var(--font-size-section-title);
-  line-height: var(--line-height-title);
-  letter-spacing: -0.01em;
-  font-weight: var(--font-weight-semibold);
+#start .start-intro__content .section-title {
+  margin-bottom: 1rem;
 }
 
-/* NOTE: Homepage start — display line directly below `.hero-text`. */
+#start .start-intro__content .section-lead {
+  margin-bottom: 1rem;
+}
+
+#start .section-1 .hero-cta,
+#start .section-2 .hero-cta,
+#start .section-3 .hero-cta {
+  margin-top: 1.25rem;
+}
+
+/* NOTE: CTA row — primary button + inline text link beside each other in #start intro blocks. */
+#start .start-intro__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.25rem 1.75rem;
+  margin-top: 1.25rem;
+}
+
+#start .start-intro__actions .hero-cta {
+  margin-top: 0;
+}
+
+/* NOTE: Bold dash markers instead of circle bullets in start intro list. */
+#start .start-intro__content .article-row__list {
+  list-style: none;
+  padding-left: 0;
+}
+
+#start .start-intro__content .article-row__list li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+}
+
+#start .start-intro__content .article-row__list li::before {
+  content: '-';
+  flex: 0 0 auto;
+  font-weight: var(--font-weight-bold);
+  font-size: 1.25em;
+  line-height: 1;
+}
+
+/* NOTE: Keep dash + copy on one flex row; inline links stay in normal text flow inside the span. */
+#start .start-intro__content .article-row__list li > span {
+  min-width: 0;
+}
+
+#start .start-intro__media-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+#start .start-intro__media {
+  margin: 0;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--surface-neutral);
+}
+
+#start .start-intro__image,
+#start .start-intro__video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* NOTE: xs category hashtag links under section-1 / section-2 / section-3 media (30% opacity). */
+.section-1__hashtags,
+.section-2__hashtags,
+.section-3__hashtags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.65rem;
+  margin: 0.5rem 0 0;
+}
+
+.section-1__hashtag,
+.section-2__hashtag,
+.section-3__hashtag,
+.section-1__hashtag:visited,
+.section-2__hashtag:visited,
+.section-3__hashtag:visited {
+  font-size: var(--font-size-breadcrumb);
+  line-height: var(--line-height-kicker);
+  color: inherit;
+  text-decoration: none;
+  opacity: 0.3;
+}
+
+.section-1__hashtag:hover,
+.section-2__hashtag:hover,
+.section-3__hashtag:hover,
+.section-1__hashtag:focus-visible,
+.section-2__hashtag:focus-visible,
+.section-3__hashtag:focus-visible {
+  opacity: 0.55;
+  color: var(--color-primary);
+}
+
+@media (min-width: 768px) {
+  #start .start-intro {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+}
+
+/* NOTE: Homepage start — display line between section-1 and section-2. */
 #start .big-text {
-  padding-top: 8.75rem;
-  padding-bottom: 8.75rem;
+  padding-top: 192px;
+  padding-bottom: 192px;
 }
 
-/* NOTE: Homepage start — Tjenester block spacing below the display line. */
-#start .start-tjenester {
+/* NOTE: Homepage “For hvem” block — spacing before category tags (before kontaktform). */
+.section-head--after-feature-banner {
   margin-bottom: 0;
 }
 
-#start .start-tjenester .section-lead {
+.section-head--after-feature-banner .section-lead {
   margin-bottom: 2rem;
 }
 
-/* NOTE: Homepage start — category tags after the Tjenester service grid. */
-#start .service-tags {
+/* NOTE: Category tags after the “For hvem” block. */
+.section-head--after-feature-banner + .service-tags {
   margin-top: 0;
   padding-top: 2rem;
   padding-bottom: 2rem;
@@ -1291,6 +1429,209 @@ section[aria-label='Designstudio i Oslo'] .section-banner-image {
   color: var(--color-dark);
 }
 
+/* NOTE: Tjenester Prosess page — two-column grid on mobile, horizontal row on desktop; strip breaks out to full viewport width. */
+.prosess-phase-strip {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  margin-top: 1.5rem;
+  padding-top: 64px;
+  padding-bottom: 64px;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem 1rem;
+  align-items: stretch;
+}
+
+.prosess-phase-card {
+  position: relative;
+  overflow: hidden;
+  min-width: 0;
+  width: 100%;
+  min-height: 7.5rem;
+  padding: 0.85rem 0.75rem;
+}
+
+.prosess-phase-card__number {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: top;
+  padding-left: 0rem;
+  font-size: clamp(3.5rem, 8vw, 5rem);
+  line-height: 1;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: -0.04em;
+  opacity: 0.1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.prosess-phase-card__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  min-height: 100%;
+}
+
+.prosess-phase-card__title {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.25;
+  font-weight: var(--font-weight-bold);
+}
+
+.prosess-phase-card__text {
+  margin: 0.35rem 0 0;
+  font-size: var(--font-size-breadcrumb);
+  line-height: var(--line-height-relaxed);
+}
+
+@media (min-width: 768px) {
+  .prosess-phase-strip {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4rem;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .prosess-phase-card {
+    flex: 1 1 9rem;
+    min-width: 9rem;
+    max-width: 11rem;
+    width: auto;
+  }
+}
+
+/* NOTE: Tjenester Prosess page — equal gaps between intro, display line, and prosess block. */
+section[aria-label='Tjenester'] .section-inner {
+  padding-bottom: 2rem;
+}
+
+section[aria-label='Tjenester display line'] .section-inner {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+section[aria-label='Tjenester display line'] .big-text {
+  padding: 4rem 0;
+}
+
+section[aria-label='Prosess'] .section-inner {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+section[aria-label='Prosess i bilder'] .section-inner {
+  padding-top: 0;
+  padding-bottom: 4rem;
+}
+
+/* NOTE: Tjenester Prosess page — stacked image list on mobile; independent masonry columns on desktop (see script.js). */
+.prosess-image-grid {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.75rem, 1.5vw, 1.25rem);
+}
+
+/* NOTE: Desktop column wrappers — each column stacks images vertically with gap only (no row alignment). */
+.prosess-image-grid__column {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.75rem, 1.5vw, 1.25rem);
+  min-width: 0;
+}
+
+.prosess-image-grid__item {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+}
+
+.prosess-image-grid__img,
+.prosess-image-grid__media {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.prosess-image-grid__media--placeholder {
+  background: var(--color-black);
+}
+
+.prosess-image-grid__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.35rem;
+  padding: 1.25rem 1.5rem 1.5rem;
+  color: var(--color-white);
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.72),
+    rgba(0, 0, 0, 0.18) 55%,
+    rgba(0, 0, 0, 0.04)
+  );
+}
+
+.prosess-image-grid__title {
+  margin: 0;
+  font-size: var(--font-size-card-title);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  text-shadow: 0 6px 18px var(--overlay-black-35);
+}
+
+.prosess-image-grid__text {
+  margin: 0;
+  max-width: 28rem;
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-relaxed);
+  opacity: 0.9;
+  text-shadow: 0 4px 14px var(--overlay-black-35);
+}
+
+@media (min-width: 768px) {
+  .prosess-image-grid {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: clamp(0.75rem, 1.5vw, 1.25rem);
+  }
+
+  .prosess-image-grid__column {
+    flex: 1;
+  }
+}
+
+/* NOTE: Tjenester Prosess page — verksteder + Kina-produksjon block after image grid. */
+section[aria-label='Verksteder og produksjon'] .section-inner {
+  padding-top: 0;
+  padding-bottom: 4rem;
+}
+
+.prosess-produksjon-section {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.prosess-produksjon-section__partner {
+  margin: 0;
+  max-width: 48rem;
+}
+
 /* About page team section */
 .about-top-graphic {
   position: relative;
@@ -1413,6 +1754,11 @@ section[aria-label='Oss'] .section-lead--after-grid {
 
 section[aria-label='Oss'] .section-lead--after-grid > .section-lead:last-child {
   margin-bottom: 0;
+}
+
+/* NOTE: Extra space before prominent prosess link at end of about-page SEO block. */
+section[aria-label='Oss'] .section-lead--after-grid > .category-projects-link {
+  margin-top: 3rem;
 }
 
 section[aria-label='Oss'] .about-top-graphic + .section-title {
@@ -1728,9 +2074,9 @@ section[aria-label='Oss'] .about-competence-block:not(:first-child) .about-compe
 
 /* Features section */
 .section--features .section-inner {
-  /* NOTE: No top inset so full-bleed feature banner sits flush under the section edge. */
+  /* NOTE: “Hva du får” leads with copy before the banner — no top inset (category pages zero via .category-feature-banner-section). */
   padding-top: 0;
-  padding-bottom: 2rem;
+  padding-bottom: 4rem;
 }
 
 /* NOTE: Keep gallery strip directly attached to the four-feature banner on home page. */
@@ -1738,15 +2084,14 @@ section[aria-label='Oss'] .about-competence-block:not(:first-child) .about-compe
   margin-bottom: 0;
 }
 
-/* NOTE: “For hvem” title + lead below the four-feature banner on homepage. */
-.section--features .section-head--after-feature-banner {
-  margin-top: 0;
+/* NOTE: Tjenester service grid block. */
+section[aria-label='Tjenester'] .start-tjenester {
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
 
-.section--features .section-head--after-feature-banner .section-lead {
-  margin-bottom: 0;
+.start-tjenester .section-lead {
+  margin-bottom: 2rem;
 }
 
 /* Quotes/testimonials section */
@@ -1845,10 +2190,70 @@ section[aria-label='Oss'] .about-competence-block:not(:first-child) .about-compe
   }
 }
 
-/* NOTE: Reusable partner logo strip (Samarbeidspartnere) — left title, center-aligned grayscale logos. */
+/* NOTE: “Hva du får” block — title, lead, Prosess link, then feature banner. */
+.section--profesjonalisme {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
+.section--features > .section-inner > .section--profesjonalisme:first-child {
+  margin-top: 0;
+}
+
+.section--profesjonalisme .section-inner {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.section--profesjonalisme .section-title {
+  margin-bottom: clamp(1.25rem, 3vw, 2rem);
+}
+
+.section--profesjonalisme .section-lead {
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+}
+
+.section--profesjonalisme .category-projects-link {
+  margin-bottom: clamp(1.25rem, 3vw, 2rem);
+}
+
+.section--profesjonalisme .feature-banner {
+  margin-bottom: 0;
+}
+
+/* NOTE: Nested in homepage features — align with sibling blocks (partner logos, “For hvem”). */
+.section--features .section--profesjonalisme > .section-inner {
+  max-width: none;
+  margin: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* NOTE: Reusable partner logo strip (Samarbeidspartnere) — white band when standalone; no vertical margin (margin exposed page grey). */
+.section--partner-logos {
+  background: var(--color-white);
+  color: var(--color-dark);
+}
+
+.section--features .section--partner-logos {
+  background: transparent;
+}
+
 .section--partner-logos .section-inner {
-  padding-top: clamp(2rem, 5vw, 3rem);
-  padding-bottom: clamp(2rem, 5vw, 3rem);
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* NOTE: Standalone on main (e.g. oss) — vertical rhythm via inner padding, flush with adjacent white sections. */
+main > .section--partner-logos > .section-inner {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+/* NOTE: Partner block before feature banner on category pages. */
+.section--features .section-inner > .section--partner-logos:first-child > .section-inner {
+  padding-bottom: 2rem;
 }
 
 /* NOTE: On homepage, partner block sits inside .section--features (after feature banner) — drop nested horizontal padding so the title aligns with “For hvem”. */
@@ -2031,9 +2436,10 @@ section[aria-label='Oss'] .about-competence-block:not(:first-child) .about-compe
   color: var(--color-primary);
 }
 
-/* NOTE: Homepage portfolio — display line above “Alle prosjekter” (extra top spacing). */
-#portfolio .big-text {
-  padding-top: 10rem;
+/* NOTE: Homepage #start section-4 portfolio — display line uses shared #start .big-text spacing. */
+#start .section-4 .big-text {
+  padding-top: 192px;
+  padding-bottom: 192px;
 }
 
 /* NOTE: Large low-contrast display text (e.g. homepage portfolio values line). */
@@ -2301,7 +2707,7 @@ section[aria-label='Oss'] .about-competence-block:not(:first-child) .about-compe
 
 /* Inquiry form */
 .inquiry-form {
-  margin-top: 2rem;
+  margin-top: 0;
   /* NOTE: Full-viewport-width grey panel while content padding matches `.section-inner` (70rem column). */
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
@@ -2440,9 +2846,17 @@ section[aria-label='Oss'] .about-competence-block:not(:first-child) .about-compe
   }
 }
 
-/* Projects grid */
-.section--projects .section-inner {
+/* Projects grid — override #start .section-inner top inset on homepage portfolio block. */
+#start .section--projects .section-inner {
   padding-top: 0;
+}
+
+/* NOTE: Bottom spacing after portfolio grid stays on white #start — margin would collapse and expose page grey before “Hva du får”. */
+#start .section-4.section--projects,
+#portfolio {
+  margin-bottom: 0;
+  padding-top: 96px;
+  padding-bottom: 96px;
 }
 
 .section--projects .section-head {
@@ -2456,7 +2870,7 @@ section[aria-label='Oss'] .about-competence-block:not(:first-child) .about-compe
   padding-top: 0;
   padding-left: 1.25rem;
   padding-right: 1.25rem;
-  padding-bottom: 2.5rem;
+  padding-bottom: 0;
   /* Same left→right greys as `.feature-banner` (“Hvordan vi jobber”). */
   background: linear-gradient(
     90deg,
@@ -3275,6 +3689,8 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem 0.8rem;
+  padding-top: 32px;
+  padding-bottom: 32px;
 }
 
 .site-footer__link {
@@ -3296,6 +3712,30 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
   line-height: 1.5;
   color: var(--color-white);
   opacity: 0.86;
+}
+
+/* NOTE: xs footer copy block (designstudio intro) — breadcrumb scale on dark band. */
+.site-footer__intro {
+  margin: 0 0 0.85rem 0;
+}
+
+.site-footer__text--xs {
+  font-size: var(--font-size-breadcrumb);
+  line-height: var(--line-height-kicker);
+}
+
+.site-footer__text--xs + .site-footer__text--xs {
+  margin-top: 0.55rem;
+}
+
+.site-footer__intro .internal-text-link,
+.site-footer__intro .internal-text-link:visited {
+  color: var(--color-white);
+}
+
+.site-footer__intro .internal-text-link:hover,
+.site-footer__intro .internal-text-link:focus {
+  color: var(--color-primary);
 }
 
 @media (min-width: 720px) {

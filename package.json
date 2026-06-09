@@ -8,12 +8,14 @@
     "generate:innsikt-indexes": "node scripts/generate-innsikt-indexes.mjs",
     "sync:meta-descriptions": "node scripts/sync-meta-descriptions.mjs",
     "generate:sitemap": "node scripts/generate-sitemap.mjs",
+    "generate:crawler-files": "node scripts/generate-crawler-files.mjs",
     "generate:schema-markup": "node scripts/generate-schema-markup.mjs",
     "generate:company-partners-manifest": "node scripts/generate-company-partners-manifest.mjs",
     "process:company-logos": "node scripts/process-company-logos.mjs && node scripts/generate-company-partners-manifest.mjs",
     "dev": "serve . -l 3000",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "publish:prepare": "pnpm generate:sitemap && pnpm generate:crawler-files && pnpm sync:meta-descriptions && pnpm generate:schema-markup && pnpm generate:innsikt-indexes && pnpm generate:prosjekter-indexes && pnpm format"
   },
   "devDependencies": {
     "prettier": "^3.6.2",

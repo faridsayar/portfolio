@@ -1270,7 +1270,7 @@ section[aria-label='Oss'] .section-inner {
 
 /* Inquiry form */
 .inquiry-form {
-  margin-top: 2rem;
+  margin-top: 0;
   border-radius: 16px;
   border: none;
   background: var(--surface-neutral);

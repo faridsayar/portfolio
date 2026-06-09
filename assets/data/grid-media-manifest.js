@@ -227,9 +227,9 @@ window.__GRID_MEDIA_MANIFEST = {
       "name": "mockup"
     },
     {
-      "src": "assets/images/grid/mockups-process.webp",
+      "src": "assets/images/grid/komplett-produktutvikling.webp",
       "type": "image",
-      "name": "mockups process"
+      "name": "komplett produktutvikling"
     },
     {
       "src": "assets/images/grid/monocopter-11.webp",

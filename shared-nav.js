@@ -28,6 +28,13 @@ function renderSharedNav() {
       label: 'Oss',
       current: path === 'oss.html' || (segments.length === 1 && segments[0] === 'oss'),
     },
+    {
+      href: '/tjenester-prosess',
+      label: 'Tjenester',
+      current:
+        path === 'tjenester-prosess.html' ||
+        (segments.length === 1 && segments[0] === 'tjenester-prosess'),
+    },
     { href: '/prosjekter', label: 'Prosjekter', current: isProjectPage },
     { href: '/innsikt', label: 'Innsikt', current: isInnsiktPage },
     {
@@ -49,7 +56,7 @@ function renderSharedNav() {
     projects: '/prosjekter',
     categories: '/category/design/norge',
     insights: '/innsikt',
-    'designstudio-oslo': '/designstudio-oslo',
+    'tjenester-prosess': '/tjenester-prosess',
     about: '/oss',
     application: '/application-form',
     pricing: '/prisestimat',
