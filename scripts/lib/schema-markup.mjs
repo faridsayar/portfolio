@@ -154,17 +154,21 @@ export function buildCategoryGraph({ url, title, description, serviceSlug, regio
   const regionLabel = REGION_LABELS[regionSlug] || regionSlug;
   const serviceName = h1 || `${serviceLabel} i ${regionLabel}`;
   const countryUrl = `${SITE}/category/${serviceSlug}/norge`;
+  const crumbs =
+    regionSlug === 'norge'
+      ? [
+          { name: 'Formaa', url: `${SITE}/` },
+          { name: serviceName, url },
+        ]
+      : [
+          { name: 'Formaa', url: `${SITE}/` },
+          { name: serviceLabel, url: countryUrl },
+          { name: regionLabel, url },
+        ];
 
   return wrapGraph([
     websiteRef(),
-    breadcrumbList(
-      [
-        { name: 'Formaa', url: `${SITE}/` },
-        { name: serviceLabel, url: countryUrl },
-        { name: regionLabel, url },
-      ],
-      url
-    ),
+    breadcrumbList(crumbs, url),
     webPage({ url, name: title, description }),
     {
       '@type': 'Service',

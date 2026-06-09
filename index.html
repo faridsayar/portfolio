@@ -713,9 +713,6 @@
 
     <!-- NOTE: Expanded footer (contact, links, copyright) — same component as prisestimat. -->
     <div data-component="site-footer"></div>
-
-    <!-- Structured Data -->
-
     <!-- NOTE: Prebuilt project manifest loaded as JS to support environments where `fetch` from local files is blocked. -->
     <script src="shared-quotes-carousel.js?v=1" defer></script>
     <script src="assets/data/grid-strip-media-manifest.js?v=3" defer></script>
@@ -757,7 +754,13 @@
               "addressLocality": "Oslo",
               "addressCountry": "NO"
             },
-            "sameAs": ["https://www.behance.net/formaa", "https://x.com/FormaaDesignAS"],
+            "sameAs": [
+              "https://www.linkedin.com/company/formaaa/",
+              "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+              "https://t.me/designformaa",
+              "https://www.behance.net/formaa",
+              "https://x.com/FormaaDesignAS"
+            ],
             "parentOrganization": {
               "@id": "https://formaa.no/#organization"
             }
@@ -890,6 +893,76 @@
                 "url": "https://formaa.no/assets/formaa-logo.svg"
               }
             }
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://formaa.no/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Hva koster et designprosjekt?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Kostnad avhenger av kompleksitet, omfang og tidslinje. Vi setter opp en tydelig plan med prioriterte aktiviteter slik at dere kan starte med riktig nivå og skalere videre. Se gjerne vårt prisestimat for et raskt overslag."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Hvor lang tid tar det fra idé til prototype?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "En første prototype kan ofte utvikles i løpet av få uker, mens et komplett produksjonsforløp normalt tar flere faser. Vi konkretiserer dette i oppstarten og bruker ofte prototyping og CAD-modelering for å redusere risiko."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Jobber dere kun med selskaper i Oslo?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Nei. Vi Kan møte og arbeide med dere i Oslo, Akershus (Viken), Buskerud og Østfold, mens resten av Norge kan vi hjelpe digitalt og med begrenset fysisk samhandling. Produksjon av prototype kan også løses via post, men legger på tid for gjennomføring og må regnes på, og generelt vil være vanskeligere, men ikke umulig."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Kan dere gå inn i et prosjekt som allerede er i gang?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Ja. Vi kan bidra som spesialistressurs i deler av løpet eller ta ansvar for en hel fase, for eksempel konsept , designforbedring, prototyping eller CAD-modelering ."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Hvilke leveranser får vi underveis?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Dere får konkrete leveranser som beslutningsgrunnlag, konsepter, modeller, prototyper og anbefalinger, test resultater, tekniske tegninger og produksjonsplan for videre utvikling og produksjon. Du kan se eksempler på våre prosjektsider ."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Hvordan starter vi et samarbeid?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Send en kort forespørsel via skjemaet. Eller send en epost til hei@formaa.no Vi tar en innledende samtale, avklarer mål og foreslår et praktisk oppsett for første fase. Du kan også lese mer om oss før du sender inn."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Jobber dere med hardware-startups i Norge?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Ja. Vi er vant til produktutvikling for startups med fysiske produkter — fra tidlig produktidé til prototype og produksjonsforberedelse. Les mer om produktutvikling for hardware-startups ."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Kan dere hjelpe meg å få produsert en oppfinnelse?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Ja, i de fleste tilfeller. Vi hjelper med å strukturere produktutviklingen, lage prototype og forberede teknisk underlag slik at du kan gå videre mot produksjon. Se fra oppfinnelse til produksjon for en praktisk oversikt."
+                }
+              }
+            ]
           }
         ]
       }

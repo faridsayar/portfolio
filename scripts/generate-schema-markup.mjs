@@ -22,6 +22,7 @@ import {
   buildDefaultWebGraph,
   buildProjectGraph,
   buildProjectsHubGraph,
+  stripHtml,
 } from './lib/schema-markup.mjs';
 import { seoSlugForCatalog } from './lib/project-seo-slugs.mjs';
 
@@ -88,23 +89,6 @@ function extractArticleContent(html) {
   }
 }
 
-function extractFaqPage(html) {
-  const scripts = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/gi)];
-  for (const match of scripts) {
-    try {
-      const data = JSON.parse(match[1]);
-      if (data['@type'] === 'FAQPage') return data;
-      if (data['@graph']) {
-        const faq = data['@graph'].find((n) => n['@type'] === 'FAQPage');
-        if (faq) return faq;
-      }
-    } catch {
-      /* ignore */
-    }
-  }
-  return null;
-}
-
 function removeJsonLd(html) {
   return html
     .replace(
@@ -149,10 +133,67 @@ function parseInnsiktArticle(relPath) {
   return null;
 }
 
-function buildIndexGraph() {
+function extractHomeFaq(html) {
+  const sectionMatch = html.match(
+    /aria-label="Vanlige spørsmål om produktutvikling"[\s\S]*?<\/section>/i
+  );
+  if (!sectionMatch) return null;
+
+  const section = sectionMatch[0];
+  const pairs = [];
+  for (const h3 of section.matchAll(/<h3 class="section-title"[^>]*>([\s\S]*?)<\/h3>/gi)) {
+    const after = section.slice((h3.index ?? 0) + h3[0].length);
+    const pMatch = after.match(/<p class="section-lead"[^>]*>([\s\S]*?)<\/p>/i);
+    if (!pMatch) continue;
+    const question = stripHtml(h3[1]).replace(/^\d+\.\s*/, '');
+    const answer = stripHtml(pMatch[1]);
+    if (question && answer) pairs.push({ question, answer });
+  }
+
+  if (!pairs.length) return null;
+
+  return {
+    '@type': 'FAQPage',
+    '@id': `${SITE}/#faq`,
+    mainEntity: pairs.map(({ question, answer }) => ({
+      '@type': 'Question',
+      name: question,
+      acceptedAnswer: { '@type': 'Answer', text: answer },
+    })),
+  };
+}
+
+function buildTjenesterGraph({ url, title, description }) {
+  return wrapGraph([
+    websiteRef(),
+    breadcrumbList(
+      [
+        { name: 'Formaa', url: `${SITE}/` },
+        { name: 'Tjenester', url },
+      ],
+      url
+    ),
+    webPage({ url, name: title, description }),
+    {
+      '@type': 'Service',
+      '@id': `${url}#service`,
+      name: 'Produktutvikling og 3D-visualisering',
+      serviceType: ['Produktutvikling', '3D-visualisering', 'Prototyping', '3D-modellering'],
+      description,
+      url,
+      inLanguage: 'nb-NO',
+      provider: publisherRef(),
+      areaServed: { '@type': 'Country', name: 'Norge' },
+      image: `${SITE}/assets/images/social-sharing.webp`,
+    },
+  ]);
+}
+
+function buildIndexGraph(html) {
   const homeTitle = 'Formaa: Produktutvikling og 3D-visualisering for startups i Norge';
   const homeDescription =
     'Designbyrå som vil få ideen din til å ta form. Er du en gründer eller driver en startup? Vi hjelper deg med produktutvikling, 3D/CAD, visualisering og prototype.';
+  const faq = extractHomeFaq(html);
 
   return wrapGraph([
     websiteRef(),
@@ -176,7 +217,13 @@ function buildIndexGraph() {
         addressLocality: 'Oslo',
         addressCountry: 'NO',
       },
-      sameAs: ['https://www.behance.net/formaa', 'https://x.com/FormaaDesignAS'],
+      sameAs: [
+        'https://www.linkedin.com/company/formaaa/',
+        'https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr',
+        'https://t.me/designformaa',
+        'https://www.behance.net/formaa',
+        'https://x.com/FormaaDesignAS',
+      ],
       parentOrganization: { '@id': ORG_ID },
     },
     {
@@ -247,6 +294,7 @@ function buildIndexGraph() {
       name: homeTitle,
       description: homeDescription,
     }),
+    ...(faq ? [faq] : []),
   ]);
 }
 
@@ -316,7 +364,8 @@ function processFile(absPath, relPath) {
       /\s*<!-- Structured Data -->\s*<script type="application\/ld\+json">[\s\S]*?<\/script>\s*/i,
       '\n'
     );
-    graph = buildIndexGraph();
+    html = html.replace(/\s*<!-- Structured Data -->\s*/i, '\n');
+    graph = buildIndexGraph(html);
     html = insertSchemaFromGraph(html, graph);
     write(absPath, html);
     return { updated: true, type: 'home' };
@@ -338,6 +387,18 @@ function processFile(absPath, relPath) {
     html = insertSchemaFromGraph(html, graph);
     write(absPath, html);
     return { updated: true, type: 'pricing' };
+  }
+
+  if (relPath === 'tjenester-prosess.html') {
+    const pageUrl = url || `${SITE}/tjenester-prosess`;
+    graph = buildTjenesterGraph({
+      url: pageUrl,
+      title,
+      description,
+    });
+    html = insertSchemaFromGraph(html, graph);
+    write(absPath, html);
+    return { updated: true, type: 'tjenester' };
   }
 
   if (relPath === 'innsikt.html' || relPath === 'innsikt/index.html') {
