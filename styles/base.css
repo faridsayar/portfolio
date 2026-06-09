@@ -698,6 +698,12 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
   opacity: 0.72;
 }
 
+/* NOTE: Yanmee partner card between section-lead and contact form on validering category pages. */
+.category-yanmee-partner-banner {
+  margin: clamp(1.25rem, 3vw, 2rem) 0;
+  max-width: 48rem;
+}
+
 /* NOTE: Category page inline CTAs after intro copy column. */
 .category-inline-links {
   margin: 2rem 0 2rem 0;
@@ -2671,7 +2677,7 @@ main > .section--partner-logos > .section-inner {
 
 /* Inquiry form */
 .inquiry-form {
-  margin-top: 2rem;
+  margin-top: 0;
   /* NOTE: Full-viewport-width grey panel while content padding matches `.section-inner` (70rem column). */
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
