@@ -133,6 +133,70 @@ class SinglePagePortfolio {
     this.initializeProjectViews();
     this.initializeGridIdeasViews();
     this.setupCategoryEnServiceTags();
+    this.setupProsessImageGridColumns();
+  }
+
+  // NOTE: Tjenester Prosess page — split image grid into two independent columns on desktop (no shared row heights).
+  setupProsessImageGridColumns() {
+    const grid = document.querySelector('.prosess-image-grid');
+    if (!grid) return;
+
+    const mediaQuery = window.matchMedia('(min-width: 768px)');
+
+    const collectItems = () => {
+      const directItems = [...grid.querySelectorAll(':scope > .prosess-image-grid__item')];
+      if (directItems.length) return directItems;
+      return [
+        ...grid.querySelectorAll(
+          ':scope > .prosess-image-grid__column > .prosess-image-grid__item'
+        ),
+      ];
+    };
+
+    const unwrapColumns = () => {
+      const columns = [...grid.querySelectorAll(':scope > .prosess-image-grid__column')];
+      if (!columns.length) return;
+
+      const leftItems = [...(columns[0]?.children || [])];
+      const rightItems = [...(columns[1]?.children || [])];
+      const maxLength = Math.max(leftItems.length, rightItems.length);
+
+      for (let index = 0; index < maxLength; index += 1) {
+        if (leftItems[index]) grid.appendChild(leftItems[index]);
+        if (rightItems[index]) grid.appendChild(rightItems[index]);
+      }
+
+      columns.forEach((column) => column.remove());
+    };
+
+    const wrapColumns = () => {
+      const items = collectItems();
+      if (!items.length) return;
+
+      unwrapColumns();
+
+      const columnLeft = document.createElement('div');
+      const columnRight = document.createElement('div');
+      columnLeft.className = 'prosess-image-grid__column';
+      columnRight.className = 'prosess-image-grid__column';
+
+      items.forEach((item, index) => {
+        (index % 2 === 0 ? columnLeft : columnRight).appendChild(item);
+      });
+
+      grid.append(columnLeft, columnRight);
+    };
+
+    const syncLayout = () => {
+      if (mediaQuery.matches) {
+        wrapColumns();
+        return;
+      }
+      unwrapColumns();
+    };
+
+    syncLayout();
+    mediaQuery.addEventListener('change', syncLayout);
   }
 
   // NOTE: Appends English intent landing links to the shared “Velg kategori” tag row on category pages.

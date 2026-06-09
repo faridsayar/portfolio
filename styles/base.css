@@ -1524,11 +1524,19 @@ section[aria-label='Prosess i bilder'] .section-inner {
   padding-bottom: 4rem;
 }
 
-/* NOTE: Tjenester Prosess page — two-column image grid; images span full column width with natural height. */
+/* NOTE: Tjenester Prosess page — stacked image list on mobile; independent masonry columns on desktop (see script.js). */
 .prosess-image-grid {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
   gap: clamp(0.75rem, 1.5vw, 1.25rem);
+}
+
+/* NOTE: Desktop column wrappers — each column stacks images vertically with gap only (no row alignment). */
+.prosess-image-grid__column {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.75rem, 1.5vw, 1.25rem);
+  min-width: 0;
 }
 
 .prosess-image-grid__item {
@@ -1586,7 +1594,13 @@ section[aria-label='Prosess i bilder'] .section-inner {
 
 @media (min-width: 768px) {
   .prosess-image-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    flex-direction: row;
+    align-items: flex-start;
+    gap: clamp(0.75rem, 1.5vw, 1.25rem);
+  }
+
+  .prosess-image-grid__column {
+    flex: 1;
   }
 }
 
