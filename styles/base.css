@@ -2867,10 +2867,10 @@ main > .section--partner-logos > .section-inner {
 .projects-grid-panel {
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
-  padding-top: 0;
+  padding-top: 36px;
   padding-left: 1.25rem;
   padding-right: 1.25rem;
-  padding-bottom: 0;
+  padding-bottom: 36px;
   /* Same left→right greys as `.feature-banner` (“Hvordan vi jobber”). */
   background: linear-gradient(
     90deg,
