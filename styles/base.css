@@ -461,6 +461,17 @@
   white-space: nowrap;
 }
 
+/* NOTE: Process steps link to /tjenester-prosess; reset anchors so they match the original span appearance. */
+.hero-process-flow__step,
+.hero-process-flow__step:visited,
+.hero-process-flow__step:hover,
+.hero-process-flow__step:focus,
+.hero-process-flow__step:active {
+  color: inherit;
+  font-weight: inherit;
+  text-decoration: none;
+}
+
 .hero-process-flow__arrow {
   flex: 0 0 auto;
   width: 0.7em;

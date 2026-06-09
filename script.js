@@ -552,15 +552,15 @@ class SinglePagePortfolio {
     if (this.heroProcessFlowMarkupPromise) return this.heroProcessFlowMarkupPromise;
     const fallbackMarkup = `<div class="hero-process-flow" aria-label="Fra konsept til produksjon">
   <p class="hero-process-flow__text">
-    <span class="hero-process-flow__step">Concept</span>
+    <a class="hero-process-flow__step" href="/tjenester-prosess">Konsept</a>
     <img class="hero-process-flow__arrow hero-process-flow__arrow--lead" src="../../assets/small-arrow-right.svg" alt="" width="12" height="12" aria-hidden="true" />
-    <span class="hero-process-flow__step">3D</span>
+    <a class="hero-process-flow__step" href="/tjenester-prosess">3D</a>
     <img class="hero-process-flow__arrow" src="../../assets/small-arrow-right.svg" alt="" width="10" height="10" aria-hidden="true" />
-    <span class="hero-process-flow__step">CAD</span>
+    <a class="hero-process-flow__step" href="/tjenester-prosess">CAD</a>
     <img class="hero-process-flow__arrow" src="../../assets/small-arrow-right.svg" alt="" width="10" height="10" aria-hidden="true" />
-    <span class="hero-process-flow__step">Prototype</span>
+    <a class="hero-process-flow__step" href="/tjenester-prosess">Prototype</a>
     <img class="hero-process-flow__arrow" src="../../assets/small-arrow-right.svg" alt="" width="10" height="10" aria-hidden="true" />
-    <span class="hero-process-flow__step">Production</span>
+    <a class="hero-process-flow__step" href="/tjenester-prosess">Produksjon</a>
   </p>
 </div>`;
     this.heroProcessFlowMarkupPromise = (async () => {
