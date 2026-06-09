@@ -1,12 +1,66 @@
-# NOTE: Robots policy and sitemap location for search engine crawlers. Public routes are extensionless;
-# legacy .html and flat prosjekt-/innsikt- slugs redirect via .htaccess (see sitemap.xml for canonical URLs).
-# LLM discovery: /llms.txt lists primary hubs and key SEO landing pages.
+# NOTE: Robots policy and sitemap for search engines. Public routes are extensionless;
+# legacy .html and flat prosjekt-/innsikt- slugs redirect via .htaccess (see sitemap.xml).
+# LLM/AI discovery: https://formaa.no/llms.txt and https://formaa.no/ai.txt.
 User-agent: *
 Allow: /
 Allow: /llms.txt
+Allow: /ai.txt
 Disallow: /article-template
 Disallow: /article-template.html
 Disallow: /gallery
 Disallow: /gallery.html
 
+# NOTE: Allow GPTBot to index public marketing pages; see https://formaa.no/llms.txt.
+User-agent: GPTBot
+Allow: /
+Allow: /llms.txt
+Allow: /ai.txt
+
+# NOTE: Allow ChatGPT-User to index public marketing pages; see https://formaa.no/llms.txt.
+User-agent: ChatGPT-User
+Allow: /
+Allow: /llms.txt
+Allow: /ai.txt
+
+# NOTE: Allow ClaudeBot to index public marketing pages; see https://formaa.no/llms.txt.
+User-agent: ClaudeBot
+Allow: /
+Allow: /llms.txt
+Allow: /ai.txt
+
+# NOTE: Allow Claude-Web to index public marketing pages; see https://formaa.no/llms.txt.
+User-agent: Claude-Web
+Allow: /
+Allow: /llms.txt
+Allow: /ai.txt
+
+# NOTE: Allow Google-Extended to index public marketing pages; see https://formaa.no/llms.txt.
+User-agent: Google-Extended
+Allow: /
+Allow: /llms.txt
+Allow: /ai.txt
+
+# NOTE: Allow PerplexityBot to index public marketing pages; see https://formaa.no/llms.txt.
+User-agent: PerplexityBot
+Allow: /
+Allow: /llms.txt
+Allow: /ai.txt
+
+# NOTE: Allow Applebot-Extended to index public marketing pages; see https://formaa.no/llms.txt.
+User-agent: Applebot-Extended
+Allow: /
+Allow: /llms.txt
+Allow: /ai.txt
+
+# NOTE: Allow Bytespider to index public marketing pages; see https://formaa.no/llms.txt.
+User-agent: Bytespider
+Allow: /
+Allow: /llms.txt
+Allow: /ai.txt
+
+# NOTE: Allow cohere-ai to index public marketing pages; see https://formaa.no/llms.txt.
+User-agent: cohere-ai
+Allow: /
+Allow: /llms.txt
+Allow: /ai.txt
 Sitemap: https://formaa.no/sitemap.xml

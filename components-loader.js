@@ -334,7 +334,7 @@
           <img class="feature-icon" src="assets/icons/produserbar-icon.svg" alt="" width="64" height="64" aria-hidden="true" />
           <span class="feature-point__text">
             <strong>Design som faktisk kan produseres:</strong>
-            <a class="feature-point__inline-link" href="/category/produktdesign/norge">Produktutvikling</a>
+            <a class="feature-point__inline-link" href="/tjenester-prosess">Produktutvikling</a>
             med fokus på form og funksjon, materialvalg og produksjon, transport og resirkulering.
           </span>
         </p>
@@ -342,7 +342,7 @@
           <img class="feature-icon" src="assets/icons/fremdrift-icon.svg" alt="" width="64" height="64" aria-hidden="true" />
           <span class="feature-point__text">
             <strong>Ingen unødvendig kompleksitet:</strong> Tydelige prosesser og raske
-            <a class="feature-point__inline-link" href="/category/prototyping/norge">iterasjoner</a>
+            <a class="feature-point__inline-link" href="/innsikt/hvordan-lage-prototype">iterasjoner</a>
             som gjør ideer til konkrete resultater. Rask og direkte kommunikasjon.
           </span>
         </p>
@@ -357,7 +357,7 @@
           <span class="feature-point__text">
             <strong>Design basert på <span class="text-primary">ekte brukerbehov</span>:</strong>
             Grundig
-            <a class="feature-point__inline-link" href="/category/brukerundersokelse/norge">research</a>
+            <a class="feature-point__inline-link" href="/innsikt/hvem-trenger-design">research</a>
             av brukerne og brukernes mål, kontekst, bruksmåte, ergonomi og begrensninger.
           </span>
         </p>
@@ -365,8 +365,8 @@
     </div>
     <p class="section-lead">
       Ferdidesignet produkt! Forståelig prosess som kombinerer
-      <a class="internal-text-link" href="/category/brukerundersokelse/norge">brukerinnsikt</a>, produktstrategi,
-      <a class="internal-text-link" href="/category/design/norge">design</a>
+      <a class="internal-text-link" href="/innsikt/hvem-trenger-design">brukerinnsikt</a>, produktstrategi,
+      <a class="internal-text-link" href="/">design</a>
       og teknisk realisme. Vi snakker rett fram om det hele veien: hva som er realistisk, hva som koster tid og penger, og hvor det gir mening at vi bidrar. Sammen med dere bestemmer vi hva som passer for dere.
     </p>
   </div>

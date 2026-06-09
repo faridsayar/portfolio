@@ -1,0 +1,21 @@
+# NOTE: AI crawler companion file — short index pointing to llms.txt and sitemap.
+site: https://formaa.no
+name: Formaa
+language: no
+summary: Produktutvikling og 3D-visualisering for gründere og startups i Norge.
+description: Produktutvikling og 3D-visualisering for gründere og startups i Norge — fra produktidé og prototype til CAD, modellering og produksjon. Designbyrå for fysiske produkter og hardware-startups.
+
+allow: /
+llms: https://formaa.no/llms.txt
+sitemap: https://formaa.no/sitemap.xml
+contact: https://formaa.no/application-form
+
+primary_topics: produktutvikling, 3D-visualisering, industridesign, produktdesign, prototype, 3D-modellering, 3D-design, visualisering, designbyrå
+
+important_urls:
+https://formaa.no/
+https://formaa.no/tjenester-prosess
+https://formaa.no/prosjekter
+https://formaa.no/innsikt
+https://formaa.no/oss
+https://formaa.no/prisestimat

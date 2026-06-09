@@ -2,24 +2,34 @@
 site: https://formaa.no
 name: Formaa
 language: no
-description: Produktutviklingsbyrå i Norge for gründere og startups — fra produktidé og prototype til CAD, 3D-visualisering, tekniske tegninger og produksjon. Designbyrå for fysiske produkter og hardware-startups.
+description: Produktutvikling og 3D-visualisering for gründere og startups i Norge — fra produktidé og prototype til CAD, modellering og produksjon. Designbyrå for fysiske produkter og hardware-startups.
 
 important_urls:
 - https://formaa.no/
-- https://formaa.no/prosjekter
+- https://formaa.no/tjenester-prosess
+- https://formaa.no/oss
 - https://formaa.no/prisestimat
 - https://formaa.no/application-form
-- https://formaa.no/innsikt
-- https://formaa.no/oss
-- https://formaa.no/category/prototyping/norge
-- https://formaa.no/category/konseptutvikling/norge
-- https://formaa.no/category/cad-modelering/norge
-- https://formaa.no/category/teknisk-tegning/norge
-- https://formaa.no/category/3d-modelering/norge
-- https://formaa.no/category/visualisering/norge
+- https://formaa.no/bli-med
+- https://formaa.no/en/product-rendering
+- https://formaa.no/en/cad-modeling
+- https://formaa.no/en/product-animation
+- https://formaa.no/prosjekter
 - https://formaa.no/innsikt/hvordan-lage-prototype
 - https://formaa.no/innsikt/fra-oppfinnelse-til-produksjon
 - https://formaa.no/innsikt/produktutvikling-hardware-startup
+- https://formaa.no/innsikt/hva-er-industridesign
+- https://formaa.no/innsikt/hvordan-design-sparer-penger
+- https://formaa.no/innsikt
+- https://formaa.no/category/visualisering/norge
+- https://formaa.no/category/3d-modelering/norge
+- https://formaa.no/category/prototyping/norge
+- https://formaa.no/category/produktdesign/norge
+- https://formaa.no/category/industridesign/norge
+- https://formaa.no/category/konseptutvikling/norge
+- https://formaa.no/category/cad-modelering/norge
+- https://formaa.no/category/teknisk-tegning/norge
+- https://formaa.no/category/design/norge
 - https://formaa.no/sitemap.xml
 
 retired_urls:
@@ -30,3 +40,6 @@ policies:
 - content_usage: public_website_content
 - attribution: required
 - pii: do_not_collect
+- preferred_summary: Produktutvikling og 3D-visualisering for startups i Norge
+- contact: https://formaa.no/application-form
+- ai_companion: https://formaa.no/ai.txt

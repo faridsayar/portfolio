@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- NOTE: XML sitemap for Google/Bing: one entry per public route only. Project URLs use
-     /prosjekter/{slug}. Innsikt hub + articles use /innsikt/{slug} (10 articles; stubs innsikt-*.html).
-     /application-form is the design-samtale kontaktform. Includes /en/* intent landings.
-     /gallery is retired (301 → home). Static assets are intentionally excluded.
-     Regenerate: pnpm generate:sitemap -->
+<!-- NOTE: XML sitemap for Google/Bing/AI crawlers: one entry per public route only.
+     Project URLs: /prosjekter/{slug}. Innsikt: /innsikt/{slug} (stubs innsikt-*.html).
+     /application-form = kontaktform. /tjenester-prosess = tjenester og prosess.
+     /gallery retired (301 → home). Regenerate: pnpm generate:sitemap -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://formaa.no/</loc></url>
   <url><loc>https://formaa.no/application-form</loc></url>

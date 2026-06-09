@@ -23,6 +23,7 @@ import {
   buildProjectGraph,
   buildProjectsHubGraph,
 } from './lib/schema-markup.mjs';
+import { seoSlugForCatalog } from './lib/project-seo-slugs.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -149,14 +150,17 @@ function parseInnsiktArticle(relPath) {
 }
 
 function buildIndexGraph() {
+  const homeTitle = 'Formaa: Produktutvikling og 3D-visualisering for startups i Norge';
+  const homeDescription =
+    'Designbyrå som vil få ideen din til å ta form. Er du en gründer eller driver en startup? Vi hjelper deg med produktutvikling, 3D/CAD, visualisering og prototype.';
+
   return wrapGraph([
     websiteRef(),
     {
       '@type': 'LocalBusiness',
       '@id': `${SITE}/#local-business`,
       name: 'Formaa',
-      description:
-        '3D-visualisering og produktdesign for startups og bedrifter i Norge. Vi gjør ideen din synlig på dager — hele veien til prototype og produksjon.',
+      description: homeDescription,
       url: SITE,
       telephone: '+47 46 38 18 87',
       contactPoint: {
@@ -183,7 +187,7 @@ function buildIndexGraph() {
       logo: `${SITE}/assets/formaa-logo.svg`,
       image: `${SITE}/assets/images/social-sharing.webp`,
       description:
-        '3D-visualisering, produktdesign, prototyping og CAD-modelering for startups og bedrifter. Rask leveranse fra konsept til produksjonsklar leveranse i Norge.',
+        'Produktutvikling og 3D-visualisering for startups i Norge — prototyping, 3D-modellering, CAD-modelering og produksjonsforberedelse.',
       areaServed: [
         { '@type': 'Country', name: 'Norge' },
         { '@type': 'City', name: 'Oslo' },
@@ -230,7 +234,7 @@ function buildIndexGraph() {
       logo: `${SITE}/assets/formaa-logo.svg`,
       image: `${SITE}/assets/images/social-sharing.webp`,
       description:
-        'Formaa er et designstudio i Norge som leverer 3D-visualisering og produktdesign for startups og bedrifter — fra ide til produksjon.',
+        'Formaa er et designstudio i Norge for produktutvikling og 3D-visualisering — fra idé og prototype til produksjon.',
       sameAs: [
         'https://www.linkedin.com/company/formaaa/',
         'https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr',
@@ -240,9 +244,8 @@ function buildIndexGraph() {
     },
     webPage({
       url: `${SITE}/`,
-      name: '3D-visualisering og produktdesign for startups og bedrifter | Formaa',
-      description:
-        '3D-visualisering og produktdesign for startups og bedrifter. Vi gjør ideen din synlig på dager — hele veien til prototype og produksjon. Designbyrå i Norge.',
+      name: homeTitle,
+      description: homeDescription,
     }),
   ]);
 }
@@ -426,20 +429,9 @@ function loadProjectsManifest() {
 
 function writeProjectSchemaJs() {
   const manifest = loadProjectsManifest();
-  const seoByCatalog = {
-    obseed: 'obseed-custom-8-string-guitar',
-    undo: 'undo-desertification',
-    nomos: 'nomos-branding',
-    proton: 'proton-headphones',
-    nordic: 'nordic-restaurant-branding',
-    monocopter: 'monocopter-drone',
-    rafaels: 'rafaels-ren-melk',
-    'eco-mate-closet': 'eco-mate-closet',
-    h2o: 'h2o-bottle-pedometer',
-  };
 
   const projects = manifest.projects.map((p) => {
-    const seoSlug = seoByCatalog[p.slug] || p.slug;
+    const seoSlug = seoSlugForCatalog(p.slug);
     const thumb = p.thumbnail?.startsWith('http')
       ? p.thumbnail
       : `${SITE}/${p.thumbnail.replace(/^\//, '')}`;

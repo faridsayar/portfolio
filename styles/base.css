@@ -1756,6 +1756,11 @@ section[aria-label='Oss'] .section-lead--after-grid > .section-lead:last-child {
   margin-bottom: 0;
 }
 
+/* NOTE: Extra space before prominent prosess link at end of about-page SEO block. */
+section[aria-label='Oss'] .section-lead--after-grid > .category-projects-link {
+  margin-top: 3rem;
+}
+
 section[aria-label='Oss'] .about-top-graphic + .section-title {
   margin-top: 2.5rem;
 }
