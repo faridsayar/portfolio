@@ -1705,6 +1705,38 @@ section[aria-label='Prosess i bilder'] .section-inner {
   );
 }
 
+/* NOTE: Partner logo link on prosess image overlay (e.g. Kroloftet on verksted) — above title; pointer-events restored on link only. */
+.prosess-image-grid__partner-link {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  margin-bottom: 0.35rem;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.prosess-image-grid__partner-link:hover,
+.prosess-image-grid__partner-link:focus-visible {
+  opacity: 0.85;
+  outline: none;
+}
+
+.prosess-image-grid__partner-link:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: 4px;
+}
+
+.prosess-image-grid__partner-logo {
+  display: block;
+  height: clamp(2rem, 5vw, 2.5rem);
+  width: auto;
+  max-width: 8rem;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.92;
+}
+
 .prosess-image-grid__title {
   margin: 0;
   font-size: var(--font-size-card-title);
@@ -1863,6 +1895,42 @@ section[aria-label='Verksteder og produksjon'] .section-inner {
 }
 
 /* NOTE: Om oss starts with full-bleed hero artwork, so remove default section top padding. */
+/* NOTE: Om oss hero — 70% dark overlay on workshop image for headline contrast. */
+section[aria-label='Oss'] .about-top-graphic::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  pointer-events: none;
+  z-index: 0;
+}
+
+section[aria-label='Oss'] .about-top-graphic__overlay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 1;
+}
+
+section[aria-label='Oss'] .about-top-graphic__breadcrumb {
+  position: absolute;
+  top: 1rem;
+  left: 0;
+  right: 0;
+}
+
+/* NOTE: Large display line on Om oss hero — same scale as `.big-text`, white on dark overlay. */
+section[aria-label='Oss'] .about-top-graphic__headline {
+  max-width: 70rem;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  font-size: clamp(2rem, 6vw, 4.5rem);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: -0.03em;
+  line-height: var(--line-height-tight);
+  color: var(--color-white);
+}
+
 section[aria-label='Oss'] .section-inner {
   padding-top: 0;
 }
@@ -2047,6 +2115,40 @@ section[aria-label='Oss'] .about-competence-block:not(:first-child) .about-compe
 .about-team-card__email:hover {
   color: var(--color-primary);
   opacity: 1;
+}
+
+/* NOTE: Footer-style social row on Om oss team cards — sits below “Send e-post”. */
+.about-team-card__social-links {
+  margin-top: 0.45rem;
+}
+
+/* NOTE: Trustpilot badge link on Om oss — centered below quotes carousel. */
+.trustpilot-badge-wrap {
+  margin: 0 0 2rem 0;
+  text-align: center;
+}
+
+.trustpilot-badge {
+  display: inline-block;
+  text-decoration: none;
+  opacity: 0.92;
+  transition: opacity 180ms ease;
+}
+
+.trustpilot-badge:hover {
+  opacity: 1;
+}
+
+.trustpilot-badge:focus-visible {
+  outline: 2px solid rgba(255, 115, 0, 0.28);
+  outline-offset: 4px;
+}
+
+.trustpilot-badge__img {
+  display: block;
+  width: min(17.5rem, 100%);
+  height: auto;
+  margin: 0 auto;
 }
 
 /* NOTE: Three-column competence lists on Om oss (education, production, technical depth). */
@@ -2384,6 +2486,19 @@ main > .section--partner-logos > .section-inner {
   padding-right: 0;
 }
 
+/* NOTE: Partner logos inside #start (before portfolio) — nested layout; transparent on white #start band. */
+#start .section--partner-logos {
+  background: transparent;
+}
+
+#start .section--partner-logos > .section-inner {
+  max-width: none;
+  margin: 0;
+  padding-top: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
 .section-head--partner-logos {
   text-align: left;
   width: 100%;
@@ -2401,7 +2516,8 @@ main > .section--partner-logos > .section-inner {
   justify-content: center;
   gap: clamp(1.5rem, 4vw, 2.75rem);
   margin: 0;
-  padding: 0;
+  padding-top: 64px;
+  padding-bottom: 64px;
   list-style: none;
 }
 

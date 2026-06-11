@@ -1,9 +1,8 @@
-// NOTE: Homepage quote carousel — centers one card, shows neighbors partly visible, steps every 4s.
+// NOTE: Quote carousel — centers one card, shows neighbors partly visible, steps every 4s; supports multiple instances.
 (function quotesCarousel() {
   const INTERVAL_MS = 4000;
 
-  function initQuotesCarousel() {
-    const root = document.querySelector('[data-quotes-carousel]');
+  function initCarouselRoot(root) {
     if (!root || root.dataset.quotesReady === 'true') return;
 
     const viewport = root.querySelector('.quotes-carousel__viewport');
@@ -48,14 +47,11 @@
     setActive(0);
     startTimer();
 
-    window.addEventListener(
-      'resize',
-      () => {
-        setActive(index);
-      },
-      { passive: true }
-    );
+    const onResize = () => {
+      setActive(index);
+    };
 
+    window.addEventListener('resize', onResize, { passive: true });
     root.addEventListener('mouseenter', stopTimer);
     root.addEventListener('mouseleave', startTimer);
     root.addEventListener('focusin', stopTimer);
@@ -67,9 +63,15 @@
     }
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initQuotesCarousel);
-  } else {
-    initQuotesCarousel();
+  function initAllQuotesCarousels() {
+    document.querySelectorAll('[data-quotes-carousel]').forEach(initCarouselRoot);
   }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAllQuotesCarousels);
+  } else {
+    initAllQuotesCarousels();
+  }
+
+  document.addEventListener('components:ready', initAllQuotesCarousels);
 })();

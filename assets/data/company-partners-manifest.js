@@ -14,6 +14,18 @@ window.__COMPANY_PARTNERS_MANIFEST = {
       "url": "https://seventhseal.no/",
       "source": "seventh-seal-logo.svg",
       "logo": "seventh-seal-logo.webp"
+    },
+    {
+      "name": "Kaiehuset",
+      "url": "https://kaiehuset.no/",
+      "source": "kaiehuset-logo.png",
+      "logo": "kaiehuset-logo.webp"
+    },
+    {
+      "name": "Kroloftet",
+      "url": "https://www.kroloftet.no/",
+      "source": "kroloftet-logo.png",
+      "logo": "kroloftet-logo.webp"
     }
   ]
 };
