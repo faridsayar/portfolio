@@ -924,7 +924,7 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
   padding-top: 64px;
   padding-bottom: 64px;
   max-width: 37rem;
-  font-size: var(--font-size-body-sm);
+  font-size: var(--font-size-body-md);
   line-height: var(--line-height-relaxed);
   opacity: 0.85;
 }
@@ -935,6 +935,122 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
   gap: clamp(1.5rem, 4vw, 2.5rem);
   align-items: center;
   margin-bottom: 0;
+}
+
+/* NOTE: Full-bleed homepage intro — image edge-to-edge; copy overlays with left→right gradient; hashtags sit below image. */
+#start .start-intro--overlay {
+  display: block;
+}
+
+#start .start-intro__media-zone {
+  position: relative;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  min-height: min(36rem, 72vh);
+  overflow: hidden;
+}
+
+#start .start-intro__backdrop {
+  position: absolute;
+  inset: 0;
+}
+
+/* NOTE: Hashtag row — small gap under full-bleed image, center aligned. */
+#start .start-intro__hashtags-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5rem;
+  padding: 0 1.25rem;
+}
+
+#start .start-intro__hashtags-row .section-1__hashtags,
+#start .start-intro__hashtags-row .section-2__hashtags,
+#start .start-intro__hashtags-row .section-3__hashtags {
+  justify-content: center;
+  margin: 0;
+}
+
+#start .start-intro--overlay .start-intro__gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(18, 7, 0, 0.9) 0%,
+    rgba(18, 7, 0, 0.72) 50%,
+    rgba(18, 7, 0, 0.38) 72%,
+    rgba(18, 7, 0, 0.1) 90%,
+    rgba(18, 7, 0, 0) 100%
+  );
+  pointer-events: none;
+}
+
+#start .start-intro--overlay .start-intro__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+#start .start-intro__overlay-inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+  align-items: center;
+  min-height: inherit;
+  max-width: 70rem;
+  margin: 0 auto;
+  padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1.25rem, 4vw, 2.5rem);
+  color: var(--color-white);
+}
+
+#start .start-intro--overlay .section-title,
+#start .start-intro--overlay .section-lead,
+#start .start-intro--overlay .article-row__list {
+  color: var(--color-white);
+}
+
+#start .start-intro--overlay .section-lead {
+  opacity: 0.92;
+}
+
+#start .start-intro--overlay .internal-text-link,
+#start .start-intro--overlay .internal-text-link:visited {
+  color: var(--color-white);
+}
+
+#start .start-intro--overlay .internal-text-link:hover,
+#start .start-intro--overlay .internal-text-link:focus {
+  color: var(--color-secondary);
+}
+
+#start .start-intro--overlay .category-projects-link,
+#start .start-intro--overlay .category-projects-link:visited {
+  color: var(--color-white);
+}
+
+#start .start-intro--overlay .category-projects-link:hover,
+#start .start-intro--overlay .category-projects-link:focus {
+  color: var(--color-secondary);
+}
+
+/* NOTE: Homepage overlay sections — 13px body on mobile; CTA row only at 16px; titles keep section-title scale. */
+@media (max-width: 768px) {
+  #start .start-intro--overlay .section-lead,
+  #start .start-intro--overlay .article-row__list,
+  #start .start-intro--overlay .internal-text-link,
+  #start .start-intro__hashtags-row .section-1__hashtag,
+  #start .start-intro__hashtags-row .section-2__hashtag,
+  #start .start-intro__hashtags-row .section-3__hashtag {
+    font-size: 13px;
+  }
+
+  #start .start-intro--overlay .start-intro__actions .hero-cta,
+  #start .start-intro--overlay .start-intro__actions .category-projects-link {
+    font-size: var(--font-size-body-md);
+  }
 }
 
 #start .start-intro__content .section-title {
@@ -1044,7 +1160,11 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
 }
 
 @media (min-width: 768px) {
-  #start .start-intro {
+  #start .start-intro:not(.start-intro--overlay) {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  #start .start-intro__overlay-inner {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   }
 }
@@ -1585,6 +1705,38 @@ section[aria-label='Prosess i bilder'] .section-inner {
   );
 }
 
+/* NOTE: Partner logo link on prosess image overlay (e.g. Kroloftet on verksted) — above title; pointer-events restored on link only. */
+.prosess-image-grid__partner-link {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  margin-bottom: 0.35rem;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.prosess-image-grid__partner-link:hover,
+.prosess-image-grid__partner-link:focus-visible {
+  opacity: 0.85;
+  outline: none;
+}
+
+.prosess-image-grid__partner-link:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: 4px;
+}
+
+.prosess-image-grid__partner-logo {
+  display: block;
+  height: clamp(2rem, 5vw, 2.5rem);
+  width: auto;
+  max-width: 8rem;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.92;
+}
+
 .prosess-image-grid__title {
   margin: 0;
   font-size: var(--font-size-card-title);
@@ -1743,6 +1895,42 @@ section[aria-label='Verksteder og produksjon'] .section-inner {
 }
 
 /* NOTE: Om oss starts with full-bleed hero artwork, so remove default section top padding. */
+/* NOTE: Om oss hero — 70% dark overlay on workshop image for headline contrast. */
+section[aria-label='Oss'] .about-top-graphic::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  pointer-events: none;
+  z-index: 0;
+}
+
+section[aria-label='Oss'] .about-top-graphic__overlay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 1;
+}
+
+section[aria-label='Oss'] .about-top-graphic__breadcrumb {
+  position: absolute;
+  top: 1rem;
+  left: 0;
+  right: 0;
+}
+
+/* NOTE: Large display line on Om oss hero — same scale as `.big-text`, white on dark overlay. */
+section[aria-label='Oss'] .about-top-graphic__headline {
+  max-width: 70rem;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  font-size: clamp(2rem, 6vw, 4.5rem);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: -0.03em;
+  line-height: var(--line-height-tight);
+  color: var(--color-white);
+}
+
 section[aria-label='Oss'] .section-inner {
   padding-top: 0;
 }
@@ -1927,6 +2115,40 @@ section[aria-label='Oss'] .about-competence-block:not(:first-child) .about-compe
 .about-team-card__email:hover {
   color: var(--color-primary);
   opacity: 1;
+}
+
+/* NOTE: Footer-style social row on Om oss team cards — sits below “Send e-post”. */
+.about-team-card__social-links {
+  margin-top: 0.45rem;
+}
+
+/* NOTE: Trustpilot badge link on Om oss — centered below quotes carousel. */
+.trustpilot-badge-wrap {
+  margin: 0 0 2rem 0;
+  text-align: center;
+}
+
+.trustpilot-badge {
+  display: inline-block;
+  text-decoration: none;
+  opacity: 0.92;
+  transition: opacity 180ms ease;
+}
+
+.trustpilot-badge:hover {
+  opacity: 1;
+}
+
+.trustpilot-badge:focus-visible {
+  outline: 2px solid rgba(255, 115, 0, 0.28);
+  outline-offset: 4px;
+}
+
+.trustpilot-badge__img {
+  display: block;
+  width: min(17.5rem, 100%);
+  height: auto;
+  margin: 0 auto;
 }
 
 /* NOTE: Three-column competence lists on Om oss (education, production, technical depth). */
@@ -2264,6 +2486,19 @@ main > .section--partner-logos > .section-inner {
   padding-right: 0;
 }
 
+/* NOTE: Partner logos inside #start (before portfolio) — nested layout; transparent on white #start band. */
+#start .section--partner-logos {
+  background: transparent;
+}
+
+#start .section--partner-logos > .section-inner {
+  max-width: none;
+  margin: 0;
+  padding-top: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
 .section-head--partner-logos {
   text-align: left;
   width: 100%;
@@ -2281,7 +2516,8 @@ main > .section--partner-logos > .section-inner {
   justify-content: center;
   gap: clamp(1.5rem, 4vw, 2.75rem);
   margin: 0;
-  padding: 0;
+  padding-top: 64px;
+  padding-bottom: 64px;
   list-style: none;
 }
 
@@ -2829,6 +3065,12 @@ main > .section--partner-logos > .section-inner {
   opacity: 0.85;
 }
 
+/* NOTE: Inquiry submit success message — primary brand color. */
+.inquiry-note[data-inquiry-status][data-state='success'] {
+  color: var(--color-primary);
+  opacity: 1;
+}
+
 /* NOTE: “Design samtale” title + lead below submit row. */
 .inquiry-form .section-head--after-inquiry-cta {
   margin-top: 1.75rem;
@@ -3204,7 +3446,7 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
 }
 
 .project-hero-stage__lead {
-  margin: 0 0 1rem 0;
+  margin: 0 0 2rem 0;
   max-width: 48rem;
   font-size: var(--font-size-body-md);
   line-height: var(--line-height-relaxed);
@@ -3395,11 +3637,11 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
   }
 
   .project-page-nav__link--prev .project-page-nav__icon {
-    transform: rotate(60deg);
+    transform: matrix(0.5, 0.866025, -0.866025, 0.5, 0, 0) rotate(-30deg);
   }
 
   .project-page-nav__link--next .project-page-nav__icon {
-    transform: rotate(-60deg);
+    transform: matrix(0.5, 0.866025, -0.866025, 0.5, 0, 0) rotate(30deg);
   }
 
   .project-page-nav__label {
@@ -3495,11 +3737,11 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
   }
 
   .project-page-nav__link--prev .project-page-nav__icon {
-    transform: rotate(60deg);
+    transform: matrix(0.5, 0.866025, -0.866025, 0.5, 0, 0) rotate(-30deg);
   }
 
   .project-page-nav__link--next .project-page-nav__icon {
-    transform: rotate(-60deg);
+    transform: matrix(0.5, 0.866025, -0.866025, 0.5, 0, 0) rotate(30deg);
   }
 
   /* NOTE: Small side labels (lowercase); paired with triangle — link `aria-label` covers screen readers. */
@@ -3594,6 +3836,55 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
   color: var(--color-primary);
 }
 
+/* NOTE: Contact card wrapper — positions overlay copy button on the right, vertically centered. */
+.contact-item-wrap {
+  position: relative;
+}
+
+.contact-item-wrap--copyable > .contact-item {
+  padding-right: 3.25rem;
+}
+
+.contact-item__copy {
+  position: absolute;
+  top: 50%;
+  right: 0.75rem;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.85rem;
+  height: 1.85rem;
+  padding: 0;
+  border: 1px solid var(--border-neutral);
+  background: var(--surface-neutral);
+  color: var(--color-dark);
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition:
+    color 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease;
+}
+
+.contact-item__copy svg {
+  width: 0.9rem;
+  height: 0.9rem;
+  fill: currentColor;
+}
+
+.contact-item__copy:hover,
+.contact-item__copy.contact-item__copy--copied {
+  border-color: rgba(255, 115, 0, 0.42);
+  color: var(--color-primary);
+  background: rgba(255, 115, 0, 0.06);
+}
+
+.contact-item__copy:focus-visible {
+  outline: 2px solid rgba(255, 115, 0, 0.28);
+  outline-offset: 2px;
+}
+
 /* Footer */
 .site-footer {
   border-top: 1px solid var(--border-neutral);
@@ -3657,6 +3948,19 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
 }
 
 .site-footer .contact-link:hover .contact-item__value {
+  color: var(--color-primary);
+}
+
+.site-footer .contact-item__copy {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: var(--color-white);
+}
+
+.site-footer .contact-item__copy:hover,
+.site-footer .contact-item__copy.contact-item__copy--copied {
+  border-color: rgba(255, 115, 0, 0.55);
+  background: rgba(255, 115, 0, 0.12);
   color: var(--color-primary);
 }
 
@@ -3726,6 +4030,12 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
 
 .site-footer__text--xs + .site-footer__text--xs {
   margin-top: 0.55rem;
+}
+
+/* NOTE: Last intro paragraph — spacing before copyright line. */
+.site-footer__intro .site-footer__text--xs:last-of-type {
+  margin-top: 9px;
+  margin-bottom: 2rem;
 }
 
 .site-footer__intro .internal-text-link,

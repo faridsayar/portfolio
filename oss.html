@@ -43,13 +43,17 @@
     <meta name="twitter:image" content="https://formaa.no/assets/images/social-sharing.webp" />
 
     <link rel="canonical" href="https://formaa.no/oss" />
+    <!-- NOTE: Readex Pro — site base + quote carousel typography (same as homepage). -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- NOTE: Preload primary font stylesheet to reduce render delay for top content text. -->
     <link
       rel="preload"
       as="style"
-      href="https://fonts.googleapis.com/css2?family=Jura:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;600;700&display=swap"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
     />
     <link
       href="https://fonts.googleapis.com/css2?family=Jura:wght@400;500;600&display=swap"
@@ -65,7 +69,7 @@
       sizes="192x192"
     />
 
-    <link rel="stylesheet" href="styles/base.css?v=12" />
+    <link rel="stylesheet" href="styles/base.css?v=13" />
 
     <!-- NOTE: Google Analytics 4 global site tag for tracking website traffic. -->
     <!-- Google tag (gtag.js) -->
@@ -89,27 +93,29 @@
         <div class="section-inner">
           <!-- NOTE: Full-bleed top artwork with breadcrumb overlay anchored on image. -->
           <figure class="about-top-graphic">
-            <!-- NOTE: Serve 1x and 2x hero artwork so high-DPI screens get a sharper image. -->
+            <!-- NOTE: Workshop hero — team in product-development environment (replaces abstract brand artwork). -->
             <img
               class="about-top-graphic__img"
-              src="assets/formaa-background2.jpg"
-              srcset="assets/formaa-background2.jpg 1x, assets/formaa-background-4k.jpg 2x"
-              alt=""
+              src="assets/images/about/formaa-workshop-hero.webp"
+              srcset="
+                assets/images/about/formaa-workshop-hero.webp 1x,
+                assets/images/about/formaa-workshop-hero.jpg  2x
+              "
+              alt="Formaa-teamet i verksted med skisser, modeller og CNC i bakgrunnen"
               width="1920"
               height="1080"
               loading="lazy"
             />
-            <!-- NOTE: Breadcrumb stays visible on top of the artwork. -->
+            <!-- NOTE: Breadcrumb + hero headline over darkened workshop image. -->
             <figcaption class="about-top-graphic__overlay">
-              <!-- NOTE: Intro overlay text above logo; text keeps pure `.section-kicker` typography. -->
-              <div class="about-top-graphic__intro-wrap" aria-hidden="true">
-                <p class="section-kicker about-top-graphic__intro">vi er</p>
-              </div>
               <nav class="breadcrumb about-top-graphic__breadcrumb" aria-label="Brødsmulesti">
                 <a class="breadcrumb__link" href="/">Formaa</a>
                 <span class="breadcrumb__sep" aria-hidden="true">/</span>
                 <a class="breadcrumb__link" href="/oss" aria-current="page">Oss</a>
               </nav>
+              <p class="about-top-graphic__headline">
+                Vi er avhengige av din suksess, derfor gjør vi vårt beste
+              </p>
             </figcaption>
           </figure>
 
@@ -123,7 +129,7 @@
             <a class="internal-text-link" href="/tjenester-prosess">produktutvikling</a>.
           </p>
           <p class="section-lead section-lead--after-grid">
-            Vy tilbyr en praktisk, tydelig og tilgjengelig produktdesign tjeneste.
+            Vi tilbyr en praktisk, tydelig og tilgjengelig produktdesign tjeneste.
           </p>
 
           <!-- NOTE: Team row with 3 members (image + name + role). -->
@@ -140,6 +146,38 @@
                 <h3 class="about-team-card__name">Farid</h3>
                 <p class="about-team-card__role">Industri- og produktdesigner</p>
                 <a class="about-team-card__email" href="/application-form">Send e-post</a>
+                <!-- NOTE: Personal social links — reuses footer `.social-link` icons below e-post CTA. -->
+                <div
+                  class="social-links about-team-card__social-links"
+                  aria-label="Farid på sosiale medier"
+                >
+                  <a
+                    class="social-link"
+                    href="https://www.linkedin.com/in/faridsayar/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Farid på LinkedIn"
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        d="M6.94 8.5H3.56V20h3.38V8.5Zm.24-3.54A1.96 1.96 0 0 0 5.2 3a1.95 1.95 0 0 0-1.95 1.96c0 1.08.86 1.96 1.95 1.96 1.09 0 1.98-.88 1.98-1.96ZM20.44 13.3c0-3.08-1.64-4.52-3.83-4.52-1.77 0-2.56.97-3 1.65V8.5h-3.38V20h3.38v-6.4c0-.34.02-.68.13-.93.27-.68.88-1.39 1.9-1.39 1.35 0 1.9 1.03 1.9 2.55V20h3.38v-6.7Z"
+                      />
+                    </svg>
+                  </a>
+                  <a
+                    class="social-link"
+                    href="https://www.instagram.com/faridsayar?igsh=bXI2MWxlcXZscmlx&utm_source=qr"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Farid på Instagram"
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 1.8A3.7 3.7 0 0 0 3.8 7.5v9a3.7 3.7 0 0 0 3.7 3.7h9a3.7 3.7 0 0 0 3.7-3.7v-9a3.7 3.7 0 0 0-3.7-3.7h-9Zm10.1 1.37a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4Z"
+                      />
+                    </svg>
+                  </a>
+                </div>
               </figcaption>
             </figure>
 
@@ -155,6 +193,24 @@
                 <h3 class="about-team-card__name">Anton</h3>
                 <p class="about-team-card__role">Produktutvikler og Branding-spesialist</p>
                 <a class="about-team-card__email" href="/application-form">Send e-post</a>
+                <div
+                  class="social-links about-team-card__social-links"
+                  aria-label="Anton på sosiale medier"
+                >
+                  <a
+                    class="social-link"
+                    href="https://www.instagram.com/evseev.dsgn?igsh=MXQ2cWNwc3I3bGJraQ=="
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Anton på Instagram"
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 1.8A3.7 3.7 0 0 0 3.8 7.5v9a3.7 3.7 0 0 0 3.7 3.7h9a3.7 3.7 0 0 0 3.7-3.7v-9a3.7 3.7 0 0 0-3.7-3.7h-9Zm10.1 1.37a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4Z"
+                      />
+                    </svg>
+                  </a>
+                </div>
               </figcaption>
             </figure>
 
@@ -168,8 +224,26 @@
               />
               <figcaption class="about-team-card__meta">
                 <h3 class="about-team-card__name">Leonardo</h3>
-                <p class="about-team-card__role">Produktutvikler og Branding-spesialist</p>
+                <p class="about-team-card__role">Grafisk designer og Branding ekspert</p>
                 <a class="about-team-card__email" href="/application-form">Send e-post</a>
+                <div
+                  class="social-links about-team-card__social-links"
+                  aria-label="Leonardo på sosiale medier"
+                >
+                  <a
+                    class="social-link"
+                    href="https://www.instagram.com/leonardiksuares89?igsh=MWc3ZTZkMzNvY2Nx"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Leonardo på Instagram"
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 1.8A3.7 3.7 0 0 0 3.8 7.5v9a3.7 3.7 0 0 0 3.7 3.7h9a3.7 3.7 0 0 0 3.7-3.7v-9a3.7 3.7 0 0 0-3.7-3.7h-9Zm10.1 1.37a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4Z"
+                      />
+                    </svg>
+                  </a>
+                </div>
               </figcaption>
             </figure>
           </div>
@@ -184,50 +258,92 @@
               mottar livets utfordringer med god humor.
             </p>
             <p class="section-lead">
-              Vi har høyere utdanning i designfagene, mye praktisk bagasje fra ulike typer
-              prosjekter og jobber. Noen av oss har kunst i bakgrunnen, andre er mer teknisk
-              orienterte - sammen gir det en kombinasjon vi trives med. Vi holder oss oppdatert på
-              ny teknologi, metoder og prosesser, og tar i bruk det vi mener er nyttig.
-            </p>
-            <p class="section-lead">
-              Vi er også metalheads og elsker tung musikk, vi er gamere og vi er natur- og
-              friluftslivsfans.
-            </p>
-            <p class="section-lead">
               Med årene har vi bygget et strategisk overblikk som hjelper oss å balansere idé,
               kvalitet og gjennomføring. Vi ser oss selv som et hybrid team: kreative, tekniske og
               praktiske på samme tid. Misjonen vår er å lage kule produkter som faktisk hjelper
               noen, er brukervennlige, bærekraftige og gjør verden litt bedre.
             </p>
+            <!-- NOTE: Link to homepage FAQ — same pattern as category-projects-link; placed before quote carousel. -->
+            <a class="category-projects-link" href="/#faq">
+              Ofte stilte spørsmål
+              <img
+                class="category-projects-link__arrow"
+                src="assets/small-arrow-right.svg"
+                alt=""
+                width="12"
+                height="12"
+                aria-hidden="true"
+              />
+            </a>
           </div>
+        </div>
+      </section>
+
+      <!-- NOTE: Shared quote carousel — same slot + component as homepage (outside section-inner for full-bleed layout). -->
+      <div data-component="quotes-carousel-section"></div>
+
+      <section class="section section--white" aria-label="Oss">
+        <div class="section-inner">
+          <!-- NOTE: Trustpilot review link — external social proof after quotes. -->
+          <p class="trustpilot-badge-wrap">
+            <a
+              class="trustpilot-badge"
+              href="https://no.trustpilot.com/review/formaa.no"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Les kundeanmeldelser av Formaa på Trustpilot — 4 av 5 stjerner"
+            >
+              <img
+                class="trustpilot-badge__img"
+                src="assets/images/trustpilot-stars.svg"
+                alt="Trustpilot — 4 av 5 stjerner for Formaa"
+                width="280"
+                height="52"
+                loading="lazy"
+              />
+            </a>
+          </p>
 
           <!-- NOTE: Credibility section — education, project experience, and combined technical/design competence. -->
           <div class="section-lead section-lead--after-grid">
             <h2 class="section-title">Kompetanse du kan stole på</h2>
             <p class="section-lead">
-              Vi har utdanning fra Arkitektur- og designhøyskolen i Oslo (AHO) og høyskole i
-              Notodden. Det gir oss et solid grunnlag i form, funksjon og hvordan produkter faktisk
-              blir laget — ikke bare hvordan de ser ut på skjerm.
+              Vi har utdanning fra
+              <a
+                class="internal-text-link"
+                href="https://www.aho.no"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Arkitektur- og designhøyskolen i Oslo (AHO)</a
+              >
+              og
+              <a
+                class="internal-text-link"
+                href="https://www.usn.no"
+                target="_blank"
+                rel="noopener noreferrer"
+                >USN – Universitetet i Sørøst-Norge</a
+              >. Det gir oss et solid grunnlag i form, funksjon og hvordan produkter faktisk blir
+              laget — ikke bare hvordan de ser ut på skjerm.
             </p>
             <p class="section-lead">
-              Vi har også jobbet i virkelige prosjekter: blant annet startups innen steinprodukter
-              og gadgets, og gründerprosjekter der vi har levert
+              Vi har jobbet som frilansdesignere og for selskaper som ReTyre, Memorium, RT, Fixa og
+              Rolling Moto — med alt fra
               <a class="internal-text-link" href="/tjenester-prosess">visualisering</a>
               og
               <a class="internal-text-link" href="/tjenester-prosess">CAD-modeller</a>
-              som har kommet videre. Nå hjelper vi et
+              til branding og produksjonsforberedelse. Nå hjelper vi et
               <a class="internal-text-link" href="/prosjekter/obseed-custom-8-string-guitar"
-                >gitar-startup</a
+                >gitar-startup Obseed</a
               >
-              med forberedelse til produksjon og CAD-modellering — og skal videre sammen med dem.
+              med forberedelse til serieproduksjon og CAD-modellering — og skal videre sammen med
+              dem.
             </p>
             <p class="section-lead">
               Personlig har vi jobbet mye som tjenestedesignere, produkteiere, artdirectorer og
               branding-designere, med mange ulike produkter og variert grafisk design. Til sammen
               dekker vi det meste fra første idé til noe som kan produseres og lanseres.
             </p>
-
-            <div data-component="cooperation-partners"></div>
 
             <div
               class="about-competence-grid about-competence-grid--three"
@@ -285,7 +401,9 @@
               </div>
 
               <div class="about-competence-block">
-                <h3 class="about-competence-block__title">Teknisk kunnskap</h3>
+                <h3 class="about-competence-block__title">
+                  Teknisk kunnskap i samarbeid med partnere
+                </h3>
                 <ul class="about-competence-list">
                   <li>FEA / simulering</li>
                   <li>Computer Aided Manufacturing (CAM)</li>
@@ -296,6 +414,10 @@
               </div>
             </div>
           </div>
+
+          <!-- NOTE: Partner cards and logo strip — moved before process/SEO copy block. -->
+          <div data-component="cooperation-partners"></div>
+          <div data-component="partner-logos-section"></div>
 
           <!-- NOTE: SEO support text that explains services, process, and delivery scope on the about page. -->
           <div class="section-lead section-lead--after-grid">
@@ -353,8 +475,6 @@
 
       <!-- NOTE: Trust/privacy block loaded from components/privacy-trust-section.html. -->
       <div data-component="privacy-trust-section"></div>
-
-      <div data-component="partner-logos-section"></div>
 
       <!-- NOTE: Same pre-project steps as prisestimat; explains how collaboration starts. -->
       <section
@@ -455,8 +575,9 @@
       }
     </script>
 
-    <script src="components-loader.js?v=4" defer></script>
+    <script src="components-loader.js?v=5" defer></script>
     <script src="shared-nav.js?v=1" defer></script>
+    <script src="shared-quotes-carousel.js?v=2" defer></script>
     <script src="shared-partner-logos.js?v=1" defer></script>
     <script src="shared-cooperation-partners.js?v=1" defer></script>
   </body>

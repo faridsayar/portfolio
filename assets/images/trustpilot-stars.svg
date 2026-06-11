@@ -1,0 +1,43 @@
+<!-- NOTE: Trustpilot badge graphic — 4 of 5 stars (matches formaa.no rating on Trustpilot). -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 52" width="280" height="52" aria-hidden="true">
+  <defs>
+    <!-- NOTE: Chunky 5-point star (~70% of each rating box) — centered via translate(9, 15). -->
+    <path
+      id="tp-star"
+      d="M12 1.8 14.9 8.2h6.9l-5.6 4.1 2.1 6.7L12 16.4 6.7 19l2.1-6.7-5.6-4.1h6.9z"
+    />
+  </defs>
+  <g>
+    <rect x="0" y="4" width="44" height="44" rx="2" fill="#00B67A" />
+    <use href="#tp-star" x="9" y="15" fill="#fff" />
+    <rect x="48" y="4" width="44" height="44" rx="2" fill="#00B67A" />
+    <use href="#tp-star" x="57" y="15" fill="#fff" />
+    <rect x="96" y="4" width="44" height="44" rx="2" fill="#00B67A" />
+    <use href="#tp-star" x="105" y="15" fill="#fff" />
+    <rect x="144" y="4" width="44" height="44" rx="2" fill="#00B67A" />
+    <use href="#tp-star" x="153" y="15" fill="#fff" />
+    <rect x="192" y="4" width="44" height="44" rx="2" fill="#DCDCE6" />
+    <use href="#tp-star" x="201" y="15" fill="#B4B4C3" />
+  </g>
+  <text
+    x="0"
+    y="50"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="11"
+    font-weight="600"
+    fill="#191919"
+  >
+    Trustpilot
+  </text>
+  <text
+    x="280"
+    y="50"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="11"
+    font-weight="600"
+    fill="#191919"
+    text-anchor="end"
+  >
+    4 av 5
+  </text>
+</svg>
