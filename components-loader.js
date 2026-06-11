@@ -33,7 +33,7 @@
   </article>
   <section class="section section--white section--project-cta" aria-label="Neste steg">
     <div class="section-inner">
-      <h2 class="section-title">Trenger du hjelp med produktet ditt?</h2>
+      <h2 class="section-title">Trenger du hjelp med produktutvikling?</h2>
       <p class="section-lead">
         Send en kort forespørsel, så vurderer vi muligheter, tidslinje og neste praktiske steg.
       </p>
@@ -63,7 +63,7 @@
 </footer>`,
     'project-cta': `<section class="section section--white section--project-cta" aria-label="Neste steg">
   <div class="section-inner">
-    <h2 class="section-title">Trenger du hjelp med produktet ditt?</h2>
+    <h2 class="section-title">Trenger du hjelp med produktutvikling?</h2>
     <p class="section-lead">
       Send en kort forespørsel, så vurderer vi muligheter, tidslinje og neste praktiske steg.
     </p>
