@@ -416,6 +416,43 @@
     return true;
   }
 
+  // NOTE: Footer contact cards — copy phone/email to clipboard via overlay buttons in site-footer.html.
+  async function copyContactValue(button) {
+    const value = button.getAttribute('data-contact-copy');
+    if (!value) return;
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(value);
+      } else {
+        window.prompt('Kopier:', value);
+      }
+
+      const originalLabel = button.getAttribute('aria-label') || 'Kopier';
+      button.setAttribute('aria-label', 'Kopiert');
+      button.classList.add('contact-item__copy--copied');
+      window.setTimeout(() => {
+        button.setAttribute('aria-label', originalLabel);
+        button.classList.remove('contact-item__copy--copied');
+      }, 2000);
+    } catch (_error) {
+      // NOTE: Clipboard can fail in restricted contexts; ignore silently.
+    }
+  }
+
+  function initializeContactCopyButtons() {
+    document
+      .querySelectorAll('[data-contact-copy]:not([data-contact-copy-init])')
+      .forEach((button) => {
+        button.dataset.contactCopyInit = 'true';
+        button.addEventListener('click', (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          copyContactValue(button);
+        });
+      });
+  }
+
   (async () => {
     // NOTE: Multi-pass rendering enables component slots inside loaded components.
     for (let i = 0; i < 5; i += 1) {
@@ -425,6 +462,7 @@
   })()
     .catch(() => {})
     .finally(() => {
+      initializeContactCopyButtons();
       document.dispatchEvent(new CustomEvent('components:ready'));
     });
 })();

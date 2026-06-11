@@ -18,14 +18,44 @@
           <span class="contact-item__label">Lokasjon</span>
           <span class="contact-item__value" itemprop="areaServed">Oslo, Helsfyr</span>
         </a>
-        <a class="contact-item contact-link" href="tel:+4746381887" itemprop="telephone">
-          <span class="contact-item__label">Telefon</span>
-          <span class="contact-item__value">+47 46 38 18 87</span>
-        </a>
-        <a class="contact-item contact-link" href="/application-form" itemprop="email">
-          <span class="contact-item__label">E-post</span>
-          <span class="contact-item__value">Gå til kontaktform</span>
-        </a>
+        <div class="contact-item-wrap contact-item-wrap--copyable">
+          <a class="contact-item contact-link" href="tel:+4746381887" itemprop="telephone">
+            <span class="contact-item__label">Telefon</span>
+            <span class="contact-item__value">+47 46 38 18 87</span>
+          </a>
+          <!-- NOTE: Overlay copy control — copies phone number without triggering the tel: link. -->
+          <button
+            type="button"
+            class="contact-item__copy"
+            data-contact-copy="+47 46 38 18 87"
+            aria-label="Kopier telefonnummer"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"
+              />
+            </svg>
+          </button>
+        </div>
+        <div class="contact-item-wrap contact-item-wrap--copyable">
+          <a class="contact-item contact-link" href="/application-form" itemprop="email">
+            <span class="contact-item__label">E-post</span>
+            <span class="contact-item__value">Gå til kontaktform</span>
+          </a>
+          <!-- NOTE: Overlay copy control — copies the studio email address. -->
+          <button
+            type="button"
+            class="contact-item__copy"
+            data-contact-copy="hei@formaa.no"
+            aria-label="Kopier e-postadresse"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
 
       <div class="social-links" aria-label="Sosiale medier">

@@ -3330,7 +3330,7 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
 }
 
 .project-hero-stage__lead {
-  margin: 0 0 1rem 0;
+  margin: 0 0 2rem 0;
   max-width: 48rem;
   font-size: var(--font-size-body-md);
   line-height: var(--line-height-relaxed);
@@ -3521,11 +3521,11 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
   }
 
   .project-page-nav__link--prev .project-page-nav__icon {
-    transform: rotate(60deg);
+    transform: matrix(0.5, 0.866025, -0.866025, 0.5, 0, 0) rotate(-30deg);
   }
 
   .project-page-nav__link--next .project-page-nav__icon {
-    transform: rotate(-60deg);
+    transform: matrix(0.5, 0.866025, -0.866025, 0.5, 0, 0) rotate(30deg);
   }
 
   .project-page-nav__label {
@@ -3621,11 +3621,11 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
   }
 
   .project-page-nav__link--prev .project-page-nav__icon {
-    transform: rotate(60deg);
+    transform: matrix(0.5, 0.866025, -0.866025, 0.5, 0, 0) rotate(-30deg);
   }
 
   .project-page-nav__link--next .project-page-nav__icon {
-    transform: rotate(-60deg);
+    transform: matrix(0.5, 0.866025, -0.866025, 0.5, 0, 0) rotate(30deg);
   }
 
   /* NOTE: Small side labels (lowercase); paired with triangle — link `aria-label` covers screen readers. */
@@ -3720,6 +3720,55 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
   color: var(--color-primary);
 }
 
+/* NOTE: Contact card wrapper — positions overlay copy button on the right, vertically centered. */
+.contact-item-wrap {
+  position: relative;
+}
+
+.contact-item-wrap--copyable > .contact-item {
+  padding-right: 3.25rem;
+}
+
+.contact-item__copy {
+  position: absolute;
+  top: 50%;
+  right: 0.75rem;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.85rem;
+  height: 1.85rem;
+  padding: 0;
+  border: 1px solid var(--border-neutral);
+  background: var(--surface-neutral);
+  color: var(--color-dark);
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition:
+    color 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease;
+}
+
+.contact-item__copy svg {
+  width: 0.9rem;
+  height: 0.9rem;
+  fill: currentColor;
+}
+
+.contact-item__copy:hover,
+.contact-item__copy.contact-item__copy--copied {
+  border-color: rgba(255, 115, 0, 0.42);
+  color: var(--color-primary);
+  background: rgba(255, 115, 0, 0.06);
+}
+
+.contact-item__copy:focus-visible {
+  outline: 2px solid rgba(255, 115, 0, 0.28);
+  outline-offset: 2px;
+}
+
 /* Footer */
 .site-footer {
   border-top: 1px solid var(--border-neutral);
@@ -3783,6 +3832,19 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
 }
 
 .site-footer .contact-link:hover .contact-item__value {
+  color: var(--color-primary);
+}
+
+.site-footer .contact-item__copy {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: var(--color-white);
+}
+
+.site-footer .contact-item__copy:hover,
+.site-footer .contact-item__copy.contact-item__copy--copied {
+  border-color: rgba(255, 115, 0, 0.55);
+  background: rgba(255, 115, 0, 0.12);
   color: var(--color-primary);
 }
 
@@ -3852,6 +3914,12 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
 
 .site-footer__text--xs + .site-footer__text--xs {
   margin-top: 0.55rem;
+}
+
+/* NOTE: Last intro paragraph — spacing before copyright line. */
+.site-footer__intro .site-footer__text--xs:last-of-type {
+  margin-top: 9px;
+  margin-bottom: 2rem;
 }
 
 .site-footer__intro .internal-text-link,
