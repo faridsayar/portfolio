@@ -71,6 +71,11 @@
   background: var(--bg-page-gradient);
 }
 
+/* NOTE: Om oss — solid white page canvas (no grey gradient between white sections). */
+.about-page-body {
+  background: var(--color-white);
+}
+
 /* Right-side vertical navigation */
 .side-nav {
   position: fixed;
@@ -919,10 +924,20 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
   padding-right: 0;
 }
 
+/* NOTE: Homepage #start opening copy — symmetric vertical inset and generous gap between paragraphs. */
+#start .start-intro__opening {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(3rem, 7vw, 5rem);
+  padding-block: clamp(4rem, 8vw, 6rem);
+}
+
+#start .start-intro__opening .section-lead {
+  max-width: 37rem;
+}
+
 #start .start-intro__eyebrow {
-  margin: 0 0 clamp(1.5rem, 4vw, 2.5rem);
-  padding-top: 64px;
-  padding-bottom: 64px;
+  margin: 0;
   max-width: 37rem;
   font-size: var(--font-size-body-md);
   line-height: var(--line-height-relaxed);
@@ -1895,6 +1910,19 @@ section[aria-label='Verksteder og produksjon'] .section-inner {
 }
 
 /* NOTE: Om oss starts with full-bleed hero artwork, so remove default section top padding. */
+/* NOTE: Om oss hero — 40vh crop frame; image anchored to bottom so heads at top are cut off. */
+section[aria-label='Oss'] .about-top-graphic {
+  overflow: hidden;
+  height: 40vh;
+}
+
+section[aria-label='Oss'] .about-top-graphic__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
+}
+
 /* NOTE: Om oss hero — 70% dark overlay on workshop image for headline contrast. */
 section[aria-label='Oss'] .about-top-graphic::after {
   content: '';
@@ -1935,9 +1963,19 @@ section[aria-label='Oss'] .section-inner {
   padding-top: 0;
 }
 
+/* NOTE: Credibility block — bottom spacing comes from partner logos inside section-inner (not :last-of-type — privacy-trust section follows). */
+section[aria-label='Oss']:not(:first-of-type) .section-inner {
+  padding-bottom: 0;
+}
+
 /* NOTE: Om oss — even text-block rhythm; larger space before each section/column title. */
 section[aria-label='Oss'] .section-lead--after-grid {
   margin-top: 3.5rem;
+}
+
+/* NOTE: Credibility block — no top margin on first block; margin collapses through padding-top: 0 and shows page grey. */
+section[aria-label='Oss']:not(:first-of-type) .section-lead--after-grid:first-child {
+  margin-top: 0;
 }
 
 section[aria-label='Oss'] .section-lead--after-grid > .section-lead:last-child {
@@ -1951,6 +1989,57 @@ section[aria-label='Oss'] .section-lead--after-grid > .category-projects-link {
 
 section[aria-label='Oss'] .about-top-graphic + .section-title {
   margin-top: 2.5rem;
+}
+
+/* NOTE: Om oss “Litt mer om oss” — contained text/image row; image height tracks text column on desktop. */
+.about-intro-split__content {
+  max-width: 37rem;
+}
+
+.about-intro-split__media {
+  margin: 0;
+  overflow: hidden;
+  background: var(--surface-neutral);
+}
+
+.about-intro-split__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (min-width: 768px) {
+  .about-intro-split {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: clamp(1.5rem, 3vw, 2.5rem);
+    align-items: stretch;
+  }
+
+  .about-intro-split__media {
+    position: relative;
+    min-height: 0;
+  }
+
+  .about-intro-split__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .about-intro-split__media {
+    margin-top: 2rem;
+    aspect-ratio: 16 / 9;
+  }
+
+  .about-intro-split__img {
+    height: 100%;
+  }
 }
 
 section[aria-label='Oss'] .about-team-grid {
@@ -2120,35 +2209,6 @@ section[aria-label='Oss'] .about-competence-block:not(:first-child) .about-compe
 /* NOTE: Footer-style social row on Om oss team cards — sits below “Send e-post”. */
 .about-team-card__social-links {
   margin-top: 0.45rem;
-}
-
-/* NOTE: Trustpilot badge link on Om oss — centered below quotes carousel. */
-.trustpilot-badge-wrap {
-  margin: 0 0 2rem 0;
-  text-align: center;
-}
-
-.trustpilot-badge {
-  display: inline-block;
-  text-decoration: none;
-  opacity: 0.92;
-  transition: opacity 180ms ease;
-}
-
-.trustpilot-badge:hover {
-  opacity: 1;
-}
-
-.trustpilot-badge:focus-visible {
-  outline: 2px solid rgba(255, 115, 0, 0.28);
-  outline-offset: 4px;
-}
-
-.trustpilot-badge__img {
-  display: block;
-  width: min(17.5rem, 100%);
-  height: auto;
-  margin: 0 auto;
 }
 
 /* NOTE: Three-column competence lists on Om oss (education, production, technical depth). */
@@ -2505,7 +2565,8 @@ main > .section--partner-logos > .section-inner {
 }
 
 .section-head--partner-logos .section-title {
-  margin-bottom: clamp(1.25rem, 3vw, 2rem);
+  margin-top: 32px;
+  margin-bottom: 0;
   text-align: left;
 }
 
@@ -2601,6 +2662,11 @@ main > .section--partner-logos > .section-inner {
   color: var(--color-dark);
   opacity: 0.88;
   max-width: 42ch;
+}
+
+/* NOTE: FAQ link after privacy principles grid — same spacing as prominent section CTAs. */
+.section--privacy-trust .privacy-statement + .category-projects-link {
+  margin-top: 3rem;
 }
 
 @media (max-width: 768px) {

@@ -36,7 +36,7 @@ function renderSharedNav() {
         (segments.length === 1 && segments[0] === 'tjenester-prosess'),
     },
     { href: '/prosjekter', label: 'Prosjekter', current: isProjectPage },
-    { href: '/innsikt', label: 'Innsikt', current: isInnsiktPage },
+    { href: '/innsikt', label: 'Blog', current: isInnsiktPage },
     {
       href: '/application-form',
       label: 'Kontakt',

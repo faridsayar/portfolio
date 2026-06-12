@@ -298,6 +298,19 @@
         </p>
       </article>
     </div>
+
+    <!-- NOTE: Link to homepage FAQ — same pattern as category-projects-link; after privacy principles. -->
+    <a class="category-projects-link" href="/#faq">
+      Ofte stilte spørsmål
+      <img
+        class="category-projects-link__arrow"
+        src="/assets/small-arrow-right.svg"
+        alt=""
+        width="12"
+        height="12"
+        aria-hidden="true"
+      />
+    </a>
   </div>
 </section>`,
     'quotes-carousel-section': `<!-- NOTE: Shared quote/testimonial carousel — stepped center focus; driven by shared-quotes-carousel.js. -->
