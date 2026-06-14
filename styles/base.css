@@ -25,6 +25,17 @@
   --border-white: var(--color-white);
   --surface-neutral: rgba(31, 31, 31, 0.05);
   --border-neutral: rgba(31, 31, 31, 0.12);
+  /* NOTE: Panel boxes/inputs on grey canvas — light fill; copy and icons black at 50%. */
+  --surface-panel: #ebebeb;
+  --color-text-on-panel: rgba(0, 0, 0, 0.5);
+  --border-panel: rgba(0, 0, 0, 0.18);
+  --opacity-panel-icon: 0.5;
+  /* NOTE: Service cards on grey canvas — dark surface, white copy and icons. */
+  --surface-card: #2b2b2b;
+  --color-text-on-card: #ffffff;
+  --border-card: rgba(255, 255, 255, 0.18);
+  /* NOTE: Feature banner — 1px white rules at 10% opacity (top and bottom). */
+  --border-feature-banner: rgba(255, 255, 255, 0.1);
 
   /* NOTE: Shared typography scale — Saira (Visual-design branch). */
   --font-family-base: 'Saira', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
@@ -358,26 +369,51 @@
   color: var(--color-text-on-canvas);
 }
 
+/* NOTE: Form panel surfaces — light fill; black text at 50% opacity. */
+.field__input,
+.field__textarea {
+  background-color: var(--surface-panel);
+  border-color: var(--border-panel);
+  color: var(--color-text-on-panel);
+}
+
+/* NOTE: Article cards on Innsikt grid — dark #2b2b2b body, white copy, no border. */
+.article-card__body {
+  background-color: var(--surface-card);
+  color: var(--color-text-on-card);
+}
+
+.article-card .internal-text-link,
+.article-card .internal-text-link:visited {
+  color: var(--color-text-on-card);
+}
+
+/* NOTE: Service cards — dark #2b2b2b surface, white copy and icons (separate from form fields). */
+.service-card {
+  background-color: var(--surface-card);
+  border-color: var(--border-card);
+  color: var(--color-text-on-card);
+}
+
+.service-card .internal-text-link,
+.service-card .internal-text-link:visited {
+  color: var(--color-text-on-card);
+}
+
+.service-card__icon,
+.tjenester-services .service-card__icon {
+  filter: brightness(0) invert(1);
+  opacity: 1;
+}
+
 /* NOTE: Nested white UI surfaces on grey canvas — keep dark text for readability. */
-.service-card,
 .pricing-service-card,
 .pricing-package-card,
-.about-team-card,
-.article-card,
-.article-card__link,
 .article-nav-button,
-.field__input,
-.field__textarea,
 .pricing-package-card__textarea {
   color: var(--color-dark);
 }
 
-.service-card .internal-text-link,
-.service-card .internal-text-link:visited,
-.article-card .internal-text-link,
-.article-card .internal-text-link:visited,
-.about-team-card .internal-text-link,
-.about-team-card .internal-text-link:visited,
 .pricing-package-card .internal-text-link,
 .pricing-package-card .internal-text-link:visited {
   color: var(--color-dark);
@@ -468,18 +504,87 @@ h3.section-title {
 }
 
 /* NOTE: FAQ sections — vertical gap before each question title (homepage and similar blocks). */
-.section--faq h2.section-title + h3.section-title,
-.section--faq .section-lead + h3.section-title {
+.section--faq .section-disclosure__panel > h3.section-title:first-child {
+  margin-top: 0;
+}
+
+.section--faq .section-disclosure__panel .section-lead + h3.section-title {
   margin-top: 2rem;
 }
 
-/* NOTE: Responsive section banner image that never scales wider than its original width. */
-.section-banner-image {
+/* NOTE: Collapsible FAQ / personvern — native details; full copy stays in DOM for crawlers. */
+.section-disclosure {
+  margin: 0;
+}
+
+.section-disclosure__trigger {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  cursor: pointer;
+  list-style: none;
+}
+
+.section-disclosure__trigger:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+.section-disclosure__trigger::-webkit-details-marker {
+  display: none;
+}
+
+.section-disclosure__heading {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.section-disclosure__heading .section-kicker,
+.section-disclosure__heading .section-title {
+  margin-bottom: 0;
+}
+
+.section-disclosure__icon {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  margin-top: 0.15rem;
+}
+
+.section-disclosure__icon img {
+  display: block;
+  width: 0.75rem;
+  height: auto;
+  opacity: 0.72;
+  transform: rotate(180deg);
+  transition: transform 0.2s ease;
+}
+
+.section-disclosure[open] .section-disclosure__icon img {
+  transform: rotate(0deg);
+}
+
+.section-disclosure__panel {
+  margin-top: 1.5rem;
+}
+
+#faq {
+  scroll-margin-top: 1.25rem;
+}
+
+/* NOTE: FAQ section divider — 1px white rule at 10% opacity (replaces banner image). */
+.section-banner-rule {
   display: block;
   width: 100%;
   max-width: 1920px;
-  height: auto;
+  height: 0;
   margin: 36px 0 0 0;
+  border: none;
+  border-top: 1px solid var(--border-feature-banner);
 }
 
 /* NOTE: Keep inline portfolio summary CTA as canvas-tone text link (opacity unchanged where set). */
@@ -658,11 +763,6 @@ section[aria-label='Kontaktform'] {
   padding-bottom: 0;
 }
 
-/* NOTE: Same top inset when ideas strip sits directly above the form. */
-.ideas-strip + [data-component='application-form'] #application-form > .section-inner {
-  padding-top: 4rem;
-}
-
 section[aria-label='Formaa'] .breadcrumb {
   position: absolute;
   top: 1.25rem;
@@ -836,7 +936,7 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
   filter: brightness(0) invert(1);
 }
 
-/* NOTE: Category pre-form block: feature band + ideas strip in one section, flush like homepage. */
+/* NOTE: Category pre-form block: feature band before contact form, flush like homepage. */
 .category-feature-banner-section {
   margin-top: 0;
   margin-bottom: 0;
@@ -848,11 +948,6 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
 }
 
 .category-feature-banner-section .feature-banner {
-  margin-bottom: 0;
-}
-
-.category-feature-banner-section .ideas-strip {
-  margin-top: 0;
   margin-bottom: 0;
 }
 
@@ -908,10 +1003,10 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
 
 .service-card {
   grid-column: span 12;
-  border: 1px solid var(--border-neutral);
+  border: 1px solid var(--border-card);
   border-radius: 12px;
   padding: 1.25rem;
-  background: var(--color-white);
+  background: var(--surface-card);
   /* NOTE: Shared compact height so all service rectangles are smaller and equal. */
   height: 9rem;
   overflow: hidden;
@@ -923,7 +1018,7 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
 }
 
 .service-card--link:hover {
-  border-color: rgba(31, 31, 31, 0.28);
+  border-color: rgba(255, 255, 255, 0.35);
 }
 
 /* Note: highlights Produktdesign card with primary border stroke */
@@ -941,7 +1036,6 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
 .service-text {
   margin: 0;
   line-height: var(--line-height-relaxed);
-  opacity: 0.85;
 }
 
 /* NOTE: Media service card fills the shared card box and crops to match neighboring cards. */
@@ -1317,7 +1411,8 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
   padding: 0.35rem 0.65rem;
   border: 1px solid var(--border-neutral);
   border-radius: 999px;
-  background: var(--surface-neutral);
+  /* NOTE: Dark grey tag chips — matches inquiry form and privacy panels. */
+  background: #2b2b2b;
   color: inherit;
   text-decoration: none;
   font-size: var(--font-size-breadcrumb);
@@ -1326,7 +1421,7 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
 }
 
 .service-tag:hover {
-  background: var(--surface-neutral);
+  background: #353535;
 }
 
 .pricing-estimator {
@@ -1797,11 +1892,6 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
   object-fit: contain;
 }
 
-/* NOTE: White-stroke SVG icons → black on Tjenester page (white section background). */
-.tjenester-services .service-card__icon {
-  filter: brightness(0) saturate(100%);
-}
-
 .service-card__body {
   min-width: 0;
 }
@@ -1821,12 +1911,30 @@ section[aria-label='Tjenester display line'] .section-inner {
 }
 
 section[aria-label='Tjenester display line'] .big-text {
-  padding: 4rem 0;
+  padding: 6rem 0;
 }
 
 section[aria-label='Prosess'] .section-inner {
   padding-top: 2rem;
   padding-bottom: 2rem;
+}
+
+/* NOTE: Tjenester Prosess page — Prosess heading matches h1 scale (uppercase, 36px → 60px desktop). */
+section[aria-label='Prosess'] h2.section-title {
+  font-size: var(--font-size-hero-title);
+  line-height: 1.111;
+  text-transform: uppercase;
+}
+
+@media (min-width: 768px) {
+  section[aria-label='Prosess'] h2.section-title {
+    font-size: var(--font-size-hero-title-desktop);
+  }
+}
+
+/* NOTE: Anchor target for in-page and cross-page links to the Prosess section. */
+#prosess {
+  scroll-margin-top: 1.25rem;
 }
 
 section[aria-label='Prosess i bilder'] .section-inner {
@@ -2123,16 +2231,13 @@ section[aria-label='Oss'] .about-top-graphic__breadcrumb {
   right: 0;
 }
 
-/* NOTE: Large display line on Om oss hero — same scale as `.big-text`, white on dark overlay. */
-section[aria-label='Oss'] .about-top-graphic__headline {
+/* NOTE: Om oss hero overlay — `.big-text` scale, white at 50% opacity on dark image. */
+section[aria-label='Oss'] .about-top-graphic .big-text {
   max-width: 70rem;
   margin: 0 auto;
   padding: 0 1.25rem;
-  font-size: clamp(2rem, 6vw, 4.5rem);
-  font-weight: var(--font-weight-semibold);
-  letter-spacing: -0.03em;
-  line-height: var(--line-height-tight);
   color: var(--color-white);
+  opacity: 0.5;
 }
 
 section[aria-label='Oss'] .section-inner {
@@ -2336,7 +2441,7 @@ section[aria-label='Oss'] .about-competence-block:not(:first-child) .about-compe
 
 .about-team-card {
   margin: 0;
-  background: var(--color-white);
+  background: transparent;
 }
 
 .about-team-card__img {
@@ -2360,6 +2465,8 @@ section[aria-label='Oss'] .about-competence-block:not(:first-child) .about-compe
 
 .about-team-card__meta {
   padding: 0.9rem 1rem 1rem;
+  background: transparent;
+  color: var(--color-text-on-canvas);
 }
 
 .about-team-card__name {
@@ -2373,16 +2480,14 @@ section[aria-label='Oss'] .about-competence-block:not(:first-child) .about-compe
 .about-team-card__role {
   margin: 0;
   line-height: 1.5;
-  opacity: 0.8;
 }
 
 .about-team-card__email {
   display: inline-block;
   margin-top: 0.45rem;
   font-size: var(--font-size-caption-sm);
-  color: var(--color-dark);
+  color: inherit;
   text-decoration: none;
-  opacity: 0.75;
 }
 
 .about-team-card__email:hover {
@@ -2428,20 +2533,24 @@ section[aria-label='Oss'] .about-competence-block:not(:first-child) .about-compe
 /* Tips/news page article cards */
 .articles-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem 1rem;
   margin-top: 1.25rem;
 }
 
 .article-card {
+  display: flex;
+  flex-direction: column;
   margin: 0;
-  border: 1px solid var(--border-neutral);
-  background: var(--color-white);
+  background: transparent;
 }
 
 .article-card__link {
-  display: block;
-  color: var(--color-dark);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+  color: inherit;
   text-decoration: none;
 }
 
@@ -2456,6 +2565,11 @@ section[aria-label='Oss'] .about-competence-block:not(:first-child) .about-compe
 }
 
 .article-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  width: 100%;
+  min-height: 10.5rem;
   padding: 0.9rem 1rem 1rem;
 }
 
@@ -2465,13 +2579,36 @@ section[aria-label='Oss'] .about-competence-block:not(:first-child) .about-compe
   font-weight: var(--font-weight-semibold);
   line-height: 1.3;
   letter-spacing: -0.01em;
+  flex: 0 0 auto;
 }
 
 .article-card__excerpt {
   margin: 0;
   font-size: var(--font-size-body-sm);
   line-height: var(--line-height-relaxed);
-  opacity: 0.86;
+  flex: 1 1 auto;
+}
+
+/* NOTE: Publication date — small muted label on article hero or inside card body. */
+.article-published-date,
+.article-card__date {
+  display: block;
+  font-size: var(--font-size-section-kicker);
+  line-height: var(--line-height-kicker);
+  opacity: 0.3;
+}
+
+.article-published-date {
+  margin: 0.35rem 0 0.75rem;
+}
+
+.article-card__body .article-card__date {
+  margin: 0 0 0.5rem 0;
+  flex: 0 0 auto;
+}
+
+.article-card__date {
+  color: inherit;
 }
 
 /* Article template (alternating text/image rows) */
@@ -2830,7 +2967,8 @@ main > .section--partner-logos > .section-inner {
   gap: clamp(1.5rem, 3vw, 2.25rem) clamp(1.75rem, 4vw, 3rem);
   margin-top: clamp(1.75rem, 4vw, 2.5rem);
   padding: clamp(1.5rem, 4vw, 2.25rem);
-  background: var(--surface-neutral);
+  /* NOTE: Dark grey panel for privacy principles on canvas sections. */
+  background: #2b2b2b;
 }
 
 .privacy-statement__title {
@@ -2869,11 +3007,9 @@ main > .section--partner-logos > .section-inner {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(
-    90deg,
-    var(--color-projects-panel) 0%,
-    var(--color-features-gradient-end) 100%
-  );
+  background: transparent;
+  border-top: 1px solid var(--border-feature-banner);
+  border-bottom: 1px solid var(--border-feature-banner);
   color: var(--color-white);
 }
 
@@ -3196,12 +3332,12 @@ main > .section--partner-logos > .section-inner {
 /* Inquiry form */
 .inquiry-form {
   margin-top: 0;
-  /* NOTE: Full-viewport-width grey panel while content padding matches `.section-inner` (70rem column). */
+  /* NOTE: Full-viewport-width dark panel while content padding matches `.section-inner` (70rem column). */
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
   border-radius: 16px;
   border: none;
-  background: var(--surface-neutral);
+  background: #2b2b2b;
   padding: 1.25rem max(1.25rem, calc((100vw - 70rem) / 2 + 1.25rem));
 }
 
@@ -3258,13 +3394,19 @@ main > .section--partner-logos > .section-inner {
   /* Prevent padding + borders from overflowing the grid column */
   box-sizing: border-box;
   border-radius: 12px;
-  border: 1px solid var(--border-neutral);
-  background: var(--color-white);
+  border: 1px solid var(--border-panel);
+  background: var(--surface-panel);
+  color: var(--color-text-on-panel);
   padding: 0.9rem 1rem;
   font-family: inherit;
   font-size: var(--font-size-body-md);
   line-height: 1.4;
   font-weight: var(--font-weight-regular);
+}
+
+.field__input::placeholder,
+.field__textarea::placeholder {
+  color: var(--color-text-on-panel);
 }
 
 .field__textarea {
@@ -3321,17 +3463,6 @@ main > .section--partner-logos > .section-inner {
   opacity: 1;
 }
 
-/* NOTE: “Design samtale” title + lead below submit row. */
-.inquiry-form .section-head--after-inquiry-cta {
-  margin-top: 1.75rem;
-  padding-top: 6rem;
-  padding-bottom: 6rem;
-}
-
-.inquiry-form .section-head--after-inquiry-cta .section-title {
-  margin-bottom: 0.75rem;
-}
-
 @media (min-width: 768px) {
   .field {
     grid-column: span 6;
@@ -3355,7 +3486,7 @@ main > .section--partner-logos > .section-inner {
   background: var(--bg-page-canvas);
 }
 
-/* NOTE: Breakout wrapper: dark band starts at project tiles only; heading sits on grey canvas. */
+/* NOTE: Breakout wrapper for homepage project tiles; no fill — sits on section canvas. */
 .projects-grid-panel {
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
@@ -3363,51 +3494,11 @@ main > .section--partner-logos > .section-inner {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
   padding-bottom: 36px;
-  /* Same left→right greys as `.feature-banner` (“Hvordan vi jobber”). */
-  background: linear-gradient(
-    90deg,
-    var(--color-projects-panel) 0%,
-    var(--color-features-gradient-end) 100%
-  );
+  background: transparent;
 }
 
 .projects-grid-panel .project-tile {
   color: var(--color-white);
-}
-
-.ideas-strip {
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-  margin-bottom: 0;
-}
-
-.ideas-strip__link {
-  display: block;
-  text-decoration: none;
-}
-
-.ideas-strip__grid {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: minmax(8rem, 1fr);
-  gap: 0;
-  overflow: hidden;
-}
-
-.ideas-strip__item {
-  position: relative;
-  display: block;
-  aspect-ratio: 16 / 9;
-  background: var(--surface-neutral);
-}
-
-.ideas-strip__item img,
-.ideas-strip__item video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
 }
 
 .gallery-page-body {
@@ -3583,6 +3674,11 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
 
 .project-tile:hover .project-thumb__img {
   transform: scale(1.06);
+}
+
+/* NOTE: Project title turns primary orange when hovering the thumbnail. */
+.project-thumb:hover ~ .project-meta .project-title {
+  color: var(--color-primary);
 }
 
 /* Project pages: shared hero layout (`section--project-hero-template`) with thumbnail rail navigation. */
@@ -4033,7 +4129,7 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
 }
 
 .about-team-card .social-link {
-  color: var(--color-dark);
+  color: var(--color-text-on-canvas);
 }
 
 .social-link svg {
@@ -4318,10 +4414,6 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .articles-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   .article-row__text {
     max-width: none;
   }
@@ -4467,10 +4559,6 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
 
   .projects-grid {
     grid-template-columns: 1fr;
-  }
-
-  .ideas-strip__grid {
-    grid-auto-columns: minmax(6.5rem, 1fr);
   }
 
   /* NOTE: No extra bottom inset on the "Dette gjør vi" start section (uses default section-inner sides only). */

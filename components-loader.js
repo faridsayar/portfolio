@@ -18,6 +18,8 @@
           </nav>
         </div>
       </figure>
+      <!-- NOTE: Publication date under hero image — filled by shared-article.js from JSON-LD or article JSON. -->
+      <time class="article-published-date" data-article-published-date hidden></time>
       <p class="section-kicker">Innsikt</p>
       <h1 class="section-title" data-article-title>Artikkel</h1>
       <div class="article-row__text" data-article-body></div>
@@ -139,23 +141,13 @@
           >Beskrivelse
           <span class="field__label-hint">– hva trenger du hjelp med</span></label
         >
-        <textarea class="field__textarea" id="description" name="description" rows="6" required autocomplete="on" placeholder="F.eks. vi er et lite startup team som trenger hjelp med design og utvikling av vår geniale konsept."></textarea>
+        <textarea class="field__textarea" id="description" name="description" rows="6" required autocomplete="on" placeholder="Vi ønsker å utvikle et nytt produkt som skal serieproduseres og trenger hjelp til å utvikle formen og valg av materialer. Prototype må være klar senest august."></textarea>
       </div>
       <div class="inquiry-footer">
         <button class="inquiry-cta" type="submit">Send forespørsel</button>
         <p class="inquiry-note" data-inquiry-status aria-live="polite"></p>
         <p class="inquiry-note">
-          *Forespørselen er uforpliktende. Vi vil svare deg snarest!
-        </p>
-      </div>
-      <div class="section-head section-head--after-inquiry-cta">
-        <h2 class="section-title">Design samtale</h2>
-        <p class="section-lead">
-          Det koster ingenting å starte dialogen med oss. Vi er åpne og direkte og vil være ærlige hvis
-          vi ikke kan hjelpe deg. Produktutvikling inkluderer ulike faser og hver designprosjekt
-          trenger individuell tilnærming. Hvordan vi fodeler fasene kan du
-          <a class="internal-text-link" href="/innsikt/hva-er-industridesign">se her</a>
-          .
+          Det koster ingenting å starte dialogen med oss. Vi svarer fortløpende
         </p>
       </div>
     </form>
@@ -224,15 +216,15 @@
     'hero-process-flow': `<!-- NOTE: One-line process summary (Konsept → 3D → CAD → Prototype → Produksjon); each step links to the process page. -->
 <div class="hero-process-flow" aria-label="Fra konsept til produksjon">
   <p class="hero-process-flow__text">
-    <a class="hero-process-flow__step" href="/tjenester-prosess">Konsept</a>
+    <a class="hero-process-flow__step" href="/tjenester-prosess#prosess">Konsept</a>
     <img class="hero-process-flow__arrow hero-process-flow__arrow--lead" src="/assets/small-arrow-right.svg" alt="" width="12" height="12" aria-hidden="true" />
-    <a class="hero-process-flow__step" href="/tjenester-prosess">3D</a>
+    <a class="hero-process-flow__step" href="/tjenester-prosess#prosess">3D</a>
     <img class="hero-process-flow__arrow" src="/assets/small-arrow-right.svg" alt="" width="10" height="10" aria-hidden="true" />
-    <a class="hero-process-flow__step" href="/tjenester-prosess">CAD</a>
+    <a class="hero-process-flow__step" href="/tjenester-prosess#prosess">CAD</a>
     <img class="hero-process-flow__arrow" src="/assets/small-arrow-right.svg" alt="" width="10" height="10" aria-hidden="true" />
-    <a class="hero-process-flow__step" href="/tjenester-prosess">Prototype</a>
+    <a class="hero-process-flow__step" href="/tjenester-prosess#prosess">Prototype</a>
     <img class="hero-process-flow__arrow" src="/assets/small-arrow-right.svg" alt="" width="10" height="10" aria-hidden="true" />
-    <a class="hero-process-flow__step" href="/tjenester-prosess">Produksjon</a>
+    <a class="hero-process-flow__step" href="/tjenester-prosess#prosess">Produksjon</a>
   </p>
 </div>`,
     'privacy-trust-section': `<!-- NOTE: Shared trust/privacy block (no cookies, confidentiality, portfolio consent) — same copy as homepage. -->
@@ -241,76 +233,87 @@
   aria-label="Personvern og konfidensialitet"
 >
   <div class="section-inner">
-    <div class="section-head">
-      <p class="section-kicker">Personvern og konfidensialitet</p>
-      <h2 class="section-title">Trygghet for idéer og forretningshemmeligheter</h2>
-      <p class="section-lead">
-        Formaa er et uavhengig designstudio. Vi bygger tillit gjennom tydelige rammer — ikke
-        gjennom datainnsamling på nettsiden. Slik forholder vi oss til personvern, informasjon du
-        deler og taushetsplikt i oppdrag.
-      </p>
-    </div>
+    <!-- NOTE: Collapsible body — kicker + title stay visible; full copy remains in DOM for SEO. -->
+    <details class="section-disclosure" data-section-disclosure="privacy">
+      <summary class="section-disclosure__trigger">
+        <span class="section-disclosure__heading">
+          <p class="section-kicker">Personvern og konfidensialitet</p>
+          <h2 class="section-title">Trygghet for idéer og forretningshemmeligheter</h2>
+        </span>
+        <span class="section-disclosure__icon" aria-hidden="true">
+          <img src="/assets/triangle.svg" alt="" width="12" height="12" decoding="async" />
+        </span>
+      </summary>
 
-    <div class="privacy-statement" aria-label="Våre personvern- og taushetsprinsipper">
-      <article class="privacy-statement__item">
-        <h3 class="privacy-statement__title">Ingen lagring eller deling av besøksdata</h3>
-        <p class="privacy-statement__text">
-          Vi samler ikke inn, lagrer ikke og selger ikke data om besøk på formaa.no, og vi deler
-          ikke slik informasjon med tredjeparter. Opplysninger du sender via kontaktskjema brukes
-          kun til å besvare henvendelsen — ikke til profilering eller markedsføring.
+      <div class="section-disclosure__panel">
+        <p class="section-lead">
+          Formaa er et uavhengig designstudio. Vi bygger tillit gjennom tydelige rammer — ikke
+          gjennom datainnsamling på nettsiden. Slik forholder vi oss til personvern, informasjon du
+          deler og taushetsplikt i oppdrag.
         </p>
-      </article>
 
-      <article class="privacy-statement__item">
-        <h3 class="privacy-statement__title">Uavhengig designstudio</h3>
-        <p class="privacy-statement__text">
-          Vi er et selvstendig industridesign- og produktdesignstudio uten konsernstruktur som kan
-          kreve deling av prosjektinformasjon på tvers av porteføljer. Dine oppdrag og beslutninger
-          forblir hos oss og hos deg.
-        </p>
-      </article>
+        <div class="privacy-statement" aria-label="Våre personvern- og taushetsprinsipper">
+          <article class="privacy-statement__item">
+            <h3 class="privacy-statement__title">Ingen lagring eller deling av besøksdata</h3>
+            <p class="privacy-statement__text">
+              Vi samler ikke inn, lagrer ikke og selger ikke data om besøk på formaa.no, og vi deler
+              ikke slik informasjon med tredjeparter. Opplysninger du sender via kontaktskjema brukes
+              kun til å besvare henvendelsen — ikke til profilering eller markedsføring.
+            </p>
+          </article>
 
-      <article class="privacy-statement__item">
-        <h3 class="privacy-statement__title">Taushet etter norsk rett</h3>
-        <p class="privacy-statement__text">
-          Prosjektinformasjon, skisser og forretningshemmeligheter behandles med profesjonell taushet
-          og i tråd med norsk rett, herunder reglene om forretningshemmeligheter og alminnelig
-          taushetsplikt i oppdragsforhold. Skriftlig taushetsavtale kan avtales der prosjektet
-          krever det.
-        </p>
-      </article>
+          <article class="privacy-statement__item">
+            <h3 class="privacy-statement__title">Uavhengig designstudio</h3>
+            <p class="privacy-statement__text">
+              Vi er et selvstendig industridesign- og produktdesignstudio uten konsernstruktur som kan
+              kreve deling av prosjektinformasjon på tvers av porteføljer. Dine oppdrag og beslutninger
+              forblir hos oss og hos deg.
+            </p>
+          </article>
 
-      <article class="privacy-statement__item">
-        <h3 class="privacy-statement__title">Varemerker og Forbrukerrådets regler</h3>
-        <p class="privacy-statement__text">
-          Vi følger gjeldende regler for varemerker, opphavsrett og rettigheter, og forholder oss
-          til Forbrukerrådets retningslinjer og god forretningsskikk i markedsføring og
-          kundeforhold.
-        </p>
-      </article>
+          <article class="privacy-statement__item">
+            <h3 class="privacy-statement__title">Taushet etter norsk rett</h3>
+            <p class="privacy-statement__text">
+              Prosjektinformasjon, skisser og forretningshemmeligheter behandles med profesjonell taushet
+              og i tråd med norsk rett, herunder reglene om forretningshemmeligheter og alminnelig
+              taushetsplikt i oppdragsforhold. Skriftlig taushetsavtale kan avtales der prosjektet
+              krever det.
+            </p>
+          </article>
 
-      <article class="privacy-statement__item">
-        <h3 class="privacy-statement__title">Portefølje kun etter ditt samtykke</h3>
-        <p class="privacy-statement__text">
-          Vi publiserer ikke ferdig arbeid, arbeid underveis eller annen prosjektrelatert
-          informasjon — verken på nett eller i presentasjoner — med mindre du uttrykkelig
-          godkjenner hva som kan vises, og når det kan publiseres som del av porteføljen vår.
-        </p>
-      </article>
-    </div>
+          <article class="privacy-statement__item">
+            <h3 class="privacy-statement__title">Varemerker og Forbrukerrådets regler</h3>
+            <p class="privacy-statement__text">
+              Vi følger gjeldende regler for varemerker, opphavsrett og rettigheter, og forholder oss
+              til Forbrukerrådets retningslinjer og god forretningsskikk i markedsføring og
+              kundeforhold.
+            </p>
+          </article>
 
-    <!-- NOTE: Link to homepage FAQ — same pattern as category-projects-link; after privacy principles. -->
-    <a class="category-projects-link" href="/#faq">
-      Ofte stilte spørsmål
-      <img
-        class="category-projects-link__arrow"
-        src="/assets/small-arrow-right.svg"
-        alt=""
-        width="12"
-        height="12"
-        aria-hidden="true"
-      />
-    </a>
+          <article class="privacy-statement__item">
+            <h3 class="privacy-statement__title">Portefølje kun etter ditt samtykke</h3>
+            <p class="privacy-statement__text">
+              Vi publiserer ikke ferdig arbeid, arbeid underveis eller annen prosjektrelatert
+              informasjon — verken på nett eller i presentasjoner — med mindre du uttrykkelig
+              godkjenner hva som kan vises, og når det kan publiseres som del av porteføljen vår.
+            </p>
+          </article>
+        </div>
+
+        <!-- NOTE: Link to homepage FAQ — same pattern as category-projects-link; after privacy principles. -->
+        <a class="category-projects-link" href="/#faq">
+          Ofte stilte spørsmål
+          <img
+            class="category-projects-link__arrow"
+            src="/assets/small-arrow-right.svg"
+            alt=""
+            width="12"
+            height="12"
+            aria-hidden="true"
+          />
+        </a>
+      </div>
+    </details>
   </div>
 </section>`,
     'quotes-carousel-section': `<!-- NOTE: Shared quote/testimonial carousel — stepped center focus; driven by shared-quotes-carousel.js. -->

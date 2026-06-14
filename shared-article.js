@@ -132,6 +132,31 @@ function articleKeyToHref(key) {
   return `/innsikt/${slug}`;
 }
 
+// NOTE: Format ISO publish date as Norwegian dd.mm.yyyy (uses date portion only).
+function formatNorwegianPublishDate(isoDate) {
+  const match = String(isoDate).match(/^(\d{4})-(\d{2})-(\d{2})/);
+  if (!match) return '';
+  const [, yyyy, mm, dd] = match;
+  return `${dd}.${mm}.${yyyy}`;
+}
+
+// NOTE: Read BlogPosting datePublished from page JSON-LD when article JSON omits publishedDate.
+function readDatePublishedFromPageSchema() {
+  const scripts = document.querySelectorAll('script[type="application/ld+json"]');
+  for (const script of scripts) {
+    try {
+      const parsed = JSON.parse(script.textContent || '{}');
+      const nodes = Array.isArray(parsed['@graph']) ? parsed['@graph'] : [parsed];
+      for (const node of nodes) {
+        if (typeof node.datePublished === 'string') return node.datePublished;
+      }
+    } catch (_error) {
+      /* ignore invalid JSON-LD */
+    }
+  }
+  return null;
+}
+
 function renderSharedArticle() {
   const root = document.querySelector('[data-article-layout]');
   if (!root) return;
@@ -144,16 +169,16 @@ function renderSharedArticle() {
   // NOTE: Article files are innsikt-{slug}.html at repo root; hrefs use that shape for static local servers.
   const key = fileStem.startsWith('innsikt-') ? fileStem : `innsikt-${fileStem}`;
   const articleOrder = [
-    'innsikt-hvordan-lage-prototype',
-    'innsikt-fra-oppfinnelse-til-produksjon',
-    'innsikt-produktutvikling-hardware-startup',
-    'innsikt-sok-stotte-innovasjon-norge',
-    'innsikt-hva-er-industridesign',
-    'innsikt-ux-er-ikke-produktdesign',
-    'innsikt-hvem-trenger-design',
-    'innsikt-hvordan-design-sparer-penger',
     'innsikt-branding-og-produktdesign',
+    'innsikt-sok-stotte-innovasjon-norge',
+    'innsikt-ux-er-ikke-produktdesign',
+    'innsikt-produktutvikling-hardware-startup',
+    'innsikt-hvem-trenger-design',
     'innsikt-design-for-crowdfunding',
+    'innsikt-fra-oppfinnelse-til-produksjon',
+    'innsikt-hvordan-design-sparer-penger',
+    'innsikt-hvordan-lage-prototype',
+    'innsikt-hva-er-industridesign',
   ];
   const dataScript = document.getElementById('article-content');
   if (!dataScript) return;
@@ -168,6 +193,7 @@ function renderSharedArticle() {
   const titleEl = root.querySelector('[data-article-title]');
   const currentBreadcrumbEl = root.querySelector('[data-article-breadcrumb-current]');
   const heroImageEl = root.querySelector('[data-article-hero-image]');
+  const publishedDateEl = root.querySelector('[data-article-published-date]');
   const bodyEl = root.querySelector('[data-article-body]');
   const navWrapEl = root.querySelector('[data-article-nav]');
   const prevLinkEl = root.querySelector('[data-article-nav-prev]');
@@ -183,6 +209,17 @@ function renderSharedArticle() {
     }
     heroImageEl.src = heroSrc;
     heroImageEl.alt = typeof article.heroAlt === 'string' ? article.heroAlt : article.title;
+  }
+  if (publishedDateEl) {
+    const isoDate = article.publishedDate || readDatePublishedFromPageSchema();
+    const formattedDate = formatNorwegianPublishDate(isoDate);
+    if (formattedDate) {
+      publishedDateEl.dateTime = String(isoDate).slice(0, 10);
+      publishedDateEl.textContent = `Publiseringsdato ${formattedDate}`;
+      publishedDateEl.hidden = false;
+    } else {
+      publishedDateEl.hidden = true;
+    }
   }
   if (bodyEl) {
     // NOTE: Article blocks support headings, paragraphs, and bullet lists (`items` on `ul`).
