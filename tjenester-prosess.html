@@ -90,6 +90,91 @@
             dette med tjenestedesign og interaksjonsdesign. Les mer om
             <a class="internal-text-link" href="/oss">teamet</a> bak arbeidet.
           </p>
+
+          <!-- NOTE: Tjenester subsections — Produktdesign (icon slot + text) and Elektronikkdesign (title + description cards). -->
+          <div class="tjenester-services">
+            <div class="tjenester-services__group">
+              <h2 class="section-title tjenester-services__title">Produktdesign</h2>
+              <div class="service-grid" aria-label="Produktdesign">
+                <article class="service-card service-card--with-icon">
+                  <div class="service-card__icon-slot" aria-hidden="true">
+                    <img
+                      class="service-card__icon"
+                      src="assets/icons/produserbar-icon.svg"
+                      alt=""
+                      width="56"
+                      height="56"
+                      aria-hidden="true"
+                    />
+                  </div>
+                  <div class="service-card__body">
+                    <h3 class="service-title">3D-modelering, renders og visualisering</h3>
+                  </div>
+                </article>
+                <article class="service-card service-card--with-icon">
+                  <div class="service-card__icon-slot" aria-hidden="true">
+                    <img
+                      class="service-card__icon"
+                      src="assets/icons/bedrift-icon.svg"
+                      alt=""
+                      width="56"
+                      height="56"
+                      aria-hidden="true"
+                    />
+                  </div>
+                  <div class="service-card__body">
+                    <h3 class="service-title">Produktutvikling og konseptutvikling</h3>
+                  </div>
+                </article>
+                <article class="service-card service-card--with-icon">
+                  <div class="service-card__icon-slot" aria-hidden="true">
+                    <img
+                      class="service-card__icon"
+                      src="assets/icons/fremdrift-icon.svg"
+                      alt=""
+                      width="56"
+                      height="56"
+                      aria-hidden="true"
+                    />
+                  </div>
+                  <div class="service-card__body">
+                    <h3 class="service-title">Industridesign, CAD og grunnlag for produksjon</h3>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <div class="tjenester-services__group">
+              <h2 class="section-title tjenester-services__title">Elektronikkdesign</h2>
+              <!-- NOTE: Short intro — circuit design resources and local production via electronics partners. -->
+              <p class="section-lead tjenester-services__intro">
+                For produkter med elektronikk har vi ressurser og kompetanse til å utvikle
+                kretskort, skjema, komponentvalg, plassering av dem, produksjonsklarhet og
+                dokumentasjon. I tett samarbeid med erfarne elektronikingeniører og produsent i
+                Østfold vi kan også ta serieproduksjon av kretser lokalt.
+              </p>
+              <div class="service-grid" aria-label="Elektronikkdesign">
+                <article class="service-card">
+                  <h3 class="service-title">Kretsdesign</h3>
+                  <p class="service-text">
+                    Skjema, komponentvalg, validering og designgjennomgang.
+                  </p>
+                </article>
+                <article class="service-card">
+                  <h3 class="service-title">PCB design</h3>
+                  <p class="service-text">
+                    2–8+ lag layout, EMC-bevisst ruting, DFM og ryddig dokumentasjon.
+                  </p>
+                </article>
+                <article class="service-card">
+                  <h3 class="service-title">Firmwareutvikling</h3>
+                  <p class="service-text">
+                    Arduino/ESP32/ESP8266 — fra prototype til stabile releaser.
+                  </p>
+                </article>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -419,6 +504,42 @@
                 <h3 class="prosess-image-grid__title">Produksjon</h3>
                 <p class="prosess-image-grid__text">
                   Hjelp med koordinering med produsenter og oppfølging
+                </p>
+              </figcaption>
+            </figure>
+            <figure class="prosess-image-grid__item">
+              <!-- NOTE: Kretsdesign — macro PCB photo; partner Fjeldberg Tech (epleapp.no). -->
+              <img
+                class="prosess-image-grid__img"
+                src="assets/images/prosess/kretsdesign.webp"
+                alt="Kretsdesign — makrobilde av PCB med komponenter og kobberbaner"
+                width="1600"
+                height="900"
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption class="prosess-image-grid__overlay">
+                <!-- NOTE: Fjeldberg Tech partner logo — links to electronics design partner before overlay title. -->
+                <a
+                  class="prosess-image-grid__partner-link"
+                  href="https://epleapp.no/#top"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Fjeldberg Tech (åpnes i ny fane)"
+                >
+                  <img
+                    class="prosess-image-grid__partner-logo"
+                    src="/assets/company-logos/fjeldberg-tech-logo.webp"
+                    alt=""
+                    width="72"
+                    height="72"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </a>
+                <h3 class="prosess-image-grid__title">Kretsdesign</h3>
+                <p class="prosess-image-grid__text">
+                  Skjema, komponentvalg, validering, PCB, 2–8+ lag layout, EMC-bevisst ruting.
                 </p>
               </figcaption>
             </figure>
