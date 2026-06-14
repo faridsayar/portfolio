@@ -333,9 +333,29 @@
   font-weight: var(--font-weight-semibold);
   letter-spacing: -0.01em;
   background: #000000;
-  border: none;
+  border: 1px solid var(--color-black);
   border-radius: 14px;
   padding: 1rem 1.25rem;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+/* NOTE: Black CTA hover — primary text and stroke; shared by hero, inquiry submit, and dark nav buttons. */
+.hero-cta:hover,
+.inquiry-cta:hover:not(:disabled):not(.is-inactive),
+.article-nav-button:hover {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+  transform: translateY(-1px);
+}
+
+.hero-cta:active,
+.inquiry-cta:active:not(:disabled):not(.is-inactive),
+.article-nav-button:active {
+  transform: translateY(0);
 }
 
 .hero-cta {
@@ -344,18 +364,8 @@
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
 }
 
-.hero-cta:hover,
-.inquiry-cta:hover {
-  transform: translateY(-1px);
-}
-
 .hero-cta:hover {
   box-shadow: 0 22px 52px rgba(0, 0, 0, 0.32);
-}
-
-.hero-cta:active,
-.inquiry-cta:active {
-  transform: translateY(0);
 }
 
 /* White section (template) */
@@ -409,7 +419,6 @@
 /* NOTE: Nested white UI surfaces on grey canvas — keep dark text for readability. */
 .pricing-service-card,
 .pricing-package-card,
-.article-nav-button,
 .pricing-package-card__textarea {
   color: var(--color-dark);
 }
@@ -646,13 +655,20 @@ h3.section-title {
 
 /* NOTE: Process steps link to /tjenester-prosess; reset anchors so they match the original span appearance. */
 .hero-process-flow__step,
-.hero-process-flow__step:visited,
-.hero-process-flow__step:hover,
-.hero-process-flow__step:focus,
-.hero-process-flow__step:active {
+.hero-process-flow__step:visited {
   color: inherit;
   font-weight: inherit;
   text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.hero-process-flow__step:hover,
+.hero-process-flow__step:focus-visible {
+  color: var(--color-secondary);
+}
+
+.hero-process-flow__step:active {
+  color: inherit;
 }
 
 .hero-process-flow__arrow {
@@ -1418,9 +1434,14 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
   font-size: var(--font-size-breadcrumb);
   line-height: var(--line-height-title);
   letter-spacing: 0.01em;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
 }
 
-.service-tag:hover {
+.service-tag:hover,
+.service-tag:focus-visible {
+  color: var(--color-secondary);
   background: #353535;
 }
 
@@ -2665,16 +2686,16 @@ section[aria-label='Oss'] .about-competence-block:not(:first-child) .about-compe
   min-height: 2.75rem;
   padding: 0.7rem 1rem;
   border: 1px solid var(--color-black);
-  border-radius: 0;
-  background: var(--color-white);
-  color: var(--color-black);
+  border-radius: 14px;
+  background: var(--color-black);
+  color: var(--color-white);
   text-decoration: none;
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-semibold);
   letter-spacing: -0.01em;
-}
-
-.article-nav-button:hover {
-  background: var(--surface-neutral);
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
 }
 
 /* Features section */
@@ -3445,7 +3466,7 @@ main > .section--partner-logos > .section-inner {
   order: 2;
 }
 
-.inquiry-cta:hover {
+.inquiry-cta:hover:not(:disabled):not(.is-inactive) {
   box-shadow: 0 22px 52px rgba(0, 0, 0, 0.2);
 }
 
@@ -3918,6 +3939,26 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
 
 .section--project-cta .inquiry-cta {
   margin-top: 0.75rem;
+}
+
+/* NOTE: Article pages — swap CTA colors with nav buttons; primary hover on both. */
+.section--article-template + .section--project-cta .inquiry-cta {
+  background: var(--color-white);
+  color: var(--color-black);
+  border: 1px solid var(--color-black);
+  box-shadow: none;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.section--article-template + .section--project-cta .inquiry-cta:hover {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-white);
+  box-shadow: none;
 }
 
 /* NOTE: Project strip stays below the hero image and above the summary/navigation content. */
