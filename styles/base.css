@@ -1,5 +1,8 @@
 /* Single Page Portfolio CSS - AK47-F Modern Design */
 
+/* NOTE: Site-wide Saira — regular, semibold, extrabold (loaded here so all base.css pages get the font). */
+@import url('https://fonts.googleapis.com/css2?family=Saira:wght@400;600;800&display=swap');
+
 /* Custom Color Palette */
 :root {
   --color-dark: #120700;
@@ -14,33 +17,41 @@
   --color-features-gradient-end: #151515;
 
   /* NOTE: Shared neutral surfaces/overlays to keep gray styling consistent across pages. */
-  --bg-page-gradient: linear-gradient(180deg, #fafafa 0%, #f3f3f3 100%);
+  --bg-page-canvas: #1e1e1e;
+  --bg-page-gradient: var(--bg-page-canvas);
+  --color-text-on-canvas: #ffffff;
   --overlay-black-35: rgba(0, 0, 0, 0.35);
   --overlay-white-16: rgba(255, 255, 255, 0.16);
   --border-white: var(--color-white);
   --surface-neutral: rgba(31, 31, 31, 0.05);
   --border-neutral: rgba(31, 31, 31, 0.12);
 
-  /* NOTE: Shared typography scale (kept equal to current visual sizes). */
-  --font-family-base: 'Readex Pro', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-size-hero-title: clamp(2.25rem, 6vw, 4.5rem);
-  --font-size-section-title: clamp(1.5rem, 3vw, 2.25rem);
+  /* NOTE: Shared typography scale — Saira (Visual-design branch). */
+  --font-family-base: 'Saira', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-size-hero-title: 36px;
+  --font-size-hero-title-desktop: 60px;
+  --font-size-section-title: 36px;
   --font-size-section-kicker: 0.85rem;
-  --font-size-body-md: 1rem;
+  --font-size-body-md: 16px;
   --font-size-body-sm: 0.95rem;
   --font-size-card-title: 1.05rem;
   --font-size-caption-sm: 0.92rem;
   --font-size-breadcrumb: 0.78rem;
+  --font-size-big-text: 60px;
   --line-height-tight: 1.05;
   --line-height-title: 1.2;
+  --line-height-h2: 0.9;
   --line-height-relaxed: 1.6;
   --line-height-loose: 1.7;
   --line-height-kicker: 1.35;
-  /* NOTE: Regular (400) is the lightest Readex Pro weight loaded on the site; use for lighter copy in forms/timeline. */
+  --line-height-big-text: 0.9;
+  --letter-spacing-tight-heading: -0.05em;
+  /* NOTE: Regular (400) is the lightest Saira weight loaded on the site; use for lighter copy in forms/timeline. */
   --font-weight-regular: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
 
   /* Timeline phase colors (5 phases): dark greys to orange scale */
   --timeline-phase-0: #383838; /* Brukeranalyse */
@@ -60,6 +71,8 @@
 /* Single Page Body - With Parallax Scrolling */
 .single-page-body {
   font-family: var(--font-family-base);
+  font-size: var(--font-size-body-md);
+  font-weight: var(--font-weight-regular);
   margin: 0;
   padding: 0;
   height: auto;
@@ -67,13 +80,14 @@
   overflow-x: hidden;
   overflow-y: auto;
   position: relative;
-  /* NOTE: Default global page background (very light gray gradient) across all pages. */
-  background: var(--bg-page-gradient);
+  /* NOTE: Default global page canvas (#e1e1e1) with white copy; opacity tiers unchanged on children. */
+  background: var(--bg-page-canvas);
+  color: var(--color-text-on-canvas);
 }
 
-/* NOTE: Om oss — solid white page canvas (no grey gradient between white sections). */
+/* NOTE: Om oss — same grey canvas as other pages (no white gaps between sections). */
 .about-page-body {
-  background: var(--color-white);
+  background: var(--bg-page-canvas);
 }
 
 /* Right-side vertical navigation */
@@ -289,10 +303,6 @@
 
 .hero-title {
   margin: 0 0 1rem 0;
-  font-weight: var(--font-weight-semibold);
-  letter-spacing: -0.02em;
-  line-height: var(--line-height-tight);
-  font-size: var(--font-size-hero-title);
   text-shadow: 0 8px 22px var(--overlay-black-35);
 }
 
@@ -344,7 +354,32 @@
 }
 
 .section--white {
-  background: var(--color-white);
+  background: var(--bg-page-canvas);
+  color: var(--color-text-on-canvas);
+}
+
+/* NOTE: Nested white UI surfaces on grey canvas — keep dark text for readability. */
+.service-card,
+.pricing-service-card,
+.pricing-package-card,
+.about-team-card,
+.article-card,
+.article-card__link,
+.article-nav-button,
+.field__input,
+.field__textarea,
+.pricing-package-card__textarea {
+  color: var(--color-dark);
+}
+
+.service-card .internal-text-link,
+.service-card .internal-text-link:visited,
+.article-card .internal-text-link,
+.article-card .internal-text-link:visited,
+.about-team-card .internal-text-link,
+.about-team-card .internal-text-link:visited,
+.pricing-package-card .internal-text-link,
+.pricing-package-card .internal-text-link:visited {
   color: var(--color-dark);
 }
 
@@ -354,12 +389,42 @@
   padding: 4rem 1.25rem;
 }
 
+/* NOTE: H1 — 36px mobile/tablet, 60px desktop; semibold, uppercase, -5% tracking. */
+h1,
+h1.hero-title,
+h1.section-title,
+h1.project-hero-stage__title {
+  font-size: var(--font-size-hero-title);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.111;
+  letter-spacing: var(--letter-spacing-tight-heading);
+  text-transform: uppercase;
+}
+
+@media (min-width: 768px) {
+  h1,
+  h1.hero-title,
+  h1.section-title,
+  h1.project-hero-stage__title {
+    font-size: var(--font-size-hero-title-desktop);
+  }
+}
+
+/* NOTE: H2 section titles — fixed 36px, 90% line-height, -5% tracking, semibold, normal case. */
+h2.section-title {
+  font-size: var(--font-size-section-title);
+  line-height: var(--line-height-h2);
+  letter-spacing: var(--letter-spacing-tight-heading);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* NOTE: H3 section titles (FAQ questions etc.) — semibold. */
+h3.section-title {
+  font-weight: var(--font-weight-semibold);
+}
+
 .section-title {
   margin: 0 0 0.75rem 0;
-  font-size: var(--font-size-section-title);
-  line-height: var(--line-height-title);
-  letter-spacing: -0.01em;
-  font-weight: var(--font-weight-semibold);
 }
 
 /* NOTE: Section heading as inline link with small right arrow (e.g. homepage Prosjekter). */
@@ -367,6 +432,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
+  font-size: 20px;
   color: inherit;
   text-decoration: none;
 }
@@ -386,6 +452,7 @@
   height: 0.75em;
   opacity: 0.4;
   transform: translateY(2px);
+  filter: brightness(0) invert(1);
 }
 
 .section-lead {
@@ -415,19 +482,25 @@
   margin: 36px 0 0 0;
 }
 
-/* NOTE: Keep inline portfolio summary CTA as plain black text link. */
+/* NOTE: Keep inline portfolio summary CTA as canvas-tone text link (opacity unchanged where set). */
 .portfolio-summary-link,
-.portfolio-summary-link:visited,
-.portfolio-summary-link:hover,
-.portfolio-summary-link:focus,
-.portfolio-summary-link:active {
-  color: #000;
+.portfolio-summary-link:visited {
+  color: inherit;
 }
 
-/* NOTE: Shared visual style for all inline internal text links across page copy (semibold weight). */
+.portfolio-summary-link:hover,
+.portfolio-summary-link:focus {
+  color: var(--color-primary);
+}
+
+.portfolio-summary-link:active {
+  color: var(--color-secondary);
+}
+
+/* NOTE: Shared visual style for inline internal text links in body copy (semibold; inherits canvas white). */
 .internal-text-link,
 .internal-text-link:visited {
-  color: #000;
+  color: inherit;
   font-weight: var(--font-weight-semibold);
   text-decoration: none;
 }
@@ -446,7 +519,7 @@
   margin: 0;
   padding: 0.75rem 0.75rem 0.85rem;
   text-align: center;
-  background: var(--color-white);
+  background: var(--bg-page-canvas);
 }
 
 .hero-process-flow__text {
@@ -461,7 +534,7 @@
   font-weight: var(--font-weight-semibold);
   letter-spacing: -0.01em;
   line-height: 1.2;
-  color: var(--color-dark);
+  color: inherit;
   opacity: 0.5;
   white-space: nowrap;
 }
@@ -482,6 +555,7 @@
   width: 0.7em;
   height: 0.7em;
   opacity: 0.95;
+  filter: brightness(0) invert(1);
 }
 
 .hero-process-flow__arrow--lead {
@@ -710,7 +784,6 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
   margin: 0;
   font-size: clamp(0.95rem, 1.5vw, 1.1rem);
   line-height: var(--line-height-loose);
-  color: var(--color-dark);
   opacity: 0.72;
 }
 
@@ -742,7 +815,7 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
   font-weight: var(--font-weight-semibold);
   letter-spacing: -0.02em;
   line-height: var(--line-height-title);
-  color: var(--color-dark);
+  color: inherit;
   text-decoration: none;
 }
 
@@ -760,6 +833,7 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
   width: 0.65em;
   height: 0.65em;
   opacity: 0.4;
+  filter: brightness(0) invert(1);
 }
 
 /* NOTE: Category pre-form block: feature band + ideas strip in one section, flush like homepage. */
@@ -808,7 +882,7 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
 }
 
 .breadcrumb__link {
-  color: var(--color-dark);
+  color: inherit;
   text-decoration: none;
   opacity: 0.5;
   transition: opacity 160ms ease;
@@ -924,12 +998,41 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
   padding-right: 0;
 }
 
-/* NOTE: Homepage #start opening copy — symmetric vertical inset and generous gap between paragraphs. */
+/* NOTE: Opening row — vertical logo sits on the left text line; copy flows beside it. */
+#start .start-intro__opening-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: 0.65rem;
+  align-items: start;
+  padding-block: clamp(4rem, 8vw, 6rem);
+}
+
+/* NOTE: Vertical Formaa mark on the opening text line — no margins, 90° CCW. */
+#start .start-intro__logo {
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+  align-self: start;
+  margin-top: 0.15em;
+}
+
+#start .start-intro__logo-mark {
+  display: block;
+  margin: 0;
+  width: 2.625rem;
+  height: auto;
+  transform: rotate(-90deg);
+  transform-origin: top left;
+  filter: brightness(0) invert(1);
+  opacity: 0.3;
+}
+
+/* NOTE: Homepage #start opening copy — generous gap between paragraphs. */
 #start .start-intro__opening {
   display: flex;
   flex-direction: column;
   gap: clamp(3rem, 7vw, 5rem);
-  padding-block: clamp(4rem, 8vw, 6rem);
+  padding-block: 0;
 }
 
 #start .start-intro__opening .section-lead {
@@ -988,13 +1091,14 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
 #start .start-intro--overlay .start-intro__gradient {
   position: absolute;
   inset: 0;
+  /* NOTE: Homepage intro overlay — left→right grey (#1e1e1e → #888888), same opacity stops as before. */
   background: linear-gradient(
     90deg,
-    rgba(18, 7, 0, 0.9) 0%,
-    rgba(18, 7, 0, 0.72) 50%,
-    rgba(18, 7, 0, 0.38) 72%,
-    rgba(18, 7, 0, 0.1) 90%,
-    rgba(18, 7, 0, 0) 100%
+    rgba(30, 30, 30, 0.9) 0%,
+    rgba(62, 62, 62, 0.72) 100%,
+    rgba(102, 102, 102, 0.38) 72%,
+    rgba(136, 136, 136, 0.1) 90%,
+    rgba(136, 136, 136, 0) 100%
   );
   pointer-events: none;
 }
@@ -1214,7 +1318,7 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
   border: 1px solid var(--border-neutral);
   border-radius: 999px;
   background: var(--surface-neutral);
-  color: var(--color-dark);
+  color: inherit;
   text-decoration: none;
   font-size: var(--font-size-breadcrumb);
   line-height: var(--line-height-title);
@@ -1961,7 +2065,7 @@ section[aria-label='Verksteder og produksjon'] .section-inner {
 
 .about-top-graphic__intro {
   /* NOTE: Keep pure `.section-kicker` typography; only color is overridden for image contrast. */
-  font-family: 'Jura', sans-serif;
+  font-family: var(--font-family-base);
   text-transform: none;
   color: var(--color-white);
 }
@@ -2164,7 +2268,7 @@ section[aria-label='Oss'] .about-competence-block:not(:first-child) .about-compe
   padding: 0;
   border: none;
   background: transparent;
-  color: var(--color-dark);
+  color: inherit;
   cursor: pointer;
   opacity: 0.8;
   line-height: 1;
@@ -2200,7 +2304,7 @@ section[aria-label='Oss'] .about-competence-block:not(:first-child) .about-compe
   padding: 0;
   border: none;
   background: transparent;
-  color: var(--color-dark);
+  color: inherit;
   font-size: var(--font-size-body-sm);
   font-weight: var(--font-weight-semibold);
   line-height: 1.2;
@@ -2358,6 +2462,7 @@ section[aria-label='Oss'] .about-competence-block:not(:first-child) .about-compe
 .article-card__title {
   margin: 0 0 0.35rem 0;
   font-size: var(--font-size-card-title);
+  font-weight: var(--font-weight-semibold);
   line-height: 1.3;
   letter-spacing: -0.01em;
 }
@@ -2383,6 +2488,7 @@ section[aria-label='Oss'] .about-competence-block:not(:first-child) .about-compe
 .article-row__title {
   margin: 0 0 0.7rem 0;
   font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+  font-weight: var(--font-weight-semibold);
   line-height: 1.3;
   letter-spacing: -0.01em;
 }
@@ -2458,14 +2564,15 @@ section[aria-label='Tjenester'] .start-tjenester {
 
 /* Quotes/testimonials section */
 .section--quotes {
-  background: var(--color-white);
+  background: var(--bg-page-canvas);
+  color: var(--color-text-on-canvas);
 }
 
 /* NOTE: Homepage quotes — stepped carousel (center focus, side peeks); driven by shared-quotes-carousel.js. */
 .quotes-carousel {
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
-  background: var(--color-white);
+  background: var(--bg-page-canvas);
 }
 
 .quotes-carousel__viewport {
@@ -2507,8 +2614,7 @@ section[aria-label='Tjenester'] .start-tjenester {
   margin: 0;
   font-size: clamp(0.95rem, 1.5vw, 1.1rem);
   line-height: var(--line-height-loose);
-  color: var(--color-dark);
-  font-family: 'Readex Pro', cursive;
+  font-family: inherit;
   font-style: italic;
   /* NOTE: Homepage testimonial copy at 50% opacity; avatars stay full strength. */
   opacity: 0.5;
@@ -2538,7 +2644,6 @@ section[aria-label='Tjenester'] .start-tjenester {
 .quote-card__name {
   margin: 0;
   font-size: var(--font-size-section-kicker);
-  color: var(--color-dark);
   opacity: 0.5;
 }
 
@@ -2592,10 +2697,10 @@ section[aria-label='Tjenester'] .start-tjenester {
   padding-right: 0;
 }
 
-/* NOTE: Reusable partner logo strip (Samarbeidspartnere) — white band when standalone; no vertical margin (margin exposed page grey). */
+/* NOTE: Reusable partner logo strip (Samarbeidspartnere) — grey canvas when standalone. */
 .section--partner-logos {
-  background: var(--color-white);
-  color: var(--color-dark);
+  background: var(--bg-page-canvas);
+  color: var(--color-text-on-canvas);
 }
 
 .section--features .section--partner-logos {
@@ -2648,6 +2753,7 @@ main > .section--partner-logos > .section-inner {
   margin-top: 32px;
   margin-bottom: 0;
   text-align: left;
+  opacity: 0.5;
 }
 
 .partner-logos {
@@ -2697,7 +2803,8 @@ main > .section--partner-logos > .section-inner {
   width: auto;
   max-width: min(10rem, 28vw);
   object-fit: contain;
-  filter: grayscale(100%);
+  /* NOTE: Inverted + 30% brighter on grey canvas; hover opacity unchanged. */
+  filter: grayscale(100%) invert(1) brightness(1.3);
   opacity: 0.62;
   transition: opacity 0.2s ease;
 }
@@ -2732,14 +2839,12 @@ main > .section--partner-logos > .section-inner {
   line-height: 1.35;
   letter-spacing: -0.01em;
   font-weight: var(--font-weight-semibold);
-  color: var(--color-dark);
 }
 
 .privacy-statement__text {
   margin: 0;
   font-size: var(--font-size-body-sm);
   line-height: var(--line-height-loose);
-  color: var(--color-dark);
   opacity: 0.88;
   max-width: 42ch;
 }
@@ -2829,10 +2934,11 @@ main > .section--partner-logos > .section-inner {
   max-width: none;
   margin: 0;
   padding: 6rem 0;
-  font-size: clamp(2.75rem, 7.5vw, 5.5rem);
-  font-weight: var(--font-weight-semibold);
-  letter-spacing: -0.03em;
-  line-height: var(--line-height-tight);
+  font-size: var(--font-size-big-text);
+  font-weight: var(--font-weight-extrabold);
+  letter-spacing: var(--letter-spacing-tight-heading);
+  line-height: var(--line-height-big-text);
+  text-transform: uppercase;
   opacity: 0.2;
 }
 
@@ -3107,7 +3213,6 @@ main > .section--partner-logos > .section-inner {
   line-height: var(--line-height-title);
   font-weight: var(--font-weight-semibold);
   letter-spacing: -0.01em;
-  color: var(--color-dark);
 }
 
 /* NOTE: Timeline helper copy lives in `.timeline-caption-row`; typography only here (row sets outer spacing). */
@@ -3117,7 +3222,6 @@ main > .section--partner-logos > .section-inner {
   font-size: var(--font-size-body-sm);
   line-height: var(--line-height-relaxed);
   font-weight: var(--font-weight-regular);
-  color: var(--color-dark);
   opacity: 0.1;
 }
 
@@ -3248,10 +3352,10 @@ main > .section--partner-logos > .section-inner {
 }
 
 .section--projects .section-head {
-  background: var(--color-white);
+  background: var(--bg-page-canvas);
 }
 
-/* NOTE: Breakout wrapper: grey band starts at project tiles only; heading area stays on white. */
+/* NOTE: Breakout wrapper: dark band starts at project tiles only; heading sits on grey canvas. */
 .projects-grid-panel {
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
@@ -3584,10 +3688,6 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
 
 .project-hero-stage__title {
   margin: 0 0 1rem 0;
-  font-weight: var(--font-weight-semibold);
-  letter-spacing: -0.02em;
-  line-height: var(--line-height-tight);
-  font-size: clamp(2rem, 5vw, 3.75rem);
   text-shadow: 0 8px 22px var(--overlay-black-35);
 }
 
@@ -3704,7 +3804,6 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
 .project-summary__item {
   margin: 0 0 0.8rem 0;
   line-height: var(--line-height-relaxed);
-  color: var(--color-dark);
 }
 
 .project-summary__item strong {
@@ -3770,7 +3869,7 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
     padding: 0.2rem 0;
     background: none;
     border: none;
-    color: var(--color-dark);
+    color: inherit;
     text-decoration: none;
     opacity: 0.75;
   }
@@ -3779,7 +3878,7 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
     display: block;
     width: 1.11rem;
     height: auto;
-    filter: brightness(0) saturate(100%);
+    filter: brightness(0) invert(1);
   }
 
   .project-page-nav__link--prev .project-page-nav__icon {
@@ -3795,7 +3894,7 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
     font-weight: var(--font-weight-medium);
     letter-spacing: 0.03em;
     text-transform: lowercase;
-    color: var(--color-dark);
+    color: inherit;
     white-space: nowrap;
   }
 
@@ -3844,7 +3943,7 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
     margin: 0;
     background: none;
     border: none;
-    color: var(--color-dark);
+    color: inherit;
     text-decoration: none;
     opacity: 0.65;
     pointer-events: auto;
@@ -3929,8 +4028,12 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
   justify-content: center;
   border: 1px solid var(--border-neutral);
   background: var(--surface-neutral);
-  color: var(--color-dark);
+  color: inherit;
   text-decoration: none;
+}
+
+.about-team-card .social-link {
+  color: var(--color-dark);
 }
 
 .social-link svg {
@@ -3951,7 +4054,7 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
   border: 1px solid var(--border-neutral);
   background: var(--surface-neutral);
   padding: 1rem 1.1rem;
-  color: var(--color-dark);
+  color: inherit;
   text-decoration: none;
 }
 
@@ -3970,7 +4073,7 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
   font-size: var(--font-size-card-title);
   font-weight: var(--font-weight-semibold);
   letter-spacing: -0.01em;
-  color: var(--color-dark);
+  color: inherit;
 }
 
 .contact-link:hover {
@@ -4004,7 +4107,7 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
   padding: 0;
   border: 1px solid var(--border-neutral);
   background: var(--surface-neutral);
-  color: var(--color-dark);
+  color: inherit;
   cursor: pointer;
   transform: translateY(-50%);
   transition:
@@ -4400,10 +4503,6 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
     padding-bottom: 5.75rem;
   }
 
-  .project-hero-stage__title {
-    font-size: clamp(1.55rem, 6.2vw, 2rem);
-  }
-
   .project-hero-stage__lead {
     font-size: 0.9rem;
     line-height: 1.5;
@@ -4449,11 +4548,6 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
 @media (max-width: 768px) {
   .hero-content {
     padding-top: 5rem;
-  }
-
-  .hero-title {
-    font-size: clamp(1.75rem, 8vw, 2.35rem);
-    line-height: 1.1;
   }
 
   .hero-subtitle {
