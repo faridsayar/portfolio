@@ -90,6 +90,91 @@
             dette med tjenestedesign og interaksjonsdesign. Les mer om
             <a class="internal-text-link" href="/oss">teamet</a> bak arbeidet.
           </p>
+
+          <!-- NOTE: Tjenester subsections — Produktdesign (icon slot + text) and Elektronikkdesign (title + description cards). -->
+          <div class="tjenester-services">
+            <div class="tjenester-services__group">
+              <h2 class="section-title tjenester-services__title">Produktdesign</h2>
+              <div class="service-grid" aria-label="Produktdesign">
+                <article class="service-card service-card--with-icon">
+                  <div class="service-card__icon-slot" aria-hidden="true">
+                    <img
+                      class="service-card__icon"
+                      src="assets/icons/produserbar-icon.svg"
+                      alt=""
+                      width="56"
+                      height="56"
+                      aria-hidden="true"
+                    />
+                  </div>
+                  <div class="service-card__body">
+                    <h3 class="service-title">3D-modelering, renders og visualisering</h3>
+                  </div>
+                </article>
+                <article class="service-card service-card--with-icon">
+                  <div class="service-card__icon-slot" aria-hidden="true">
+                    <img
+                      class="service-card__icon"
+                      src="assets/icons/bedrift-icon.svg"
+                      alt=""
+                      width="56"
+                      height="56"
+                      aria-hidden="true"
+                    />
+                  </div>
+                  <div class="service-card__body">
+                    <h3 class="service-title">Produktutvikling og konseptutvikling</h3>
+                  </div>
+                </article>
+                <article class="service-card service-card--with-icon">
+                  <div class="service-card__icon-slot" aria-hidden="true">
+                    <img
+                      class="service-card__icon"
+                      src="assets/icons/fremdrift-icon.svg"
+                      alt=""
+                      width="56"
+                      height="56"
+                      aria-hidden="true"
+                    />
+                  </div>
+                  <div class="service-card__body">
+                    <h3 class="service-title">Industridesign, CAD og grunnlag for produksjon</h3>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <div class="tjenester-services__group">
+              <h2 class="section-title tjenester-services__title">Elektronikkdesign</h2>
+              <!-- NOTE: Short intro — circuit design resources and local production via electronics partners. -->
+              <p class="section-lead tjenester-services__intro">
+                For produkter med elektronikk har vi ressurser og kompetanse til å utvikle
+                kretskort, skjema, komponentvalg, plassering av dem, produksjonsklarhet og
+                dokumentasjon. I tett samarbeid med erfarne elektronikingeniører og produsent i
+                Østfold vi kan også ta serieproduksjon av kretser lokalt.
+              </p>
+              <div class="service-grid" aria-label="Elektronikkdesign">
+                <article class="service-card">
+                  <h3 class="service-title">Kretsdesign</h3>
+                  <p class="service-text">
+                    Skjema, komponentvalg, validering og designgjennomgang.
+                  </p>
+                </article>
+                <article class="service-card">
+                  <h3 class="service-title">PCB design</h3>
+                  <p class="service-text">
+                    2–8+ lag layout, EMC-bevisst ruting, DFM og ryddig dokumentasjon.
+                  </p>
+                </article>
+                <article class="service-card">
+                  <h3 class="service-title">Firmwareutvikling</h3>
+                  <p class="service-text">
+                    Arduino/ESP32/ESP8266 — fra prototype til stabile releaser.
+                  </p>
+                </article>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -422,6 +507,42 @@
                 </p>
               </figcaption>
             </figure>
+            <figure class="prosess-image-grid__item">
+              <!-- NOTE: Kretsdesign — macro PCB photo; partner Fjeldberg Tech (epleapp.no). -->
+              <img
+                class="prosess-image-grid__img"
+                src="assets/images/prosess/kretsdesign.webp"
+                alt="Kretsdesign — makrobilde av PCB med komponenter og kobberbaner"
+                width="1600"
+                height="900"
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption class="prosess-image-grid__overlay">
+                <!-- NOTE: Fjeldberg Tech partner logo — links to electronics design partner before overlay title. -->
+                <a
+                  class="prosess-image-grid__partner-link"
+                  href="https://epleapp.no/#top"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Fjeldberg Tech (åpnes i ny fane)"
+                >
+                  <img
+                    class="prosess-image-grid__partner-logo"
+                    src="/assets/company-logos/fjeldberg-tech-logo.webp"
+                    alt=""
+                    width="72"
+                    height="72"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </a>
+                <h3 class="prosess-image-grid__title">Kretsdesign</h3>
+                <p class="prosess-image-grid__text">
+                  Skjema, komponentvalg, validering, PCB, 2–8+ lag layout, EMC-bevisst ruting.
+                </p>
+              </figcaption>
+            </figure>
           </div>
         </div>
       </section>
@@ -550,6 +671,102 @@
               decoding="async"
             />
           </figure>
+        </div>
+      </section>
+
+      <!-- NOTE: SEO support text — moved from Om oss; explains services, process, and delivery scope. -->
+      <section
+        class="section section--white"
+        aria-label="Hvordan produktutvikling vil være for deg"
+      >
+        <div class="section-inner">
+          <div class="section-lead section-lead--after-grid">
+            <h2 class="section-title">Hvordan produktutvikling vil være for deg</h2>
+
+            <p class="section-lead">
+              I hvert prosjekt fokuserer vi på klar og forståelig kommunikasjon med oppdragsgiver
+              hele veien. Vi ønsker å fremstå som partnere i prosjekter og vise at vi ønsker å bidra
+              til suksessen. Derfor vi jobber tett sammen med dere og hele veien vil bruke vår
+              kompetanse og erfaring for å gjøre veien fra idé til lansering mer realistisk. Du kan
+              se eksempelarbeid på
+              <a class="internal-text-link" href="/prosjekter">prosjektsidene våre</a>.
+            </p>
+            <p class="section-lead">
+              Vi ønsker å hjelpe startups, gründere og bedrifter i Norge med
+              <a class="internal-text-link" href="/innsikt/hva-er-industridesign">industridesign</a
+              >,
+              <a class="internal-text-link" href="/tjenester-prosess">produktdesign</a>
+              og produktutvikling. Kompetansen vår kan bidra med det i alle faser:
+              <a class="internal-text-link" href="/innsikt/fra-oppfinnelse-til-produksjon"
+                >konseptutvikling</a
+              >,
+              <a class="internal-text-link" href="/innsikt/hvordan-lage-prototype">prototyping</a>
+              og
+              <a class="internal-text-link" href="/tjenester-prosess">visualisering</a>
+              og det som skal til for å lykkes i markedet. Les også artikler i
+              <a class="internal-text-link" href="/innsikt">innsikt</a>.
+            </p>
+            <p class="section-lead">
+              Hvorfor Formaa med to a? Nei, fordi "forma" navnet er tatt, da ble det to a'er, men
+              det gjør ingen forskjell på hva vi kan. Formaa leverer tjenester i Oslo, Akershus
+              (Viken), Buskerud og Østfold og tilbyr personlig konsultasjon, aktiv samarbeid med
+              prototype og testing, og resten av Norge gjennom digital arbeid. Du kan enten få ett
+              samlet og engasjert designteam som vil følge prosjektet ditt med praktisk støtte i
+              alle faser eller enkeltstående tjenester der du har behov. Du kan også sjekke
+              <a class="internal-text-link" href="/prisestimat">prisestimat</a> eller sende inn en
+              forespørsel via
+              <a class="internal-text-link" href="/application-form">kontaktformet</a>.
+            </p>
+            <!-- NOTE: Prominent link after SEO copy block (moved from Om oss). -->
+            <a class="category-projects-link" href="/tjenester-prosess">
+              Se prosessen
+              <img
+                class="category-projects-link__arrow"
+                src="assets/small-arrow-right.svg"
+                alt=""
+                width="12"
+                height="12"
+                aria-hidden="true"
+              />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- NOTE: Pre-project steps (same as prisestimat) — footer CTA before site footer. -->
+      <section
+        class="section section--white pricing-process-section"
+        aria-label="Hvordan vi går frem"
+      >
+        <div class="section-inner">
+          <h2 class="section-title">Hvordan vi går frem</h2>
+          <p class="section-lead section-lead--after-grid">
+            Etter at du sender en forespørsel til oss, tar vi kontakt med deg for å avtale vårt
+            første møte, enten personlig eller på nett:
+          </p>
+          <div class="pricing-process-list" role="list" aria-label="Gratis steg">
+            <div class="pricing-process-list__item" role="listitem">
+              <span class="pricing-process-list__number" aria-hidden="true">1</span>
+              <p class="pricing-process-list__text">
+                Konsultasjon med oss for å høre hva du trenger hjelp med. Vi vil høre godt etter,
+                skrive og stille spørsmål for å forstå deg best mulig.
+              </p>
+            </div>
+            <div class="pricing-process-list__item" role="listitem">
+              <span class="pricing-process-list__number" aria-hidden="true">2</span>
+              <p class="pricing-process-list__text">
+                Vi utarbeider en utføringsplan som inkluderer prisestimat og tidshorisont og sender
+                den til deg på e-post.
+              </p>
+            </div>
+            <div class="pricing-process-list__item" role="listitem">
+              <span class="pricing-process-list__number" aria-hidden="true">3</span>
+              <p class="pricing-process-list__text">
+                Du velger om du aksepterer tilbudet, foreslår endringer eller ikke aksepterer.
+              </p>
+            </div>
+          </div>
+          <a class="inquiry-cta" href="/application-form">Gå til kontaktform</a>
         </div>
       </section>
     </main>

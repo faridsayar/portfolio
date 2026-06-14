@@ -26,6 +26,12 @@ window.__COMPANY_PARTNERS_MANIFEST = {
       "url": "https://www.kroloftet.no/",
       "source": "kroloftet-logo.png",
       "logo": "kroloftet-logo.webp"
+    },
+    {
+      "name": "Fjeldberg Tech",
+      "url": "https://epleapp.no/",
+      "source": "fjeldberg-tech-logo.png",
+      "logo": "fjeldberg-tech-logo.webp"
     }
   ]
 };
