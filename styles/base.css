@@ -1574,6 +1574,8 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
   padding-bottom: 64px;
   padding-left: 1.25rem;
   padding-right: 1.25rem;
+  /* NOTE: Full-bleed light grey gradient — matches global page canvas tone. */
+  background: var(--bg-page-gradient);
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 2rem 1rem;
