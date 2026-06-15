@@ -4,7 +4,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { seoSlugForCatalog } from './lib/project-seo-slugs.mjs';
+import { isPublishedCatalogProject, seoSlugForCatalog } from './lib/project-seo-slugs.mjs';
 import { SITE, STATIC_HUB_ROUTES } from './lib/public-routes.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -38,6 +38,7 @@ function collectProsjektRoutes() {
   const manifest = JSON.parse(manifestRaw.replace(/^[\s\S]*?=\s*/, '').replace(/;\s*$/, ''));
   const routes = ['/prosjekter'];
   for (const p of manifest.projects) {
+    if (!isPublishedCatalogProject(p)) continue;
     routes.push(`/prosjekter/${seoSlugForCatalog(p.slug)}`);
   }
   return routes;

@@ -327,15 +327,15 @@
 }
 
 .hero-cta,
-.inquiry-cta {
+.inquiry-cta,
+.article-nav-button {
   color: var(--color-white);
   text-decoration: none;
   font-weight: var(--font-weight-semibold);
   letter-spacing: -0.01em;
-  background: #000000;
+  background: var(--color-black);
   border: 1px solid var(--color-black);
   border-radius: 14px;
-  padding: 1rem 1.25rem;
   transition:
     color 0.2s ease,
     border-color 0.2s ease,
@@ -361,6 +361,7 @@
 .hero-cta {
   display: inline-block;
   margin-top: 1.75rem;
+  padding: 1rem 1.25rem;
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
 }
 
@@ -867,7 +868,13 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
 
 .cooperation-card {
   padding: clamp(1.25rem, 3vw, 1.75rem);
-  background: var(--surface-neutral);
+  background: var(--surface-card);
+  color: var(--color-text-on-card);
+}
+
+.cooperation-card .internal-text-link,
+.cooperation-card .internal-text-link:visited {
+  color: var(--color-text-on-card);
 }
 
 .cooperation-card__head {
@@ -884,8 +891,8 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
   width: auto;
   max-width: 8rem;
   object-fit: contain;
-  filter: grayscale(100%);
-  opacity: 0.62;
+  filter: brightness(0) invert(1);
+  opacity: 1;
 }
 
 .cooperation-card__name {
@@ -1923,7 +1930,33 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
 
 /* NOTE: Tjenester Prosess page — equal gaps between intro, display line, and prosess block. */
 section[aria-label='Tjenester'] .section-inner {
+  padding-top: 0;
   padding-bottom: 2rem;
+}
+
+/* NOTE: Tjenester hero — full-bleed konseptutvikling image (~500px), breadcrumb overlay only. */
+section[aria-label='Tjenester'] .about-top-graphic {
+  overflow: hidden;
+  height: 500px;
+  margin: 0;
+}
+
+section[aria-label='Tjenester'] .about-top-graphic__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+section[aria-label='Tjenester'] .about-top-graphic__breadcrumb {
+  position: absolute;
+  top: 1rem;
+  left: 0;
+  right: 0;
+}
+
+section[aria-label='Tjenester'] .about-top-graphic + .section-title {
+  margin-top: 2.5rem;
 }
 
 section[aria-label='Tjenester display line'] .section-inner {
@@ -2215,27 +2248,24 @@ section[aria-label='Verksteder og produksjon'] .section-inner {
 }
 
 /* NOTE: Om oss starts with full-bleed hero artwork, so remove default section top padding. */
-/* NOTE: Om oss hero — 40vh crop frame; image anchored to bottom so heads at top are cut off. */
+/* NOTE: Om oss hero (lutvann) — min viewport height; dark overlay lives on bottom workshop strip. */
 section[aria-label='Oss'] .about-top-graphic {
   overflow: hidden;
-  height: 40vh;
+  min-height: 100dvh;
+  height: auto;
 }
 
 section[aria-label='Oss'] .about-top-graphic__img {
   width: 100%;
+  min-height: 100dvh;
   height: 100%;
   object-fit: cover;
-  object-position: center bottom;
+  object-position: right center;
+  filter: saturate(0.75);
 }
 
-/* NOTE: Om oss hero — 70% dark overlay on workshop image for headline contrast. */
 section[aria-label='Oss'] .about-top-graphic::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.7);
-  pointer-events: none;
-  z-index: 0;
+  display: none;
 }
 
 section[aria-label='Oss'] .about-top-graphic__overlay {
@@ -2297,8 +2327,19 @@ section[aria-label='Hvordan produktutvikling vil være for deg']
   margin-bottom: 32px;
 }
 
-section[aria-label='Oss'] .about-top-graphic + .section-title {
-  margin-top: 2.5rem;
+section[aria-label='Oss'] .about-top-graphic + .section-lead {
+  margin-top: 12px;
+}
+
+section[aria-label='Oss'] .about-top-graphic + .section-lead + .section-title {
+  padding-top: 62px;
+  padding-bottom: 62px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+section[aria-label='Oss'] h1.section-title + .section-lead--after-grid {
+  margin-top: 0;
 }
 
 /* NOTE: Om oss “Litt mer om oss” — contained text/image row; image height tracks text column on desktop. */
@@ -2685,17 +2726,6 @@ section[aria-label='Oss'] .about-competence-block:not(:first-child) .about-compe
   justify-content: center;
   min-height: 2.75rem;
   padding: 0.7rem 1rem;
-  border: 1px solid var(--color-black);
-  border-radius: 14px;
-  background: var(--color-black);
-  color: var(--color-white);
-  text-decoration: none;
-  font-weight: var(--font-weight-semibold);
-  letter-spacing: -0.01em;
-  transition:
-    color 0.2s ease,
-    border-color 0.2s ease,
-    transform 0.2s ease;
 }
 
 /* Features section */
@@ -2813,6 +2843,86 @@ section[aria-label='Tjenester'] .start-tjenester {
   .quote-card {
     transition: none;
   }
+}
+
+/* NOTE: Om oss workshop strip — full-bleed media block in competence section. */
+.quotes-lutvann-media {
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+/* NOTE: Om oss workshop strip — 40vh full-bleed + 70% dark overlay (in competence section). */
+.about-page-body .quotes-lutvann-media--oss {
+  position: relative;
+  overflow: hidden;
+  width: 100vw;
+  margin: 2rem calc(50% - 50vw) 0;
+  height: 40vh;
+  min-height: 0;
+}
+
+.about-page-body .quotes-lutvann-media--oss::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.about-page-body .quotes-lutvann-media--oss .quotes-lutvann-media__image {
+  width: 100%;
+  height: 100%;
+  min-height: unset;
+  object-fit: cover;
+  object-position: center bottom;
+}
+
+/* NOTE: Om oss workshop strip — overlay copy above dark ::after tint; aligned to section-inner column. */
+.about-page-body .quotes-lutvann-media--oss .quotes-lutvann-media__overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 70rem;
+  margin: 0;
+  padding: 1.25rem;
+  color: var(--color-white);
+  pointer-events: none;
+}
+
+.about-page-body .quotes-lutvann-media--oss .quotes-lutvann-media__title {
+  margin: 0 0 0.75rem;
+  font-size: var(--font-size-card-title);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  text-shadow: 0 6px 18px var(--overlay-black-35);
+}
+
+.about-page-body .quotes-lutvann-media--oss .quotes-lutvann-media__text {
+  margin: 0;
+  max-width: 48rem;
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-relaxed);
+  opacity: 0.9;
+  text-shadow: 0 4px 14px var(--overlay-black-35);
+}
+
+.quotes-lutvann-media__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
 }
 
 /* NOTE: “Hva du får” block — title, lead, Prosess link, then feature banner. */
@@ -3453,6 +3563,7 @@ main > .section--partner-logos > .section-inner {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  padding: 1rem 1.25rem;
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.14);
   cursor: pointer;
 }
@@ -4694,6 +4805,7 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
 /* Remove corner rounding on rectangles/buttons */
 .hero-cta,
 .inquiry-cta,
+.article-nav-button,
 .side-nav,
 .inquiry-form,
 .field__input,

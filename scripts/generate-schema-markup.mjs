@@ -24,7 +24,7 @@ import {
   buildProjectsHubGraph,
   stripHtml,
 } from './lib/schema-markup.mjs';
-import { seoSlugForCatalog } from './lib/project-seo-slugs.mjs';
+import { isPublishedCatalogProject, seoSlugForCatalog } from './lib/project-seo-slugs.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -491,7 +491,7 @@ function loadProjectsManifest() {
 function writeProjectSchemaJs() {
   const manifest = loadProjectsManifest();
 
-  const projects = manifest.projects.map((p) => {
+  const projects = manifest.projects.filter(isPublishedCatalogProject).map((p) => {
     const seoSlug = seoSlugForCatalog(p.slug);
     const thumb = p.thumbnail?.startsWith('http')
       ? p.thumbnail

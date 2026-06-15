@@ -352,8 +352,8 @@ class SinglePagePortfolio {
           typeof project.title === 'string' &&
           Array.isArray(project.images)
       );
-      // NOTE: Sykkel/Bike is intentionally disabled in frontend views without removing source data.
-      const enabledProjects = validProjects.filter((project) => project.slug !== 'bike');
+      // NOTE: Exclude unpublished catalog entries (see project-folders.json and scripts/lib/project-seo-slugs.mjs).
+      const enabledProjects = validProjects.filter((project) => project.published !== false);
       return enabledProjects.sort((a, b) => {
         const aRank = orderRank.has(a.slug) ? orderRank.get(a.slug) : Number.MAX_SAFE_INTEGER;
         const bRank = orderRank.has(b.slug) ? orderRank.get(b.slug) : Number.MAX_SAFE_INTEGER;
