@@ -1117,38 +1117,14 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
 
 /* NOTE: Opening row — vertical logo sits on the left text line; copy flows beside it. */
 #start .start-intro__opening-row {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  column-gap: 0.65rem;
-  align-items: start;
   padding-block: clamp(4rem, 8vw, 6rem);
 }
 
-/* NOTE: Vertical Formaa mark on the opening text line — no margins, 90° CCW. */
-#start .start-intro__logo {
-  margin: 0;
-  padding: 0;
-  line-height: 0;
-  align-self: start;
-  margin-top: 0.15em;
-}
-
-#start .start-intro__logo-mark {
-  display: block;
-  margin: 0;
-  width: 2.625rem;
-  height: auto;
-  transform: rotate(-90deg);
-  transform-origin: top left;
-  filter: brightness(0) invert(1);
-  opacity: 0.3;
-}
-
-/* NOTE: Homepage #start opening copy — generous gap between paragraphs. */
+/* NOTE: Homepage #start opening copy — gap between paragraphs. */
 #start .start-intro__opening {
   display: flex;
   flex-direction: column;
-  gap: clamp(3rem, 7vw, 5rem);
+  gap: 24px;
   padding-block: 0;
 }
 
