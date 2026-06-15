@@ -1,5 +1,5 @@
 window.__PROJECTS_MANIFEST = {
-  "generatedAt": "2026-05-15T16:15:00.000Z",
+  "generatedAt": "2026-06-14T22:52:13.626Z",
   "projects": [
     {
       "slug": "obseed",
@@ -154,7 +154,8 @@ window.__PROJECTS_MANIFEST = {
         "assets/images/Projects/Bike/bike6.jpg",
         "assets/images/Projects/Bike/bike1.jpg",
         "assets/images/Projects/Bike/bike8.webp"
-      ]
+      ],
+      "published": false
     },
     {
       "slug": "nomos",

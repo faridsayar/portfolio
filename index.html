@@ -99,10 +99,10 @@
     <link
       rel="preload"
       as="style"
-      href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Saira:wght@400;600;800&display=swap"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Saira:wght@400;600;800&display=swap"
       rel="stylesheet"
     />
 
@@ -179,16 +179,29 @@
     <main>
       <section class="section section--white" id="start" aria-label="Dette gjør vi">
         <div class="section-inner">
-          <!-- NOTE: Homepage #start opening copy — eyebrow + welcoming lead in one spaced block. -->
-          <div class="start-intro__opening">
-            <p class="start-intro__eyebrow">
-              Industridesign og produktutvikling med fokus på det som teller: form, funksjon og
-              veien til markedet.
-            </p>
-            <p class="section-lead">
-              Har du en ide om et produkt som du tror vil lykkes i markedet? Kanskje du ikke helt
-              vet hvor du skal begynne? Da har du kommet riktig sted!
-            </p>
+          <!-- NOTE: Opening block — vertical logo on left text line, eyebrow + lead beside it. -->
+          <div class="start-intro__opening-row">
+            <div class="start-intro__logo" aria-hidden="true">
+              <img
+                class="start-intro__logo-mark"
+                src="assets/formaa-logo.svg"
+                alt=""
+                width="40"
+                height="27"
+                aria-hidden="true"
+              />
+            </div>
+
+            <div class="start-intro__opening">
+              <p class="start-intro__eyebrow">
+                Industridesign og produktutvikling med fokus på det som teller: form, funksjon og
+                veien til markedet.
+              </p>
+              <p class="section-lead">
+                Har du en ide om et produkt som du tror vil lykkes i markedet? Kanskje du ikke helt
+                vet hvor du skal begynne? Da har du kommet riktig sted!
+              </p>
+            </div>
           </div>
 
           <!-- NOTE: Homepage #start intro — div.section-1 with title, bullets left, 16:9 visual right. -->
@@ -428,7 +441,7 @@
                       <!-- NOTE: Primary CTA + Prosess inline link beside each other. -->
                       <div class="start-intro__actions">
                         <a class="hero-cta" href="#application-form">Ta kontakt</a>
-                        <a class="category-projects-link" href="/tjenester-prosess">
+                        <a class="category-projects-link" href="/tjenester-prosess#prosess">
                           Prosess
                           <img
                             class="category-projects-link__arrow"
@@ -555,109 +568,117 @@
 
     <div data-component="application-form"></div>
 
-    <!-- NOTE: Full-width idea strip after contact form; FAQ follows, then personvern. -->
-    <div class="ideas-strip" aria-label="Ideer og skisser">
-      <div class="ideas-strip__grid" data-ideas-strip></div>
-    </div>
-
-    <!-- NOTE: FAQ block (after ideas strip, before personvern). -->
+    <!-- NOTE: FAQ block (before personvern) — collapsible; full Q&A stays in DOM for SEO + FAQPage schema. -->
     <section
       id="faq"
       class="section section--white section--faq"
       aria-label="Vanlige spørsmål om produktutvikling"
     >
       <div class="section-inner">
-        <p class="section-kicker">FAQ</p>
-        <h2 class="section-title">Vanlige spørsmål om Produktutvikling</h2>
+        <details class="section-disclosure" data-section-disclosure="faq">
+          <summary class="section-disclosure__trigger">
+            <span class="section-disclosure__heading">
+              <p class="section-kicker">FAQ</p>
+              <h2 class="section-title">Vanlige spørsmål om Produktutvikling</h2>
+            </span>
+            <span class="section-disclosure__icon" aria-hidden="true">
+              <img src="assets/triangle.svg" alt="" width="12" height="12" decoding="async" />
+            </span>
+          </summary>
 
-        <h3 class="section-title" style="font-size: 1.5rem">1. Hva koster et designprosjekt?</h3>
-        <p class="section-lead">
-          Kostnad avhenger av kompleksitet, omfang og tidslinje. Vi setter opp en tydelig plan med
-          prioriterte aktiviteter slik at dere kan starte med riktig nivå og skalere videre. Se
-          gjerne vårt <a class="internal-text-link" href="/prisestimat">prisestimat</a> for et raskt
-          overslag.
-        </p>
+          <div class="section-disclosure__panel">
+            <h3 class="section-title" style="font-size: 1.5rem">
+              1. Hva koster et designprosjekt?
+            </h3>
+            <p class="section-lead">
+              Kostnad avhenger av kompleksitet, omfang og tidslinje. Vi setter opp en tydelig plan
+              med prioriterte aktiviteter slik at dere kan starte med riktig nivå og skalere videre.
+              Se gjerne vårt <a class="internal-text-link" href="/prisestimat">prisestimat</a> for
+              et raskt overslag.
+            </p>
 
-        <h3 class="section-title" style="font-size: 1.5rem">
-          2. Hvor lang tid tar det fra idé til prototype?
-        </h3>
-        <p class="section-lead">
-          En første prototype kan ofte utvikles i løpet av få uker, mens et komplett
-          produksjonsforløp normalt tar flere faser. Vi konkretiserer dette i oppstarten og bruker
-          ofte
-          <a class="internal-text-link" href="/innsikt/hvordan-lage-prototype">prototyping</a> og
-          <a class="internal-text-link" href="/tjenester-prosess">CAD-modelering</a>
-          for å redusere risiko.
-        </p>
+            <h3 class="section-title" style="font-size: 1.5rem">
+              2. Hvor lang tid tar det fra idé til prototype?
+            </h3>
+            <p class="section-lead">
+              En første prototype kan ofte utvikles i løpet av få uker, mens et komplett
+              produksjonsforløp normalt tar flere faser. Vi konkretiserer dette i oppstarten og
+              bruker ofte
+              <a class="internal-text-link" href="/innsikt/hvordan-lage-prototype">prototyping</a>
+              og
+              <a class="internal-text-link" href="/tjenester-prosess">CAD-modelering</a>
+              for å redusere risiko.
+            </p>
 
-        <h3 class="section-title" style="font-size: 1.5rem">
-          3. Jobber dere kun med selskaper i Oslo?
-        </h3>
-        <p class="section-lead">
-          Nei. Vi Kan møte og arbeide med dere i Oslo, Akershus (Viken), Buskerud og Østfold, mens
-          resten av Norge kan vi hjelpe digitalt og med begrenset fysisk samhandling. Produksjon av
-          prototype kan også løses via post, men legger på tid for gjennomføring og må regnes på, og
-          generelt vil være vanskeligere, men ikke umulig.
-        </p>
+            <h3 class="section-title" style="font-size: 1.5rem">
+              3. Jobber dere kun med selskaper i Oslo?
+            </h3>
+            <p class="section-lead">
+              Nei. Vi Kan møte og arbeide med dere i Oslo, Akershus (Viken), Buskerud og Østfold,
+              mens resten av Norge kan vi hjelpe digitalt og med begrenset fysisk samhandling.
+              Produksjon av prototype kan også løses via post, men legger på tid for gjennomføring
+              og må regnes på, og generelt vil være vanskeligere, men ikke umulig.
+            </p>
 
-        <h3 class="section-title" style="font-size: 1.5rem">
-          4. Kan dere gå inn i et prosjekt som allerede er i gang?
-        </h3>
-        <p class="section-lead">
-          Ja. Vi kan bidra som spesialistressurs i deler av løpet eller ta ansvar for en hel fase,
-          for eksempel
-          <a class="internal-text-link" href="/innsikt/fra-oppfinnelse-til-produksjon">konsept</a>,
-          designforbedring,
-          <a class="internal-text-link" href="/innsikt/hvordan-lage-prototype">prototyping</a>
-          eller
-          <a class="internal-text-link" href="/tjenester-prosess">CAD-modelering</a>.
-        </p>
+            <h3 class="section-title" style="font-size: 1.5rem">
+              4. Kan dere gå inn i et prosjekt som allerede er i gang?
+            </h3>
+            <p class="section-lead">
+              Ja. Vi kan bidra som spesialistressurs i deler av løpet eller ta ansvar for en hel
+              fase, for eksempel
+              <a class="internal-text-link" href="/innsikt/fra-oppfinnelse-til-produksjon"
+                >konsept</a
+              >, designforbedring,
+              <a class="internal-text-link" href="/innsikt/hvordan-lage-prototype">prototyping</a>
+              eller
+              <a class="internal-text-link" href="/tjenester-prosess">CAD-modelering</a>.
+            </p>
 
-        <h3 class="section-title" style="font-size: 1.5rem">
-          5. Hvilke leveranser får vi underveis?
-        </h3>
-        <p class="section-lead">
-          Dere får konkrete leveranser som beslutningsgrunnlag, konsepter, modeller, prototyper og
-          anbefalinger, test resultater, tekniske tegninger og produksjonsplan for videre utvikling
-          og produksjon. Du kan se eksempler på våre
-          <a class="internal-text-link" href="/prosjekter">prosjektsider</a>.
-        </p>
+            <h3 class="section-title" style="font-size: 1.5rem">
+              5. Hvilke leveranser får vi underveis?
+            </h3>
+            <p class="section-lead">
+              Dere får konkrete leveranser som beslutningsgrunnlag, konsepter, modeller, prototyper
+              og anbefalinger, test resultater, tekniske tegninger og produksjonsplan for videre
+              utvikling og produksjon. Du kan se eksempler på våre
+              <a class="internal-text-link" href="/prosjekter">prosjektsider</a>.
+            </p>
 
-        <h3 class="section-title" style="font-size: 1.5rem">6. Hvordan starter vi et samarbeid?</h3>
-        <p class="section-lead">
-          Send en kort forespørsel via skjemaet. Eller send en epost til hei@formaa.no Vi tar en
-          innledende samtale, avklarer mål og foreslår et praktisk oppsett for første fase. Du kan
-          også lese mer
-          <a class="internal-text-link" href="/oss">om oss</a> før du sender inn.
-        </p>
+            <h3 class="section-title" style="font-size: 1.5rem">
+              6. Hvordan starter vi et samarbeid?
+            </h3>
+            <p class="section-lead">
+              Send en kort forespørsel via skjemaet. Eller send en epost til hei@formaa.no Vi tar en
+              innledende samtale, avklarer mål og foreslår et praktisk oppsett for første fase. Du
+              kan også lese mer
+              <a class="internal-text-link" href="/oss">om oss</a> før du sender inn.
+            </p>
 
-        <h3 class="section-title" style="font-size: 1.5rem">
-          7. Jobber dere med hardware-startups i Norge?
-        </h3>
-        <p class="section-lead">
-          Ja. Vi er vant til produktutvikling for startups med fysiske produkter — fra tidlig
-          produktidé til prototype og produksjonsforberedelse. Les mer om
-          <a class="internal-text-link" href="/innsikt/produktutvikling-hardware-startup"
-            >produktutvikling for hardware-startups</a
-          >.
-        </p>
+            <h3 class="section-title" style="font-size: 1.5rem">
+              7. Jobber dere med hardware-startups i Norge?
+            </h3>
+            <p class="section-lead">
+              Ja. Vi er vant til produktutvikling for startups med fysiske produkter — fra tidlig
+              produktidé til prototype og produksjonsforberedelse. Les mer om
+              <a class="internal-text-link" href="/innsikt/produktutvikling-hardware-startup"
+                >produktutvikling for hardware-startups</a
+              >.
+            </p>
 
-        <h3 class="section-title" style="font-size: 1.5rem">
-          8. Kan dere hjelpe meg å få produsert en oppfinnelse?
-        </h3>
-        <p class="section-lead">
-          Ja, i de fleste tilfeller. Vi hjelper med å strukturere produktutviklingen, lage prototype
-          og forberede teknisk underlag slik at du kan gå videre mot produksjon. Se
-          <a class="internal-text-link" href="/innsikt/fra-oppfinnelse-til-produksjon"
-            >fra oppfinnelse til produksjon</a
-          >
-          for en praktisk oversikt.
-        </p>
-        <img
-          class="section-banner-image"
-          src="assets/formaa-banner.jpg"
-          alt="Formaa designstudio banner"
-        />
+            <h3 class="section-title" style="font-size: 1.5rem">
+              8. Kan dere hjelpe meg å få produsert en oppfinnelse?
+            </h3>
+            <p class="section-lead">
+              Ja, i de fleste tilfeller. Vi hjelper med å strukturere produktutviklingen, lage
+              prototype og forberede teknisk underlag slik at du kan gå videre mot produksjon. Se
+              <a class="internal-text-link" href="/innsikt/fra-oppfinnelse-til-produksjon"
+                >fra oppfinnelse til produksjon</a
+              >
+              for en praktisk oversikt.
+            </p>
+            <div class="section-banner-rule" role="presentation" aria-hidden="true"></div>
+          </div>
+        </details>
       </div>
     </section>
 
@@ -668,7 +689,6 @@
     <div data-component="site-footer"></div>
     <!-- NOTE: Prebuilt project manifest loaded as JS to support environments where `fetch` from local files is blocked. -->
     <script src="shared-quotes-carousel.js?v=2" defer></script>
-    <script src="assets/data/grid-strip-media-manifest.js?v=3" defer></script>
     <script src="assets/data/projects-manifest.js?v=3" defer></script>
 
     <script src="assets/data/company-partners-manifest.js?v=1" defer></script>

@@ -20,6 +20,9 @@ The project now uses a safe split strategy:
 - `styles/article.css` - insights/article-specific style bundle
 - `styles/pricing.css` - pricing page bundle
 - `styles/category.css` - category/location page bundle
+- `styles/en-landing.css` - English intent landing page bundle
+
+Legacy monolith `styles.css` at repo root was removed; all pages load bundles from `styles/` only.
 
 Keep selectors/class names stable when moving rules between bundles.
 
@@ -33,22 +36,25 @@ Current shared components:
 - `application-form.html` (design consultation inquiry + timeline; public URL `/application-form`)
 - `article-layout.html`
 - `project-cta.html`
-- `contact-section-compact.html`
 - `privacy-trust-section.html` (personvern og konfidensialitet block)
 - `partner-logos-section.html` (Samarbeidspartnere logo strip)
 - `cooperation-partners.html` (partner cards on Om oss)
 - `hero-process-flow.html` (process strip under homepage hero)
+- `hva-du-far-section.html` (homepage “Hva du får” block)
+- `quotes-carousel-section.html` (testimonial carousel)
+- `category-feature-banner.html`, `category-projects-link.html`, `category-yanmee-partner-banner.html` (category page inserts)
+- `like-share-strip.html` (project/article hero actions)
+- `en-landing-layout.html` (English service landings)
 - `site-footer.html`
 
 `components-loader.js` supports multi-pass loading so components can contain nested `data-component` slots.
 
 ## Key UX Features
 
-- Hero media with clip shuffle (`script.js`)
+- Hero media clip shuffle from `assets/images/shuffle-images/` (`script.js`)
 - Interactive inquiry timeline with 5 weighted phases
 - Web3Forms-based inquiry submission (no local mail client popup)
 - Project grid hydrated from `assets/data/projects-manifest.js` / `.json`
-- Ideas grid strip hydrated from `assets/data/grid-strip-media-manifest.js` (`assets/images/grid-strip/` only)
 - Article cards + shared article layout utilities
 - WebP-first image references for improved payload and paint performance
 
@@ -56,7 +62,7 @@ Current shared components:
 
 Search engines and AI crawlers use root discovery files:
 
-- `sitemap.xml` — one entry per public route (106 URLs; includes `/tjenester-prosess`)
+- `sitemap.xml` — one entry per public route (regenerate with `pnpm generate:sitemap`; excludes unpublished catalog projects such as `bike`)
 - `robots.txt` — crawl policy + explicit rules for AI bots (GPTBot, ClaudeBot, Google-Extended, PerplexityBot, etc.)
 - `llms.txt` — LLM discovery: site scope, important URLs, policies
 - `ai.txt` — short AI crawler companion (topics, key hubs, links to `llms.txt` and sitemap)
@@ -71,7 +77,7 @@ Before commit or deploy, run the full sequence:
 corepack pnpm publish:prepare
 ```
 
-This runs, in order: `generate:sitemap` → `generate:crawler-files` → `sync:meta-descriptions` → `generate:schema-markup` → `generate:innsikt-indexes` → `generate:prosjekter-indexes` → `format`.
+This runs, in order: `generate:projects-manifest` → `generate:sitemap` → `generate:crawler-files` → `sync:meta-descriptions` → `generate:schema-markup` → `generate:innsikt-indexes` → `generate:prosjekter-indexes` → `format`.
 
 Or step by step:
 
@@ -176,6 +182,7 @@ To add or edit a service: extend `EN_LANDING_PAGES` in `en-landing-pages.js`, ad
 
 | Script                                    | Purpose                                                                   |
 | ----------------------------------------- | ------------------------------------------------------------------------- |
+| `scripts/generate-projects-manifest.mjs`  | Writes `assets/data/projects-manifest.js` from `project-folders.json`     |
 | `scripts/generate-sitemap.mjs`            | Writes `sitemap.xml` from routes + category/innsikt/prosjekt discovery    |
 | `scripts/generate-crawler-files.mjs`      | Writes `robots.txt`, `llms.txt`, `ai.txt`                                 |
 | `scripts/sync-meta-descriptions.mjs`      | Syncs description + titles from page copy (curated override for homepage) |
@@ -183,7 +190,14 @@ To add or edit a service: extend `EN_LANDING_PAGES` in `en-landing-pages.js`, ad
 | `scripts/generate-innsikt-indexes.mjs`    | Writes `innsikt/{slug}/index.html` from root stubs                        |
 | `scripts/generate-prosjekter-indexes.mjs` | Writes `prosjekter/{slug}/index.html` from root stubs                     |
 | `scripts/lib/public-routes.mjs`           | Shared static hub routes for sitemap + crawler files                      |
-| `scripts/lib/project-seo-slugs.mjs`       | Shared catalog ↔ SEO slug map for prosjekter URLs                         |
+| `scripts/lib/project-seo-slugs.mjs`       | Catalog ↔ SEO slug map; unpublished project filter for sitemap/schema     |
+
+### Project catalog
+
+- Source config: `project-folders.json` (folder names, thumbnails, image order, optional `"published": false`)
+- Generated manifest: `assets/data/projects-manifest.js` / `.json` via `pnpm generate:projects-manifest`
+- Public grids, sitemap, and JSON-LD skip entries with `published: false` (see `scripts/lib/project-seo-slugs.mjs`)
+- SEO URL slugs for published projects map via `CATALOG_TO_SEO_SLUG` in `project-seo-slugs.mjs`; add matching `prosjekt-*.html` stub + run `generate:prosjekter-indexes`
 
 Structured data currently used (regenerate with `pnpm generate:schema-markup`):
 
@@ -234,15 +248,6 @@ Source files are root stubs `innsikt-{slug}.html` with canonical `/innsikt/{slug
 | `produktutvikling-hardware-startup` | `innsikt-produktutvikling-hardware-startup.html` | Hardware startup Norge   |
 
 Legacy flat URLs `innsikt-{slug}` and `innsikt-{slug}.html` 301 to `/innsikt/{slug}` via `.htaccess`.
-
-## Ideas grid media workflow
-
-- Source folder for grid assets: `assets/images/grid`.
-- Runtime data file: `assets/data/grid-strip-media-manifest.js` (homepage ideas strip + category ideas strip via `script.js`).
-- When new strip assets are added under `assets/images/grid-strip/`, append them to `grid-strip-media-manifest.js` and bump the manifest query string on `index.html` / in `script.js`.
-- Category pages show one mp4 per region (`akershus`, `buskerud`, `norge`, `oslo`, `ostfold`); homepage shows all strip mp4s evenly interleaved with images.
-- If GIF files are added to `assets/images/grid`, convert them to MP4 before publishing and ensure the `.mp4` file is included in the manifest.
-- The standalone `/gallery` page is retired (`gallery.html` redirects to `/`; omit from `sitemap.xml`).
 
 ## URL Canonicalization
 

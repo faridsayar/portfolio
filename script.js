@@ -120,7 +120,6 @@ function initializeLikeShareStrip(strip, options) {
 class SinglePagePortfolio {
   constructor() {
     this.projectCatalogPromise = null;
-    this.ideasStripMediaCatalog = null;
     this.categoryFeatureBannerMarkupPromise = null;
     this.setupHeroVideoShuffle();
     this.setupCategoryHeroVideoShuffle();
@@ -131,7 +130,7 @@ class SinglePagePortfolio {
     this.setupPricingPackages();
     this.setupProjectPageNavVerticalAlign();
     this.initializeProjectViews();
-    this.initializeGridIdeasViews();
+    this.initializeCategoryPreFormViews();
     this.setupCategoryEnServiceTags();
     this.setupProsessImageGridColumns();
   }
@@ -353,8 +352,8 @@ class SinglePagePortfolio {
           typeof project.title === 'string' &&
           Array.isArray(project.images)
       );
-      // NOTE: Sykkel/Bike is intentionally disabled in frontend views without removing source data.
-      const enabledProjects = validProjects.filter((project) => project.slug !== 'bike');
+      // NOTE: Exclude unpublished catalog entries (see project-folders.json and scripts/lib/project-seo-slugs.mjs).
+      const enabledProjects = validProjects.filter((project) => project.published !== false);
       return enabledProjects.sort((a, b) => {
         const aRank = orderRank.has(a.slug) ? orderRank.get(a.slug) : Number.MAX_SAFE_INTEGER;
         const bRank = orderRank.has(b.slug) ? orderRank.get(b.slug) : Number.MAX_SAFE_INTEGER;
@@ -386,181 +385,25 @@ class SinglePagePortfolio {
     this.setupProjectTemplateGalleries();
   }
 
-  // NOTE: Category location slugs map 1:1 to mp4 entries in grid-strip-media-manifest.js (equal video distribution).
-  getIdeasStripLocationSlugs() {
-    return ['akershus', 'buskerud', 'norge', 'oslo', 'ostfold'];
-  }
-
-  getIdeasStripLocationSlugFromPath() {
-    const segments = window.location.pathname.replace(/\/+$/, '').split('/').filter(Boolean);
-    const last = segments[segments.length - 1]?.toLowerCase() || '';
-    return this.getIdeasStripLocationSlugs().includes(last) ? last : null;
-  }
-
-  // NOTE: Spread videos evenly among images across the full-bleed ideas strip.
-  interleaveIdeasStripMedia(videos, images) {
-    if (!videos.length) return [...images];
-    if (!images.length) return [...videos];
-
-    const items = [];
-    let imageIndex = 0;
-    const imagesPerGap = images.length / (videos.length + 1);
-
-    for (let videoIndex = 0; videoIndex <= videos.length; videoIndex += 1) {
-      const targetImageCount =
-        videoIndex === videos.length
-          ? images.length - imageIndex
-          : Math.round(imagesPerGap * (videoIndex + 1)) - imageIndex;
-
-      for (let count = 0; count < targetImageCount && imageIndex < images.length; count += 1) {
-        items.push(images[imageIndex]);
-        imageIndex += 1;
-      }
-
-      if (videoIndex < videos.length) items.push(videos[videoIndex]);
-    }
-
-    return items;
-  }
-
-  async ensureIdeasStripManifestLoaded() {
-    if (Array.isArray(window.__GRID_STRIP_MEDIA_MANIFEST?.items)) return;
-    if (this.ideasStripManifestLoadPromise) {
-      await this.ideasStripManifestLoadPromise;
-      return;
-    }
-
-    const existingScript = document.querySelector('script[src*="grid-strip-media-manifest.js"]');
-    if (existingScript) {
-      await new Promise((resolve) => {
-        if (Array.isArray(window.__GRID_STRIP_MEDIA_MANIFEST?.items)) {
-          resolve();
-          return;
-        }
-        existingScript.addEventListener('load', () => resolve(), { once: true });
-        existingScript.addEventListener('error', () => resolve(), { once: true });
-      });
-      return;
-    }
-
-    const sources = [
-      'assets/data/grid-strip-media-manifest.js?v=3',
-      '/assets/data/grid-strip-media-manifest.js?v=3',
-      '../../assets/data/grid-strip-media-manifest.js?v=3',
-    ];
-
-    this.ideasStripManifestLoadPromise = (async () => {
-      for (const src of sources) {
-        const loaded = await new Promise((resolve) => {
-          const script = document.createElement('script');
-          script.src = src;
-          script.defer = true;
-          script.onload = () => resolve(true);
-          script.onerror = () => {
-            script.remove();
-            resolve(false);
-          };
-          document.head.appendChild(script);
-        });
-        if (loaded && Array.isArray(window.__GRID_STRIP_MEDIA_MANIFEST?.items)) return;
-      }
-    })();
-
-    await this.ideasStripManifestLoadPromise;
-  }
-
-  async loadIdeasStripMediaCatalog() {
-    if (this.ideasStripMediaCatalog) return this.ideasStripMediaCatalog;
-    await this.ensureIdeasStripManifestLoaded();
-    const scriptTag = document.querySelector('script[src*="script.js"]');
-    const scriptSrcRaw = scriptTag?.getAttribute('src') || '';
-    const scriptSrcNoQuery = scriptSrcRaw.split('?')[0];
-    const scriptBasePrefix = scriptSrcNoQuery.endsWith('script.js')
-      ? scriptSrcNoQuery.slice(0, -'script.js'.length)
-      : '';
-    const normalizeAssetSrc = (src) => {
-      if (typeof src !== 'string') return '';
-      const trimmed = src.trim();
-      if (!trimmed) return '';
-      if (/^(https?:)?\/\//i.test(trimmed) || trimmed.startsWith('data:')) return trimmed;
-      if (trimmed.startsWith('/')) {
-        // NOTE: Keep absolute paths for hosted environments, but support file-based previews.
-        if (window.location.protocol === 'file:')
-          return `${scriptBasePrefix}${trimmed.replace(/^\//, '')}`;
-        return trimmed;
-      }
-      if (trimmed.startsWith('./') || trimmed.startsWith('../')) return trimmed;
-      // NOTE: Manifest paths are project-root relative (`assets/...`); prefix from script location.
-      return `${scriptBasePrefix}${trimmed.replace(/^\.?\//, '')}`;
-    };
-    const fromGlobal = Array.isArray(window.__GRID_STRIP_MEDIA_MANIFEST?.items)
-      ? window.__GRID_STRIP_MEDIA_MANIFEST.items
-      : [];
-    const normalizedItems = fromGlobal
-      .filter((item) => item && typeof item.src === 'string')
-      .filter((item) => !item.src.toLowerCase().endsWith('.gif'))
-      .map((item) => {
-        const src = normalizeAssetSrc(String(item.src));
-        const normalizedType = String(item.type || '').toLowerCase();
-        const isVideo = normalizedType === 'video' || /\.(mp4|mov|webm)$/i.test(src);
-        return {
-          src,
-          type: isVideo ? 'video' : 'image',
-          alt: item.name ? `Ideas strip: ${item.name}` : 'Ideas strip media',
-          location: typeof item.location === 'string' ? item.location.toLowerCase() : '',
-        };
-      });
-
-    const allVideos = normalizedItems.filter((item) => item.type === 'video');
-    const images = normalizedItems.filter((item) => item.type === 'image');
-
-    // NOTE: Use the full video + image catalog on every page so the strip matches the homepage count.
-    this.ideasStripMediaCatalog = this.interleaveIdeasStripMedia(allVideos, images);
-    return this.ideasStripMediaCatalog;
-  }
-
-  createGridMediaElement(item, className) {
-    if (item.type === 'video') {
-      const video = document.createElement('video');
-      video.className = className;
-      video.src = item.src;
-      video.muted = true;
-      video.loop = true;
-      video.autoplay = true;
-      video.playsInline = true;
-      video.preload = 'metadata';
-      video.setAttribute('aria-label', item.alt);
-      return video;
-    }
-    const img = document.createElement('img');
-    img.className = className;
-    img.src = item.src;
-    img.alt = item.alt;
-    img.loading = 'lazy';
-    return img;
-  }
-
-  async initializeGridIdeasViews() {
-    const mediaItems = await this.loadIdeasStripMediaCatalog();
+  async initializeCategoryPreFormViews() {
     await this.mountCategoryHeroProcessFlowComponent();
     await this.mountCategoryProjectsLink();
     await this.mountCategoryPreFormSections();
-    this.setupIdeasStrip(mediaItems);
   }
 
   async loadHeroProcessFlowMarkup() {
     if (this.heroProcessFlowMarkupPromise) return this.heroProcessFlowMarkupPromise;
     const fallbackMarkup = `<div class="hero-process-flow" aria-label="Fra konsept til produksjon">
   <p class="hero-process-flow__text">
-    <a class="hero-process-flow__step" href="/tjenester-prosess">Konsept</a>
+    <a class="hero-process-flow__step" href="/tjenester-prosess#prosess">Konsept</a>
     <img class="hero-process-flow__arrow hero-process-flow__arrow--lead" src="../../assets/small-arrow-right.svg" alt="" width="12" height="12" aria-hidden="true" />
-    <a class="hero-process-flow__step" href="/tjenester-prosess">3D</a>
+    <a class="hero-process-flow__step" href="/tjenester-prosess#prosess">3D</a>
     <img class="hero-process-flow__arrow" src="../../assets/small-arrow-right.svg" alt="" width="10" height="10" aria-hidden="true" />
-    <a class="hero-process-flow__step" href="/tjenester-prosess">CAD</a>
+    <a class="hero-process-flow__step" href="/tjenester-prosess#prosess">CAD</a>
     <img class="hero-process-flow__arrow" src="../../assets/small-arrow-right.svg" alt="" width="10" height="10" aria-hidden="true" />
-    <a class="hero-process-flow__step" href="/tjenester-prosess">Prototype</a>
+    <a class="hero-process-flow__step" href="/tjenester-prosess#prosess">Prototype</a>
     <img class="hero-process-flow__arrow" src="../../assets/small-arrow-right.svg" alt="" width="10" height="10" aria-hidden="true" />
-    <a class="hero-process-flow__step" href="/tjenester-prosess">Produksjon</a>
+    <a class="hero-process-flow__step" href="/tjenester-prosess#prosess">Produksjon</a>
   </p>
 </div>`;
     this.heroProcessFlowMarkupPromise = (async () => {
@@ -596,7 +439,7 @@ class SinglePagePortfolio {
 
   async loadCategoryFeatureBannerMarkup() {
     if (this.categoryFeatureBannerMarkupPromise) return this.categoryFeatureBannerMarkupPromise;
-    const fallbackMarkup = `<section class="section section--white section--features category-feature-banner-section" aria-label="Fordeler"><div class="section-inner"><div class="feature-banner" aria-label="Fordeler"></div><div class="ideas-strip" aria-label="Ideer og skisser"><div class="ideas-strip__grid" data-ideas-strip></div></div></div></section>`;
+    const fallbackMarkup = `<section class="section section--white section--features category-feature-banner-section" aria-label="Fordeler"><div class="section-inner"><div class="feature-banner" aria-label="Fordeler"></div></div></section>`;
     this.categoryFeatureBannerMarkupPromise = (async () => {
       try {
         let response = await fetch('/components/category-feature-banner.html', {
@@ -621,7 +464,7 @@ class SinglePagePortfolio {
 
   async loadCategoryProjectsLinkMarkup() {
     if (this.categoryProjectsLinkMarkupPromise) return this.categoryProjectsLinkMarkupPromise;
-    const fallbackMarkup = `<nav class="category-inline-links" aria-label="Nyttige lenker"><p class="category-inline-links__item"><a class="category-projects-link" href="/prosjekter">Alle prosjekter<img class="category-projects-link__arrow" src="/assets/small-arrow-right.svg" alt="" width="12" height="12" aria-hidden="true" /></a></p><p class="category-inline-links__item"><a class="category-projects-link" href="/tjenester-prosess">Prosess<img class="category-projects-link__arrow" src="/assets/small-arrow-right.svg" alt="" width="12" height="12" aria-hidden="true" /></a></p><p class="category-inline-links__item"><a class="category-projects-link" href="/innsikt">Innsikt<img class="category-projects-link__arrow" src="/assets/small-arrow-right.svg" alt="" width="12" height="12" aria-hidden="true" /></a></p><p class="category-inline-links__item"><a class="category-projects-link" href="/oss">Bli kjent med oss<img class="category-projects-link__arrow" src="/assets/small-arrow-right.svg" alt="" width="12" height="12" aria-hidden="true" /></a></p><p class="category-inline-links__item"><a class="category-projects-link" href="/application-form">Kontakt oss<img class="category-projects-link__arrow" src="/assets/small-arrow-right.svg" alt="" width="12" height="12" aria-hidden="true" /></a></p><p class="category-inline-links__item"><a class="category-projects-link" href="/prisestimat">Prisoversikt<img class="category-projects-link__arrow" src="/assets/small-arrow-right.svg" alt="" width="12" height="12" aria-hidden="true" /></a></p></nav>`;
+    const fallbackMarkup = `<nav class="category-inline-links" aria-label="Nyttige lenker"><p class="category-inline-links__item"><a class="category-projects-link" href="/prosjekter">Alle prosjekter<img class="category-projects-link__arrow" src="/assets/small-arrow-right.svg" alt="" width="12" height="12" aria-hidden="true" /></a></p><p class="category-inline-links__item"><a class="category-projects-link" href="/tjenester-prosess#prosess">Prosess<img class="category-projects-link__arrow" src="/assets/small-arrow-right.svg" alt="" width="12" height="12" aria-hidden="true" /></a></p><p class="category-inline-links__item"><a class="category-projects-link" href="/innsikt">Innsikt<img class="category-projects-link__arrow" src="/assets/small-arrow-right.svg" alt="" width="12" height="12" aria-hidden="true" /></a></p><p class="category-inline-links__item"><a class="category-projects-link" href="/oss">Bli kjent med oss<img class="category-projects-link__arrow" src="/assets/small-arrow-right.svg" alt="" width="12" height="12" aria-hidden="true" /></a></p><p class="category-inline-links__item"><a class="category-projects-link" href="/application-form">Kontakt oss<img class="category-projects-link__arrow" src="/assets/small-arrow-right.svg" alt="" width="12" height="12" aria-hidden="true" /></a></p><p class="category-inline-links__item"><a class="category-projects-link" href="/prisestimat">Prisoversikt<img class="category-projects-link__arrow" src="/assets/small-arrow-right.svg" alt="" width="12" height="12" aria-hidden="true" /></a></p></nav>`;
     this.categoryProjectsLinkMarkupPromise = (async () => {
       try {
         let response = await fetch('/components/category-projects-link.html', {
@@ -677,23 +520,6 @@ class SinglePagePortfolio {
 
     applicationFormSection.insertAdjacentHTML('beforebegin', featureMarkup);
     applicationFormSection.dataset.preFormBlocksMounted = 'true';
-  }
-
-  setupIdeasStrip(mediaItems) {
-    const strip = document.querySelector('[data-ideas-strip]');
-    if (!strip) return;
-    if (!Array.isArray(mediaItems) || mediaItems.length === 0) return;
-
-    const fragment = document.createDocumentFragment();
-    mediaItems.forEach((item) => {
-      const cell = document.createElement('div');
-      cell.className = 'ideas-strip__item';
-      cell.appendChild(this.createGridMediaElement(item, 'ideas-strip__media'));
-      fragment.appendChild(cell);
-    });
-
-    strip.innerHTML = '';
-    strip.appendChild(fragment);
   }
 
   // NOTE: Skip multi-clip hero shuffle when Data Saver is on (Network Information API) or user prefers reduced motion; otherwise shuffle on every viewport size.
@@ -1736,11 +1562,33 @@ function scrollToApplicationFormHashIfPresent() {
   });
 }
 
+// NOTE: Open FAQ disclosure and scroll when URL hash is `#faq` (e.g. from privacy block link).
+function openFaqDisclosureFromHashIfPresent() {
+  if (window.location.hash !== '#faq') return;
+  const scrollToFaq = () => {
+    const disclosure = document.querySelector('[data-section-disclosure="faq"]');
+    if (disclosure) disclosure.open = true;
+    const target = document.getElementById('faq');
+    if (!target) return;
+    target.scrollIntoView({ block: 'start', behavior: 'auto' });
+  };
+  scrollToFaq();
+  requestAnimationFrame(() => {
+    requestAnimationFrame(scrollToFaq);
+  });
+}
+
+function initializeSectionDisclosures() {
+  openFaqDisclosureFromHashIfPresent();
+  window.addEventListener('hashchange', openFaqDisclosureFromHashIfPresent);
+}
+
 // NOTE: Initialize page behaviors when DOM is ready.
 function initializePortfolioApp() {
   if (window.singlePagePortfolio) return;
   window.singlePagePortfolio = new SinglePagePortfolio();
   scrollToApplicationFormHashIfPresent();
+  initializeSectionDisclosures();
 }
 
 document.addEventListener('components:ready', initializePortfolioApp, { once: true });

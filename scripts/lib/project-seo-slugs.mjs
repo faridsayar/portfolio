@@ -25,3 +25,12 @@ export function seoSlugForCatalog(catalogSlug) {
 export function catalogSlugForSeo(seoSlug) {
   return SEO_SLUG_TO_CATALOG[seoSlug] || seoSlug;
 }
+
+/** NOTE: Catalog slugs kept in project-folders.json but excluded from sitemap, schema, and public grids. */
+export const UNPUBLISHED_CATALOG_SLUGS = new Set(['bike']);
+
+export function isPublishedCatalogProject(project) {
+  if (!project || typeof project.slug !== 'string') return false;
+  if (project.published === false) return false;
+  return !UNPUBLISHED_CATALOG_SLUGS.has(project.slug);
+}

@@ -76,6 +76,7 @@ async function main() {
       folder: project.folder,
       thumbnail,
       images,
+      ...(project.published === false ? { published: false } : {}),
     });
   }
 
