@@ -2377,6 +2377,27 @@ section[aria-label='Oss'] .about-competence-grid {
   margin-top: 2.5rem;
 }
 
+/* NOTE: Om oss — partner cards directly under Samarbeidspartnere title, logos below cards. */
+section[aria-label='Oss'] .section--partner-logos--oss-cards {
+  background: transparent;
+}
+
+section[aria-label='Oss'] .section--partner-logos--oss-cards > .section-inner {
+  margin: 0;
+  padding: 0;
+  max-width: none;
+}
+
+section[aria-label='Oss'] .section--partner-logos--oss-cards .cooperation-partners {
+  margin-top: 1.25rem;
+}
+
+section[aria-label='Oss'] .section--partner-logos--oss-cards .partner-logos {
+  justify-content: flex-start;
+  padding-top: 2.5rem;
+  padding-bottom: 0;
+}
+
 section[aria-label='Oss'] .about-competence-block:not(:first-child) .about-competence-block__title {
   margin-top: 2.5rem;
 }
@@ -2555,6 +2576,7 @@ section[aria-label='Oss'] .about-competence-block:not(:first-child) .about-compe
   font-weight: var(--font-weight-semibold);
   letter-spacing: -0.01em;
   line-height: 1.3;
+  text-transform: uppercase;
 }
 
 .about-competence-list {
@@ -2566,6 +2588,39 @@ section[aria-label='Oss'] .about-competence-block:not(:first-child) .about-compe
 
 .about-competence-list li + li {
   margin-top: 0.45rem;
+}
+
+/* NOTE: Om oss software stack — equal-size grayscale tool icons below competence columns. */
+.about-software-stack {
+  margin-top: 2.5rem;
+}
+
+.about-software-stack__grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.25rem 1.75rem;
+  margin: 32px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.about-software-stack__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+}
+
+.about-software-stack__icon {
+  display: block;
+  width: 3rem;
+  height: 3rem;
+  object-fit: contain;
+  /* NOTE: Grayscale + invert lifts dark SVG marks to a consistent mid-light tone on grey canvas. */
+  filter: grayscale(100%) invert(1) brightness(1.35);
+  opacity: 0.68;
 }
 
 /* Tips/news page article cards */
@@ -2855,7 +2910,7 @@ section[aria-label='Tjenester'] .start-tjenester {
   object-position: center bottom;
 }
 
-/* NOTE: Om oss workshop strip — overlay copy above dark ::after tint; aligned to section-inner column. */
+/* NOTE: Om oss workshop strip — overlay copy above dark ::after tint; same column as .section-inner. */
 .about-page-body .quotes-lutvann-media--oss .quotes-lutvann-media__overlay {
   position: absolute;
   top: 0;
@@ -2870,7 +2925,7 @@ section[aria-label='Tjenester'] .start-tjenester {
   width: 100%;
   max-width: 70rem;
   margin: 0;
-  padding: 1.25rem;
+  padding-inline: 1.25rem;
   color: var(--color-white);
   pointer-events: none;
 }
