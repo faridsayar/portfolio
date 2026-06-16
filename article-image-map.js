@@ -36,7 +36,7 @@
     if (String(key) === 'innsikt-fra-oppfinnelse-til-produksjon')
       return toRootAssetPath('assets/images/Articles/CAD.webp');
     if (String(key) === 'innsikt-produktutvikling-hardware-startup')
-      return toRootAssetPath('assets/images/social-sharing.webp');
+      return toRootAssetPath('assets/images/prosess/3d-modelering.webp');
     return imagePool[0];
   }
 

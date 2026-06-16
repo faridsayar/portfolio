@@ -184,7 +184,7 @@ function buildTjenesterGraph({ url, title, description }) {
       inLanguage: 'nb-NO',
       provider: publisherRef(),
       areaServed: { '@type': 'Country', name: 'Norge' },
-      image: `${SITE}/assets/images/social-sharing.webp`,
+      image: `${SITE}/assets/images/prosess/3d-modelering.webp`,
     },
   ]);
 }
@@ -232,7 +232,7 @@ function buildIndexGraph(html) {
       name: 'Formaa',
       url: `${SITE}/`,
       logo: `${SITE}/assets/formaa-logo.svg`,
-      image: `${SITE}/assets/images/social-sharing.webp`,
+      image: `${SITE}/assets/images/prosess/3d-modelering.webp`,
       description:
         'Produktutvikling og 3D-visualisering for startups i Norge — prototyping, 3D-modellering, CAD-modelering og produksjonsforberedelse.',
       areaServed: [
@@ -279,7 +279,7 @@ function buildIndexGraph(html) {
       name: 'Formaa',
       url: `${SITE}/`,
       logo: `${SITE}/assets/formaa-logo.svg`,
-      image: `${SITE}/assets/images/social-sharing.webp`,
+      image: `${SITE}/assets/images/prosess/3d-modelering.webp`,
       description:
         'Formaa er et designstudio i Norge for produktutvikling og 3D-visualisering — fra idé og prototype til produksjon.',
       sameAs: [
