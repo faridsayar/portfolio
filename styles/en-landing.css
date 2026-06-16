@@ -139,7 +139,7 @@
 .en-landing-hero__logo {
   position: absolute;
   top: 1.25rem;
-  left: max(1.25rem, calc((100vw - 70rem) / 2 + 1.25rem));
+  left: var(--page-content-start);
   display: block;
   pointer-events: auto;
 }
@@ -154,8 +154,8 @@
 .en-landing-hero__breadcrumb {
   position: absolute;
   top: 4.15rem;
-  left: max(1.25rem, calc((100vw - 70rem) / 2 + 1.25rem));
-  right: max(1.25rem, calc((100vw - 70rem) / 2 + 1.25rem));
+  left: var(--page-content-start);
+  right: var(--page-content-start);
   margin: 0;
   pointer-events: auto;
 }
@@ -186,7 +186,7 @@
 
 .en-landing-formats {
   margin: 0 auto;
-  padding: 0.5rem 1.25rem;
+  padding: 0.5rem var(--page-gutter);
   font-size: 0.75rem;
   line-height: 1.45;
   color: rgba(255, 255, 255, 0.72);
@@ -202,11 +202,11 @@
   position: absolute;
   z-index: 3;
   left: 50%;
-  right: max(1.25rem, calc((100vw - 70rem) / 2 + 1.25rem));
+  right: var(--page-content-start);
   top: 50%;
   transform: translateY(-42%);
   box-sizing: border-box;
-  padding-right: 1.25rem;
+  padding-right: var(--page-gutter);
   pointer-events: auto;
 }
 
@@ -351,9 +351,9 @@
 }
 
 .en-landing-keywords-wrap {
-  max-width: 70rem;
+  max-width: var(--content-max-width);
   margin: 0 auto;
-  padding: 0 1.25rem 2rem;
+  padding: 0 var(--page-gutter) 2rem;
 }
 
 .en-landing-keywords {
@@ -392,9 +392,9 @@
 }
 
 .en-landing-footer {
-  max-width: 70rem;
+  max-width: var(--content-max-width);
   margin: 0 auto;
-  padding: 2.5rem 1.25rem 3rem;
+  padding: 2.5rem var(--page-gutter) 3rem;
   font-size: 0.9rem;
   line-height: var(--line-height-relaxed);
   color: rgba(255, 255, 255, 0.65);
@@ -406,7 +406,7 @@
     bottom: 1.25rem;
     transform: none;
     left: 50%;
-    right: 1.25rem;
+    right: var(--page-gutter);
   }
 
   .en-landing-hero__breadcrumb {

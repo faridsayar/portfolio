@@ -70,6 +70,26 @@
   --timeline-phase-2: #5c5c5c; /* Prototype */
   --timeline-phase-3: #ff9a3d; /* Validering */
   --timeline-phase-4: #ff7300; /* Ferdigstilling */
+
+  /* NOTE: Shared horizontal page inset — 36px mobile minimum; scales on tablet/desktop. */
+  --content-max-width: 70rem;
+  --page-gutter: 2.25rem;
+  --page-content-start: max(
+    var(--page-gutter),
+    calc((100vw - var(--content-max-width)) / 2 + var(--page-gutter))
+  );
+}
+
+@media (min-width: 768px) {
+  :root {
+    --page-gutter: clamp(2.25rem, 4.5vw, 3rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --page-gutter: clamp(2.25rem, 3.5vw, 3.5rem);
+  }
 }
 
 /* NOTE: One box model everywhere; pages that load Tailwind already use border-box—this keeps plain CSS pages aligned. */
@@ -258,7 +278,7 @@
   position: absolute;
   top: 1.25rem;
   /* Align with the centered hero content container (same left edge as .hero-content padding). */
-  left: max(1.25rem, calc((100vw - 70rem) / 2));
+  left: max(var(--page-gutter), calc((100vw - var(--content-max-width)) / 2));
   z-index: 2;
   height: 27.3px;
   width: auto;
@@ -295,7 +315,7 @@
 .not-found-logo {
   position: fixed;
   top: 1.25rem;
-  left: max(1.25rem, calc((100vw - 70rem) / 2));
+  left: max(var(--page-gutter), calc((100vw - var(--content-max-width)) / 2));
   pointer-events: auto;
   z-index: 20;
   transform: scale(0.75);
@@ -305,8 +325,8 @@
 .hero-content {
   position: relative;
   z-index: 1;
-  padding: 6rem 1.25rem 2.5rem 1.25rem;
-  max-width: 70rem;
+  padding: 6rem var(--page-gutter) 2.5rem;
+  max-width: var(--content-max-width);
   width: 100%;
   margin: 0 auto;
   color: var(--color-white);
@@ -430,9 +450,9 @@
 }
 
 .section-inner {
-  max-width: 70rem;
+  max-width: var(--content-max-width);
   margin: 0 auto;
-  padding: 4rem 1.25rem;
+  padding: 4rem var(--page-gutter);
 }
 
 /* NOTE: H1 — 36px mobile/tablet, 60px desktop; semibold, uppercase, -5% tracking. */
@@ -728,7 +748,7 @@ h3.section-title {
   bottom: 0;
   margin: 0 auto;
   width: 100%;
-  max-width: 70rem;
+  max-width: var(--content-max-width);
   box-sizing: border-box;
 }
 
@@ -784,8 +804,8 @@ section[aria-label='Formaa'] .breadcrumb {
   position: absolute;
   top: 1.25rem;
   z-index: 4;
-  left: max(1.25rem, calc((100vw - 70rem) / 2 + 1.25rem));
-  right: max(1.25rem, calc((100vw - 70rem) / 2 + 1.25rem));
+  left: var(--page-content-start);
+  right: var(--page-content-start);
   margin: 0;
 }
 
@@ -836,9 +856,9 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
   transform: translateX(-50%);
   box-sizing: border-box;
   width: 100%;
-  max-width: 70rem;
+  max-width: var(--content-max-width);
   margin: 0;
-  padding: 1.5rem 1.25rem 3.25rem;
+  padding: 1.5rem var(--page-gutter) 3.25rem;
 }
 
 .designstudio-competence-list {
@@ -1084,7 +1104,7 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
 
 /* NOTE: Homepage start — vertical inset for the "Dette gjør vi" section inner column. */
 #start .section-inner {
-  padding-top: 6rem;
+  padding-top: 0;
   padding-bottom: 6rem;
 }
 
@@ -1111,44 +1131,22 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
 #start .section-4 > .section-inner {
   max-width: none;
   margin: 0;
+  padding-top: 0;
   padding-left: 0;
   padding-right: 0;
 }
 
 /* NOTE: Opening row — vertical logo sits on the left text line; copy flows beside it. */
 #start .start-intro__opening-row {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  column-gap: 0.65rem;
-  align-items: start;
-  padding-block: clamp(4rem, 8vw, 6rem);
+  padding-top: 96px;
+  padding-bottom: 96px;
 }
 
-/* NOTE: Vertical Formaa mark on the opening text line — no margins, 90° CCW. */
-#start .start-intro__logo {
-  margin: 0;
-  padding: 0;
-  line-height: 0;
-  align-self: start;
-  margin-top: 0.15em;
-}
-
-#start .start-intro__logo-mark {
-  display: block;
-  margin: 0;
-  width: 2.625rem;
-  height: auto;
-  transform: rotate(-90deg);
-  transform-origin: top left;
-  filter: brightness(0) invert(1);
-  opacity: 0.3;
-}
-
-/* NOTE: Homepage #start opening copy — generous gap between paragraphs. */
+/* NOTE: Homepage #start opening copy — gap between paragraphs. */
 #start .start-intro__opening {
   display: flex;
   flex-direction: column;
-  gap: clamp(3rem, 7vw, 5rem);
+  gap: 24px;
   padding-block: 0;
 }
 
@@ -1195,7 +1193,7 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
   display: flex;
   justify-content: center;
   margin-top: 0.5rem;
-  padding: 0 1.25rem;
+  padding: 0 var(--page-gutter);
 }
 
 #start .start-intro__hashtags-row .section-1__hashtags,
@@ -1236,9 +1234,9 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
   gap: clamp(1.5rem, 4vw, 2.5rem);
   align-items: center;
   min-height: inherit;
-  max-width: 70rem;
+  max-width: var(--content-max-width);
   margin: 0 auto;
-  padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1.25rem, 4vw, 2.5rem);
+  padding: clamp(2.5rem, 6vw, 4.5rem) clamp(var(--page-gutter), 4vw, 2.5rem);
   color: var(--color-white);
 }
 
@@ -1799,8 +1797,8 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
   margin-top: 1.5rem;
   padding-top: 64px;
   padding-bottom: 64px;
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
+  padding-left: var(--page-gutter);
+  padding-right: var(--page-gutter);
   /* NOTE: Full-bleed light grey gradient — matches global page canvas tone. */
   background: var(--bg-page-gradient);
   display: grid;
@@ -2184,9 +2182,9 @@ section[aria-label='Verksteder og produksjon'] .section-inner {
 
 /* NOTE: Breadcrumb overlay aligned to shared content container, with light color for contrast on image. */
 .about-top-graphic__breadcrumb {
-  max-width: 70rem;
+  max-width: var(--content-max-width);
   margin: 0 auto;
-  padding: 0 1.25rem;
+  padding: 0 var(--page-gutter);
   color: var(--color-white);
 }
 
@@ -2204,7 +2202,7 @@ section[aria-label='Verksteder og produksjon'] .section-inner {
 .about-top-graphic__logo {
   position: absolute;
   top: 50%;
-  left: max(1.25rem, calc((100vw - 70rem) / 2 + 1.25rem));
+  left: var(--page-content-start);
   transform: translateY(-50%);
   z-index: 2;
   height: clamp(1.4rem, 3.2vw, 2.4rem);
@@ -2217,7 +2215,7 @@ section[aria-label='Verksteder og produksjon'] .section-inner {
 .about-top-graphic__intro-wrap {
   position: absolute;
   top: calc(50% - 3.2rem);
-  left: max(1.25rem, calc((100vw - 70rem) / 2 + 1.25rem));
+  left: var(--page-content-start);
   transform: none;
   z-index: 2;
   pointer-events: none;
@@ -2284,11 +2282,61 @@ section[aria-label='Oss'] .about-top-graphic__breadcrumb {
 
 /* NOTE: Om oss hero overlay — `.big-text` scale, white at 50% opacity on dark image. */
 section[aria-label='Oss'] .about-top-graphic .big-text {
-  max-width: 70rem;
+  max-width: var(--content-max-width);
   margin: 0 auto;
-  padding: 0 1.25rem;
+  padding: 0 var(--page-gutter);
   color: var(--color-white);
   opacity: 0.5;
+}
+
+/* NOTE: Reusable stats row — 4-up strip; count-up via shared-about-stats.js. */
+.about-stats {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  padding-block: clamp(2rem, 5vw, 3.5rem);
+  padding-inline: var(--page-gutter);
+  box-sizing: border-box;
+}
+
+/* NOTE: Homepage — stats directly under process-flow strip below hero. */
+.hero-process-flow + .about-stats {
+  padding-top: 96px;
+  padding-bottom: 36px;
+}
+
+.about-stats__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(0.5rem, 3vw, 2rem);
+  max-width: var(--content-max-width);
+  margin-inline: auto;
+}
+
+.about-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: max-content;
+  max-width: 100%;
+  margin-inline: auto;
+}
+
+.about-stat__value {
+  margin: 0;
+  font-size: clamp(1.75rem, 7.5vw, 3.75rem);
+  font-weight: var(--font-weight-extrabold);
+  line-height: 1;
+  letter-spacing: var(--letter-spacing-tight-heading);
+  font-variant-numeric: tabular-nums;
+}
+
+.about-stat__label {
+  margin: 3px 0 0;
+  max-width: 100%;
+  font-size: clamp(0.55rem, 2.4vw, 0.8rem);
+  line-height: 1.15;
+  text-wrap: balance;
+  opacity: 0.75;
 }
 
 section[aria-label='Oss'] .section-inner {
@@ -2336,6 +2384,14 @@ section[aria-label='Oss'] .about-top-graphic + .section-lead + .section-title {
   padding-bottom: 62px;
   margin-top: 0;
   margin-bottom: 0;
+}
+
+section[aria-label='Oss'] .about-team-grid + .about-stats {
+  margin-top: 2.5rem;
+}
+
+section[aria-label='Oss'] .about-stats + .about-intro-split {
+  margin-top: 3.5rem;
 }
 
 section[aria-label='Oss'] h1.section-title + .section-lead--after-grid {
@@ -2399,6 +2455,30 @@ section[aria-label='Oss'] .about-team-grid {
 
 section[aria-label='Oss'] .about-competence-grid {
   margin-top: 2.5rem;
+}
+
+/* NOTE: Om oss — partner cards directly under Samarbeidspartnere title, logos below cards. */
+section[aria-label='Oss'] .section--partner-logos--oss-cards {
+  background: transparent;
+}
+
+section[aria-label='Oss'] .section--partner-logos--oss-cards > .section-inner {
+  margin: 0;
+  padding-top: 64px;
+  padding-bottom: 64px;
+  padding-left: 0;
+  padding-right: 0;
+  max-width: none;
+}
+
+section[aria-label='Oss'] .section--partner-logos--oss-cards .cooperation-partners {
+  margin-top: 1.25rem;
+}
+
+section[aria-label='Oss'] .section--partner-logos--oss-cards .partner-logos {
+  justify-content: flex-start;
+  padding-top: 2.5rem;
+  padding-bottom: 0;
 }
 
 section[aria-label='Oss'] .about-competence-block:not(:first-child) .about-competence-block__title {
@@ -2579,6 +2659,7 @@ section[aria-label='Oss'] .about-competence-block:not(:first-child) .about-compe
   font-weight: var(--font-weight-semibold);
   letter-spacing: -0.01em;
   line-height: 1.3;
+  text-transform: uppercase;
 }
 
 .about-competence-list {
@@ -2590,6 +2671,39 @@ section[aria-label='Oss'] .about-competence-block:not(:first-child) .about-compe
 
 .about-competence-list li + li {
   margin-top: 0.45rem;
+}
+
+/* NOTE: Om oss software stack — equal-size grayscale tool icons below competence columns. */
+.about-software-stack {
+  margin-top: 2.5rem;
+}
+
+.about-software-stack__grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.25rem 1.75rem;
+  margin: 32px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.about-software-stack__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+}
+
+.about-software-stack__icon {
+  display: block;
+  width: 3rem;
+  height: 3rem;
+  object-fit: contain;
+  /* NOTE: Grayscale + invert lifts dark SVG marks to a consistent mid-light tone on grey canvas. */
+  filter: grayscale(100%) invert(1) brightness(1.35);
+  opacity: 0.68;
 }
 
 /* Tips/news page article cards */
@@ -2675,7 +2789,7 @@ section[aria-label='Oss'] .about-competence-block:not(:first-child) .about-compe
 
 /* Article template (alternating text/image rows) */
 .section--article-template .section-inner {
-  max-width: 70rem;
+  max-width: var(--content-max-width);
   padding-top: 0;
 }
 
@@ -2875,11 +2989,12 @@ section[aria-label='Tjenester'] .start-tjenester {
   width: 100%;
   height: 100%;
   min-height: unset;
+  margin-bottom: 0;
   object-fit: cover;
   object-position: center bottom;
 }
 
-/* NOTE: Om oss workshop strip — overlay copy above dark ::after tint; aligned to section-inner column. */
+/* NOTE: Om oss workshop strip — overlay copy above dark ::after tint; same column as .section-inner. */
 .about-page-body .quotes-lutvann-media--oss .quotes-lutvann-media__overlay {
   position: absolute;
   top: 0;
@@ -2892,9 +3007,9 @@ section[aria-label='Tjenester'] .start-tjenester {
   justify-content: center;
   box-sizing: border-box;
   width: 100%;
-  max-width: 70rem;
+  max-width: var(--content-max-width);
   margin: 0;
-  padding: 1.25rem;
+  padding-inline: var(--page-gutter);
   color: var(--color-white);
   pointer-events: none;
 }
@@ -3150,7 +3265,7 @@ main > .section--partner-logos > .section-inner {
   align-items: start;
   gap: clamp(1.25rem, 3.5vw, 2.75rem);
   width: 100%;
-  max-width: 70rem;
+  max-width: var(--content-max-width);
   margin: 0 auto;
 }
 
@@ -3469,7 +3584,7 @@ main > .section--partner-logos > .section-inner {
   border-radius: 16px;
   border: none;
   background: #2b2b2b;
-  padding: 1.25rem max(1.25rem, calc((100vw - 70rem) / 2 + 1.25rem));
+  padding: 1.25rem var(--page-content-start);
 }
 
 /* NOTE: Application form heading displayed in top-left on desktop and mobile. */
@@ -3623,8 +3738,8 @@ main > .section--partner-logos > .section-inner {
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
   padding-top: 36px;
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
+  padding-left: var(--page-gutter);
+  padding-right: var(--page-gutter);
   padding-bottom: 36px;
   background: transparent;
 }
@@ -3830,7 +3945,7 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
 .project-hero-stage {
   --project-hero-thumb-w: clamp(4rem, 9vw, 5.6rem);
   /* NOTE: Left edge of `.section-inner` / hero text column; used to center thumb rail in the gutter. */
-  --project-hero-text-start: max(1.25rem, calc((100vw - 70rem) / 2 + 1.25rem));
+  --project-hero-text-start: var(--page-content-start);
   position: relative;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
@@ -3880,8 +3995,8 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
   position: absolute;
   top: 1.25rem;
   z-index: 4;
-  left: max(1.25rem, calc((100vw - 70rem) / 2 + 1.25rem));
-  right: max(1.25rem, calc((100vw - 70rem) / 2 + 1.25rem));
+  left: var(--page-content-start);
+  right: var(--page-content-start);
   margin: 0;
 }
 
@@ -3907,8 +4022,8 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
   position: relative;
   z-index: 2;
   box-sizing: border-box;
-  padding: 5rem 1.25rem 2.5rem;
-  max-width: 70rem;
+  padding: 5rem var(--page-gutter) 2.5rem;
+  max-width: var(--content-max-width);
   width: 100%;
   margin: 0 auto;
   color: var(--color-white);
@@ -3920,7 +4035,7 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
 }
 
 .project-hero-stage__lead {
-  margin: 0 0 2rem 0;
+  margin: 0 0 4rem 0;
   max-width: 48rem;
   font-size: var(--font-size-body-md);
   line-height: var(--line-height-relaxed);
@@ -3967,7 +4082,10 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
 .project-thumb-rail {
   position: absolute;
   top: 50%;
-  left: max(1.25rem, calc((var(--project-hero-text-start) - var(--project-hero-thumb-w)) / 2));
+  left: max(
+    var(--page-gutter),
+    calc((var(--project-hero-text-start) - var(--project-hero-thumb-w)) / 2)
+  );
   transform: translateY(-50%);
   z-index: 3;
   width: var(--project-hero-thumb-w);
@@ -4025,7 +4143,7 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
 }
 
 .project-summary {
-  max-width: 70rem;
+  max-width: var(--content-max-width);
   margin: 0 auto;
 }
 
@@ -4074,9 +4192,9 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
 
 /* NOTE: Project strip stays below the hero image and above the summary/navigation content. */
 .like-share-strip-shell--project {
-  max-width: 70rem;
+  max-width: var(--content-max-width);
   margin: 0 auto;
-  padding: 0 1.25rem 1rem;
+  padding: 0 var(--page-gutter) 1rem;
 }
 
 /* NOTE: Desktop — post-hero text column is half the default 70rem width (summary, CTA, like/share). */
@@ -4107,7 +4225,7 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    margin: 0.35rem 1.25rem 1.5rem;
+    margin: 0.35rem var(--page-gutter) 1.5rem;
   }
 
   .project-page-nav__link {
@@ -4201,12 +4319,12 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
   }
 
   .project-page-nav__link--prev {
-    left: clamp(1.25rem, calc((100vw - 70rem) / 4), 10rem);
+    left: clamp(var(--page-gutter), calc((100vw - var(--content-max-width)) / 4), 10rem);
     transform: translateY(-50%);
   }
 
   .project-page-nav__link--next {
-    right: clamp(5.5rem, calc((100vw - 70rem) / 4), 10rem);
+    right: clamp(5.5rem, calc((100vw - var(--content-max-width)) / 4), 10rem);
     transform: translateY(-50%);
   }
 
@@ -4393,14 +4511,14 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
 }
 
 .site-footer__inner {
-  max-width: 70rem;
+  max-width: var(--content-max-width);
   margin: 0 auto;
-  padding: 1.1rem 1.25rem 1.35rem;
+  padding: 1.1rem var(--page-gutter) 1.35rem;
 }
 
 /* NOTE: Expanded footer stacks contact, navigation links, and copyright on the dark band. */
 .site-footer--expanded .site-footer__inner {
-  padding: clamp(2.25rem, 5vw, 3.25rem) 1.25rem clamp(1.35rem, 3vw, 1.75rem);
+  padding: clamp(2.25rem, 5vw, 3.25rem) var(--page-gutter) clamp(1.35rem, 3vw, 1.75rem);
 }
 
 .site-footer__contact {
@@ -4728,8 +4846,8 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
   }
 
   .project-hero-stage__breadcrumb {
-    left: max(1.25rem, calc((100vw - 70rem) / 2 + 1.25rem));
-    right: max(1.25rem, calc((100vw - 70rem) / 2 + 1.25rem));
+    left: var(--page-content-start);
+    right: var(--page-content-start);
   }
 
   /* NOTE: Keep me-drawing clip flush to the right edge on mobile hero shuffle. */
@@ -4739,7 +4857,7 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
   }
 
   .project-hero-stage__content {
-    padding: 4.25rem 1.25rem 1.25rem;
+    padding: 4.25rem var(--page-gutter) 1.25rem;
     padding-bottom: 5.75rem;
   }
 
@@ -4751,8 +4869,8 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
   /* NOTE: Mobile thumb rail moves to bottom and uses side arrows with a 3-thumb row. */
   .project-thumb-rail {
     position: absolute;
-    left: 1.25rem;
-    right: 1.25rem;
+    left: var(--page-gutter);
+    right: var(--page-gutter);
     width: auto;
     top: auto;
     bottom: 1rem;
