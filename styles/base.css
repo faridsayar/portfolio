@@ -1104,7 +1104,7 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
 
 /* NOTE: Homepage start — vertical inset for the "Dette gjør vi" section inner column. */
 #start .section-inner {
-  padding-top: 6rem;
+  padding-top: 0;
   padding-bottom: 6rem;
 }
 
@@ -1131,13 +1131,15 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
 #start .section-4 > .section-inner {
   max-width: none;
   margin: 0;
+  padding-top: 0;
   padding-left: 0;
   padding-right: 0;
 }
 
 /* NOTE: Opening row — vertical logo sits on the left text line; copy flows beside it. */
 #start .start-intro__opening-row {
-  padding-block: clamp(4rem, 8vw, 6rem);
+  padding-top: 96px;
+  padding-bottom: 96px;
 }
 
 /* NOTE: Homepage #start opening copy — gap between paragraphs. */
@@ -2287,6 +2289,56 @@ section[aria-label='Oss'] .about-top-graphic .big-text {
   opacity: 0.5;
 }
 
+/* NOTE: Reusable stats row — 4-up strip; count-up via shared-about-stats.js. */
+.about-stats {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  padding-block: clamp(2rem, 5vw, 3.5rem);
+  padding-inline: var(--page-gutter);
+  box-sizing: border-box;
+}
+
+/* NOTE: Homepage — stats directly under process-flow strip below hero. */
+.hero-process-flow + .about-stats {
+  padding-top: 96px;
+  padding-bottom: 36px;
+}
+
+.about-stats__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(0.5rem, 3vw, 2rem);
+  max-width: var(--content-max-width);
+  margin-inline: auto;
+}
+
+.about-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: max-content;
+  max-width: 100%;
+  margin-inline: auto;
+}
+
+.about-stat__value {
+  margin: 0;
+  font-size: clamp(1.75rem, 7.5vw, 3.75rem);
+  font-weight: var(--font-weight-extrabold);
+  line-height: 1;
+  letter-spacing: var(--letter-spacing-tight-heading);
+  font-variant-numeric: tabular-nums;
+}
+
+.about-stat__label {
+  margin: 3px 0 0;
+  max-width: 100%;
+  font-size: clamp(0.55rem, 2.4vw, 0.8rem);
+  line-height: 1.15;
+  text-wrap: balance;
+  opacity: 0.75;
+}
+
 section[aria-label='Oss'] .section-inner {
   padding-top: 0;
 }
@@ -2332,6 +2384,14 @@ section[aria-label='Oss'] .about-top-graphic + .section-lead + .section-title {
   padding-bottom: 62px;
   margin-top: 0;
   margin-bottom: 0;
+}
+
+section[aria-label='Oss'] .about-team-grid + .about-stats {
+  margin-top: 2.5rem;
+}
+
+section[aria-label='Oss'] .about-stats + .about-intro-split {
+  margin-top: 3.5rem;
 }
 
 section[aria-label='Oss'] h1.section-title + .section-lead--after-grid {
@@ -2406,6 +2466,8 @@ section[aria-label='Oss'] .section--partner-logos--oss-cards > .section-inner {
   margin: 0;
   padding-top: 64px;
   padding-bottom: 64px;
+  padding-left: 0;
+  padding-right: 0;
   max-width: none;
 }
 
@@ -3973,7 +4035,7 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
 }
 
 .project-hero-stage__lead {
-  margin: 0 0 2rem 0;
+  margin: 0 0 4rem 0;
   max-width: 48rem;
   font-size: var(--font-size-body-md);
   line-height: var(--line-height-relaxed);
