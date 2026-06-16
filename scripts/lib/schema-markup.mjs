@@ -31,7 +31,7 @@ export const SERVICE_SLUG_LABELS = {
   visualisering: 'Visualisering',
 };
 
-const DEFAULT_IMAGE = `${SITE}/assets/images/social-sharing.webp`;
+const DEFAULT_IMAGE = `${SITE}/assets/images/prosess/3d-modelering.webp`;
 const DEFAULT_LOGO = `${SITE}/assets/formaa-logo.svg`;
 
 export function stripHtml(value) {
