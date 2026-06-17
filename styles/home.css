@@ -1,2 +1,303 @@
-/* NOTE: Home-page specific styles bundle (phase-based extraction target). */
-/* NOTE: `.hero-process-flow` lives in base.css (shared with category pages). */
+/* NOTE: Home-page layout system — flat sections with one content column and consistent spacing. */
+
+:root {
+  --home-display-pad: 192px;
+  --home-intro-pad: 96px;
+}
+
+/* NOTE: Single content column — horizontal gutter + max-width for all text blocks. */
+.home-section__inner {
+  box-sizing: border-box;
+  max-width: var(--content-max-width);
+  margin-inline: auto;
+  padding-inline: var(--page-gutter);
+}
+
+/* NOTE: Display blocks — 192px above and below; stat + big-text grouped inside. */
+.home-section--display {
+  padding-block: var(--home-display-pad);
+}
+
+.home-section--display .start-success-stat {
+  padding: 0;
+  margin: 0;
+}
+
+.home-section--display .big-text {
+  padding: 0;
+  margin: 0;
+}
+
+.home-section--display .start-success-stat + .big-text {
+  margin-top: 1.5rem;
+}
+
+.home-section--display .start-success-stat__lead {
+  margin: 0 0 0.35rem;
+  max-width: 28rem;
+  font-size: var(--font-size-body-md);
+  line-height: var(--line-height-relaxed);
+  text-transform: uppercase;
+}
+
+.home-section--display .start-success-stat__value {
+  margin: 0;
+}
+
+/* NOTE: Intro section — about-stats + opening copy. */
+.home-section--intro .about-stats {
+  padding-top: var(--home-intro-pad);
+  padding-bottom: 36px;
+}
+
+.home-section--intro .start-intro__opening-row {
+  padding-block: var(--home-intro-pad);
+}
+
+.home-section--intro .start-intro__opening {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-block: 0;
+}
+
+.home-section--intro .start-intro__opening .section-lead {
+  max-width: 37rem;
+}
+
+.home-section--intro .start-intro__eyebrow {
+  margin: 0;
+  max-width: 37rem;
+  font-size: var(--font-size-body-md);
+  line-height: var(--line-height-relaxed);
+  opacity: 0.85;
+}
+
+/* NOTE: Scope disclaimer — standalone note section after media block. */
+.home-section--note .home-scope-note {
+  margin: 0;
+  max-width: 28rem;
+  padding-block: var(--page-gutter);
+  font-size: var(--font-size-body-md);
+  line-height: var(--line-height-relaxed);
+  text-transform: uppercase;
+}
+
+/* NOTE: Portfolio section — vertical rhythm around grid title and tiles. */
+.home-section--portfolio {
+  margin-bottom: 0;
+  padding-block: 32px;
+}
+
+.home-section--portfolio .home-section__inner {
+  padding-top: 0;
+}
+
+/* NOTE: Full-bleed media overlay sections — image edge-to-edge; copy overlays with gradient. */
+.home-section--media .start-intro {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+  align-items: center;
+  margin-bottom: 0;
+}
+
+.home-section--media .start-intro--overlay {
+  display: block;
+}
+
+.home-section--media .start-intro__media-zone {
+  position: relative;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  min-height: min(36rem, 72vh);
+  overflow: hidden;
+}
+
+.home-section--media .start-intro__backdrop {
+  position: absolute;
+  inset: 0;
+}
+
+.home-section--media .start-intro__hashtags-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5rem;
+  padding: 0 var(--page-gutter);
+}
+
+.home-section--media .start-intro__hashtags-row .section-1__hashtags,
+.home-section--media .start-intro__hashtags-row .section-2__hashtags,
+.home-section--media .start-intro__hashtags-row .section-3__hashtags {
+  justify-content: center;
+  margin: 0;
+}
+
+.home-section--media .start-intro--overlay .start-intro__gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(30, 30, 30, 0.9) 0%,
+    rgba(62, 62, 62, 0.72) 100%,
+    rgba(102, 102, 102, 0.38) 72%,
+    rgba(136, 136, 136, 0.1) 90%,
+    rgba(136, 136, 136, 0) 100%
+  );
+  pointer-events: none;
+}
+
+.home-section--media .start-intro--overlay .start-intro__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.home-section--media .start-intro__overlay-inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+  align-items: center;
+  min-height: inherit;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: clamp(2.5rem, 6vw, 4.5rem) clamp(var(--page-gutter), 4vw, 2.5rem);
+  color: var(--color-white);
+}
+
+.home-section--media .start-intro--overlay .section-title,
+.home-section--media .start-intro--overlay .section-lead,
+.home-section--media .start-intro--overlay .article-row__list {
+  color: var(--color-white);
+}
+
+.home-section--media .start-intro--overlay .section-lead {
+  opacity: 0.92;
+}
+
+.home-section--media .start-intro--overlay .internal-text-link,
+.home-section--media .start-intro--overlay .internal-text-link:visited {
+  color: var(--color-white);
+}
+
+.home-section--media .start-intro--overlay .internal-text-link:hover,
+.home-section--media .start-intro--overlay .internal-text-link:focus {
+  color: var(--color-secondary);
+}
+
+.home-section--media .start-intro--overlay .category-projects-link,
+.home-section--media .start-intro--overlay .category-projects-link:visited {
+  color: var(--color-white);
+}
+
+.home-section--media .start-intro--overlay .category-projects-link:hover,
+.home-section--media .start-intro--overlay .category-projects-link:focus {
+  color: var(--color-secondary);
+}
+
+.home-section--media .start-intro__content .section-title {
+  margin-bottom: 1rem;
+}
+
+.home-section--media .start-intro__content .section-lead {
+  margin-bottom: 1rem;
+}
+
+.home-section--media .start-intro__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.25rem 1.75rem;
+  margin-top: 1.25rem;
+}
+
+.home-section--media .start-intro__actions .hero-cta {
+  margin-top: 0;
+}
+
+.home-section--media .start-intro__content .article-row__list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.home-section--media .start-intro__content .article-row__list li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+}
+
+.home-section--media .start-intro__content .article-row__list li::before {
+  content: '-';
+  flex: 0 0 auto;
+  font-weight: var(--font-weight-bold);
+  font-size: 1.25em;
+  line-height: 1;
+}
+
+.home-section--media .start-intro__content .article-row__list li > span {
+  min-width: 0;
+}
+
+.home-section--media .start-intro__media-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.home-section--media .start-intro__media {
+  margin: 0;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--surface-neutral);
+}
+
+.home-section--media .start-intro__image,
+.home-section--media .start-intro__video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (max-width: 768px) {
+  .home-section--media .start-intro--overlay .section-lead,
+  .home-section--media .start-intro--overlay .article-row__list,
+  .home-section--media .start-intro--overlay .internal-text-link,
+  .home-section--media .start-intro__hashtags-row .section-1__hashtag,
+  .home-section--media .start-intro__hashtags-row .section-2__hashtag,
+  .home-section--media .start-intro__hashtags-row .section-3__hashtag {
+    font-size: 13px;
+  }
+
+  .home-section--media .start-intro--overlay .start-intro__actions .hero-cta,
+  .home-section--media .start-intro--overlay .start-intro__actions .category-projects-link {
+    font-size: var(--font-size-body-md);
+  }
+}
+
+@media (min-width: 768px) {
+  .home-section--media .start-intro:not(.start-intro--overlay) {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .home-section--media .start-intro__overlay-inner {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+}
+
+/* NOTE: Partner logos on homepage — standalone block between scope note and portfolio. */
+main > .section--partner-logos {
+  background: transparent;
+}
+
+main > .section--partner-logos > .section-inner {
+  box-sizing: border-box;
+  max-width: var(--content-max-width);
+  margin-inline: auto;
+  padding-top: clamp(2rem, 5vw, 4rem);
+  padding-inline: var(--page-gutter);
+}

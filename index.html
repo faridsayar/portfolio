@@ -113,8 +113,8 @@
     />
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles/base.css?v=42" />
-    <link rel="stylesheet" href="styles/home.css?v=3" />
+    <link rel="stylesheet" href="styles/base.css?v=43" />
+    <link rel="stylesheet" href="styles/home.css?v=4" />
 
     <!-- NOTE: Google Analytics 4 global site tag for tracking website traffic. -->
     <!-- Google tag (gtag.js) -->
@@ -182,12 +182,15 @@
 
     <div data-component="hero-process-flow"></div>
 
-    <div data-component="about-stats-strip"></div>
-
     <main>
-      <section class="section section--white" id="start" aria-label="Dette gjør vi">
-        <div class="section-inner">
-          <!-- NOTE: Opening block — eyebrow + lead copy. -->
+      <!-- NOTE: Homepage section 1 — about-stats + opening copy; id="start" anchor. -->
+      <section
+        class="section section--white home-section home-section--intro"
+        id="start"
+        aria-label="Dette gjør vi"
+      >
+        <div data-component="about-stats-strip"></div>
+        <div class="home-section__inner">
           <div class="start-intro__opening-row">
             <div class="start-intro__opening">
               <p class="start-intro__eyebrow">
@@ -200,96 +203,97 @@
               </p>
             </div>
           </div>
+        </div>
+      </section>
 
-          <!-- NOTE: Homepage #start intro — div.section-1 with title, bullets left, 16:9 visual right. -->
-          <div class="section section-1" aria-label="Start enkelt — med 3D-model og visualisering">
-            <div class="section-inner">
-              <div class="start-intro start-intro--overlay">
-                <div class="start-intro__media-zone">
-                  <div class="start-intro__backdrop" aria-hidden="true">
+      <!-- NOTE: Homepage section 2 — 3D-model og visualisering; full-bleed media overlay. -->
+      <section
+        class="section section--white home-section home-section--media"
+        aria-label="Start enkelt — med 3D-model og visualisering"
+      >
+        <div class="start-intro start-intro--overlay">
+          <div class="start-intro__media-zone">
+            <div class="start-intro__backdrop" aria-hidden="true">
+              <img
+                class="start-intro__image"
+                src="assets/images/Projects/AXIS/5-white.jpg"
+                alt=""
+                width="1920"
+                height="1080"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="start-intro__gradient"></div>
+            </div>
+            <div class="start-intro__overlay-inner">
+              <div class="start-intro__content article-row__text">
+                <h2 class="section-title">Start enkelt — med 3D-model og visualisering</h2>
+                <p class="section-lead">
+                  <a class="internal-text-link" href="/tjenester-prosess">Visualiser</a>
+                  idéen din på en profesjonell måte med 3D-modell, animasjon eller video — forklar
+                  produktet tydelig, test konseptet, bli inspirert og ta bedre valg videre
+                  <a class="internal-text-link" href="/innsikt/hvordan-design-sparer-penger"
+                    >før du investerer tungt</a
+                  >.
+                </p>
+                <ul class="article-row__list">
+                  <li>få ideen visualisert i høy kvalitet</li>
+                  <li>
+                    <span
+                      >vis til investorer,
+                      <a class="internal-text-link" href="/innsikt/sok-stotte-innovasjon-norge"
+                        >Innovasjon Norge</a
+                      >
+                      eller
+                      <a class="internal-text-link" href="/innsikt/design-for-crowdfunding"
+                        >crowdfunding</a
+                      ></span
+                    >
+                  </li>
+                  <li>test konsept før du bruker mye penger</li>
+                </ul>
+                <!-- NOTE: Primary CTA + Prosjekter inline link beside each other. -->
+                <div class="start-intro__actions">
+                  <a class="hero-cta" href="#application-form">Bestill</a>
+                  <a class="category-projects-link" href="/prosjekter">
+                    Våre prosjekter
                     <img
-                      class="start-intro__image"
-                      src="assets/images/Projects/AXIS/5-white.jpg"
+                      class="category-projects-link__arrow"
+                      src="assets/small-arrow-right.svg"
                       alt=""
-                      width="1920"
-                      height="1080"
-                      loading="lazy"
-                      decoding="async"
+                      width="12"
+                      height="12"
+                      aria-hidden="true"
                     />
-                    <div class="start-intro__gradient"></div>
-                  </div>
-                  <div class="start-intro__overlay-inner">
-                    <div class="start-intro__content article-row__text">
-                      <h2 class="section-title">Start enkelt — med 3D-model og visualisering</h2>
-                      <p class="section-lead">
-                        <a class="internal-text-link" href="/tjenester-prosess">Visualiser</a>
-                        idéen din på en profesjonell måte med 3D-modell, animasjon eller video —
-                        forklar produktet tydelig, test konseptet, bli inspirert og ta bedre valg
-                        videre
-                        <a class="internal-text-link" href="/innsikt/hvordan-design-sparer-penger"
-                          >før du investerer tungt</a
-                        >.
-                      </p>
-                      <ul class="article-row__list">
-                        <li>få ideen visualisert i høy kvalitet</li>
-                        <li>
-                          <span
-                            >vis til investorer,
-                            <a
-                              class="internal-text-link"
-                              href="/innsikt/sok-stotte-innovasjon-norge"
-                              >Innovasjon Norge</a
-                            >
-                            eller
-                            <a class="internal-text-link" href="/innsikt/design-for-crowdfunding"
-                              >crowdfunding</a
-                            ></span
-                          >
-                        </li>
-                        <li>test konsept før du bruker mye penger</li>
-                      </ul>
-                      <!-- NOTE: Primary CTA + Prosjekter inline link beside each other. -->
-                      <div class="start-intro__actions">
-                        <a class="hero-cta" href="#application-form">Bestill</a>
-                        <a class="category-projects-link" href="/prosjekter">
-                          Våre prosjekter
-                          <img
-                            class="category-projects-link__arrow"
-                            src="assets/small-arrow-right.svg"
-                            alt=""
-                            width="12"
-                            height="12"
-                            aria-hidden="true"
-                          />
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- NOTE: Category hashtag links — centered row directly under section-1 image. -->
-                <div class="start-intro__hashtags-row">
-                  <nav class="section-1__hashtags" aria-label="Relaterte fagområder">
-                    <a class="section-1__hashtag" href="/category/3d-modelering/norge"
-                      >#3D-modelering</a
-                    >
-                    <a class="section-1__hashtag" href="/category/produktdesign/norge"
-                      >#produktutvikling</a
-                    >
-                    <a class="section-1__hashtag" href="/category/konseptutvikling/norge"
-                      >#konseptutvikling</a
-                    >
-                    <a class="section-1__hashtag" href="/category/visualisering/norge"
-                      >#3D-visualisering</a
-                    >
-                  </nav>
+                  </a>
                 </div>
               </div>
             </div>
           </div>
+          <!-- NOTE: Category hashtag links — centered row directly under section-1 image. -->
+          <div class="start-intro__hashtags-row">
+            <nav class="section-1__hashtags" aria-label="Relaterte fagområder">
+              <a class="section-1__hashtag" href="/category/3d-modelering/norge">#3D-modelering</a>
+              <a class="section-1__hashtag" href="/category/produktdesign/norge"
+                >#produktutvikling</a
+              >
+              <a class="section-1__hashtag" href="/category/konseptutvikling/norge"
+                >#konseptutvikling</a
+              >
+              <a class="section-1__hashtag" href="/category/visualisering/norge"
+                >#3D-visualisering</a
+              >
+            </nav>
+          </div>
         </div>
+      </section>
 
-        <div class="section-inner">
-          <!-- NOTE: Success stat before display line — grouped with big-text in the same container. -->
+      <!-- NOTE: Homepage section 3 — success stat + display line after 3D block. -->
+      <section
+        class="section section--white home-section home-section--display"
+        aria-label="Produktsuksess"
+      >
+        <div class="home-section__inner">
           <div class="start-success-stat" data-about-stats-group>
             <p class="start-success-stat__lead">Vi øker sjansen til produktsuksess med</p>
             <p
@@ -301,225 +305,69 @@
               0%
             </p>
           </div>
-          <!-- NOTE: Large display line after section-1 (`.big-text` utility). -->
           <p class="big-text">Mindre prat. Mer form.</p>
+        </div>
+      </section>
 
-          <!-- NOTE: Homepage #start section-2 — konsept, produkt og prototype; same layout as section-1. -->
-          <div
-            class="section section-2"
-            aria-label="Konseptutvikling, produktutvikling og prototype"
-          >
-            <div class="section-inner">
-              <div class="start-intro start-intro--overlay">
-                <div class="start-intro__media-zone">
-                  <div class="start-intro__backdrop" aria-hidden="true">
-                    <img
-                      class="start-intro__image"
-                      src="assets/images/h2o.webp"
-                      alt=""
-                      width="1920"
-                      height="1080"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                    <div class="start-intro__gradient"></div>
-                  </div>
-                  <div class="start-intro__overlay-inner">
-                    <div class="start-intro__content article-row__text">
-                      <h2 class="section-title">Trenger du mer enn bare visualisering?</h2>
-                      <p class="section-lead">
-                        Design og utvikling av ekte produkt som løser et problem - fra idé til
-                        prototype. Strukturert arbeid i
-                        <a class="internal-text-link" href="/innsikt/hva-er-industridesign"
-                          >tydelige steg</a
-                        >
-                        for å komme raskere til produksjon og lansering.
-                      </p>
-                      <ul class="article-row__list">
-                        <li>
-                          <span
-                            ><a class="internal-text-link" href="/innsikt/hvem-trenger-design"
-                              >konseptutvikling</a
-                            >
-                            som avklarer retning, behov og problemløsning</span
-                          >
-                        </li>
-                        <li>
-                          produktutvikling prosess som utforsker form, ergonomi, funksjon,
-                          materialer, produksjonsmåter og mange andre aspekter av produktet
-                        </li>
-                        <li>
-                          <span
-                            >realistisk 1:1 prototype av enkle materialer som du kan teste
-                            <a
-                              class="internal-text-link"
-                              href="/innsikt/hvordan-design-sparer-penger"
-                              >før du bruker store summer</a
-                            ></span
-                          >
-                        </li>
-                      </ul>
-                      <!-- NOTE: Primary CTA + Prisoversikt inline link beside each other. -->
-                      <div class="start-intro__actions">
-                        <a class="hero-cta" href="#application-form">Ta kontakt</a>
-                        <a class="category-projects-link" href="/prisestimat">
-                          Prisoversikt
-                          <img
-                            class="category-projects-link__arrow"
-                            src="assets/small-arrow-right.svg"
-                            alt=""
-                            width="12"
-                            height="12"
-                            aria-hidden="true"
-                          />
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- NOTE: Category hashtag links — centered row directly under section-2 image. -->
-                <div class="start-intro__hashtags-row">
-                  <nav class="section-2__hashtags" aria-label="Relaterte fagområder">
-                    <a class="section-2__hashtag" href="/category/konseptutvikling/norge"
-                      >#konseptutvikling</a
-                    >
-                    <a class="section-2__hashtag" href="/category/produktdesign/norge"
-                      >#produktutvikling</a
-                    >
-                    <a class="section-2__hashtag" href="/category/industridesign/norge"
-                      >#industridesign</a
-                    >
-                    <a class="section-2__hashtag" href="/category/prototyping/norge">#prototype</a>
-                  </nav>
-                </div>
-              </div>
+      <!-- NOTE: Homepage section 4 — konsept, produkt og prototype; full-bleed media overlay. -->
+      <section
+        class="section section--white home-section home-section--media"
+        aria-label="Konseptutvikling, produktutvikling og prototype"
+      >
+        <div class="start-intro start-intro--overlay">
+          <div class="start-intro__media-zone">
+            <div class="start-intro__backdrop" aria-hidden="true">
+              <img
+                class="start-intro__image"
+                src="assets/images/h2o.webp"
+                alt=""
+                width="1920"
+                height="1080"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="start-intro__gradient"></div>
             </div>
-          </div>
-        </div>
-
-        <!-- NOTE: Risk stat after section-2 — count-down 100 → 1 on viewport entry. -->
-        <div class="start-success-stat" data-about-stats-group>
-          <p class="start-success-stat__lead">Reduser risikoen for kostbare feil før produksjon</p>
-          <p
-            class="about-stat__value start-success-stat__value"
-            data-about-stat-value
-            data-from="100"
-            data-target="1"
-            data-suffix="%"
-          >
-            100%
-          </p>
-        </div>
-
-        <div class="section-inner">
-          <!-- NOTE: Large display line after section-2 (`.big-text` utility). -->
-          <p class="big-text">Vi tenker på enkelhet, bærekraft, innovasjon og unikhet.</p>
-
-          <!-- NOTE: Homepage #start section-3 — komplett produktutvikling; same layout as section-1/2. -->
-          <div class="section section-3" aria-label="Komplett produktutvikling">
-            <div class="section-inner">
-              <div class="start-intro start-intro--overlay">
-                <div class="start-intro__media-zone">
-                  <div class="start-intro__backdrop" aria-hidden="true">
+            <div class="start-intro__overlay-inner">
+              <div class="start-intro__content article-row__text">
+                <h2 class="section-title">Trenger du mer enn bare visualisering?</h2>
+                <p class="section-lead">
+                  Design og utvikling av ekte produkt som løser et problem - fra idé til prototype.
+                  Strukturert arbeid i
+                  <a class="internal-text-link" href="/innsikt/hva-er-industridesign"
+                    >tydelige steg</a
+                  >
+                  for å komme raskere til produksjon og lansering.
+                </p>
+                <ul class="article-row__list">
+                  <li>
+                    <span
+                      ><a class="internal-text-link" href="/innsikt/hvem-trenger-design"
+                        >konseptutvikling</a
+                      >
+                      som avklarer retning, behov og problemløsning</span
+                    >
+                  </li>
+                  <li>
+                    produktutvikling prosess som utforsker form, ergonomi, funksjon, materialer,
+                    produksjonsmåter og mange andre aspekter av produktet
+                  </li>
+                  <li>
+                    <span
+                      >realistisk 1:1 prototype av enkle materialer som du kan teste
+                      <a class="internal-text-link" href="/innsikt/hvordan-design-sparer-penger"
+                        >før du bruker store summer</a
+                      ></span
+                    >
+                  </li>
+                </ul>
+                <!-- NOTE: Primary CTA + Prisoversikt inline link beside each other. -->
+                <div class="start-intro__actions">
+                  <a class="hero-cta" href="#application-form">Ta kontakt</a>
+                  <a class="category-projects-link" href="/prisestimat">
+                    Prisoversikt
                     <img
-                      class="start-intro__image"
-                      src="assets/images/grid/komplett-produktutvikling.webp"
-                      alt="Produktutvikling i tre faser — skisse, mekanisk oppbygning med synlig elektronikk, og ferdig minimal gadget-design"
-                      width="1536"
-                      height="1024"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                    <div class="start-intro__gradient"></div>
-                  </div>
-                  <div class="start-intro__overlay-inner">
-                    <div class="start-intro__content article-row__text">
-                      <h2 class="section-title">Komplett produktutvikling</h2>
-                      <p class="section-lead">
-                        Klar for å ta produktet hele veien? Strukturert arbeid — fra
-                        konseptutvikling og brukerundersøkelse til prototype og produksjonsklart
-                        underlag.
-                      </p>
-                      <ul class="article-row__list">
-                        <li>
-                          <span
-                            ><a class="internal-text-link" href="/innsikt/hva-er-industridesign"
-                              >Industridesign</a
-                            >
-                            - produktutvikling som initiell, brukersentrert formgiving arbeid. Vi
-                            utarbeider begrunnet konsept og løsningsforslag sammen med deg. Vi
-                            utforsker form, ergonomi, funksjon, materialvalg og produksjon i ett
-                            kontinuerlig iterasjonsprosess</span
-                          >
-                        </li>
-                        <li>
-                          3D-modell, høyeste kvalitet visualisering og animasjon eller video i
-                          riktig kontekst og omgivelser. 1:1 Prototype med utvalgte materialer
-                          nærmest mulig til ferdigproduktet.
-                        </li>
-                        <li>
-                          produksjonsforberedelse med godt gjennomtenkt CAD-modell, tekniske
-                          tegninger, toleranser og DFM, elektronikk og maskinvare — klart underlag
-                          for leverandører. Vi hjelper deg med å finne lokale eller utenlandske
-                          produksjonsleverandører og hjelp til med produksjonsplanlegging.
-                          Oppfølging og support helt til produktet er lansert.
-                        </li>
-                      </ul>
-                      <!-- NOTE: Primary CTA + Prosess inline link beside each other. -->
-                      <div class="start-intro__actions">
-                        <a class="hero-cta" href="#application-form">Ta kontakt</a>
-                        <a class="category-projects-link" href="/tjenester-prosess#prosess">
-                          Prosess
-                          <img
-                            class="category-projects-link__arrow"
-                            src="assets/small-arrow-right.svg"
-                            alt=""
-                            width="12"
-                            height="12"
-                            aria-hidden="true"
-                          />
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- NOTE: Category hashtag links — centered row directly under section-3 image. -->
-                <div class="start-intro__hashtags-row">
-                  <nav class="section-3__hashtags" aria-label="Relaterte fagområder">
-                    <a class="section-3__hashtag" href="/category/produktdesign/norge"
-                      >#produktutvikling</a
-                    >
-                    <a class="section-3__hashtag" href="/category/industridesign/norge"
-                      >#industridesign</a
-                    >
-                    <a class="section-3__hashtag" href="/category/teknisk-tegning/norge"
-                      >#produksjonsforberedelse</a
-                    >
-                  </nav>
-                </div>
-              </div>
-            </div>
-            <!-- NOTE: Section-3 scope disclaimer — physical products only; not part of partner-logos component. -->
-            <p class="start-success-stat__lead section-3__scope-note">
-              Vi jobber med fysiske produkter. Har du et digitalt produkt eller en tjeneste, er vi
-              sannsynligvis ikke riktig partner for deg.
-            </p>
-          </div>
-        </div>
-
-        <!-- NOTE: Partner logo strip — standalone block after section-3 on homepage. -->
-        <div data-component="partner-logos-section"></div>
-
-        <div class="section-inner">
-          <!-- NOTE: Homepage #start section-4 — featured project grid with link to /prosjekter. -->
-          <div class="section section-4 section--projects" id="portfolio" aria-label="Prosjekter">
-            <div class="section-inner">
-              <div class="section-head">
-                <h2 class="section-title">
-                  <a class="section-title-link" href="/prosjekter">
-                    Alle prosjekter
-                    <img
-                      class="section-title-link__arrow"
+                      class="category-projects-link__arrow"
                       src="assets/small-arrow-right.svg"
                       alt=""
                       width="12"
@@ -527,28 +375,202 @@
                       aria-hidden="true"
                     />
                   </a>
-                </h2>
-              </div>
-              <!-- NOTE: Full-bleed dark band behind project tiles only; captions use panel text color via CSS. -->
-              <div class="projects-grid-panel">
-                <!-- NOTE: Portfolio tiles are rendered from assets/data/projects-manifest.js to keep titles and media in sync with project data. -->
-                <!-- NOTE: Homepage shows four featured tiles only; full list lives on /prosjekter (see data-projects-limit). -->
-                <div
-                  class="projects-grid"
-                  aria-label="Prosjektliste"
-                  data-projects-grid
-                  data-projects-limit="4"
-                ></div>
-                <div class="projects-sentinel" data-projects-sentinel aria-hidden="true"></div>
+                </div>
               </div>
             </div>
           </div>
+          <!-- NOTE: Category hashtag links — centered row directly under section-2 image. -->
+          <div class="start-intro__hashtags-row">
+            <nav class="section-2__hashtags" aria-label="Relaterte fagområder">
+              <a class="section-2__hashtag" href="/category/konseptutvikling/norge"
+                >#konseptutvikling</a
+              >
+              <a class="section-2__hashtag" href="/category/produktdesign/norge"
+                >#produktutvikling</a
+              >
+              <a class="section-2__hashtag" href="/category/industridesign/norge"
+                >#industridesign</a
+              >
+              <a class="section-2__hashtag" href="/category/prototyping/norge">#prototype</a>
+            </nav>
+          </div>
+        </div>
+      </section>
 
-          <!-- NOTE: Large display line after portfolio grid, before “Hva du får” (`.big-text` utility). -->
+      <!-- NOTE: Homepage section 5 — risk stat + display line after konsept block. -->
+      <section
+        class="section section--white home-section home-section--display"
+        aria-label="Risikoredusering"
+      >
+        <div class="home-section__inner">
+          <div class="start-success-stat" data-about-stats-group>
+            <p class="start-success-stat__lead">
+              Reduser risikoen for kostbare feil før produksjon
+            </p>
+            <p
+              class="about-stat__value start-success-stat__value"
+              data-about-stat-value
+              data-from="100"
+              data-target="1"
+              data-suffix="%"
+            >
+              100%
+            </p>
+          </div>
+          <p class="big-text">Vi tenker på enkelhet, bærekraft, innovasjon og unikhet.</p>
+        </div>
+      </section>
+
+      <!-- NOTE: Homepage section 6 — komplett produktutvikling; full-bleed media overlay. -->
+      <section
+        class="section section--white home-section home-section--media"
+        aria-label="Komplett produktutvikling"
+      >
+        <div class="start-intro start-intro--overlay">
+          <div class="start-intro__media-zone">
+            <div class="start-intro__backdrop" aria-hidden="true">
+              <img
+                class="start-intro__image"
+                src="assets/images/grid/komplett-produktutvikling.webp"
+                alt="Produktutvikling i tre faser — skisse, mekanisk oppbygning med synlig elektronikk, og ferdig minimal gadget-design"
+                width="1536"
+                height="1024"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="start-intro__gradient"></div>
+            </div>
+            <div class="start-intro__overlay-inner">
+              <div class="start-intro__content article-row__text">
+                <h2 class="section-title">Komplett produktutvikling</h2>
+                <p class="section-lead">
+                  Klar for å ta produktet hele veien? Strukturert arbeid — fra konseptutvikling og
+                  brukerundersøkelse til prototype og produksjonsklart underlag.
+                </p>
+                <ul class="article-row__list">
+                  <li>
+                    <span
+                      ><a class="internal-text-link" href="/innsikt/hva-er-industridesign"
+                        >Industridesign</a
+                      >
+                      - produktutvikling som initiell, brukersentrert formgiving arbeid. Vi
+                      utarbeider begrunnet konsept og løsningsforslag sammen med deg. Vi utforsker
+                      form, ergonomi, funksjon, materialvalg og produksjon i ett kontinuerlig
+                      iterasjonsprosess</span
+                    >
+                  </li>
+                  <li>
+                    3D-modell, høyeste kvalitet visualisering og animasjon eller video i riktig
+                    kontekst og omgivelser. 1:1 Prototype med utvalgte materialer nærmest mulig til
+                    ferdigproduktet.
+                  </li>
+                  <li>
+                    produksjonsforberedelse med godt gjennomtenkt CAD-modell, tekniske tegninger,
+                    toleranser og DFM, elektronikk og maskinvare — klart underlag for leverandører.
+                    Vi hjelper deg med å finne lokale eller utenlandske produksjonsleverandører og
+                    hjelp til med produksjonsplanlegging. Oppfølging og support helt til produktet
+                    er lansert.
+                  </li>
+                </ul>
+                <!-- NOTE: Primary CTA + Prosess inline link beside each other. -->
+                <div class="start-intro__actions">
+                  <a class="hero-cta" href="#application-form">Ta kontakt</a>
+                  <a class="category-projects-link" href="/tjenester-prosess#prosess">
+                    Prosess
+                    <img
+                      class="category-projects-link__arrow"
+                      src="assets/small-arrow-right.svg"
+                      alt=""
+                      width="12"
+                      height="12"
+                      aria-hidden="true"
+                    />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- NOTE: Category hashtag links — centered row directly under section-3 image. -->
+          <div class="start-intro__hashtags-row">
+            <nav class="section-3__hashtags" aria-label="Relaterte fagområder">
+              <a class="section-3__hashtag" href="/category/produktdesign/norge"
+                >#produktutvikling</a
+              >
+              <a class="section-3__hashtag" href="/category/industridesign/norge"
+                >#industridesign</a
+              >
+              <a class="section-3__hashtag" href="/category/teknisk-tegning/norge"
+                >#produksjonsforberedelse</a
+              >
+            </nav>
+          </div>
+        </div>
+      </section>
+
+      <!-- NOTE: Homepage section 7 — physical products scope disclaimer. -->
+      <section
+        class="section section--white home-section home-section--note"
+        aria-label="Fysiske produkter"
+      >
+        <div class="home-section__inner">
+          <p class="home-scope-note">
+            Vi jobber med fysiske produkter. Har du et digitalt produkt eller en tjeneste, er vi
+            sannsynligvis ikke riktig partner for deg.
+          </p>
+        </div>
+      </section>
+
+      <!-- NOTE: Homepage section 8 — partner logo strip after section-3 scope note. -->
+      <div data-component="partner-logos-section"></div>
+
+      <!-- NOTE: Homepage section 9 — featured project grid with link to /prosjekter. -->
+      <section
+        class="section section--white home-section home-section--portfolio section--projects"
+        id="portfolio"
+        aria-label="Prosjekter"
+      >
+        <div class="home-section__inner">
+          <div class="section-head">
+            <h2 class="section-title">
+              <a class="section-title-link" href="/prosjekter">
+                Alle prosjekter
+                <img
+                  class="section-title-link__arrow"
+                  src="assets/small-arrow-right.svg"
+                  alt=""
+                  width="12"
+                  height="12"
+                  aria-hidden="true"
+                />
+              </a>
+            </h2>
+          </div>
+          <!-- NOTE: Full-bleed dark band behind project tiles only; captions use panel text color via CSS. -->
+          <div class="projects-grid-panel">
+            <!-- NOTE: Portfolio tiles are rendered from assets/data/projects-manifest.js to keep titles and media in sync with project data. -->
+            <!-- NOTE: Homepage shows four featured tiles only; full list lives on /prosjekter (see data-projects-limit). -->
+            <div
+              class="projects-grid"
+              aria-label="Prosjektliste"
+              data-projects-grid
+              data-projects-limit="4"
+            ></div>
+            <div class="projects-sentinel" data-projects-sentinel aria-hidden="true"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- NOTE: Homepage section 10 — display line after portfolio grid, before “Hva du får”. -->
+      <section
+        class="section section--white home-section home-section--display"
+        aria-label="Din suksess"
+      >
+        <div class="home-section__inner">
           <p class="big-text">Din suksess er vår suksess</p>
         </div>
       </section>
 
+      <!-- NOTE: Homepage section 11 — “Hva du får” feature block. -->
       <section class="section section--white section--features" aria-label="Fordeler">
         <div class="section-inner">
           <div data-component="hva-du-far-section"></div>
