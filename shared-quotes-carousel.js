@@ -1,6 +1,6 @@
-// NOTE: Quote carousel — centers one card, shows neighbors partly visible, steps every 4s; supports multiple instances.
+// NOTE: Quote carousel — centers one card, shows neighbors partly visible, steps every 6s; supports multiple instances.
 (function quotesCarousel() {
-  const INTERVAL_MS = 4000;
+  const INTERVAL_MS = 6000;
 
   function initCarouselRoot(root) {
     if (!root || root.dataset.quotesReady === 'true') return;
