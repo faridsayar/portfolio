@@ -2181,7 +2181,7 @@ section[aria-label='Oss'] .about-competence-grid {
   margin-top: 2.5rem;
 }
 
-/* NOTE: Om oss — partner cards directly under Samarbeidspartnere title, logos below cards. */
+/* NOTE: Om oss — partner cooperation cards under Samarbeidspartnere title (no logo strip). */
 section[aria-label='Oss'] .section--partner-logos--oss-cards {
   background: transparent;
 }
@@ -2197,12 +2197,6 @@ section[aria-label='Oss'] .section--partner-logos--oss-cards > .section-inner {
 
 section[aria-label='Oss'] .section--partner-logos--oss-cards .cooperation-partners {
   margin-top: 1.25rem;
-}
-
-section[aria-label='Oss'] .section--partner-logos--oss-cards .partner-logos {
-  justify-content: flex-start;
-  padding-top: 2.5rem;
-  padding-bottom: 0;
 }
 
 section[aria-label='Oss'] .about-competence-block:not(:first-child) .about-competence-block__title {
@@ -2822,7 +2816,7 @@ section[aria-label='Tjenester'] .start-tjenester {
 /* NOTE: Standalone on main (e.g. oss) — vertical rhythm via inner padding, flush with adjacent white sections. */
 main > .section--partner-logos > .section-inner {
   padding-top: 4rem;
-  padding-bottom: 4rem;
+  padding-bottom: 2rem;
 }
 
 /* NOTE: Partner block before feature banner on category pages. */

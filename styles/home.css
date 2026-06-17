@@ -77,7 +77,7 @@
 .home-section--note .home-scope-note {
   margin: 0;
   max-width: 28rem;
-  padding-block: var(--page-gutter);
+  padding-block: 2rem;
   font-size: var(--font-size-body-md);
   line-height: var(--line-height-relaxed);
   text-transform: uppercase;
