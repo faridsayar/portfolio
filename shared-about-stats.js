@@ -1,7 +1,7 @@
-// NOTE: Stats row — viewport-triggered count-up animation (0 → target in ~2s).
+// NOTE: Stats row — viewport-triggered count animation (up or down) in ~2s.
 (function aboutStats() {
   const DURATION_MS = 2000;
-  let initialized = false;
+  const initializedGroups = new WeakSet();
 
   function prefersReducedMotion() {
     return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -9,6 +9,10 @@
 
   function easeOutExpo(progress) {
     return progress >= 1 ? 1 : 1 - 2 ** (-10 * progress);
+  }
+
+  function getStartValue(el) {
+    return el.dataset.from !== undefined ? Number(el.dataset.from) : 0;
   }
 
   function formatValue(value, suffix) {
@@ -31,9 +35,11 @@
       const eased = easeOutExpo(progress);
 
       valueEls.forEach((el) => {
+        const from = getStartValue(el);
         const target = Number(el.dataset.target) || 0;
         const suffix = el.dataset.suffix || '';
-        el.textContent = formatValue(target * eased, suffix);
+        const current = from + (target - from) * eased;
+        el.textContent = formatValue(current, suffix);
       });
 
       if (progress < 1) {
@@ -44,16 +50,13 @@
     requestAnimationFrame(tick);
   }
 
-  function initializeAboutStats() {
-    if (initialized) return;
+  function initializeStatGroup(group) {
+    if (initializedGroups.has(group)) return;
 
-    const strip = document.querySelector('.about-stats');
-    if (!strip) return;
-
-    const valueEls = [...strip.querySelectorAll('[data-about-stat-value]')];
+    const valueEls = [...group.querySelectorAll('[data-about-stat-value]')];
     if (valueEls.length === 0) return;
 
-    initialized = true;
+    initializedGroups.add(group);
 
     if (prefersReducedMotion()) {
       setFinalValues(valueEls);
@@ -76,7 +79,12 @@
       { threshold: 0.35 }
     );
 
-    observer.observe(strip);
+    observer.observe(group);
+  }
+
+  function initializeAboutStats() {
+    const groups = document.querySelectorAll('[data-about-stats-group]');
+    groups.forEach(initializeStatGroup);
   }
 
   document.addEventListener('components:ready', initializeAboutStats);

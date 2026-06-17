@@ -286,7 +286,21 @@
               </div>
             </div>
           </div>
+        </div>
 
+        <div class="section-inner">
+          <!-- NOTE: Success stat before display line — grouped with big-text in the same container. -->
+          <div class="start-success-stat" data-about-stats-group>
+            <p class="start-success-stat__lead">Vi øker sjansen til produktsuksess med</p>
+            <p
+              class="about-stat__value start-success-stat__value"
+              data-about-stat-value
+              data-target="228"
+              data-suffix="%"
+            >
+              0%
+            </p>
+          </div>
           <!-- NOTE: Large display line after section-1 (`.big-text` utility). -->
           <p class="big-text">Mindre prat. Mer form.</p>
 
@@ -381,7 +395,23 @@
               </div>
             </div>
           </div>
+        </div>
 
+        <!-- NOTE: Risk stat after section-2 — count-down 100 → 1 on viewport entry. -->
+        <div class="start-success-stat" data-about-stats-group>
+          <p class="start-success-stat__lead">Reduser risikoen for kostbare feil før produksjon</p>
+          <p
+            class="about-stat__value start-success-stat__value"
+            data-about-stat-value
+            data-from="100"
+            data-target="1"
+            data-suffix="%"
+          >
+            100%
+          </p>
+        </div>
+
+        <div class="section-inner">
           <!-- NOTE: Large display line after section-2 (`.big-text` utility). -->
           <p class="big-text">Vi tenker på enkelhet, bærekraft, innovasjon og unikhet.</p>
 
@@ -469,11 +499,18 @@
                 </div>
               </div>
             </div>
+            <!-- NOTE: Section-3 scope disclaimer — physical products only; not part of partner-logos component. -->
+            <p class="start-success-stat__lead section-3__scope-note">
+              Vi jobber med fysiske produkter. Har du et digitalt produkt eller en tjeneste, er vi
+              sannsynligvis ikke riktig partner for deg.
+            </p>
           </div>
+        </div>
 
-          <!-- NOTE: Partner logo strip — before portfolio grid on homepage. -->
-          <div data-component="partner-logos-section"></div>
+        <!-- NOTE: Partner logo strip — standalone block after section-3 on homepage. -->
+        <div data-component="partner-logos-section"></div>
 
+        <div class="section-inner">
           <!-- NOTE: Homepage #start section-4 — featured project grid with link to /prosjekter. -->
           <div class="section section-4 section--projects" id="portfolio" aria-label="Prosjekter">
             <div class="section-inner">

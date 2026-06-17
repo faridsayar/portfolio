@@ -34,6 +34,20 @@ window.__COMPANY_PARTNERS_MANIFEST = {
       "url": "https://kaiehuset.no/",
       "source": "kaiehuset-logo.png",
       "logo": "kaiehuset-logo.webp"
+    },
+    {
+      "name": "Maketronics",
+      "url": "https://maketronics.no/",
+      "source": "maketronics-logo.png",
+      "logo": "maketronics-logo.webp",
+      "description": "Elektronikkconsultancy i Oslo — utvikler elektronikk og tilhørende firmware for industri og underholdning."
+    },
+    {
+      "name": "Bitraf",
+      "url": "https://bitraf.no/",
+      "source": "bitraf-logo.png",
+      "logo": "bitraf-logo.webp",
+      "description": "Oslos største makerspace — delt verksted med CNC, laser, 3D-print og elektronikk for prototyping og småserie."
     }
   ]
 };

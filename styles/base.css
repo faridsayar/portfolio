@@ -1109,8 +1109,16 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
 }
 
 /* NOTE: Homepage #start section blocks — div.section-1 / section-2 / section-3 / section-4 with title, bullets left, 16:9 media right (section-4: project grid). */
-.section-1,
-.section-2,
+.section-1 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.section-2 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 .section-3,
 .section-4 {
   margin-top: 0;
@@ -1301,6 +1309,14 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
   margin-top: 1.25rem;
 }
 
+/* NOTE: Section-3 scope disclaimer — end of section-3 block, before standalone partner logos. */
+#start .section-3__scope-note {
+  margin: clamp(2rem, 5vw, 4rem) 0 0;
+  max-width: 28rem;
+  padding-top: 36px;
+  padding-bottom: 36px;
+}
+
 /* NOTE: CTA row — primary button + inline text link beside each other in #start intro blocks. */
 #start .start-intro__actions {
   display: flex;
@@ -1403,7 +1419,37 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
   }
 }
 
-/* NOTE: Homepage start — display line between section-1 and section-2. */
+/* NOTE: Homepage start — success stat between section-1 and display line. */
+#start .start-success-stat {
+  box-sizing: border-box;
+  max-width: var(--content-max-width);
+  margin-inline: auto;
+  padding-top: 192px;
+  padding-bottom: 0.75rem;
+  padding-left: 36px;
+  padding-right: 36px;
+}
+
+#start > .start-success-stat ~ .start-success-stat {
+  padding-top: clamp(2rem, 5vw, 4rem);
+}
+
+#start .start-success-stat__lead {
+  margin: 0 0 0.35rem;
+  max-width: 28rem;
+  font-size: var(--font-size-body-md);
+  line-height: var(--line-height-relaxed);
+  text-transform: uppercase;
+}
+
+#start .start-success-stat__value {
+  margin: 0;
+}
+
+#start .start-success-stat + .big-text {
+  padding-top: 0;
+}
+
 #start .big-text {
   padding-top: 192px;
   padding-bottom: 192px;
@@ -2045,12 +2091,20 @@ section[aria-label='Prosess i bilder'] .section-inner {
 }
 
 /* NOTE: Partner logo link on prosess image overlay (e.g. Kroloftet on verksted) — above title; pointer-events restored on link only. */
+.prosess-image-grid__partner-links {
+  pointer-events: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 0.35rem;
+}
+
 .prosess-image-grid__partner-link {
   pointer-events: auto;
   display: inline-flex;
   align-items: center;
   align-self: flex-start;
-  margin-bottom: 0.35rem;
   text-decoration: none;
   transition: opacity 0.2s ease;
 }
@@ -2128,11 +2182,6 @@ section[aria-label='Verksteder og produksjon'] .section-inner {
   display: flex;
   flex-direction: column;
   gap: clamp(1.25rem, 2.5vw, 2rem);
-}
-
-.prosess-produksjon-section__partner {
-  margin: 0;
-  max-width: 48rem;
 }
 
 /* About page team section */
@@ -2367,7 +2416,7 @@ section[aria-label='Oss'] .section-lead--after-grid > .category-projects-link {
   margin-top: 3rem;
 }
 
-/* NOTE: Vertical spacing around “Se prosessen” link at end of tjenester-prosess SEO block. */
+/* NOTE: Vertical spacing around innsikt link at end of tjenester-prosess SEO block. */
 section[aria-label='Hvordan produktutvikling vil være for deg']
   .section-lead--after-grid
   > .category-projects-link {
@@ -3016,10 +3065,10 @@ section[aria-label='Tjenester'] .start-tjenester {
 
 .about-page-body .quotes-lutvann-media--oss .quotes-lutvann-media__title {
   margin: 0 0 0.75rem;
-  font-size: var(--font-size-card-title);
+  font-size: var(--font-size-section-title);
   font-weight: var(--font-weight-semibold);
-  line-height: 1.25;
-  letter-spacing: -0.01em;
+  line-height: var(--line-height-h2);
+  letter-spacing: var(--letter-spacing-tight-heading);
   text-shadow: 0 6px 18px var(--overlay-black-35);
 }
 
@@ -3114,17 +3163,17 @@ main > .section--partner-logos > .section-inner {
   padding-right: 0;
 }
 
-/* NOTE: Partner logos inside #start (before portfolio) — nested layout; transparent on white #start band. */
+/* NOTE: Partner logos on homepage — standalone block under #start (after section-3), not nested in .section-inner. */
 #start .section--partner-logos {
   background: transparent;
 }
 
-#start .section--partner-logos > .section-inner {
-  max-width: none;
-  margin: 0;
-  padding-top: 0;
-  padding-left: 0;
-  padding-right: 0;
+#start > .section--partner-logos > .section-inner {
+  box-sizing: border-box;
+  max-width: var(--content-max-width);
+  margin-inline: auto;
+  padding-top: clamp(2rem, 5vw, 4rem);
+  padding-inline: var(--page-gutter);
 }
 
 .section-head--partner-logos {
