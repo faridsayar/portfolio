@@ -277,7 +277,7 @@
             </div>
             <div class="quote-card__content">
               <p class="quote-card__text">"Vi fikk hjelp til å lage nye og høy-kvalitet visualiseringer av vårt primære produkt - Utstyr for ubemannede båter - til investorgruppen. Bra leveranse og veldig god kommunikasjon hele veien."</p>
-              <p class="quote-card__name">Carl Zeabuz</p>
+              <p class="quote-card__name">Carl Jacobsen</p>
             </div>
           </article>
           <article class="quote-card">

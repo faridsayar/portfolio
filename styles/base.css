@@ -1102,265 +1102,7 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
   gap: 0.55rem;
 }
 
-/* NOTE: Homepage start — vertical inset for the "Dette gjør vi" section inner column. */
-#start .section-inner {
-  padding-top: 0;
-  padding-bottom: 6rem;
-}
-
-/* NOTE: Homepage #start section blocks — div.section-1 / section-2 / section-3 / section-4 with title, bullets left, 16:9 media right (section-4: project grid). */
-.section-1,
-.section-2,
-.section-3,
-.section-4 {
-  margin-top: 0;
-  margin-bottom: 4rem;
-}
-
-.section-1 .section-inner,
-.section-2 .section-inner,
-.section-3 .section-inner,
-.section-4 .section-inner {
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
-#start .section-1 > .section-inner,
-#start .section-2 > .section-inner,
-#start .section-3 > .section-inner,
-#start .section-4 > .section-inner {
-  max-width: none;
-  margin: 0;
-  padding-top: 0;
-  padding-left: 0;
-  padding-right: 0;
-}
-
-/* NOTE: Opening row — vertical logo sits on the left text line; copy flows beside it. */
-#start .start-intro__opening-row {
-  padding-top: 96px;
-  padding-bottom: 96px;
-}
-
-/* NOTE: Homepage #start opening copy — gap between paragraphs. */
-#start .start-intro__opening {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  padding-block: 0;
-}
-
-#start .start-intro__opening .section-lead {
-  max-width: 37rem;
-}
-
-#start .start-intro__eyebrow {
-  margin: 0;
-  max-width: 37rem;
-  font-size: var(--font-size-body-md);
-  line-height: var(--line-height-relaxed);
-  opacity: 0.85;
-}
-
-#start .start-intro {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: clamp(1.5rem, 4vw, 2.5rem);
-  align-items: center;
-  margin-bottom: 0;
-}
-
-/* NOTE: Full-bleed homepage intro — image edge-to-edge; copy overlays with left→right gradient; hashtags sit below image. */
-#start .start-intro--overlay {
-  display: block;
-}
-
-#start .start-intro__media-zone {
-  position: relative;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-  min-height: min(36rem, 72vh);
-  overflow: hidden;
-}
-
-#start .start-intro__backdrop {
-  position: absolute;
-  inset: 0;
-}
-
-/* NOTE: Hashtag row — small gap under full-bleed image, center aligned. */
-#start .start-intro__hashtags-row {
-  display: flex;
-  justify-content: center;
-  margin-top: 0.5rem;
-  padding: 0 var(--page-gutter);
-}
-
-#start .start-intro__hashtags-row .section-1__hashtags,
-#start .start-intro__hashtags-row .section-2__hashtags,
-#start .start-intro__hashtags-row .section-3__hashtags {
-  justify-content: center;
-  margin: 0;
-}
-
-#start .start-intro--overlay .start-intro__gradient {
-  position: absolute;
-  inset: 0;
-  /* NOTE: Homepage intro overlay — left→right grey (#1e1e1e → #888888), same opacity stops as before. */
-  background: linear-gradient(
-    90deg,
-    rgba(30, 30, 30, 0.9) 0%,
-    rgba(62, 62, 62, 0.72) 100%,
-    rgba(102, 102, 102, 0.38) 72%,
-    rgba(136, 136, 136, 0.1) 90%,
-    rgba(136, 136, 136, 0) 100%
-  );
-  pointer-events: none;
-}
-
-#start .start-intro--overlay .start-intro__image {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-#start .start-intro__overlay-inner {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: clamp(1.5rem, 4vw, 2.5rem);
-  align-items: center;
-  min-height: inherit;
-  max-width: var(--content-max-width);
-  margin: 0 auto;
-  padding: clamp(2.5rem, 6vw, 4.5rem) clamp(var(--page-gutter), 4vw, 2.5rem);
-  color: var(--color-white);
-}
-
-#start .start-intro--overlay .section-title,
-#start .start-intro--overlay .section-lead,
-#start .start-intro--overlay .article-row__list {
-  color: var(--color-white);
-}
-
-#start .start-intro--overlay .section-lead {
-  opacity: 0.92;
-}
-
-#start .start-intro--overlay .internal-text-link,
-#start .start-intro--overlay .internal-text-link:visited {
-  color: var(--color-white);
-}
-
-#start .start-intro--overlay .internal-text-link:hover,
-#start .start-intro--overlay .internal-text-link:focus {
-  color: var(--color-secondary);
-}
-
-#start .start-intro--overlay .category-projects-link,
-#start .start-intro--overlay .category-projects-link:visited {
-  color: var(--color-white);
-}
-
-#start .start-intro--overlay .category-projects-link:hover,
-#start .start-intro--overlay .category-projects-link:focus {
-  color: var(--color-secondary);
-}
-
-/* NOTE: Homepage overlay sections — 13px body on mobile; CTA row only at 16px; titles keep section-title scale. */
-@media (max-width: 768px) {
-  #start .start-intro--overlay .section-lead,
-  #start .start-intro--overlay .article-row__list,
-  #start .start-intro--overlay .internal-text-link,
-  #start .start-intro__hashtags-row .section-1__hashtag,
-  #start .start-intro__hashtags-row .section-2__hashtag,
-  #start .start-intro__hashtags-row .section-3__hashtag {
-    font-size: 13px;
-  }
-
-  #start .start-intro--overlay .start-intro__actions .hero-cta,
-  #start .start-intro--overlay .start-intro__actions .category-projects-link {
-    font-size: var(--font-size-body-md);
-  }
-}
-
-#start .start-intro__content .section-title {
-  margin-bottom: 1rem;
-}
-
-#start .start-intro__content .section-lead {
-  margin-bottom: 1rem;
-}
-
-#start .section-1 .hero-cta,
-#start .section-2 .hero-cta,
-#start .section-3 .hero-cta {
-  margin-top: 1.25rem;
-}
-
-/* NOTE: CTA row — primary button + inline text link beside each other in #start intro blocks. */
-#start .start-intro__actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 1.25rem 1.75rem;
-  margin-top: 1.25rem;
-}
-
-#start .start-intro__actions .hero-cta {
-  margin-top: 0;
-}
-
-/* NOTE: Bold dash markers instead of circle bullets in start intro list. */
-#start .start-intro__content .article-row__list {
-  list-style: none;
-  padding-left: 0;
-}
-
-#start .start-intro__content .article-row__list li {
-  display: flex;
-  align-items: baseline;
-  gap: 0.6rem;
-}
-
-#start .start-intro__content .article-row__list li::before {
-  content: '-';
-  flex: 0 0 auto;
-  font-weight: var(--font-weight-bold);
-  font-size: 1.25em;
-  line-height: 1;
-}
-
-/* NOTE: Keep dash + copy on one flex row; inline links stay in normal text flow inside the span. */
-#start .start-intro__content .article-row__list li > span {
-  min-width: 0;
-}
-
-#start .start-intro__media-wrap {
-  display: flex;
-  flex-direction: column;
-}
-
-#start .start-intro__media {
-  margin: 0;
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-  background: var(--surface-neutral);
-}
-
-#start .start-intro__image,
-#start .start-intro__video {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-/* NOTE: xs category hashtag links under section-1 / section-2 / section-3 media (30% opacity). */
+/* NOTE: xs category hashtag links under homepage media blocks (30% opacity). */
 .section-1__hashtags,
 .section-2__hashtags,
 .section-3__hashtags {
@@ -1391,22 +1133,6 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
 .section-3__hashtag:focus-visible {
   opacity: 0.55;
   color: var(--color-primary);
-}
-
-@media (min-width: 768px) {
-  #start .start-intro:not(.start-intro--overlay) {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  }
-
-  #start .start-intro__overlay-inner {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  }
-}
-
-/* NOTE: Homepage start — display line between section-1 and section-2. */
-#start .big-text {
-  padding-top: 192px;
-  padding-bottom: 192px;
 }
 
 /* NOTE: Homepage “For hvem” block — spacing before category tags (before kontaktform). */
@@ -2045,12 +1771,20 @@ section[aria-label='Prosess i bilder'] .section-inner {
 }
 
 /* NOTE: Partner logo link on prosess image overlay (e.g. Kroloftet on verksted) — above title; pointer-events restored on link only. */
+.prosess-image-grid__partner-links {
+  pointer-events: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 0.35rem;
+}
+
 .prosess-image-grid__partner-link {
   pointer-events: auto;
   display: inline-flex;
   align-items: center;
   align-self: flex-start;
-  margin-bottom: 0.35rem;
   text-decoration: none;
   transition: opacity 0.2s ease;
 }
@@ -2128,11 +1862,6 @@ section[aria-label='Verksteder og produksjon'] .section-inner {
   display: flex;
   flex-direction: column;
   gap: clamp(1.25rem, 2.5vw, 2rem);
-}
-
-.prosess-produksjon-section__partner {
-  margin: 0;
-  max-width: 48rem;
 }
 
 /* About page team section */
@@ -2298,12 +2027,7 @@ section[aria-label='Oss'] .about-top-graphic .big-text {
   box-sizing: border-box;
 }
 
-/* NOTE: Homepage — stats directly under process-flow strip below hero. */
-.hero-process-flow + .about-stats {
-  padding-top: 96px;
-  padding-bottom: 36px;
-}
-
+/* NOTE: About-stats strip — spacing when first block inside homepage intro section (see home.css). */
 .about-stats__grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -2367,7 +2091,7 @@ section[aria-label='Oss'] .section-lead--after-grid > .category-projects-link {
   margin-top: 3rem;
 }
 
-/* NOTE: Vertical spacing around “Se prosessen” link at end of tjenester-prosess SEO block. */
+/* NOTE: Vertical spacing around innsikt link at end of tjenester-prosess SEO block. */
 section[aria-label='Hvordan produktutvikling vil være for deg']
   .section-lead--after-grid
   > .category-projects-link {
@@ -2457,7 +2181,7 @@ section[aria-label='Oss'] .about-competence-grid {
   margin-top: 2.5rem;
 }
 
-/* NOTE: Om oss — partner cards directly under Samarbeidspartnere title, logos below cards. */
+/* NOTE: Om oss — partner cooperation cards under Samarbeidspartnere title (no logo strip). */
 section[aria-label='Oss'] .section--partner-logos--oss-cards {
   background: transparent;
 }
@@ -2473,12 +2197,6 @@ section[aria-label='Oss'] .section--partner-logos--oss-cards > .section-inner {
 
 section[aria-label='Oss'] .section--partner-logos--oss-cards .cooperation-partners {
   margin-top: 1.25rem;
-}
-
-section[aria-label='Oss'] .section--partner-logos--oss-cards .partner-logos {
-  justify-content: flex-start;
-  padding-top: 2.5rem;
-  padding-bottom: 0;
 }
 
 section[aria-label='Oss'] .about-competence-block:not(:first-child) .about-competence-block__title {
@@ -3016,10 +2734,10 @@ section[aria-label='Tjenester'] .start-tjenester {
 
 .about-page-body .quotes-lutvann-media--oss .quotes-lutvann-media__title {
   margin: 0 0 0.75rem;
-  font-size: var(--font-size-card-title);
+  font-size: var(--font-size-section-title);
   font-weight: var(--font-weight-semibold);
-  line-height: 1.25;
-  letter-spacing: -0.01em;
+  line-height: var(--line-height-h2);
+  letter-spacing: var(--letter-spacing-tight-heading);
   text-shadow: 0 6px 18px var(--overlay-black-35);
 }
 
@@ -3098,7 +2816,7 @@ section[aria-label='Tjenester'] .start-tjenester {
 /* NOTE: Standalone on main (e.g. oss) — vertical rhythm via inner padding, flush with adjacent white sections. */
 main > .section--partner-logos > .section-inner {
   padding-top: 4rem;
-  padding-bottom: 4rem;
+  padding-bottom: 2rem;
 }
 
 /* NOTE: Partner block before feature banner on category pages. */
@@ -3110,19 +2828,6 @@ main > .section--partner-logos > .section-inner {
 .section--features .section--partner-logos > .section-inner {
   max-width: none;
   margin: 0;
-  padding-left: 0;
-  padding-right: 0;
-}
-
-/* NOTE: Partner logos inside #start (before portfolio) — nested layout; transparent on white #start band. */
-#start .section--partner-logos {
-  background: transparent;
-}
-
-#start .section--partner-logos > .section-inner {
-  max-width: none;
-  margin: 0;
-  padding-top: 0;
   padding-left: 0;
   padding-right: 0;
 }
@@ -3303,12 +3008,6 @@ main > .section--partner-logos > .section-inner {
 /* Note: utility for highlighting specific text in primary color */
 .text-primary {
   color: var(--color-primary);
-}
-
-/* NOTE: Homepage #start section-4 portfolio — display line uses shared #start .big-text spacing. */
-#start .section-4 .big-text {
-  padding-top: 192px;
-  padding-bottom: 192px;
 }
 
 /* NOTE: Large low-contrast display text (e.g. homepage portfolio values line). */
@@ -3716,17 +3415,10 @@ main > .section--partner-logos > .section-inner {
   }
 }
 
-/* Projects grid — override #start .section-inner top inset on homepage portfolio block. */
-#start .section--projects .section-inner {
-  padding-top: 0;
-}
-
-/* NOTE: Bottom spacing after portfolio grid stays on white #start — margin would collapse and expose page grey before “Hva du får”. */
-#start .section-4.section--projects,
+/* NOTE: Homepage portfolio block — vertical rhythm; bottom spacing stays on white section before “Hva du får”. */
+.home-section--portfolio,
 #portfolio {
   margin-bottom: 0;
-  padding-top: 32px;
-  padding-bottom: 32px;
 }
 
 .section--projects .section-head {
@@ -4829,11 +4521,6 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
 
   .projects-grid {
     grid-template-columns: 1fr;
-  }
-
-  /* NOTE: No extra bottom inset on the "Dette gjør vi" start section (uses default section-inner sides only). */
-  #start .section-inner {
-    padding-bottom: 0;
   }
 
   .projects-grid-panel {

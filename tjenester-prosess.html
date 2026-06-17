@@ -172,7 +172,7 @@
             </div>
 
             <div class="tjenester-services__group">
-              <h2 class="section-title tjenester-services__title">Elektronikkdesign</h2>
+              <h3 class="section-title tjenester-services__title">Elektronikkdesign</h3>
               <!-- NOTE: Short intro — circuit design resources and local production via electronics partners. -->
               <p class="section-lead tjenester-services__intro">
                 For produkter med elektronikk har vi ressurser og kompetanse til å utvikle
@@ -592,24 +592,43 @@
               decoding="async"
             />
             <figcaption class="prosess-image-grid__overlay">
-              <!-- NOTE: Kroloftet partner logo — links to workshop collective before overlay title. -->
-              <a
-                class="prosess-image-grid__partner-link"
-                href="https://www.kroloftet.no/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Kroloftet (åpnes i ny fane)"
-              >
-                <img
-                  class="prosess-image-grid__partner-logo"
-                  src="/assets/company-logos/kroloftet-logo.webp"
-                  alt=""
-                  width="72"
-                  height="72"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </a>
+              <!-- NOTE: Workshop partner logos — Kroloftet + Bitraf makerspace before overlay title. -->
+              <div class="prosess-image-grid__partner-links">
+                <a
+                  class="prosess-image-grid__partner-link"
+                  href="https://www.kroloftet.no/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Kroloftet (åpnes i ny fane)"
+                >
+                  <img
+                    class="prosess-image-grid__partner-logo"
+                    src="/assets/company-logos/kroloftet-logo.webp"
+                    alt=""
+                    width="72"
+                    height="72"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </a>
+                <a
+                  class="prosess-image-grid__partner-link"
+                  href="https://bitraf.no/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Bitraf (åpnes i ny fane)"
+                >
+                  <img
+                    class="prosess-image-grid__partner-logo"
+                    src="/assets/company-logos/bitraf-logo.webp"
+                    alt=""
+                    width="72"
+                    height="72"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </a>
+              </div>
               <h3 class="prosess-image-grid__title">Verksted</h3>
               <p class="prosess-image-grid__text">
                 Vi har tilgang til bred type verksteder for utvikling av treverk, metall, plast og
@@ -644,7 +663,6 @@
           </figure>
 
           <h3 class="article-row__title">Produksjon i utlandet</h3>
-          <!-- NOTE: Intro copy before Yanmee partner card — China production, EU logistics, certified validation. -->
           <div class="article-row__text">
             <p>
               Vi samarbeider med selskaper som har egen produksjon i Kina, lang erfaring med frakt
@@ -657,35 +675,6 @@
               riktig løsning for både prototyper, lavserie og større serier.
             </p>
           </div>
-
-          <!-- NOTE: Yanmee partner label — same copy as cooperation card on Om oss (`company-partners.json`). -->
-          <article class="cooperation-card prosess-produksjon-section__partner">
-            <header class="cooperation-card__head">
-              <img
-                class="cooperation-card__logo"
-                src="/assets/company-logos/yanmee-logo.webp"
-                alt=""
-                width="72"
-                height="72"
-                loading="lazy"
-                decoding="async"
-              />
-              <h4 class="cooperation-card__name">
-                <a
-                  class="internal-text-link"
-                  href="https://yanmee.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >Yanmee</a
-                >
-              </h4>
-            </header>
-            <p class="cooperation-card__text">
-              Kina-basert selskap som spesialiserer seg på presisjonsprototyper, CNC-maskinering og
-              lavvolumsproduksjon for produktutvikling. Vår samarbeidspartner innen sertifisert
-              validering og småserieproduksjon.
-            </p>
-          </article>
 
           <figure class="prosess-image-grid__item prosess-produksjon-section__media">
             <!-- NOTE: Overseas production — close-up with factory floor in background (generated). -->
@@ -745,9 +734,9 @@
               forespørsel via
               <a class="internal-text-link" href="/application-form">kontaktformet</a>.
             </p>
-            <!-- NOTE: Prominent link after SEO copy block (moved from Om oss). -->
-            <a class="category-projects-link" href="#prosess">
-              Se prosessen
+            <!-- NOTE: Prominent link after SEO copy block — to industridesign innsikt article. -->
+            <a class="category-projects-link" href="/innsikt/hva-er-industridesign">
+              Finn ut mer om produktutvikling
               <img
                 class="category-projects-link__arrow"
                 src="assets/small-arrow-right.svg"
