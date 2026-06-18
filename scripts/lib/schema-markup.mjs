@@ -201,7 +201,7 @@ export function buildArticleGraph({
     breadcrumbList(
       [
         { name: 'Formaa', url: `${SITE}/` },
-        { name: 'Innsikt', url: `${SITE}/innsikt` },
+        { name: 'Blogg', url: `${SITE}/blogg` },
         { name: breadcrumbTitle || headline, url },
       ],
       url
@@ -214,7 +214,7 @@ export function buildArticleGraph({
       inLanguage: 'nb-NO',
       datePublished: datePublished || '2026-01-01T00:00:00+01:00',
       dateModified: dateModified || datePublished || '2026-01-01T00:00:00+01:00',
-      articleSection: 'Innsikt',
+      articleSection: 'Blogg',
       keywords,
       author: publisherRef(),
       publisher: publisherRef(),
@@ -222,8 +222,8 @@ export function buildArticleGraph({
       image: [image || DEFAULT_IMAGE],
       isPartOf: {
         '@type': 'Blog',
-        name: 'Formaa Innsikt',
-        url: `${SITE}/innsikt`,
+        name: 'Formaa Blogg',
+        url: `${SITE}/blogg`,
       },
     },
   ];
@@ -243,13 +243,13 @@ export function buildArticleGraph({
   return wrapGraph(graph);
 }
 
-export function buildInnsiktHubGraph({ url, title, description }) {
+export function buildBloggHubGraph({ url, title, description }) {
   return wrapGraph([
     websiteRef(),
     breadcrumbList(
       [
         { name: 'Formaa', url: `${SITE}/` },
-        { name: 'Innsikt', url },
+        { name: 'Blogg', url },
       ],
       url
     ),
@@ -257,7 +257,7 @@ export function buildInnsiktHubGraph({ url, title, description }) {
     {
       '@type': 'Blog',
       '@id': `${url}#blog`,
-      name: 'Formaa Innsikt',
+      name: 'Formaa Blogg',
       description,
       url,
       inLanguage: 'nb-NO',

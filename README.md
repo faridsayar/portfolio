@@ -77,14 +77,14 @@ Before commit or deploy, run the full sequence:
 corepack pnpm publish:prepare
 ```
 
-This runs, in order: `generate:projects-manifest` → `generate:sitemap` → `generate:crawler-files` → `sync:meta-descriptions` → `generate:schema-markup` → `generate:innsikt-indexes` → `generate:prosjekter-indexes` → `format`.
+This runs, in order: `generate:projects-manifest` → `generate:sitemap` → `generate:crawler-files` → `sync:meta-descriptions` → `generate:schema-markup` → `generate:blogg-indexes` → `generate:prosjekter-indexes` → `format`.
 
 Or step by step:
 
-1. Regenerate `sitemap.xml` with `pnpm generate:sitemap` (auto-discovers `innsikt-*.html` stubs, category pages, and static hubs from `scripts/lib/public-routes.mjs`).
+1. Regenerate `sitemap.xml` with `pnpm generate:sitemap` (auto-discovers `blogg-*.html` stubs, category pages, and static hubs from `scripts/lib/public-routes.mjs`).
 2. Regenerate `robots.txt`, `llms.txt`, and `ai.txt` with `pnpm generate:crawler-files`.
 3. Run `pnpm sync:meta-descriptions` so `meta description` / OG / Twitter text match each page’s visible copy (`section-lead`, hero, article JSON). Homepage uses curated SERP copy (see **SEO Conventions**).
-4. Run `pnpm generate:innsikt-indexes` and `pnpm generate:prosjekter-indexes` so folder routes match sitemap paths on GitHub Pages.
+4. Run `pnpm generate:blogg-indexes` and `pnpm generate:prosjekter-indexes` so folder routes match sitemap paths on GitHub Pages.
 5. Run `pnpm generate:schema-markup` after title/description or FAQ changes.
 6. Verify old URLs were removed (avoid stale `404` entries; `/gallery` must not be listed).
 7. Verify all new canonical routes are included once in `sitemap.xml`.
@@ -128,7 +128,7 @@ Use this checklist after structural updates (new pages, renamed slugs, new categ
 
 Use existing patterns only; do not invent new link colors or button styles.
 
-- **Inline copy links:** `a.internal-text-link` (global style in `styles/base.css`: black, semibold). Use for words or phrases inside paragraphs on pages such as `index.html`, `prisestimat.html`, `oss.html`, and for HTML inside innsikt article JSON `blocks[].text`.
+- **Inline copy links:** `a.internal-text-link` (global style in `styles/base.css`: black, semibold). Use for words or phrases inside paragraphs on pages such as `index.html`, `prisestimat.html`, `oss.html`, and for HTML inside blogg article JSON `blocks[].text`.
 - **Inquiry page links:** use `/application-form` for CTA/contact links that should open the dedicated form page directly (instead of homepage hash links).
 - **Category chips:** `div.service-tags` + `a.service-tag`, same markup as category pages; public URLs are extensionless (for example `/category/{tjeneste}/oslo`). Prefer root-absolute `href` values like `/category/design/norge` so links resolve correctly from any path; on-disk files remain `category/.../*.html` (see `.htaccess`).
 - **Insights articles:** `shared-article.js` renders `blocks` as `<p>` / `<h2>`; embed full `<a class="internal-text-link" href="...">` strings in JSON where needed.
@@ -138,8 +138,8 @@ Use existing patterns only; do not invent new link colors or button styles.
 
 Category pages no longer cross-link to every other service via a “Velg kategori” chip grid. Instead:
 
-- **Category pages:** cross-service grid replaced with a short user-value row (`Prosess` → `/tjenester-prosess`, `Innsikt` → `/innsikt`, `Om oss` → `/oss`). Inline body links in `section-lead` point to Innsikt articles or hub pages where relevant, not to other category URLs.
-- **Homepage:** service tag row links to `/tjenester-prosess`, `/innsikt`, `/prosjekter`, `/oss` (not category hubs). FAQ and “For hvem” blocks link to Innsikt and `/tjenester-prosess` instead of category pages where appropriate.
+- **Category pages:** cross-service grid replaced with a short user-value row (`Prosess` → `/tjenester-prosess`, `Blogg` → `/blogg`, `Om oss` → `/oss`). Inline body links in `section-lead` point to Blogg articles or hub pages where relevant, not to other category URLs.
+- **Homepage:** service tag row links to `/tjenester-prosess`, `/blogg`, `/prosjekter`, `/oss` (not category hubs). FAQ and “For hvem” blocks link to Blogg and `/tjenester-prosess` instead of category pages where appropriate.
 - **Footer nav + footer SEO copy:** category links in `components/site-footer.html` are unchanged (intentional SEO anchor text).
 - **Breadcrumbs + region switchers on category pages:** unchanged.
 - **Homepage hashtag links:** unchanged.
@@ -183,11 +183,11 @@ To add or edit a service: extend `EN_LANDING_PAGES` in `en-landing-pages.js`, ad
 | Script                                    | Purpose                                                                   |
 | ----------------------------------------- | ------------------------------------------------------------------------- |
 | `scripts/generate-projects-manifest.mjs`  | Writes `assets/data/projects-manifest.js` from `project-folders.json`     |
-| `scripts/generate-sitemap.mjs`            | Writes `sitemap.xml` from routes + category/innsikt/prosjekt discovery    |
+| `scripts/generate-sitemap.mjs`            | Writes `sitemap.xml` from routes + category/blogg/prosjekt discovery      |
 | `scripts/generate-crawler-files.mjs`      | Writes `robots.txt`, `llms.txt`, `ai.txt`                                 |
 | `scripts/sync-meta-descriptions.mjs`      | Syncs description + titles from page copy (curated override for homepage) |
 | `scripts/generate-schema-markup.mjs`      | Writes JSON-LD `@graph` on indexable HTML pages                           |
-| `scripts/generate-innsikt-indexes.mjs`    | Writes `innsikt/{slug}/index.html` from root stubs                        |
+| `scripts/generate-blogg-indexes.mjs`      | Writes `blogg/{slug}/index.html` from root stubs                          |
 | `scripts/generate-prosjekter-indexes.mjs` | Writes `prosjekter/{slug}/index.html` from root stubs                     |
 | `scripts/lib/public-routes.mjs`           | Shared static hub routes for sitemap + crawler files                      |
 | `scripts/lib/project-seo-slugs.mjs`       | Catalog ↔ SEO slug map; unpublished project filter for sitemap/schema     |
@@ -205,7 +205,7 @@ Structured data currently used (regenerate with `pnpm generate:schema-markup`):
 - `index.html`: `WebSite`, `LocalBusiness`, `ProfessionalService`, `Organization`, `WebPage`, `FAQPage`
 - `tjenester-prosess.html`: `WebPage`, `BreadcrumbList`, `Service`
 - Category pages: `BreadcrumbList`, `WebPage`, `Service`
-- `innsikt*.html` / `innsikt/*/index.html`: `BlogPosting` (+ `HowTo` when the article has multiple `h2` steps)
+- `blogg*.html` / `blogg/*/index.html`: `BlogPosting` (+ `HowTo` when the article has multiple `h2` steps)
 - `prisestimat.html`: `WebPage`, `BreadcrumbList`, package `Service` offers
 - `advanced-project.html`: hub `CollectionPage`; per-project `CreativeWork` injected via `assets/js/project-schema-inject.js` + `project-schema-by-slug.js`
 - `en/*.html`: merged `@graph` via `en/en-landing-render.js` (`inLanguage: en`)
@@ -218,44 +218,44 @@ Use one primary page per phrase cluster; link contextually from other pages. Do 
 | Phrase cluster                                                            | Primary URL                                                                                 |
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
 | produktutvikling, 3D-visualisering, produktutviklingsbyrå, startup        | `/` (homepage), `/tjenester-prosess`                                                        |
-| hjelp med produktidé, utvikle produktidé, designe egen, lage eget produkt | `/innsikt/fra-oppfinnelse-til-produksjon`, `/category/konseptutvikling/norge`               |
-| hvordan lage prototype, prototypeutvikling                                | `/category/prototyping/norge`, `/innsikt/hvordan-lage-prototype`                            |
-| få produsert oppfinnelse                                                  | `/`, `/innsikt/fra-oppfinnelse-til-produksjon`                                              |
-| hardware startup norge                                                    | `/`, `/innsikt/produktutvikling-hardware-startup`                                           |
+| hjelp med produktidé, utvikle produktidé, designe egen, lage eget produkt | `/blogg/fra-oppfinnelse-til-produksjon`, `/category/konseptutvikling/norge`                 |
+| hvordan lage prototype, prototypeutvikling                                | `/category/prototyping/norge`, `/blogg/hvordan-lage-prototype`                              |
+| få produsert oppfinnelse                                                  | `/`, `/blogg/fra-oppfinnelse-til-produksjon`                                                |
+| hardware startup norge                                                    | `/`, `/blogg/produktutvikling-hardware-startup`                                             |
 | CAD designer, CAD-modelering                                              | `/category/cad-modelering/norge`, `/tjenester-prosess`                                      |
 | tekniske tegninger                                                        | `/category/teknisk-tegning/norge`                                                           |
 | 3D modellering, 3D-design, visualisering                                  | `/category/3d-modelering/norge`, `/category/visualisering/norge`                            |
 | industridesign, produktdesign, designbyrå / designstudio                  | `/category/industridesign/norge`, `/category/produktdesign/norge`, `/category/design/norge` |
 | prototype / produktutvikling pricing intent                               | `/prisestimat`                                                                              |
 
-Homepage also has an FAQ block (`aria-label="Vanlige spørsmål om produktutvikling"`) targeting question-style queries with links to category and Innsikt pages.
+Homepage also has an FAQ block (`aria-label="Vanlige spørsmål om produktutvikling"`) targeting question-style queries with links to category and Blogg pages.
 
-### Innsikt articles
+### Blogg articles
 
-Source files are root stubs `innsikt-{slug}.html` with canonical `/innsikt/{slug}`. Run `pnpm generate:innsikt-indexes` to write `innsikt/{slug}/index.html` for static hosts. Add new stubs to `innsikt.html` grid and `article-image-map.js`.
+Source files are root stubs `blogg-{slug}.html` with canonical `/blogg/{slug}`. Run `pnpm generate:blogg-indexes` to write `blogg/{slug}/index.html` for static hosts. Add new stubs to `blogg.html` grid and `article-image-map.js`.
 
-| Slug                                | Source stub                                      | Topic                    |
-| ----------------------------------- | ------------------------------------------------ | ------------------------ |
-| `sok-stotte-innovasjon-norge`       | `innsikt-sok-stotte-innovasjon-norge.html`       | Innovasjon Norge søknad  |
-| `hva-er-industridesign`             | `innsikt-hva-er-industridesign.html`             | Industridesign intro     |
-| `ux-er-ikke-produktdesign`          | `innsikt-ux-er-ikke-produktdesign.html`          | UX vs produktdesign      |
-| `hvem-trenger-design`               | `innsikt-hvem-trenger-design.html`               | Hvem trenger design      |
-| `hvordan-design-sparer-penger`      | `innsikt-hvordan-design-sparer-penger.html`      | Design sparer penger     |
-| `branding-og-produktdesign`         | `innsikt-branding-og-produktdesign.html`         | Branding + produktdesign |
-| `design-for-crowdfunding`           | `innsikt-design-for-crowdfunding.html`           | Crowdfunding + design    |
-| `hvordan-lage-prototype`            | `innsikt-hvordan-lage-prototype.html`            | Hvordan lage prototype   |
-| `fra-oppfinnelse-til-produksjon`    | `innsikt-fra-oppfinnelse-til-produksjon.html`    | Oppfinnelse → produksjon |
-| `produktutvikling-hardware-startup` | `innsikt-produktutvikling-hardware-startup.html` | Hardware startup Norge   |
+| Slug                                | Source stub                                    | Topic                    |
+| ----------------------------------- | ---------------------------------------------- | ------------------------ |
+| `sok-stotte-innovasjon-norge`       | `blogg-sok-stotte-innovasjon-norge.html`       | Innovasjon Norge søknad  |
+| `hva-er-industridesign`             | `blogg-hva-er-industridesign.html`             | Industridesign intro     |
+| `ux-er-ikke-produktdesign`          | `blogg-ux-er-ikke-produktdesign.html`          | UX vs produktdesign      |
+| `hvem-trenger-design`               | `blogg-hvem-trenger-design.html`               | Hvem trenger design      |
+| `hvordan-design-sparer-penger`      | `blogg-hvordan-design-sparer-penger.html`      | Design sparer penger     |
+| `branding-og-produktdesign`         | `blogg-branding-og-produktdesign.html`         | Branding + produktdesign |
+| `design-for-crowdfunding`           | `blogg-design-for-crowdfunding.html`           | Crowdfunding + design    |
+| `hvordan-lage-prototype`            | `blogg-hvordan-lage-prototype.html`            | Hvordan lage prototype   |
+| `fra-oppfinnelse-til-produksjon`    | `blogg-fra-oppfinnelse-til-produksjon.html`    | Oppfinnelse → produksjon |
+| `produktutvikling-hardware-startup` | `blogg-produktutvikling-hardware-startup.html` | Hardware startup Norge   |
 
-Legacy flat URLs `innsikt-{slug}` and `innsikt-{slug}.html` 301 to `/innsikt/{slug}` via `.htaccess`.
+Legacy flat URLs `blogg-{slug}` and `blogg-{slug}.html` 301 to `/blogg/{slug}` via `.htaccess`.
 
 ## URL Canonicalization
 
-- `.htaccess` (Apache) canonicalizes HTTP → HTTPS, 301s `www.formaa.no` to apex `https://formaa.no`, strips `.html` from URLs, maps `/prosjekter/{slug}` and `/innsikt/{slug}` to the legacy `prosjekt-*.html` / `innsikt-*.html` files, 301s legacy `prosjekt-*.html` / `innsikt-*.html` to `/prosjekter/{slug}` / `/innsikt/{slug}` (before the generic `.html` strip), serves `/llms.txt` and `/ai.txt` directly, and includes explicit 301s for friendly top-level routes such as `/application-form`, `/tjenester-prosess`, retired `/gallery` and `/designstudio-oslo` → `/` (plus Search Console legacy paths: duplicate `/innsikt/innsikt-*`, bad `/category/.../index`, `produksjon` → `teknisk-tegning`, etc.). If you deploy on a host that ignores `.htaccess`, replicate these rules in that platform’s redirect config.
-- **Innsikt routing:** public URL `/innsikt/{slug}` is served from root stub `innsikt-{slug}.html` (internal rewrite). Adding a new article = add `innsikt-{slug}.html` + run `generate:innsikt-indexes`; no `.htaccess` change needed unless the slug pattern changes.
+- `.htaccess` (Apache) canonicalizes HTTP → HTTPS, 301s `www.formaa.no` to apex `https://formaa.no`, strips `.html` from URLs, maps `/prosjekter/{slug}` and `/blogg/{slug}` to the legacy `prosjekt-*.html` / `blogg-*.html` files, 301s legacy `prosjekt-*.html` / `blogg-*.html` to `/prosjekter/{slug}` / `/blogg/{slug}` (before the generic `.html` strip), serves `/llms.txt` and `/ai.txt` directly, and includes explicit 301s for friendly top-level routes such as `/application-form`, `/tjenester-prosess`, retired `/gallery` and `/designstudio-oslo` → `/` (plus Search Console legacy paths: duplicate `/blogg/blogg-*`, bad `/category/.../index`, `produksjon` → `teknisk-tegning`, etc.). If you deploy on a host that ignores `.htaccess`, replicate these rules in that platform’s redirect config.
+- **Blogg routing:** public URL `/blogg/{slug}` is served from root stub `blogg-{slug}.html` (internal rewrite). Adding a new article = add `blogg-{slug}.html` + run `generate:blogg-indexes`; no `.htaccess` change needed unless the slug pattern changes.
 - **Favicon:** `/assets/favicon.svg` and `/assets/Favicon-google-search.svg` redirect to `/assets/square-favicon.svg`. Pages link SVG + PNG fallback (`square-favicon-fallback.png`).
 - Homepage: `/index.html` → `/` (301).
-- Public routes are extensionless (for example `/prosjekter`, `/innsikt`, `/application-form`); legacy flat filenames redirect into those namespaces. Retired `/gallery` and `/gallery.html` redirect to `/`.
+- Public routes are extensionless (for example `/prosjekter`, `/blogg`, `/application-form`); legacy flat filenames redirect into those namespaces. Retired `/gallery` and `/gallery.html` redirect to `/`.
 
 ## Local Development
 

@@ -408,7 +408,7 @@
   color: var(--color-text-on-panel);
 }
 
-/* NOTE: Article cards on Innsikt grid — dark #2b2b2b body, white copy, no border. */
+/* NOTE: Article cards on Blogg grid — dark #2b2b2b body, white copy, no border. */
 .article-card__body {
   background-color: var(--surface-card);
   color: var(--color-text-on-card);
@@ -2091,7 +2091,7 @@ section[aria-label='Oss'] .section-lead--after-grid > .category-projects-link {
   margin-top: 3rem;
 }
 
-/* NOTE: Vertical spacing around innsikt link at end of tjenester-prosess SEO block. */
+/* NOTE: Vertical spacing around blogg link at end of tjenester-prosess SEO block. */
 section[aria-label='Hvordan produktutvikling vil være for deg']
   .section-lead--after-grid
   > .category-projects-link {

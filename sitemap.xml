@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- NOTE: XML sitemap for Google/Bing/AI crawlers: one entry per public route only.
-     Project URLs: /prosjekter/{slug}. Innsikt: /innsikt/{slug} (stubs innsikt-*.html).
+     Project URLs: /prosjekter/{slug}. Blogg: /blogg/{slug} (stubs blogg-*.html).
      /application-form = kontaktform. /tjenester-prosess = tjenester og prosess.
      /gallery retired (301 → home). Regenerate: pnpm generate:sitemap -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://formaa.no/</loc></url>
   <url><loc>https://formaa.no/application-form</loc></url>
   <url><loc>https://formaa.no/bli-med</loc></url>
+  <url><loc>https://formaa.no/blogg</loc></url>
+  <url><loc>https://formaa.no/blogg/branding-og-produktdesign</loc></url>
+  <url><loc>https://formaa.no/blogg/design-for-crowdfunding</loc></url>
+  <url><loc>https://formaa.no/blogg/fra-oppfinnelse-til-produksjon</loc></url>
+  <url><loc>https://formaa.no/blogg/hva-er-industridesign</loc></url>
+  <url><loc>https://formaa.no/blogg/hvem-trenger-design</loc></url>
+  <url><loc>https://formaa.no/blogg/hvordan-design-sparer-penger</loc></url>
+  <url><loc>https://formaa.no/blogg/hvordan-lage-prototype</loc></url>
+  <url><loc>https://formaa.no/blogg/produktutvikling-hardware-startup</loc></url>
+  <url><loc>https://formaa.no/blogg/sok-stotte-innovasjon-norge</loc></url>
+  <url><loc>https://formaa.no/blogg/ux-er-ikke-produktdesign</loc></url>
   <url><loc>https://formaa.no/category/3d-modelering/akershus</loc></url>
   <url><loc>https://formaa.no/category/3d-modelering/buskerud</loc></url>
   <url><loc>https://formaa.no/category/3d-modelering/norge</loc></url>
@@ -85,17 +96,6 @@
   <url><loc>https://formaa.no/en/cad-modeling</loc></url>
   <url><loc>https://formaa.no/en/product-animation</loc></url>
   <url><loc>https://formaa.no/en/product-rendering</loc></url>
-  <url><loc>https://formaa.no/innsikt</loc></url>
-  <url><loc>https://formaa.no/innsikt/branding-og-produktdesign</loc></url>
-  <url><loc>https://formaa.no/innsikt/design-for-crowdfunding</loc></url>
-  <url><loc>https://formaa.no/innsikt/fra-oppfinnelse-til-produksjon</loc></url>
-  <url><loc>https://formaa.no/innsikt/hva-er-industridesign</loc></url>
-  <url><loc>https://formaa.no/innsikt/hvem-trenger-design</loc></url>
-  <url><loc>https://formaa.no/innsikt/hvordan-design-sparer-penger</loc></url>
-  <url><loc>https://formaa.no/innsikt/hvordan-lage-prototype</loc></url>
-  <url><loc>https://formaa.no/innsikt/produktutvikling-hardware-startup</loc></url>
-  <url><loc>https://formaa.no/innsikt/sok-stotte-innovasjon-norge</loc></url>
-  <url><loc>https://formaa.no/innsikt/ux-er-ikke-produktdesign</loc></url>
   <url><loc>https://formaa.no/oss</loc></url>
   <url><loc>https://formaa.no/prisestimat</loc></url>
   <url><loc>https://formaa.no/prosjekter</loc></url>

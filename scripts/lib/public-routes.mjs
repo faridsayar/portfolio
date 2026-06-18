@@ -28,14 +28,14 @@ export const LLMS_CATEGORY_HUBS = [
   '/category/design/norge',
 ];
 
-/** Key Innsikt articles aligned with produktutvikling / 3D-visualisering positioning. */
-export const LLMS_INNSIKT_HUBS = [
-  '/innsikt',
-  '/innsikt/hvordan-lage-prototype',
-  '/innsikt/fra-oppfinnelse-til-produksjon',
-  '/innsikt/produktutvikling-hardware-startup',
-  '/innsikt/hva-er-industridesign',
-  '/innsikt/hvordan-design-sparer-penger',
+/** Key Blogg articles aligned with produktutvikling / 3D-visualisering positioning. */
+export const LLMS_BLOGG_HUBS = [
+  '/blogg',
+  '/blogg/hvordan-lage-prototype',
+  '/blogg/fra-oppfinnelse-til-produksjon',
+  '/blogg/produktutvikling-hardware-startup',
+  '/blogg/hva-er-industridesign',
+  '/blogg/hvordan-design-sparer-penger',
 ];
 
 /** Retired public routes (301 targets documented for crawlers). */

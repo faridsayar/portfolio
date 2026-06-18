@@ -51,6 +51,9 @@
 }
 
 .home-section--intro .start-intro__opening-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
   padding-block: var(--home-intro-pad);
 }
 
@@ -71,6 +74,121 @@
   font-size: var(--font-size-body-md);
   line-height: var(--line-height-relaxed);
   opacity: 0.85;
+}
+
+/* NOTE: Homepage "Siste nytt" — fixed-size panel; one message visible at a time.
+   KAPASITET: maks 102 tegn per melding (3 linjer); maks 96 tegn når lenkeikon vises (21rem bredde). */
+.home-news-ticker {
+  --home-news-ticker-width: 21rem;
+  --home-news-ticker-viewport-height: 5.75rem;
+  --home-news-ticker-panel-height: 7.05rem;
+  box-sizing: border-box;
+  width: var(--home-news-ticker-width);
+  min-width: var(--home-news-ticker-width);
+  max-width: var(--home-news-ticker-width);
+  margin-left: auto;
+  justify-self: end;
+  padding: 0;
+}
+
+.home-news-ticker__title {
+  margin: 0 0 0.5rem;
+  font-size: var(--font-size-section-kicker);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-relaxed);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  text-align: right;
+  opacity: 0.7;
+}
+
+.home-news-ticker__panel {
+  box-sizing: border-box;
+  height: var(--home-news-ticker-panel-height);
+  background: var(--surface-card);
+  color: var(--color-text-on-card);
+  border-radius: 16px;
+  padding: 0.65rem 0.85rem;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.14);
+}
+
+.home-news-ticker__viewport {
+  overflow: hidden;
+  height: var(--home-news-ticker-viewport-height);
+}
+
+.home-news-ticker__track {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  transition: transform 0.45s ease;
+  will-change: transform;
+}
+
+.home-news-ticker__item {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: var(--home-news-ticker-viewport-height);
+  margin: 0;
+  padding: 0;
+}
+
+.home-news-ticker__message {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  min-height: 0;
+}
+
+.home-news-ticker__text {
+  margin: 0;
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-relaxed);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  opacity: 0.7;
+}
+
+.home-news-ticker__link {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  color: var(--color-text-on-card);
+  opacity: 0.9;
+}
+
+.home-news-ticker__link:hover {
+  opacity: 1;
+}
+
+.home-news-ticker__link-icon {
+  display: block;
+  filter: brightness(0) invert(1);
+}
+
+.home-news-ticker__date {
+  display: block;
+  margin-top: 0.3rem;
+  font-size: 0.7rem;
+  line-height: 1.3;
+  opacity: 0.5;
+}
+
+@media (min-width: 768px) {
+  .home-section--intro .start-intro__opening-row {
+    grid-template-columns: minmax(0, 1fr) minmax(240px, 21rem);
+    align-items: start;
+    gap: clamp(1.5rem, 4vw, 3rem);
+  }
 }
 
 /* NOTE: Scope disclaimer — standalone note section after media block. */
