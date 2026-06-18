@@ -305,6 +305,15 @@
 </section>`,
     'cooperation-partners': `<!-- NOTE: Partner cooperation cards (name + description) — hydrated from company-partners-manifest.js on Om oss. -->
 <div class="cooperation-partners" data-cooperation-partners aria-label="Samarbeidspartnere"></div>`,
+    'home-news-ticker': `<!-- NOTE: Homepage "Siste nytt" card — messages filled by shared-home-news-ticker.js from HOME_NEWS_MESSAGES. -->
+<aside class="home-news-ticker" data-home-news-ticker aria-label="Siste nytt">
+  <h2 class="home-news-ticker__title">Siste nytt</h2>
+  <div class="home-news-ticker__panel">
+    <div class="home-news-ticker__viewport" data-home-news-viewport aria-live="polite">
+      <ul class="home-news-ticker__track" data-home-news-track></ul>
+    </div>
+  </div>
+</aside>`,
     'partner-logos-section': `<!-- NOTE: Reusable partner logo strip — div.section (not nested section); white band via .section--partner-logos; hydrated by shared-partner-logos.js. -->
 <div
   class="section section--partner-logos"
