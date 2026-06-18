@@ -15,16 +15,16 @@ def transform_stripped_path(noext: str) -> str:
     """noext: path starting with /, without .html (e.g. /oss or /category/x/y)."""
     if noext == "/index":
         return "/"
-    m = re.match(r"^/innsikt-([a-z0-9-]+)$", noext)
+    m = re.match(r"^/blogg-([a-z0-9-]+)$", noext)
     if m:
-        return f"/innsikt/{m.group(1)}"
+        return f"/blogg/{m.group(1)}"
     m = re.match(r"^/prosjekt-([a-z0-9-]+)$", noext)
     if m:
         return f"/prosjekter/{m.group(1)}"
     if noext == "/advanced-project":
         return "/prosjekter"
-    if noext == "/innsikt":
-        return "/innsikt"
+    if noext == "/blogg":
+        return "/blogg"
     if noext.startswith("/category/"):
         return noext
     return noext

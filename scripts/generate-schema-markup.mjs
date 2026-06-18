@@ -18,7 +18,7 @@ import {
   webPage,
   buildCategoryGraph,
   buildArticleGraph,
-  buildInnsiktHubGraph,
+  buildBloggHubGraph,
   buildDefaultWebGraph,
   buildProjectGraph,
   buildProjectsHubGraph,
@@ -125,10 +125,10 @@ function parseCategoryPath(relPath) {
   return { serviceSlug: m[1], regionSlug: m[2].replace(/\.html$/, '') };
 }
 
-function parseInnsiktArticle(relPath) {
-  const rootMatch = relPath.match(/^innsikt-([a-z0-9-]+)\.html$/);
+function parseBloggArticle(relPath) {
+  const rootMatch = relPath.match(/^blogg-([a-z0-9-]+)\.html$/);
   if (rootMatch) return { slug: rootMatch[1] };
-  const nestedMatch = relPath.match(/^innsikt\/([a-z0-9-]+)\/index\.html$/);
+  const nestedMatch = relPath.match(/^blogg\/([a-z0-9-]+)\/index\.html$/);
   if (nestedMatch) return { slug: nestedMatch[1] };
   return null;
 }
@@ -401,15 +401,15 @@ function processFile(absPath, relPath) {
     return { updated: true, type: 'tjenester' };
   }
 
-  if (relPath === 'innsikt.html' || relPath === 'innsikt/index.html') {
-    graph = buildInnsiktHubGraph({
-      url: url || `${SITE}/innsikt`,
+  if (relPath === 'blogg.html' || relPath === 'blogg/index.html') {
+    graph = buildBloggHubGraph({
+      url: url || `${SITE}/blogg`,
       title,
       description,
     });
     html = insertSchemaFromGraph(html, graph);
     write(absPath, html);
-    return { updated: true, type: 'innsikt-hub' };
+    return { updated: true, type: 'blogg-hub' };
   }
 
   const category = parseCategoryPath(relPath);
@@ -428,10 +428,10 @@ function processFile(absPath, relPath) {
     return { updated: true, type: 'category' };
   }
 
-  const article = parseInnsiktArticle(relPath);
+  const article = parseBloggArticle(relPath);
   if (article) {
     const content = extractArticleContent(html);
-    const pageUrl = url || `${SITE}/innsikt/${article.slug}`;
+    const pageUrl = url || `${SITE}/blogg/${article.slug}`;
     const keywords = (getMeta(html, 'name', 'keywords') || '')
       .split(',')
       .map((k) => k.trim())

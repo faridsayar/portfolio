@@ -17,8 +17,7 @@ function renderSharedNav() {
     path.startsWith('project-') ||
     path.startsWith('prosjekt-');
 
-  const isInnsiktPage =
-    path === 'innsikt.html' || path.startsWith('innsikt-') || segments[0] === 'innsikt';
+  const isBloggPage = path === 'blogg.html' || path.startsWith('blogg-') || segments[0] === 'blogg';
 
   // NOTE: Extensionless hrefs match sitemap/canonical URLs; GitHub Pages and Apache both resolve them to *.html files.
   const items = [
@@ -36,7 +35,7 @@ function renderSharedNav() {
         (segments.length === 1 && segments[0] === 'tjenester-prosess'),
     },
     { href: '/prosjekter', label: 'Prosjekter', current: isProjectPage },
-    { href: '/innsikt', label: 'Blog', current: isInnsiktPage },
+    { href: '/blogg', label: 'Blogg', current: isBloggPage },
     {
       href: '/application-form',
       label: 'Kontakt',
@@ -55,7 +54,7 @@ function renderSharedNav() {
   const footerHrefByKey = {
     projects: '/prosjekter',
     categories: '/category/design/norge',
-    insights: '/innsikt',
+    insights: '/blogg',
     'tjenester-prosess': '/tjenester-prosess',
     about: '/oss',
     application: '/application-form',

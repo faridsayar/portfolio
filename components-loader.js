@@ -12,7 +12,7 @@
           <nav class="breadcrumb about-top-graphic__breadcrumb" aria-label="Brødsmulesti">
             <a class="breadcrumb__link" href="/">Formaa</a>
             <span class="breadcrumb__sep" aria-hidden="true">/</span>
-            <a class="breadcrumb__link" href="/innsikt">Innsikt</a>
+            <a class="breadcrumb__link" href="/blogg">Blogg</a>
             <span class="breadcrumb__sep" aria-hidden="true">/</span>
             <a class="breadcrumb__link" href="#" aria-current="page" data-article-breadcrumb-current>Artikkel</a>
           </nav>
@@ -20,7 +20,7 @@
       </figure>
       <!-- NOTE: Publication date under hero image — filled by shared-article.js from JSON-LD or article JSON. -->
       <time class="article-published-date" data-article-published-date hidden></time>
-      <p class="section-kicker">Innsikt</p>
+      <p class="section-kicker">Blogg</p>
       <h1 class="section-title" data-article-title>Artikkel</h1>
       <div class="article-row__text" data-article-body></div>
       <!-- NOTE: Shared like/share strip stays tied to the article, not a specific image variant. -->
@@ -28,8 +28,8 @@
         <div data-component="like-share-strip"></div>
       </div>
       <nav class="article-nav-buttons" aria-label="Artikkelnavigasjon" data-article-nav>
-        <a class="article-nav-button" href="/innsikt/design-for-crowdfunding" data-article-nav-prev>Forrige artikkel</a>
-        <a class="article-nav-button" href="/innsikt/ux-er-ikke-produktdesign" data-article-nav-next>Neste artikkel</a>
+        <a class="article-nav-button" href="/blogg/design-for-crowdfunding" data-article-nav-prev>Forrige artikkel</a>
+        <a class="article-nav-button" href="/blogg/ux-er-ikke-produktdesign" data-article-nav-next>Neste artikkel</a>
       </nav>
     </div>
   </article>
@@ -51,7 +51,7 @@
       <div class="site-footer__links-list">
         <a class="site-footer__link" href="/prosjekter" data-footer-link="projects">Prosjekter</a>
         <a class="site-footer__link" href="/category/design/norge" data-footer-link="categories">Kategorier</a>
-        <a class="site-footer__link" href="/innsikt" data-footer-link="insights">Innsikt</a>
+        <a class="site-footer__link" href="/blogg" data-footer-link="insights">Blogg</a>
         <a class="site-footer__link" href="/tjenester-prosess" data-footer-link="tjenester-prosess">Tjenester</a>
         <a class="site-footer__link" href="/oss" data-footer-link="about">Oss</a>
         <a class="site-footer__link" href="/application-form" data-footer-link="application">Kontaktform</a>
@@ -336,7 +336,7 @@
           <img class="feature-icon" src="assets/icons/fremdrift-icon.svg" alt="" width="64" height="64" aria-hidden="true" />
           <span class="feature-point__text">
             <strong>Ingen unødvendig kompleksitet:</strong> Tydelige prosesser og raske
-            <a class="feature-point__inline-link" href="/innsikt/hvordan-lage-prototype">iterasjoner</a>
+            <a class="feature-point__inline-link" href="/blogg/hvordan-lage-prototype">iterasjoner</a>
             som gjør ideer til konkrete resultater. Rask og direkte kommunikasjon.
           </span>
         </p>
@@ -351,7 +351,7 @@
           <span class="feature-point__text">
             <strong>Design basert på <span class="text-primary">ekte brukerbehov</span>:</strong>
             Grundig
-            <a class="feature-point__inline-link" href="/innsikt/hvem-trenger-design">research</a>
+            <a class="feature-point__inline-link" href="/blogg/hvem-trenger-design">research</a>
             av brukerne og brukernes mål, kontekst, bruksmåte, ergonomi og begrensninger.
           </span>
         </p>
@@ -359,7 +359,7 @@
     </div>
     <p class="section-lead">
       Ferdidesignet produkt! Forståelig prosess som kombinerer
-      <a class="internal-text-link" href="/innsikt/hvem-trenger-design">brukerinnsikt</a>, produktstrategi,
+      <a class="internal-text-link" href="/blogg/hvem-trenger-design">brukerinnsikt</a>, produktstrategi,
       <a class="internal-text-link" href="/">design</a>
       og teknisk realisme. Vi snakker rett fram om det hele veien: hva som er realistisk, hva som koster tid og penger, og hvor det gir mening at vi bidrar. Sammen med dere bestemmer vi hva som passer for dere.
     </p>

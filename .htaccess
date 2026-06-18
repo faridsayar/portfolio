@@ -35,15 +35,15 @@ RewriteRule ^ai\.txt$ - [L]
 # NOTE: Canonical friendly routes for primary sections (keep ?project= detail URLs on advanced-project).
 RewriteCond %{QUERY_STRING} ^$
 RewriteRule ^advanced-project/?$ /prosjekter [R=301,L]
-RewriteRule ^innsikt\.html$ /innsikt [R=301,L]
+RewriteRule ^blogg\.html$ /blogg [R=301,L]
 RewriteRule ^application-form\.html$ /application-form [R=301,L]
 
 # NOTE: Redirect legacy favicon asset requests to the current square full-bleed favicon.
 RewriteRule ^assets/favicon\.svg$ /assets/square-favicon.svg [R=301,L]
 RewriteRule ^assets/Favicon-google-search\.svg$ /assets/square-favicon.svg [R=301,L]
 
-# NOTE: Dev article shell is not a public page; send crawlers to Innsikt hub.
-RewriteRule ^article-template/?$ /innsikt [R=301,L]
+# NOTE: Dev article shell is not a public page; send crawlers to Blogg hub.
+RewriteRule ^article-template/?$ /blogg [R=301,L]
 
 # NOTE: Idegalleri page retired; send old /gallery URLs to homepage (extensionless and .html).
 RewriteRule ^gallery\.html$ / [R=301,L]
@@ -53,23 +53,33 @@ RewriteRule ^gallery/?$ / [R=301,L]
 RewriteRule ^designstudio-oslo\.html$ / [R=301,L]
 RewriteRule ^designstudio-oslo/?$ / [R=301,L]
 
+# NOTE: Legacy Innsikt URLs → Blogg (301 for Search Console and bookmarks).
+RewriteRule ^innsikt/?$ /blogg [R=301,L]
+RewriteRule ^innsikt/([a-z0-9-]+)/?$ /blogg/$1 [R=301,L]
+RewriteRule ^innsikt\.html$ /blogg [R=301,L]
+RewriteRule ^innsikt-([a-z0-9-]+)/?$ /blogg/$1 [R=301,L]
+RewriteRule ^innsikt-([a-z0-9-]+)\.html$ /blogg/$1 [R=301,L]
+RewriteRule ^innsikt/innsikt-([a-z0-9-]+)/?$ /blogg/$1 [R=301,L]
+RewriteRule ^category/([a-z0-9-]+)/innsikt\.html$ /blogg [R=301,L]
+RewriteRule ^category/([a-z0-9-]+)/innsikt/?$ /blogg [R=301,L]
+
 # NOTE: Move legacy flat article/project slugs into section-based URLs.
-# New Innsikt stubs (innsikt-{slug}.html) auto-map to /innsikt/{slug} — no per-article rules needed.
+# New Blogg stubs (blogg-{slug}.html) auto-map to /blogg/{slug} — no per-article rules needed.
 RewriteRule ^prosjekt-([a-z0-9-]+)/?$ /prosjekter/$1 [R=301,L]
-RewriteRule ^innsikt-([a-z0-9-]+)/?$ /innsikt/$1 [R=301,L]
+RewriteRule ^blogg-([a-z0-9-]+)/?$ /blogg/$1 [R=301,L]
 
-# NOTE: Legacy `.html` flat URLs (e.g. Search Console) → same canonical `/prosjekter/{slug}` and `/innsikt/{slug}` before generic `.html` strip.
+# NOTE: Legacy `.html` flat URLs (e.g. Search Console) → same canonical `/prosjekter/{slug}` and `/blogg/{slug}` before generic `.html` strip.
 RewriteRule ^prosjekt-([a-z0-9-]+)\.html$ /prosjekter/$1 [R=301,L]
-RewriteRule ^innsikt-([a-z0-9-]+)\.html$ /innsikt/$1 [R=301,L]
+RewriteRule ^blogg-([a-z0-9-]+)\.html$ /blogg/$1 [R=301,L]
 
-# NOTE: Heal legacy 404s from Search Console: duplicate Innsikt paths, bad /category/…
+# NOTE: Heal legacy 404s from Search Console: duplicate Blogg paths, bad /category/…
 # relatives, renamed produksjon → teknisk-tegning, and non-existent “index” hubs.
-RewriteRule ^innsikt/innsikt-([a-z0-9-]+)/?$ /innsikt/$1 [R=301,L]
+RewriteRule ^blogg/blogg-([a-z0-9-]+)/?$ /blogg/$1 [R=301,L]
 RewriteRule ^category/([a-z0-9-]+)/category/(.*)$ /category/$2 [R=301,L]
 RewriteRule ^category/([a-z0-9-]+)/index\.html$ /category/$1/norge [R=301,L]
 RewriteRule ^category/([a-z0-9-]+)/index/?$ /category/$1/norge [R=301,L]
-RewriteRule ^category/([a-z0-9-]+)/innsikt\.html$ /innsikt [R=301,L]
-RewriteRule ^category/([a-z0-9-]+)/innsikt/?$ /innsikt [R=301,L]
+RewriteRule ^category/([a-z0-9-]+)/blogg\.html$ /blogg [R=301,L]
+RewriteRule ^category/([a-z0-9-]+)/blogg/?$ /blogg [R=301,L]
 RewriteRule ^category/([a-z0-9-]+)/oss\.html$ /oss [R=301,L]
 RewriteRule ^category/([a-z0-9-]+)/oss/?$ /oss [R=301,L]
 RewriteRule ^category/([a-z0-9-]+)/prisestimat\.html$ /prisestimat [R=301,L]
@@ -87,10 +97,10 @@ RewriteRule ^(.+)\.html$ /$1 [R=301,L]
 RewriteRule ^prosjekter/([a-z0-9-]+)/?$ /advanced-project.html?seoSlug=$1 [L,QSA]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-# NOTE: Serve Innsikt articles from root stubs innsikt-{slug}.html (see scripts/generate-innsikt-indexes.mjs).
-RewriteRule ^innsikt/([a-z0-9-]+)/?$ /innsikt-$1.html [L]
+# NOTE: Serve Blogg articles from root stubs blogg-{slug}.html (see scripts/generate-blogg-indexes.mjs).
+RewriteRule ^blogg/([a-z0-9-]+)/?$ /blogg-$1.html [L]
 RewriteRule ^prosjekter/?$ /advanced-project.html [L]
-RewriteRule ^innsikt/?$ /innsikt.html [L]
+RewriteRule ^blogg/?$ /blogg.html [L]
 
 # NOTE: Internally map extensionless URLs to existing `.html` files.
 RewriteCond %{REQUEST_FILENAME} !-d

@@ -16,6 +16,6 @@ important_urls:
 https://formaa.no/
 https://formaa.no/tjenester-prosess
 https://formaa.no/prosjekter
-https://formaa.no/innsikt
+https://formaa.no/blogg
 https://formaa.no/oss
 https://formaa.no/prisestimat

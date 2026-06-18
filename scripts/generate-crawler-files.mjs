@@ -6,7 +6,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
   LLMS_CATEGORY_HUBS,
-  LLMS_INNSIKT_HUBS,
+  LLMS_BLOGG_HUBS,
   RETIRED_ROUTES,
   SITE,
   STATIC_HUB_ROUTES,
@@ -44,7 +44,7 @@ Allow: /ai.txt
   ).join('\n');
 
   const content = `# NOTE: Robots policy and sitemap for search engines. Public routes are extensionless;
-# legacy .html and flat prosjekt-/innsikt- slugs redirect via .htaccess (see sitemap.xml).
+# legacy .html and flat prosjekt-/blogg- slugs redirect via .htaccess (see sitemap.xml).
 # LLM/AI discovery: ${abs('/llms.txt')} and ${abs('/ai.txt')}.
 User-agent: *
 Allow: /
@@ -65,8 +65,8 @@ function writeLlmsTxt() {
   const hubUrls = [
     ...STATIC_HUB_ROUTES,
     '/prosjekter',
-    ...LLMS_INNSIKT_HUBS.filter((r) => r !== '/innsikt'),
-    '/innsikt',
+    ...LLMS_BLOGG_HUBS.filter((r) => r !== '/blogg'),
+    '/blogg',
     ...LLMS_CATEGORY_HUBS,
     '/sitemap.xml',
   ];
@@ -117,7 +117,7 @@ ${[
   abs('/'),
   abs('/tjenester-prosess'),
   abs('/prosjekter'),
-  abs('/innsikt'),
+  abs('/blogg'),
   abs('/oss'),
   abs('/prisestimat'),
 ].join('\n')}

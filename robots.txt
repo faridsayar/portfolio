@@ -1,5 +1,5 @@
 # NOTE: Robots policy and sitemap for search engines. Public routes are extensionless;
-# legacy .html and flat prosjekt-/innsikt- slugs redirect via .htaccess (see sitemap.xml).
+# legacy .html and flat prosjekt-/blogg- slugs redirect via .htaccess (see sitemap.xml).
 # LLM/AI discovery: https://formaa.no/llms.txt and https://formaa.no/ai.txt.
 User-agent: *
 Allow: /

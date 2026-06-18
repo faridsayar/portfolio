@@ -126,10 +126,10 @@ function formatArticleListItem(item) {
   return `<span class="article-row__list-lead">${text}</span>`;
 }
 
-// NOTE: Article keys (innsikt-{slug}) map to public /innsikt/{slug} routes.
+// NOTE: Article keys (blogg-{slug}) map to public /blogg/{slug} routes.
 function articleKeyToHref(key) {
-  const slug = String(key).replace(/^innsikt-/, '');
-  return `/innsikt/${slug}`;
+  const slug = String(key).replace(/^blogg-/, '');
+  return `/blogg/${slug}`;
 }
 
 // NOTE: Format ISO publish date as Norwegian dd.mm.yyyy (uses date portion only).
@@ -164,21 +164,21 @@ function renderSharedArticle() {
     "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3Crect width='16' height='9' fill='black'/%3E%3C/svg%3E";
 
   const pathname = window.location.pathname.replace(/\/+$/, '');
-  const path = pathname.split('/').pop() || 'innsikt-hva-er-industridesign.html';
+  const path = pathname.split('/').pop() || 'blogg-hva-er-industridesign.html';
   const fileStem = path.replace('.html', '');
-  // NOTE: Article files are innsikt-{slug}.html at repo root; hrefs use that shape for static local servers.
-  const key = fileStem.startsWith('innsikt-') ? fileStem : `innsikt-${fileStem}`;
+  // NOTE: Article files are blogg-{slug}.html at repo root; hrefs use that shape for static local servers.
+  const key = fileStem.startsWith('blogg-') ? fileStem : `blogg-${fileStem}`;
   const articleOrder = [
-    'innsikt-branding-og-produktdesign',
-    'innsikt-sok-stotte-innovasjon-norge',
-    'innsikt-ux-er-ikke-produktdesign',
-    'innsikt-produktutvikling-hardware-startup',
-    'innsikt-hvem-trenger-design',
-    'innsikt-design-for-crowdfunding',
-    'innsikt-fra-oppfinnelse-til-produksjon',
-    'innsikt-hvordan-design-sparer-penger',
-    'innsikt-hvordan-lage-prototype',
-    'innsikt-hva-er-industridesign',
+    'blogg-branding-og-produktdesign',
+    'blogg-sok-stotte-innovasjon-norge',
+    'blogg-ux-er-ikke-produktdesign',
+    'blogg-produktutvikling-hardware-startup',
+    'blogg-hvem-trenger-design',
+    'blogg-design-for-crowdfunding',
+    'blogg-fra-oppfinnelse-til-produksjon',
+    'blogg-hvordan-design-sparer-penger',
+    'blogg-hvordan-lage-prototype',
+    'blogg-hva-er-industridesign',
   ];
   const dataScript = document.getElementById('article-content');
   if (!dataScript) return;

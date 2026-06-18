@@ -161,11 +161,11 @@ function resolveDescription(filePath, html) {
     return truncateMeta(`Produktutvikling og 3D-visualisering. ${lead}`);
   }
 
-  if (rel === 'innsikt.html' || rel === 'innsikt/index.html') {
+  if (rel === 'blogg.html' || rel === 'blogg/index.html') {
     return buildDescription(extractHeadline(html), extractLead(html));
   }
 
-  if (rel.startsWith('innsikt-') || rel.startsWith('innsikt/')) {
+  if (rel.startsWith('blogg-') || rel.startsWith('blogg/')) {
     const title = extractFirst(/<title>([\s\S]*?)<\/title>/i, html).replace(
       /\s*\|\s*Formaa.*$/i,
       ''
@@ -342,14 +342,14 @@ const files = [
   path.join(root, 'tjenester-prosess.html'),
   path.join(root, 'application-form.html'),
   path.join(root, 'prisestimat.html'),
-  path.join(root, 'innsikt.html'),
+  path.join(root, 'blogg.html'),
   path.join(root, 'advanced-project.html'),
   path.join(root, 'bli-med.html'),
   ...collectHtmlFiles(path.join(root, 'category')),
-  ...collectHtmlFiles(path.join(root, 'innsikt')),
+  ...collectHtmlFiles(path.join(root, 'blogg')),
   ...fs
     .readdirSync(root)
-    .filter((n) => n.startsWith('innsikt-') && n.endsWith('.html'))
+    .filter((n) => n.startsWith('blogg-') && n.endsWith('.html'))
     .map((n) => path.join(root, n)),
   ...fs
     .readdirSync(root)
