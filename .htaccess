@@ -37,6 +37,7 @@ RewriteCond %{QUERY_STRING} ^$
 RewriteRule ^advanced-project/?$ /prosjekter [R=301,L]
 RewriteRule ^blogg\.html$ /blogg [R=301,L]
 RewriteRule ^application-form\.html$ /application-form [R=301,L]
+RewriteRule ^arrangement\.html$ /arrangement [R=301,L]
 
 # NOTE: Redirect legacy favicon asset requests to the current square full-bleed favicon.
 RewriteRule ^assets/favicon\.svg$ /assets/square-favicon.svg [R=301,L]

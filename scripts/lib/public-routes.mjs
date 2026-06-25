@@ -16,6 +16,18 @@ export const STATIC_HUB_ROUTES = [
   '/en/product-animation',
 ];
 
+/** Curated hubs for ai.txt (short AI crawler companion). */
+export const AI_IMPORTANT_ROUTES = [
+  '/',
+  '/tjenester-prosess',
+  '/prosjekter',
+  '/blogg',
+  '/oss',
+  '/prisestimat',
+  '/arrangement',
+  '/application-form',
+];
+
 /** Primary category hubs for LLM/AI discovery (Norge-level). */
 export const LLMS_CATEGORY_HUBS = [
   '/category/visualisering/norge',

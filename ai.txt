@@ -10,7 +10,7 @@ llms: https://formaa.no/llms.txt
 sitemap: https://formaa.no/sitemap.xml
 contact: https://formaa.no/application-form
 
-primary_topics: produktutvikling, 3D-visualisering, industridesign, produktdesign, prototype, 3D-modellering, 3D-design, visualisering, designbyrå
+primary_topics: produktutvikling, 3D-visualisering, industridesign, produktdesign, prototype, 3D-modellering, 3D-design, visualisering, designbyrå, skisseworkshop, idéworkshop, arrangement
 
 important_urls:
 https://formaa.no/
@@ -19,3 +19,5 @@ https://formaa.no/prosjekter
 https://formaa.no/blogg
 https://formaa.no/oss
 https://formaa.no/prisestimat
+https://formaa.no/arrangement
+https://formaa.no/application-form

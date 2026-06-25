@@ -341,7 +341,8 @@
   pointer-events: none;
 }
 
-.home-section--media .start-intro--overlay .start-intro__image {
+.home-section--media .start-intro--overlay .start-intro__image,
+.home-section--media .start-intro--overlay .start-intro__video {
   display: block;
   width: 100%;
   height: 100%;
