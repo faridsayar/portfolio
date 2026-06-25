@@ -33,7 +33,9 @@
         item.className = 'partner-logos__item';
 
         const img = document.createElement('img');
-        img.className = 'partner-logos__img';
+        img.className = partner.invertLogo
+          ? 'partner-logos__img partner-logos__img--inverted-source'
+          : 'partner-logos__img';
         img.src = src;
         img.alt = name;
         img.width = logoHeight;

@@ -26,7 +26,9 @@
       const logoSrc = resolveLogoSrc(partner.logo);
       if (logoSrc) {
         const logo = document.createElement('img');
-        logo.className = 'cooperation-card__logo';
+        logo.className = partner.invertLogo
+          ? 'cooperation-card__logo cooperation-card__logo--inverted-source'
+          : 'cooperation-card__logo';
         logo.src = logoSrc;
         logo.alt = '';
         logo.width = 72;

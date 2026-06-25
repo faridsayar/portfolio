@@ -16,11 +16,15 @@ function isAllowedAsset(fileName) {
   return ALLOWED_EXTENSIONS.has(path.extname(fileName).toLowerCase());
 }
 
-async function processLogo({ sourcePath, outputPath, logoHeight }) {
-  const pipeline = sharp(sourcePath)
+async function processLogo({ sourcePath, outputPath, logoHeight, invertLogo }) {
+  let pipeline = sharp(sourcePath)
     .rotate()
     .grayscale()
     .resize({ height: logoHeight, fit: 'inside', withoutEnlargement: false });
+
+  if (invertLogo) {
+    pipeline = pipeline.negate();
+  }
 
   const tempPath = `${outputPath}.tmp.webp`;
   await pipeline.webp({ quality: 90, effort: 4 }).toFile(tempPath);
@@ -62,7 +66,12 @@ async function main() {
       continue;
     }
 
-    const { width, height } = await processLogo({ sourcePath, outputPath, logoHeight });
+    const { width, height } = await processLogo({
+      sourcePath,
+      outputPath,
+      logoHeight,
+      invertLogo: Boolean(partner.invertLogo),
+    });
     console.log(
       `Processed ${sourceName} → ${outputName} (${width}×${height}px, height target ${logoHeight}px)`
     );
