@@ -214,7 +214,7 @@ function resolveDescription(filePath, html) {
     if (project) return buildDescription(project.title, project.desc);
   }
 
-  if (rel === 'bli-med.html') {
+  if (rel === 'bli-med.html' || rel === 'arrangement.html') {
     return buildDescription(extractHeadline(html), extractLead(html));
   }
 
@@ -345,6 +345,7 @@ const files = [
   path.join(root, 'blogg.html'),
   path.join(root, 'advanced-project.html'),
   path.join(root, 'bli-med.html'),
+  path.join(root, 'arrangement.html'),
   ...collectHtmlFiles(path.join(root, 'category')),
   ...collectHtmlFiles(path.join(root, 'blogg')),
   ...fs

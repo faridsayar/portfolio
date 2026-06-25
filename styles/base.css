@@ -778,6 +778,12 @@ section[aria-label='Kontaktform'] .section-inner {
   padding-bottom: 0;
 }
 
+/* NOTE: Arrangement page hero — full-bleed shuffle media; no vertical inset on the inner wrapper. */
+section[aria-label='Arrangement hero'] .section-inner {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
 /* NOTE: No grey band between process strip and inquiry form — keep sections flush (margin collapse shows page gradient). */
 section[aria-label='Kontaktform']
   .category-hero-media:has([data-hero-video-shuffle])

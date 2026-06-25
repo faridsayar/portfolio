@@ -5,6 +5,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
+  AI_IMPORTANT_ROUTES,
   LLMS_CATEGORY_HUBS,
   LLMS_BLOGG_HUBS,
   RETIRED_ROUTES,
@@ -110,17 +111,10 @@ llms: ${abs('/llms.txt')}
 sitemap: ${abs('/sitemap.xml')}
 contact: ${abs('/application-form')}
 
-primary_topics: produktutvikling, 3D-visualisering, industridesign, produktdesign, prototype, 3D-modellering, 3D-design, visualisering, designbyrå
+primary_topics: produktutvikling, 3D-visualisering, industridesign, produktdesign, prototype, 3D-modellering, 3D-design, visualisering, designbyrå, skisseworkshop, idéworkshop, arrangement
 
 important_urls:
-${[
-  abs('/'),
-  abs('/tjenester-prosess'),
-  abs('/prosjekter'),
-  abs('/blogg'),
-  abs('/oss'),
-  abs('/prisestimat'),
-].join('\n')}
+${AI_IMPORTANT_ROUTES.map(abs).join('\n')}
 `;
 
   fs.writeFileSync(path.join(root, 'ai.txt'), content);

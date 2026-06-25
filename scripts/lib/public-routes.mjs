@@ -9,10 +9,23 @@ export const STATIC_HUB_ROUTES = [
   '/oss',
   '/prisestimat',
   '/application-form',
+  '/arrangement',
   '/bli-med',
   '/en/product-rendering',
   '/en/cad-modeling',
   '/en/product-animation',
+];
+
+/** Curated hubs for ai.txt (short AI crawler companion). */
+export const AI_IMPORTANT_ROUTES = [
+  '/',
+  '/tjenester-prosess',
+  '/prosjekter',
+  '/blogg',
+  '/oss',
+  '/prisestimat',
+  '/arrangement',
+  '/application-form',
 ];
 
 /** Primary category hubs for LLM/AI discovery (Norge-level). */

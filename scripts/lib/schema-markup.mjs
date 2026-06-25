@@ -332,6 +332,48 @@ export function buildProjectsHubGraph({ url, title, description }) {
   ]);
 }
 
+// NOTE: Event hub /arrangement — skisse- og idéworkshop with Event schema for Google.
+export function buildArrangementGraph({ url, title, description }) {
+  return wrapGraph([
+    websiteRef(),
+    breadcrumbList(
+      [
+        { name: 'Formaa', url: `${SITE}/` },
+        { name: 'Arrangement', url },
+      ],
+      url
+    ),
+    webPage({ url, name: title, description }),
+    {
+      '@type': 'Event',
+      '@id': `${url}#event`,
+      name: 'Skisse- og idéworkshop',
+      description:
+        'Gratis workshop for deg med en produktidé — tegne og tenke sammen, bli kjent og få et første steg videre.',
+      startDate: '2026-08-19T17:00:00+02:00',
+      eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+      eventStatus: 'https://schema.org/EventScheduled',
+      location: {
+        '@type': 'Place',
+        name: 'Oslo-området',
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: 'Oslo',
+          addressCountry: 'NO',
+        },
+      },
+      organizer: { '@id': ORG_ID },
+      offers: {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'NOK',
+        url,
+        availability: 'https://schema.org/LimitedAvailability',
+      },
+    },
+  ]);
+}
+
 export function buildEnLandingGraph({
   url,
   title,

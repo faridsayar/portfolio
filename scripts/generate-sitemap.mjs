@@ -56,7 +56,8 @@ const all = [
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <!-- NOTE: XML sitemap for Google/Bing/AI crawlers: one entry per public route only.
      Project URLs: /prosjekter/{slug}. Blogg: /blogg/{slug} (stubs blogg-*.html).
-     /application-form = kontaktform. /tjenester-prosess = tjenester og prosess.
+     /application-form = kontaktform. /arrangement = event hub (skisse- og idéworkshop).
+     /tjenester-prosess = tjenester og prosess.
      /gallery retired (301 → home). Regenerate: pnpm generate:sitemap -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${all.map((route) => `  <url><loc>${SITE}${route}</loc></url>`).join('\n')}

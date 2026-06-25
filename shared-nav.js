@@ -19,6 +19,9 @@ function renderSharedNav() {
 
   const isBloggPage = path === 'blogg.html' || path.startsWith('blogg-') || segments[0] === 'blogg';
 
+  const isArrangementPage =
+    path === 'arrangement.html' || (segments.length === 1 && segments[0] === 'arrangement');
+
   // NOTE: Extensionless hrefs match sitemap/canonical URLs; GitHub Pages and Apache both resolve them to *.html files.
   const items = [
     { href: '/', label: 'Hjem', current: segments.length === 0 },
@@ -36,6 +39,11 @@ function renderSharedNav() {
     },
     { href: '/prosjekter', label: 'Prosjekter', current: isProjectPage },
     { href: '/blogg', label: 'Blogg', current: isBloggPage },
+    {
+      href: '/arrangement',
+      label: 'Arrangement',
+      current: isArrangementPage,
+    },
     {
       href: '/application-form',
       label: 'Kontakt',
@@ -57,6 +65,7 @@ function renderSharedNav() {
     insights: '/blogg',
     'tjenester-prosess': '/tjenester-prosess',
     about: '/oss',
+    arrangement: '/arrangement',
     application: '/application-form',
     pricing: '/prisestimat',
   };

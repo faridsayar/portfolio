@@ -126,6 +126,7 @@ class SinglePagePortfolio {
     this.setupGlobalImageFallback();
     this.setupTimeline();
     this.setupInquiryFormMailto();
+    this.setupEventApplicationForm();
     this.setupPricingEstimator();
     this.setupPricingPackages();
     this.setupProjectPageNavVerticalAlign();
@@ -1023,6 +1024,82 @@ class SinglePagePortfolio {
         inquiryForm.reset();
       } catch (error) {
         setStatus('Kunne ikke sende skjemaet nå. Prøv igjen om litt.', 'error');
+      } finally {
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.removeAttribute('aria-busy');
+        }
+      }
+    });
+  }
+
+  // NOTE: Event application form on /arrangement — Web3Forms submission for workshop sign-ups.
+  setupEventApplicationForm() {
+    const eventForm = document.querySelector('[data-event-application-form]');
+    if (!eventForm) return;
+    const submitButton = eventForm.querySelector('button[type="submit"]');
+    const statusEl = eventForm.querySelector('[data-event-application-status]');
+    const web3FormsEndpoint = 'https://api.web3forms.com/submit';
+    const emailFormat = /^[^\s@]+@[^\s@]+\.(com|no)$/i;
+
+    const setStatus = (message, state) => {
+      if (!statusEl) return;
+      statusEl.textContent = message;
+      statusEl.dataset.state = state;
+    };
+
+    eventForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      if (!eventForm.reportValidity()) return;
+
+      const formData = new FormData(eventForm);
+      const fullName = (formData.get('full_name') || '').toString().trim();
+      const email = (formData.get('email') || '').toString().trim();
+      const description = (formData.get('description') || '').toString().trim();
+      const accessKey = (formData.get('access_key') || '').toString().trim();
+
+      if (!fullName || !email || !description) {
+        setStatus('Vennligst fyll ut navn, e-post og beskrivelse.', 'error');
+        return;
+      }
+      if (!emailFormat.test(email)) {
+        setStatus('Skriv en gyldig e-postadresse som slutter med .com eller .no.', 'error');
+        return;
+      }
+      if (!accessKey || accessKey.startsWith('REPLACE_WITH_')) {
+        setStatus('Web3Forms-nokkel mangler. Legg inn access_key i skjemaet først.', 'error');
+        return;
+      }
+
+      formData.set('full_name', fullName);
+      formData.set('email', email);
+      formData.set('description', description);
+      formData.set('subject', `Påmelding skisse- og idéworkshop — ${fullName}`);
+      formData.set('replyto', email);
+      setStatus('Sender påmelding ...', 'loading');
+
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.setAttribute('aria-busy', 'true');
+      }
+
+      try {
+        const response = await fetch(web3FormsEndpoint, {
+          method: 'POST',
+          body: formData,
+        });
+        const result = await response.json();
+        if (!response.ok || !result.success) {
+          throw new Error(result.message || 'Submission failed');
+        }
+        setStatus(
+          'Takk for påmeldingen! Vi har mottatt søknaden din og tar kontakt med svar på om du får plass.',
+          'success'
+        );
+        eventForm.reset();
+      } catch (error) {
+        setStatus('Kunne ikke sende påmeldingen nå. Prøv igjen om litt.', 'error');
       } finally {
         if (submitButton) {
           submitButton.disabled = false;

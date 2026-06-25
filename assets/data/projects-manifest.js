@@ -1,5 +1,5 @@
 window.__PROJECTS_MANIFEST = {
-  "generatedAt": "2026-06-14T22:52:13.626Z",
+  "generatedAt": "2026-06-25T13:50:24.706Z",
   "projects": [
     {
       "slug": "obseed",

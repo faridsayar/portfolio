@@ -54,6 +54,7 @@
         <a class="site-footer__link" href="/blogg" data-footer-link="insights">Blogg</a>
         <a class="site-footer__link" href="/tjenester-prosess" data-footer-link="tjenester-prosess">Tjenester</a>
         <a class="site-footer__link" href="/oss" data-footer-link="about">Oss</a>
+        <a class="site-footer__link" href="/arrangement" data-footer-link="arrangement">Arrangement</a>
         <a class="site-footer__link" href="/application-form" data-footer-link="application">Kontaktform</a>
         <a class="site-footer__link" href="/prisestimat" data-footer-link="pricing">Prisestimat</a>
       </div>
