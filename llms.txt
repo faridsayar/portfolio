@@ -10,6 +10,7 @@ important_urls:
 - https://formaa.no/oss
 - https://formaa.no/prisestimat
 - https://formaa.no/application-form
+- https://formaa.no/arrangement
 - https://formaa.no/bli-med
 - https://formaa.no/en/product-rendering
 - https://formaa.no/en/cad-modeling

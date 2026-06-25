@@ -20,6 +20,7 @@ import {
   buildArticleGraph,
   buildBloggHubGraph,
   buildDefaultWebGraph,
+  buildArrangementGraph,
   buildProjectGraph,
   buildProjectsHubGraph,
   stripHtml,
@@ -399,6 +400,18 @@ function processFile(absPath, relPath) {
     html = insertSchemaFromGraph(html, graph);
     write(absPath, html);
     return { updated: true, type: 'tjenester' };
+  }
+
+  if (relPath === 'arrangement.html') {
+    const pageUrl = url || `${SITE}/arrangement`;
+    graph = buildArrangementGraph({
+      url: pageUrl,
+      title,
+      description,
+    });
+    html = insertSchemaFromGraph(html, graph);
+    write(absPath, html);
+    return { updated: true, type: 'arrangement' };
   }
 
   if (relPath === 'blogg.html' || relPath === 'blogg/index.html') {
