@@ -6,12 +6,17 @@
   // NOTE: Manual message list — optional href shows link icon; published is ISO date (yyyy-mm-dd).
   const HOME_NEWS_MESSAGES = [
     {
+      text: 'Vi har deltatt i interessant Webinar fra Siemens om TIA Selection Tool, SIVA og norsk industri.',
+      href: 'https://www.siemens.com/no-no/',
+      published: '2026-06-25',
+    },
+    {
       text: 'Vi søker en som ønsker praktisk erfaring innen B2B-markedsføring, lead-generering og forretningsutvikling.',
       href: 'https://www.linkedin.com/jobs/view/4430107364/',
       published: '2026-06-17',
     },
     {
-      text: 'Formaa vil delta i Ground Control #5, Space for Founder på Mesh Oslo 24. juni. Møt oss der.',
+      text: 'Formaa har deltatt i Ground Control #5, Space for Founder på Mesh Oslo 24. juni.',
       href: 'https://www.spaceport-norway.com/ground-control/ground-control-5',
       published: '2026-06-18',
     },

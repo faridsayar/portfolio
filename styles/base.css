@@ -915,6 +915,12 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
   opacity: 1;
 }
 
+/* NOTE: Pre-inverted partner logos — skip default invert filter (see invertLogo in company-partners.json). */
+.cooperation-card__logo--inverted-source {
+  filter: grayscale(100%) brightness(1.3);
+  opacity: 0.85;
+}
+
 .cooperation-card__name {
   margin: 0;
   font-size: clamp(1.05rem, 1.8vw, 1.2rem);
@@ -2900,6 +2906,11 @@ main > .section--partner-logos > .section-inner {
 .partner-logos__link:hover .partner-logos__img,
 .partner-logos__link:focus-visible .partner-logos__img {
   opacity: 0.88;
+}
+
+/* NOTE: Pre-inverted partner logos — skip default invert filter (see invertLogo in company-partners.json). */
+.partner-logos__img--inverted-source {
+  filter: grayscale(100%) brightness(1.3);
 }
 
 /* NOTE: Homepage trust/privacy block after testimonials; four named principles on neutral panel. */

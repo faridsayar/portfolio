@@ -48,6 +48,14 @@ window.__COMPANY_PARTNERS_MANIFEST = {
       "source": "bitraf-logo.png",
       "logo": "bitraf-logo.webp",
       "description": "Oslos største makerspace — delt verksted med CNC, laser, 3D-print og elektronikk for prototyping og småserie."
+    },
+    {
+      "name": "Modalen Engineering",
+      "url": "https://www.modalen-engineering.no/",
+      "source": "modalen-engineering-logo.png",
+      "logo": "modalen-engineering-logo.webp",
+      "invertLogo": true,
+      "description": "Norsk partner innen elektronikk og PCB — analog, digital og RF-design fra konsept til ferdig hardware, inkludert rådgivning og firmware."
     }
   ]
 };
