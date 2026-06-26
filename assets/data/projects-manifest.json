@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-25T13:50:24.706Z",
+  "generatedAt": "2026-06-26T08:27:08.596Z",
   "projects": [
     {
       "slug": "obseed",
@@ -162,7 +162,7 @@
       "title": "Nomos: Musikkband branding",
       "desc": "Visuell identitet og praktiske leveranse for musikkbands utstilling og salg",
       "folder": "Nomos",
-      "thumbnail": "assets/images/Projects/Nomos/concert-poster.webp",
+      "thumbnail": "assets/images/Projects/Nomos/cards-vis.webp",
       "images": [
         "assets/images/Projects/Nomos/concert-poster.webp",
         "assets/images/Projects/Nomos/cards-vis.webp",

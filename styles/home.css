@@ -275,6 +275,7 @@
   font-size: var(--font-size-body-md);
   line-height: var(--line-height-relaxed);
   text-transform: uppercase;
+  opacity: 0.3;
 }
 
 /* NOTE: Portfolio section — vertical rhythm around grid title and tiles. */

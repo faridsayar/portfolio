@@ -3,8 +3,10 @@
   const SCRUB_ROOT_SELECTOR = '[data-home-hero-scrub]';
   const FRAME_CANVAS_SELECTOR = '[data-home-hero-scrub-canvas]';
   const STAGE_SELECTOR = '.home-hero-scrub__stage';
-  const SCRUB_END_SELECTOR = '#start .home-news-ticker, #start [data-home-news-ticker]';
-  const FRAME_SCALE = 1.5;
+  const SCRUB_END_SELECTOR = '#start .about-stats';
+  const FRAME_SCALE_DESKTOP = 1.5;
+  const FRAME_SCALE_MOBILE = FRAME_SCALE_DESKTOP * 0.75;
+  const MOBILE_MQ = window.matchMedia('(max-width: 767px)');
 
   // NOTE: Frame range from assets/images/Hero-Drill/ — update when final sequence is exported.
   const FRAME_START = 108;
@@ -42,6 +44,10 @@
 
   function clampFrameIndex(index) {
     return Math.max(0, Math.min(frameCount - 1, index));
+  }
+
+  function getFrameScale() {
+    return MOBILE_MQ.matches ? FRAME_SCALE_MOBILE : FRAME_SCALE_DESKTOP;
   }
 
   function loadFrameImage(index) {
@@ -87,7 +93,7 @@
     const imageWidth = image.naturalWidth;
     const imageHeight = image.naturalHeight;
     const coverScale = Math.max(stageWidth / imageWidth, stageHeight / imageHeight);
-    const drawScale = coverScale * FRAME_SCALE;
+    const drawScale = coverScale * getFrameScale();
     const drawWidth = imageWidth * drawScale;
     const drawHeight = imageHeight * drawScale;
     const drawX = (stageWidth - drawWidth) / 2;
@@ -127,7 +133,7 @@
     if (scrubEndEl) {
       const scrubEndTop = scrubEndEl.getBoundingClientRect().top + window.scrollY;
       const scrubEndOffsetInScrub = scrubEndTop - scrubStartY;
-      // NOTE: Finish sequence just before the news ticker enters the viewport.
+      // NOTE: Finish sequence when about-stats reaches the bottom of the viewport.
       const scrollWhenNewsAppear = scrubEndOffsetInScrub - viewportHeight;
       const leadPx = Math.min(100, viewportHeight * 0.1);
       scrubDistance = Math.max(scrollWhenNewsAppear - leadPx, viewportHeight * MIN_SCRUB_VIEWPORTS);

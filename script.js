@@ -1041,11 +1041,14 @@ class SinglePagePortfolio {
     const statusEl = eventForm.querySelector('[data-event-application-status]');
     const web3FormsEndpoint = 'https://api.web3forms.com/submit';
     const emailFormat = /^[^\s@]+@[^\s@]+\.(com|no)$/i;
+    const successNote =
+      'Takk for påmeldingen! Vi har mottatt søknaden din og tar kontakt med svar på om du får plass.';
 
     const setStatus = (message, state) => {
       if (!statusEl) return;
       statusEl.textContent = message;
-      statusEl.dataset.state = state;
+      statusEl.dataset.state = state || '';
+      eventForm.classList.toggle('is-sent', state === 'success');
     };
 
     eventForm.addEventListener('submit', async (event) => {
@@ -1093,10 +1096,7 @@ class SinglePagePortfolio {
         if (!response.ok || !result.success) {
           throw new Error(result.message || 'Submission failed');
         }
-        setStatus(
-          'Takk for påmeldingen! Vi har mottatt søknaden din og tar kontakt med svar på om du får plass.',
-          'success'
-        );
+        setStatus(successNote, 'success');
         eventForm.reset();
       } catch (error) {
         setStatus('Kunne ikke sende påmeldingen nå. Prøv igjen om litt.', 'error');

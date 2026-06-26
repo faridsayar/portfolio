@@ -3421,7 +3421,18 @@ main > .section--partner-logos > .section-inner {
 }
 
 /* NOTE: Inquiry submit success message — primary brand color. */
-.inquiry-note[data-inquiry-status][data-state='success'] {
+.inquiry-note[data-inquiry-status][data-state='success'],
+.inquiry-note[data-event-application-status][data-state='success'] {
+  color: var(--color-primary);
+  opacity: 1;
+}
+
+/* NOTE: Event application footer copy — white before submit; primary when `.is-sent`. */
+.inquiry-form[data-event-application-form] .inquiry-note {
+  color: var(--color-white);
+}
+
+.inquiry-form[data-event-application-form].is-sent .inquiry-note {
   color: var(--color-primary);
   opacity: 1;
 }
