@@ -14,10 +14,13 @@
     />
     <meta
       name="keywords"
-      content="produktutvikling, 3D-visualisering, industridesign, produktdesign, prototype, designbyrå, 3D-modellering, 3D-design, visualisering, startup Norge, gründer, produktutvikling startup, CAD-modelering, prototyping Oslo"
+      content="produktutvikling, 3D-visualisering, industridesign, produktdesign, prototype, designbyrå, 3D-modellering, 3D-design, visualisering, startup Norge, gründer, produktutvikling startup, CAD-modelering, prototyping Oslo, Formaa AS, industridesign Oslo, produktutvikling Oslo"
     />
-    <meta name="author" content="Formaa" />
+    <meta name="author" content="Formaa AS" />
     <meta name="robots" content="index,follow,max-image-preview:large" />
+
+    <!-- NOTE: Paste Google Search Console verification token after property setup (see README). -->
+    <!-- <meta name="google-site-verification" content="YOUR_TOKEN" /> -->
 
     <!-- Open Graph Meta Tags -->
     <meta property="og:locale" content="nb_NO" />
@@ -32,7 +35,7 @@
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://formaa.no/" />
-    <meta property="og:site_name" content="Formaa" />
+    <meta property="og:site_name" content="Formaa AS" />
     <meta
       property="og:image"
       content="https://formaa.no/assets/images/prosess/3d-modelering.webp"
@@ -114,7 +117,7 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles/base.css?v=43" />
-    <link rel="stylesheet" href="styles/home.css?v=16" />
+    <link rel="stylesheet" href="styles/home.css?v=18" />
 
     <!-- NOTE: Google Analytics 4 global site tag for tracking website traffic. -->
     <!-- Google tag (gtag.js) -->
@@ -177,7 +180,9 @@
           </div>
 
           <div class="hero-content">
-            <h1 class="hero-title">Produktdesign og 3D visualisering</h1>
+            <!-- NOTE: Low-opacity brand watermark for branded search; same scale as hero H1. -->
+            <p class="hero-brand-name" aria-hidden="true">Formaa AS</p>
+            <h1 class="hero-title">Produktutvikling og 3D visualisering</h1>
 
             <p class="hero-subtitle">
               - for de råeste startups, tøffeste gründere og brutale bedrifter i Norge
@@ -200,12 +205,16 @@
             <div class="start-intro__opening-row">
               <div class="start-intro__opening">
                 <p class="start-intro__eyebrow">
-                  Industridesign og produktutvikling med fokus på det som teller: form, funksjon og
-                  veien til markedet.
+                  <a class="internal-text-link" href="/category/industridesign/oslo"
+                    >Industridesign</a
+                  >
+                  og produktutvikling med fokus på det som teller: form, funksjon og veien til
+                  markedet.
                 </p>
                 <p class="section-lead">
                   Har du en ide om et produkt som du tror vil lykkes i markedet? Kanskje du ikke
-                  helt vet hvor du skal begynne? Da har du kommet riktig sted!
+                  helt vet hvor du skal begynne? Da har du kommet riktig sted! Vi er i Oslo men kan
+                  hjelpe deg i hele Norge.
                 </p>
               </div>
               <div data-component="home-news-ticker"></div>
@@ -623,6 +632,9 @@
       </div>
     </section>
 
+    <!-- NOTE: Homepage articles teaser — three blogg cards before kontaktform. -->
+    <div data-component="home-articles-section"></div>
+
     <div data-component="application-form"></div>
 
     <!-- NOTE: FAQ block (before personvern) — collapsible; full Q&A stays in DOM for SEO + FAQPage schema. -->
@@ -779,7 +791,8 @@
             },
             "address": {
               "@type": "PostalAddress",
-              "streetAddress": "Helsfyr",
+              "streetAddress": "Ole Messelts vei 5",
+              "postalCode": "0676",
               "addressLocality": "Oslo",
               "addressCountry": "NO"
             },
@@ -788,7 +801,8 @@
               "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
               "https://t.me/designformaa",
               "https://www.behance.net/formaa",
-              "https://x.com/FormaaDesignAS"
+              "https://x.com/FormaaDesignAS",
+              "https://www.reddit.com/user/Formaa-Design/"
             ],
             "parentOrganization": {
               "@id": "https://formaa.no/#organization"
@@ -892,15 +906,36 @@
             "@id": "https://formaa.no/#organization",
             "name": "Formaa",
             "url": "https://formaa.no/",
-            "logo": "https://formaa.no/assets/formaa-logo.svg",
-            "image": "https://formaa.no/assets/images/prosess/3d-modelering.webp",
-            "description": "Formaa er et designstudio i Norge for produktutvikling og 3D-visualisering — fra idé og prototype til produksjon.",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://formaa.no/assets/formaa-logo.svg"
+            },
+            "legalName": "Formaa AS",
+            "alternateName": ["Formaa", "Formaa Design", "formaaa"],
+            "taxID": "937772505",
+            "identifier": {
+              "@type": "PropertyValue",
+              "propertyID": "Brønnøysundregistrene",
+              "value": "937772505"
+            },
             "sameAs": [
               "https://www.linkedin.com/company/formaaa/",
               "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
               "https://t.me/designformaa",
-              "https://x.com/FormaaDesignAS"
-            ]
+              "https://www.behance.net/formaa",
+              "https://x.com/FormaaDesignAS",
+              "https://www.reddit.com/user/Formaa-Design/"
+            ],
+            "image": "https://formaa.no/assets/images/prosess/3d-modelering.webp",
+            "description": "Formaa AS er et designstudio i Norge for produktutvikling og 3D-visualisering — fra idé og prototype til produksjon.",
+            "telephone": "+47 46 38 18 87",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Ole Messelts vei 5",
+              "postalCode": "0676",
+              "addressLocality": "Oslo",
+              "addressCountry": "NO"
+            }
           },
           {
             "@type": "WebPage",
@@ -920,7 +955,23 @@
               "logo": {
                 "@type": "ImageObject",
                 "url": "https://formaa.no/assets/formaa-logo.svg"
-              }
+              },
+              "legalName": "Formaa AS",
+              "alternateName": ["Formaa", "Formaa Design", "formaaa"],
+              "taxID": "937772505",
+              "identifier": {
+                "@type": "PropertyValue",
+                "propertyID": "Brønnøysundregistrene",
+                "value": "937772505"
+              },
+              "sameAs": [
+                "https://www.linkedin.com/company/formaaa/",
+                "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+                "https://t.me/designformaa",
+                "https://www.behance.net/formaa",
+                "https://x.com/FormaaDesignAS",
+                "https://www.reddit.com/user/Formaa-Design/"
+              ]
             }
           },
           {

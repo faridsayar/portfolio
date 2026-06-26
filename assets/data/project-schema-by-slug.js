@@ -23,7 +23,7 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           {
             "@type": "ListItem",
             "position": 1,
-            "name": "Formaa",
+            "name": "Formaa AS",
             "item": "https://formaa.no/"
           },
           {
@@ -56,7 +56,27 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           "logo": {
             "@type": "ImageObject",
             "url": "https://formaa.no/assets/formaa-logo.svg"
-          }
+          },
+          "legalName": "Formaa AS",
+          "alternateName": [
+            "Formaa",
+            "Formaa Design",
+            "formaaa"
+          ],
+          "taxID": "937772505",
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "Brønnøysundregistrene",
+            "value": "937772505"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/company/formaaa/",
+            "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+            "https://t.me/designformaa",
+            "https://www.behance.net/formaa",
+            "https://x.com/FormaaDesignAS",
+            "https://www.reddit.com/user/Formaa-Design/"
+          ]
         },
         "publisher": {
           "@type": "Organization",
@@ -66,7 +86,27 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           "logo": {
             "@type": "ImageObject",
             "url": "https://formaa.no/assets/formaa-logo.svg"
-          }
+          },
+          "legalName": "Formaa AS",
+          "alternateName": [
+            "Formaa",
+            "Formaa Design",
+            "formaaa"
+          ],
+          "taxID": "937772505",
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "Brønnøysundregistrene",
+            "value": "937772505"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/company/formaaa/",
+            "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+            "https://t.me/designformaa",
+            "https://www.behance.net/formaa",
+            "https://x.com/FormaaDesignAS",
+            "https://www.reddit.com/user/Formaa-Design/"
+          ]
         }
       }
     ]
@@ -94,7 +134,7 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           {
             "@type": "ListItem",
             "position": 1,
-            "name": "Formaa",
+            "name": "Formaa AS",
             "item": "https://formaa.no/"
           },
           {
@@ -127,7 +167,27 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           "logo": {
             "@type": "ImageObject",
             "url": "https://formaa.no/assets/formaa-logo.svg"
-          }
+          },
+          "legalName": "Formaa AS",
+          "alternateName": [
+            "Formaa",
+            "Formaa Design",
+            "formaaa"
+          ],
+          "taxID": "937772505",
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "Brønnøysundregistrene",
+            "value": "937772505"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/company/formaaa/",
+            "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+            "https://t.me/designformaa",
+            "https://www.behance.net/formaa",
+            "https://x.com/FormaaDesignAS",
+            "https://www.reddit.com/user/Formaa-Design/"
+          ]
         },
         "publisher": {
           "@type": "Organization",
@@ -137,7 +197,27 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           "logo": {
             "@type": "ImageObject",
             "url": "https://formaa.no/assets/formaa-logo.svg"
-          }
+          },
+          "legalName": "Formaa AS",
+          "alternateName": [
+            "Formaa",
+            "Formaa Design",
+            "formaaa"
+          ],
+          "taxID": "937772505",
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "Brønnøysundregistrene",
+            "value": "937772505"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/company/formaaa/",
+            "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+            "https://t.me/designformaa",
+            "https://www.behance.net/formaa",
+            "https://x.com/FormaaDesignAS",
+            "https://www.reddit.com/user/Formaa-Design/"
+          ]
         }
       }
     ]
@@ -165,7 +245,7 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           {
             "@type": "ListItem",
             "position": 1,
-            "name": "Formaa",
+            "name": "Formaa AS",
             "item": "https://formaa.no/"
           },
           {
@@ -198,7 +278,27 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           "logo": {
             "@type": "ImageObject",
             "url": "https://formaa.no/assets/formaa-logo.svg"
-          }
+          },
+          "legalName": "Formaa AS",
+          "alternateName": [
+            "Formaa",
+            "Formaa Design",
+            "formaaa"
+          ],
+          "taxID": "937772505",
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "Brønnøysundregistrene",
+            "value": "937772505"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/company/formaaa/",
+            "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+            "https://t.me/designformaa",
+            "https://www.behance.net/formaa",
+            "https://x.com/FormaaDesignAS",
+            "https://www.reddit.com/user/Formaa-Design/"
+          ]
         },
         "publisher": {
           "@type": "Organization",
@@ -208,7 +308,27 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           "logo": {
             "@type": "ImageObject",
             "url": "https://formaa.no/assets/formaa-logo.svg"
-          }
+          },
+          "legalName": "Formaa AS",
+          "alternateName": [
+            "Formaa",
+            "Formaa Design",
+            "formaaa"
+          ],
+          "taxID": "937772505",
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "Brønnøysundregistrene",
+            "value": "937772505"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/company/formaaa/",
+            "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+            "https://t.me/designformaa",
+            "https://www.behance.net/formaa",
+            "https://x.com/FormaaDesignAS",
+            "https://www.reddit.com/user/Formaa-Design/"
+          ]
         }
       }
     ]
@@ -236,7 +356,7 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           {
             "@type": "ListItem",
             "position": 1,
-            "name": "Formaa",
+            "name": "Formaa AS",
             "item": "https://formaa.no/"
           },
           {
@@ -269,7 +389,27 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           "logo": {
             "@type": "ImageObject",
             "url": "https://formaa.no/assets/formaa-logo.svg"
-          }
+          },
+          "legalName": "Formaa AS",
+          "alternateName": [
+            "Formaa",
+            "Formaa Design",
+            "formaaa"
+          ],
+          "taxID": "937772505",
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "Brønnøysundregistrene",
+            "value": "937772505"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/company/formaaa/",
+            "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+            "https://t.me/designformaa",
+            "https://www.behance.net/formaa",
+            "https://x.com/FormaaDesignAS",
+            "https://www.reddit.com/user/Formaa-Design/"
+          ]
         },
         "publisher": {
           "@type": "Organization",
@@ -279,7 +419,27 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           "logo": {
             "@type": "ImageObject",
             "url": "https://formaa.no/assets/formaa-logo.svg"
-          }
+          },
+          "legalName": "Formaa AS",
+          "alternateName": [
+            "Formaa",
+            "Formaa Design",
+            "formaaa"
+          ],
+          "taxID": "937772505",
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "Brønnøysundregistrene",
+            "value": "937772505"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/company/formaaa/",
+            "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+            "https://t.me/designformaa",
+            "https://www.behance.net/formaa",
+            "https://x.com/FormaaDesignAS",
+            "https://www.reddit.com/user/Formaa-Design/"
+          ]
         }
       }
     ]
@@ -307,7 +467,7 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           {
             "@type": "ListItem",
             "position": 1,
-            "name": "Formaa",
+            "name": "Formaa AS",
             "item": "https://formaa.no/"
           },
           {
@@ -340,7 +500,27 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           "logo": {
             "@type": "ImageObject",
             "url": "https://formaa.no/assets/formaa-logo.svg"
-          }
+          },
+          "legalName": "Formaa AS",
+          "alternateName": [
+            "Formaa",
+            "Formaa Design",
+            "formaaa"
+          ],
+          "taxID": "937772505",
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "Brønnøysundregistrene",
+            "value": "937772505"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/company/formaaa/",
+            "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+            "https://t.me/designformaa",
+            "https://www.behance.net/formaa",
+            "https://x.com/FormaaDesignAS",
+            "https://www.reddit.com/user/Formaa-Design/"
+          ]
         },
         "publisher": {
           "@type": "Organization",
@@ -350,7 +530,27 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           "logo": {
             "@type": "ImageObject",
             "url": "https://formaa.no/assets/formaa-logo.svg"
-          }
+          },
+          "legalName": "Formaa AS",
+          "alternateName": [
+            "Formaa",
+            "Formaa Design",
+            "formaaa"
+          ],
+          "taxID": "937772505",
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "Brønnøysundregistrene",
+            "value": "937772505"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/company/formaaa/",
+            "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+            "https://t.me/designformaa",
+            "https://www.behance.net/formaa",
+            "https://x.com/FormaaDesignAS",
+            "https://www.reddit.com/user/Formaa-Design/"
+          ]
         }
       }
     ]
@@ -378,7 +578,7 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           {
             "@type": "ListItem",
             "position": 1,
-            "name": "Formaa",
+            "name": "Formaa AS",
             "item": "https://formaa.no/"
           },
           {
@@ -411,7 +611,27 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           "logo": {
             "@type": "ImageObject",
             "url": "https://formaa.no/assets/formaa-logo.svg"
-          }
+          },
+          "legalName": "Formaa AS",
+          "alternateName": [
+            "Formaa",
+            "Formaa Design",
+            "formaaa"
+          ],
+          "taxID": "937772505",
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "Brønnøysundregistrene",
+            "value": "937772505"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/company/formaaa/",
+            "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+            "https://t.me/designformaa",
+            "https://www.behance.net/formaa",
+            "https://x.com/FormaaDesignAS",
+            "https://www.reddit.com/user/Formaa-Design/"
+          ]
         },
         "publisher": {
           "@type": "Organization",
@@ -421,7 +641,27 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           "logo": {
             "@type": "ImageObject",
             "url": "https://formaa.no/assets/formaa-logo.svg"
-          }
+          },
+          "legalName": "Formaa AS",
+          "alternateName": [
+            "Formaa",
+            "Formaa Design",
+            "formaaa"
+          ],
+          "taxID": "937772505",
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "Brønnøysundregistrene",
+            "value": "937772505"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/company/formaaa/",
+            "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+            "https://t.me/designformaa",
+            "https://www.behance.net/formaa",
+            "https://x.com/FormaaDesignAS",
+            "https://www.reddit.com/user/Formaa-Design/"
+          ]
         }
       }
     ]
@@ -449,7 +689,7 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           {
             "@type": "ListItem",
             "position": 1,
-            "name": "Formaa",
+            "name": "Formaa AS",
             "item": "https://formaa.no/"
           },
           {
@@ -473,7 +713,7 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
         "description": "Visuell identitet og praktiske leveranse for musikkbands utstilling og salg",
         "url": "https://formaa.no/prosjekter/nomos-branding",
         "inLanguage": "nb-NO",
-        "image": "https://formaa.no/assets/images/Projects/Nomos/concert-poster.webp",
+        "image": "https://formaa.no/assets/images/Projects/Nomos/cards-vis.webp",
         "creator": {
           "@type": "Organization",
           "@id": "https://formaa.no/#organization",
@@ -482,7 +722,27 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           "logo": {
             "@type": "ImageObject",
             "url": "https://formaa.no/assets/formaa-logo.svg"
-          }
+          },
+          "legalName": "Formaa AS",
+          "alternateName": [
+            "Formaa",
+            "Formaa Design",
+            "formaaa"
+          ],
+          "taxID": "937772505",
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "Brønnøysundregistrene",
+            "value": "937772505"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/company/formaaa/",
+            "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+            "https://t.me/designformaa",
+            "https://www.behance.net/formaa",
+            "https://x.com/FormaaDesignAS",
+            "https://www.reddit.com/user/Formaa-Design/"
+          ]
         },
         "publisher": {
           "@type": "Organization",
@@ -492,7 +752,27 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           "logo": {
             "@type": "ImageObject",
             "url": "https://formaa.no/assets/formaa-logo.svg"
-          }
+          },
+          "legalName": "Formaa AS",
+          "alternateName": [
+            "Formaa",
+            "Formaa Design",
+            "formaaa"
+          ],
+          "taxID": "937772505",
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "Brønnøysundregistrene",
+            "value": "937772505"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/company/formaaa/",
+            "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+            "https://t.me/designformaa",
+            "https://www.behance.net/formaa",
+            "https://x.com/FormaaDesignAS",
+            "https://www.reddit.com/user/Formaa-Design/"
+          ]
         }
       }
     ]
@@ -520,7 +800,7 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           {
             "@type": "ListItem",
             "position": 1,
-            "name": "Formaa",
+            "name": "Formaa AS",
             "item": "https://formaa.no/"
           },
           {
@@ -553,7 +833,27 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           "logo": {
             "@type": "ImageObject",
             "url": "https://formaa.no/assets/formaa-logo.svg"
-          }
+          },
+          "legalName": "Formaa AS",
+          "alternateName": [
+            "Formaa",
+            "Formaa Design",
+            "formaaa"
+          ],
+          "taxID": "937772505",
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "Brønnøysundregistrene",
+            "value": "937772505"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/company/formaaa/",
+            "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+            "https://t.me/designformaa",
+            "https://www.behance.net/formaa",
+            "https://x.com/FormaaDesignAS",
+            "https://www.reddit.com/user/Formaa-Design/"
+          ]
         },
         "publisher": {
           "@type": "Organization",
@@ -563,7 +863,27 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           "logo": {
             "@type": "ImageObject",
             "url": "https://formaa.no/assets/formaa-logo.svg"
-          }
+          },
+          "legalName": "Formaa AS",
+          "alternateName": [
+            "Formaa",
+            "Formaa Design",
+            "formaaa"
+          ],
+          "taxID": "937772505",
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "Brønnøysundregistrene",
+            "value": "937772505"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/company/formaaa/",
+            "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+            "https://t.me/designformaa",
+            "https://www.behance.net/formaa",
+            "https://x.com/FormaaDesignAS",
+            "https://www.reddit.com/user/Formaa-Design/"
+          ]
         }
       }
     ]
@@ -591,7 +911,7 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           {
             "@type": "ListItem",
             "position": 1,
-            "name": "Formaa",
+            "name": "Formaa AS",
             "item": "https://formaa.no/"
           },
           {
@@ -624,7 +944,27 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           "logo": {
             "@type": "ImageObject",
             "url": "https://formaa.no/assets/formaa-logo.svg"
-          }
+          },
+          "legalName": "Formaa AS",
+          "alternateName": [
+            "Formaa",
+            "Formaa Design",
+            "formaaa"
+          ],
+          "taxID": "937772505",
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "Brønnøysundregistrene",
+            "value": "937772505"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/company/formaaa/",
+            "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+            "https://t.me/designformaa",
+            "https://www.behance.net/formaa",
+            "https://x.com/FormaaDesignAS",
+            "https://www.reddit.com/user/Formaa-Design/"
+          ]
         },
         "publisher": {
           "@type": "Organization",
@@ -634,7 +974,27 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           "logo": {
             "@type": "ImageObject",
             "url": "https://formaa.no/assets/formaa-logo.svg"
-          }
+          },
+          "legalName": "Formaa AS",
+          "alternateName": [
+            "Formaa",
+            "Formaa Design",
+            "formaaa"
+          ],
+          "taxID": "937772505",
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "Brønnøysundregistrene",
+            "value": "937772505"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/company/formaaa/",
+            "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+            "https://t.me/designformaa",
+            "https://www.behance.net/formaa",
+            "https://x.com/FormaaDesignAS",
+            "https://www.reddit.com/user/Formaa-Design/"
+          ]
         }
       }
     ]

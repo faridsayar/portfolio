@@ -9,6 +9,8 @@ import {
   ORG_ID,
   WEBSITE_ID,
   PROFESSIONAL_SERVICE_ID,
+  ORG_SAME_AS,
+  BRAND_CRUMB,
   normalizeCanonical,
   scriptBlock,
   wrapGraph,
@@ -21,6 +23,9 @@ import {
   buildBloggHubGraph,
   buildDefaultWebGraph,
   buildArrangementGraph,
+  buildOssGraph,
+  buildFullOrganizationNode,
+  orgPostalAddress,
   buildProjectGraph,
   buildProjectsHubGraph,
   stripHtml,
@@ -169,7 +174,7 @@ function buildTjenesterGraph({ url, title, description }) {
     websiteRef(),
     breadcrumbList(
       [
-        { name: 'Formaa', url: `${SITE}/` },
+        { name: BRAND_CRUMB, url: `${SITE}/` },
         { name: 'Tjenester', url },
       ],
       url
@@ -212,19 +217,8 @@ function buildIndexGraph(html) {
         areaServed: 'NO',
         availableLanguage: ['no', 'en'],
       },
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: 'Helsfyr',
-        addressLocality: 'Oslo',
-        addressCountry: 'NO',
-      },
-      sameAs: [
-        'https://www.linkedin.com/company/formaaa/',
-        'https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr',
-        'https://t.me/designformaa',
-        'https://www.behance.net/formaa',
-        'https://x.com/FormaaDesignAS',
-      ],
+      address: orgPostalAddress(),
+      sameAs: ORG_SAME_AS,
       parentOrganization: { '@id': ORG_ID },
     },
     {
@@ -274,22 +268,7 @@ function buildIndexGraph(html) {
       },
       publisher: { '@id': ORG_ID },
     },
-    {
-      '@type': 'Organization',
-      '@id': ORG_ID,
-      name: 'Formaa',
-      url: `${SITE}/`,
-      logo: `${SITE}/assets/formaa-logo.svg`,
-      image: `${SITE}/assets/images/prosess/3d-modelering.webp`,
-      description:
-        'Formaa er et designstudio i Norge for produktutvikling og 3D-visualisering — fra idé og prototype til produksjon.',
-      sameAs: [
-        'https://www.linkedin.com/company/formaaa/',
-        'https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr',
-        'https://t.me/designformaa',
-        'https://x.com/FormaaDesignAS',
-      ],
-    },
+    buildFullOrganizationNode(),
     webPage({
       url: `${SITE}/`,
       name: homeTitle,
@@ -322,7 +301,7 @@ function buildPrisestimatGraph(html) {
     websiteRef(),
     breadcrumbList(
       [
-        { name: 'Formaa', url: `${SITE}/` },
+        { name: BRAND_CRUMB, url: `${SITE}/` },
         { name: 'Prisestimat', url },
       ],
       url
@@ -412,6 +391,18 @@ function processFile(absPath, relPath) {
     html = insertSchemaFromGraph(html, graph);
     write(absPath, html);
     return { updated: true, type: 'arrangement' };
+  }
+
+  if (relPath === 'oss.html') {
+    const pageUrl = url || `${SITE}/oss`;
+    graph = buildOssGraph({
+      url: pageUrl,
+      title,
+      description,
+    });
+    html = insertSchemaFromGraph(html, graph);
+    write(absPath, html);
+    return { updated: true, type: 'oss' };
   }
 
   if (relPath === 'blogg.html' || relPath === 'blogg/index.html') {

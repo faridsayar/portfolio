@@ -77,6 +77,8 @@ function writeLlmsTxt() {
   const content = `# NOTE: LLM discovery file describing Formaa website scope and important public URLs.
 site: ${SITE}
 name: Formaa
+legal_name: Formaa AS
+org_number: 937772505
 language: no
 description: ${SITE_DESCRIPTION}
 
@@ -102,6 +104,8 @@ function writeAiTxt() {
   const content = `# NOTE: AI crawler companion file — short index pointing to llms.txt and sitemap.
 site: ${SITE}
 name: Formaa
+legal_name: Formaa AS
+org_number: 937772505
 language: no
 summary: Produktutvikling og 3D-visualisering for gründere og startups i Norge.
 description: ${SITE_DESCRIPTION}

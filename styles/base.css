@@ -438,14 +438,7 @@
 }
 
 /* NOTE: Nested white UI surfaces on grey canvas — keep dark text for readability. */
-.pricing-service-card,
-.pricing-package-card,
-.pricing-package-card__textarea {
-  color: var(--color-dark);
-}
-
-.pricing-package-card .internal-text-link,
-.pricing-package-card .internal-text-link:visited {
+.pricing-service-card {
   color: var(--color-dark);
 }
 
@@ -1363,8 +1356,8 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
 .pricing-package-card {
   display: flex;
   flex-direction: column;
-  border: 1px solid var(--border-neutral);
-  background: var(--color-white);
+  border: none;
+  background: transparent;
   min-height: 100%;
 }
 
@@ -1375,11 +1368,19 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
   display: block;
 }
 
+/* NOTE: Package card body — same dark panel and copy colors as `.inquiry-form`. */
 .pricing-package-card__content {
   display: grid;
   gap: 0.8rem;
   padding: 1rem;
   flex: 1 1 auto;
+  background: var(--surface-card);
+  color: var(--color-text-on-card);
+}
+
+.pricing-package-card__content .internal-text-link,
+.pricing-package-card__content .internal-text-link:visited {
+  color: var(--color-text-on-card);
 }
 
 .pricing-package-card__title,
@@ -1423,7 +1424,6 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
   display: grid;
   gap: 0.6rem;
   padding-top: 0.1rem;
-  border-top: 1px solid var(--border-neutral);
 }
 
 .pricing-package-card__textarea {
@@ -1454,15 +1454,19 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
 
 .pricing-package-card__cta {
   width: 100%;
+  border: none;
   box-shadow: none;
+  font-size: var(--font-size-card-title);
 }
 
 .pricing-package-card__cta:hover {
+  border: none;
   box-shadow: none;
 }
 
 .pricing-package-card__cta.is-inactive,
 .pricing-package-card__cta:disabled {
+  border: none;
   background: rgba(18, 7, 0, 0.28);
   box-shadow: none;
   cursor: not-allowed;
@@ -2132,6 +2136,14 @@ section[aria-label='Oss'] .about-stats + .about-intro-split {
 
 section[aria-label='Oss'] h1.section-title + .section-lead--after-grid {
   margin-top: 0;
+}
+
+/* NOTE: NAP block on /oss — visible org contact aligned with JSON-LD and Google Business Profile. */
+.about-nap {
+  margin: 0;
+  font-style: normal;
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-relaxed);
 }
 
 /* NOTE: Om oss “Litt mer om oss” — contained text/image row; image height tracks text column on desktop. */
@@ -4374,12 +4386,16 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
 }
 
 .site-footer__intro .internal-text-link,
-.site-footer__intro .internal-text-link:visited {
+.site-footer__intro .internal-text-link:visited,
+.site-footer__text .internal-text-link,
+.site-footer__text .internal-text-link:visited {
   color: var(--color-white);
 }
 
 .site-footer__intro .internal-text-link:hover,
-.site-footer__intro .internal-text-link:focus {
+.site-footer__intro .internal-text-link:focus,
+.site-footer__text .internal-text-link:hover,
+.site-footer__text .internal-text-link:focus {
   color: var(--color-primary);
 }
 
