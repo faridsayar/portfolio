@@ -5,6 +5,32 @@ export const ORG_ID = `${SITE}/#organization`;
 export const WEBSITE_ID = `${SITE}/#website`;
 export const PROFESSIONAL_SERVICE_ID = `${SITE}/#professional-service`;
 
+// NOTE: Root breadcrumb label and social profile URLs — keep aligned with site-footer sameAs links.
+export const BRAND_CRUMB = 'Formaa AS';
+
+export const ORG_SAME_AS = [
+  'https://www.linkedin.com/company/formaaa/',
+  'https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr',
+  'https://t.me/designformaa',
+  'https://www.behance.net/formaa',
+  'https://x.com/FormaaDesignAS',
+  'https://www.reddit.com/user/Formaa-Design/',
+];
+
+// NOTE: Norwegian legal entity fields for branded search / Knowledge Graph alignment.
+export function organizationEntityFields() {
+  return {
+    legalName: 'Formaa AS',
+    alternateName: ['Formaa', 'Formaa Design', 'formaaa'],
+    taxID: '937772505',
+    identifier: {
+      '@type': 'PropertyValue',
+      propertyID: 'Brønnøysundregistrene',
+      value: '937772505',
+    },
+  };
+}
+
 export const REGION_LABELS = {
   norge: 'Norge',
   oslo: 'Oslo',
@@ -56,8 +82,36 @@ export function organizationRef(extra = {}) {
     name: 'Formaa',
     url: `${SITE}/`,
     logo: { '@type': 'ImageObject', url: DEFAULT_LOGO },
+    ...organizationEntityFields(),
+    sameAs: ORG_SAME_AS,
     ...extra,
   };
+}
+
+// NOTE: Registered business address (Brønnøysund) — used in JSON-LD and legal NAP blocks only.
+export const ORG_STREET_ADDRESS = 'Ole Messelts vei 5';
+export const ORG_POSTAL_CODE = '0676';
+
+export function orgPostalAddress() {
+  return {
+    '@type': 'PostalAddress',
+    streetAddress: ORG_STREET_ADDRESS,
+    postalCode: ORG_POSTAL_CODE,
+    addressLocality: 'Oslo',
+    addressCountry: 'NO',
+  };
+}
+
+// NOTE: Full Organization node for homepage and /oss AboutPage graphs.
+export function buildFullOrganizationNode(extra = {}) {
+  return organizationRef({
+    image: DEFAULT_IMAGE,
+    description:
+      'Formaa AS er et designstudio i Norge for produktutvikling og 3D-visualisering — fra idé og prototype til produksjon.',
+    telephone: '+47 46 38 18 87',
+    address: orgPostalAddress(),
+    ...extra,
+  });
 }
 
 export function publisherRef() {
@@ -157,11 +211,11 @@ export function buildCategoryGraph({ url, title, description, serviceSlug, regio
   const crumbs =
     regionSlug === 'norge'
       ? [
-          { name: 'Formaa', url: `${SITE}/` },
+          { name: BRAND_CRUMB, url: `${SITE}/` },
           { name: serviceName, url },
         ]
       : [
-          { name: 'Formaa', url: `${SITE}/` },
+          { name: BRAND_CRUMB, url: `${SITE}/` },
           { name: serviceLabel, url: countryUrl },
           { name: regionLabel, url },
         ];
@@ -200,7 +254,7 @@ export function buildArticleGraph({
     websiteRef(),
     breadcrumbList(
       [
-        { name: 'Formaa', url: `${SITE}/` },
+        { name: BRAND_CRUMB, url: `${SITE}/` },
         { name: 'Blogg', url: `${SITE}/blogg` },
         { name: breadcrumbTitle || headline, url },
       ],
@@ -248,7 +302,7 @@ export function buildBloggHubGraph({ url, title, description }) {
     websiteRef(),
     breadcrumbList(
       [
-        { name: 'Formaa', url: `${SITE}/` },
+        { name: BRAND_CRUMB, url: `${SITE}/` },
         { name: 'Blogg', url },
       ],
       url
@@ -274,7 +328,7 @@ export function buildDefaultWebGraph({
   inLanguage = 'nb-NO',
 }) {
   const crumbs = breadcrumbs || [
-    { name: 'Formaa', url: `${SITE}/` },
+    { name: BRAND_CRUMB, url: `${SITE}/` },
     { name: title.split('|')[0].trim(), url },
   ];
   return wrapGraph([
@@ -289,7 +343,7 @@ export function buildProjectGraph({ url, title, description, image }) {
     websiteRef(),
     breadcrumbList(
       [
-        { name: 'Formaa', url: `${SITE}/` },
+        { name: BRAND_CRUMB, url: `${SITE}/` },
         { name: 'Prosjekter', url: `${SITE}/prosjekter` },
         { name: title, url },
       ],
@@ -314,7 +368,7 @@ export function buildProjectsHubGraph({ url, title, description }) {
     websiteRef(),
     breadcrumbList(
       [
-        { name: 'Formaa', url: `${SITE}/` },
+        { name: BRAND_CRUMB, url: `${SITE}/` },
         { name: 'Prosjekter', url },
       ],
       url
@@ -338,7 +392,7 @@ export function buildArrangementGraph({ url, title, description }) {
     websiteRef(),
     breadcrumbList(
       [
-        { name: 'Formaa', url: `${SITE}/` },
+        { name: BRAND_CRUMB, url: `${SITE}/` },
         { name: 'Arrangement', url },
       ],
       url
@@ -374,6 +428,32 @@ export function buildArrangementGraph({ url, title, description }) {
   ]);
 }
 
+// NOTE: /oss AboutPage graph — full legal entity + team page for branded search.
+export function buildOssGraph({ url, title, description }) {
+  return wrapGraph([
+    websiteRef(),
+    buildFullOrganizationNode(),
+    breadcrumbList(
+      [
+        { name: BRAND_CRUMB, url: `${SITE}/` },
+        { name: 'Om oss', url },
+      ],
+      url
+    ),
+    {
+      '@type': ['WebPage', 'AboutPage'],
+      '@id': url,
+      name: title,
+      url,
+      description,
+      inLanguage: 'nb-NO',
+      isPartOf: { '@id': WEBSITE_ID },
+      about: { '@id': ORG_ID },
+      publisher: { '@id': ORG_ID },
+    },
+  ]);
+}
+
 export function buildEnLandingGraph({
   url,
   title,
@@ -386,7 +466,7 @@ export function buildEnLandingGraph({
     websiteRef(),
     breadcrumbList(
       [
-        { name: 'Formaa', url: `${SITE}/` },
+        { name: BRAND_CRUMB, url: `${SITE}/` },
         { name: breadcrumbName, url },
       ],
       url

@@ -1,6 +1,8 @@
 # NOTE: LLM discovery file describing Formaa website scope and important public URLs.
 site: https://formaa.no
 name: Formaa
+legal_name: Formaa AS
+org_number: 937772505
 language: no
 description: Produktutvikling og 3D-visualisering for gründere og startups i Norge — fra produktidé og prototype til CAD, modellering og produksjon. Designbyrå for fysiske produkter og hardware-startups.
 

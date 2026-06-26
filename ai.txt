@@ -1,6 +1,8 @@
 # NOTE: AI crawler companion file — short index pointing to llms.txt and sitemap.
 site: https://formaa.no
 name: Formaa
+legal_name: Formaa AS
+org_number: 937772505
 language: no
 summary: Produktutvikling og 3D-visualisering for gründere og startups i Norge.
 description: Produktutvikling og 3D-visualisering for gründere og startups i Norge — fra produktidé og prototype til CAD, modellering og produksjon. Designbyrå for fysiske produkter og hardware-startups.

@@ -14,9 +14,9 @@
     />
     <meta
       name="keywords"
-      content="industridesign, produktdesign, produktutvikling, prototyping, 3D-visualisering, Norge"
+      content="industridesign, produktdesign, produktutvikling, prototyping, 3D-visualisering, Norge, Formaa AS, industridesign Oslo, produktutvikling Oslo"
     />
-    <meta name="author" content="Formaa" />
+    <meta name="author" content="Formaa AS" />
     <meta name="robots" content="index,follow,max-image-preview:large" />
 
     <meta property="og:locale" content="nb_NO" />
@@ -28,7 +28,7 @@
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://formaa.no/oss" />
-    <meta property="og:site_name" content="Formaa" />
+    <meta property="og:site_name" content="Formaa AS" />
     <meta
       property="og:image"
       content="https://formaa.no/assets/images/prosess/3d-modelering.webp"
@@ -110,26 +110,28 @@
             <!-- NOTE: Breadcrumb + hero headline over lutvann (no dark overlay on this image). -->
             <figcaption class="about-top-graphic__overlay">
               <nav class="breadcrumb about-top-graphic__breadcrumb" aria-label="Brødsmulesti">
-                <a class="breadcrumb__link" href="/">Formaa</a>
+                <a class="breadcrumb__link" href="/">Formaa AS</a>
                 <span class="breadcrumb__sep" aria-hidden="true">/</span>
                 <a class="breadcrumb__link" href="/oss" aria-current="page">Oss</a>
               </nav>
-              <p class="big-text">Vi er avhengige av din suksess, derfor gjør vi vårt beste</p>
+              <p class="big-text">
+                Formaa AS er avhengig av din suksess, derfor gjør vi vårt beste
+              </p>
             </figcaption>
           </figure>
 
           <p class="section-lead">
-            Tre designer venner har bestemt seg for å starte en egen og unik produktutviklingsbyrå
-            for å hjelpe enkelte oppfinnere, gründere og startups med god produktidé å realisere den
-            i markedet.
+            Formaa AS er tre designer venner som har bestemt seg for å starte en egen og unik
+            produktutviklingsbyrå for å hjelpe enkelte oppfinnere, gründere og startups med å
+            realisere god produktidé i markedet.
           </p>
           <h1 class="section-title">Vi vil gjerne bli kjent med deg.</h1>
           <p class="section-lead section-lead--after-grid">
             Det som skiller oss er at vi ønsker å gi deg en unik og personlig tilnærming. Har du
             ikke kapital enda? Ingen problem! Ta kontakt, bli kjent med oss og vi gir deg god råd og
-            praktisk veiledning for din konkrett idé. Gjerne kom på besøk i verkstedet eller skisse
-            sesjon og få menneskelig oppmerksomhet, tips og råd uten kostnad, bare ta med egen mat
-            og god humør.
+            praktisk veiledning for din konkrett idé. Gjerne kom på besøk i verkstedet eller
+            <a class="internal-text-link" href="/arrangement">skisse sesjon</a> og få menneskelig
+            oppmerksomhet, tips og råd uten kostnad, bare ta med egen mat og god humør.
           </p>
 
           <!-- NOTE: Team row with 3 members (image + name + role). -->
@@ -591,6 +593,25 @@
         </div>
       </section>
 
+      <!-- NOTE: Visible NAP block — aligns with JSON-LD / Google Business Profile (name, org.nr, phone, city). -->
+      <section class="section section--white" aria-label="Kontaktinformasjon">
+        <div class="section-inner">
+          <address class="about-nap">
+            <strong>Formaa AS</strong><br />
+            Org.nr.
+            <a
+              class="internal-text-link"
+              href="https://virksomhet.brreg.no/nb/oppslag/enheter/937772505"
+              target="_blank"
+              rel="noopener noreferrer"
+              >937 772 505</a
+            ><br />
+            <a class="internal-text-link" href="/application-form">+47 46 38 18 87</a><br />
+            Ole Messelts vei 5, 0676 Oslo, Norge
+          </address>
+        </div>
+      </section>
+
       <!-- NOTE: Trust/privacy block loaded from components/privacy-trust-section.html. -->
       <div data-component="privacy-trust-section"></div>
     </main>
@@ -614,13 +635,49 @@
             "inLanguage": ["nb-NO", "en"]
           },
           {
+            "@type": "Organization",
+            "@id": "https://formaa.no/#organization",
+            "name": "Formaa",
+            "url": "https://formaa.no/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://formaa.no/assets/formaa-logo.svg"
+            },
+            "legalName": "Formaa AS",
+            "alternateName": ["Formaa", "Formaa Design", "formaaa"],
+            "taxID": "937772505",
+            "identifier": {
+              "@type": "PropertyValue",
+              "propertyID": "Brønnøysundregistrene",
+              "value": "937772505"
+            },
+            "sameAs": [
+              "https://www.linkedin.com/company/formaaa/",
+              "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+              "https://t.me/designformaa",
+              "https://www.behance.net/formaa",
+              "https://x.com/FormaaDesignAS",
+              "https://www.reddit.com/user/Formaa-Design/"
+            ],
+            "image": "https://formaa.no/assets/images/prosess/3d-modelering.webp",
+            "description": "Formaa AS er et designstudio i Norge for produktutvikling og 3D-visualisering — fra idé og prototype til produksjon.",
+            "telephone": "+47 46 38 18 87",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Ole Messelts vei 5",
+              "postalCode": "0676",
+              "addressLocality": "Oslo",
+              "addressCountry": "NO"
+            }
+          },
+          {
             "@type": "BreadcrumbList",
             "@id": "https://formaa.no/oss#breadcrumb",
             "itemListElement": [
               {
                 "@type": "ListItem",
                 "position": 1,
-                "name": "Formaa",
+                "name": "Formaa AS",
                 "item": "https://formaa.no/"
               },
               {
@@ -632,7 +689,7 @@
             ]
           },
           {
-            "@type": "WebPage",
+            "@type": ["WebPage", "AboutPage"],
             "@id": "https://formaa.no/oss",
             "name": "Om oss | Produktutvikling og 3D-visualisering | Formaa",
             "url": "https://formaa.no/oss",
@@ -641,15 +698,11 @@
             "isPartOf": {
               "@id": "https://formaa.no/#website"
             },
+            "about": {
+              "@id": "https://formaa.no/#organization"
+            },
             "publisher": {
-              "@type": "Organization",
-              "@id": "https://formaa.no/#organization",
-              "name": "Formaa",
-              "url": "https://formaa.no/",
-              "logo": {
-                "@type": "ImageObject",
-                "url": "https://formaa.no/assets/formaa-logo.svg"
-              }
+              "@id": "https://formaa.no/#organization"
             }
           }
         ]

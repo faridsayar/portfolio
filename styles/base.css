@@ -2138,6 +2138,14 @@ section[aria-label='Oss'] h1.section-title + .section-lead--after-grid {
   margin-top: 0;
 }
 
+/* NOTE: NAP block on /oss — visible org contact aligned with JSON-LD and Google Business Profile. */
+.about-nap {
+  margin: 0;
+  font-style: normal;
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-relaxed);
+}
+
 /* NOTE: Om oss “Litt mer om oss” — contained text/image row; image height tracks text column on desktop. */
 .about-intro-split__content {
   max-width: 37rem;
@@ -4378,12 +4386,16 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
 }
 
 .site-footer__intro .internal-text-link,
-.site-footer__intro .internal-text-link:visited {
+.site-footer__intro .internal-text-link:visited,
+.site-footer__text .internal-text-link,
+.site-footer__text .internal-text-link:visited {
   color: var(--color-white);
 }
 
 .site-footer__intro .internal-text-link:hover,
-.site-footer__intro .internal-text-link:focus {
+.site-footer__intro .internal-text-link:focus,
+.site-footer__text .internal-text-link:hover,
+.site-footer__text .internal-text-link:focus {
   color: var(--color-primary);
 }
 

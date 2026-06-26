@@ -60,7 +60,7 @@
       </div>
     </div>
     <p class="site-footer__text">
-      © 2026 Formaa AS. Industridesign og produktdesign i Oslo. Alle rettigheter forbeholdt. Org.nr. 937 772 505.
+      © 2026 Formaa AS. Industridesign og produktdesign i Oslo. Alle rettigheter forbeholdt. Org.nr. <a class="internal-text-link" href="https://virksomhet.brreg.no/nb/oppslag/enheter/937772505" target="_blank" rel="noopener noreferrer">937 772 505</a>.
     </p>
   </div>
 </footer>`,

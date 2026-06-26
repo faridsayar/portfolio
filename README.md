@@ -166,7 +166,23 @@ To add or edit a service: extend `EN_LANDING_PAGES` in `en-landing-pages.js`, ad
 - Keep canonical and OG URL aligned with final page URL.
 - Preserve robots directive (`index,follow,max-image-preview:large`) on indexable pages; `article-template.html` is `noindex` and omitted from `sitemap.xml` (layout shell only).
 - Keep contact links form-based to avoid exposing a raw email in page markup.
-- Keep the active brand social profiles aligned across visible social buttons and structured data `sameAs` links. Current X profile: `https://x.com/FormaaDesignAS`.
+- Keep the active brand social profiles aligned across visible social buttons and structured data `sameAs` links. Profiles: LinkedIn (`https://www.linkedin.com/company/formaaa/` — rename slug to `formaa` on LinkedIn when possible; `alternateName: formaaa` in JSON-LD until then), Instagram (`formaa.no`), Telegram (`designformaa`), Behance (`formaa`), X (`FormaaDesignAS`), Reddit (`https://www.reddit.com/user/Formaa-Design/`). Canonical org fields live in `scripts/lib/schema-markup.mjs` (`legalName`, `taxID`, `ORG_SAME_AS`).
+
+### Google Search Console and Google Business Profile
+
+**Search Console** (after deploy):
+
+1. Verify `formaa.no` (DNS domain property or URL prefix).
+2. Uncomment and fill `google-site-verification` in `index.html` `<head>` when you have the token.
+3. Submit `https://formaa.no/sitemap.xml`.
+4. URL Inspection → request indexing for `/`, `/oss`, `/category/industridesign/oslo`, `/arrangement`.
+5. Review Pages → Indexing for coverage errors.
+
+**Google Business Profile** (manual at [business.google.com](https://business.google.com)):
+
+- Name: **Formaa AS** · Website: `https://formaa.no` · Phone: +47 46 38 18 87 · Forretningsadresse: Ole Messelts vei 5, 0676 Oslo · Org.nr. 937 772 505
+- Match NAP with `/oss` address block and JSON-LD `PostalAddress`.
+- Ensure Proff.no / Brønnøysund lists `https://formaa.no` as website.
 
 ### Meta copy rules
 
@@ -201,7 +217,7 @@ To add or edit a service: extend `EN_LANDING_PAGES` in `en-landing-pages.js`, ad
 
 Structured data currently used (regenerate with `pnpm generate:schema-markup`):
 
-- All indexable pages: single JSON-LD `@graph` with `WebSite`, entity-linked `Organization` (`https://formaa.no/#organization`), and page-type nodes
+- All indexable pages: single JSON-LD `@graph` with `WebSite`, entity-linked `Organization` (`https://formaa.no/#organization` with `legalName: Formaa AS`, `taxID`, Brønnøysund `identifier`), and page-type nodes
 - `index.html`: `WebSite`, `LocalBusiness`, `ProfessionalService`, `Organization`, `WebPage`, `FAQPage`
 - `tjenester-prosess.html`: `WebPage`, `BreadcrumbList`, `Service`
 - Category pages: `BreadcrumbList`, `WebPage`, `Service`

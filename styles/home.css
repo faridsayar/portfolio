@@ -59,6 +59,24 @@
   background: transparent;
 }
 
+/* NOTE: Low-opacity brand watermark above hero H1 for branded search visibility. */
+.hero-brand-name {
+  margin: 0 0 0.25rem 0;
+  font-size: var(--font-size-hero-title);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.111;
+  letter-spacing: var(--letter-spacing-tight-heading);
+  text-transform: uppercase;
+  opacity: 0.1;
+  color: var(--color-white);
+}
+
+@media (min-width: 768px) {
+  .hero-brand-name {
+    font-size: var(--font-size-hero-title-desktop);
+  }
+}
+
 .hero--home-scrub .hero-media--shuffle-disabled {
   display: none;
 }
