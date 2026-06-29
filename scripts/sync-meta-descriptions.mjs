@@ -191,9 +191,7 @@ function resolveDescription(filePath, html) {
   }
 
   if (rel === 'prosjekter/index.html') {
-    return truncateMeta(
-      'Alle prosjekter fra Formaa — industridesign og produktdesign fra konsept til prototype og produksjon.'
-    );
+    return truncateMeta('Alle prosjekter fra Formaa AS');
   }
 
   if (rel.startsWith('prosjekt-') || rel.startsWith('prosjekter/')) {

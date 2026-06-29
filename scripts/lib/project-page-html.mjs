@@ -340,8 +340,7 @@ ${schemaBlock}
 }
 
 const HUB_TITLE = 'Prosjekter | Industridesign og produktdesign';
-const HUB_DESCRIPTION =
-  'Alle prosjekter fra Formaa — industridesign og produktdesign fra konsept til prototype og produksjon.';
+const HUB_DESCRIPTION = 'Alle prosjekter fra Formaa AS';
 const HUB_URL = `${SITE}/prosjekter`;
 const HUB_OG_IMAGE = `${SITE}/assets/images/prosess/3d-modelering.webp`;
 const HUB_OG_IMAGE_ALT = 'Formaa prosjektportefølje — industridesign og produktdesign';
@@ -419,21 +418,21 @@ export function renderProjectsHubHtml({ projects, seoSlugForCatalog }) {
     <div data-component="side-nav"></div>
 
     <main>
-      <section
-        class="section section--white home-section home-section--portfolio section--projects"
-        aria-label="Prosjekter"
-      >
-        <div class="home-section__inner">
-          <div class="section-head">
-            <h1 class="section-title">Prosjekter</h1>
-            <p class="section-lead">${escapeHtml(HUB_DESCRIPTION)}</p>
-          </div>
-          <div class="projects-grid-panel">
-            <div class="projects-grid" aria-label="Prosjektliste" data-projects-grid>
+      <section class="section section--white section--projects-hub" aria-label="Prosjekter">
+        <div class="section-inner">
+          <nav class="breadcrumb" aria-label="Brødsmulesti">
+            <a class="breadcrumb__link" href="/">Formaa</a>
+            <span class="breadcrumb__sep" aria-hidden="true">/</span>
+            <a class="breadcrumb__link" href="/prosjekter" aria-current="page">Prosjekter</a>
+          </nav>
+          <h1 class="section-title">Prosjekter</h1>
+          <p class="section-lead">${escapeHtml(HUB_DESCRIPTION)}</p>
+        </div>
+        <div class="projects-grid-panel">
+          <div class="projects-grid" aria-label="Prosjektliste" data-projects-grid>
 ${gridCards}
-            </div>
-            <div class="projects-sentinel" data-projects-sentinel aria-hidden="true"></div>
           </div>
+          <div class="projects-sentinel" data-projects-sentinel aria-hidden="true"></div>
         </div>
       </section>
 

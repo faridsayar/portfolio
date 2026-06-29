@@ -3480,6 +3480,11 @@ main > .section--partner-logos > .section-inner {
   background: var(--bg-page-canvas);
 }
 
+/* NOTE: /prosjekter hub — header copy uses .section-inner gutter (not homepage .home-section__inner). */
+.section--projects-hub .section-inner {
+  padding-bottom: 0;
+}
+
 /* NOTE: Breakout wrapper for homepage project tiles; no fill — sits on section canvas. */
 .projects-grid-panel {
   margin-left: calc(50% - 50vw);
