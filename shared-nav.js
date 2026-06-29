@@ -61,7 +61,7 @@ function renderSharedNav() {
   // NOTE: Root-absolute extensionless paths match public canonical URLs in sitemap.xml.
   const footerHrefByKey = {
     projects: '/prosjekter',
-    categories: '/category/design/norge',
+    categories: '/category/industridesign/norge',
     insights: '/blogg',
     'tjenester-prosess': '/tjenester-prosess',
     about: '/oss',

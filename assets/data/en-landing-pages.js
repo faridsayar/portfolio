@@ -7,19 +7,19 @@ window.EN_LANDING_PAGES = {
     breadcrumb: '3D Product Renders',
     serviceName: '3D Product Renders service',
     heroImage: {
-      src: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3Crect width='16' height='9' fill='%23000'/%3E%3C/svg%3E",
-      alt: '',
+      src: '/assets/images/en/5-white.webp',
+      alt: '3D product render on white background',
     },
     title: '3D Product Renders service',
     lead:
-      'Need product visuals before photography or tooling? We build a clean 3D model and deliver studio-quality renders for Amazon listings, crowdfunding pages, investor decks, and sales decks — without hiring a separate freelancer on a marketplace.',
+      'We build a clean 3D model and deliver studio-quality renders for Amazon listings, crowdfunding pages, investor decks, and sales decks — without hiring a separate freelancer on a marketplace.',
     deliverables: [
       'Production-ready 3D model',
       '5 photorealistic product renders',
       'Source files (STEP / STL / native project)',
     ],
     turnaround: 'Typical turnaround: 5–7 business days',
-    price: '',
+    price: '$490',
     formPlaceholder:
       'Product type, reference images or sketches, angles needed, and deadline.',
     seoSections: [
@@ -94,9 +94,12 @@ window.EN_LANDING_PAGES = {
     heroLabel: 'CAD-Modeling and rendering Service hero',
     breadcrumb: 'CAD-Modeling and rendering',
     serviceName: 'CAD-Modeling and rendering Service',
+    heroVideo: {
+      src: '/assets/images/Categories/CAD-animation.mp4',
+    },
     heroImage: {
-      src: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3Crect width='16' height='9' fill='%23000'/%3E%3C/svg%3E",
-      alt: '',
+      src: '/assets/images/prosess/3d-modelering.webp',
+      alt: 'CAD modeling animation preview',
     },
     title: 'CAD-Modeling and rendering Service',
     lead:
@@ -107,7 +110,7 @@ window.EN_LANDING_PAGES = {
       'One structured revision round',
     ],
     turnaround: 'Typical turnaround: 7–10 business days',
-    price: '',
+    price: '$990',
     formPlaceholder:
       'Part description, tolerances, manufacturing process, and reference files you have.',
     seoSections: [
@@ -182,9 +185,12 @@ window.EN_LANDING_PAGES = {
     heroLabel: '3D Product Animation Service hero',
     breadcrumb: '3D Product Animation',
     serviceName: '3D Product Animation Service',
+    heroVideo: {
+      src: '/assets/images/shuffle-images/proton-gif.mov',
+    },
     heroImage: {
-      src: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3Crect width='16' height='9' fill='%23000'/%3E%3C/svg%3E",
-      alt: '',
+      src: '/assets/images/Projects/Proton/proton-14.webp',
+      alt: 'Proton headphones product animation preview',
     },
     title: '3D Product Animation Service',
     lead:
@@ -195,7 +201,7 @@ window.EN_LANDING_PAGES = {
       'HD MP4 for web, ads, and pitch decks',
     ],
     turnaround: 'Typical turnaround: 10–14 business days',
-    price: '',
+    price: '$740',
     formPlaceholder:
       'Platform (web, Meta, Kickstarter), length, style references, and deadline.',
     seoSections: [

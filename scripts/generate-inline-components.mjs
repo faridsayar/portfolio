@@ -32,6 +32,17 @@ const articleLayoutWithFooter = articleLayoutTemplate.replace(
 );
 const articleLayoutMarkup = wrapArticleLayoutMarkup(articleLayoutWithFooter);
 
+const EN_LANDING_LAYOUT_SLOT = '<div data-component="en-landing-layout"></div>';
+const enLandingLayoutTemplate = fs.readFileSync(
+  path.join(componentsDir, 'en-landing-layout.html'),
+  'utf8'
+);
+
+function inlineEnLandingLayout(html) {
+  if (!html.includes(EN_LANDING_LAYOUT_SLOT)) return html;
+  return html.replace(EN_LANDING_LAYOUT_SLOT, enLandingLayoutTemplate);
+}
+
 const SIDE_NAV_SLOT = '<div data-component="side-nav"></div>';
 const SITE_FOOTER_SLOT = '<div data-component="site-footer"></div>';
 const ARTICLE_LAYOUT_SLOT = '<div data-component="article-layout"></div>';
@@ -138,6 +149,10 @@ function processFile(filePath) {
     html = inlineArticleLayout(html);
   } else if (html.includes(SITE_FOOTER_SLOT) || html.includes(SITE_FOOTER_BEGIN)) {
     html = inlineSiteFooter(html);
+  }
+
+  if (html.includes(EN_LANDING_LAYOUT_SLOT)) {
+    html = inlineEnLandingLayout(html);
   }
 
   if (html !== before) {
