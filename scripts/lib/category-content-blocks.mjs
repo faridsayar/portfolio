@@ -9,7 +9,7 @@ export const CATEGORY_PROCESS_PHASE = {
   produktdesign: 3,
   industridesign: 3,
   '3d-modelering': 3,
-  'cad-modelering': 3,
+  'cad-modelering': 6,
   visualisering: 4,
   prototyping: 5,
   validering: 6,
@@ -114,7 +114,7 @@ export const CATEGORY_PROCESS_LEAD = {
   '3d-modelering':
     '3D-modellering er et viktig verktøy i formgivingsfasen for å utforske volum, proporsjoner og funksjon før produksjon. En god modell gjør det lettere å kommunisere ideen internt, teste varianter raskt og bygge et solid grunnlag for visualisering, prototyping og senere CAD-arbeid.',
   'cad-modelering':
-    'CAD-modelering kommer typisk sent i formgivingsfasen og inn i validering — der designet må bli presist nok for produksjon. Med riktig CAD får du toleranser, detaljer og teknisk kvalitet på plass, slik at leverandører kan prise, produsere og kvalitetssikre uten misforståelser.',
+    'CAD-modelering hører til valideringsfasen — der designet gjøres presist nok for produksjon. Med riktig CAD får du endelig modell, toleranser, detaljer og teknisk kvalitet på plass, slik at leverandører kan prise, produsere og kvalitetssikre uten misforståelser.',
   visualisering:
     'Visualisering er en egen fase i produktutviklingen der produktet presenteres med bilder, animasjon og kontekst — før eller parallelt med fysisk prototype. Sterk visualisering hjelper deg å selge inn ideen til investorer, kunder og partnere, og gir et tydelig bilde av hvordan produktet faktisk vil oppleves i bruk.',
   prototyping:

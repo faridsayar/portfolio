@@ -8,6 +8,7 @@ import {
   buildCategoryContentBlocks,
   parseCategoryServiceSlug,
 } from './lib/category-content-blocks.mjs';
+import { SITE } from './lib/schema-markup.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, '..');
@@ -39,8 +40,19 @@ function stripExistingBlocks(html) {
   );
 }
 
-function injectBlocks(html, serviceSlug) {
+function normalizeCategoryCanonical(html, relPath) {
+  const match = relPath.match(/^category\/([^/]+)\/([^/]+)\.html$/);
+  if (!match) return html;
+  const canonicalUrl = `${SITE}/category/${match[1]}/${match[2]}`;
+  return html.replace(
+    /<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/i,
+    `<link rel="canonical" href="${canonicalUrl}" />`
+  );
+}
+
+function injectBlocks(html, serviceSlug, relPath) {
   let next = html.replaceAll(KICKER_OLD, KICKER_NEW);
+  next = normalizeCategoryCanonical(next, relPath);
   next = stripExistingBlocks(next);
 
   if (!next.includes(FORM_ANCHOR)) {
@@ -75,7 +87,7 @@ function main() {
       continue;
     }
 
-    const next = injectBlocks(html, serviceSlug);
+    const next = injectBlocks(html, serviceSlug, relPath);
     if (next !== html) {
       fs.writeFileSync(filePath, next);
       updated += 1;
