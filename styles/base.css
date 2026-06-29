@@ -438,9 +438,6 @@
 }
 
 /* NOTE: Nested white UI surfaces on grey canvas — keep dark text for readability. */
-.pricing-service-card {
-  color: var(--color-dark);
-}
 
 .section-inner {
   max-width: var(--content-max-width);
@@ -1204,12 +1201,30 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
   align-items: center;
   gap: 0.9rem;
   padding: 1rem 1.1rem;
-  border: 1px solid var(--border-neutral);
+  border: 1px solid var(--border-card);
   border-radius: 12px;
-  background: var(--color-white);
-  color: var(--color-dark);
+  background: var(--surface-card);
+  color: var(--color-text-on-card);
   text-align: left;
   cursor: pointer;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.pricing-service-card:hover {
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.pricing-service-card:hover .pricing-service-card__check {
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.pricing-service-card:hover .pricing-service-card__price {
+  opacity: 0.95;
 }
 
 .pricing-service-card__label {
@@ -1237,7 +1252,7 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
   flex: 0 0 1.35rem;
   aspect-ratio: 1 / 1;
   border-radius: 999px;
-  border: 1px solid var(--border-neutral);
+  border: 1px solid var(--border-card);
   display: inline-flex;
   align-items: center;
   justify-content: center;
