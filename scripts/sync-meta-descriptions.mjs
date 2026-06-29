@@ -5,6 +5,10 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { catalogSlugForSeo } from './lib/project-seo-slugs.mjs';
+import { REGION_LABELS, SERVICE_SLUG_LABELS } from './lib/schema-markup.mjs';
+
+/** NOTE: Shared SERP suffix for all /category/* title, og:title, and twitter:title tags. */
+const CATEGORY_TITLE_BRAND = 'Formaa AS - Hardware og hardcore designbyrå';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const MAX_LEN = 158;
@@ -227,21 +231,12 @@ function resolveTitle(filePath, html) {
   if (CURATED_SEO[rel]?.title) return CURATED_SEO[rel].title;
 
   if (rel.startsWith('category/')) {
-    const h1 = stripHtml(extractHeadline(html));
-    if (!h1) return '';
-    const service = rel.match(/^category\/([^/]+)\//)?.[1] || '';
-    const primaryServices = new Set([
-      'visualisering',
-      'prototyping',
-      'produktdesign',
-      'industridesign',
-      '3d-modelering',
-      'cad-modelering',
-      'konseptutvikling',
-      'design',
-    ]);
-    const hint = primaryServices.has(service) ? ' — produktutvikling og 3D-visualisering' : '';
-    return `${h1}${hint} | Formaa`;
+    const match = rel.match(/^category\/([^/]+)\/([^/]+)\.html$/);
+    if (!match) return '';
+    const [, serviceSlug, regionSlug] = match;
+    const categoryLabel = SERVICE_SLUG_LABELS[serviceSlug] || serviceSlug;
+    const regionLabel = REGION_LABELS[regionSlug] || regionSlug;
+    return `${categoryLabel} i ${regionLabel} | ${CATEGORY_TITLE_BRAND}`;
   }
 
   return '';
