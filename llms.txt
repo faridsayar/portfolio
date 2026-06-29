@@ -13,7 +13,7 @@ important_urls:
 - https://formaa.no/prisestimat
 - https://formaa.no/application-form
 - https://formaa.no/arrangement
-- https://formaa.no/bli-med
+- https://formaa.no/karriere
 - https://formaa.no/en/product-rendering
 - https://formaa.no/en/cad-modeling
 - https://formaa.no/en/product-animation

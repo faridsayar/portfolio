@@ -338,7 +338,8 @@ export function buildDefaultWebGraph({
   ]);
 }
 
-export function buildProjectGraph({ url, title, description, image }) {
+export function buildProjectGraph({ url, title, description, image, pageTitle }) {
+  const webPageName = pageTitle || title;
   return wrapGraph([
     websiteRef(),
     breadcrumbList(
@@ -349,6 +350,7 @@ export function buildProjectGraph({ url, title, description, image }) {
       ],
       url
     ),
+    webPage({ url, name: webPageName, description }),
     {
       '@type': 'CreativeWork',
       '@id': `${url}#project`,
@@ -357,6 +359,7 @@ export function buildProjectGraph({ url, title, description, image }) {
       url,
       inLanguage: 'nb-NO',
       image: image || DEFAULT_IMAGE,
+      mainEntityOfPage: { '@id': url },
       creator: publisherRef(),
       publisher: publisherRef(),
     },
@@ -424,6 +427,45 @@ export function buildArrangementGraph({ url, title, description }) {
         url,
         availability: 'https://schema.org/LimitedAvailability',
       },
+    },
+  ]);
+}
+
+// NOTE: /karriere careers hub — JobPosting schema for Google for Jobs.
+export function buildKarriereGraph({ url, title, description }) {
+  return wrapGraph([
+    websiteRef(),
+    breadcrumbList(
+      [
+        { name: BRAND_CRUMB, url: `${SITE}/` },
+        { name: 'Karriere', url },
+      ],
+      url
+    ),
+    webPage({ url, name: title, description }),
+    {
+      '@type': 'JobPosting',
+      '@id': `${url}#job-b2b-marketing`,
+      title: 'Junior / student — B2B-markedsføring og forretningsutvikling',
+      description:
+        'Praktisk erfaring innen B2B-markedsføring, lead-generering og forretningsutvikling. Ingen krav om tidligere arbeidserfaring.',
+      datePosted: '2026-06-29',
+      employmentType: 'INTERN',
+      hiringOrganization: { '@id': ORG_ID },
+      jobLocation: {
+        '@type': 'Place',
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: 'Oslo',
+          addressCountry: 'NO',
+        },
+      },
+      applicantLocationRequirements: {
+        '@type': 'Country',
+        name: 'NO',
+      },
+      directApply: true,
+      url: `${url}#job-b2b-marketing`,
     },
   ]);
 }

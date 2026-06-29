@@ -1,0 +1,53 @@
+// NOTE: Per-project problem/solution/outcome copy — generated from assets/data/project-narratives.json.
+window.__PROJECT_NARRATIVES = {
+  "obseed": {
+    "problem": "Ferdigproduserte gitarer dekker sjelden behovet for åtte strenger, lav stemming og et uttrykk som matcher både spillestil og kropp — uten kompromiss på ergonomi og balanse.",
+    "solution": "Obseed ble utviklet som et skreddersydd konsept: kropp og halsgeometri tilpasset ekstra strenger, tydelig plassering av hardware, materialvalg og visuell identitet — fra skisse til produksjonsklare detaljer.",
+    "outcome": "Resultatet er et helhetlig CAD-modell for en custom 8-strengers gitar, klart for produksjon med CNC-maskin."
+  },
+  "undo": {
+    "problem": "Ørkener på jorden er ikke statiske, de vokser og sprer seg raskt. Ørkener endrer omgivelser og klima, og fører til økologiske og økonomiske problemer for millioner av mennesker. Hva kan gjøres for å hindre ørkenvekst?",
+    "solution": "Mange land bruker ulike metoder for å hindre ørkenvekst. Den mest effektive løsningen er å bruke planter, gi dem vann og hjelpe dem med å overleve i tørre omgivelser.",
+    "outcome": "Vår designløsning foreslår et produkt som kan hjelpe i denne kampen. Ved å etterligne frø som faller fra trær, har vi kommet til en løsning som kan droppes fra fly eller drone, på en måte som \"bombing\" av ørken. Selve formen er bygget av biokomposittplast som fordøyes av naturen etter hvert. Frøet \"UNDO\" inneholder vann, kompost med frø, mycelium og næring for planter, og er prefylt med vann - alt det nødvendige for å sikre overlevelse av planter i tørre omgivelser. Samtidig er Undo bygget slik at den ved fall utløser vinger som roterer objektet og bremser akselerasjonen. Når den treffer bakken, vil kjernen knekke den innvendige beskyttelsesskorpen og lage relativ skygge (beskyttelse mot direkte sollys) med vingene og den knekte skorpen. På den måten gir vi alt det nødvendige (for spesifikke planter i økosystemet) for å overleve, og som resultat forsterkes jorda og gir nytt grunnlag for beplantning."
+  },
+  "h2o": {
+    "problem": "Mange brukere glemmer både jevn hydrering og daglig aktivitetsnivå når data er spredt på flere produkter.",
+    "solution": "Vi kombinerte vannflaske og mekanisk skritteller i ett produkt med tydelig fysisk interaksjon og robust hverdagsbruk.",
+    "outcome": "Konseptet ga en enklere brukerreise og et sterkere produktgrunnlag for videre testing av funksjon, ergonomi og produksjon."
+  },
+  "monocopter": {
+    "problem": "Søkeoppdrag i store områder krever ofte tunge systemer med begrenset mobilitet og krevende logistikk.",
+    "solution": "Modulær VTOL-drone med effektiv områdedekning, som kombinerer enkel vertikal løfteevne med en mer aerodynamisk form for lengre energieffektive turer. Den enkle trekantformen gir mulighet til å sette flere droner i ett element og styre dem som ett objekt for enkelhet, før de splittes opp ved ankomst til målområde for mer effektiv områdedekning.",
+    "outcome": "Prosjektet resulterte i et beslutningsklart konsept med visualiseringer som støtter videre utvikling og validering."
+  },
+  "proton": {
+    "problem": "Markedet for hodetelefoner er mettet, og det er en mangel på robust design uten at det ser teit ut.",
+    "solution": "Vi har utviklet et urbant designuttrykk med robust form, klare linjer og detaljering som støtter både komfort og merkevareprofil. Hele profilen kan lages av en enkel metallplate, enten aluminium eller rustfritt stål. Elektronikken kan enkelt festes til profilen i spesiallagde hulrom.",
+    "outcome": "Resultatet ble et helhetlig konsept som styrker produktets posisjonering og gir et tydelig grunnlag for prototypefase."
+  },
+  "eco-mate-closet": {
+    "problem": "Kildesortering hjemme oppleves ofte rotete og lite integrert i interiøret, noe som reduserer faktisk bruk. Samtidig er det lite tilbud i markedet av \"alt i ett\"-løsninger.",
+    "solution": "Vi har laget konsept av et minimalistisk sorteringsskap med tydelig struktur, enkel tilgang og et nøytralt utseende som passer de fleste interiør. To dører gir tilgang til hele skapet og til de mest brukte avfallsposene. I stedet for håndtak er det et hull i døren, slik at fingerspor ved skitne fingre settes igjen på innsiden av skapet. Skapet inneholder beholdere for tre hovedtyper avfall: mat, plast og rest, en større boks for papp og papir (som klarer å ta imot en pizzaboks!), en flaskesorteringsboks, og 4 små bokser for diverse avfall som brukeren kan definere selv. For eksempel batterier, farlig avfall, glass, metall eller pærer. I tillegg har skapet en hylle på toppen som kan brukes til småting, for eksempel rengjøringsmidler eller poseruller.",
+    "outcome": "Konseptet forbedret både funksjon og visuell kvalitet, og ga et konkret utgangspunkt for videre produksjonsforberedelse."
+  },
+  "nomos": {
+    "problem": "Bandet manglet en helhetlig visuell identitet som kunne fungere konsekvent på tvers av plakater, merch og digitale flater.",
+    "solution": "Vi utviklet et samlet branding-system med logo, typografi, fargebruk og anvendelser tilpasset musikkmiljø og promotering.",
+    "outcome": "Leveransen ga en tydeligere merkevareopplevelse og mer konsistent kommunikasjon i både salg, event og profilering."
+  },
+  "nordic": {
+    "problem": "Restauranten trengte et tydelig nordisk uttrykk som kunne løfte helhetsinntrykket uten å miste lokal relevans.",
+    "solution": "Designarbeidet etablerte en visuell identitet med nordisk tonalitet, strukturert typografi og fleksible brand-elementer.",
+    "outcome": "Prosjektet ga en mer gjenkjennelig profil og et praktisk designgrunnlag for videre bruk i menyer, interiør og kampanjer."
+  },
+  "rafaels": {
+    "problem": "Melkeprodusenten trengte en sterkere merkevare som kunne binde moderne og det autentiske uttrykket til produktet og merkevaren.",
+    "solution": "Vi utviklet en helhetlig brandpakke fra logo og visuell retning til emballasjeelementer og trykklare flater.",
+    "outcome": "Resultatet var en mer samlet markedsprofil som styrket produktpresentasjon og ga bedre grunnlag for kommersiell vekst."
+  },
+  "bike": {
+    "problem": "Tidlige sykkelkonsepter manglet en tydelig balanse mellom komponentdetaljer, helhetlig uttrykk og brukeropplevelse.",
+    "solution": "Prosjektet gjennomførte strukturerte detaljstudier av geometri, komponentintegrasjon og visuell sammenheng i produktet.",
+    "outcome": "Arbeidet ga bedre beslutningsgrunnlag for videre iterasjoner og en mer konsistent retning for design og funksjon."
+  }
+};

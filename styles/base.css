@@ -438,9 +438,6 @@
 }
 
 /* NOTE: Nested white UI surfaces on grey canvas — keep dark text for readability. */
-.pricing-service-card {
-  color: var(--color-dark);
-}
 
 .section-inner {
   max-width: var(--content-max-width);
@@ -1204,12 +1201,30 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
   align-items: center;
   gap: 0.9rem;
   padding: 1rem 1.1rem;
-  border: 1px solid var(--border-neutral);
+  border: 1px solid var(--border-card);
   border-radius: 12px;
-  background: var(--color-white);
-  color: var(--color-dark);
+  background: var(--surface-card);
+  color: var(--color-text-on-card);
   text-align: left;
   cursor: pointer;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.pricing-service-card:hover {
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.pricing-service-card:hover .pricing-service-card__check {
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.pricing-service-card:hover .pricing-service-card__price {
+  opacity: 0.95;
 }
 
 .pricing-service-card__label {
@@ -1237,7 +1252,7 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
   flex: 0 0 1.35rem;
   aspect-ratio: 1 / 1;
   border-radius: 999px;
-  border: 1px solid var(--border-neutral);
+  border: 1px solid var(--border-card);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -3465,6 +3480,11 @@ main > .section--partner-logos > .section-inner {
   background: var(--bg-page-canvas);
 }
 
+/* NOTE: /prosjekter hub — header copy uses .section-inner gutter (not homepage .home-section__inner). */
+.section--projects-hub .section-inner {
+  padding-bottom: 0;
+}
+
 /* NOTE: Breakout wrapper for homepage project tiles; no fill — sits on section canvas. */
 .projects-grid-panel {
   margin-left: calc(50% - 50vw);
@@ -4230,6 +4250,53 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
 .contact-item__copy:focus-visible {
   outline: 2px solid rgba(255, 115, 0, 0.28);
   outline-offset: 2px;
+}
+
+/* NOTE: Karriere page — prominent e-post CTA with inline copy control below job listing. */
+.karriere-apply {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-neutral);
+}
+
+.karriere-apply__lead {
+  margin: 0 0 0.85rem 0;
+  font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.3;
+}
+
+.karriere-apply__email-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+}
+
+.karriere-apply__email {
+  font-size: clamp(1.75rem, 4.5vw, 2.75rem);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: inherit;
+  text-decoration: none;
+}
+
+.karriere-apply__email:hover,
+.karriere-apply__email:focus-visible {
+  color: var(--color-primary);
+}
+
+.karriere-apply__copy {
+  position: static;
+  transform: none;
+  width: 2.35rem;
+  height: 2.35rem;
+}
+
+.karriere-apply__copy svg {
+  width: 1.05rem;
+  height: 1.05rem;
 }
 
 /* Footer */

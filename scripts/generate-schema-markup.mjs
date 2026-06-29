@@ -23,6 +23,7 @@ import {
   buildBloggHubGraph,
   buildDefaultWebGraph,
   buildArrangementGraph,
+  buildKarriereGraph,
   buildOssGraph,
   buildFullOrganizationNode,
   orgPostalAddress,
@@ -30,7 +31,11 @@ import {
   buildProjectsHubGraph,
   stripHtml,
 } from './lib/schema-markup.mjs';
-import { isPublishedCatalogProject, seoSlugForCatalog } from './lib/project-seo-slugs.mjs';
+import {
+  isPublishedCatalogProject,
+  seoSlugForCatalog,
+  catalogSlugForSeo,
+} from './lib/project-seo-slugs.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -362,6 +367,40 @@ function processFile(absPath, relPath) {
     return { updated: true, type: 'projects-hub' };
   }
 
+  if (relPath === 'prosjekter/index.html') {
+    graph = buildProjectsHubGraph({
+      url: url || `${SITE}/prosjekter`,
+      title,
+      description,
+    });
+    html = insertSchemaFromGraph(html, graph);
+    write(absPath, html);
+    return { updated: true, type: 'projects-hub' };
+  }
+
+  const prosjekterMatch = relPath.match(/^prosjekter\/([a-z0-9-]+)\/index\.html$/);
+  if (prosjekterMatch) {
+    const catalogSlug = catalogSlugForSeo(prosjekterMatch[1]);
+    const manifest = loadProjectsManifest();
+    const project = manifest.projects.find((entry) => entry.slug === catalogSlug);
+    if (project && isPublishedCatalogProject(project)) {
+      const thumb = project.thumbnail?.startsWith('http')
+        ? project.thumbnail
+        : `${SITE}/${String(project.thumbnail || project.images?.[0] || '').replace(/^\//, '')}`;
+      const pageTitle = `${project.title} | Industridesign og produktdesign`;
+      graph = buildProjectGraph({
+        url: url || `${SITE}/prosjekter/${prosjekterMatch[1]}`,
+        title: project.title,
+        description: project.desc,
+        image: thumb,
+        pageTitle,
+      });
+      html = insertSchemaFromGraph(html, graph);
+      write(absPath, html);
+      return { updated: true, type: 'project' };
+    }
+  }
+
   if (relPath === 'prisestimat.html') {
     graph = buildPrisestimatGraph(html);
     html = insertSchemaFromGraph(html, graph);
@@ -391,6 +430,18 @@ function processFile(absPath, relPath) {
     html = insertSchemaFromGraph(html, graph);
     write(absPath, html);
     return { updated: true, type: 'arrangement' };
+  }
+
+  if (relPath === 'karriere.html') {
+    const pageUrl = url || `${SITE}/karriere`;
+    graph = buildKarriereGraph({
+      url: pageUrl,
+      title,
+      description,
+    });
+    html = insertSchemaFromGraph(html, graph);
+    write(absPath, html);
+    return { updated: true, type: 'karriere' };
   }
 
   if (relPath === 'oss.html') {
@@ -519,6 +570,7 @@ window.__PROJECT_SCHEMA_BY_SLUG = ${JSON.stringify(
           title: p.title,
           description: p.description,
           image: p.image,
+          pageTitle: `${p.title} | Industridesign og produktdesign`,
         }),
       ])
     ),

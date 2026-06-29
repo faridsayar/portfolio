@@ -1,0 +1,500 @@
+// NOTE: Builds pre-rendered /prosjekter/{seo-slug}/index.html from manifest + narratives (no JS required for visible content).
+
+import { SITE, scriptBlock, buildProjectGraph, buildProjectsHubGraph } from './schema-markup.mjs';
+import { resolveProjectSeoMeta, PROJECTS_HUB_SEO } from './project-seo-meta.mjs';
+
+/** NOTE: Bump when script.js project-page behavior changes (cache bust on static pages). */
+export const PROJECT_PAGE_SCRIPT_VERSION = 16;
+
+/** NOTE: Escape text for HTML text nodes. */
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+/** NOTE: Escape text for double-quoted HTML attributes. */
+function escapeAttr(value) {
+  return escapeHtml(value);
+}
+
+/** NOTE: Root-absolute site paths work from any URL depth (/prosjekter/{slug}/). */
+function sitePath(path) {
+  if (!path) return '';
+  if (/^(https?:|data:)/i.test(path)) return path;
+  if (path.startsWith('/')) return path;
+  return `/${String(path).replace(/^\//, '')}`;
+}
+
+function toAbsoluteAssetUrl(path) {
+  if (!path) return '';
+  if (/^https?:\/\//i.test(path)) return path;
+  return `${SITE}${sitePath(path)}`;
+}
+
+function buildPageTitle(projectTitle) {
+  return `${projectTitle} | Industridesign og produktdesign`;
+}
+
+function buildNarrative(narratives, project) {
+  const fallback = `${project.title} ble utviklet med fokus på tydelig problemforståelse, praktisk løsning og et konkret resultat.`;
+  const narrative = narratives[project.slug];
+  return {
+    problem: narrative?.problem || fallback,
+    solution: narrative?.solution || fallback,
+    outcome: narrative?.outcome || fallback,
+  };
+}
+
+function buildThumbButtons(images, projectTitle) {
+  return images
+    .map((src, index) => {
+      const resolvedSrc = sitePath(src);
+      const alt = `${projectTitle} bilde ${index + 1}`;
+      return `                <button
+                  class="project-template-thumb${index === 0 ? ' is-active' : ''}"
+                  type="button"
+                  data-project-thumb
+                  data-image-src="${escapeAttr(resolvedSrc)}"
+                  data-image-alt="${escapeAttr(alt)}"
+                  aria-label="Vis bilde ${index + 1}"
+                >
+                  <img src="${escapeAttr(resolvedSrc)}" alt="" aria-hidden="true" />
+                </button>`;
+    })
+    .join('\n');
+}
+
+function buildProjectGridCards(projects, seoSlugForCatalog) {
+  return projects
+    .map((project) => {
+      const seoSlug = seoSlugForCatalog(project.slug);
+      const imgSrc = sitePath(project.thumbnail || project.images[0] || '');
+      return `            <a
+              class="project-tile"
+              href="/prosjekter/${escapeAttr(seoSlug)}"
+              aria-label="Se ${escapeAttr(project.title)}"
+            >
+              <div class="project-thumb" aria-hidden="true">
+                <img
+                  class="project-thumb__img"
+                  src="${escapeAttr(imgSrc)}"
+                  alt="${escapeAttr(project.title)}"
+                  loading="lazy"
+                />
+              </div>
+              <div class="project-meta">
+                <h3 class="project-title">${escapeHtml(project.title)}</h3>
+              </div>
+            </a>`;
+    })
+    .join('\n');
+}
+
+/**
+ * @param {{
+ *   project: { slug: string, title: string, desc: string, thumbnail?: string, images: string[] },
+ *   seoSlug: string,
+ *   narratives: Record<string, { problem: string, solution: string, outcome: string }>,
+ *   prevSeoSlug: string,
+ *   nextSeoSlug: string,
+ * }} options
+ */
+export function renderProjectPageHtml({ project, seoSlug, narratives, prevSeoSlug, nextSeoSlug }) {
+  const pageTitle = buildPageTitle(project.title);
+  const canonicalUrl = `${SITE}/prosjekter/${seoSlug}`;
+  const detailImages = project.images.length > 0 ? project.images : [];
+  const firstImage = detailImages[0] || project.thumbnail || '';
+  const mainImageSrc = sitePath(firstImage);
+  const ogImage = toAbsoluteAssetUrl(firstImage || project.thumbnail);
+  const imageAlt = project.title;
+  const { descEn, keywords } = resolveProjectSeoMeta(project);
+  const narrative = buildNarrative(narratives, project);
+  const schemaGraph = buildProjectGraph({
+    url: canonicalUrl,
+    title: project.title,
+    description: project.desc,
+    image: ogImage,
+    pageTitle,
+  });
+  const schemaBlock = scriptBlock(schemaGraph['@graph']);
+  const thumbButtons = buildThumbButtons(detailImages, project.title);
+  const prevHref = `/prosjekter/${prevSeoSlug}`;
+  const nextHref = `/prosjekter/${nextSeoSlug}`;
+  const scriptVersion = PROJECT_PAGE_SCRIPT_VERSION;
+
+  return `<!doctype html>
+<html lang="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- NOTE: Pre-rendered project page — generated by scripts/generate-project-pages.mjs; edit manifest/narratives and re-run publish:prepare. -->
+    <title>${escapeHtml(pageTitle)}</title>
+    <meta name="description" content="${escapeAttr(project.desc)}" />
+    <meta name="description:en" content="${escapeAttr(descEn)}" />
+    <meta name="keywords" content="${escapeAttr(keywords)}" />
+    <meta name="author" content="Formaa" />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+
+    <meta property="og:locale" content="nb_NO" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:title" content="${escapeAttr(pageTitle)}" />
+    <meta property="og:description" content="${escapeAttr(project.desc)}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="${escapeAttr(canonicalUrl)}" />
+    <meta property="og:site_name" content="Formaa" />
+    <meta property="og:image" content="${escapeAttr(ogImage)}" />
+    <meta property="og:image:width" content="1920" />
+    <meta property="og:image:height" content="1080" />
+    <meta property="og:image:alt" content="${escapeAttr(imageAlt)}" />
+    <meta property="article:author" content="Formaa" />
+    <meta property="article:section" content="Prosjekter" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="${escapeAttr(pageTitle)}" />
+    <meta name="twitter:description" content="${escapeAttr(project.desc)}" />
+    <meta name="twitter:image" content="${escapeAttr(ogImage)}" />
+    <meta name="twitter:image:alt" content="${escapeAttr(imageAlt)}" />
+
+    <link rel="canonical" href="${escapeAttr(canonicalUrl)}" />
+
+    <link rel="icon" type="image/svg+xml" href="/assets/square-favicon.svg?v=1" sizes="any" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="/assets/square-favicon-fallback.png?v=1"
+      sizes="192x192"
+    />
+
+    <link rel="stylesheet" href="/styles/base.css?v=13" />
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JSX18YWHXS"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-JSX18YWHXS');
+    </script>
+  </head>
+  <body class="single-page-body">
+    <div data-component="side-nav"></div>
+
+    <main
+      data-project-page
+      data-project-catalog-slug="${escapeAttr(project.slug)}"
+      data-project-prerendered="true"
+    >
+      <section
+        class="section section--white section--project-hero-template"
+        aria-label="${escapeAttr(project.title)}"
+      >
+        <div class="project-hero-gallery" data-project-gallery>
+          <div class="project-hero-stage">
+            <nav class="breadcrumb project-hero-stage__breadcrumb" aria-label="Brødsmulesti">
+              <a class="breadcrumb__link" href="/">Formaa</a>
+              <span class="breadcrumb__sep" aria-hidden="true">/</span>
+              <a class="breadcrumb__link" href="/#portfolio">Portefølje</a>
+              <span class="breadcrumb__sep" aria-hidden="true">/</span>
+              <a
+                class="breadcrumb__link"
+                href="/prosjekter"
+                aria-current="page"
+                data-project-breadcrumb-current
+                >${escapeHtml(project.title)}</a
+              >
+            </nav>
+            <div class="project-hero-stage__media">
+              <img
+                class="project-hero-stage__img"
+                src="${escapeAttr(mainImageSrc)}"
+                alt="${escapeAttr(`${project.title} bilde 1`)}"
+                width="1600"
+                height="900"
+                data-project-main-image
+              />
+              <div class="project-hero-stage__overlay" aria-hidden="true"></div>
+            </div>
+            <div class="project-hero-stage__content">
+              <h1 class="project-hero-stage__title" data-project-title>${escapeHtml(project.title)}</h1>
+              <p class="project-hero-stage__lead" data-project-lead>${escapeHtml(project.desc)}</p>
+            </div>
+            <div class="project-thumb-rail project-hero-stage__thumb-rail" data-project-thumb-rail>
+              <button
+                class="project-thumb-rail__nav project-thumb-rail__nav--prev"
+                type="button"
+                aria-label="Forrige miniatyrer"
+                data-project-thumbs-prev
+              >
+                <img
+                  class="project-thumb-rail__icon project-thumb-rail__icon--prev"
+                  src="/assets/triangle.svg"
+                  alt=""
+                  width="30"
+                  height="26"
+                  aria-hidden="true"
+                />
+              </button>
+              <div
+                class="project-template-thumbs project-hero-stage__thumbs"
+                aria-label="Velg prosjektbilde"
+                data-project-thumbs
+              >
+${thumbButtons}
+              </div>
+              <button
+                class="project-thumb-rail__nav project-thumb-rail__nav--next"
+                type="button"
+                aria-label="Neste miniatyrer"
+                data-project-thumbs-next
+              >
+                <img
+                  class="project-thumb-rail__icon project-thumb-rail__icon--next"
+                  src="/assets/triangle.svg"
+                  alt=""
+                  width="30"
+                  height="26"
+                  aria-hidden="true"
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <nav class="project-page-nav" aria-label="Forrige og neste prosjekt">
+        <a
+          class="project-page-nav__link project-page-nav__link--prev"
+          href="${escapeAttr(prevHref)}"
+          aria-label="Forrige prosjekt"
+          data-project-nav-prev
+        >
+          <img
+            class="project-page-nav__icon"
+            src="/assets/triangle.svg"
+            alt=""
+            width="30"
+            height="26"
+            aria-hidden="true"
+          />
+          <span class="project-page-nav__label" aria-hidden="true">forrige prosjekt</span>
+        </a>
+        <a
+          class="project-page-nav__link project-page-nav__link--next"
+          href="${escapeAttr(nextHref)}"
+          aria-label="Neste prosjekt"
+          data-project-nav-next
+        >
+          <span class="project-page-nav__label" aria-hidden="true">neste prosjekt</span>
+          <img
+            class="project-page-nav__icon"
+            src="/assets/triangle.svg"
+            alt=""
+            width="30"
+            height="26"
+            aria-hidden="true"
+          />
+        </a>
+      </nav>
+
+      <section class="section section--project-summary" aria-label="Prosjektoppsummering">
+        <div class="section-inner">
+          <div class="project-summary">
+            <p class="project-summary__item">
+              <strong>Problem:</strong>
+              <span data-project-problem>${escapeHtml(narrative.problem)}</span>
+            </p>
+            <p class="project-summary__item">
+              <strong>Løsning:</strong>
+              <span data-project-solution>${escapeHtml(narrative.solution)}</span>
+            </p>
+            <p class="project-summary__item">
+              <strong>Resultat:</strong>
+              <span data-project-outcome>${escapeHtml(narrative.outcome)}</span>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="like-share-strip-shell like-share-strip-shell--project" data-project-like-share>
+        <div data-component="like-share-strip"></div>
+      </div>
+
+      <div data-component="project-cta"></div>
+    </main>
+
+    <div data-component="site-footer"></div>
+
+    <script src="/assets/data/projects-manifest.js?v=3" defer></script>
+    <script src="/assets/data/project-narratives.js?v=1" defer></script>
+${schemaBlock}
+    <script src="/components-loader.js?v=1" defer></script>
+    <script src="/shared-nav.js?v=1" defer></script>
+    <script src="/script.js?v=${scriptVersion}" defer></script>
+  </body>
+</html>
+`;
+}
+
+const HUB_TITLE = 'Prosjekter | Industridesign og produktdesign';
+const HUB_DESCRIPTION = 'Alle prosjekter fra Formaa AS';
+const HUB_URL = `${SITE}/prosjekter`;
+const HUB_OG_IMAGE = `${SITE}/assets/images/prosess/3d-modelering.webp`;
+const HUB_OG_IMAGE_ALT = 'Formaa prosjektportefølje — industridesign og produktdesign';
+
+/**
+ * @param {{
+ *   projects: Array<{ slug: string, title: string, desc: string, thumbnail?: string, images: string[] }>,
+ *   seoSlugForCatalog: (catalogSlug: string) => string,
+ * }} options
+ */
+export function renderProjectsHubHtml({ projects, seoSlugForCatalog }) {
+  const schemaGraph = buildProjectsHubGraph({
+    url: HUB_URL,
+    title: HUB_TITLE,
+    description: HUB_DESCRIPTION,
+  });
+  const schemaBlock = scriptBlock(schemaGraph['@graph']);
+  const gridCards = buildProjectGridCards(projects, seoSlugForCatalog);
+  const scriptVersion = PROJECT_PAGE_SCRIPT_VERSION;
+
+  return `<!doctype html>
+<html lang="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- NOTE: Pre-rendered projects hub — generated by scripts/generate-project-pages.mjs. -->
+    <title>${escapeHtml(HUB_TITLE)}</title>
+    <meta name="description" content="${escapeAttr(HUB_DESCRIPTION)}" />
+    <meta name="description:en" content="${escapeAttr(PROJECTS_HUB_SEO.descEn)}" />
+    <meta name="keywords" content="${escapeAttr(PROJECTS_HUB_SEO.keywords)}" />
+    <meta name="author" content="Formaa" />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+
+    <meta property="og:locale" content="nb_NO" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:title" content="${escapeAttr(HUB_TITLE)}" />
+    <meta property="og:description" content="${escapeAttr(HUB_DESCRIPTION)}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="${escapeAttr(HUB_URL)}" />
+    <meta property="og:site_name" content="Formaa" />
+    <meta property="og:image" content="${escapeAttr(HUB_OG_IMAGE)}" />
+    <meta property="og:image:width" content="1920" />
+    <meta property="og:image:height" content="1080" />
+    <meta property="og:image:alt" content="${escapeAttr(HUB_OG_IMAGE_ALT)}" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="${escapeAttr(HUB_TITLE)}" />
+    <meta name="twitter:description" content="${escapeAttr(HUB_DESCRIPTION)}" />
+    <meta name="twitter:image" content="${escapeAttr(HUB_OG_IMAGE)}" />
+    <meta name="twitter:image:alt" content="${escapeAttr(HUB_OG_IMAGE_ALT)}" />
+
+    <link rel="canonical" href="${escapeAttr(HUB_URL)}" />
+
+    <link rel="icon" type="image/svg+xml" href="/assets/square-favicon.svg?v=1" sizes="any" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="/assets/square-favicon-fallback.png?v=1"
+      sizes="192x192"
+    />
+
+    <link rel="stylesheet" href="/styles/base.css?v=13" />
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JSX18YWHXS"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-JSX18YWHXS');
+    </script>
+  </head>
+  <body class="single-page-body">
+    <div data-component="side-nav"></div>
+
+    <main>
+      <section class="section section--white section--projects-hub" aria-label="Prosjekter">
+        <div class="section-inner">
+          <nav class="breadcrumb" aria-label="Brødsmulesti">
+            <a class="breadcrumb__link" href="/">Formaa</a>
+            <span class="breadcrumb__sep" aria-hidden="true">/</span>
+            <a class="breadcrumb__link" href="/prosjekter" aria-current="page">Prosjekter</a>
+          </nav>
+          <h1 class="section-title">Prosjekter</h1>
+          <p class="section-lead">${escapeHtml(HUB_DESCRIPTION)}</p>
+        </div>
+        <div class="projects-grid-panel">
+          <div class="projects-grid" aria-label="Prosjektliste" data-projects-grid>
+${gridCards}
+          </div>
+          <div class="projects-sentinel" data-projects-sentinel aria-hidden="true"></div>
+        </div>
+      </section>
+
+      <div data-component="project-cta"></div>
+    </main>
+
+    <div data-component="site-footer"></div>
+
+    <script src="/assets/data/projects-manifest.js?v=3" defer></script>
+${schemaBlock}
+    <script src="/components-loader.js?v=1" defer></script>
+    <script src="/shared-nav.js?v=1" defer></script>
+    <script src="/script.js?v=${scriptVersion}" defer></script>
+  </body>
+</html>
+`;
+}
+
+/** NOTE: Legacy prosjekt-*.html stubs — noindex redirect to canonical /prosjekter/{slug}. */
+export function renderProjectStubHtml({ project, seoSlug }) {
+  const canonicalUrl = `${SITE}/prosjekter/${seoSlug}`;
+  const redirectTarget = `/prosjekter/${seoSlug}`;
+  const { descEn, keywords } = resolveProjectSeoMeta(project);
+  const ogImage = toAbsoluteAssetUrl(project.thumbnail || project.images?.[0] || '');
+
+  return `<!doctype html>
+<html lang="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- NOTE: Redirect stub — canonical URL is /prosjekter/${escapeAttr(seoSlug)}; not indexed. -->
+    <title>${escapeHtml(project.title)} | Formaa</title>
+    <meta name="description" content="${escapeAttr(project.desc)}" />
+    <meta name="description:en" content="${escapeAttr(descEn)}" />
+    <meta name="keywords" content="${escapeAttr(keywords)}" />
+    <meta name="robots" content="noindex,follow" />
+    <meta property="og:title" content="${escapeAttr(project.title)} | Formaa" />
+    <meta property="og:description" content="${escapeAttr(project.desc)}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="${escapeAttr(canonicalUrl)}" />
+    <meta property="og:image" content="${escapeAttr(ogImage)}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="${escapeAttr(project.title)} | Formaa" />
+    <meta name="twitter:description" content="${escapeAttr(project.desc)}" />
+    <meta name="twitter:image" content="${escapeAttr(ogImage)}" />
+    <meta name="twitter:image:alt" content="${escapeAttr(project.title)}" />
+    <link rel="canonical" href="${escapeAttr(canonicalUrl)}" />
+    <meta http-equiv="refresh" content="0; url=${escapeAttr(redirectTarget)}" />
+    <script>
+      window.location.replace('${redirectTarget}');
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JSX18YWHXS"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-JSX18YWHXS');
+    </script>
+  </head>
+  <body></body>
+</html>
+`;
+}

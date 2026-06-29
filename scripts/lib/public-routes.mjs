@@ -10,7 +10,7 @@ export const STATIC_HUB_ROUTES = [
   '/prisestimat',
   '/application-form',
   '/arrangement',
-  '/bli-med',
+  '/karriere',
   '/en/product-rendering',
   '/en/cad-modeling',
   '/en/product-animation',
