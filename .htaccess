@@ -94,7 +94,11 @@ RewriteRule ^category/produksjon/(.*)$ /category/teknisk-tegning/$1 [R=301,L]
 RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
 RewriteRule ^(.+)\.html$ /$1 [R=301,L]
 
-# NOTE: Always serve project template for /prosjekter URLs (even when prosjekter/{slug}/ exists for static hosts).
+# NOTE: Serve pre-rendered static project pages when generated (prosjekter/{slug}/index.html).
+RewriteCond %{DOCUMENT_ROOT}/prosjekter/$1/index.html -f
+RewriteRule ^prosjekter/([a-z0-9-]+)/?$ /prosjekter/$1/index.html [L]
+
+# NOTE: Fallback client template for unpublished slugs and legacy ?project= flows.
 RewriteRule ^prosjekter/([a-z0-9-]+)/?$ /advanced-project.html?seoSlug=$1 [L,QSA]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

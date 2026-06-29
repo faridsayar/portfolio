@@ -30,7 +30,11 @@ import {
   buildProjectsHubGraph,
   stripHtml,
 } from './lib/schema-markup.mjs';
-import { isPublishedCatalogProject, seoSlugForCatalog } from './lib/project-seo-slugs.mjs';
+import {
+  isPublishedCatalogProject,
+  seoSlugForCatalog,
+  catalogSlugForSeo,
+} from './lib/project-seo-slugs.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -360,6 +364,27 @@ function processFile(absPath, relPath) {
     html = insertSchemaFromGraph(html, graph);
     write(absPath, html);
     return { updated: true, type: 'projects-hub' };
+  }
+
+  const prosjekterMatch = relPath.match(/^prosjekter\/([a-z0-9-]+)\/index\.html$/);
+  if (prosjekterMatch) {
+    const catalogSlug = catalogSlugForSeo(prosjekterMatch[1]);
+    const manifest = loadProjectsManifest();
+    const project = manifest.projects.find((entry) => entry.slug === catalogSlug);
+    if (project && isPublishedCatalogProject(project)) {
+      const thumb = project.thumbnail?.startsWith('http')
+        ? project.thumbnail
+        : `${SITE}/${String(project.thumbnail || project.images?.[0] || '').replace(/^\//, '')}`;
+      graph = buildProjectGraph({
+        url: url || `${SITE}/prosjekter/${prosjekterMatch[1]}`,
+        title: project.title,
+        description: project.desc,
+        image: thumb,
+      });
+      html = insertSchemaFromGraph(html, graph);
+      write(absPath, html);
+      return { updated: true, type: 'project' };
+    }
   }
 
   if (relPath === 'prisestimat.html') {
