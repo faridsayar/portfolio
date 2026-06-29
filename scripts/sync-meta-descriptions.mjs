@@ -16,6 +16,20 @@ const CURATED_SEO = {
     description:
       'Designbyrå som vil få ideen din til å ta form. Er du en gründer eller driver en startup? Vi hjelper deg med produktutvikling, 3D/CAD, visualisering og prototype.',
   },
+  'oss.html': {
+    title: 'Om oss | Produktutvikling og 3D-visualisering | Formaa',
+    description:
+      'Formaa AS er tre designer-venner med produktutviklingsbyrå for oppfinnere, gründere og startups — personlig tilnærming fra idé til marked.',
+  },
+  'prisestimat.html': {
+    description:
+      'Prisestimat og små pakker med fast pris for prototype, konsept og 3D-modellering. Overslag for produktutvikling — nyttig for startups før dere starter.',
+  },
+  'tjenester-prosess.html': {
+    title: 'Produktutvikling og 3D-visualisering | Tjenester | Formaa',
+    description:
+      'Produktutvikling og 3D-visualisering fra konsept til prototype: industridesign, CAD, visualisering og branding for startups og gründere i Norge.',
+  },
 };
 
 /** NOTE: Prefer one studio term per meta sentence (never both designstudio and designbyrå together). */
@@ -52,20 +66,32 @@ function normalizeMetaText(text) {
     .trim();
 }
 
+/** NOTE: Pack full sentences up to MAX_LEN; word-boundary fallback without literal ellipsis in meta tags. */
 function truncateMeta(text) {
   const normalized = normalizeMetaText(text);
   if (normalized.length <= MAX_LEN) return normalized;
-  const cut = normalized.slice(0, MAX_LEN - 1);
+
+  const parts = normalized.match(/[^.!?…]+[.!?…]+|[^.!?…]+$/g) || [normalized];
+  let out = '';
+  for (const part of parts) {
+    const next = (out + part).trim();
+    if (next.length > MAX_LEN) break;
+    out = next;
+  }
+  if (out.length >= 50) return out;
+
+  const cut = normalized.slice(0, MAX_LEN);
   const lastSpace = cut.lastIndexOf(' ');
-  return `${(lastSpace > 60 ? cut.slice(0, lastSpace) : cut).trim()}…`;
+  return (lastSpace > 60 ? cut.slice(0, lastSpace) : cut).trim();
 }
 
-function buildDescription(headline, body) {
+/** NOTE: leadOnly skips H1 prefix when location/topic is already in the page title (category, blog, EN). */
+function buildDescription(headline, body, { leadOnly = false } = {}) {
   const h = stripHtml(headline || '');
   const b = stripHtml(body || '');
   if (!h && !b) return '';
+  if (leadOnly || !h) return truncateMeta(b);
   if (!b) return truncateMeta(h);
-  if (!h) return truncateMeta(b);
   const hNorm = h.toLowerCase();
   const bNorm = b.toLowerCase();
   if (bNorm.startsWith(hNorm) || bNorm.includes(hNorm.slice(0, Math.min(24, hNorm.length)))) {
@@ -136,46 +162,17 @@ function resolveDescription(filePath, html) {
     return CURATED_SEO[rel].description;
   }
 
-  if (rel === 'oss.html') {
-    const lead1 = stripHtml(extractLead(html));
-    const lead2 = stripHtml(
-      extractFirst(/<p\s+class="section-lead section-lead--after-grid"[^>]*>([\s\S]*?)<\/p>/i, html)
-    );
-    return truncateMeta(`Produktutvikling og 3D-visualisering. ${lead1} ${lead2}`.trim());
-  }
-
-  if (rel === 'application-form.html') {
-    const componentHtml = fs.readFileSync(
-      path.join(root, 'components/application-form.html'),
-      'utf8'
-    );
-    return buildDescription(extractHeadline(componentHtml), extractLead(componentHtml));
-  }
-
-  if (rel === 'prisestimat.html') {
-    return buildDescription(extractHeadline(html), extractLead(html));
-  }
-
-  if (rel === 'tjenester-prosess.html') {
-    const lead = stripHtml(extractLead(html));
-    return truncateMeta(`Produktutvikling og 3D-visualisering. ${lead}`);
-  }
-
   if (rel === 'blogg.html' || rel === 'blogg/index.html') {
     return buildDescription(extractHeadline(html), extractLead(html));
   }
 
   if (rel.startsWith('blogg-') || rel.startsWith('blogg/')) {
-    const title = extractFirst(/<title>([\s\S]*?)<\/title>/i, html).replace(
-      /\s*\|\s*Formaa.*$/i,
-      ''
-    );
-    return buildDescription(title, extractArticleLead(html));
+    return truncateMeta(stripHtml(extractArticleLead(html)));
   }
 
   if (rel.startsWith('category/')) {
     return sanitizeStudioTerms(
-      buildDescription(extractHeadline(html), extractLead(html)),
+      buildDescription(extractHeadline(html), extractLead(html), { leadOnly: true }),
       studioTermPreference(rel)
     );
   }
@@ -184,7 +181,7 @@ function resolveDescription(filePath, html) {
     const slug = path.basename(rel, '.html');
     const pages = loadEnLandings();
     const page = pages[slug];
-    if (page) return buildDescription(page.title, page.lead);
+    if (page) return buildDescription(page.title, page.lead, { leadOnly: true });
   }
 
   if (rel === 'advanced-project.html') {
@@ -230,14 +227,6 @@ function resolveDescription(filePath, html) {
 function resolveTitle(filePath, html) {
   const rel = path.relative(root, filePath).replace(/\\/g, '/');
   if (CURATED_SEO[rel]?.title) return CURATED_SEO[rel].title;
-
-  if (rel === 'tjenester-prosess.html') {
-    return 'Produktutvikling og 3D-visualisering | Tjenester | Formaa';
-  }
-
-  if (rel === 'oss.html') {
-    return 'Om oss | Produktutvikling og 3D-visualisering | Formaa';
-  }
 
   if (rel.startsWith('category/')) {
     const h1 = stripHtml(extractHeadline(html));
