@@ -225,7 +225,6 @@ class SinglePagePortfolio {
       link.className = 'service-tag';
       link.href = href;
       link.textContent = label;
-      link.setAttribute('hreflang', 'en');
       categoryTagsRow.appendChild(link);
     });
 
