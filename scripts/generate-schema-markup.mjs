@@ -23,6 +23,7 @@ import {
   buildBloggHubGraph,
   buildDefaultWebGraph,
   buildArrangementGraph,
+  buildKarriereGraph,
   buildOssGraph,
   buildFullOrganizationNode,
   orgPostalAddress,
@@ -429,6 +430,18 @@ function processFile(absPath, relPath) {
     html = insertSchemaFromGraph(html, graph);
     write(absPath, html);
     return { updated: true, type: 'arrangement' };
+  }
+
+  if (relPath === 'karriere.html') {
+    const pageUrl = url || `${SITE}/karriere`;
+    graph = buildKarriereGraph({
+      url: pageUrl,
+      title,
+      description,
+    });
+    html = insertSchemaFromGraph(html, graph);
+    write(absPath, html);
+    return { updated: true, type: 'karriere' };
   }
 
   if (relPath === 'oss.html') {

@@ -34,6 +34,11 @@ const CURATED_SEO = {
     description:
       'Produktutvikling og 3D-visualisering fra konsept til prototype: industridesign, CAD, visualisering og branding for startups og gründere i Norge.',
   },
+  'karriere.html': {
+    title: 'Jobbe i Formaa AS',
+    description:
+      'Jobbe i Formaa AS — se ledige stillinger og muligheter for å bli med i teamet. Vi søker junior eller student til B2B-markedsføring, lead-generering og forretningsutvikling.',
+  },
 };
 
 /** NOTE: Prefer one studio term per meta sentence (never both designstudio and designbyrå together). */
@@ -213,7 +218,7 @@ function resolveDescription(filePath, html) {
     if (project) return buildDescription(project.title, project.desc);
   }
 
-  if (rel === 'bli-med.html' || rel === 'arrangement.html') {
+  if (rel === 'karriere.html' || rel === 'arrangement.html') {
     return buildDescription(extractHeadline(html), extractLead(html));
   }
 
@@ -326,7 +331,7 @@ const files = [
   path.join(root, 'prisestimat.html'),
   path.join(root, 'blogg.html'),
   path.join(root, 'advanced-project.html'),
-  path.join(root, 'bli-med.html'),
+  path.join(root, 'karriere.html'),
   path.join(root, 'arrangement.html'),
   ...collectHtmlFiles(path.join(root, 'category')),
   ...collectHtmlFiles(path.join(root, 'blogg')),

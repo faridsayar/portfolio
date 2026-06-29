@@ -431,6 +431,45 @@ export function buildArrangementGraph({ url, title, description }) {
   ]);
 }
 
+// NOTE: /karriere careers hub — JobPosting schema for Google for Jobs.
+export function buildKarriereGraph({ url, title, description }) {
+  return wrapGraph([
+    websiteRef(),
+    breadcrumbList(
+      [
+        { name: BRAND_CRUMB, url: `${SITE}/` },
+        { name: 'Karriere', url },
+      ],
+      url
+    ),
+    webPage({ url, name: title, description }),
+    {
+      '@type': 'JobPosting',
+      '@id': `${url}#job-b2b-marketing`,
+      title: 'Junior / student — B2B-markedsføring og forretningsutvikling',
+      description:
+        'Praktisk erfaring innen B2B-markedsføring, lead-generering og forretningsutvikling. Ingen krav om tidligere arbeidserfaring.',
+      datePosted: '2026-06-29',
+      employmentType: 'INTERN',
+      hiringOrganization: { '@id': ORG_ID },
+      jobLocation: {
+        '@type': 'Place',
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: 'Oslo',
+          addressCountry: 'NO',
+        },
+      },
+      applicantLocationRequirements: {
+        '@type': 'Country',
+        name: 'NO',
+      },
+      directApply: true,
+      url: `${url}#job-b2b-marketing`,
+    },
+  ]);
+}
+
 // NOTE: /oss AboutPage graph — full legal entity + team page for branded search.
 export function buildOssGraph({ url, title, description }) {
   return wrapGraph([

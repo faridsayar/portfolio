@@ -64,7 +64,7 @@ function collectTargetFiles() {
     path.join(root, 'prisestimat.html'),
     path.join(root, 'blogg.html'),
     path.join(root, 'advanced-project.html'),
-    path.join(root, 'bli-med.html'),
+    path.join(root, 'karriere.html'),
     path.join(root, 'arrangement.html'),
     ...collectHtmlFiles(path.join(root, 'category')),
     ...collectHtmlFiles(path.join(root, 'blogg')),

@@ -39,6 +39,10 @@ RewriteRule ^blogg\.html$ /blogg [R=301,L]
 RewriteRule ^application-form\.html$ /application-form [R=301,L]
 RewriteRule ^arrangement\.html$ /arrangement [R=301,L]
 
+# NOTE: /bli-med retired — thin placeholder replaced by /karriere careers page.
+RewriteRule ^bli-med\.html$ /karriere [R=301,L]
+RewriteRule ^bli-med/?$ /karriere [R=301,L]
+
 # NOTE: Redirect legacy favicon asset requests to the current square full-bleed favicon.
 RewriteRule ^assets/favicon\.svg$ /assets/square-favicon.svg [R=301,L]
 RewriteRule ^assets/Favicon-google-search\.svg$ /assets/square-favicon.svg [R=301,L]
