@@ -71,8 +71,13 @@ function renderSharedNav() {
   };
 
   navRoots.forEach((nav) => {
+    if (nav.dataset.sharedNavHandled === 'true') return;
     nav.dataset.sharedNavHandled = 'true';
-    nav.innerHTML = `
+
+    // NOTE: Build-inlined nav already has links; only inject when components-loader left an empty shell.
+    const hasLinks = nav.querySelector('.side-nav__link');
+    if (!hasLinks) {
+      nav.innerHTML = `
       <button
         class="side-nav__toggle"
         type="button"
@@ -87,6 +92,7 @@ function renderSharedNav() {
         ${linksMarkup}
       </div>
     `;
+    }
 
     const toggle = nav.querySelector('[data-mobile-nav-toggle]');
     if (!toggle) return;

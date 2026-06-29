@@ -67,7 +67,29 @@
   </head>
   <body class="single-page-body">
     <!-- NOTE: Shared navigation component slot. -->
-    <div data-component="side-nav"></div>
+    <!-- NOTE: BEGIN static side-nav (build-inlined for crawlers) -->
+    <nav class="side-nav" aria-label="Navigasjon" data-mobile-nav data-static-nav="true">
+      <button
+        class="side-nav__toggle"
+        type="button"
+        aria-label="Utvid meny"
+        aria-expanded="false"
+        aria-controls="side-nav-content"
+        data-mobile-nav-toggle
+      >
+        <img class="side-nav__toggle-icon" src="/assets/triangle.svg" alt="" aria-hidden="true" />
+      </button>
+      <div class="side-nav__content" id="side-nav-content" data-mobile-nav-content>
+        <a class="side-nav__link" href="/">Hjem</a>
+        <a class="side-nav__link" href="/oss">Oss</a>
+        <a class="side-nav__link" href="/tjenester-prosess">Tjenester</a>
+        <a class="side-nav__link" href="/prosjekter">Prosjekter</a>
+        <a class="side-nav__link" href="/blogg">Blogg</a>
+        <a class="side-nav__link" href="/arrangement">Arrangement</a>
+        <a class="side-nav__link" href="/application-form">Kontakt</a>
+      </div>
+    </nav>
+    <!-- NOTE: END static side-nav -->
 
     <main>
       <section class="section section--white" aria-label="Bli med">
