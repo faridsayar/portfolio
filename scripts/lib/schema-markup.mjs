@@ -338,7 +338,8 @@ export function buildDefaultWebGraph({
   ]);
 }
 
-export function buildProjectGraph({ url, title, description, image }) {
+export function buildProjectGraph({ url, title, description, image, pageTitle }) {
+  const webPageName = pageTitle || title;
   return wrapGraph([
     websiteRef(),
     breadcrumbList(
@@ -349,6 +350,7 @@ export function buildProjectGraph({ url, title, description, image }) {
       ],
       url
     ),
+    webPage({ url, name: webPageName, description }),
     {
       '@type': 'CreativeWork',
       '@id': `${url}#project`,
@@ -357,6 +359,7 @@ export function buildProjectGraph({ url, title, description, image }) {
       url,
       inLanguage: 'nb-NO',
       image: image || DEFAULT_IMAGE,
+      mainEntityOfPage: { '@id': url },
       creator: publisherRef(),
       publisher: publisherRef(),
     },

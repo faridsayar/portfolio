@@ -1456,6 +1456,11 @@ class SinglePagePortfolio {
     if (catalog.length === 0) return;
 
     const limitAttr = grid.getAttribute('data-projects-limit');
+    if (!limitAttr && grid.querySelector('.project-tile')) {
+      sentinel.style.display = 'none';
+      return;
+    }
+
     const limit = limitAttr ? Math.max(0, parseInt(limitAttr, 10) || 0) : catalog.length;
     const visibleCatalog = limit > 0 ? catalog.slice(0, limit) : catalog;
 

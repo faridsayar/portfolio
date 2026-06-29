@@ -366,6 +366,17 @@ function processFile(absPath, relPath) {
     return { updated: true, type: 'projects-hub' };
   }
 
+  if (relPath === 'prosjekter/index.html') {
+    graph = buildProjectsHubGraph({
+      url: url || `${SITE}/prosjekter`,
+      title,
+      description,
+    });
+    html = insertSchemaFromGraph(html, graph);
+    write(absPath, html);
+    return { updated: true, type: 'projects-hub' };
+  }
+
   const prosjekterMatch = relPath.match(/^prosjekter\/([a-z0-9-]+)\/index\.html$/);
   if (prosjekterMatch) {
     const catalogSlug = catalogSlugForSeo(prosjekterMatch[1]);
@@ -375,11 +386,13 @@ function processFile(absPath, relPath) {
       const thumb = project.thumbnail?.startsWith('http')
         ? project.thumbnail
         : `${SITE}/${String(project.thumbnail || project.images?.[0] || '').replace(/^\//, '')}`;
+      const pageTitle = `${project.title} | Industridesign og produktdesign`;
       graph = buildProjectGraph({
         url: url || `${SITE}/prosjekter/${prosjekterMatch[1]}`,
         title: project.title,
         description: project.desc,
         image: thumb,
+        pageTitle,
       });
       html = insertSchemaFromGraph(html, graph);
       write(absPath, html);
@@ -544,6 +557,7 @@ window.__PROJECT_SCHEMA_BY_SLUG = ${JSON.stringify(
           title: p.title,
           description: p.description,
           image: p.image,
+          pageTitle: `${p.title} | Industridesign og produktdesign`,
         }),
       ])
     ),

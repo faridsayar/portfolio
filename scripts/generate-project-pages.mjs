@@ -6,11 +6,14 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { isPublishedCatalogProject, seoSlugForCatalog } from './lib/project-seo-slugs.mjs';
 import { sortProjectsByPreferredOrder } from './lib/project-catalog-order.mjs';
-import { renderProjectPageHtml } from './lib/project-page-html.mjs';
+import {
+  renderProjectPageHtml,
+  renderProjectsHubHtml,
+  renderProjectStubHtml,
+} from './lib/project-page-html.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const prosjekterDir = path.join(root, 'prosjekter');
-const stubPrefix = 'prosjekt-';
 
 function loadProjectsManifest() {
   const raw = fs.readFileSync(path.join(root, 'assets/data/projects-manifest.js'), 'utf8');
@@ -29,39 +32,6 @@ function writeProjectNarrativesJs(narratives) {
 window.__PROJECT_NARRATIVES = ${JSON.stringify(narratives, null, 2)};
 `;
   fs.writeFileSync(path.join(root, 'assets/data/project-narratives.js'), out);
-}
-
-/** NOTE: Root prosjekt-*.html stubs redirect to canonical /prosjekter/{slug}. */
-function applyStubRedirect(html, redirectTarget) {
-  return html
-    .replace(
-      /<meta\s+http-equiv="refresh"\s+content="[^"]*"\s*\/?>/i,
-      `<meta http-equiv="refresh" content="0; url=${redirectTarget}" />`
-    )
-    .replace(/window\.location\.replace\([^)]+\)/, `window.location.replace('${redirectTarget}')`);
-}
-
-function writeProsjekterListingRedirect() {
-  const listingHtml = `<!doctype html>
-<html lang="no">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Prosjekter | Formaa</title>
-    <meta
-      name="description"
-      content="Alle prosjekter fra Formaa — industridesign og produktdesign fra konsept til prototype og produksjon."
-    />
-    <link rel="canonical" href="https://formaa.no/prosjekter" />
-    <meta http-equiv="refresh" content="0; url=../advanced-project.html" />
-    <script>
-      window.location.replace('../advanced-project.html');
-    </script>
-  </head>
-  <body></body>
-</html>
-`;
-  fs.writeFileSync(path.join(prosjekterDir, 'index.html'), listingHtml);
 }
 
 function main() {
@@ -99,26 +69,20 @@ function main() {
     console.log(`Wrote prosjekter/${seoSlug}/index.html`);
   }
 
-  writeProsjekterListingRedirect();
-  console.log('Wrote prosjekter/index.html');
+  fs.writeFileSync(
+    path.join(prosjekterDir, 'index.html'),
+    renderProjectsHubHtml({
+      projects: published,
+      seoSlugForCatalog: seoSlugForCatalog,
+    })
+  );
+  console.log('Wrote prosjekter/index.html (projects hub)');
 
-  const stubs = fs
-    .readdirSync(root)
-    .filter((name) => name.startsWith(stubPrefix) && name.endsWith('.html'));
-
-  for (const stubName of stubs) {
-    const stubPath = path.join(root, stubName);
-    const html = fs.readFileSync(stubPath, 'utf8');
-    const canonicalMatch = html.match(
-      /<link\s+rel="canonical"\s+href="https:\/\/formaa\.no\/prosjekter\/([a-z0-9-]+)"\s*\/?>/i
-    );
-    if (!canonicalMatch) {
-      console.warn(`Skip ${stubName}: no /prosjekter/{slug} canonical`);
-      continue;
-    }
-    const seoSlug = canonicalMatch[1];
-    fs.writeFileSync(stubPath, applyStubRedirect(html, `/prosjekter/${seoSlug}`));
-    console.log(`Updated ${stubName} → /prosjekter/${seoSlug}`);
+  for (const project of published) {
+    const seoSlug = seoSlugForCatalog(project.slug);
+    const stubPath = path.join(root, `prosjekt-${seoSlug}.html`);
+    fs.writeFileSync(stubPath, renderProjectStubHtml({ project, seoSlug }));
+    console.log(`Wrote prosjekt-${seoSlug}.html (noindex stub)`);
   }
 
   console.log(`Done (${written} static project pages).`);

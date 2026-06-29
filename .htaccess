@@ -94,6 +94,10 @@ RewriteRule ^category/produksjon/(.*)$ /category/teknisk-tegning/$1 [R=301,L]
 RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
 RewriteRule ^(.+)\.html$ /$1 [R=301,L]
 
+# NOTE: Serve pre-rendered projects hub at /prosjekter when prosjekter/index.html exists.
+RewriteCond %{DOCUMENT_ROOT}/prosjekter/index.html -f
+RewriteRule ^prosjekter/?$ /prosjekter/index.html [L]
+
 # NOTE: Serve pre-rendered static project pages when generated (prosjekter/{slug}/index.html).
 RewriteCond %{DOCUMENT_ROOT}/prosjekter/$1/index.html -f
 RewriteRule ^prosjekter/([a-z0-9-]+)/?$ /prosjekter/$1/index.html [L]
@@ -104,7 +108,6 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 # NOTE: Serve Blogg articles from root stubs blogg-{slug}.html (see scripts/generate-blogg-indexes.mjs).
 RewriteRule ^blogg/([a-z0-9-]+)/?$ /blogg-$1.html [L]
-RewriteRule ^prosjekter/?$ /advanced-project.html [L]
 RewriteRule ^blogg/?$ /blogg.html [L]
 
 # NOTE: Internally map extensionless URLs to existing `.html` files.
