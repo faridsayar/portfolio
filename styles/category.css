@@ -1,1 +1,78 @@
 /* NOTE: Category page specific styles bundle (phase-based extraction target). */
+
+/* NOTE: Highlight matching process phase on category pages — primary copy, secondary number. */
+.prosess-phase-card--highlight .prosess-phase-card__title,
+.prosess-phase-card--highlight .prosess-phase-card__text,
+.prosess-phase-card--highlight .prosess-phase-card__text .internal-text-link,
+.prosess-phase-card--highlight .prosess-phase-card__text .internal-text-link:visited {
+  color: var(--color-primary);
+}
+
+.prosess-phase-card--highlight .prosess-phase-card__text .internal-text-link:hover,
+.prosess-phase-card--highlight .prosess-phase-card__text .internal-text-link:focus {
+  color: var(--color-secondary);
+}
+
+.prosess-phase-card--highlight .prosess-phase-card__number {
+  color: var(--color-secondary);
+  opacity: 1;
+}
+
+/* NOTE: Body + process blocks sit inside category hero before the injected feature banner. */
+section[aria-label='Formaa'] .category-body-copy,
+section[aria-label='Formaa'] .category-prosess-section {
+  margin-top: 0;
+}
+
+section[aria-label='Formaa'] .category-body-copy .section-inner,
+section[aria-label='Formaa'] .category-prosess-section .section-inner {
+  padding-left: 0;
+  padding-right: 0;
+  max-width: none;
+}
+
+.category-prosess-section .section-inner {
+  padding-top: 2rem;
+  padding-bottom: 0;
+}
+
+.category-body-copy .section-inner {
+  padding-top: 1.5rem;
+  padding-bottom: 1rem;
+}
+
+/* NOTE: Numbered delivery steps in "Hva du vil få" category section. */
+.category-delivery-steps {
+  margin: 1.25rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.category-delivery-steps__item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.85rem 1rem;
+  align-items: start;
+}
+
+.category-delivery-steps__number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.75rem;
+  height: 1.75rem;
+  font-size: var(--font-size-breadcrumb);
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+  color: var(--color-secondary);
+}
+
+.category-delivery-steps__text {
+  margin: 0;
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-relaxed);
+  opacity: 0.9;
+}
