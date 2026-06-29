@@ -35,7 +35,7 @@ function collectCategoryHtmlFiles(dir) {
 
 function stripExistingBlocks(html) {
   return html.replace(
-    /\n? {6,10}<!-- NOTE: (?:Category body copy|Category delivery steps|Process phase strip)[\s\S]*? {6,10}<\/section>\n\n {6,10}<!-- NOTE: (?:Category body copy|Category delivery steps|Process phase strip)[\s\S]*? {6,10}<\/section>\n?/g,
+    /\n? {6,10}<!-- NOTE: (?:"Hva er det\?" block|Category body copy|Category delivery steps|Process phase strip)[\s\S]*? {6,10}<\/section>\n\n {6,10}<!-- NOTE: (?:"Hva er det\?" block|Category body copy|Category delivery steps|Process phase strip)[\s\S]*? {6,10}<\/section>\n?/g,
     '\n'
   );
 }

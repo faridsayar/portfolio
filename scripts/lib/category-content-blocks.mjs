@@ -212,12 +212,12 @@ ${buildDeliveryStepsList(steps)}
           </section>`;
 }
 
-export function buildCategoryProcessSection(serviceSlug) {
+export function buildCategoryContextSection(serviceSlug) {
   const highlightPhase = CATEGORY_PROCESS_PHASE[serviceSlug] ?? null;
   const processLead = CATEGORY_PROCESS_LEAD[serviceSlug] || DEFAULT_PROCESS_LEAD;
 
-  return `          <!-- NOTE: Process phase strip — highlights step matching current category; markup from tjenester-prosess -->
-          <section class="section section--white category-prosess-section" aria-label="Prosess">
+  return `          <!-- NOTE: "Hva er det?" block — lead copy and phase strip per service slug; edit in scripts/lib/category-content-blocks.mjs -->
+          <section class="section section--white category-context-section" aria-label="Hva er det?">
             <div class="section-inner">
               <h2 class="section-title">Hva er det?</h2>
               <p class="section-lead">
@@ -232,7 +232,7 @@ ${buildProcessPhaseCards(highlightPhase)}
 }
 
 export function buildCategoryContentBlocks(serviceSlug) {
-  return `${buildCategoryProcessSection(serviceSlug)}\n\n${buildCategoryBodySection(serviceSlug)}`;
+  return `${buildCategoryContextSection(serviceSlug)}\n\n${buildCategoryBodySection(serviceSlug)}`;
 }
 
 export function parseCategoryServiceSlug(relPath) {

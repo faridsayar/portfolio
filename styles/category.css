@@ -18,27 +18,29 @@
   opacity: 1;
 }
 
-/* NOTE: Body + process blocks sit inside category hero before the injected feature banner. */
+/* NOTE: Category text blocks sit inside hero before the injected feature banner. */
 section[aria-label='Formaa'] .category-body-copy,
-section[aria-label='Formaa'] .category-prosess-section {
+section[aria-label='Formaa'] .category-context-section {
   margin-top: 0;
 }
 
 section[aria-label='Formaa'] .category-body-copy .section-inner,
-section[aria-label='Formaa'] .category-prosess-section .section-inner {
+section[aria-label='Formaa'] .category-context-section .section-inner {
   padding-left: 0;
   padding-right: 0;
   max-width: none;
 }
 
-.category-prosess-section .section-inner {
+.category-context-section .section-inner {
   padding-top: 2rem;
   padding-bottom: 0;
 }
 
+/* NOTE: "Hva du vil få" — consistent bottom spacing before feature banner and contact form. */
+section[aria-label='Hva du vil få'] .section-inner,
 .category-body-copy .section-inner {
   padding-top: 1.5rem;
-  padding-bottom: 1rem;
+  padding-bottom: 6rem;
 }
 
 /* NOTE: Numbered delivery steps in "Hva du vil få" category section. */
