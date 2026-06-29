@@ -50,7 +50,7 @@
       <p class="site-footer__links-title">Links</p>
       <div class="site-footer__links-list">
         <a class="site-footer__link" href="/prosjekter" data-footer-link="projects">Prosjekter</a>
-        <a class="site-footer__link" href="/category/design/norge" data-footer-link="categories">Kategorier</a>
+        <a class="site-footer__link" href="/category/industridesign/norge" data-footer-link="categories">Kategorier</a>
         <a class="site-footer__link" href="/blogg" data-footer-link="insights">Blogg</a>
         <a class="site-footer__link" href="/tjenester-prosess" data-footer-link="tjenester-prosess">Tjenester</a>
         <a class="site-footer__link" href="/oss" data-footer-link="about">Oss</a>

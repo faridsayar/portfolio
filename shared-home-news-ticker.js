@@ -17,7 +17,7 @@
     },
     {
       text: 'Vi søker en som ønsker praktisk erfaring innen B2B-markedsføring, lead-generering og forretningsutvikling.',
-      href: 'https://www.linkedin.com/jobs/view/4430107364/',
+      href: '/karriere',
       published: '2026-06-17',
     },
     {

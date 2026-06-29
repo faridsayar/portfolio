@@ -239,6 +239,39 @@ export function buildCategoryGraph({ url, title, description, serviceSlug, regio
   ]);
 }
 
+// NOTE: JSON-LD @graph for /en/* landing pages — copy lives in assets/data/en-landing-pages.js (jsonLd per slug).
+export function buildEnLandingGraph(page) {
+  if (!page?.jsonLd) return null;
+
+  const pageUrl = page.jsonLd.webPage?.url || page.jsonLd.service?.url || `${SITE}/en/${page.slug}`;
+  const graph = [websiteRef()];
+
+  for (const payload of Object.values(page.jsonLd)) {
+    const node = { ...payload };
+    delete node['@context'];
+
+    if (node['@type'] === 'Service') {
+      node['@id'] = node['@id'] || `${node.url}#service`;
+      node.provider = publisherRef();
+      node.inLanguage = node.inLanguage || 'en';
+    }
+
+    if (node['@type'] === 'WebPage') {
+      node['@id'] = node['@id'] || node.url;
+      node.publisher = publisherRef();
+      node.isPartOf = { '@id': WEBSITE_ID };
+    }
+
+    if (node['@type'] === 'BreadcrumbList') {
+      node['@id'] = node['@id'] || `${pageUrl}#breadcrumb`;
+    }
+
+    graph.push(node);
+  }
+
+  return wrapGraph(graph);
+}
+
 export function buildArticleGraph({
   url,
   headline,
@@ -389,6 +422,17 @@ export function buildProjectsHubGraph({ url, title, description }) {
   ]);
 }
 
+// NOTE: /arrangement event metadata — keep aligned with arrangement.html body copy and og:image.
+const ARRANGEMENT_EVENT = {
+  name: 'Skisse- og idéworkshop',
+  description:
+    'Gratis workshop for deg med en produktidé — tegne og tenke sammen, bli kjent og få et første steg videre.',
+  startDate: '2026-08-19T17:00:00+02:00',
+  endDate: '2026-08-19T20:00:00+02:00',
+  image: `${SITE}/assets/images/prosess/workshops.webp`,
+  offerValidFrom: '2026-06-25',
+};
+
 // NOTE: Event hub /arrangement — skisse- og idéworkshop with Event schema for Google.
 export function buildArrangementGraph({ url, title, description }) {
   return wrapGraph([
@@ -404,10 +448,11 @@ export function buildArrangementGraph({ url, title, description }) {
     {
       '@type': 'Event',
       '@id': `${url}#event`,
-      name: 'Skisse- og idéworkshop',
-      description:
-        'Gratis workshop for deg med en produktidé — tegne og tenke sammen, bli kjent og få et første steg videre.',
-      startDate: '2026-08-19T17:00:00+02:00',
+      name: ARRANGEMENT_EVENT.name,
+      description: ARRANGEMENT_EVENT.description,
+      image: ARRANGEMENT_EVENT.image,
+      startDate: ARRANGEMENT_EVENT.startDate,
+      endDate: ARRANGEMENT_EVENT.endDate,
       eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
       eventStatus: 'https://schema.org/EventScheduled',
       location: {
@@ -420,11 +465,13 @@ export function buildArrangementGraph({ url, title, description }) {
         },
       },
       organizer: { '@id': ORG_ID },
+      performer: { '@id': ORG_ID },
       offers: {
         '@type': 'Offer',
         price: '0',
         priceCurrency: 'NOK',
         url,
+        validFrom: ARRANGEMENT_EVENT.offerValidFrom,
         availability: 'https://schema.org/LimitedAvailability',
       },
     },
@@ -492,38 +539,6 @@ export function buildOssGraph({ url, title, description }) {
       isPartOf: { '@id': WEBSITE_ID },
       about: { '@id': ORG_ID },
       publisher: { '@id': ORG_ID },
-    },
-  ]);
-}
-
-export function buildEnLandingGraph({
-  url,
-  title,
-  description,
-  serviceName,
-  serviceType,
-  breadcrumbName,
-}) {
-  return wrapGraph([
-    websiteRef(),
-    breadcrumbList(
-      [
-        { name: BRAND_CRUMB, url: `${SITE}/` },
-        { name: breadcrumbName, url },
-      ],
-      url
-    ),
-    webPage({ url, name: title, description, inLanguage: 'en' }),
-    {
-      '@type': 'Service',
-      '@id': `${url}#service`,
-      name: serviceName,
-      serviceType,
-      description,
-      url,
-      inLanguage: 'en',
-      provider: publisherRef(),
-      areaServed: 'Worldwide',
     },
   ]);
 }

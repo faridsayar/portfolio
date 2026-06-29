@@ -2,14 +2,19 @@
 <main data-en-landing-layout>
   <section class="section en-landing-section" data-en-landing-section>
     <div class="en-landing-hero" data-en-landing-hero>
-      <img
+      <img class="en-landing-hero__media" data-en-landing-hero-img alt="" decoding="async" />
+      <video
         class="en-landing-hero__media"
-        data-en-landing-hero-img
-        alt=""
-        width="1600"
-        height="900"
-        decoding="async"
-      />
+        data-en-landing-hero-video
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        hidden
+      >
+        <source type="video/mp4" />
+      </video>
       <div class="en-landing-hero__overlay" aria-hidden="true"></div>
       <div class="en-landing-hero__chrome">
         <a class="en-landing-hero__logo" href="/">
@@ -27,7 +32,7 @@
           >
         </nav>
       </div>
-      <!-- NOTE: Hero copy column starts at horizontal center of the image (left edge at 50%). -->
+      <!-- NOTE: Hero copy uses the same content column as .section-inner below. -->
       <div class="en-landing-hero__copy">
         <h1 class="section-title en-landing-hero__title" data-en-landing-title></h1>
         <p class="section-lead en-landing-hero__lead" data-en-landing-lead></p>
@@ -36,10 +41,16 @@
           aria-label="What you receive"
           data-en-landing-deliverables
         ></ul>
-        <p class="en-landing-price en-landing-hero__price" data-en-landing-price hidden></p>
-        <a class="hero-cta en-landing-hero__cta" href="#en-landing-quote" data-en-landing-hero-cta
-          >Request quote</a
-        >
+        <div class="en-landing-hero__actions">
+          <a class="hero-cta en-landing-hero__cta" href="#en-landing-quote" data-en-landing-hero-cta
+            >Request quote</a
+          >
+          <p
+            class="en-landing-price en-landing-hero__price text-primary"
+            data-en-landing-price
+            hidden
+          ></p>
+        </div>
       </div>
     </div>
 

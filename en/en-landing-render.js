@@ -10,49 +10,6 @@
       .replace(/"/g, '&quot;');
   }
 
-  // NOTE: Single @graph JSON-LD for EN landings — links Service/WebPage to formaa.no/#organization for Google Search and AI Overviews.
-  function injectJsonLd(page) {
-    if (!page.jsonLd) return;
-    const site = 'https://formaa.no';
-    const orgId = `${site}/#organization`;
-    const websiteId = `${site}/#website`;
-    const publisher = {
-      '@type': 'Organization',
-      '@id': orgId,
-      name: 'Formaa',
-      url: `${site}/`,
-      logo: { '@type': 'ImageObject', url: `${site}/assets/formaa-logo.svg` },
-    };
-    const graph = [
-      {
-        '@type': 'WebSite',
-        '@id': websiteId,
-        name: 'Formaa',
-        url: `${site}/`,
-        publisher: { '@id': orgId },
-        inLanguage: ['nb-NO', 'en'],
-      },
-    ];
-
-    Object.values(page.jsonLd).forEach((payload) => {
-      const node = { ...payload };
-      delete node['@context'];
-      if (node['@type'] === 'Service') {
-        node.provider = publisher;
-      }
-      if (node['@type'] === 'WebPage') {
-        node.publisher = publisher;
-        node.isPartOf = { '@id': websiteId };
-      }
-      graph.push(node);
-    });
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph });
-    document.head.appendChild(script);
-  }
-
   function hydrateEnLanding() {
     if (didHydrate) return;
 
@@ -63,7 +20,6 @@
     if (!page || !layout) return;
 
     didHydrate = true;
-    injectJsonLd(page);
 
     const section = layout.querySelector('[data-en-landing-section]');
     const hero = layout.querySelector('[data-en-landing-hero]');
@@ -81,9 +37,24 @@
 
     if (section) section.setAttribute('aria-label', page.sectionLabel);
     if (hero) hero.setAttribute('aria-label', page.heroLabel);
-    if (heroImg && page.heroImage) {
+
+    const heroVideo = layout.querySelector('[data-en-landing-hero-video]');
+    if (page.heroVideo && heroVideo) {
+      let sourceEl = heroVideo.querySelector('source');
+      if (!sourceEl) {
+        sourceEl = document.createElement('source');
+        sourceEl.type = 'video/mp4';
+        heroVideo.appendChild(sourceEl);
+      }
+      sourceEl.src = page.heroVideo.src;
+      heroVideo.load();
+      heroVideo.hidden = false;
+      if (heroImg) heroImg.hidden = true;
+    } else if (heroImg && page.heroImage) {
+      heroImg.hidden = false;
       heroImg.src = page.heroImage.src;
       heroImg.alt = page.heroImage.alt || '';
+      if (heroVideo) heroVideo.hidden = true;
     }
     if (breadcrumbCurrent) {
       breadcrumbCurrent.textContent = page.breadcrumb;
@@ -260,10 +231,6 @@
     });
   }
 
-  function tryHydrate() {
-    hydrateEnLanding();
-  }
-
-  document.addEventListener('components:ready', tryHydrate);
-  document.addEventListener('DOMContentLoaded', tryHydrate);
+  document.addEventListener('components:ready', hydrateEnLanding);
+  document.addEventListener('DOMContentLoaded', hydrateEnLanding);
 })();

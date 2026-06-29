@@ -29,6 +29,7 @@ import {
   orgPostalAddress,
   buildProjectGraph,
   buildProjectsHubGraph,
+  buildEnLandingGraph,
   stripHtml,
 } from './lib/schema-markup.mjs';
 import {
@@ -142,6 +143,18 @@ function parseBloggArticle(relPath) {
   const nestedMatch = relPath.match(/^blogg\/([a-z0-9-]+)\/index\.html$/);
   if (nestedMatch) return { slug: nestedMatch[1] };
   return null;
+}
+
+function loadEnLandingPages() {
+  const raw = read(path.join(root, 'assets/data/en-landing-pages.js'));
+  const sandbox = {};
+  const fn = new Function('window', `${raw}\nreturn window.EN_LANDING_PAGES;`);
+  return fn(sandbox);
+}
+
+function parseEnLandingSlug(html) {
+  const m = html.match(/data-en-landing-page=["']([^"']+)["']/i);
+  return m?.[1] || null;
 }
 
 function extractHomeFaq(html) {
@@ -508,7 +521,19 @@ function processFile(absPath, relPath) {
   }
 
   if (relPath.startsWith('en/') && relPath.endsWith('.html')) {
-    return { skipped: true, reason: 'en landing (see en-landing-pages.js)' };
+    const slug = parseEnLandingSlug(html);
+    const pages = loadEnLandingPages();
+    const page = slug ? pages?.[slug] : null;
+    if (!page) {
+      return { skipped: true, reason: 'en landing without data-en-landing-page or unknown slug' };
+    }
+    graph = buildEnLandingGraph(page);
+    if (!graph) {
+      return { skipped: true, reason: 'en landing without jsonLd' };
+    }
+    html = insertSchemaFromGraph(html, graph);
+    write(absPath, html);
+    return { updated: true, type: 'en-landing' };
   }
 
   graph = buildDefaultWebGraph({

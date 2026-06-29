@@ -45,8 +45,8 @@
       href="/assets/square-favicon-fallback.png?v=1"
       sizes="192x192"
     />
-    <link rel="stylesheet" href="../styles/base.css?v=9" />
-    <link rel="stylesheet" href="../styles/en-landing.css?v=8" />
+    <link rel="stylesheet" href="../styles/base.css?v=14" />
+    <link rel="stylesheet" href="../styles/en-landing.css?v=22" />
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JSX18YWHXS"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -58,9 +58,282 @@
     </script>
   </head>
   <body class="single-page-body en-landing-body" data-en-landing-page="product-animation">
-    <div data-component="en-landing-layout"></div>
-    <script src="../assets/data/en-landing-pages.js?v=2"></script>
-    <script src="../components-loader.js?v=2"></script>
-    <script src="en-landing-render.js?v=2" defer></script>
+    <!-- NOTE: Shared EN intent landing shell; copy and media are hydrated from assets/data/en-landing-pages.js. -->
+    <main data-en-landing-layout>
+      <section class="section en-landing-section" data-en-landing-section>
+        <div class="en-landing-hero" data-en-landing-hero>
+          <div class="en-landing-hero__backdrop" aria-hidden="true">
+            <video
+              class="en-landing-hero__media"
+              data-en-landing-hero-video
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+              aria-label="Product animation preview"
+            >
+              <source src="../assets/images/shuffle-images/proton-gif.mov" type="video/mp4" />
+            </video>
+            <img
+              class="en-landing-hero__media"
+              data-en-landing-hero-img
+              alt=""
+              decoding="async"
+              hidden
+            />
+          </div>
+          <div class="en-landing-hero__overlay" aria-hidden="true"></div>
+          <div class="en-landing-hero__chrome">
+            <a class="en-landing-hero__logo" href="/">
+              <img
+                src="/assets/formaa-logo.svg"
+                alt="Formaa"
+                width="40"
+                height="27"
+                decoding="async"
+              />
+            </a>
+            <nav class="breadcrumb en-landing-hero__breadcrumb" aria-label="Breadcrumb">
+              <a class="breadcrumb__link" href="/">Formaa</a>
+              <span class="breadcrumb__sep" aria-hidden="true">/</span>
+              <a
+                class="breadcrumb__link"
+                href="#"
+                aria-current="page"
+                data-en-landing-breadcrumb-current
+                >Service</a
+              >
+            </nav>
+          </div>
+          <!-- NOTE: Hero copy uses the same content column as .section-inner below. -->
+          <div class="en-landing-hero__copy">
+            <h1 class="section-title en-landing-hero__title" data-en-landing-title></h1>
+            <p class="section-lead en-landing-hero__lead" data-en-landing-lead></p>
+            <ul
+              class="en-landing-deliverables en-landing-hero__deliverables"
+              aria-label="What you receive"
+              data-en-landing-deliverables
+            ></ul>
+            <div class="en-landing-hero__actions">
+              <a
+                class="hero-cta en-landing-hero__cta"
+                href="#en-landing-quote"
+                data-en-landing-hero-cta
+                >Request quote</a
+              >
+              <p class="en-landing-price en-landing-hero__price text-primary" data-en-landing-price>
+                $740
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- NOTE: Supported upload formats listed directly under the hero image. -->
+        <div class="en-landing-formats-wrap">
+          <p class="en-landing-formats section-inner">
+            <strong>Supported formats:</strong>
+            STEP (.step, .stp) STL (.stl) FBX (.fbx) OBJ (.obj) GLTF (.gltf) GLB (.glb) USD (.usd)
+            USDZ (.usdz) DXF (.dxf) IGES (.iges, .igs)
+          </p>
+        </div>
+
+        <div class="section-inner en-landing-content">
+          <p class="en-landing-turnaround" data-en-landing-turnaround hidden></p>
+
+          <form class="en-landing-form" id="en-landing-quote" data-en-landing-form>
+            <input type="hidden" name="access_key" value="c21cafeb-72cf-4e8b-b66c-69384a07c888" />
+            <input type="hidden" name="from_name" value="Formaa EN landing" />
+            <input type="hidden" name="botcheck" value="" />
+            <input
+              class="field__input"
+              name="email"
+              type="email"
+              required
+              autocomplete="email"
+              inputmode="email"
+              placeholder="Work email"
+              aria-label="Work email"
+              data-en-landing-email
+            />
+            <textarea
+              class="field__textarea"
+              name="message"
+              rows="4"
+              required
+              placeholder="Project brief"
+              aria-label="Project brief"
+              data-en-landing-message
+            ></textarea>
+            <button
+              class="hero-cta en-landing-form__cta is-inactive"
+              type="button"
+              data-en-landing-submit
+            >
+              Request quote
+            </button>
+            <p
+              class="inquiry-note en-landing-form__status"
+              data-en-landing-status
+              aria-live="polite"
+            ></p>
+          </form>
+
+          <div class="en-landing-seo" data-en-landing-seo></div>
+          <p class="section-lead en-landing-crosslinks" data-en-landing-crosslinks></p>
+        </div>
+      </section>
+    </main>
+
+    <!-- NOTE: Plain keyword tags for search discoverability (no links). -->
+    <div class="en-landing-keywords-wrap">
+      <div class="section-inner en-landing-keywords" aria-label="Related search topics">
+        <p class="en-landing-keywords__label">Related topics</p>
+        <ul class="en-landing-keywords__list">
+          <li><span class="en-landing-keyword">3D product rendering service</span></li>
+          <li><span class="en-landing-keyword">CAD designer for product</span></li>
+          <li><span class="en-landing-keyword">consumer product visualization</span></li>
+          <li><span class="en-landing-keyword">3D animation for product</span></li>
+          <li><span class="en-landing-keyword">industrial design freelancer</span></li>
+          <li><span class="en-landing-keyword">prototype CAD modeling</span></li>
+          <li><span class="en-landing-keyword">product render for amazon</span></li>
+          <li><span class="en-landing-keyword">kickstarter product render</span></li>
+          <li><span class="en-landing-keyword">3D modeling for manufacturing</span></li>
+          <li><span class="en-landing-keyword">mechanical enclosure design</span></li>
+          <li><span class="en-landing-keyword">Fusion 360</span></li>
+          <li><span class="en-landing-keyword">Blender</span></li>
+          <li><span class="en-landing-keyword">high quality renders</span></li>
+          <li><span class="en-landing-keyword">3D modeling</span></li>
+          <li><span class="en-landing-keyword">3D model</span></li>
+          <li><span class="en-landing-keyword">realistic model</span></li>
+          <li><span class="en-landing-keyword">product presentation</span></li>
+          <li><span class="en-landing-keyword">product visualization</span></li>
+          <li><span class="en-landing-keyword">CAD rendering</span></li>
+          <li><span class="en-landing-keyword">photorealistic rendering</span></li>
+          <li><span class="en-landing-keyword">studio product render</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <footer class="en-landing-footer">
+      <p>
+        © 2026 Formaa AS. Product visualization studio · Oslo, Norway. All rights reserved. Org.nr.
+        937 772 505.
+      </p>
+    </footer>
+
+    <script src="../assets/data/en-landing-pages.js?v=9"></script>
+    <!-- NOTE: JSON-LD @graph for Google Search and AI Overviews — generated by scripts/generate-schema-markup.mjs; re-run after SEO/meta changes. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://formaa.no/#website",
+            "name": "Formaa",
+            "url": "https://formaa.no/",
+            "publisher": {
+              "@id": "https://formaa.no/#organization"
+            },
+            "inLanguage": ["nb-NO", "en"]
+          },
+          {
+            "@type": "Service",
+            "name": "3D Product Animation Service",
+            "serviceType": "3D product animation",
+            "provider": {
+              "@type": "Organization",
+              "@id": "https://formaa.no/#organization",
+              "name": "Formaa",
+              "url": "https://formaa.no/",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://formaa.no/assets/formaa-logo.svg"
+              },
+              "legalName": "Formaa AS",
+              "alternateName": ["Formaa", "Formaa Design", "formaaa"],
+              "taxID": "937772505",
+              "identifier": {
+                "@type": "PropertyValue",
+                "propertyID": "Brønnøysundregistrene",
+                "value": "937772505"
+              },
+              "sameAs": [
+                "https://www.linkedin.com/company/formaaa/",
+                "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+                "https://t.me/designformaa",
+                "https://www.behance.net/formaa",
+                "https://x.com/FormaaDesignAS",
+                "https://www.reddit.com/user/Formaa-Design/"
+              ]
+            },
+            "areaServed": "Worldwide",
+            "description": "3D Product Animation Service with animation-ready 3D setup, 15-30 second hero animation, and HD MP4 for marketing.",
+            "url": "https://formaa.no/en/product-animation",
+            "@id": "https://formaa.no/en/product-animation#service",
+            "inLanguage": "en"
+          },
+          {
+            "@type": "WebPage",
+            "name": "3D Product Animation Service | Formaa",
+            "url": "https://formaa.no/en/product-animation",
+            "description": "3D Product Animation Service for launch videos with 3D model setup and HD MP4 delivery.",
+            "inLanguage": "en",
+            "isPartOf": {
+              "@id": "https://formaa.no/#website"
+            },
+            "@id": "https://formaa.no/en/product-animation",
+            "publisher": {
+              "@type": "Organization",
+              "@id": "https://formaa.no/#organization",
+              "name": "Formaa",
+              "url": "https://formaa.no/",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://formaa.no/assets/formaa-logo.svg"
+              },
+              "legalName": "Formaa AS",
+              "alternateName": ["Formaa", "Formaa Design", "formaaa"],
+              "taxID": "937772505",
+              "identifier": {
+                "@type": "PropertyValue",
+                "propertyID": "Brønnøysundregistrene",
+                "value": "937772505"
+              },
+              "sameAs": [
+                "https://www.linkedin.com/company/formaaa/",
+                "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+                "https://t.me/designformaa",
+                "https://www.behance.net/formaa",
+                "https://x.com/FormaaDesignAS",
+                "https://www.reddit.com/user/Formaa-Design/"
+              ]
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Formaa",
+                "item": "https://formaa.no/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "3D Product Animation",
+                "item": "https://formaa.no/en/product-animation"
+              }
+            ],
+            "@id": "https://formaa.no/en/product-animation#breadcrumb"
+          }
+        ]
+      }
+    </script>
+
+    <script src="../components-loader.js?v=3"></script>
+    <script src="en-landing-render.js?v=6" defer></script>
   </body>
 </html>

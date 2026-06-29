@@ -140,7 +140,6 @@ class SinglePagePortfolio {
     this.setupProjectPageNavVerticalAlign();
     this.initializeProjectViews();
     this.initializeCategoryPreFormViews();
-    this.setupCategoryEnServiceTags();
     this.setupProsessImageGridColumns();
   }
 
@@ -205,31 +204,6 @@ class SinglePagePortfolio {
 
     syncLayout();
     mediaQuery.addEventListener('change', syncLayout);
-  }
-
-  // NOTE: Appends English intent landing links to the shared “Velg kategori” tag row on category pages.
-  setupCategoryEnServiceTags() {
-    if (!window.location.pathname.includes('/category/')) return;
-
-    const categoryTagsRow = document.querySelector('.service-tags[aria-label="Velg kategori"]');
-    if (!categoryTagsRow || categoryTagsRow.dataset.enServiceTagsAdded === 'true') return;
-
-    const enServiceTags = [
-      { href: '/en/product-rendering', label: '3D Product Renders' },
-      { href: '/en/cad-modeling', label: 'CAD modeling' },
-      { href: '/en/product-animation', label: 'Product animation' },
-    ];
-
-    enServiceTags.forEach(({ href, label }) => {
-      const link = document.createElement('a');
-      link.className = 'service-tag';
-      link.href = href;
-      link.textContent = label;
-      link.setAttribute('hreflang', 'en');
-      categoryTagsRow.appendChild(link);
-    });
-
-    categoryTagsRow.dataset.enServiceTagsAdded = 'true';
   }
 
   // NOTE: Per-project narrative copy for Problem / Løsning / Resultat block on project pages.

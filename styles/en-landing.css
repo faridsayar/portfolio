@@ -56,8 +56,10 @@
 }
 
 .en-landing-body .en-landing-hero__price {
-  color: var(--color-white);
+  color: var(--color-primary);
   font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .en-landing-body .en-landing-seo {
@@ -92,28 +94,64 @@
   padding-top: 0;
 }
 
-/* NOTE: Full-bleed hero from top of page; logo and breadcrumb overlay the image. */
+/* NOTE: Full-bleed hero — margin breakout only; height from image flow or video min-height. */
 .en-landing-hero {
   position: relative;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
-  margin-bottom: 0;
   overflow: hidden;
-  background: var(--color-black);
-  aspect-ratio: 16 / 9;
-  max-height: min(72vh, 820px);
 }
 
-.en-landing-hero__media {
+/* NOTE: Backdrop layer — video/image fills hero behind overlay, chrome, and copy. */
+.en-landing-hero__backdrop {
   position: absolute;
   inset: 0;
-  display: block;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.en-landing-hero__backdrop .en-landing-hero__media {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
-  margin: 0;
-  border: none;
+}
+
+.en-landing-hero__media {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* NOTE: Image-only heroes — media in flow sets height; copy overlays via absolute positioning below. */
+.en-landing-hero:not(:has(.en-landing-hero__backdrop)) .en-landing-hero__media {
+  position: static;
+  width: 100%;
+  height: auto;
+}
+
+/* NOTE: Video heroes — fixed viewport; media lives in backdrop, not above copy. */
+.en-landing-hero:has(.en-landing-hero__backdrop) {
+  min-height: min(56.25vw, 78vh);
+}
+
+@media (max-width: 640px) {
+  .en-landing-hero__media {
+    height: 112.5vw;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .en-landing-hero:has(.en-landing-hero__backdrop) {
+    min-height: 112.5vw;
+  }
+
+  .en-landing-hero:has(.en-landing-hero__backdrop) .en-landing-hero__media {
+    height: 100%;
+  }
 }
 
 .en-landing-hero__overlay {
@@ -197,16 +235,19 @@
   font-weight: var(--font-weight-semibold);
 }
 
-/* NOTE: Hero copy sits on the image; left edge aligns to the horizontal center of the hero. */
+/* NOTE: Hero copy — same column as .section-inner (left-aligned, max-width + gutter). */
 .en-landing-hero__copy {
   position: absolute;
   z-index: 3;
-  left: 50%;
-  right: var(--page-content-start);
-  top: 50%;
-  transform: translateY(-42%);
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 0 var(--page-gutter);
   box-sizing: border-box;
-  padding-right: var(--page-gutter);
+  top: auto;
+  bottom: 2.5rem;
   pointer-events: auto;
 }
 
@@ -219,7 +260,6 @@
 
 .en-landing-hero__lead {
   margin: 0 0 1rem;
-  max-width: 40rem;
   line-height: var(--line-height-loose);
   opacity: 0.92;
   text-shadow: 0 6px 18px var(--overlay-black-35);
@@ -229,13 +269,19 @@
   margin: 0 0 1rem;
 }
 
+.en-landing-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.25rem;
+}
+
 .en-landing-hero__price {
-  display: block;
-  margin: 0 0 1rem;
+  margin: 0;
   padding: 0;
   border: none;
-  font-size: clamp(1.1rem, 2.2vw, 1.35rem);
-  letter-spacing: -0.02em;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  line-height: var(--line-height-title);
 }
 
 .en-landing-hero__cta {
@@ -402,11 +448,7 @@
 
 @media (max-width: 640px) {
   .en-landing-hero__copy {
-    top: auto;
     bottom: 1.25rem;
-    transform: none;
-    left: 50%;
-    right: var(--page-gutter);
   }
 
   .en-landing-hero__breadcrumb {

@@ -3,6 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- NOTE: Prevent soft-404 URLs from being indexed if linked from elsewhere. -->
+    <meta name="robots" content="noindex,nofollow" />
     <title>404 | Formaa</title>
     <!-- NOTE: Root-absolute asset paths so nested 404 URLs (e.g. /prosjekter/…) still load styles and graphics. -->
     <link rel="stylesheet" href="/styles/base.css" />
