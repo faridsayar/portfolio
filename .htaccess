@@ -110,8 +110,9 @@ RewriteRule ^prosjekter/([a-z0-9-]+)/?$ /prosjekter/$1/index.html [L]
 RewriteRule ^prosjekter/([a-z0-9-]+)/?$ /advanced-project.html?seoSlug=$1 [L,QSA]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-# NOTE: Serve Blogg articles from root stubs blogg-{slug}.html (see scripts/generate-blogg-indexes.mjs).
-RewriteRule ^blogg/([a-z0-9-]+)/?$ /blogg-$1.html [L]
+# NOTE: Serve pre-rendered Blogg articles from blogg/{slug}/index.html (same pattern as /prosjekter/{slug}).
+RewriteCond %{DOCUMENT_ROOT}/blogg/$1/index.html -f
+RewriteRule ^blogg/([a-z0-9-]+)/?$ /blogg/$1/index.html [L]
 RewriteRule ^blogg/?$ /blogg.html [L]
 
 # NOTE: Internally map extensionless URLs to existing `.html` files.

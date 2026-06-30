@@ -16,9 +16,7 @@ function routeToSourceFile(route) {
   if (route === '/blogg') return path.join(root, 'blogg', 'index.html');
   if (route.startsWith('/blogg/')) {
     const slug = route.slice('/blogg/'.length);
-    const nested = path.join(root, 'blogg', slug, 'index.html');
-    if (fs.existsSync(nested)) return nested;
-    return path.join(root, `blogg-${slug}.html`);
+    return path.join(root, 'blogg', slug, 'index.html');
   }
   if (route === '/prosjekter') return path.join(root, 'prosjekter', 'index.html');
   if (route.startsWith('/prosjekter/')) {
@@ -83,9 +81,13 @@ function collectCategoryRoutes() {
 
 function collectBloggRoutes() {
   const routes = ['/blogg'];
-  for (const name of fs.readdirSync(root)) {
-    const m = name.match(/^blogg-([a-z0-9-]+)\.html$/);
-    if (m) routes.push(`/blogg/${m[1]}`);
+  const bloggDir = path.join(root, 'blogg');
+  for (const name of fs.readdirSync(bloggDir)) {
+    const entryPath = path.join(bloggDir, name);
+    if (!fs.statSync(entryPath).isDirectory()) continue;
+    if (fs.existsSync(path.join(entryPath, 'index.html'))) {
+      routes.push(`/blogg/${name}`);
+    }
   }
   return routes.sort();
 }
@@ -112,7 +114,7 @@ const all = [
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <!-- NOTE: XML sitemap for Google/Bing/AI crawlers: one entry per public route only.
-     Project URLs: /prosjekter/{slug}. Blogg: /blogg/{slug} (stubs blogg-*.html).
+     Project URLs: /prosjekter/{slug}. Blogg: /blogg/{slug} (blogg/{slug}/index.html).
      /application-form = kontaktform. /arrangement = event hub (skisse- og idéworkshop).
      /tjenester-prosess = tjenester og prosess.
      /gallery retired (301 → home). lastmod from source HTML mtime. Regenerate: pnpm generate:sitemap -->

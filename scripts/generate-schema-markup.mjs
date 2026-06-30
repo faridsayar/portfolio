@@ -138,8 +138,6 @@ function parseCategoryPath(relPath) {
 }
 
 function parseBloggArticle(relPath) {
-  const rootMatch = relPath.match(/^blogg-([a-z0-9-]+)\.html$/);
-  if (rootMatch) return { slug: rootMatch[1] };
   const nestedMatch = relPath.match(/^blogg\/([a-z0-9-]+)\/index\.html$/);
   if (nestedMatch) return { slug: nestedMatch[1] };
   return null;

@@ -164,10 +164,15 @@ function renderSharedArticle() {
     "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3Crect width='16' height='9' fill='black'/%3E%3C/svg%3E";
 
   const pathname = window.location.pathname.replace(/\/+$/, '');
-  const path = pathname.split('/').pop() || 'blogg-hva-er-industridesign.html';
-  const fileStem = path.replace('.html', '');
-  // NOTE: Article files are blogg-{slug}.html at repo root; hrefs use that shape for static local servers.
-  const key = fileStem.startsWith('blogg-') ? fileStem : `blogg-${fileStem}`;
+  const segments = pathname.split('/').filter(Boolean);
+  // NOTE: Articles live at /blogg/{slug}; article-image-map keys stay blogg-{slug}.
+  let key;
+  if (segments[0] === 'blogg' && segments[1] && segments[1] !== 'index.html') {
+    key = `blogg-${segments[1]}`;
+  } else {
+    const fileStem = (pathname.split('/').pop() || 'hva-er-industridesign').replace(/\.html$/, '');
+    key = fileStem.startsWith('blogg-') ? fileStem : `blogg-${fileStem}`;
+  }
   const articleOrder = [
     'blogg-branding-og-produktdesign',
     'blogg-sok-stotte-innovasjon-norge',

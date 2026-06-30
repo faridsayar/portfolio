@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- NOTE: XML sitemap for Google/Bing/AI crawlers: one entry per public route only.
-     Project URLs: /prosjekter/{slug}. Blogg: /blogg/{slug} (stubs blogg-*.html).
+     Project URLs: /prosjekter/{slug}. Blogg: /blogg/{slug} (blogg/{slug}/index.html).
      /application-form = kontaktform. /arrangement = event hub (skisse- og idéworkshop).
      /tjenester-prosess = tjenester og prosess.
      /gallery retired (301 → home). lastmod from source HTML mtime. Regenerate: pnpm generate:sitemap -->

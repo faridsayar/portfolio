@@ -81,10 +81,6 @@ function collectTargetFiles() {
     ...collectHtmlFiles(path.join(root, 'blogg')),
     ...fs
       .readdirSync(root)
-      .filter((n) => n.startsWith('blogg-') && n.endsWith('.html'))
-      .map((n) => path.join(root, n)),
-    ...fs
-      .readdirSync(root)
       .filter((n) => n.startsWith('prosjekt-') && n.endsWith('.html'))
       .map((n) => path.join(root, n)),
     ...collectHtmlFiles(path.join(root, 'prosjekter')),

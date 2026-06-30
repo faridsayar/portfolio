@@ -175,7 +175,7 @@ function resolveDescription(filePath, html) {
     return buildDescription(extractHeadline(html), extractLead(html));
   }
 
-  if (rel.startsWith('blogg-') || rel.startsWith('blogg/')) {
+  if (rel.startsWith('blogg/')) {
     return truncateMeta(stripHtml(extractArticleLead(html)));
   }
 
@@ -335,10 +335,6 @@ const files = [
   path.join(root, 'arrangement.html'),
   ...collectHtmlFiles(path.join(root, 'category')),
   ...collectHtmlFiles(path.join(root, 'blogg')),
-  ...fs
-    .readdirSync(root)
-    .filter((n) => n.startsWith('blogg-') && n.endsWith('.html'))
-    .map((n) => path.join(root, n)),
   ...fs
     .readdirSync(root)
     .filter((n) => n.startsWith('prosjekt-') && n.endsWith('.html'))
