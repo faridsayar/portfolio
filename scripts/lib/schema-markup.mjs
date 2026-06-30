@@ -479,6 +479,9 @@ export function buildArrangementGraph({ url, title, description }) {
 }
 
 // NOTE: /karriere careers hub — JobPosting schema for Google for Jobs.
+const KARRIERE_JOB_DATE_POSTED = '2026-06-29';
+const KARRIERE_JOB_VALID_THROUGH = '2026-12-29';
+
 export function buildKarriereGraph({ url, title, description }) {
   return wrapGraph([
     websiteRef(),
@@ -495,22 +498,17 @@ export function buildKarriereGraph({ url, title, description }) {
       '@id': `${url}#job-b2b-marketing`,
       title: 'Junior / student — B2B-markedsføring og forretningsutvikling',
       description:
-        'Praktisk erfaring innen B2B-markedsføring, lead-generering og forretningsutvikling. Ingen krav om tidligere arbeidserfaring.',
-      datePosted: '2026-06-29',
+        'Praktisk erfaring innen B2B-markedsføring, lead-generering og forretningsutvikling. 100 % fjernarbeid. Kompensasjon: provisjonsavtale. Ingen krav om tidligere arbeidserfaring.',
+      datePosted: KARRIERE_JOB_DATE_POSTED,
+      validThrough: KARRIERE_JOB_VALID_THROUGH,
       employmentType: 'INTERN',
       hiringOrganization: { '@id': ORG_ID },
-      jobLocation: {
-        '@type': 'Place',
-        address: {
-          '@type': 'PostalAddress',
-          addressLocality: 'Oslo',
-          addressCountry: 'NO',
-        },
-      },
+      jobLocationType: 'TELECOMMUTE',
       applicantLocationRequirements: {
         '@type': 'Country',
         name: 'NO',
       },
+      incentiveCompensation: 'Provisjonsavtale',
       directApply: true,
       url: `${url}#job-b2b-marketing`,
     },
