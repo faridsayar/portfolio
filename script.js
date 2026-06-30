@@ -463,9 +463,10 @@ class SinglePagePortfolio {
     let shuffleTimer = null;
     let isShuffling = false;
     // NOTE: Clips in this set advance after the file’s real duration (see loadedmetadata reschedule).
-    const useIntrinsicDurationKeys = new Set(['obseed', 'obseed-head']);
+    const useIntrinsicDurationKeys = new Set(['obseed-head']);
 
     const clipDurationByKey = {
+      obseed: 2000,
       'me-drawing': 1800,
       '3d-printer-working': 2000,
       'test-animation': 3000,
@@ -579,7 +580,7 @@ class SinglePagePortfolio {
     let currentClipIndex = 0;
     let shuffleTimer = null;
     let isShuffling = false;
-    const useIntrinsicDurationKeys = new Set(['obseed', 'obseed-head']);
+    const useIntrinsicDurationKeys = new Set(['obseed-head']);
 
     const setClip = (index) => {
       const nextClip = clipSources[index];

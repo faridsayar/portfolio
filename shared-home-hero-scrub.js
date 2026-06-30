@@ -9,9 +9,12 @@
   const MOBILE_MQ = window.matchMedia('(max-width: 767px)');
 
   // NOTE: Frame range from assets/images/Hero-Drill/ — update when final sequence is exported.
-  const FRAME_START = 108;
-  const FRAME_END = 150;
+  const FRAME_START = 107;
+  const FRAME_END = 160;
   const FRAME_BASE_PATH = 'assets/images/Hero-Drill/';
+  // NOTE: Layout size for cover-fit math — matches 2K sequence frames so 4K frame 0107 scales without a jump to 0108+.
+  const FRAME_LAYOUT_WIDTH = 1920;
+  const FRAME_LAYOUT_HEIGHT = 1080;
   const MIN_SCRUB_VIEWPORTS = 0.22;
 
   const root = document.querySelector(SCRUB_ROOT_SELECTOR);
@@ -81,21 +84,22 @@
     canvas.style.width = `${width}px`;
     canvas.style.height = `${height}px`;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
   }
 
-  // NOTE: Match CSS object-fit: cover + scale(2) + object-position: center top — drawn on canvas to avoid img src flicker.
+  // NOTE: Match CSS object-fit: cover + scale + object-position: center top — drawn on canvas to avoid img src flicker.
+  // Uses fixed layout dimensions so mixed resolutions (4K 0107 + 2K rest) share identical on-screen scale and crop.
   function paintFrame(index) {
     const frameIndex = clampFrameIndex(index);
     const image = frameImages[frameIndex];
     if (!image?.naturalWidth || !stageWidth || !stageHeight) return;
     if (frameIndex === activeFrameIndex) return;
 
-    const imageWidth = image.naturalWidth;
-    const imageHeight = image.naturalHeight;
-    const coverScale = Math.max(stageWidth / imageWidth, stageHeight / imageHeight);
+    const coverScale = Math.max(stageWidth / FRAME_LAYOUT_WIDTH, stageHeight / FRAME_LAYOUT_HEIGHT);
     const drawScale = coverScale * getFrameScale();
-    const drawWidth = imageWidth * drawScale;
-    const drawHeight = imageHeight * drawScale;
+    const drawWidth = FRAME_LAYOUT_WIDTH * drawScale;
+    const drawHeight = FRAME_LAYOUT_HEIGHT * drawScale;
     const drawX = (stageWidth - drawWidth) / 2;
     const drawY = 0;
 
