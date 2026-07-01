@@ -6,11 +6,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { isPublishedCatalogProject, seoSlugForCatalog } from './lib/project-seo-slugs.mjs';
 import { sortProjectsByPreferredOrder } from './lib/project-catalog-order.mjs';
-import {
-  renderProjectPageHtml,
-  renderProjectsHubHtml,
-  renderProjectStubHtml,
-} from './lib/project-page-html.mjs';
+import { renderProjectPageHtml, renderProjectsHubHtml } from './lib/project-page-html.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const prosjekterDir = path.join(root, 'prosjekter');
@@ -78,12 +74,8 @@ function main() {
   );
   console.log('Wrote prosjekter/index.html (projects hub)');
 
-  for (const project of published) {
-    const seoSlug = seoSlugForCatalog(project.slug);
-    const stubPath = path.join(root, `prosjekt-${seoSlug}.html`);
-    fs.writeFileSync(stubPath, renderProjectStubHtml({ project, seoSlug }));
-    console.log(`Wrote prosjekt-${seoSlug}.html (noindex stub)`);
-  }
+  // NOTE: Legacy prosjekt-{slug}.html redirect stubs are no longer generated —
+  // .htaccess 301s prosjekt-{slug}(.html) → /prosjekter/{slug} in a single hop.
 
   console.log(`Done (${written} static project pages).`);
 }
