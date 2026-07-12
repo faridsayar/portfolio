@@ -515,6 +515,48 @@ export function buildKarriereGraph({ url, title, description }) {
   ]);
 }
 
+// NOTE: /formaa-skaperverksted — coming-soon creative workshop for children; Course schema without startDate.
+const SKAPERVERKSTED_IMAGE = `${SITE}/assets/images/Skaperverksted/formaa-skaperverksted.webp`;
+
+export function buildSkaperverkstedGraph({ url, title, description }) {
+  return wrapGraph([
+    websiteRef(),
+    breadcrumbList(
+      [
+        { name: BRAND_CRUMB, url: `${SITE}/` },
+        { name: 'Formaa-Skaperverksted', url },
+      ],
+      url
+    ),
+    webPage({ url, name: title, description }),
+    {
+      '@type': 'Course',
+      '@id': `${url}#course`,
+      name: 'Formaa-Skaperverksted',
+      description:
+        'Kreativt verksted for barn 5–9 år i Oslo, Trosterud — bygg, utforsk og skap med egne hender gjennom kunst, håndverk og design. Kommer snart.',
+      image: SKAPERVERKSTED_IMAGE,
+      provider: { '@id': ORG_ID },
+      educationalLevel: 'Primary',
+      audience: {
+        '@type': 'EducationalAudience',
+        audienceType: 'children aged 5–9',
+      },
+      inLanguage: 'nb-NO',
+      url,
+      location: {
+        '@type': 'Place',
+        name: 'Trosterud, Oslo',
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: 'Oslo',
+          addressCountry: 'NO',
+        },
+      },
+    },
+  ]);
+}
+
 // NOTE: /oss AboutPage graph — full legal entity + team page for branded search.
 export function buildOssGraph({ url, title, description }) {
   return wrapGraph([

@@ -10,6 +10,7 @@ export const STATIC_HUB_ROUTES = [
   '/prisestimat',
   '/application-form',
   '/arrangement',
+  '/formaa-skaperverksted',
   '/karriere',
   '/en/product-rendering',
   '/en/cad-modeling',

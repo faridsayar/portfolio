@@ -39,6 +39,11 @@ const CURATED_SEO = {
     description:
       'Jobbe i Formaa AS — se ledige stillinger og muligheter for å bli med i teamet. Vi søker junior eller student til B2B-markedsføring, lead-generering og forretningsutvikling.',
   },
+  'formaa-skaperverksted.html': {
+    title: 'Formaa-Skaperverksted | Kreativt verksted for barn 5–9 år | Formaa',
+    description:
+      'Formaa-Skaperverksted i Oslo, Trosterud: kreativt verksted for barn 5–9 år. Ukentlig kurs i kunst, håndverk og design — meld interesse, kommer snart.',
+  },
 };
 
 /** NOTE: Prefer one studio term per meta sentence (never both designstudio and designbyrå together). */
@@ -333,6 +338,7 @@ const files = [
   path.join(root, 'advanced-project.html'),
   path.join(root, 'karriere.html'),
   path.join(root, 'arrangement.html'),
+  path.join(root, 'formaa-skaperverksted.html'),
   ...collectHtmlFiles(path.join(root, 'category')),
   ...collectHtmlFiles(path.join(root, 'blogg')),
   ...fs

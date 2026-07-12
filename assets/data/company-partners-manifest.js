@@ -30,12 +30,6 @@ window.__COMPANY_PARTNERS_MANIFEST = {
       "logo": "seventh-seal-logo.webp"
     },
     {
-      "name": "Kaiehuset",
-      "url": "https://kaiehuset.no/",
-      "source": "kaiehuset-logo.png",
-      "logo": "kaiehuset-logo.webp"
-    },
-    {
       "name": "Maketronics",
       "url": "https://maketronics.no/",
       "source": "maketronics-logo.png",

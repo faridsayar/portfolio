@@ -135,6 +135,7 @@ class SinglePagePortfolio {
     this.setupTimeline();
     this.setupInquiryFormMailto();
     this.setupEventApplicationForm();
+    this.setupSkaperverkstedInterestForm();
     this.setupPricingEstimator();
     this.setupPricingPackages();
     this.setupProjectPageNavVerticalAlign();
@@ -1003,6 +1004,94 @@ class SinglePagePortfolio {
         eventForm.reset();
       } catch (error) {
         setStatus('Kunne ikke sende påmeldingen nå. Prøv igjen om litt.', 'error');
+      } finally {
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.removeAttribute('aria-busy');
+        }
+      }
+    });
+  }
+
+  // NOTE: Interest form on /formaa-skaperverksted — Web3Forms submission for coming-soon course sign-ups.
+  setupSkaperverkstedInterestForm() {
+    const interestForm = document.querySelector('[data-skaperverksted-interest-form]');
+    if (!interestForm) return;
+    const submitButton = interestForm.querySelector('button[type="submit"]');
+    const statusEl = interestForm.querySelector('[data-skaperverksted-interest-status]');
+    const web3FormsEndpoint = 'https://api.web3forms.com/submit';
+    const emailFormat = /^[^\s@]+@[^\s@]+\.(com|no)$/i;
+    const successNote = 'Takk! Vi har mottatt interessen din og tar kontakt når kurset er klart.';
+
+    const setStatus = (message, state) => {
+      if (!statusEl) return;
+      statusEl.textContent = message;
+      statusEl.dataset.state = state || '';
+      interestForm.classList.toggle('is-sent', state === 'success');
+    };
+
+    interestForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      if (!interestForm.reportValidity()) return;
+
+      const formData = new FormData(interestForm);
+      const email = (formData.get('email') || '').toString().trim();
+      const childAge = (formData.get('child_age') || '').toString().trim();
+      const district = (formData.get('district') || '').toString().trim();
+      const preferredDays = (formData.get('preferred_days') || '').toString().trim();
+      const childInterests = (formData.get('child_interests') || '').toString().trim();
+      const missingActivities = (formData.get('missing_activities') || '').toString().trim();
+      const accessKey = (formData.get('access_key') || '').toString().trim();
+
+      if (
+        !email ||
+        !childAge ||
+        !district ||
+        !preferredDays ||
+        !childInterests ||
+        !missingActivities
+      ) {
+        setStatus('Vennligst fyll ut alle feltene.', 'error');
+        return;
+      }
+      if (!emailFormat.test(email)) {
+        setStatus('Skriv en gyldig e-postadresse som slutter med .com eller .no.', 'error');
+        return;
+      }
+      if (!accessKey || accessKey.startsWith('REPLACE_WITH_')) {
+        setStatus('Web3Forms-nokkel mangler. Legg inn access_key i skjemaet først.', 'error');
+        return;
+      }
+
+      formData.set('email', email);
+      formData.set('child_age', childAge);
+      formData.set('district', district);
+      formData.set('preferred_days', preferredDays);
+      formData.set('child_interests', childInterests);
+      formData.set('missing_activities', missingActivities);
+      formData.set('subject', `Interesse Formaa-Skaperverksted — ${email}`);
+      formData.set('replyto', email);
+      setStatus('Sender interesse ...', 'loading');
+
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.setAttribute('aria-busy', 'true');
+      }
+
+      try {
+        const response = await fetch(web3FormsEndpoint, {
+          method: 'POST',
+          body: formData,
+        });
+        const result = await response.json();
+        if (!response.ok || !result.success) {
+          throw new Error(result.message || 'Submission failed');
+        }
+        setStatus(successNote, 'success');
+        interestForm.reset();
+      } catch (error) {
+        setStatus('Kunne ikke sende skjemaet nå. Prøv igjen om litt.', 'error');
       } finally {
         if (submitButton) {
           submitButton.disabled = false;

@@ -24,6 +24,7 @@ import {
   buildDefaultWebGraph,
   buildArrangementGraph,
   buildKarriereGraph,
+  buildSkaperverkstedGraph,
   buildOssGraph,
   buildFullOrganizationNode,
   orgPostalAddress,
@@ -453,6 +454,18 @@ function processFile(absPath, relPath) {
     html = insertSchemaFromGraph(html, graph);
     write(absPath, html);
     return { updated: true, type: 'karriere' };
+  }
+
+  if (relPath === 'formaa-skaperverksted.html') {
+    const pageUrl = url || `${SITE}/formaa-skaperverksted`;
+    graph = buildSkaperverkstedGraph({
+      url: pageUrl,
+      title,
+      description,
+    });
+    html = insertSchemaFromGraph(html, graph);
+    write(absPath, html);
+    return { updated: true, type: 'skaperverksted' };
   }
 
   if (relPath === 'oss.html') {
