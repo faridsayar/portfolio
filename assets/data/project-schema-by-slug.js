@@ -74,6 +74,7 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           "sameAs": [
             "https://www.linkedin.com/company/formaaa/",
             "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+            "https://www.facebook.com/groups/2180500666141671/",
             "https://t.me/designformaa",
             "https://www.behance.net/formaa",
             "https://x.com/FormaaDesignAS",
@@ -116,6 +117,7 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           "sameAs": [
             "https://www.linkedin.com/company/formaaa/",
             "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+            "https://www.facebook.com/groups/2180500666141671/",
             "https://t.me/designformaa",
             "https://www.behance.net/formaa",
             "https://x.com/FormaaDesignAS",
@@ -146,6 +148,7 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           "sameAs": [
             "https://www.linkedin.com/company/formaaa/",
             "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+            "https://www.facebook.com/groups/2180500666141671/",
             "https://t.me/designformaa",
             "https://www.behance.net/formaa",
             "https://x.com/FormaaDesignAS",
@@ -229,6 +232,7 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           "sameAs": [
             "https://www.linkedin.com/company/formaaa/",
             "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+            "https://www.facebook.com/groups/2180500666141671/",
             "https://t.me/designformaa",
             "https://www.behance.net/formaa",
             "https://x.com/FormaaDesignAS",
@@ -271,6 +275,7 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           "sameAs": [
             "https://www.linkedin.com/company/formaaa/",
             "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+            "https://www.facebook.com/groups/2180500666141671/",
             "https://t.me/designformaa",
             "https://www.behance.net/formaa",
             "https://x.com/FormaaDesignAS",
@@ -301,6 +306,7 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           "sameAs": [
             "https://www.linkedin.com/company/formaaa/",
             "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+            "https://www.facebook.com/groups/2180500666141671/",
             "https://t.me/designformaa",
             "https://www.behance.net/formaa",
             "https://x.com/FormaaDesignAS",
@@ -384,6 +390,7 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           "sameAs": [
             "https://www.linkedin.com/company/formaaa/",
             "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+            "https://www.facebook.com/groups/2180500666141671/",
             "https://t.me/designformaa",
             "https://www.behance.net/formaa",
             "https://x.com/FormaaDesignAS",
@@ -426,6 +433,7 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           "sameAs": [
             "https://www.linkedin.com/company/formaaa/",
             "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+            "https://www.facebook.com/groups/2180500666141671/",
             "https://t.me/designformaa",
             "https://www.behance.net/formaa",
             "https://x.com/FormaaDesignAS",
@@ -456,6 +464,7 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           "sameAs": [
             "https://www.linkedin.com/company/formaaa/",
             "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+            "https://www.facebook.com/groups/2180500666141671/",
             "https://t.me/designformaa",
             "https://www.behance.net/formaa",
             "https://x.com/FormaaDesignAS",
@@ -539,6 +548,7 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           "sameAs": [
             "https://www.linkedin.com/company/formaaa/",
             "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+            "https://www.facebook.com/groups/2180500666141671/",
             "https://t.me/designformaa",
             "https://www.behance.net/formaa",
             "https://x.com/FormaaDesignAS",
@@ -581,6 +591,7 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           "sameAs": [
             "https://www.linkedin.com/company/formaaa/",
             "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+            "https://www.facebook.com/groups/2180500666141671/",
             "https://t.me/designformaa",
             "https://www.behance.net/formaa",
             "https://x.com/FormaaDesignAS",
@@ -611,6 +622,7 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           "sameAs": [
             "https://www.linkedin.com/company/formaaa/",
             "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+            "https://www.facebook.com/groups/2180500666141671/",
             "https://t.me/designformaa",
             "https://www.behance.net/formaa",
             "https://x.com/FormaaDesignAS",
@@ -694,6 +706,7 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           "sameAs": [
             "https://www.linkedin.com/company/formaaa/",
             "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+            "https://www.facebook.com/groups/2180500666141671/",
             "https://t.me/designformaa",
             "https://www.behance.net/formaa",
             "https://x.com/FormaaDesignAS",
@@ -736,6 +749,7 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           "sameAs": [
             "https://www.linkedin.com/company/formaaa/",
             "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+            "https://www.facebook.com/groups/2180500666141671/",
             "https://t.me/designformaa",
             "https://www.behance.net/formaa",
             "https://x.com/FormaaDesignAS",
@@ -766,6 +780,7 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           "sameAs": [
             "https://www.linkedin.com/company/formaaa/",
             "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+            "https://www.facebook.com/groups/2180500666141671/",
             "https://t.me/designformaa",
             "https://www.behance.net/formaa",
             "https://x.com/FormaaDesignAS",
@@ -849,6 +864,7 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           "sameAs": [
             "https://www.linkedin.com/company/formaaa/",
             "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+            "https://www.facebook.com/groups/2180500666141671/",
             "https://t.me/designformaa",
             "https://www.behance.net/formaa",
             "https://x.com/FormaaDesignAS",
@@ -891,6 +907,7 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           "sameAs": [
             "https://www.linkedin.com/company/formaaa/",
             "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+            "https://www.facebook.com/groups/2180500666141671/",
             "https://t.me/designformaa",
             "https://www.behance.net/formaa",
             "https://x.com/FormaaDesignAS",
@@ -921,6 +938,7 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           "sameAs": [
             "https://www.linkedin.com/company/formaaa/",
             "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+            "https://www.facebook.com/groups/2180500666141671/",
             "https://t.me/designformaa",
             "https://www.behance.net/formaa",
             "https://x.com/FormaaDesignAS",
@@ -1004,6 +1022,7 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           "sameAs": [
             "https://www.linkedin.com/company/formaaa/",
             "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+            "https://www.facebook.com/groups/2180500666141671/",
             "https://t.me/designformaa",
             "https://www.behance.net/formaa",
             "https://x.com/FormaaDesignAS",
@@ -1046,6 +1065,7 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           "sameAs": [
             "https://www.linkedin.com/company/formaaa/",
             "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+            "https://www.facebook.com/groups/2180500666141671/",
             "https://t.me/designformaa",
             "https://www.behance.net/formaa",
             "https://x.com/FormaaDesignAS",
@@ -1076,6 +1096,7 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           "sameAs": [
             "https://www.linkedin.com/company/formaaa/",
             "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+            "https://www.facebook.com/groups/2180500666141671/",
             "https://t.me/designformaa",
             "https://www.behance.net/formaa",
             "https://x.com/FormaaDesignAS",
@@ -1159,6 +1180,7 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           "sameAs": [
             "https://www.linkedin.com/company/formaaa/",
             "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+            "https://www.facebook.com/groups/2180500666141671/",
             "https://t.me/designformaa",
             "https://www.behance.net/formaa",
             "https://x.com/FormaaDesignAS",
@@ -1201,6 +1223,7 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           "sameAs": [
             "https://www.linkedin.com/company/formaaa/",
             "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+            "https://www.facebook.com/groups/2180500666141671/",
             "https://t.me/designformaa",
             "https://www.behance.net/formaa",
             "https://x.com/FormaaDesignAS",
@@ -1231,6 +1254,7 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           "sameAs": [
             "https://www.linkedin.com/company/formaaa/",
             "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+            "https://www.facebook.com/groups/2180500666141671/",
             "https://t.me/designformaa",
             "https://www.behance.net/formaa",
             "https://x.com/FormaaDesignAS",
@@ -1314,6 +1338,7 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           "sameAs": [
             "https://www.linkedin.com/company/formaaa/",
             "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+            "https://www.facebook.com/groups/2180500666141671/",
             "https://t.me/designformaa",
             "https://www.behance.net/formaa",
             "https://x.com/FormaaDesignAS",
@@ -1356,6 +1381,7 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           "sameAs": [
             "https://www.linkedin.com/company/formaaa/",
             "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+            "https://www.facebook.com/groups/2180500666141671/",
             "https://t.me/designformaa",
             "https://www.behance.net/formaa",
             "https://x.com/FormaaDesignAS",
@@ -1386,6 +1412,7 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
           "sameAs": [
             "https://www.linkedin.com/company/formaaa/",
             "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+            "https://www.facebook.com/groups/2180500666141671/",
             "https://t.me/designformaa",
             "https://www.behance.net/formaa",
             "https://x.com/FormaaDesignAS",

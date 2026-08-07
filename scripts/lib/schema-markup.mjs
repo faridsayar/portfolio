@@ -11,6 +11,7 @@ export const BRAND_CRUMB = 'Formaa AS';
 export const ORG_SAME_AS = [
   'https://www.linkedin.com/company/formaaa/',
   'https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr',
+  'https://www.facebook.com/groups/2180500666141671/',
   'https://t.me/designformaa',
   'https://www.behance.net/formaa',
   'https://x.com/FormaaDesignAS',
