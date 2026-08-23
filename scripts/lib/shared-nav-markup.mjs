@@ -54,6 +54,10 @@ export function getNavItems({ segments, path }) {
   const isArrangementPage =
     path === 'arrangement.html' || (segments.length === 1 && segments[0] === 'arrangement');
 
+  const isSkaperverkstedPage =
+    path === 'formaa-skaperverksted.html' ||
+    (segments.length === 1 && segments[0] === 'formaa-skaperverksted');
+
   return [
     { href: '/', label: 'Hjem', current: segments.length === 0 },
     {
@@ -74,6 +78,11 @@ export function getNavItems({ segments, path }) {
       href: '/arrangement',
       label: 'Arrangement',
       current: isArrangementPage,
+    },
+    {
+      href: '/formaa-skaperverksted',
+      label: 'Skaperverksted',
+      current: isSkaperverkstedPage,
     },
     {
       href: '/application-form',

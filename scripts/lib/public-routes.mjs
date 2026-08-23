@@ -26,6 +26,7 @@ export const AI_IMPORTANT_ROUTES = [
   '/oss',
   '/prisestimat',
   '/arrangement',
+  '/formaa-skaperverksted',
   '/application-form',
 ];
 

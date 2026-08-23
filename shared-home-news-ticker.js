@@ -6,7 +6,7 @@
   // NOTE: Manual message list — optional href shows link icon; published is ISO date (yyyy-mm-dd).
   const HOME_NEWS_MESSAGES = [
     {
-      text: 'Annonserer Skaperverksted for de små i Oslo — kreativt verksted for barn 5–9 år.',
+      text: 'Barnekurs i Oslo: Formaa-Skaperverksted for barn 5–9 år — meld interesse.',
       href: '/formaa-skaperverksted',
       published: '2026-07-12',
     },

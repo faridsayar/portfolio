@@ -22,4 +22,5 @@ https://formaa.no/blogg
 https://formaa.no/oss
 https://formaa.no/prisestimat
 https://formaa.no/arrangement
+https://formaa.no/formaa-skaperverksted
 https://formaa.no/application-form

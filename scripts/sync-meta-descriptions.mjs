@@ -40,9 +40,9 @@ const CURATED_SEO = {
       'Jobbe i Formaa AS — se ledige stillinger og muligheter for å bli med i teamet. Vi søker junior eller student til B2B-markedsføring, lead-generering og forretningsutvikling.',
   },
   'formaa-skaperverksted.html': {
-    title: 'Formaa-Skaperverksted | Kreativt verksted for barn 5–9 år | Formaa',
+    title: 'Aktivitet barnekurs i Oslo – kreativt kurs for barn 5–9 år | Formaa',
     description:
-      'Formaa-Skaperverksted i Oslo, Trosterud: kreativt verksted for barn 5–9 år. Ukentlig kurs i kunst, håndverk og design — meld interesse, kommer snart.',
+      'Aktivitet barnekurs i Oslo øst (Trosterud): kreativt kurs for barn 5–9 år. Bygg og tegn i små grupper, 90 min × 8 uker. Meld interesse — uforpliktende.',
   },
 };
 
