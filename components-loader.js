@@ -64,6 +64,24 @@
     </p>
   </div>
 </footer>`,
+    // NOTE: Compact EN fallback if /components/site-footer-en.html cannot be fetched.
+    'site-footer-en': `<footer class="site-footer site-footer--expanded" aria-label="Footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__links" aria-label="Links">
+      <p class="site-footer__links-title">Links</p>
+      <div class="site-footer__links-list">
+        <a class="site-footer__link" href="/en/" data-footer-link="home">Home</a>
+        <a class="site-footer__link" href="/en/about" data-footer-link="about">About</a>
+        <a class="site-footer__link" href="/en/services" data-footer-link="services">Services</a>
+        <a class="site-footer__link" href="/en/projects" data-footer-link="projects">Projects</a>
+        <a class="site-footer__link" href="/en/contact" data-footer-link="application">Contact</a>
+      </div>
+    </div>
+    <p class="site-footer__text">
+      © 2026 Formaa AS. Industrial design and product design in Oslo. All rights reserved. Org.nr. <a class="internal-text-link" href="https://virksomhet.brreg.no/nb/oppslag/enheter/937772505" target="_blank" rel="noopener noreferrer">937 772 505</a>.
+    </p>
+  </div>
+</footer>`,
     'project-cta': `<section class="section section--white section--project-cta" aria-label="Neste steg">
   <div class="section-inner">
     <h2 class="section-title">Trenger du hjelp med produktutvikling?</h2>
@@ -150,6 +168,78 @@
         <p class="inquiry-note">
           Det koster ingenting å starte dialogen med oss. Vi svarer fortløpende
         </p>
+      </div>
+    </form>
+  </div>
+</section>`,
+    // NOTE: EN inquiry form fallback if /components/application-form-en.html cannot be fetched.
+    'application-form-en': `<section class="section section--white section--timeline" id="application-form" aria-label="Send inquiry">
+  <div class="section-inner">
+    <form class="inquiry-form" method="post" data-inquiry-form>
+      <p class="inquiry-form__title">Contact form</p>
+      <input type="hidden" name="access_key" value="c21cafeb-72cf-4e8b-b66c-69384a07c888" />
+      <input type="hidden" name="subject" value="New design conversation inquiry" />
+      <input type="hidden" name="from_name" value="Formaa website (EN)" />
+      <input type="hidden" name="botcheck" value="" />
+      <input type="hidden" name="timeframe" value="2 months" />
+      <div class="timeline" data-timeline>
+        <div class="timeline-track-wrap">
+          <span class="timeline-mobile-anchor timeline-mobile-anchor--end">Delivery</span>
+          <span class="timeline-mobile-anchor timeline-mobile-anchor--start">Consultation</span>
+          <div class="timeline-labels" aria-hidden="true">
+            <div class="timeline-handle-label" data-handle-label="0"></div>
+            <div class="timeline-handle-label" data-handle-label="1"></div>
+            <div class="timeline-handle-label" data-handle-label="2"></div>
+            <div class="timeline-handle-label" data-handle-label="3"></div>
+          </div>
+          <div class="timeline-track" data-timeline-track aria-label="Timeline">
+            <div class="timeline-segments" aria-hidden="true">
+              <div class="timeline-segment" data-segment="0"></div>
+              <div class="timeline-segment" data-segment="1"></div>
+              <div class="timeline-segment" data-segment="2"></div>
+              <div class="timeline-segment" data-segment="3"></div>
+              <div class="timeline-segment" data-segment="4"></div>
+            </div>
+          </div>
+          <div class="timeline-handles" aria-label="Adjust phase boundaries">
+            <div class="timeline-handle" data-handle="0" role="slider" tabindex="0"></div>
+            <div class="timeline-handle" data-handle="1" role="slider" tabindex="0"></div>
+            <div class="timeline-handle" data-handle="2" role="slider" tabindex="0"></div>
+            <div class="timeline-handle" data-handle="3" role="slider" tabindex="0"></div>
+          </div>
+        </div>
+        <div class="timeline-caption-row">
+          <span class="timeline-anchor timeline-anchor--start">Consultation</span>
+          <p class="inquiry-form__hint">Drag the points to weight priorities (for orientation only)</p>
+          <span class="timeline-anchor timeline-anchor--end">Delivery</span>
+          <span class="timeline-anchor timeline-anchor--time" data-timeframe-label>2 month project</span>
+        </div>
+        <div class="timeline-hidden" aria-hidden="true">
+          <input type="hidden" name="phase_brukeranalyse" data-phase-input="0" />
+          <input type="hidden" name="phase_konseptutvikling" data-phase-input="1" />
+          <input type="hidden" name="phase_prototype" data-phase-input="2" />
+          <input type="hidden" name="phase_validering" data-phase-input="3" />
+          <input type="hidden" name="phase_ferdigstilling" data-phase-input="4" />
+        </div>
+      </div>
+      <div class="inquiry-grid">
+        <div class="field">
+          <label class="field__label" for="en-full-name">Your name</label>
+          <input class="field__input" id="en-full-name" name="full_name" type="text" required autocomplete="name" placeholder="Jane Smith" />
+        </div>
+        <div class="field">
+          <label class="field__label" for="en-email">Your email</label>
+          <input class="field__input" id="en-email" name="email" type="email" required autocomplete="email" inputmode="email" pattern="^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$" placeholder="jane.smith@example.com" />
+        </div>
+      </div>
+      <div class="field field--full">
+        <label class="field__label" for="en-description">Description <span class="field__label-hint">– what do you need help with</span></label>
+        <textarea class="field__textarea" id="en-description" name="description" rows="6" required placeholder="We want to develop a new product for series production and need help with form development and material choices."></textarea>
+      </div>
+      <div class="inquiry-footer">
+        <button class="inquiry-cta" type="submit">Send inquiry</button>
+        <p class="inquiry-note" data-inquiry-status aria-live="polite"></p>
+        <p class="inquiry-note">Starting a conversation is free. We reply as soon as we can.</p>
       </div>
     </form>
   </div>

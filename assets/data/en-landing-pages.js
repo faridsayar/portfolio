@@ -37,7 +37,7 @@ window.EN_LANDING_PAGES = {
       },
     ],
     crosslinksHtml:
-      'Based in Norway — <a class="internal-text-link" href="/tjenester-prosess">3D visualization services</a> for local clients. See <a class="internal-text-link" href="/prosjekter">product design projects</a> and our <a class="internal-text-link" href="/">visual gallery</a>.',
+      'Based in Norway — <a class="internal-text-link" href="/en/services">3D visualization services</a> for local clients. See <a class="internal-text-link" href="/en/projects">product design projects</a> and our <a class="internal-text-link" href="/en/">English home</a>.',
     jsonLd: {
       service: {
         '@context': 'https://schema.org',
@@ -76,7 +76,7 @@ window.EN_LANDING_PAGES = {
             '@type': 'ListItem',
             position: 1,
             name: 'Formaa',
-            item: 'https://formaa.no/',
+            item: 'https://formaa.no/en/',
           },
           {
             '@type': 'ListItem',
@@ -128,7 +128,7 @@ window.EN_LANDING_PAGES = {
       },
     ],
     crosslinksHtml:
-      'Norway-based <a class="internal-text-link" href="/tjenester-prosess">CAD modeling for product development</a>. Explore <a class="internal-text-link" href="/prosjekter">hardware projects</a> and <a class="internal-text-link" href="/">visual work</a>.',
+      'Norway-based <a class="internal-text-link" href="/en/services">CAD modeling for product development</a>. Explore <a class="internal-text-link" href="/en/projects">hardware projects</a> and <a class="internal-text-link" href="/en/">English home</a>.',
     jsonLd: {
       service: {
         '@context': 'https://schema.org',
@@ -167,7 +167,7 @@ window.EN_LANDING_PAGES = {
             '@type': 'ListItem',
             position: 1,
             name: 'Formaa',
-            item: 'https://formaa.no/',
+            item: 'https://formaa.no/en/',
           },
           {
             '@type': 'ListItem',
@@ -219,7 +219,7 @@ window.EN_LANDING_PAGES = {
       },
     ],
     crosslinksHtml:
-      'Also see <a class="internal-text-link" href="/tjenester-prosess">3D visualization in Norway</a>, <a class="internal-text-link" href="/prosjekter">design projects</a>, and <a class="internal-text-link" href="/">gallery</a>.',
+      'Also see <a class="internal-text-link" href="/en/services">3D visualization services</a>, <a class="internal-text-link" href="/en/projects">design projects</a>, and <a class="internal-text-link" href="/en/">English home</a>.',
     jsonLd: {
       service: {
         '@context': 'https://schema.org',
@@ -258,7 +258,7 @@ window.EN_LANDING_PAGES = {
             '@type': 'ListItem',
             position: 1,
             name: 'Formaa',
-            item: 'https://formaa.no/',
+            item: 'https://formaa.no/en/',
           },
           {
             '@type': 'ListItem',

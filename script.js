@@ -665,13 +665,13 @@ class SinglePagePortfolio {
 
     if (!track || segments.length !== 5 || handles.length !== 4) return;
 
-    const phases = [
-      'Brukeranalyse',
-      'Konseptutvikling',
-      'Prototype',
-      'Validering',
-      'Ferdigstilling',
-    ];
+    const phases =
+      document.documentElement.lang === 'en'
+        ? ['User research', 'Concept', 'Prototype', 'Validation', 'Delivery']
+        : ['Brukeranalyse', 'Konseptutvikling', 'Prototype', 'Validering', 'Ferdigstilling'];
+    const isEnglish = document.documentElement.lang === 'en';
+    const boundaryLabelPrefix = isEnglish ? 'Boundary for' : 'Grense for';
+    const timeframeSuffix = isEnglish ? 'project' : 'prosjekt';
 
     const minGapPct = 3;
     let boundaries = Array.from({ length: 4 }, (_, i) => Math.round(((i + 1) * 100) / 5));
@@ -737,7 +737,7 @@ class SinglePagePortfolio {
     function setHandleAria(handle, idx) {
       const min = idx === 0 ? minGapPct : boundaries[idx - 1] + minGapPct;
       const max = idx === boundaries.length - 1 ? 100 - minGapPct : boundaries[idx + 1] - minGapPct;
-      handle.setAttribute('aria-label', `Grense for ${phases[idx]}`);
+      handle.setAttribute('aria-label', `${boundaryLabelPrefix} ${phases[idx]}`);
       handle.setAttribute('aria-valuemin', String(Math.round(min)));
       handle.setAttribute('aria-valuemax', String(Math.round(max)));
       handle.setAttribute('aria-valuenow', String(Math.round(boundaries[idx])));
@@ -857,9 +857,9 @@ class SinglePagePortfolio {
     render();
 
     if (timeframeSelect && timeframeLabel) {
-      timeframeLabel.textContent = `${timeframeSelect.value} prosjekt`;
+      timeframeLabel.textContent = `${timeframeSelect.value} ${timeframeSuffix}`;
       timeframeSelect.addEventListener('change', () => {
-        timeframeLabel.textContent = `${timeframeSelect.value} prosjekt`;
+        timeframeLabel.textContent = `${timeframeSelect.value} ${timeframeSuffix}`;
       });
     }
   }
@@ -871,7 +871,27 @@ class SinglePagePortfolio {
     const submitButton = inquiryForm.querySelector('button[type="submit"]');
     const statusEl = inquiryForm.querySelector('[data-inquiry-status]');
     const web3FormsEndpoint = 'https://api.web3forms.com/submit';
-    const emailFormat = /^[^\s@]+@[^\s@]+\.(com|no)$/i;
+    const isEnglish = document.documentElement.lang === 'en';
+    const emailFormat = isEnglish ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/i : /^[^\s@]+@[^\s@]+\.(com|no)$/i;
+    const copy = isEnglish
+      ? {
+          missingFields: 'Please fill in name, email, and description.',
+          invalidEmail: 'Enter a valid email address.',
+          missingKey: 'Web3Forms key is missing. Add access_key to the form first.',
+          sending: 'Sending inquiry…',
+          success: 'Thanks! Your inquiry was sent. We will get back to you soon.',
+          error: 'Could not send the form right now. Please try again shortly.',
+          subject: (name) => `New inquiry from ${name}`,
+        }
+      : {
+          missingFields: 'Vennligst fyll ut navn, e-post og beskrivelse.',
+          invalidEmail: 'Skriv en gyldig e-postadresse som slutter med .com eller .no.',
+          missingKey: 'Web3Forms-nokkel mangler. Legg inn access_key i skjemaet først.',
+          sending: 'Sender forespørsel ...',
+          success: 'Takk! Forespørselen er sendt. Vi svarer deg snart.',
+          error: 'Kunne ikke sende skjemaet nå. Prøv igjen om litt.',
+          subject: (name) => `Ny foresporsel fra ${name}`,
+        };
 
     const setStatus = (message, state) => {
       if (!statusEl) return;
@@ -891,24 +911,24 @@ class SinglePagePortfolio {
       const accessKey = (formData.get('access_key') || '').toString().trim();
 
       if (!fullName || !email || !description) {
-        setStatus('Vennligst fyll ut navn, e-post og beskrivelse.', 'error');
+        setStatus(copy.missingFields, 'error');
         return;
       }
       if (!emailFormat.test(email)) {
-        setStatus('Skriv en gyldig e-postadresse som slutter med .com eller .no.', 'error');
+        setStatus(copy.invalidEmail, 'error');
         return;
       }
       if (!accessKey || accessKey.startsWith('REPLACE_WITH_')) {
-        setStatus('Web3Forms-nokkel mangler. Legg inn access_key i skjemaet først.', 'error');
+        setStatus(copy.missingKey, 'error');
         return;
       }
 
       formData.set('full_name', fullName);
       formData.set('email', email);
       formData.set('description', description);
-      formData.set('subject', `Ny foresporsel fra ${fullName}`);
+      formData.set('subject', copy.subject(fullName));
       formData.set('replyto', email);
-      setStatus('Sender forespørsel ...', 'loading');
+      setStatus(copy.sending, 'loading');
 
       if (submitButton) {
         submitButton.disabled = true;
@@ -924,10 +944,10 @@ class SinglePagePortfolio {
         if (!response.ok || !result.success) {
           throw new Error(result.message || 'Submission failed');
         }
-        setStatus('Takk! Forespørselen er sendt. Vi svarer deg snart.', 'success');
+        setStatus(copy.success, 'success');
         inquiryForm.reset();
       } catch (error) {
-        setStatus('Kunne ikke sende skjemaet nå. Prøv igjen om litt.', 'error');
+        setStatus(copy.error, 'error');
       } finally {
         if (submitButton) {
           submitButton.disabled = false;
