@@ -332,7 +332,7 @@ ${thumbButtons}
     <script src="/assets/data/project-narratives.js?v=1" defer></script>
 ${schemaBlock}
     <script src="/components-loader.js?v=1" defer></script>
-    <script src="/shared-nav.js?v=1" defer></script>
+    <script src="/shared-nav.js?v=2" defer></script>
     <script src="/script.js?v=${scriptVersion}" defer></script>
   </body>
 </html>
@@ -444,7 +444,7 @@ ${gridCards}
     <script src="/assets/data/projects-manifest.js?v=3" defer></script>
 ${schemaBlock}
     <script src="/components-loader.js?v=1" defer></script>
-    <script src="/shared-nav.js?v=1" defer></script>
+    <script src="/shared-nav.js?v=2" defer></script>
     <script src="/script.js?v=${scriptVersion}" defer></script>
   </body>
 </html>
