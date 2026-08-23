@@ -516,7 +516,7 @@ export function buildKarriereGraph({ url, title, description }) {
   ]);
 }
 
-// NOTE: /formaa-skaperverksted — coming-soon creative workshop for children; Course schema without startDate.
+// NOTE: /formaa-skaperverksted — onsite children’s course; CourseInstance without startDate until a day is set.
 const SKAPERVERKSTED_IMAGE = `${SITE}/assets/images/Skaperverksted/formaa-skaperverksted.webp`;
 
 export function buildSkaperverkstedGraph({ url, title, description }) {
@@ -533,9 +533,8 @@ export function buildSkaperverkstedGraph({ url, title, description }) {
     {
       '@type': 'Course',
       '@id': `${url}#course`,
-      name: 'Formaa-Skaperverksted',
-      description:
-        'Kreativt verksted for barn 5–9 år i Oslo, Trosterud — bygg, utforsk og skap med egne hender gjennom kunst, håndverk og design. Kommer snart.',
+      name: 'Barnekurs i Oslo — Formaa-Skaperverksted (kreativt aktivitet for barn 5–9 år)',
+      description,
       image: SKAPERVERKSTED_IMAGE,
       provider: { '@id': ORG_ID },
       educationalLevel: 'Primary',
@@ -545,13 +544,27 @@ export function buildSkaperverkstedGraph({ url, title, description }) {
       },
       inLanguage: 'nb-NO',
       url,
-      location: {
-        '@type': 'Place',
-        name: 'Trosterud, Oslo',
-        address: {
-          '@type': 'PostalAddress',
-          addressLocality: 'Oslo',
-          addressCountry: 'NO',
+      timeRequired: 'PT1H30M',
+      hasCourseInstance: {
+        '@type': 'CourseInstance',
+        '@id': `${url}#course-instance`,
+        courseMode: 'Onsite',
+        courseWorkload: 'PT1H30M',
+        location: {
+          '@type': 'Place',
+          name: 'Trosterud, Oslo',
+          address: {
+            '@type': 'PostalAddress',
+            addressLocality: 'Oslo',
+            addressCountry: 'NO',
+          },
+        },
+        offers: {
+          '@type': 'Offer',
+          price: '2990',
+          priceCurrency: 'NOK',
+          url,
+          availability: 'https://schema.org/PreOrder',
         },
       },
     },

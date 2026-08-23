@@ -44,6 +44,9 @@ function sitemapHints(route) {
   if (['/tjenester-prosess', '/prosjekter', '/blogg', '/oss'].includes(route)) {
     return { changefreq: 'weekly', priority: '0.9' };
   }
+  if (route === '/formaa-skaperverksted') {
+    return { changefreq: 'weekly', priority: '0.8' };
+  }
   if (route.startsWith('/blogg/')) return { changefreq: 'monthly', priority: '0.7' };
   if (route.startsWith('/prosjekter/')) return { changefreq: 'monthly', priority: '0.7' };
   if (route.startsWith('/category/')) {

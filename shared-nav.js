@@ -22,6 +22,10 @@ function renderSharedNav() {
   const isArrangementPage =
     path === 'arrangement.html' || (segments.length === 1 && segments[0] === 'arrangement');
 
+  const isSkaperverkstedPage =
+    path === 'formaa-skaperverksted.html' ||
+    (segments.length === 1 && segments[0] === 'formaa-skaperverksted');
+
   // NOTE: Extensionless hrefs match sitemap/canonical URLs; GitHub Pages and Apache both resolve them to *.html files.
   const items = [
     { href: '/', label: 'Hjem', current: segments.length === 0 },
@@ -45,6 +49,11 @@ function renderSharedNav() {
       current: isArrangementPage,
     },
     {
+      href: '/formaa-skaperverksted',
+      label: 'Skaperverksted',
+      current: isSkaperverkstedPage,
+    },
+    {
       href: '/application-form',
       label: 'Kontakt',
       current: isApplicationFormPage,
@@ -66,6 +75,7 @@ function renderSharedNav() {
     'tjenester-prosess': '/tjenester-prosess',
     about: '/oss',
     arrangement: '/arrangement',
+    skaperverksted: '/formaa-skaperverksted',
     application: '/application-form',
     pricing: '/prisestimat',
   };
