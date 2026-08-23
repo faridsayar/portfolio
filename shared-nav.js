@@ -67,6 +67,18 @@ function renderSharedNav() {
     )
     .join('');
 
+  // NOTE: Language toggle UI in the side nav (NO ↔ EN). Keep markup aligned with scripts/lib/shared-nav-markup.mjs.
+  const langSwitchMarkup = `
+        <div class="side-nav__divider" aria-hidden="true"></div>
+        <label class="lang-switch" for="lang-switch">
+          <span class="lang-switch__label">NO</span>
+          <input class="lang-switch__input" type="checkbox" id="lang-switch" />
+          <span class="lang-switch__track" aria-hidden="true">
+            <span class="lang-switch__thumb" aria-hidden="true"></span>
+          </span>
+          <span class="lang-switch__label">EN</span>
+        </label>`;
+
   // NOTE: Root-absolute extensionless paths match public canonical URLs in sitemap.xml.
   const footerHrefByKey = {
     projects: '/prosjekter',
@@ -100,8 +112,27 @@ function renderSharedNav() {
       </button>
       <div class="side-nav__content" id="side-nav-content" data-mobile-nav-content>
         ${linksMarkup}
+        ${langSwitchMarkup}
       </div>
     `;
+    }
+
+    // NOTE: Older build-inlined navs omit the language switch — append it so the control stays visible.
+    const navContent = nav.querySelector('[data-mobile-nav-content]');
+    if (navContent && !navContent.querySelector('.lang-switch')) {
+      navContent.insertAdjacentHTML('beforeend', langSwitchMarkup);
+    }
+
+    // NOTE: Reflect current locale and jump between NO homepage and the main EN landing.
+    const langInput = nav.querySelector('#lang-switch');
+    if (langInput && langInput.dataset.langSwitchBound !== 'true') {
+      langInput.dataset.langSwitchBound = 'true';
+      const isEnglish = segments[0] === 'en';
+      langInput.checked = isEnglish;
+      langInput.setAttribute('aria-label', isEnglish ? 'Switch to Norwegian' : 'Switch to English');
+      langInput.addEventListener('change', () => {
+        window.location.href = langInput.checked ? '/en/product-rendering' : '/';
+      });
     }
 
     const toggle = nav.querySelector('[data-mobile-nav-toggle]');
