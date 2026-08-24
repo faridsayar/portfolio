@@ -8,8 +8,23 @@
       name="description"
       content="Formaa helps founders and hardware startups with product development, CAD modeling, 3D product renders, and prototyping — from idea to production-ready deliverables."
     />
+    <meta
+      name="description:en"
+      content="Design agency that helps your idea take shape. Product development, 3D/CAD, visualization and prototype for founders and startups in Norway."
+    />
+    <meta
+      name="keywords"
+      content="product development, 3D visualization, industrial design, product design, prototype, design studio, 3D modeling, CAD, visualization, hardware startup, founder, product development Norway, prototyping Oslo, Formaa, industrial design Oslo"
+    />
+    <meta name="author" content="Formaa AS" />
     <meta name="robots" content="index,follow,max-image-preview:large" />
+
+    <!-- NOTE: Paste Google Search Console verification token after property setup (see README). -->
+    <!-- <meta name="google-site-verification" content="YOUR_TOKEN" /> -->
+
+    <!-- Open Graph Meta Tags -->
     <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="nb_NO" />
     <meta
       property="og:title"
       content="Formaa — Product development &amp; 3D visualization | Oslo"
@@ -20,8 +35,49 @@
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://formaa.no/en/" />
-    <meta property="og:site_name" content="Formaa" />
-    <meta property="og:image" content="https://formaa.no/assets/images/en/5-white.webp" />
+    <meta property="og:site_name" content="Formaa AS" />
+    <meta
+      property="og:image"
+      content="https://formaa.no/assets/images/prosess/3d-modelering.webp"
+    />
+    <meta property="og:image:width" content="1920" />
+    <meta property="og:image:height" content="1080" />
+    <meta
+      property="og:image:alt"
+      content="Formaa — product development and 3D visualization for startups in Norway"
+    />
+
+    <link rel="canonical" href="https://formaa.no/en/" />
+    <link
+      rel="sitemap"
+      type="application/xml"
+      title="Sitemap"
+      href="https://formaa.no/sitemap.xml"
+    />
+    <!-- NOTE: On production only, nudge duplicate homepage URLs toward https://formaa.no (skipped on localhost). -->
+    <script>
+      (function () {
+        var loc = window.location;
+        var host = loc.hostname;
+        var isLocal =
+          host === 'localhost' ||
+          host === '127.0.0.1' ||
+          host === '[::1]' ||
+          host.endsWith('.local');
+        if (isLocal) {
+          if (/\/index\.html$/i.test(loc.pathname)) {
+            loc.replace(loc.pathname.replace(/\/index\.html$/i, '/') + loc.search + loc.hash);
+          }
+          return;
+        }
+        if (host !== 'formaa.no' && host !== 'www.formaa.no') return;
+        var path = loc.pathname.replace(/\/index\.html$/i, '/');
+        var target = 'https://formaa.no/en/' + (path === '/en/' || path === '/en' ? '' : path.replace(/^\/en\/?/, '')) + loc.search + loc.hash;
+        if (loc.href !== target) loc.replace(target);
+      })();
+    </script>
+
+    <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
@@ -31,8 +87,12 @@
       name="twitter:description"
       content="Formaa helps founders and hardware startups with product development, CAD modeling, 3D product renders, and prototyping — from idea to production-ready deliverables."
     />
-    <meta name="twitter:image" content="https://formaa.no/assets/images/en/5-white.webp" />
-    <link rel="canonical" href="https://formaa.no/en/" />
+    <meta
+      name="twitter:image"
+      content="https://formaa.no/assets/images/prosess/3d-modelering.webp"
+    />
+
+    <!-- NOTE: Full-bleed square favicon (SVG + PNG fallback) for browser tabs and Google Search. -->
     <link rel="icon" type="image/svg+xml" href="/assets/square-favicon.svg?v=1" sizes="any" />
     <link
       rel="icon"
@@ -40,7 +100,27 @@
       href="/assets/square-favicon-fallback.png?v=1"
       sizes="192x192"
     />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- NOTE: Preload primary font stylesheet to reduce render delay for above-the-fold text. -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Saira:wght@400;600;800&display=swap"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Saira:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="/styles/base.css?v=43" />
+    <link rel="stylesheet" href="/styles/home.css?v=18" />
+
+    <!-- NOTE: Google Analytics 4 global site tag for tracking website traffic. -->
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JSX18YWHXS"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -48,94 +128,910 @@
         dataLayer.push(arguments);
       }
       gtag('js', new Date());
+
       gtag('config', 'G-JSX18YWHXS');
     </script>
   </head>
   <body class="single-page-body">
-    <!-- NOTE: Empty shell — shared-nav.js injects English MVP links + lang switch. -->
+    <!-- NOTE: Shared navigation component slot. -->
+    <!-- NOTE: EN side-nav shell — shared-nav.js injects English links + lang switch. -->
     <nav class="side-nav" aria-label="Navigation" data-mobile-nav></nav>
 
-    <main>
-      <section class="section section--white" aria-label="Home">
-        <div class="section-inner">
-          <p class="section-kicker">Industrial design &amp; product development</p>
-          <h1 class="section-title">Product development and 3D visualization</h1>
-          <p class="section-lead">
-            Oslo-based studio for founders, hardware startups, and companies building physical
-            products — from early concept to CAD, renders, prototypes, and production-ready files.
-          </p>
-          <p>
-            <a class="inquiry-cta" href="/en/contact">Get in touch</a>
-          </p>
-        </div>
-      </section>
+    <!--
+      NOTE: Homepage opening — scroll-scrub drill background (hero + process strip + intro).
+      Hero video shuffle is disabled here; see shared-home-hero-scrub.js and assets/images/Hero-Drill/.
+    -->
+    <div class="home-hero-scrub" data-home-hero-scrub>
+      <div class="home-hero-scrub__stage" aria-hidden="true">
+        <canvas
+          class="home-hero-scrub__frame"
+          data-home-hero-scrub-canvas
+          aria-hidden="true"
+        ></canvas>
+        <div class="home-hero-scrub__overlay"></div>
+        <div class="home-hero-scrub__fade"></div>
+      </div>
 
-      <section class="section section--white" aria-label="3D visualization">
-        <div class="section-inner">
-          <h2 class="section-title">Start with a clear 3D model and visualization</h2>
-          <p class="section-lead">
-            See the product before you invest heavily in tooling or inventory. We model, light, and
-            render so you can pitch, crowdfund, and decide with confidence.
-          </p>
-          <div class="service-grid" aria-label="Visualization services">
-            <a class="service-card service-card--link" href="/en/product-rendering">
-              <h3 class="service-title">3D product renders</h3>
-              <p class="section-lead">Studio-quality stills for listings, decks, and campaigns.</p>
-            </a>
-            <a class="service-card service-card--link" href="/en/cad-modeling">
-              <h3 class="service-title">CAD modeling</h3>
-              <p class="section-lead">
-                Clean geometry ready for design iteration and manufacturing.
-              </p>
-            </a>
-            <a class="service-card service-card--link" href="/en/product-animation">
-              <h3 class="service-title">Product animation</h3>
-              <p class="section-lead">Short motion pieces that explain form and function.</p>
-            </a>
+      <div class="home-hero-scrub__content">
+        <header class="hero hero--home-scrub" aria-label="Hero">
+          <!-- NOTE: Shuffle hero video kept for other pages; hidden on homepage (scroll-scrub replaces it). -->
+          <div class="hero-media hero-media--shuffle-disabled" aria-hidden="true" hidden>
+            <video
+              class="hero-video"
+              muted
+              loop
+              playsinline
+              preload="none"
+              poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3Crect width='16' height='9' fill='black'/%3E%3C/svg%3E"
+            >
+              <!-- NOTE: Clip sources are set by JS on pages with data-hero-video-shuffle. -->
+            </video>
+            <div class="hero-overlay"></div>
           </div>
-          <p>
-            <a class="inquiry-cta" href="/en/services">View all services</a>
+
+          <div class="hero-triangle-logo" aria-hidden="true">
+            <img
+              class="hero-logo-mark"
+              src="/assets/formaa-logo.svg"
+              alt=""
+              width="40"
+              height="27"
+              aria-hidden="true"
+            />
+          </div>
+
+          <div class="hero-content">
+            <!-- NOTE: Low-opacity brand watermark for branded search; same scale as hero H1. -->
+            <p class="hero-brand-name" aria-hidden="true">Formaa AS</p>
+            <h1 class="hero-title">Product development and 3D visualization</h1>
+
+            <p class="hero-subtitle">
+              — for ambitious startups, tough founders, and serious companies
+            </p>
+
+            <a class="hero-cta" href="#application-form">Get in touch</a>
+          </div>
+        </header>
+
+        <div data-component="hero-process-flow-en"></div>
+
+        <!-- NOTE: Homepage section 1 — about-stats + opening copy; id="start" anchor. -->
+        <section
+          class="section section--white home-section home-section--intro"
+          id="start"
+          aria-label="What we do"
+        >
+          <div data-component="about-stats-strip-en"></div>
+          <div class="home-section__inner">
+            <div class="start-intro__opening-row">
+              <div class="start-intro__opening">
+                <p class="start-intro__eyebrow">
+                  <a class="internal-text-link" href="/en/services"
+                    >Industrial design</a
+                  >
+                  and product development focused on what matters: form, function, and the path to
+                  market.
+                </p>
+                <p class="section-lead">
+                  Have a product idea you believe can succeed? Not sure where to start? You are in
+                  the right place. Based in Oslo, we work with clients across Norway and
+                  internationally.
+                </p>
+              </div>
+              <div data-component="home-news-ticker-en"></div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <main>
+      <!-- NOTE: Homepage section 2 — 3D-model og visualisering; full-bleed media overlay. -->
+      <section
+        class="section section--white home-section home-section--media"
+        aria-label="Start simple — with 3D modeling and visualization"
+      >
+        <div class="start-intro start-intro--overlay">
+          <div class="start-intro__media-zone">
+            <div class="start-intro__backdrop" aria-hidden="true">
+              <video class="start-intro__video" autoplay muted loop playsinline preload="metadata">
+                <source src="/assets/images/shuffle-images/proton-gif2.mov" type="video/mp4" />
+              </video>
+              <div class="start-intro__gradient"></div>
+            </div>
+            <div class="start-intro__overlay-inner">
+              <div class="start-intro__content article-row__text">
+                <h2 class="section-title">Start simple — with 3D modeling and visualization</h2>
+                <p class="section-lead">
+                  <a class="internal-text-link" href="/en/services">Visualize</a>
+                  your idea professionally with a 3D model, animation or video — explain the product
+                  clearly, test the concept, get inspired and make better decisions
+                  <a class="internal-text-link" href="/en/services"
+                    >before you invest heavily</a
+                  >.
+                </p>
+                <ul class="article-row__list">
+                  <li>get the idea visualized in high quality</li>
+                  <li>
+                    <span
+                      >show investors,
+                      <a class="internal-text-link" href="/en/services"
+                        >Innovasjon Norge</a
+                      >
+                      eller
+                      <a class="internal-text-link" href="/en/services"
+                        >crowdfunding</a
+                      ></span
+                    >
+                  </li>
+                  <li>test the concept before spending heavily</li>
+                </ul>
+                <!-- NOTE: Primary CTA + Prosjekter inline link beside each other. -->
+                <div class="start-intro__actions">
+                  <a class="hero-cta" href="#application-form">Book</a>
+                  <a class="category-projects-link" href="/en/projects">
+                    Our projects
+                    <img
+                      class="category-projects-link__arrow"
+                      src="/assets/small-arrow-right.svg"
+                      alt=""
+                      width="12"
+                      height="12"
+                      aria-hidden="true"
+                    />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- NOTE: Category hashtag links — centered row directly under section-1 image. -->
+          <div class="start-intro__hashtags-row">
+            <nav class="section-1__hashtags" aria-label="Related topics">
+              <a class="section-1__hashtag" href="/en/services">#3D-modeling</a>
+              <a class="section-1__hashtag" href="/en/services"
+                >#product-development</a
+              >
+              <a class="section-1__hashtag" href="/en/services"
+                >#concept-development</a
+              >
+              <a class="section-1__hashtag" href="/en/services"
+                >#3D-visualization</a
+              >
+            </nav>
+          </div>
+        </div>
+      </section>
+
+      <!-- NOTE: Homepage section 3 — success stat + display line after 3D block. -->
+      <section
+        class="section section--white home-section home-section--display"
+        aria-label="Product success"
+      >
+        <div class="home-section__inner">
+          <div class="start-success-stat" data-about-stats-group>
+            <p class="start-success-stat__lead">We increase the chance of product success by</p>
+            <p
+              class="about-stat__value start-success-stat__value"
+              data-about-stat-value
+              data-target="228"
+              data-suffix="%"
+            >
+              0%
+            </p>
+          </div>
+          <p class="big-text">Less talk. More form.</p>
+        </div>
+      </section>
+
+      <!-- NOTE: Homepage section 4 — konsept, produkt og prototype; full-bleed media overlay. -->
+      <section
+        class="section section--white home-section home-section--media"
+        aria-label="Concept development, product development and prototype"
+      >
+        <div class="start-intro start-intro--overlay">
+          <div class="start-intro__media-zone">
+            <div class="start-intro__backdrop" aria-hidden="true">
+              <video class="start-intro__video" autoplay muted loop playsinline preload="metadata">
+                <source
+                  src="/assets/images/shuffle-images/3d-printer-working.mp4"
+                  type="video/mp4"
+                />
+              </video>
+              <div class="start-intro__gradient"></div>
+            </div>
+            <div class="start-intro__overlay-inner">
+              <div class="start-intro__content article-row__text">
+                <h2 class="section-title">Need more than visualization?</h2>
+                <p class="section-lead">
+                  Design and development of a real product that solves a problem — from idea to
+                  prototype. Structured work in
+                  <a class="internal-text-link" href="/en/services"
+                    >clear steps</a
+                  >
+                  to reach production and launch faster.
+                </p>
+                <ul class="article-row__list">
+                  <li>
+                    <span
+                      ><a class="internal-text-link" href="/en/services"
+                        >concept development</a
+                      >
+                      that clarifies direction, needs and problem-solving</span
+                    >
+                  </li>
+                  <li>
+                    a product development process that explores form, ergonomics, function,
+                    materials, manufacturing methods and many other aspects of the product
+                  </li>
+                  <li>
+                    <span
+                      >a realistic 1:1 prototype in simple materials that you can test
+                      <a class="internal-text-link" href="/en/services"
+                        >before spending large sums</a
+                      ></span
+                    >
+                  </li>
+                </ul>
+                <!-- NOTE: Primary CTA + Prisoversikt inline link beside each other. -->
+                <div class="start-intro__actions">
+                  <a class="hero-cta" href="#application-form">Get in touch</a>
+                  <a class="category-projects-link" href="/en/contact">
+                    Pricing overview
+                    <img
+                      class="category-projects-link__arrow"
+                      src="/assets/small-arrow-right.svg"
+                      alt=""
+                      width="12"
+                      height="12"
+                      aria-hidden="true"
+                    />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- NOTE: Category hashtag links — centered row directly under section-2 image. -->
+          <div class="start-intro__hashtags-row">
+            <nav class="section-2__hashtags" aria-label="Related topics">
+              <a class="section-2__hashtag" href="/en/services"
+                >#concept-development</a
+              >
+              <a class="section-2__hashtag" href="/en/services"
+                >#product-development</a
+              >
+              <a class="section-2__hashtag" href="/en/services"
+                >#industrial-design</a
+              >
+              <a class="section-2__hashtag" href="/en/services">#prototype</a>
+            </nav>
+          </div>
+        </div>
+      </section>
+
+      <!-- NOTE: Homepage section 5 — risk stat + display line after konsept block. -->
+      <section
+        class="section section--white home-section home-section--display"
+        aria-label="Risk reduction"
+      >
+        <div class="home-section__inner">
+          <div class="start-success-stat" data-about-stats-group>
+            <p class="start-success-stat__lead">
+              Reduce the risk of costly mistakes before production
+            </p>
+            <p
+              class="about-stat__value start-success-stat__value"
+              data-about-stat-value
+              data-from="100"
+              data-target="1"
+              data-suffix="%"
+            >
+              100%
+            </p>
+          </div>
+          <p class="big-text">We design for simplicity, sustainability, innovation and uniqueness.</p>
+        </div>
+      </section>
+
+      <!-- NOTE: Homepage section 6 — komplett produktutvikling; full-bleed media overlay. -->
+      <section
+        class="section section--white home-section home-section--media"
+        aria-label="Complete product development"
+      >
+        <div class="start-intro start-intro--overlay">
+          <div class="start-intro__media-zone">
+            <div class="start-intro__backdrop" aria-hidden="true">
+              <img
+                class="start-intro__image"
+                src="/assets/images/grid/komplett-produktutvikling.webp"
+                alt="Produktutvikling i tre faser — skisse, mekanisk oppbygning med synlig elektronikk, og ferdig minimal gadget-design"
+                width="1536"
+                height="1024"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="start-intro__gradient"></div>
+            </div>
+            <div class="start-intro__overlay-inner">
+              <div class="start-intro__content article-row__text">
+                <h2 class="section-title">Complete hardcore product development</h2>
+                <p class="section-lead">
+                  Ready to take the product all the way? Structured work — from concept development
+                  and user research to prototype and production-ready deliverables.
+                </p>
+                <ul class="article-row__list">
+                  <li>
+                    <span
+                      ><a class="internal-text-link" href="/en/services"
+                        >Industrial design</a
+                      >
+                      — user-centered form-giving, concept and iteration for form, function and
+                      production</span
+                    >
+                  </li>
+                  <li>3D model, visualization and a 1:1 prototype close to the final product</li>
+                  <li>production-ready CAD, drawings and supplier support through to launch</li>
+                </ul>
+                <!-- NOTE: Primary CTA + Prosess inline link beside each other. -->
+                <div class="start-intro__actions">
+                  <a class="hero-cta" href="#application-form">Get in touch</a>
+                  <a class="category-projects-link" href="/en/services">
+                    Process
+                    <img
+                      class="category-projects-link__arrow"
+                      src="/assets/small-arrow-right.svg"
+                      alt=""
+                      width="12"
+                      height="12"
+                      aria-hidden="true"
+                    />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- NOTE: Category hashtag links — centered row directly under section-3 image. -->
+          <div class="start-intro__hashtags-row">
+            <nav class="section-3__hashtags" aria-label="Related topics">
+              <a class="section-3__hashtag" href="/en/services"
+                >#product-development</a
+              >
+              <a class="section-3__hashtag" href="/en/services"
+                >#industrial-design</a
+              >
+              <a class="section-3__hashtag" href="/en/services"
+                >#production-prep</a
+              >
+            </nav>
+          </div>
+        </div>
+      </section>
+
+      <!-- NOTE: Homepage section 7 — physical products scope disclaimer. -->
+      <section
+        class="section section--white home-section home-section--note"
+        aria-label="Physical products"
+      >
+        <div class="home-section__inner">
+          <p class="home-scope-note">
+            We work with physical products. If you have a digital product or a service, we are
+            probably not the right partner.
           </p>
         </div>
       </section>
 
-      <section class="section section--white" aria-label="Product development">
-        <div class="section-inner">
-          <h2 class="section-title">Beyond visualization — build toward production</h2>
-          <p class="section-lead">
-            Need concept development, industrial design, or a 1:1 prototype before large spend? We
-            structure the path from idea to manufacturable design.
-          </p>
-          <ul>
-            <li>Concept and form development focused on real use</li>
-            <li>Materials, ergonomics, and production constraints early</li>
-            <li>Prototypes you can hold, test, and show stakeholders</li>
-          </ul>
-          <p>
-            <a class="inquiry-cta" href="/en/contact">Talk to us</a>
-            <a class="internal-text-link" href="/en/projects"> See projects</a>
-          </p>
+      <!-- NOTE: Homepage section 8 — partner logo strip after section-3 scope note. -->
+      <div data-component="partner-logos-section-en"></div>
+
+      <!-- NOTE: Homepage section 9 — featured project grid with link to /prosjekter. -->
+      <section
+        class="section section--white home-section home-section--portfolio section--projects"
+        id="portfolio"
+        aria-label="Projects"
+      >
+        <div class="home-section__inner">
+          <div class="section-head">
+            <h2 class="section-title">
+              <a class="section-title-link" href="/en/projects">
+                All projects
+                <img
+                  class="section-title-link__arrow"
+                  src="/assets/small-arrow-right.svg"
+                  alt=""
+                  width="12"
+                  height="12"
+                  aria-hidden="true"
+                />
+              </a>
+            </h2>
+          </div>
+          <!-- NOTE: Full-bleed dark band behind project tiles only; captions use panel text color via CSS. -->
+          <div class="projects-grid-panel">
+            <!-- NOTE: Portfolio tiles are rendered from assets/data/projects-manifest.js to keep titles and media in sync with project data. -->
+            <!-- NOTE: Homepage shows four featured tiles only; full list lives on /prosjekter (see data-projects-limit). -->
+            <div
+              class="projects-grid"
+              aria-label="Project list"
+              data-projects-grid
+              data-projects-limit="4"
+            ></div>
+            <div class="projects-sentinel" data-projects-sentinel aria-hidden="true"></div>
+          </div>
         </div>
       </section>
 
-      <section class="section section--white" aria-label="Call to action">
+      <!-- NOTE: Homepage section 10 — display line after portfolio grid, before “Hva du får”. -->
+      <section
+        class="section section--white home-section home-section--display"
+        aria-label="Your success"
+      >
+        <div class="home-section__inner">
+          <p class="big-text">Our success depends on your success</p>
+        </div>
+      </section>
+
+      <!-- NOTE: Homepage section 11 — “Hva du får” feature block. -->
+      <section class="section section--white section--features" aria-label="Benefits">
         <div class="section-inner">
-          <h2 class="section-title">Ready for the next step?</h2>
-          <p class="section-lead">
-            Send a short brief — product type, timeline, and references — and we will reply with
-            practical next steps.
-          </p>
-          <p>
-            <a class="inquiry-cta" href="/en/contact">Contact Formaa</a>
-          </p>
+          <div data-component="hva-du-far-section-en"></div>
         </div>
       </section>
     </main>
 
+    <!-- NOTE: Quote/testimonial strip — shared component (quotes-carousel-section.html). -->
+    <div data-component="quotes-carousel-section-en"></div>
+
+    <!-- NOTE: “For hvem” block — placed before kontaktform (after quotes). -->
+    <section class="section section--white" aria-label="Who it is for">
+      <div class="section-inner">
+        <div class="section-head section-head--after-feature-banner">
+          <h2 class="section-title">Who it is for</h2>
+          <!-- NOTE: «designbyrå i Oslo» peker til design-kategorien for Oslo. -->
+          <p class="section-lead">
+            Are you a founder with an invention you want manufactured, or a strong idea you want to
+            <a class="internal-text-link" href="/en/services"
+              >turn into a product</a
+            >?
+            We can help with
+            <a class="internal-text-link" href="/en/services"
+              >product idea development</a
+            >
+            and product development — also without a heavy investor behind you. We support visual
+            design for
+            <a class="internal-text-link" href="/en/product-rendering">crowdfunding</a>,
+            investor pitches,
+            <a class="internal-text-link" href="/en/services"
+              >funding applications</a
+            >
+            and other financing paths. We are a flexible
+            <a class="internal-text-link" href="/en/">design studio in Oslo</a> working with
+            <a class="internal-text-link" href="/en/services"
+              >hardware startups</a
+            >.
+          </p>
+        </div>
+
+        <!-- NOTE: User-value tag row — placed after the “For hvem” block. -->
+        <div class="service-tags" aria-label="More topics">
+          <a class="service-tag" href="/en/services">Services</a>
+          <a class="service-tag" href="/blogg">Blog</a>
+          <a class="service-tag" href="/prosjekter">Projects</a>
+          <a class="service-tag" href="/oss">About us</a>
+          <a class="service-tag" href="/formaa-skaperverksted">Workshop</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- NOTE: Homepage articles teaser — three blogg cards before kontaktform. -->
+    <div data-component="home-articles-section-en"></div>
+
+    <div data-component="application-form-en"></div>
+
+    <!-- NOTE: FAQ block (before personvern) — collapsible; full Q&A stays in DOM for SEO + FAQPage schema. -->
+    <section
+      id="faq"
+      class="section section--white section--faq"
+      aria-label="Frequently asked questions about product development"
+    >
+      <div class="section-inner">
+        <details class="section-disclosure" data-section-disclosure="faq">
+          <summary class="section-disclosure__trigger">
+            <span class="section-disclosure__heading">
+              <p class="section-kicker">FAQ</p>
+              <h2 class="section-title">FAQ about product development</h2>
+            </span>
+            <span class="section-disclosure__icon" aria-hidden="true">
+              <img src="/assets/triangle.svg" alt="" width="12" height="12" decoding="async" />
+            </span>
+          </summary>
+
+          <div class="section-disclosure__panel">
+            <h3 class="section-title" style="font-size: 1.5rem">
+              1. What does a design project cost?
+            </h3>
+            <p class="section-lead">
+              Cost depends on complexity, scope and timeline. We set a clear plan with prioritized
+              activities so you can start at the right level and scale further. See our
+              <a class="internal-text-link" href="/en/contact">pricing overview</a> for a quick
+              estimate.
+            </p>
+
+            <h3 class="section-title" style="font-size: 1.5rem">
+              2. How long does it take from idea to prototype?
+            </h3>
+            <p class="section-lead">
+              A first prototype can often be developed in a few weeks, while a complete production path normally takes several phases. We clarify this at kickoff and often use <a class="internal-text-link" href="/en/services">prototyping</a> and <a class="internal-text-link" href="/en/cad-modeling">CAD modeling</a> to reduce risk.
+            </p>
+
+            <h3 class="section-title" style="font-size: 1.5rem">
+              3. Do you only work with companies in Oslo?
+            </h3>
+            <p class="section-lead">
+              No. We can meet and work with you in Oslo and nearby regions, and support the rest of
+              Norway digitally with limited in-person sessions. Prototype shipping is possible but
+              adds time and should be planned for.
+            </p>
+
+            <h3 class="section-title" style="font-size: 1.5rem">
+              4. Can you join a project that is already underway?
+            </h3>
+            <p class="section-lead">
+              Yes. We can contribute as a specialist for parts of the journey or own a full phase — for example <a class="internal-text-link" href="/en/services">concept</a>, design improvement, <a class="internal-text-link" href="/en/services">prototyping</a> or <a class="internal-text-link" href="/en/cad-modeling">CAD modeling</a>.
+            </p>
+
+            <h3 class="section-title" style="font-size: 1.5rem">
+              5. What deliverables do we get along the way?
+            </h3>
+            <p class="section-lead">
+              You get concrete deliverables: decision material, concepts, models, prototypes and
+              recommendations, test results, technical drawings and a production plan. See examples
+              on our <a class="internal-text-link" href="/en/projects">project pages</a>.
+            </p>
+
+            <h3 class="section-title" style="font-size: 1.5rem">
+              6. How do we start working together?
+            </h3>
+            <p class="section-lead">
+              Send a short request via the form, or email hei@formaa.no. We start with an intro
+              call, clarify goals and propose a practical first-phase setup. You can also read more
+              <a class="internal-text-link" href="/en/about">about us</a> first.
+            </p>
+
+            <h3 class="section-title" style="font-size: 1.5rem">
+              7. Do you work with hardware startups in Norway?
+            </h3>
+            <p class="section-lead">
+              Yes. We regularly do product development for startups with physical products — from
+              early idea to prototype and production prep. See our
+              <a class="internal-text-link" href="/en/services"
+                >services</a
+              >.
+            </p>
+
+            <h3 class="section-title" style="font-size: 1.5rem">
+              8. Can you help me get an invention manufactured?
+            </h3>
+            <p class="section-lead">
+              Yes, in most cases. We help structure product development, build a prototype and
+              prepare technical documentation so you can move toward manufacturing. See our
+              <a class="internal-text-link" href="/en/services"
+                >services overview</a
+              >.
+            </p>
+            <div class="section-banner-rule" role="presentation" aria-hidden="true"></div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- NOTE: Trust/privacy block loaded from components/privacy-trust-section.html (homepage copy). -->
+    <div data-component="privacy-trust-section-en"></div>
+
+    <!-- NOTE: Expanded footer (contact, links, copyright) — same component as prisestimat. -->
+    <!-- NOTE: EN footer via component (site-footer-en). -->
     <div data-component="site-footer-en"></div>
+    <!-- NOTE: Prebuilt project manifest loaded as JS to support environments where `fetch` from local files is blocked. -->
+    <script src="/shared-quotes-carousel.js?v=2" defer></script>
+    <script src="/assets/data/projects-manifest.js?v=3" defer></script>
+
+    <script src="/assets/data/company-partners-manifest.js?v=1" defer></script>
+    <!-- NOTE: JSON-LD @graph for Google Search and AI Overviews — generated by scripts/generate-schema-markup.mjs; re-run after SEO/meta changes. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://formaa.no/#website",
+            "name": "Formaa",
+            "url": "https://formaa.no/",
+            "publisher": {
+              "@id": "https://formaa.no/#organization"
+            },
+            "inLanguage": ["nb-NO", "en"]
+          },
+          {
+            "@type": "LocalBusiness",
+            "@id": "https://formaa.no/#local-business",
+            "name": "Formaa",
+            "description": "Design studio that helps your idea take shape. Product development, 3D/CAD, visualization and prototyping for founders and startups.",
+            "url": "https://formaa.no",
+            "telephone": "+47 46 38 18 87",
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+47 46 38 18 87",
+              "contactType": "customer service",
+              "areaServed": "NO",
+              "availableLanguage": ["no", "en"]
+            },
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Ole Messelts vei 5",
+              "postalCode": "0676",
+              "addressLocality": "Oslo",
+              "addressCountry": "NO"
+            },
+            "sameAs": [
+              "https://www.linkedin.com/company/formaaa/",
+              "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+              "https://www.facebook.com/groups/2180500666141671/",
+              "https://t.me/designformaa",
+              "https://www.behance.net/formaa",
+              "https://x.com/FormaaDesignAS",
+              "https://www.reddit.com/user/Formaa-Design/"
+            ],
+            "parentOrganization": {
+              "@id": "https://formaa.no/#organization"
+            }
+          },
+          {
+            "@type": "ProfessionalService",
+            "@id": "https://formaa.no/#professional-service",
+            "name": "Formaa",
+            "url": "https://formaa.no/",
+            "logo": "https://formaa.no/assets/formaa-logo.svg",
+            "image": "https://formaa.no/assets/images/prosess/3d-modelering.webp",
+            "description": "Produktutvikling og 3D-visualisering for startups i Norge — prototyping, 3D-modellering, CAD-modelering og produksjonsforberedelse.",
+            "areaServed": [
+              {
+                "@type": "Country",
+                "name": "Norge"
+              },
+              {
+                "@type": "City",
+                "name": "Oslo"
+              },
+              {
+                "@type": "AdministrativeArea",
+                "name": "Akershus"
+              },
+              {
+                "@type": "AdministrativeArea",
+                "name": "Buskerud"
+              },
+              {
+                "@type": "AdministrativeArea",
+                "name": "Østfold"
+              }
+            ],
+            "serviceType": [
+              "Produktutvikling",
+              "Markedsanalyse",
+              "Emballasjedesign",
+              "Branding",
+              "Rendering",
+              "Redesign",
+              "Produksjon",
+              "Industridesign",
+              "Produktdesign",
+              "Konseptutvikling",
+              "Prototyping",
+              "3D-modelering",
+              "CAD-modelering",
+              "3D-visualisering",
+              "Produksjonsforberedelse",
+              "Teknisk design"
+            ],
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Tjenester",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Konseptutvikling"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Produktdesign"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Prototyping"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "3D-modelering"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "CAD-modelering"
+                  }
+                }
+              ]
+            },
+            "publisher": {
+              "@id": "https://formaa.no/#organization"
+            }
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://formaa.no/#organization",
+            "name": "Formaa",
+            "url": "https://formaa.no/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://formaa.no/assets/formaa-logo.svg"
+            },
+            "legalName": "Formaa AS",
+            "alternateName": ["Formaa", "Formaa Design", "formaaa"],
+            "taxID": "937772505",
+            "identifier": {
+              "@type": "PropertyValue",
+              "propertyID": "Brønnøysundregistrene",
+              "value": "937772505"
+            },
+            "sameAs": [
+              "https://www.linkedin.com/company/formaaa/",
+              "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+              "https://www.facebook.com/groups/2180500666141671/",
+              "https://t.me/designformaa",
+              "https://www.behance.net/formaa",
+              "https://x.com/FormaaDesignAS",
+              "https://www.reddit.com/user/Formaa-Design/"
+            ],
+            "image": "https://formaa.no/assets/images/prosess/3d-modelering.webp",
+            "description": "Formaa AS er et designstudio i Norge for produktutvikling og 3D-visualisering — fra idé og prototype til produksjon.",
+            "telephone": "+47 46 38 18 87",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Ole Messelts vei 5",
+              "postalCode": "0676",
+              "addressLocality": "Oslo",
+              "addressCountry": "NO"
+            }
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://formaa.no/",
+            "name": "Formaa: Produktutvikling og 3D-visualisering for startups i Norge",
+            "url": "https://formaa.no/",
+            "description": "Design studio that helps your idea take shape. Product development, 3D/CAD, visualization and prototyping for founders and startups.",
+            "inLanguage": "nb-NO",
+            "isPartOf": {
+              "@id": "https://formaa.no/#website"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "@id": "https://formaa.no/#organization",
+              "name": "Formaa",
+              "url": "https://formaa.no/",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://formaa.no/assets/formaa-logo.svg"
+              },
+              "legalName": "Formaa AS",
+              "alternateName": ["Formaa", "Formaa Design", "formaaa"],
+              "taxID": "937772505",
+              "identifier": {
+                "@type": "PropertyValue",
+                "propertyID": "Brønnøysundregistrene",
+                "value": "937772505"
+              },
+              "sameAs": [
+                "https://www.linkedin.com/company/formaaa/",
+                "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+                "https://www.facebook.com/groups/2180500666141671/",
+                "https://t.me/designformaa",
+                "https://www.behance.net/formaa",
+                "https://x.com/FormaaDesignAS",
+                "https://www.reddit.com/user/Formaa-Design/"
+              ]
+            }
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://formaa.no/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What does a design project cost?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Cost depends on complexity, scope and timeline. We set a clear plan with prioritized activities so you can start at the right level and scale further. See our pricing overview for a quick estimate."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How long does it take from idea to prototype?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "A first prototype can often be developed in a few weeks, while a complete production path normally takes several phases. We clarify this at kickoff and often use prototyping and CAD modeling to reduce risk."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Do you only work with companies in Oslo?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. We can meet and work with you in Oslo and nearby regions, and support the rest of Norway digitally with limited in-person sessions. Prototype shipping is possible but adds time and should be planned for."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can you join a project that is already underway?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. We can contribute as a specialist for parts of the journey or own a full phase — for example concept, design improvement, prototyping or CAD modeling."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What deliverables do we get along the way?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "You get concrete deliverables: decision material, concepts, models, prototypes and recommendations, test results, technical drawings and a production plan."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How do we start working together?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Send a short request via the form, or email hei@formaa.no. We start with an intro call, clarify goals and propose a practical first-phase setup. You can also read more about us first."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Do you work with hardware startups in Norway?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. We regularly do product development for startups with physical products — from early idea to prototype and production prep."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can you help me get an invention manufactured?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, in most cases. We help structure product development, build a prototype and prepare technical documentation so you can move toward manufacturing."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
 
     <script src="/components-loader.js?v=5" defer></script>
     <script src="/shared-nav.js?v=3" defer></script>
-    <script src="/script.js?v=11" defer></script>
+    <script src="/shared-home-hero-scrub.js?v=9" defer></script>
+    <script src="/shared-home-news-ticker.js?v=2" defer></script>
+    <script src="/shared-partner-logos.js?v=1" defer></script>
+    <script src="/shared-about-stats.js?v=1" defer></script>
+    <!-- JavaScript -->
+    <script src="/script.js?v=13" defer></script>
   </body>
 </html>

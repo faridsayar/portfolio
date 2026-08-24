@@ -1684,59 +1684,59 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
 }
 
 /* NOTE: Tjenester Prosess page — equal gaps between intro, display line, and prosess block. */
-section[aria-label='Tjenester'] .section-inner {
+section:is([aria-label='Tjenester'], [aria-label='Services']) .section-inner {
   padding-top: 0;
   padding-bottom: 2rem;
 }
 
 /* NOTE: Tjenester hero — full-bleed konseptutvikling image (~500px), breadcrumb overlay only. */
-section[aria-label='Tjenester'] .about-top-graphic {
+section:is([aria-label='Tjenester'], [aria-label='Services']) .about-top-graphic {
   overflow: hidden;
   height: 500px;
   margin: 0;
 }
 
-section[aria-label='Tjenester'] .about-top-graphic__img {
+section:is([aria-label='Tjenester'], [aria-label='Services']) .about-top-graphic__img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
 }
 
-section[aria-label='Tjenester'] .about-top-graphic__breadcrumb {
+section:is([aria-label='Tjenester'], [aria-label='Services']) .about-top-graphic__breadcrumb {
   position: absolute;
   top: 1rem;
   left: 0;
   right: 0;
 }
 
-section[aria-label='Tjenester'] .about-top-graphic + .section-title {
+section:is([aria-label='Tjenester'], [aria-label='Services']) .about-top-graphic + .section-title {
   margin-top: 2.5rem;
 }
 
-section[aria-label='Tjenester display line'] .section-inner {
+section:is([aria-label='Tjenester display line'], [aria-label='Services display line']) .section-inner {
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
 
-section[aria-label='Tjenester display line'] .big-text {
+section:is([aria-label='Tjenester display line'], [aria-label='Services display line']) .big-text {
   padding: 6rem 0;
 }
 
-section[aria-label='Prosess'] .section-inner {
+section:is([aria-label='Prosess'], [aria-label='Process']) .section-inner {
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
 
 /* NOTE: Tjenester Prosess page — Prosess heading matches h1 scale (uppercase, 36px → 60px desktop). */
-section[aria-label='Prosess'] h2.section-title {
+section:is([aria-label='Prosess'], [aria-label='Process']) h2.section-title {
   font-size: var(--font-size-hero-title);
   line-height: 1.111;
   text-transform: uppercase;
 }
 
 @media (min-width: 768px) {
-  section[aria-label='Prosess'] h2.section-title {
+  section:is([aria-label='Prosess'], [aria-label='Process']) h2.section-title {
     font-size: var(--font-size-hero-title-desktop);
   }
 }
@@ -1746,7 +1746,7 @@ section[aria-label='Prosess'] h2.section-title {
   scroll-margin-top: 1.25rem;
 }
 
-section[aria-label='Prosess i bilder'] .section-inner {
+section:is([aria-label='Prosess i bilder'], [aria-label='Process in images']) .section-inner {
   padding-top: 0;
   padding-bottom: 4rem;
 }
@@ -1884,7 +1884,7 @@ section[aria-label='Prosess i bilder'] .section-inner {
 }
 
 /* NOTE: Tjenester Prosess page — verksteder + Kina-produksjon block after image grid. */
-section[aria-label='Verksteder og produksjon'] .section-inner {
+section:is([aria-label='Verksteder og produksjon'], [aria-label='Workshops and production']) .section-inner {
   padding-top: 0;
   padding-bottom: 4rem;
 }
@@ -2007,13 +2007,13 @@ section[aria-label='Verksteder og produksjon'] .section-inner {
 
 /* NOTE: Om oss starts with full-bleed hero artwork, so remove default section top padding. */
 /* NOTE: Om oss hero (lutvann) — min viewport height; dark overlay lives on bottom workshop strip. */
-section[aria-label='Oss'] .about-top-graphic {
+section:is([aria-label='Oss'], [aria-label='About']) .about-top-graphic {
   overflow: hidden;
   min-height: 100dvh;
   height: auto;
 }
 
-section[aria-label='Oss'] .about-top-graphic__img {
+section:is([aria-label='Oss'], [aria-label='About']) .about-top-graphic__img {
   width: 100%;
   min-height: 100dvh;
   height: 100%;
@@ -2022,18 +2022,18 @@ section[aria-label='Oss'] .about-top-graphic__img {
   filter: saturate(0.75);
 }
 
-section[aria-label='Oss'] .about-top-graphic::after {
+section:is([aria-label='Oss'], [aria-label='About']) .about-top-graphic::after {
   display: none;
 }
 
-section[aria-label='Oss'] .about-top-graphic__overlay {
+section:is([aria-label='Oss'], [aria-label='About']) .about-top-graphic__overlay {
   display: flex;
   flex-direction: column;
   justify-content: center;
   z-index: 1;
 }
 
-section[aria-label='Oss'] .about-top-graphic__breadcrumb {
+section:is([aria-label='Oss'], [aria-label='About']) .about-top-graphic__breadcrumb {
   position: absolute;
   top: 1rem;
   left: 0;
@@ -2041,7 +2041,7 @@ section[aria-label='Oss'] .about-top-graphic__breadcrumb {
 }
 
 /* NOTE: Om oss hero overlay — `.big-text` scale, white at 50% opacity on dark image. */
-section[aria-label='Oss'] .about-top-graphic .big-text {
+section:is([aria-label='Oss'], [aria-label='About']) .about-top-graphic .big-text {
   max-width: var(--content-max-width);
   margin: 0 auto;
   padding: 0 var(--page-gutter);
@@ -2094,31 +2094,31 @@ section[aria-label='Oss'] .about-top-graphic .big-text {
   opacity: 0.75;
 }
 
-section[aria-label='Oss'] .section-inner {
+section:is([aria-label='Oss'], [aria-label='About']) .section-inner {
   padding-top: 0;
 }
 
 /* NOTE: Credibility block — bottom spacing comes from partner logos inside section-inner (not :last-of-type — privacy-trust section follows). */
-section[aria-label='Oss']:not(:first-of-type) .section-inner {
+section:is([aria-label='Oss'], [aria-label='About']):not(:first-of-type) .section-inner {
   padding-bottom: 0;
 }
 
 /* NOTE: Om oss — even text-block rhythm; larger space before each section/column title. */
-section[aria-label='Oss'] .section-lead--after-grid {
+section:is([aria-label='Oss'], [aria-label='About']) .section-lead--after-grid {
   margin-top: 3.5rem;
 }
 
 /* NOTE: Credibility block — no top margin on first block; margin collapses through padding-top: 0 and shows page grey. */
-section[aria-label='Oss']:not(:first-of-type) .section-lead--after-grid:first-child {
+section:is([aria-label='Oss'], [aria-label='About']):not(:first-of-type) .section-lead--after-grid:first-child {
   margin-top: 0;
 }
 
-section[aria-label='Oss'] .section-lead--after-grid > .section-lead:last-child {
+section:is([aria-label='Oss'], [aria-label='About']) .section-lead--after-grid > .section-lead:last-child {
   margin-bottom: 0;
 }
 
 /* NOTE: Extra space before prominent prosess link at end of about-page SEO block. */
-section[aria-label='Oss'] .section-lead--after-grid > .category-projects-link {
+section:is([aria-label='Oss'], [aria-label='About']) .section-lead--after-grid > .category-projects-link {
   margin-top: 3rem;
 }
 
@@ -2130,26 +2130,26 @@ section[aria-label='Hvordan produktutvikling vil være for deg']
   margin-bottom: 32px;
 }
 
-section[aria-label='Oss'] .about-top-graphic + .section-lead {
+section:is([aria-label='Oss'], [aria-label='About']) .about-top-graphic + .section-lead {
   margin-top: 12px;
 }
 
-section[aria-label='Oss'] .about-top-graphic + .section-lead + .section-title {
+section:is([aria-label='Oss'], [aria-label='About']) .about-top-graphic + .section-lead + .section-title {
   padding-top: 62px;
   padding-bottom: 62px;
   margin-top: 0;
   margin-bottom: 0;
 }
 
-section[aria-label='Oss'] .about-team-grid + .about-stats {
+section:is([aria-label='Oss'], [aria-label='About']) .about-team-grid + .about-stats {
   margin-top: 2.5rem;
 }
 
-section[aria-label='Oss'] .about-stats + .about-intro-split {
+section:is([aria-label='Oss'], [aria-label='About']) .about-stats + .about-intro-split {
   margin-top: 3.5rem;
 }
 
-section[aria-label='Oss'] h1.section-title + .section-lead--after-grid {
+section:is([aria-label='Oss'], [aria-label='About']) h1.section-title + .section-lead--after-grid {
   margin-top: 0;
 }
 
@@ -2212,20 +2212,20 @@ section[aria-label='Oss'] h1.section-title + .section-lead--after-grid {
   }
 }
 
-section[aria-label='Oss'] .about-team-grid {
+section:is([aria-label='Oss'], [aria-label='About']) .about-team-grid {
   margin-top: 3.5rem;
 }
 
-section[aria-label='Oss'] .about-competence-grid {
+section:is([aria-label='Oss'], [aria-label='About']) .about-competence-grid {
   margin-top: 2.5rem;
 }
 
 /* NOTE: Om oss — partner cooperation cards under Samarbeidspartnere title (no logo strip). */
-section[aria-label='Oss'] .section--partner-logos--oss-cards {
+section:is([aria-label='Oss'], [aria-label='About']) .section--partner-logos--oss-cards {
   background: transparent;
 }
 
-section[aria-label='Oss'] .section--partner-logos--oss-cards > .section-inner {
+section:is([aria-label='Oss'], [aria-label='About']) .section--partner-logos--oss-cards > .section-inner {
   margin: 0;
   padding-top: 64px;
   padding-bottom: 64px;
@@ -2234,16 +2234,16 @@ section[aria-label='Oss'] .section--partner-logos--oss-cards > .section-inner {
   max-width: none;
 }
 
-section[aria-label='Oss'] .section--partner-logos--oss-cards .cooperation-partners {
+section:is([aria-label='Oss'], [aria-label='About']) .section--partner-logos--oss-cards .cooperation-partners {
   margin-top: 1.25rem;
 }
 
-section[aria-label='Oss'] .about-competence-block:not(:first-child) .about-competence-block__title {
+section:is([aria-label='Oss'], [aria-label='About']) .about-competence-block:not(:first-child) .about-competence-block__title {
   margin-top: 2.5rem;
 }
 
 @media (min-width: 720px) {
-  section[aria-label='Oss']
+  section:is([aria-label='Oss'], [aria-label='About'])
     .about-competence-block:not(:first-child)
     .about-competence-block__title {
     margin-top: 0;
@@ -2612,7 +2612,7 @@ section[aria-label='Oss'] .about-competence-block:not(:first-child) .about-compe
 }
 
 /* NOTE: Tjenester service grid block. */
-section[aria-label='Tjenester'] .start-tjenester {
+section:is([aria-label='Tjenester'], [aria-label='Services']) .start-tjenester {
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
