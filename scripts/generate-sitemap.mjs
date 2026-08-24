@@ -27,7 +27,11 @@ function routeToSourceFile(route) {
     const [category, region] = route.slice('/category/'.length).split('/');
     return path.join(root, 'category', category, `${region}.html`);
   }
-  if (route.startsWith('/en/')) return path.join(root, `${route.slice(1)}.html`);
+  if (route === '/en' || route === '/en/') return path.join(root, 'en', 'index.html');
+  if (route.startsWith('/en/')) {
+    const slug = route.slice('/en/'.length);
+    return path.join(root, 'en', `${slug}.html`);
+  }
   return path.join(root, `${route.slice(1)}.html`);
 }
 
@@ -43,6 +47,9 @@ function sitemapHints(route) {
   if (route === '/') return { changefreq: 'weekly', priority: '1.0' };
   if (['/tjenester-prosess', '/prosjekter', '/blogg', '/oss'].includes(route)) {
     return { changefreq: 'weekly', priority: '0.9' };
+  }
+  if (['/en/', '/en/about', '/en/services', '/en/projects', '/en/contact'].includes(route)) {
+    return { changefreq: 'weekly', priority: '0.8' };
   }
   if (route === '/formaa-skaperverksted') {
     return { changefreq: 'weekly', priority: '0.8' };

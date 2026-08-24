@@ -1,5 +1,7 @@
 // NOTE: Shared public hub routes used by sitemap and AI/crawler discovery files.
 
+import { EN_HUB_ROUTES } from './lang-routes.mjs';
+
 export const SITE = 'https://formaa.no';
 
 /** Core indexable pages (extensionless public URLs). */
@@ -12,6 +14,7 @@ export const STATIC_HUB_ROUTES = [
   '/arrangement',
   '/formaa-skaperverksted',
   '/karriere',
+  ...EN_HUB_ROUTES,
   '/en/product-rendering',
   '/en/cad-modeling',
   '/en/product-animation',
