@@ -11,7 +11,8 @@
   // NOTE: Frame range from assets/images/Hero-Drill/ — update when final sequence is exported.
   const FRAME_START = 107;
   const FRAME_END = 160;
-  const FRAME_BASE_PATH = 'assets/images/Hero-Drill/';
+  // NOTE: Root-absolute so scrub works from / and /en/ alike.
+  const FRAME_BASE_PATH = '/assets/images/Hero-Drill/';
   // NOTE: Layout size for cover-fit math — matches 2K sequence frames so 4K frame 0107 scales without a jump to 0108+.
   const FRAME_LAYOUT_WIDTH = 1920;
   const FRAME_LAYOUT_HEIGHT = 1080;

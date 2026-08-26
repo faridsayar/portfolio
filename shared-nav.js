@@ -1,11 +1,66 @@
 // NOTE: Shared navigation component rendered on every page.
-function renderSharedNav() {
-  const navRoots = Array.from(document.querySelectorAll('nav.side-nav[data-mobile-nav]'));
-  if (navRoots.length === 0) return;
 
-  const rawPath = window.location.pathname.replace(/\/+$/, '');
-  const segments = rawPath.split('/').filter(Boolean);
-  const path = segments.length ? segments[segments.length - 1] : '';
+/** NOTE: Canonical public path for LANG_ROUTES lookup (extensionless, home = `/` or `/en/`). */
+function getLangRoutePath() {
+  let pathname = window.location.pathname || '/';
+  if (pathname.endsWith('.html')) {
+    pathname = pathname.slice(0, -'.html'.length);
+  }
+  if (pathname === '/en/index' || pathname === '/en') {
+    return '/en/';
+  }
+  if (pathname === '/index' || pathname === '') {
+    return '/';
+  }
+  const trimmed = pathname.replace(/\/+$/, '');
+  return trimmed || '/';
+}
+
+/** NOTE: Resolve NO ↔ EN target from LANG_ROUTES; fallback hubs when no pair exists. */
+function resolveLangSwitchHref(wantEnglish) {
+  const currentPath = getLangRoutePath();
+  const pair = window.LANG_ROUTES && window.LANG_ROUTES[currentPath];
+  if (pair) return pair;
+  return wantEnglish ? '/en/' : '/';
+}
+
+/** NOTE: Load shared route map once so every page can resolve language pairs without per-HTML script tags. */
+function ensureLangRoutes() {
+  if (window.LANG_ROUTES) return Promise.resolve();
+  if (window.__langRoutesPromise) return window.__langRoutesPromise;
+
+  window.__langRoutesPromise = new Promise((resolve) => {
+    const script = document.createElement('script');
+    script.src = '/assets/data/lang-routes.js?v=1';
+    script.onload = () => resolve();
+    script.onerror = () => resolve();
+    document.head.appendChild(script);
+  });
+
+  return window.__langRoutesPromise;
+}
+
+/** NOTE: Side-nav items — keep aligned with scripts/lib/shared-nav-markup.mjs. */
+function getSharedNavItems(segments, path) {
+  const isEnglish = segments[0] === 'en';
+
+  if (isEnglish) {
+    const enSlug = segments[1] || '';
+    const isEnHome = segments.length === 1;
+    const isEnServices =
+      enSlug === 'services' ||
+      enSlug === 'product-rendering' ||
+      enSlug === 'cad-modeling' ||
+      enSlug === 'product-animation';
+
+    return [
+      { href: '/en/', label: 'Home', current: isEnHome },
+      { href: '/en/about', label: 'About', current: enSlug === 'about' },
+      { href: '/en/services', label: 'Services', current: isEnServices },
+      { href: '/en/projects', label: 'Projects', current: enSlug === 'projects' },
+      { href: '/en/contact', label: 'Contact', current: enSlug === 'contact' },
+    ];
+  }
 
   const isApplicationFormPage =
     path === 'application-form.html' ||
@@ -26,8 +81,7 @@ function renderSharedNav() {
     path === 'formaa-skaperverksted.html' ||
     (segments.length === 1 && segments[0] === 'formaa-skaperverksted');
 
-  // NOTE: Extensionless hrefs match sitemap/canonical URLs; GitHub Pages and Apache both resolve them to *.html files.
-  const items = [
+  return [
     { href: '/', label: 'Hjem', current: segments.length === 0 },
     {
       href: '/oss',
@@ -59,6 +113,19 @@ function renderSharedNav() {
       current: isApplicationFormPage,
     },
   ];
+}
+
+function renderSharedNav() {
+  const navRoots = Array.from(document.querySelectorAll('nav.side-nav[data-mobile-nav]'));
+  if (navRoots.length === 0) return;
+
+  const rawPath = window.location.pathname.replace(/\/+$/, '');
+  const segments = rawPath.split('/').filter(Boolean);
+  const path = segments.length ? segments[segments.length - 1] : '';
+  const isEnglish = segments[0] === 'en';
+
+  // NOTE: Extensionless hrefs match sitemap/canonical URLs; GitHub Pages and Apache both resolve them to *.html files.
+  const items = getSharedNavItems(segments, path);
 
   const linksMarkup = items
     .map(
@@ -79,22 +146,38 @@ function renderSharedNav() {
           <span class="lang-switch__label">EN</span>
         </label>`;
 
+  const navAriaLabel = isEnglish ? 'Navigation' : 'Navigasjon';
+  const openMenuLabel = isEnglish ? 'Open menu' : 'Utvid meny';
+  const closeMenuLabel = isEnglish ? 'Close menu' : 'Lukk meny';
+
   // NOTE: Root-absolute extensionless paths match public canonical URLs in sitemap.xml.
-  const footerHrefByKey = {
-    projects: '/prosjekter',
-    categories: '/category/industridesign/norge',
-    insights: '/blogg',
-    'tjenester-prosess': '/tjenester-prosess',
-    about: '/oss',
-    arrangement: '/arrangement',
-    skaperverksted: '/formaa-skaperverksted',
-    application: '/application-form',
-    pricing: '/prisestimat',
-  };
+  const footerHrefByKey = isEnglish
+    ? {
+        home: '/en/',
+        about: '/en/about',
+        services: '/en/services',
+        projects: '/en/projects',
+        application: '/en/contact',
+        'product-rendering': '/en/product-rendering',
+        'cad-modeling': '/en/cad-modeling',
+        'product-animation': '/en/product-animation',
+      }
+    : {
+        projects: '/prosjekter',
+        categories: '/category/industridesign/norge',
+        insights: '/blogg',
+        'tjenester-prosess': '/tjenester-prosess',
+        about: '/oss',
+        arrangement: '/arrangement',
+        skaperverksted: '/formaa-skaperverksted',
+        application: '/application-form',
+        pricing: '/prisestimat',
+      };
 
   navRoots.forEach((nav) => {
     if (nav.dataset.sharedNavHandled === 'true') return;
     nav.dataset.sharedNavHandled = 'true';
+    nav.setAttribute('aria-label', navAriaLabel);
 
     // NOTE: Build-inlined nav already has links; only inject when components-loader left an empty shell.
     const hasLinks = nav.querySelector('.side-nav__link');
@@ -103,7 +186,7 @@ function renderSharedNav() {
       <button
         class="side-nav__toggle"
         type="button"
-        aria-label="Utvid meny"
+        aria-label="${openMenuLabel}"
         aria-expanded="false"
         aria-controls="side-nav-content"
         data-mobile-nav-toggle
@@ -115,6 +198,15 @@ function renderSharedNav() {
         ${langSwitchMarkup}
       </div>
     `;
+    } else if (isEnglish) {
+      // NOTE: Replace any build-inlined NO links so EN pages always show the English MVP nav.
+      const navContent = nav.querySelector('[data-mobile-nav-content]');
+      if (navContent) {
+        navContent.querySelectorAll('.side-nav__link').forEach((link) => link.remove());
+        const divider = navContent.querySelector('.side-nav__divider');
+        if (divider) divider.insertAdjacentHTML('beforebegin', linksMarkup);
+        else navContent.insertAdjacentHTML('afterbegin', linksMarkup);
+      }
     }
 
     // NOTE: Older build-inlined navs omit the language switch — append it so the control stays visible.
@@ -123,15 +215,14 @@ function renderSharedNav() {
       navContent.insertAdjacentHTML('beforeend', langSwitchMarkup);
     }
 
-    // NOTE: Reflect current locale and jump between NO homepage and the main EN landing.
+    // NOTE: Reflect current locale and jump via LANG_ROUTES (see assets/data/lang-routes.js).
     const langInput = nav.querySelector('#lang-switch');
     if (langInput && langInput.dataset.langSwitchBound !== 'true') {
       langInput.dataset.langSwitchBound = 'true';
-      const isEnglish = segments[0] === 'en';
       langInput.checked = isEnglish;
       langInput.setAttribute('aria-label', isEnglish ? 'Switch to Norwegian' : 'Switch to English');
       langInput.addEventListener('change', () => {
-        window.location.href = langInput.checked ? '/en/product-rendering' : '/';
+        window.location.href = resolveLangSwitchHref(langInput.checked);
       });
     }
 
@@ -141,13 +232,13 @@ function renderSharedNav() {
     const closeMenu = () => {
       nav.classList.remove('is-open');
       toggle.setAttribute('aria-expanded', 'false');
-      toggle.setAttribute('aria-label', 'Utvid meny');
+      toggle.setAttribute('aria-label', openMenuLabel);
     };
 
     const openMenu = () => {
       nav.classList.add('is-open');
       toggle.setAttribute('aria-expanded', 'true');
-      toggle.setAttribute('aria-label', 'Lukk meny');
+      toggle.setAttribute('aria-label', closeMenuLabel);
     };
 
     toggle.addEventListener('click', () => {
@@ -169,5 +260,9 @@ function renderSharedNav() {
   });
 }
 
-renderSharedNav();
-document.addEventListener('components:ready', renderSharedNav);
+function bootstrapSharedNav() {
+  ensureLangRoutes().then(renderSharedNav);
+}
+
+bootstrapSharedNav();
+document.addEventListener('components:ready', bootstrapSharedNav);

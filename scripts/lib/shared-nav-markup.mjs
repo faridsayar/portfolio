@@ -39,6 +39,26 @@ export function getNavContextFromPublicPath(publicPath) {
 
 /** NOTE: Main nav items with current-page flags — keep aligned with shared-nav.js. */
 export function getNavItems({ segments, path }) {
+  const isEnglish = segments[0] === 'en';
+
+  if (isEnglish) {
+    const enSlug = segments[1] || '';
+    const isEnHome = segments.length === 1;
+    const isEnServices =
+      enSlug === 'services' ||
+      enSlug === 'product-rendering' ||
+      enSlug === 'cad-modeling' ||
+      enSlug === 'product-animation';
+
+    return [
+      { href: '/en/', label: 'Home', current: isEnHome },
+      { href: '/en/about', label: 'About', current: enSlug === 'about' },
+      { href: '/en/services', label: 'Services', current: isEnServices },
+      { href: '/en/projects', label: 'Projects', current: enSlug === 'projects' },
+      { href: '/en/contact', label: 'Contact', current: enSlug === 'contact' },
+    ];
+  }
+
   const isApplicationFormPage =
     path === 'application-form.html' ||
     (segments.length === 1 && segments[0] === 'application-form');
@@ -96,6 +116,9 @@ export function getNavItems({ segments, path }) {
 export function buildSideNavMarkup(publicPath) {
   const navContext = getNavContextFromPublicPath(publicPath);
   const items = getNavItems(navContext);
+  const isEnglish = navContext.segments[0] === 'en';
+  const navAriaLabel = isEnglish ? 'Navigation' : 'Navigasjon';
+  const openMenuLabel = isEnglish ? 'Open menu' : 'Utvid meny';
 
   const linksMarkup = items
     .map(
@@ -105,11 +128,11 @@ export function buildSideNavMarkup(publicPath) {
     .join('\n        ');
 
   return `${SIDE_NAV_BEGIN}
-    <nav class="side-nav" aria-label="Navigasjon" data-mobile-nav data-static-nav="true">
+    <nav class="side-nav" aria-label="${navAriaLabel}" data-mobile-nav data-static-nav="true">
       <button
         class="side-nav__toggle"
         type="button"
-        aria-label="Utvid meny"
+        aria-label="${openMenuLabel}"
         aria-expanded="false"
         aria-controls="side-nav-content"
         data-mobile-nav-toggle

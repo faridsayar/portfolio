@@ -7,21 +7,24 @@ window.__COMPANY_PARTNERS_MANIFEST = {
       "url": "https://epleapp.no/",
       "source": "fjeldberg-tech-logo.png",
       "logo": "fjeldberg-tech-logo.webp",
-      "description": "Norsk partner innen elektronikk og kretsdesign — skjema, komponentvalg, PCB-layout og validering for hardware i produktutvikling."
+      "description": "Norsk partner innen elektronikk og kretsdesign — skjema, komponentvalg, PCB-layout og validering for hardware i produktutvikling.",
+      "descriptionEn": "Norwegian partner for electronics and circuit design — schematics, component selection, PCB layout, and validation for hardware product development."
     },
     {
       "name": "Yanmee",
       "url": "https://yanmee.com/",
       "source": "yanmee-logo-upscaled.png",
       "logo": "yanmee-logo.webp",
-      "description": "Kina-basert selskap som spesialiserer seg på presisjonsprototyper, CNC-maskinering og lavvolumsproduksjon for produktutvikling. Vår samarbeidspartner innen sertifisert validering og lavserieproduksjon."
+      "description": "Kina-basert selskap som spesialiserer seg på presisjonsprototyper, CNC-maskinering og lavvolumsproduksjon for produktutvikling. Vår samarbeidspartner innen sertifisert validering og lavserieproduksjon.",
+      "descriptionEn": "China-based partner specializing in precision prototypes, CNC machining, and low-volume production for product development — certified validation and small-series manufacturing."
     },
     {
       "name": "Kroloftet",
       "url": "https://www.kroloftet.no/",
       "source": "kroloftet-logo.png",
       "logo": "kroloftet-logo.webp",
-      "description": "Vårt verkstedsmiljø i Oslo — arbeidskollektiv med tilgang til treverk, metall, plast, 3D-printere og CNC for prototyper og småserieproduksjon."
+      "description": "Vårt verkstedsmiljø i Oslo — arbeidskollektiv med tilgang til treverk, metall, plast, 3D-printere og CNC for prototyper og småserieproduksjon.",
+      "descriptionEn": "Our workshop community in Oslo — shared space with wood, metal, plastics, 3D printers, and CNC for prototypes and small-series production."
     },
     {
       "name": "Seventh Seal",
@@ -34,14 +37,16 @@ window.__COMPANY_PARTNERS_MANIFEST = {
       "url": "https://maketronics.no/",
       "source": "maketronics-logo.png",
       "logo": "maketronics-logo.webp",
-      "description": "Elektronikkconsultancy i Oslo — utvikler elektronikk og tilhørende firmware for industri og underholdning."
+      "description": "Elektronikkconsultancy i Oslo — utvikler elektronikk og tilhørende firmware for industri og underholdning.",
+      "descriptionEn": "Electronics consultancy in Oslo — develops electronics and related firmware for industry and entertainment."
     },
     {
       "name": "Bitraf",
       "url": "https://bitraf.no/",
       "source": "bitraf-logo.png",
       "logo": "bitraf-logo.webp",
-      "description": "Oslos største makerspace — delt verksted med CNC, laser, 3D-print og elektronikk for prototyping og småserie."
+      "description": "Oslos største makerspace — delt verksted med CNC, laser, 3D-print og elektronikk for prototyping og småserie.",
+      "descriptionEn": "Oslo’s largest makerspace — shared workshop with CNC, laser, 3D printing, and electronics for prototyping and small series."
     },
     {
       "name": "Modalen Engineering",
@@ -49,7 +54,8 @@ window.__COMPANY_PARTNERS_MANIFEST = {
       "source": "modalen-engineering-logo.png",
       "logo": "modalen-engineering-logo.webp",
       "invertLogo": true,
-      "description": "Norsk partner innen elektronikk og PCB — analog, digital og RF-design fra konsept til ferdig hardware, inkludert rådgivning og firmware."
+      "description": "Norsk partner innen elektronikk og PCB — analog, digital og RF-design fra konsept til ferdig hardware, inkludert rådgivning og firmware.",
+      "descriptionEn": "Norwegian partner for electronics and PCB — analog, digital, and RF design from concept to finished hardware, including consulting and firmware."
     }
   ]
 };

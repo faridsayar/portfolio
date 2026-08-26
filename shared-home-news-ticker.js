@@ -4,7 +4,7 @@
 
   // KAPASITET (grønn merknad): maks 102 tegn per melding uten lenke, maks 96 tegn med lenkeikon — 3 linjer @ 21rem boks (se styles/home.css).
   // NOTE: Manual message list — optional href shows link icon; published is ISO date (yyyy-mm-dd).
-  const HOME_NEWS_MESSAGES = [
+  const HOME_NEWS_MESSAGES_NO = [
     {
       text: 'Barnekurs i Oslo: Formaa-Skaperverksted for barn 5–9 år — meld interesse.',
       href: '/formaa-skaperverksted',
@@ -42,6 +42,48 @@
     },
   ];
 
+  // NOTE: English ticker copy for /en/ pages (keep roughly the same length limits as NO).
+  const HOME_NEWS_MESSAGES_EN = [
+    {
+      text: 'Kids course in Oslo: Formaa makerspace for ages 5–9 — register interest.',
+      href: '/formaa-skaperverksted',
+      published: '2026-07-12',
+    },
+    {
+      text: 'Free sketch & idea workshop Aug 19 — sign up. Limited seats.',
+      href: 'https://formaa.no/arrangement',
+      published: '2026-06-25',
+    },
+    {
+      text: 'We joined a Siemens webinar on the TIA Selection Tool, SIVA and Norwegian industry.',
+      href: 'https://www.siemens.com/no-no/',
+      published: '2026-06-25',
+    },
+    {
+      text: 'We are looking for someone who wants hands-on B2B marketing, lead gen and business development experience.',
+      href: '/karriere',
+      published: '2026-06-17',
+    },
+    {
+      text: 'Formaa joined Ground Control #5, Space for Founders at Mesh Oslo on June 24.',
+      href: 'https://www.spaceport-norway.com/ground-control/ground-control-5',
+      published: '2026-06-24',
+    },
+    {
+      text: 'New partnerships with Fjelderberg Tech and Maketronics — electronics expertise and production access!',
+      href: '/en/services',
+      published: '2026-06-16',
+    },
+    {
+      text: 'Completed the OBSEED project with component selection, CAD model and production readiness.',
+      href: '/en/projects',
+      published: '2026-05-15',
+    },
+  ];
+
+  const isEnglishPage = (window.location.pathname || '').startsWith('/en');
+  const HOME_NEWS_MESSAGES = isEnglishPage ? HOME_NEWS_MESSAGES_EN : HOME_NEWS_MESSAGES_NO;
+
   function formatNorwegianPublishDate(isoDate) {
     const match = String(isoDate).match(/^(\d{4})-(\d{2})-(\d{2})/);
     if (!match) return '';
@@ -58,7 +100,7 @@
     const linkMarkup = message.href
       ? `<a class="home-news-ticker__link" href="${message.href}"${
           isExternalHref(message.href) ? ' target="_blank" rel="noopener noreferrer"' : ''
-        } aria-label="Les mer">
+        } aria-label="${isEnglishPage ? 'Read more' : 'Les mer'}">
           <img class="home-news-ticker__link-icon" src="/assets/small-arrow-right.svg" alt="" width="12" height="12" aria-hidden="true" />
         </a>`
       : '';
