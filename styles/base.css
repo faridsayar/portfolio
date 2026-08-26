@@ -1714,7 +1714,8 @@ section:is([aria-label='Tjenester'], [aria-label='Services']) .about-top-graphic
   margin-top: 2.5rem;
 }
 
-section:is([aria-label='Tjenester display line'], [aria-label='Services display line']) .section-inner {
+section:is([aria-label='Tjenester display line'], [aria-label='Services display line'])
+  .section-inner {
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
@@ -1884,7 +1885,8 @@ section:is([aria-label='Prosess i bilder'], [aria-label='Process in images']) .s
 }
 
 /* NOTE: Tjenester Prosess page — verksteder + Kina-produksjon block after image grid. */
-section:is([aria-label='Verksteder og produksjon'], [aria-label='Workshops and production']) .section-inner {
+section:is([aria-label='Verksteder og produksjon'], [aria-label='Workshops and production'])
+  .section-inner {
   padding-top: 0;
   padding-bottom: 4rem;
 }
@@ -2109,16 +2111,21 @@ section:is([aria-label='Oss'], [aria-label='About']) .section-lead--after-grid {
 }
 
 /* NOTE: Credibility block — no top margin on first block; margin collapses through padding-top: 0 and shows page grey. */
-section:is([aria-label='Oss'], [aria-label='About']):not(:first-of-type) .section-lead--after-grid:first-child {
+section:is([aria-label='Oss'], [aria-label='About']):not(:first-of-type)
+  .section-lead--after-grid:first-child {
   margin-top: 0;
 }
 
-section:is([aria-label='Oss'], [aria-label='About']) .section-lead--after-grid > .section-lead:last-child {
+section:is([aria-label='Oss'], [aria-label='About'])
+  .section-lead--after-grid
+  > .section-lead:last-child {
   margin-bottom: 0;
 }
 
 /* NOTE: Extra space before prominent prosess link at end of about-page SEO block. */
-section:is([aria-label='Oss'], [aria-label='About']) .section-lead--after-grid > .category-projects-link {
+section:is([aria-label='Oss'], [aria-label='About'])
+  .section-lead--after-grid
+  > .category-projects-link {
   margin-top: 3rem;
 }
 
@@ -2134,7 +2141,10 @@ section:is([aria-label='Oss'], [aria-label='About']) .about-top-graphic + .secti
   margin-top: 12px;
 }
 
-section:is([aria-label='Oss'], [aria-label='About']) .about-top-graphic + .section-lead + .section-title {
+section:is([aria-label='Oss'], [aria-label='About'])
+  .about-top-graphic
+  + .section-lead
+  + .section-title {
   padding-top: 62px;
   padding-bottom: 62px;
   margin-top: 0;
@@ -2225,7 +2235,9 @@ section:is([aria-label='Oss'], [aria-label='About']) .section--partner-logos--os
   background: transparent;
 }
 
-section:is([aria-label='Oss'], [aria-label='About']) .section--partner-logos--oss-cards > .section-inner {
+section:is([aria-label='Oss'], [aria-label='About'])
+  .section--partner-logos--oss-cards
+  > .section-inner {
   margin: 0;
   padding-top: 64px;
   padding-bottom: 64px;
@@ -2234,11 +2246,15 @@ section:is([aria-label='Oss'], [aria-label='About']) .section--partner-logos--os
   max-width: none;
 }
 
-section:is([aria-label='Oss'], [aria-label='About']) .section--partner-logos--oss-cards .cooperation-partners {
+section:is([aria-label='Oss'], [aria-label='About'])
+  .section--partner-logos--oss-cards
+  .cooperation-partners {
   margin-top: 1.25rem;
 }
 
-section:is([aria-label='Oss'], [aria-label='About']) .about-competence-block:not(:first-child) .about-competence-block__title {
+section:is([aria-label='Oss'], [aria-label='About'])
+  .about-competence-block:not(:first-child)
+  .about-competence-block__title {
   margin-top: 2.5rem;
 }
 

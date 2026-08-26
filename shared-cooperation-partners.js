@@ -11,9 +11,17 @@
   function renderCooperationPartners() {
     const root = document.querySelector('[data-cooperation-partners]');
     const manifest = window.__COMPANY_PARTNERS_MANIFEST;
-    const partners = (manifest?.partners || []).filter((partner) => partner.description?.trim());
+    // NOTE: Prefer descriptionEn on English pages; fall back to Norwegian description.
+    const isEnglish = document.documentElement.lang === 'en';
+    const partners = (manifest?.partners || []).filter((partner) => {
+      const text = isEnglish
+        ? partner.descriptionEn?.trim() || partner.description?.trim()
+        : partner.description?.trim();
+      return Boolean(text);
+    });
     if (!root || partners.length === 0) return;
 
+    root.setAttribute('aria-label', isEnglish ? 'Partners' : 'Samarbeidspartnere');
     root.replaceChildren();
 
     partners.forEach((partner) => {
@@ -56,7 +64,9 @@
 
       const text = document.createElement('p');
       text.className = 'cooperation-card__text';
-      text.textContent = partner.description;
+      text.textContent = isEnglish
+        ? partner.descriptionEn?.trim() || partner.description
+        : partner.description;
       card.append(text);
 
       root.append(card);

@@ -1548,6 +1548,10 @@ class SinglePagePortfolio {
     const limit = limitAttr ? Math.max(0, parseInt(limitAttr, 10) || 0) : catalog.length;
     const visibleCatalog = limit > 0 ? catalog.slice(0, limit) : catalog;
 
+    // NOTE: EN hubs use html[lang=en]; keep project tile aria prefix in the page language.
+    const isEnglish = document.documentElement.lang === 'en';
+    const viewPrefix = isEnglish ? 'View' : 'Se';
+
     const fragment = document.createDocumentFragment();
     visibleCatalog.forEach((project, index) => {
       // NOTE: Project card image is explicitly configured via `thumbnail` in project-folders.json.
@@ -1555,7 +1559,7 @@ class SinglePagePortfolio {
       const card = document.createElement('a');
       card.className = 'project-tile';
       card.href = this.getProjectSharePath(project.slug);
-      card.setAttribute('aria-label', `Se ${project.title}`);
+      card.setAttribute('aria-label', `${viewPrefix} ${project.title}`);
       card.innerHTML = `
         <div class="project-thumb" aria-hidden="true">
           <img class="project-thumb__img" src="${imgSrc}" alt="${project.title}" loading="lazy" />

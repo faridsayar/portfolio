@@ -12,7 +12,9 @@ const HREFLANG_RE = /\s*<link rel="alternate" hreflang="[^"]+" href="[^"]+" \/>/
 const HREFLANG_MARKER = '<!-- NOTE: hreflang alternates (scripts/inject-hreflang.mjs) -->';
 
 function stripHreflang(html) {
-  return html.replace(HREFLANG_RE, '').replace(/\s*<!-- NOTE: hreflang alternates[^\n]* -->\n?/g, '');
+  return html
+    .replace(HREFLANG_RE, '')
+    .replace(/\s*<!-- NOTE: hreflang alternates[^\n]* -->\n?/g, '');
 }
 
 function injectHreflang(html, block) {

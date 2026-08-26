@@ -17,6 +17,11 @@
     const grids = document.querySelectorAll('[data-partner-logos-grid]');
     if (grids.length === 0) return;
 
+    // NOTE: Locale from <html lang> so EN hubs get English aria labels.
+    const isEnglish = document.documentElement.lang === 'en';
+    const fallbackName = isEnglish ? 'Partner' : 'Samarbeidspartner';
+    const newTabSuffix = isEnglish ? 'opens in a new tab' : 'åpnes i ny fane';
+
     const logoHeight = manifest.logoHeight || 72;
     document.documentElement.style.setProperty('--partner-logo-height', `${logoHeight}px`);
 
@@ -24,7 +29,7 @@
       grid.replaceChildren();
 
       partners.forEach((partner) => {
-        const name = partner.name || 'Samarbeidspartner';
+        const name = partner.name || fallbackName;
         const url = partner.url || '';
         const src = resolveLogoSrc(partner.logo);
         if (!src) return;
@@ -49,7 +54,7 @@
           link.href = url;
           link.target = '_blank';
           link.rel = 'noopener noreferrer';
-          link.setAttribute('aria-label', `${name} (åpnes i ny fane)`);
+          link.setAttribute('aria-label', `${name} (${newTabSuffix})`);
           link.append(img);
           item.append(link);
         } else {
