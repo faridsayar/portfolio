@@ -55,6 +55,11 @@ export function getNavItems({ segments, path }) {
       { href: '/en/about', label: 'About', current: enSlug === 'about' },
       { href: '/en/services', label: 'Services', current: isEnServices },
       { href: '/en/projects', label: 'Projects', current: enSlug === 'projects' },
+      {
+        href: '/en/creative-workshop',
+        label: 'Workshop',
+        current: enSlug === 'creative-workshop',
+      },
       { href: '/en/contact', label: 'Contact', current: enSlug === 'contact' },
     ];
   }

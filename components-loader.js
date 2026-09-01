@@ -498,7 +498,12 @@
           response = await fetch(`components/${name}.html`, { cache: 'no-store' });
         }
         if (!response.ok) throw new Error(`Component fetch failed: ${name}`);
-        const markup = await response.text();
+        let markup = await response.text();
+        if (slot.hasAttribute('data-hide-privacy-faq-link')) {
+          const doc = new DOMParser().parseFromString(markup, 'text/html');
+          doc.querySelector('.section--privacy-trust .category-projects-link')?.remove();
+          markup = doc.body.innerHTML;
+        }
         slot.outerHTML = markup;
       } catch (_error) {
         if (fallbackMarkup) slot.outerHTML = fallbackMarkup;
