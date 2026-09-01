@@ -11,11 +11,6 @@
       published: '2026-07-12',
     },
     {
-      text: 'Gratis skisse- og idéworkshop 19. august — meld deg på. Begrenset antall plasser.',
-      href: 'https://formaa.no/arrangement',
-      published: '2026-06-25',
-    },
-    {
       text: 'Vi har deltatt i interessant Webinar fra Siemens om TIA Selection Tool, SIVA og norsk industri.',
       href: 'https://www.siemens.com/no-no/',
       published: '2026-06-25',
@@ -48,11 +43,6 @@
       text: 'Kids course in Oslo: Formaa makerspace for ages 5–9 — register interest.',
       href: '/formaa-skaperverksted',
       published: '2026-07-12',
-    },
-    {
-      text: 'Free sketch & idea workshop Aug 19 — sign up. Limited seats.',
-      href: 'https://formaa.no/arrangement',
-      published: '2026-06-25',
     },
     {
       text: 'We joined a Siemens webinar on the TIA Selection Tool, SIVA and Norwegian industry.',
