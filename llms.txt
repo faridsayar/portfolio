@@ -15,6 +15,12 @@ important_urls:
 - https://formaa.no/arrangement
 - https://formaa.no/formaa-skaperverksted
 - https://formaa.no/karriere
+- https://formaa.no/en/
+- https://formaa.no/en/about
+- https://formaa.no/en/services
+- https://formaa.no/en/projects
+- https://formaa.no/en/contact
+- https://formaa.no/en/creative-workshop
 - https://formaa.no/en/product-rendering
 - https://formaa.no/en/cad-modeling
 - https://formaa.no/en/product-animation
