@@ -74,9 +74,6 @@ function main() {
   );
   console.log('Wrote prosjekter/index.html (projects hub)');
 
-  // NOTE: Legacy prosjekt-{slug}.html redirect stubs are no longer generated —
-  // .htaccess 301s prosjekt-{slug}(.html) → /prosjekter/{slug} in a single hop.
-
   console.log(`Done (${written} static project pages).`);
 }
 

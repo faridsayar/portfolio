@@ -55,6 +55,11 @@ export function getNavItems({ segments, path }) {
       { href: '/en/about', label: 'About', current: enSlug === 'about' },
       { href: '/en/services', label: 'Services', current: isEnServices },
       { href: '/en/projects', label: 'Projects', current: enSlug === 'projects' },
+      {
+        href: '/en/creative-workshop',
+        label: 'Workshop',
+        current: enSlug === 'creative-workshop',
+      },
       { href: '/en/contact', label: 'Contact', current: enSlug === 'contact' },
     ];
   }
@@ -70,9 +75,6 @@ export function getNavItems({ segments, path }) {
     path.startsWith('prosjekt-');
 
   const isBloggPage = path === 'blogg.html' || path.startsWith('blogg-') || segments[0] === 'blogg';
-
-  const isArrangementPage =
-    path === 'arrangement.html' || (segments.length === 1 && segments[0] === 'arrangement');
 
   const isSkaperverkstedPage =
     path === 'formaa-skaperverksted.html' ||
@@ -94,11 +96,6 @@ export function getNavItems({ segments, path }) {
     },
     { href: '/prosjekter', label: 'Prosjekter', current: isProjectPage },
     { href: '/blogg', label: 'Blogg', current: isBloggPage },
-    {
-      href: '/arrangement',
-      label: 'Arrangement',
-      current: isArrangementPage,
-    },
     {
       href: '/formaa-skaperverksted',
       label: 'Skaperverksted',

@@ -9,6 +9,7 @@ export const HREFLANG_PAIRS = [
   { nb: '/tjenester-prosess', en: '/en/services' },
   { nb: '/prosjekter', en: '/en/projects' },
   { nb: '/application-form', en: '/en/contact' },
+  { nb: '/formaa-skaperverksted', en: '/en/creative-workshop' },
 ];
 
 /** Public route → repo HTML source (for hreflang injection). */
@@ -23,6 +24,8 @@ export const HREFLANG_SOURCE_FILES = {
   '/en/services': 'en/services.html',
   '/en/projects': 'en/projects.html',
   '/en/contact': 'en/contact.html',
+  '/formaa-skaperverksted': 'formaa-skaperverksted.html',
+  '/en/creative-workshop': 'en/creative-workshop.html',
 };
 
 /** Bidirectional paths for runtime language switch (includes EN service landings). */
@@ -38,6 +41,8 @@ export const NAV_LANG_ROUTES = {
   '/en/services': '/tjenester-prosess',
   '/en/projects': '/prosjekter',
   '/en/contact': '/application-form',
+  '/formaa-skaperverksted': '/en/creative-workshop',
+  '/en/creative-workshop': '/formaa-skaperverksted',
   // NOTE: EN service landings pair with NO services hub (nav only — no hreflang).
   '/en/product-rendering': '/tjenester-prosess',
   '/en/cad-modeling': '/tjenester-prosess',
