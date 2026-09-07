@@ -1,0 +1,4 @@
+Saira (latin + latin-ext woff2)
+Copyright (c) Omnibus-Type / Héctor Gatti
+Licensed under the SIL Open Font License, Version 1.1
+https://openfontlicense.org

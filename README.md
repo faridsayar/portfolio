@@ -16,6 +16,7 @@ No runtime build step is required.
 The project now uses a safe split strategy:
 
 - `styles/base.css` - shared global styles (tokens, typography, nav/footer, reusable blocks)
+- `styles/home-critical.css` - homepage first-paint (hero LCP); full home/base bundles load async
 - `styles/home.css` - homepage-specific style bundle
 - `styles/article.css` - insights/article-specific style bundle
 - `styles/pricing.css` - pricing page bundle

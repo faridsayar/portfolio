@@ -47,7 +47,8 @@
     <!-- NOTE: hreflang alternates (scripts/inject-hreflang.mjs) -->
     <link rel="alternate" hreflang="nb" href="https://formaa.no/" />
     <link rel="alternate" hreflang="en" href="https://formaa.no/en/" />
-    <link rel="alternate" hreflang="x-default" href="https://formaa.no/" />    <link
+    <link rel="alternate" hreflang="x-default" href="https://formaa.no/" />
+    <link
       rel="sitemap"
       type="application/xml"
       title="Sitemap"
@@ -104,23 +105,38 @@
       sizes="192x192"
     />
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- NOTE: Preload primary font stylesheet to reduce render delay for above-the-fold text. -->
+    <!-- NOTE: Preload LCP font file (not a Google CSS stylesheet) so hero text can paint with Saira. -->
     <link
       rel="preload"
+      as="font"
+      type="font/woff2"
+      href="/assets/fonts/saira-latin.woff2"
+      crossorigin
+    />
+    <!-- NOTE: First-paint styles only; full bundles are non-blocking. -->
+    <link rel="stylesheet" href="/styles/home-critical.css?v=1" />
+    <link
+      rel="preload"
+      href="/styles/base.css?v=46"
       as="style"
-      href="https://fonts.googleapis.com/css2?family=Saira:wght@400;600;800&display=swap"
+      onload="
+        this.onload = null;
+        this.rel = 'stylesheet';
+      "
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Saira:wght@400;600;800&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      href="/styles/home.css?v=19"
+      as="style"
+      onload="
+        this.onload = null;
+        this.rel = 'stylesheet';
+      "
     />
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="/styles/base.css?v=45" />
-    <link rel="stylesheet" href="/styles/home.css?v=18" />
+    <noscript>
+      <link rel="stylesheet" href="/styles/base.css?v=46" />
+      <link rel="stylesheet" href="/styles/home.css?v=19" />
+    </noscript>
 
     <!-- NOTE: Google Analytics 4 global site tag for tracking website traffic. -->
     <!-- Google tag (gtag.js) -->
