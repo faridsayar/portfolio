@@ -17,6 +17,8 @@
   const FRAME_LAYOUT_WIDTH = 1920;
   const FRAME_LAYOUT_HEIGHT = 1080;
   const MIN_SCRUB_VIEWPORTS = 0.22;
+  // NOTE: Keep first-load payload to frame 0; fetch a small window only while the user scrubs.
+  const FRAME_LOOKAHEAD = 3;
 
   const root = document.querySelector(SCRUB_ROOT_SELECTOR);
   const stage = root?.querySelector(STAGE_SELECTOR);
@@ -38,8 +40,11 @@
 
   /** @type {(HTMLImageElement | null)[]} */
   const frameImages = new Array(frameCount).fill(null);
+  /** @type {Map<number, Promise<HTMLImageElement>>} */
+  const inflightLoads = new Map();
   let framesReady = false;
   let activeFrameIndex = -1;
+  let desiredFrameIndex = 0;
   let scrubStartY = 0;
   let scrubDistance = 1;
   let tickScheduled = false;
@@ -60,9 +65,13 @@
       return Promise.resolve(existing);
     }
 
-    return new Promise((resolve, reject) => {
+    const inflight = inflightLoads.get(index);
+    if (inflight) return inflight;
+
+    const promise = new Promise((resolve, reject) => {
       const image = new Image();
       image.decoding = 'async';
+      image.fetchPriority = 'low';
       image.onload = () => {
         frameImages[index] = image;
         resolve(image);
@@ -70,6 +79,24 @@
       image.onerror = () => reject(new Error(`Failed to load frame ${index}`));
       image.src = framePaths[index];
     });
+    inflightLoads.set(index, promise);
+    promise.finally(() => inflightLoads.delete(index));
+    return promise;
+  }
+
+  function paintIfDesired(index) {
+    if (index !== desiredFrameIndex) return;
+    paintFrame(index);
+  }
+
+  function prefetchAround(index) {
+    if (shouldUseStaticFrame) return;
+    const last = Math.min(frameCount - 1, index + FRAME_LOOKAHEAD);
+    for (let i = index; i <= last; i += 1) {
+      loadFrameImage(i)
+        .then(() => paintIfDesired(i))
+        .catch(() => null);
+    }
   }
 
   function resizeCanvas() {
@@ -115,19 +142,11 @@
     paintFrame(previousIndex >= 0 ? previousIndex : 0);
   }
 
-  async function preloadFrames() {
+  async function preloadFirstFrame() {
     await loadFrameImage(0);
     framesReady = true;
+    desiredFrameIndex = 0;
     paintFrame(0);
-
-    if (shouldUseStaticFrame) return;
-
-    await Promise.all(
-      framePaths.map((_, index) => {
-        if (index === 0) return Promise.resolve(null);
-        return loadFrameImage(index).catch(() => null);
-      })
-    );
   }
 
   function measureScrubRange() {
@@ -156,8 +175,11 @@
     if (!framesReady) return;
 
     const progress = getScrubProgress();
-    const frameIndex = Math.round(progress * (frameCount - 1));
-    paintFrame(frameIndex);
+    desiredFrameIndex = Math.round(progress * (frameCount - 1));
+    if (!shouldUseStaticFrame && (desiredFrameIndex > 0 || window.scrollY > 8)) {
+      prefetchAround(desiredFrameIndex);
+    }
+    paintFrame(desiredFrameIndex);
   }
 
   function scheduleScrubUpdate() {
@@ -189,7 +211,7 @@
   async function boot() {
     resizeCanvas();
     measureScrubRange();
-    await preloadFrames();
+    await preloadFirstFrame();
     bindScrubListeners();
     updateScrubFrame();
 

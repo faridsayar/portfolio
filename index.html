@@ -283,8 +283,15 @@
         <div class="start-intro start-intro--overlay">
           <div class="start-intro__media-zone">
             <div class="start-intro__backdrop" aria-hidden="true">
-              <video class="start-intro__video" autoplay muted loop playsinline preload="metadata">
-                <source src="assets/images/shuffle-images/proton-gif2.mov" type="video/mp4" />
+              <video
+                class="start-intro__video"
+                muted
+                loop
+                playsinline
+                preload="none"
+                data-lazy-video
+              >
+                <source data-src="assets/images/shuffle-images/proton-gif2.mov" type="video/mp4" />
               </video>
               <div class="start-intro__gradient"></div>
             </div>
@@ -380,9 +387,16 @@
         <div class="start-intro start-intro--overlay">
           <div class="start-intro__media-zone">
             <div class="start-intro__backdrop" aria-hidden="true">
-              <video class="start-intro__video" autoplay muted loop playsinline preload="metadata">
+              <video
+                class="start-intro__video"
+                muted
+                loop
+                playsinline
+                preload="none"
+                data-lazy-video
+              >
                 <source
-                  src="assets/images/shuffle-images/3d-printer-working.mp4"
+                  data-src="assets/images/shuffle-images/3d-printer-working.mp4"
                   type="video/mp4"
                 />
               </video>
@@ -1323,7 +1337,8 @@
 
     <script src="components-loader.js?v=5" defer></script>
     <script src="shared-nav.js?v=2" defer></script>
-    <script src="shared-home-hero-scrub.js?v=8" defer></script>
+    <script src="shared-home-hero-scrub.js?v=10" defer></script>
+    <script src="shared-lazy-video.js?v=1" defer></script>
     <script src="shared-home-news-ticker.js?v=1" defer></script>
     <script src="shared-partner-logos.js?v=2" defer></script>
     <script src="shared-about-stats.js?v=1" defer></script>
