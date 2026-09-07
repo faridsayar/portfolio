@@ -138,17 +138,29 @@
       <link rel="stylesheet" href="styles/home.css?v=19" />
     </noscript>
 
-    <!-- NOTE: Google Analytics 4 global site tag for tracking website traffic. -->
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JSX18YWHXS"></script>
+    <!-- NOTE: Queue GA immediately; inject gtag.js on idle so 167 KiB stays off first paint. -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
       }
       gtag('js', new Date());
-
       gtag('config', 'G-JSX18YWHXS');
+      (function deferGtag() {
+        function inject() {
+          var script = document.createElement('script');
+          script.src = 'https://www.googletagmanager.com/gtag/js?id=G-JSX18YWHXS';
+          script.async = true;
+          document.head.appendChild(script);
+        }
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(inject, { timeout: 3500 });
+        } else {
+          window.addEventListener('load', function () {
+            setTimeout(inject, 1);
+          });
+        }
+      })();
     </script>
   </head>
   <body class="single-page-body">

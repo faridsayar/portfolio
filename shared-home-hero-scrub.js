@@ -13,7 +13,7 @@
   const FRAME_END = 160;
   // NOTE: Root-absolute so scrub works from / and /en/ alike.
   const FRAME_BASE_PATH = '/assets/images/Hero-Drill/';
-  // NOTE: Layout size for cover-fit math — matches 2K sequence frames so 4K frame 0107 scales without a jump to 0108+.
+  // NOTE: Layout size for cover-fit math — sequence frames are 1920×1080.
   const FRAME_LAYOUT_WIDTH = 1920;
   const FRAME_LAYOUT_HEIGHT = 1080;
   const MIN_SCRUB_VIEWPORTS = 0.22;
