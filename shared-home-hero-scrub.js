@@ -99,12 +99,11 @@
     }
   }
 
-  function resizeCanvas() {
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    const width = stage.clientWidth;
-    const height = stage.clientHeight;
+  function applyCanvasSize(width, height) {
     if (!width || !height) return;
+    if (width === stageWidth && height === stageHeight && canvas.width > 0) return;
 
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
     stageWidth = width;
     stageHeight = height;
     canvas.width = Math.round(width * dpr);
@@ -113,11 +112,36 @@
     canvas.style.height = `${height}px`;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.imageSmoothingEnabled = true;
-    ctx.imageSmoothingQuality = 'high';
+    ctx.imageSmoothingQuality = MOBILE_MQ.matches ? 'medium' : 'high';
+  }
+
+  function applyScrubMetrics(viewportHeight, startY, scrubEndTop) {
+    scrubStartY = startY;
+    if (scrubEndTop != null) {
+      const scrubEndOffsetInScrub = scrubEndTop - scrubStartY;
+      // NOTE: Finish sequence when about-stats reaches the bottom of the viewport.
+      const scrollWhenNewsAppear = scrubEndOffsetInScrub - viewportHeight;
+      const leadPx = Math.min(100, viewportHeight * 0.1);
+      scrubDistance = Math.max(scrollWhenNewsAppear - leadPx, viewportHeight * MIN_SCRUB_VIEWPORTS);
+    } else {
+      scrubDistance = viewportHeight * 0.42;
+    }
+  }
+
+  // NOTE: Read geometry first, then write canvas size — avoids forced reflow from clientWidth after style changes.
+  function syncLayout(entry) {
+    const width = entry?.contentRect?.width || stage.clientWidth;
+    const height = entry?.contentRect?.height || stage.clientHeight;
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight || 1;
+    const startY = root.getBoundingClientRect().top + window.scrollY;
+    const scrubEndEl = root.querySelector(SCRUB_END_SELECTOR);
+    const scrubEndTop = scrubEndEl ? scrubEndEl.getBoundingClientRect().top + window.scrollY : null;
+
+    applyCanvasSize(width, height);
+    applyScrubMetrics(viewportHeight, startY, scrubEndTop);
   }
 
   // NOTE: Match CSS object-fit: cover + scale + object-position: center top — drawn on canvas to avoid img src flicker.
-  // Uses fixed layout dimensions so mixed resolutions (4K 0107 + 2K rest) share identical on-screen scale and crop.
   function paintFrame(index) {
     const frameIndex = clampFrameIndex(index);
     const image = frameImages[frameIndex];
@@ -151,19 +175,10 @@
 
   function measureScrubRange() {
     const viewportHeight = window.innerHeight || document.documentElement.clientHeight || 1;
-    scrubStartY = root.getBoundingClientRect().top + window.scrollY;
-
+    const startY = root.getBoundingClientRect().top + window.scrollY;
     const scrubEndEl = root.querySelector(SCRUB_END_SELECTOR);
-    if (scrubEndEl) {
-      const scrubEndTop = scrubEndEl.getBoundingClientRect().top + window.scrollY;
-      const scrubEndOffsetInScrub = scrubEndTop - scrubStartY;
-      // NOTE: Finish sequence when about-stats reaches the bottom of the viewport.
-      const scrollWhenNewsAppear = scrubEndOffsetInScrub - viewportHeight;
-      const leadPx = Math.min(100, viewportHeight * 0.1);
-      scrubDistance = Math.max(scrollWhenNewsAppear - leadPx, viewportHeight * MIN_SCRUB_VIEWPORTS);
-    } else {
-      scrubDistance = viewportHeight * 0.42;
-    }
+    const scrubEndTop = scrubEndEl ? scrubEndEl.getBoundingClientRect().top + window.scrollY : null;
+    applyScrubMetrics(viewportHeight, startY, scrubEndTop);
   }
 
   function getScrubProgress() {
@@ -191,26 +206,25 @@
     });
   }
 
-  function handleResize() {
-    resizeCanvas();
-    measureScrubRange();
+  function handleResize(entries) {
+    const entry = entries?.[0]?.contentRect ? entries[0] : undefined;
+    syncLayout(entry);
     repaintCurrentFrame();
     scheduleScrubUpdate();
   }
 
   function bindScrubListeners() {
     window.addEventListener('scroll', scheduleScrubUpdate, { passive: true });
-    window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', () => handleResize());
 
     if (typeof ResizeObserver !== 'undefined') {
-      const resizeObserver = new ResizeObserver(handleResize);
+      const resizeObserver = new ResizeObserver((entries) => handleResize(entries));
       resizeObserver.observe(stage);
     }
   }
 
   async function boot() {
-    resizeCanvas();
-    measureScrubRange();
+    syncLayout();
     await preloadFirstFrame();
     bindScrubListeners();
     updateScrubFrame();
