@@ -763,7 +763,7 @@ section[aria-label='Formaa'] .section-inner {
 }
 
 /* NOTE: Application form page hero is full-bleed shuffle media only; no vertical inset on the inner wrapper. */
-section[aria-label='Kontaktform'] .section-inner {
+section:is([aria-label='Kontaktform'], [aria-label='Contact form']) .section-inner {
   padding-top: 0;
   padding-bottom: 0;
 }
@@ -775,13 +775,13 @@ section[aria-label='Arrangement hero'] .section-inner {
 }
 
 /* NOTE: No grey band between process strip and inquiry form — keep sections flush (margin collapse shows page gradient). */
-section[aria-label='Kontaktform']
+section:is([aria-label='Kontaktform'], [aria-label='Contact form'])
   .category-hero-media:has([data-hero-video-shuffle])
   + .hero-process-flow {
   margin-bottom: 0;
 }
 
-section[aria-label='Kontaktform'] {
+section:is([aria-label='Kontaktform'], [aria-label='Contact form']) {
   margin-bottom: 0;
 }
 

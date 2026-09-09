@@ -45,7 +45,7 @@ Allow: /ai.txt
   ).join('\n');
 
   const content = `# NOTE: Robots policy and sitemap for search engines. Public routes are extensionless;
-# legacy .html and flat prosjekt-/blogg- slugs redirect via .htaccess (see sitemap.xml).
+# legacy flat prosjekt-/blogg- .html slugs redirect via root redirect stubs (GitHub Pages) and .htaccess on Apache.
 # LLM/AI discovery: ${abs('/llms.txt')} and ${abs('/ai.txt')}.
 User-agent: *
 Allow: /

@@ -13,6 +13,8 @@ window.LANG_ROUTES = {
   '/en/services': '/tjenester-prosess',
   '/en/projects': '/prosjekter',
   '/en/contact': '/application-form',
+  '/formaa-skaperverksted': '/en/creative-workshop',
+  '/en/creative-workshop': '/formaa-skaperverksted',
   '/en/product-rendering': '/tjenester-prosess',
   '/en/cad-modeling': '/tjenester-prosess',
   '/en/product-animation': '/tjenester-prosess',

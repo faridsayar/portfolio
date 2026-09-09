@@ -297,6 +297,8 @@ class SinglePagePortfolio {
 
   async loadHeroProcessFlowMarkup() {
     if (this.heroProcessFlowMarkupPromise) return this.heroProcessFlowMarkupPromise;
+    const isEnglish = window.location.pathname.startsWith('/en');
+    const componentName = isEnglish ? 'hero-process-flow-en' : 'hero-process-flow';
     const fallbackMarkup = `<div class="hero-process-flow" aria-label="Fra konsept til produksjon">
   <p class="hero-process-flow__text">
     <a class="hero-process-flow__step" href="/tjenester-prosess#prosess">Konsept</a>
@@ -312,12 +314,12 @@ class SinglePagePortfolio {
 </div>`;
     this.heroProcessFlowMarkupPromise = (async () => {
       try {
-        let response = await fetch('/components/hero-process-flow.html', { cache: 'no-store' });
+        let response = await fetch(`/components/${componentName}.html`, { cache: 'no-store' });
         if (!response.ok) {
-          response = await fetch('../../components/hero-process-flow.html', { cache: 'no-store' });
+          response = await fetch(`../../components/${componentName}.html`, { cache: 'no-store' });
         }
         if (!response.ok) {
-          response = await fetch('components/hero-process-flow.html', { cache: 'no-store' });
+          response = await fetch(`components/${componentName}.html`, { cache: 'no-store' });
         }
         if (!response.ok) return fallbackMarkup;
         return await response.text();
@@ -331,7 +333,8 @@ class SinglePagePortfolio {
   async mountCategoryHeroProcessFlowComponent() {
     const pathname = window.location.pathname;
     const isCategoryPage = pathname.includes('/category/');
-    const isApplicationFormPage = /application-form/i.test(pathname);
+    const isApplicationFormPage =
+      /application-form/i.test(pathname) || /\/en\/contact\/?$/i.test(pathname);
     if (!isCategoryPage && !isApplicationFormPage) return;
     const heroMedia = document.querySelector('.category-hero-media');
     if (!heroMedia) return;
@@ -448,16 +451,16 @@ class SinglePagePortfolio {
 
     // NOTE: Hero background clip list from `assets/images/shuffle-images/`, shuffled in a fixed cadence.
     const clipSources = [
-      { src: 'assets/images/shuffle-images/proton-gif.mov', key: 'proton-gif' },
-      { src: 'assets/images/shuffle-images/proton-gif2.mov', key: 'proton-gif2' },
+      { src: '/assets/images/shuffle-images/proton-gif.mov', key: 'proton-gif' },
+      { src: '/assets/images/shuffle-images/proton-gif2.mov', key: 'proton-gif2' },
       // NOTE: Lunar watch clip is inserted right after proton-gif2 in the hero shuffle order.
-      { src: 'assets/images/shuffle-images/lunar-watch.mp4', key: 'lunar-watch' },
-      { src: 'assets/images/shuffle-images/obseed.mp4', key: 'obseed' },
-      { src: 'assets/images/shuffle-images/obseed-head.mp4', key: 'obseed-head' },
-      { src: 'assets/images/shuffle-images/3d-printer-working.mp4', key: '3d-printer-working' },
-      { src: 'assets/images/shuffle-images/test-animation.mp4', key: 'test-animation' },
+      { src: '/assets/images/shuffle-images/lunar-watch.mp4', key: 'lunar-watch' },
+      { src: '/assets/images/shuffle-images/obseed.mp4', key: 'obseed' },
+      { src: '/assets/images/shuffle-images/obseed-head.mp4', key: 'obseed-head' },
+      { src: '/assets/images/shuffle-images/3d-printer-working.mp4', key: '3d-printer-working' },
+      { src: '/assets/images/shuffle-images/test-animation.mp4', key: 'test-animation' },
       // NOTE: me-drawing is intentionally last in the hero shuffle sequence.
-      { src: 'assets/images/shuffle-images/me-drawing.mp4', key: 'me-drawing' },
+      { src: '/assets/images/shuffle-images/me-drawing.mp4', key: 'me-drawing' },
     ];
 
     let currentClipIndex = 0;

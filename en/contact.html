@@ -3,17 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact | Formaa</title>
+    <title>Design conversation – contact form | Formaa</title>
+    <meta name="description" content="Formaa AS contact form. Get in touch for a no-obligation design conversation about product development." />
+    
     <meta
-      name="description"
-      content="Contact Formaa for product development, CAD, or 3D visualization. Send a short brief and we will follow up with next steps."
+      name="keywords"
+      content="design conversation, contact form, inquiry, product development, industrial design, product design, Formaa, Oslo"
     />
     <meta name="robots" content="index,follow,max-image-preview:large" />
     <meta property="og:locale" content="en_US" />
-    <meta property="og:title" content="Contact | Formaa" />
+    <meta property="og:locale:alternate" content="nb_NO" />
+    <meta property="og:title" content="Design conversation – contact form | Formaa" />
     <meta
       property="og:description"
-      content="Contact Formaa for product development, CAD, or 3D visualization. Send a short brief and we will follow up with next steps."
+      content="Formaa AS contact form. Get in touch for a no-obligation design conversation about product development."
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://formaa.no/en/contact" />
@@ -22,21 +25,29 @@
       property="og:image"
       content="https://formaa.no/assets/images/prosess/3d-modelering.webp"
     />
+    <meta
+      property="og:image:alt"
+      content="Formaa — contact form for design conversation and product development"
+    />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Contact | Formaa" />
+    <meta name="twitter:title" content="Design conversation – contact form | Formaa" />
     <meta
       name="twitter:description"
-      content="Contact Formaa for product development, CAD, or 3D visualization. Send a short brief and we will follow up with next steps."
+      content="Formaa AS contact form. Get in touch for a no-obligation design conversation about product development."
     />
     <meta
       name="twitter:image"
       content="https://formaa.no/assets/images/prosess/3d-modelering.webp"
     />
+    <meta
+      name="twitter:image:alt"
+      content="Formaa — contact form for design conversation and product development"
+    />
     <link rel="canonical" href="https://formaa.no/en/contact" />
     <!-- NOTE: hreflang alternates (scripts/inject-hreflang.mjs) -->
     <link rel="alternate" hreflang="nb" href="https://formaa.no/application-form" />
     <link rel="alternate" hreflang="en" href="https://formaa.no/en/contact" />
-    <link rel="alternate" hreflang="x-default" href="https://formaa.no/application-form" />
+    <link rel="alternate" hreflang="x-default" href="https://formaa.no/application-form" />    <!-- NOTE: Full-bleed square favicon (SVG + PNG fallback) for browser tabs and Google Search. -->
     <link rel="icon" type="image/svg+xml" href="/assets/square-favicon.svg?v=1" sizes="any" />
     <link
       rel="icon"
@@ -44,7 +55,9 @@
       href="/assets/square-favicon-fallback.png?v=1"
       sizes="192x192"
     />
-    <link rel="stylesheet" href="/styles/base.css?v=44" />
+    <link rel="stylesheet" href="/styles/base.css?v=45" />
+
+    <!-- NOTE: Google Analytics 4 global site tag for tracking website traffic. -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JSX18YWHXS"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -56,65 +69,148 @@
     </script>
   </head>
   <body class="single-page-body">
+    <!-- NOTE: EN side-nav shell — shared-nav.js injects English links + lang switch. -->
     <nav class="side-nav" aria-label="Navigation" data-mobile-nav></nav>
 
     <main>
-      <section class="section section--white" aria-label="Contact">
+      <section class="section section--white" aria-label="Contact form">
         <div class="section-inner">
-          <nav class="breadcrumb" aria-label="Breadcrumb">
-            <a class="breadcrumb__link" href="/en/">Formaa</a>
-            <span class="breadcrumb__sep" aria-hidden="true">/</span>
-            <a class="breadcrumb__link" href="/en/contact" aria-current="page">Contact</a>
-          </nav>
-          <h1 class="section-title">Contact Formaa</h1>
-          <p class="section-lead">
-            Get in touch for a no-obligation conversation about product development, CAD, or 3D
-            visualization. Use the form below or reach us by phone or email.
-          </p>
-
-          <div class="contact-grid" itemscope itemtype="https://schema.org/ProfessionalService">
-            <a
-              class="contact-item contact-link"
-              href="https://www.google.com/maps/search/?api=1&query=Ole%20Messelts%20vei%205%2C%200676%20Oslo"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Open map for Formaa office"
+          <!-- NOTE: This top hero reuses the same shuffle-image format used on existing pages for consistent visual hierarchy. -->
+          <div class="category-hero-media" aria-label="Contact form hero">
+            <video
+              class="hero-video"
+              data-hero-video-shuffle
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="none"
+              poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3Crect width='16' height='9' fill='black'/%3E%3C/svg%3E"
             >
-              <span class="contact-item__label">Address</span>
-              <span class="contact-item__value" itemprop="address"
-                >Ole Messelts vei 5, 0676 Oslo</span
+              <!-- NOTE: Clip sources are injected by shared hero shuffle logic in script.js. -->
+            </video>
+            <div class="hero-overlay"></div>
+            <nav class="breadcrumb project-hero-stage__breadcrumb" aria-label="Breadcrumb">
+              <a class="breadcrumb__link" href="/en/">Formaa</a>
+              <span class="breadcrumb__sep" aria-hidden="true">/</span>
+              <a class="breadcrumb__link" href="/en/contact" aria-current="page"
+                >Contact form</a
               >
-            </a>
-            <a class="contact-item contact-link" href="tel:+4746381887" itemprop="telephone">
-              <span class="contact-item__label">Phone</span>
-              <span class="contact-item__value">+47 46 38 18 87</span>
-            </a>
-            <a class="contact-item contact-link" href="mailto:hei@formaa.no" itemprop="email">
-              <span class="contact-item__label">Email</span>
-              <span class="contact-item__value">hei@formaa.no</span>
-            </a>
+            </nav>
           </div>
 
-          <p class="section-lead section-lead--after-grid">
-            Formaa AS · Org.nr.
-            <a
-              class="internal-text-link"
-              href="https://virksomhet.brreg.no/nb/oppslag/enheter/937772505"
-              target="_blank"
-              rel="noopener noreferrer"
-              >937 772 505</a
-            >.
-          </p>
+          <h1 class="section-title">Formaa AS contact form</h1>
+          <!-- NOTE: Lead copy for contact form and SERP meta. -->
+          <p class="section-lead">Get in touch for a no-obligation conversation</p>
         </div>
       </section>
-
-      <div data-component="application-form-en"></div>
     </main>
 
-    <div data-component="site-footer-en"></div>
+    <!-- NOTE: Dedicated inquiry form component moved to its own route so all request CTAs land directly on this form. -->
+    <div data-component="application-form-en"></div>
 
-    <script src="/components-loader.js?v=6" defer></script>
+    <!-- NOTE: Visible NAP block — aligns with JSON-LD / Google Business Profile (name, org.nr, phone, city). -->
+    <section class="section section--white" aria-label="Contact information">
+      <div class="section-inner">
+        <address class="about-nap">
+          <strong>Formaa AS</strong><br />
+          Org.nr.
+          <a
+            class="internal-text-link"
+            href="https://virksomhet.brreg.no/nb/oppslag/enheter/937772505"
+            target="_blank"
+            rel="noopener noreferrer"
+            >937 772 505</a
+          ><br />
+          <a class="internal-text-link" href="/en/contact">+47 46 38 18 87</a><br />
+          Ole Messelts vei 5, 0676 Oslo, Norway
+        </address>
+      </div>
+    </section>
+
+    <!-- NOTE: Trust/privacy block loaded from components/privacy-trust-section.html. -->
+    <div data-component="privacy-trust-section-en"></div>
+
+    <!-- NOTE: Structured data for the dedicated inquiry route (canonical /en/contact). -->
+    <!-- NOTE: JSON-LD @graph for Google Search and AI Overviews — generated by scripts/generate-schema-markup.mjs; re-run after SEO/meta changes. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://formaa.no/#website",
+            "name": "Formaa",
+            "url": "https://formaa.no/",
+            "publisher": {
+              "@id": "https://formaa.no/#organization"
+            },
+            "inLanguage": ["nb-NO", "en"]
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://formaa.no/en/contact#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Formaa AS",
+                "item": "https://formaa.no/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Design conversation – contact form",
+                "item": "https://formaa.no/en/contact"
+              }
+            ]
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://formaa.no/en/contact",
+            "name": "Design conversation – contact form | Formaa",
+            "url": "https://formaa.no/en/contact",
+            "description": "Formaa AS contact form. Get in touch for a no-obligation design conversation about product development.",
+            "inLanguage": "en",
+            "isPartOf": {
+              "@id": "https://formaa.no/#website"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "@id": "https://formaa.no/#organization",
+              "name": "Formaa",
+              "url": "https://formaa.no/",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://formaa.no/assets/formaa-logo.svg"
+              },
+              "legalName": "Formaa AS",
+              "alternateName": ["Formaa", "Formaa Design", "formaaa"],
+              "taxID": "937772505",
+              "identifier": {
+                "@type": "PropertyValue",
+                "propertyID": "Brønnøysundregistrene",
+                "value": "937772505"
+              },
+              "sameAs": [
+                "https://www.linkedin.com/company/formaaa/",
+                "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+                "https://www.facebook.com/groups/2180500666141671/",
+                "https://t.me/designformaa",
+                "https://www.behance.net/formaa",
+                "https://x.com/FormaaDesignAS",
+                "https://www.reddit.com/user/Formaa-Design/"
+              ]
+            }
+          }
+        ]
+      }
+    </script>
+
+    <!-- NOTE: EN footer via component. -->
+    <div data-component="site-footer-en"></div>
+    <script src="/components-loader.js?v=5" defer></script>
     <script src="/shared-nav.js?v=3" defer></script>
-    <script src="/script.js?v=12" defer></script>
+    <script src="/script.js?v=17" defer></script>
   </body>
 </html>
