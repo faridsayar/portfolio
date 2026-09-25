@@ -13,10 +13,12 @@
   const FRAME_END = 160;
   // NOTE: Root-absolute so scrub works from / and /en/ alike.
   const FRAME_BASE_PATH = '/assets/images/Hero-Drill/';
-  // NOTE: Layout size for cover-fit math — matches 2K sequence frames so 4K frame 0107 scales without a jump to 0108+.
+  // NOTE: Layout size for cover-fit math — sequence frames are 1920×1080.
   const FRAME_LAYOUT_WIDTH = 1920;
   const FRAME_LAYOUT_HEIGHT = 1080;
   const MIN_SCRUB_VIEWPORTS = 0.22;
+  // NOTE: Keep first-load payload to frame 0; fetch a small window only while the user scrubs.
+  const FRAME_LOOKAHEAD = 3;
 
   const root = document.querySelector(SCRUB_ROOT_SELECTOR);
   const stage = root?.querySelector(STAGE_SELECTOR);
@@ -38,8 +40,11 @@
 
   /** @type {(HTMLImageElement | null)[]} */
   const frameImages = new Array(frameCount).fill(null);
+  /** @type {Map<number, Promise<HTMLImageElement>>} */
+  const inflightLoads = new Map();
   let framesReady = false;
   let activeFrameIndex = -1;
+  let desiredFrameIndex = 0;
   let scrubStartY = 0;
   let scrubDistance = 1;
   let tickScheduled = false;
@@ -60,9 +65,13 @@
       return Promise.resolve(existing);
     }
 
-    return new Promise((resolve, reject) => {
+    const inflight = inflightLoads.get(index);
+    if (inflight) return inflight;
+
+    const promise = new Promise((resolve, reject) => {
       const image = new Image();
       image.decoding = 'async';
+      image.fetchPriority = 'low';
       image.onload = () => {
         frameImages[index] = image;
         resolve(image);
@@ -70,14 +79,31 @@
       image.onerror = () => reject(new Error(`Failed to load frame ${index}`));
       image.src = framePaths[index];
     });
+    inflightLoads.set(index, promise);
+    promise.finally(() => inflightLoads.delete(index));
+    return promise;
   }
 
-  function resizeCanvas() {
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    const width = stage.clientWidth;
-    const height = stage.clientHeight;
-    if (!width || !height) return;
+  function paintIfDesired(index) {
+    if (index !== desiredFrameIndex) return;
+    paintFrame(index);
+  }
 
+  function prefetchAround(index) {
+    if (shouldUseStaticFrame) return;
+    const last = Math.min(frameCount - 1, index + FRAME_LOOKAHEAD);
+    for (let i = index; i <= last; i += 1) {
+      loadFrameImage(i)
+        .then(() => paintIfDesired(i))
+        .catch(() => null);
+    }
+  }
+
+  function applyCanvasSize(width, height) {
+    if (!width || !height) return;
+    if (width === stageWidth && height === stageHeight && canvas.width > 0) return;
+
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
     stageWidth = width;
     stageHeight = height;
     canvas.width = Math.round(width * dpr);
@@ -86,11 +112,36 @@
     canvas.style.height = `${height}px`;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.imageSmoothingEnabled = true;
-    ctx.imageSmoothingQuality = 'high';
+    ctx.imageSmoothingQuality = MOBILE_MQ.matches ? 'medium' : 'high';
+  }
+
+  function applyScrubMetrics(viewportHeight, startY, scrubEndTop) {
+    scrubStartY = startY;
+    if (scrubEndTop != null) {
+      const scrubEndOffsetInScrub = scrubEndTop - scrubStartY;
+      // NOTE: Finish sequence when about-stats reaches the bottom of the viewport.
+      const scrollWhenNewsAppear = scrubEndOffsetInScrub - viewportHeight;
+      const leadPx = Math.min(100, viewportHeight * 0.1);
+      scrubDistance = Math.max(scrollWhenNewsAppear - leadPx, viewportHeight * MIN_SCRUB_VIEWPORTS);
+    } else {
+      scrubDistance = viewportHeight * 0.42;
+    }
+  }
+
+  // NOTE: Read geometry first, then write canvas size — avoids forced reflow from clientWidth after style changes.
+  function syncLayout(entry) {
+    const width = entry?.contentRect?.width || stage.clientWidth;
+    const height = entry?.contentRect?.height || stage.clientHeight;
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight || 1;
+    const startY = root.getBoundingClientRect().top + window.scrollY;
+    const scrubEndEl = root.querySelector(SCRUB_END_SELECTOR);
+    const scrubEndTop = scrubEndEl ? scrubEndEl.getBoundingClientRect().top + window.scrollY : null;
+
+    applyCanvasSize(width, height);
+    applyScrubMetrics(viewportHeight, startY, scrubEndTop);
   }
 
   // NOTE: Match CSS object-fit: cover + scale + object-position: center top — drawn on canvas to avoid img src flicker.
-  // Uses fixed layout dimensions so mixed resolutions (4K 0107 + 2K rest) share identical on-screen scale and crop.
   function paintFrame(index) {
     const frameIndex = clampFrameIndex(index);
     const image = frameImages[frameIndex];
@@ -115,36 +166,19 @@
     paintFrame(previousIndex >= 0 ? previousIndex : 0);
   }
 
-  async function preloadFrames() {
+  async function preloadFirstFrame() {
     await loadFrameImage(0);
     framesReady = true;
+    desiredFrameIndex = 0;
     paintFrame(0);
-
-    if (shouldUseStaticFrame) return;
-
-    await Promise.all(
-      framePaths.map((_, index) => {
-        if (index === 0) return Promise.resolve(null);
-        return loadFrameImage(index).catch(() => null);
-      })
-    );
   }
 
   function measureScrubRange() {
     const viewportHeight = window.innerHeight || document.documentElement.clientHeight || 1;
-    scrubStartY = root.getBoundingClientRect().top + window.scrollY;
-
+    const startY = root.getBoundingClientRect().top + window.scrollY;
     const scrubEndEl = root.querySelector(SCRUB_END_SELECTOR);
-    if (scrubEndEl) {
-      const scrubEndTop = scrubEndEl.getBoundingClientRect().top + window.scrollY;
-      const scrubEndOffsetInScrub = scrubEndTop - scrubStartY;
-      // NOTE: Finish sequence when about-stats reaches the bottom of the viewport.
-      const scrollWhenNewsAppear = scrubEndOffsetInScrub - viewportHeight;
-      const leadPx = Math.min(100, viewportHeight * 0.1);
-      scrubDistance = Math.max(scrollWhenNewsAppear - leadPx, viewportHeight * MIN_SCRUB_VIEWPORTS);
-    } else {
-      scrubDistance = viewportHeight * 0.42;
-    }
+    const scrubEndTop = scrubEndEl ? scrubEndEl.getBoundingClientRect().top + window.scrollY : null;
+    applyScrubMetrics(viewportHeight, startY, scrubEndTop);
   }
 
   function getScrubProgress() {
@@ -156,8 +190,11 @@
     if (!framesReady) return;
 
     const progress = getScrubProgress();
-    const frameIndex = Math.round(progress * (frameCount - 1));
-    paintFrame(frameIndex);
+    desiredFrameIndex = Math.round(progress * (frameCount - 1));
+    if (!shouldUseStaticFrame && (desiredFrameIndex > 0 || window.scrollY > 8)) {
+      prefetchAround(desiredFrameIndex);
+    }
+    paintFrame(desiredFrameIndex);
   }
 
   function scheduleScrubUpdate() {
@@ -169,27 +206,26 @@
     });
   }
 
-  function handleResize() {
-    resizeCanvas();
-    measureScrubRange();
+  function handleResize(entries) {
+    const entry = entries?.[0]?.contentRect ? entries[0] : undefined;
+    syncLayout(entry);
     repaintCurrentFrame();
     scheduleScrubUpdate();
   }
 
   function bindScrubListeners() {
     window.addEventListener('scroll', scheduleScrubUpdate, { passive: true });
-    window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', () => handleResize());
 
     if (typeof ResizeObserver !== 'undefined') {
-      const resizeObserver = new ResizeObserver(handleResize);
+      const resizeObserver = new ResizeObserver((entries) => handleResize(entries));
       resizeObserver.observe(stage);
     }
   }
 
   async function boot() {
-    resizeCanvas();
-    measureScrubRange();
-    await preloadFrames();
+    syncLayout();
+    await preloadFirstFrame();
     bindScrubListeners();
     updateScrubFrame();
 

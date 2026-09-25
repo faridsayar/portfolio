@@ -47,7 +47,8 @@
     <!-- NOTE: hreflang alternates (scripts/inject-hreflang.mjs) -->
     <link rel="alternate" hreflang="nb" href="https://formaa.no/" />
     <link rel="alternate" hreflang="en" href="https://formaa.no/en/" />
-    <link rel="alternate" hreflang="x-default" href="https://formaa.no/" />    <link
+    <link rel="alternate" hreflang="x-default" href="https://formaa.no/" />
+    <link
       rel="sitemap"
       type="application/xml"
       title="Sitemap"
@@ -104,35 +105,62 @@
       sizes="192x192"
     />
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- NOTE: Preload primary font stylesheet to reduce render delay for above-the-fold text. -->
+    <!-- NOTE: Preload LCP font file (not a Google CSS stylesheet) so hero text can paint with Saira. -->
     <link
       rel="preload"
+      as="font"
+      type="font/woff2"
+      href="/assets/fonts/saira-latin.woff2"
+      crossorigin
+    />
+    <!-- NOTE: First-paint styles only; full bundles are non-blocking. -->
+    <link rel="stylesheet" href="/styles/home-critical.css?v=1" />
+    <link
+      rel="preload"
+      href="/styles/base.css?v=46"
       as="style"
-      href="https://fonts.googleapis.com/css2?family=Saira:wght@400;600;800&display=swap"
+      onload="
+        this.onload = null;
+        this.rel = 'stylesheet';
+      "
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Saira:wght@400;600;800&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      href="/styles/home.css?v=19"
+      as="style"
+      onload="
+        this.onload = null;
+        this.rel = 'stylesheet';
+      "
     />
+    <noscript>
+      <link rel="stylesheet" href="/styles/base.css?v=46" />
+      <link rel="stylesheet" href="/styles/home.css?v=19" />
+    </noscript>
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="/styles/base.css?v=45" />
-    <link rel="stylesheet" href="/styles/home.css?v=18" />
-
-    <!-- NOTE: Google Analytics 4 global site tag for tracking website traffic. -->
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JSX18YWHXS"></script>
+    <!-- NOTE: Queue GA immediately; inject gtag.js on idle so 167 KiB stays off first paint. -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
       }
       gtag('js', new Date());
-
       gtag('config', 'G-JSX18YWHXS');
+      (function deferGtag() {
+        function inject() {
+          var script = document.createElement('script');
+          script.src = 'https://www.googletagmanager.com/gtag/js?id=G-JSX18YWHXS';
+          script.async = true;
+          document.head.appendChild(script);
+        }
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(inject, { timeout: 3500 });
+        } else {
+          window.addEventListener('load', function () {
+            setTimeout(inject, 1);
+          });
+        }
+      })();
     </script>
   </head>
   <body class="single-page-body">
@@ -235,8 +263,15 @@
         <div class="start-intro start-intro--overlay">
           <div class="start-intro__media-zone">
             <div class="start-intro__backdrop" aria-hidden="true">
-              <video class="start-intro__video" autoplay muted loop playsinline preload="metadata">
-                <source src="/assets/images/shuffle-images/proton-gif2.mov" type="video/mp4" />
+              <video
+                class="start-intro__video"
+                muted
+                loop
+                playsinline
+                preload="none"
+                data-lazy-video
+              >
+                <source data-src="/assets/images/shuffle-images/proton-gif2.mov" type="video/mp4" />
               </video>
               <div class="start-intro__gradient"></div>
             </div>
@@ -320,9 +355,16 @@
         <div class="start-intro start-intro--overlay">
           <div class="start-intro__media-zone">
             <div class="start-intro__backdrop" aria-hidden="true">
-              <video class="start-intro__video" autoplay muted loop playsinline preload="metadata">
+              <video
+                class="start-intro__video"
+                muted
+                loop
+                playsinline
+                preload="none"
+                data-lazy-video
+              >
                 <source
-                  src="/assets/images/shuffle-images/3d-printer-working.mp4"
+                  data-src="/assets/images/shuffle-images/3d-printer-working.mp4"
                   type="video/mp4"
                 />
               </video>
@@ -994,7 +1036,8 @@
 
     <script src="/components-loader.js?v=5" defer></script>
     <script src="/shared-nav.js?v=3" defer></script>
-    <script src="/shared-home-hero-scrub.js?v=9" defer></script>
+    <script src="/shared-home-hero-scrub.js?v=11" defer></script>
+    <script src="/shared-lazy-video.js?v=1" defer></script>
     <script src="/shared-home-news-ticker.js?v=2" defer></script>
     <script src="/shared-partner-logos.js?v=2" defer></script>
     <script src="/shared-about-stats.js?v=1" defer></script>
