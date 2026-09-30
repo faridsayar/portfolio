@@ -19,7 +19,7 @@ window.EN_LANDING_PAGES = {
       'Source files (STEP / STL / native project)',
     ],
     turnaround: 'Typical turnaround: 5–7 business days',
-    price: '$490',
+    price: '$990',
     formPlaceholder:
       'Product type, reference images or sketches, angles needed, and deadline.',
     seoSections: [
@@ -110,7 +110,7 @@ window.EN_LANDING_PAGES = {
       'One structured revision round',
     ],
     turnaround: 'Typical turnaround: 7–10 business days',
-    price: '$990',
+    price: '$1990',
     formPlaceholder:
       'Part description, tolerances, manufacturing process, and reference files you have.',
     seoSections: [
@@ -201,7 +201,7 @@ window.EN_LANDING_PAGES = {
       'HD MP4 for web, ads, and pitch decks',
     ],
     turnaround: 'Typical turnaround: 10–14 business days',
-    price: '$740',
+    price: '$1450',
     formPlaceholder:
       'Platform (web, Meta, Kickstarter), length, style references, and deadline.',
     seoSections: [

@@ -13,7 +13,7 @@
   const FRAME_END = 160;
   // NOTE: Root-absolute so scrub works from / and /en/ alike.
   const FRAME_BASE_PATH = '/assets/images/Hero-Drill/';
-  // NOTE: Layout size for cover-fit math — sequence frames are 1920×1080.
+  // NOTE: Cover-fit box stays 1920×1080 so the 4K desktop first frame and Full HD frames share the same scale.
   const FRAME_LAYOUT_WIDTH = 1920;
   const FRAME_LAYOUT_HEIGHT = 1080;
   const MIN_SCRUB_VIEWPORTS = 0.22;
@@ -29,10 +29,14 @@
   if (!ctx) return;
 
   const frameCount = FRAME_END - FRAME_START + 1;
-  const framePaths = Array.from({ length: frameCount }, (_, index) => {
+  // NOTE: Desktop first frame is 4K. Mobile, and every later frame, stay Full HD.
+  const FIRST_FRAME_4K_PATH = `${FRAME_BASE_PATH}0107-4k.webp`;
+
+  function framePathAt(index) {
+    if (index === 0 && !MOBILE_MQ.matches) return FIRST_FRAME_4K_PATH;
     const frameNumber = String(FRAME_START + index).padStart(4, '0');
     return `${FRAME_BASE_PATH}${frameNumber}.webp`;
-  });
+  }
 
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const saveDataOn = typeof navigator !== 'undefined' && navigator.connection?.saveData === true;
@@ -40,7 +44,7 @@
 
   /** @type {(HTMLImageElement | null)[]} */
   const frameImages = new Array(frameCount).fill(null);
-  /** @type {Map<number, Promise<HTMLImageElement>>} */
+  /** @type {Map<number, { src: string, promise: Promise<HTMLImageElement> }>} */
   const inflightLoads = new Map();
   let framesReady = false;
   let activeFrameIndex = -1;
@@ -60,28 +64,56 @@
   }
 
   function loadFrameImage(index) {
+    const src = framePathAt(index);
     const existing = frameImages[index];
-    if (existing?.complete && existing.naturalWidth > 0) {
+    if (existing?.complete && existing.naturalWidth > 0 && existing.dataset.frameSrc === src) {
       return Promise.resolve(existing);
     }
 
     const inflight = inflightLoads.get(index);
-    if (inflight) return inflight;
+    if (inflight?.src === src) return inflight.promise;
 
     const promise = new Promise((resolve, reject) => {
       const image = new Image();
       image.decoding = 'async';
       image.fetchPriority = 'low';
+      image.dataset.frameSrc = src;
       image.onload = () => {
+        if (framePathAt(index) !== src) {
+          resolve(image);
+          return;
+        }
         frameImages[index] = image;
         resolve(image);
       };
       image.onerror = () => reject(new Error(`Failed to load frame ${index}`));
-      image.src = framePaths[index];
+      image.src = src;
     });
-    inflightLoads.set(index, promise);
-    promise.finally(() => inflightLoads.delete(index));
+    inflightLoads.set(index, { src, promise });
+    promise.finally(() => {
+      const current = inflightLoads.get(index);
+      if (current?.promise === promise) inflightLoads.delete(index);
+    });
     return promise;
+  }
+
+  // NOTE: Swap the first frame between 4K and Full HD when the viewport crosses the mobile breakpoint.
+  function refreshFirstFrameForViewport() {
+    const wanted = framePathAt(0);
+    const image = frameImages[0];
+    if (image?.dataset.frameSrc === wanted) return;
+
+    frameImages[0] = null;
+    if (activeFrameIndex === 0) activeFrameIndex = -1;
+    if (desiredFrameIndex !== 0) return;
+
+    loadFrameImage(0)
+      .then((loaded) => {
+        if (loaded.dataset.frameSrc !== framePathAt(0) || desiredFrameIndex !== 0) return;
+        activeFrameIndex = -1;
+        paintFrame(0);
+      })
+      .catch(() => null);
   }
 
   function paintIfDesired(index) {
@@ -209,6 +241,7 @@
   function handleResize(entries) {
     const entry = entries?.[0]?.contentRect ? entries[0] : undefined;
     syncLayout(entry);
+    refreshFirstFrameForViewport();
     repaintCurrentFrame();
     scheduleScrubUpdate();
   }
@@ -216,6 +249,9 @@
   function bindScrubListeners() {
     window.addEventListener('scroll', scheduleScrubUpdate, { passive: true });
     window.addEventListener('resize', () => handleResize());
+    if (typeof MOBILE_MQ.addEventListener === 'function') {
+      MOBILE_MQ.addEventListener('change', refreshFirstFrameForViewport);
+    }
 
     if (typeof ResizeObserver !== 'undefined') {
       const resizeObserver = new ResizeObserver((entries) => handleResize(entries));
