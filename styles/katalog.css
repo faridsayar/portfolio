@@ -1,4 +1,4 @@
-/* NOTE: Material catalogue — group cards and material rows (image, text, image, text). */
+/* NOTE: Material catalogue — one-page list with search, group jumps, and image/text rows. */
 
 .katalog-page .breadcrumb {
   margin-top: 1.25rem;
@@ -8,27 +8,77 @@
   margin-top: 0.85rem;
 }
 
-/* NOTE: Group cards on the hub — square black placeholder instead of a photo. */
-.katalog-groups .article-card__img {
-  width: min(100%, 16rem);
-  height: auto;
-  aspect-ratio: 1;
-  background: var(--color-black);
-  border: 1px solid var(--border-card);
-}
-
-/* NOTE: Two materials per row; each material is image left and text right. */
-.katalog-materials {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 2rem 1.5rem;
+/* NOTE: Search field directly under the breadcrumb. */
+.katalog-search {
   margin-top: 1.5rem;
+  max-width: 32rem;
 }
 
+/* NOTE: Left group jumps + right long material list. */
+.katalog-layout {
+  display: grid;
+  grid-template-columns: minmax(7rem, 10rem) minmax(0, 1fr);
+  gap: 2rem 2.5rem;
+  margin-top: 2rem;
+  align-items: start;
+}
+
+.katalog-toc {
+  position: sticky;
+  top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.katalog-toc__link {
+  color: inherit;
+  text-decoration: none;
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-extrabold);
+  letter-spacing: var(--letter-spacing-tight-heading);
+  line-height: var(--line-height-title);
+  text-transform: uppercase;
+  opacity: 0.35;
+}
+
+.katalog-toc__link:hover,
+.katalog-toc__link:focus-visible {
+  opacity: 0.7;
+}
+
+.katalog-toc__link.is-active {
+  opacity: 1;
+}
+
+.katalog-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  min-width: 0;
+}
+
+.katalog-group__title {
+  margin: 0 0 1.5rem;
+  font-size: var(--font-size-big-text);
+  font-weight: var(--font-weight-extrabold);
+  letter-spacing: var(--letter-spacing-tight-heading);
+  line-height: var(--line-height-big-text);
+  text-transform: uppercase;
+  opacity: 0.2;
+}
+
+.katalog-group__list {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+/* NOTE: One material per row — square image left, text and properties right. */
 .katalog-material {
   display: grid;
-  grid-template-columns: minmax(6.5rem, 0.9fr) minmax(0, 1.2fr);
-  gap: 0.85rem 1rem;
+  grid-template-columns: minmax(8rem, 14rem) minmax(0, 1fr);
+  gap: 1rem 1.5rem;
   align-items: start;
   margin: 0;
 }
@@ -44,40 +94,86 @@
 }
 
 .katalog-material__title {
-  margin: 0 0 0.4rem;
-  font-size: var(--font-size-card-title);
+  margin: 0 0 0.5rem;
+  font-size: var(--font-size-section-title);
   font-weight: var(--font-weight-semibold);
   line-height: var(--line-height-title);
+  letter-spacing: var(--letter-spacing-tight-heading);
 }
 
 .katalog-material__text {
   margin: 0;
-  font-size: var(--font-size-body-sm);
+  font-size: var(--font-size-body-md);
   line-height: var(--line-height-relaxed);
 }
 
-.katalog-material__points {
-  margin: 0.65rem 0 0;
-  padding-left: 1.1rem;
-  font-size: var(--font-size-body-sm);
-  line-height: var(--line-height-relaxed);
+/* NOTE: Property rows as plain text — bold label, normal value, no bullet markers. */
+.katalog-material__props {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-top: 1rem;
+}
+
+.katalog-material__prop {
+  display: grid;
+  grid-template-columns: minmax(7rem, 11rem) minmax(0, 1fr);
+  gap: 0.35rem 1rem;
+  align-items: baseline;
 }
 
 .katalog-material__label {
+  font-size: var(--font-size-body-sm);
   font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-relaxed);
 }
 
-/* NOTE: Narrow viewport — one material per row, image stacked above the text. */
-@media (max-width: 768px) {
-  .katalog-materials {
+.katalog-material__value {
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-relaxed);
+}
+
+.katalog-empty {
+  margin: 0;
+  font-size: var(--font-size-body-md);
+  line-height: var(--line-height-relaxed);
+  opacity: 0.6;
+}
+
+.katalog-group[hidden],
+.katalog-material[hidden] {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .katalog-layout {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 
+  .katalog-toc {
+    position: static;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.25rem;
+  }
+}
+
+@media (max-width: 768px) {
   .katalog-material {
     grid-template-columns: 1fr;
   }
 
   .katalog-material__img {
     width: min(100%, 12rem);
+  }
+
+  .katalog-material__prop {
+    grid-template-columns: minmax(6rem, 9rem) minmax(0, 1fr);
+  }
+
+  .katalog-group__title {
+    font-size: clamp(2rem, 12vw, var(--font-size-big-text));
   }
 }

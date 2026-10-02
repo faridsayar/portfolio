@@ -14,10 +14,6 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 function routeToSourceFile(route) {
   if (route === '/') return path.join(root, 'index.html');
   if (route === '/katalog') return path.join(root, 'katalog', 'index.html');
-  if (route.startsWith('/katalog/')) {
-    const slug = route.slice('/katalog/'.length);
-    return path.join(root, 'katalog', slug, 'index.html');
-  }
   if (route === '/blogg') return path.join(root, 'blogg', 'index.html');
   if (route.startsWith('/blogg/')) {
     const slug = route.slice('/blogg/'.length);
@@ -43,7 +39,7 @@ function routeToSourceFile(route) {
 /** ISO date (YYYY-MM-DD) from file mtime for sitemap lastmod. */
 function lastmodForRoute(route) {
   const file = routeToSourceFile(route);
-  if (!fs.existsSync(file)) return null;
+  if (!file || !fs.existsSync(file)) return null;
   return new Date(fs.statSync(file).mtimeMs).toISOString().slice(0, 10);
 }
 
@@ -60,7 +56,6 @@ function sitemapHints(route) {
     return { changefreq: 'weekly', priority: '0.8' };
   }
   if (route === '/katalog') return { changefreq: 'monthly', priority: '0.8' };
-  if (route.startsWith('/katalog/')) return { changefreq: 'monthly', priority: '0.7' };
   if (route.startsWith('/blogg/')) return { changefreq: 'monthly', priority: '0.7' };
   if (route.startsWith('/prosjekter/')) return { changefreq: 'monthly', priority: '0.7' };
   if (route.startsWith('/category/')) {
@@ -97,17 +92,8 @@ function collectCategoryRoutes() {
 }
 
 function collectKatalogRoutes() {
-  const routes = ['/katalog'];
-  const katalogDir = path.join(root, 'katalog');
-  if (!fs.existsSync(katalogDir)) return routes;
-  for (const name of fs.readdirSync(katalogDir)) {
-    const entryPath = path.join(katalogDir, name);
-    if (!fs.statSync(entryPath).isDirectory()) continue;
-    if (fs.existsSync(path.join(entryPath, 'index.html'))) {
-      routes.push(`/katalog/${name}`);
-    }
-  }
-  return routes.sort();
+  // NOTE: Single catalogue page — group URLs were removed.
+  return ['/katalog'];
 }
 
 function collectBloggRoutes() {
@@ -149,7 +135,7 @@ const xml = `<?xml version="1.0" encoding="UTF-8"?>
      Project URLs: /prosjekter/{slug}. Blogg: /blogg/{slug} (blogg/{slug}/index.html).
      /application-form = kontaktform. /arrangement = event hub (skisse- og idéworkshop).
      /tjenester-prosess = tjenester og prosess.
-     /katalog = materialkatalog; /katalog/{gruppe} = materialgruppe.
+     /katalog = materialkatalog (all materials on one page).
      /gallery retired (301 → home). lastmod from source HTML mtime. Regenerate: pnpm generate:sitemap -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${all.map((route) => formatUrlEntry(route)).join('\n')}
