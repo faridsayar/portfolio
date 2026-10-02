@@ -78,6 +78,7 @@ function collectTargetFiles() {
     path.join(root, 'karriere.html'),
     path.join(root, 'arrangement.html'),
     path.join(root, 'formaa-skaperverksted.html'),
+    path.join(root, 'bibliotek-festemidler.html'),
     ...collectHtmlFiles(path.join(root, 'category')),
     ...collectHtmlFiles(path.join(root, 'blogg')),
     ...fs

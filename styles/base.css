@@ -4902,3 +4902,54 @@ html {
   line-height: var(--line-height-relaxed);
   font-weight: var(--font-weight-semibold);
 }
+
+/* NOTE: Fastener reference library — blueprint drawings in service-card grid. */
+.bibliotek-page-body .bibliotek-grid {
+  margin-top: 1.5rem;
+}
+
+.bibliotek-page-body .bibliotek-item {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  min-height: 0;
+  padding: 1rem 1rem 1.15rem;
+}
+
+.bibliotek-page-body .bibliotek-item__drawing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 11rem;
+  margin-bottom: 0.75rem;
+}
+
+.bibliotek-page-body .bibliotek-item__img {
+  display: block;
+  width: auto;
+  height: 10.5rem;
+  max-width: 100%;
+  /* NOTE: SVG stroke is dark; invert to white on dark service-card (same pattern as .service-card__icon). */
+  filter: brightness(0) invert(1);
+}
+
+.bibliotek-page-body .bibliotek-item .service-title {
+  margin-bottom: 0.35rem;
+}
+
+.bibliotek-page-body .bibliotek-item .service-text {
+  font-size: var(--font-size-caption-sm);
+  opacity: 0.75;
+}
+
+@media (min-width: 768px) {
+  .bibliotek-page-body .bibliotek-item {
+    grid-column: span 4;
+  }
+}
+
+@media (min-width: 1100px) {
+  .bibliotek-page-body .bibliotek-item {
+    grid-column: span 3;
+  }
+}

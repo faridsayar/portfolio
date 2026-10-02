@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 200" fill="none" stroke="#120700" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <!-- NOTE: Blueprint-style technical drawing for fastener reference library -->
+
+  <rect x="40" y="24" width="80" height="80" />
+  <circle cx="80" cy="64" r="18" />
+  <circle cx="80" cy="64" r="10" opacity="0.45" />
+  <rect x="48" y="124" width="64" height="30" />
+  <line x1="48" y1="124" x2="112" y2="124" />
+  <line x1="48" y1="154" x2="112" y2="154" />
+  <circle cx="80" cy="139" r="9" opacity="0.4" />
+
+</svg>

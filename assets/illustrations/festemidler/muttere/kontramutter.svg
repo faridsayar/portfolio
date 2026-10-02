@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 200" fill="none" stroke="#120700" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <!-- NOTE: Blueprint-style technical drawing for fastener reference library -->
+
+  <!-- NOTE: Jam / lock / counter nut — thin hex profile -->
+  <polygon points="80,40 112,58 112,86 80,104 48,86 48,58" />
+  <circle cx="80" cy="72" r="14" />
+  <circle cx="80" cy="72" r="8" opacity="0.45" />
+  <rect x="50" y="128" width="60" height="14" />
+  <ellipse cx="80" cy="128" rx="30" ry="6" />
+  <ellipse cx="80" cy="142" rx="30" ry="6" />
+
+</svg>

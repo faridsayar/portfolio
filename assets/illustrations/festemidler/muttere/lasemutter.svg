@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 200" fill="none" stroke="#120700" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <!-- NOTE: Blueprint-style technical drawing for fastener reference library -->
+
+  <!-- NOTE: Nyloc / prevailing-torque lock nut -->
+  <polygon points="80,24 110,42 110,78 80,96 50,78 50,42" />
+  <circle cx="80" cy="60" r="14" />
+  <circle cx="80" cy="60" r="8" opacity="0.4" />
+  <rect x="52" y="118" width="56" height="22" />
+  <path d="M52 140 C52 152 108 152 108 140" opacity="0.85" />
+  <ellipse cx="80" cy="118" rx="28" ry="7" />
+  <ellipse cx="80" cy="148" rx="22" ry="6" opacity="0.55" />
+
+</svg>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 200" fill="none" stroke="#120700" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <!-- NOTE: Blueprint-style technical drawing for fastener reference library -->
+
+  <!-- NOTE: Cap / acorn nut — dome elevation + hex plan -->
+  <polygon points="80,22 104,36 104,56 80,70 56,56 56,36" />
+  <circle cx="80" cy="46" r="9" opacity="0.45" />
+  <path d="M54 120 L54 86 C54 58 106 58 106 86 L106 120" />
+  <ellipse cx="80" cy="120" rx="26" ry="8" />
+  <path d="M62 86 C62 68 98 68 98 86" opacity="0.55" />
+
+</svg>

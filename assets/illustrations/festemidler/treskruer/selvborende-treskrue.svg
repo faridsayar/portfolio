@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 200" fill="none" stroke="#120700" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <!-- NOTE: Blueprint-style technical drawing for fastener reference library -->
+
+  <line x1="80" y1="8" x2="80" y2="192" stroke-dasharray="3 3" opacity="0.35" />
+  <path d="M62 28 L80 12 L98 28 Z" />
+  <path d="M74 18 L86 18" opacity="0.5" />
+  <rect x="74" y="28" width="12" height="20" />
+  <path d="M 80 48 L 71 51 L 80 54 M 80 54 L 89 57 L 80 60 M 80 60 L 71 63 L 80 66 M 80 66 L 89 69 L 80 72 M 80 72 L 71 75 L 80 78 M 80 78 L 89 81 L 80 84 M 80 84 L 71 87 L 80 90 M 80 90 L 89 93 L 80 96 M 80 96 L 71 99 L 80 102 M 80 102 L 89 105 L 80 108 M 80 108 L 71 111 L 80 114 M 80 114 L 89 117 L 80 120 M 80 120 L 71 123 L 80 126 M 80 126 L 89 129 L 80 132 M 80 132 L 71 135 L 80 138 M 80 138 L 89 141 L 80 144 M 80 144 L 71 147 L 80 150" />
+  <!-- NOTE: Self-drilling tip (drill point) -->
+  <path d="M74 150 L74 168 L80 188 L86 168 L86 150" />
+  <line x1="74" y1="160" x2="86" y2="172" opacity="0.45" />
+
+</svg>

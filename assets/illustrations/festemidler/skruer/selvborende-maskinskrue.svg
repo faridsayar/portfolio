@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 200" fill="none" stroke="#120700" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <!-- NOTE: Blueprint-style technical drawing for fastener reference library -->
+
+  <line x1="80" y1="8" x2="80" y2="192" stroke-dasharray="3 3" opacity="0.35" />
+  <path d="M64 28 C64 16 96 16 96 28 L96 34 L64 34 Z" />
+  <path d="M70 24 L90 24" opacity="0.5" />
+  <rect x="74" y="34" width="12" height="20" />
+  <path d="M 78 54 L 74 56 L 82 58 M 78 58 L 86 60 L 82 62 M 78 62 L 74 64 L 82 66 M 78 66 L 86 68 L 82 70 M 78 70 L 74 72 L 82 74 M 78 74 L 86 76 L 82 78 M 78 78 L 74 80 L 82 82 M 78 82 L 86 84 L 82 86 M 78 86 L 74 88 L 82 90 M 78 90 L 86 92 L 82 94 M 78 94 L 74 96 L 82 98 M 78 98 L 86 100 L 82 102 M 78 102 L 74 104 L 82 106 M 78 106 L 86 108 L 82 110 M 78 110 L 74 112 L 82 114 M 78 114 L 86 116 L 82 118 M 78 118 L 74 120 L 82 122 M 78 122 L 86 124 L 82 126 M 78 126 L 74 128 L 82 130 M 78 130 L 86 132 L 82 134 M 78 134 L 74 136 L 82 138 M 78 138 L 86 140 L 82 142 M 78 142 L 74 143.5 L 82 145" />
+  <path d="M74 145 L74 162 L80 182 L86 162 L86 145" />
+
+</svg>

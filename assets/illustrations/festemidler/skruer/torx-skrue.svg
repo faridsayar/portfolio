@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 200" fill="none" stroke="#120700" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <!-- NOTE: Blueprint-style technical drawing for fastener reference library -->
+
+  <line x1="80" y1="8" x2="80" y2="192" stroke-dasharray="3 3" opacity="0.35" />
+  <path d="M62 30 L80 12 L98 30 Z" />
+  <!-- NOTE: Torx (6-lobe) drive recess indication -->
+  <path d="M80 16 L84 20 L82 24 L86 26 L82 28 L84 32 L80 30 L76 32 L78 28 L74 26 L78 24 L76 20 Z" opacity="0.75" />
+  <rect x="74" y="30" width="12" height="26" />
+  <path d="M 78 56 L 74 58 L 82 60 M 78 60 L 86 62 L 82 64 M 78 64 L 74 66 L 82 68 M 78 68 L 86 70 L 82 72 M 78 72 L 74 74 L 82 76 M 78 76 L 86 78 L 82 80 M 78 80 L 74 82 L 82 84 M 78 84 L 86 86 L 82 88 M 78 88 L 74 90 L 82 92 M 78 92 L 86 94 L 82 96 M 78 96 L 74 98 L 82 100 M 78 100 L 86 102 L 82 104 M 78 104 L 74 106 L 82 108 M 78 108 L 86 110 L 82 112 M 78 112 L 74 114 L 82 116 M 78 116 L 86 118 L 82 120 M 78 120 L 74 122 L 82 124 M 78 124 L 86 126 L 82 128 M 78 128 L 74 130 L 82 132 M 78 132 L 86 134 L 82 136 M 78 136 L 74 138 L 82 140 M 78 140 L 86 142 L 82 144 M 78 144 L 74 146 L 82 148 M 78 148 L 86 150 L 82 152 M 78 152 L 74 154 L 82 156 M 78 156 L 86 158 L 82 160 M 78 160 L 74 162 L 82 164 M 78 164 L 86 166 L 82 168" />
+  <line x1="74" y1="168" x2="86" y2="168" />
+
+</svg>

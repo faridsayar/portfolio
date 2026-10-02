@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 200" fill="none" stroke="#120700" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <!-- NOTE: Blueprint-style technical drawing for fastener reference library -->
+
+  <line x1="80" y1="8" x2="80" y2="192" stroke-dasharray="3 3" opacity="0.35" />
+  <!-- NOTE: Dowel screw — wood thread both ends, unthreaded middle -->
+  <path d="M71 12 L80 8 L89 12" />
+  <path d="M 80 12 L 72 15 L 80 18 M 80 18 L 88 21 L 80 24 M 80 24 L 72 27 L 80 30 M 80 30 L 88 33 L 80 36 M 80 36 L 72 39 L 80 42 M 80 42 L 88 45 L 80 48 M 80 48 L 72 51 L 80 54 M 80 54 L 88 57 L 80 60 M 80 60 L 72 63 L 80 66 M 80 66 L 88 68 L 80 70" />
+  <rect x="74" y="70" width="12" height="50" />
+  <path d="M 80 120 L 72 123 L 80 126 M 80 126 L 88 129 L 80 132 M 80 132 L 72 135 L 80 138 M 80 138 L 88 141 L 80 144 M 80 144 L 72 147 L 80 150 M 80 150 L 88 153 L 80 156 M 80 156 L 72 159 L 80 162 M 80 162 L 88 165 L 80 168 M 80 168 L 72 171 L 80 174 M 80 174 L 88 176 L 80 178" />
+  <path d="M71 178 L80 188 L89 178" />
+
+</svg>

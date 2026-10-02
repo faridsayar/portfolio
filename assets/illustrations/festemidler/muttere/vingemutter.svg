@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 200" fill="none" stroke="#120700" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <!-- NOTE: Blueprint-style technical drawing for fastener reference library -->
+
+  <!-- NOTE: Wing nut — plan-ish elevation -->
+  <path d="M40 70 C40 40 70 36 80 58 C90 36 120 40 120 70 L110 78 C100 60 90 70 80 78 C70 70 60 60 50 78 Z" />
+  <circle cx="80" cy="78" r="16" />
+  <circle cx="80" cy="78" r="8" opacity="0.45" />
+  <rect x="64" y="94" width="32" height="28" />
+  <ellipse cx="80" cy="122" rx="16" ry="5" />
+
+</svg>
