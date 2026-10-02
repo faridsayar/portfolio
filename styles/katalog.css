@@ -1,5 +1,23 @@
 /* NOTE: Material catalogue — one-page list with search, group jumps, and image/text rows. */
 
+/* NOTE: Book-cover preview + paid PDF Stripe CTA above the breadcrumb. */
+.katalog-pdf-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-top: 1.5rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.katalog-pdf-cta__cover {
+  width: 4.5rem;
+  height: 4.5rem;
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
 .katalog-page .breadcrumb {
   margin-top: 1.25rem;
 }
