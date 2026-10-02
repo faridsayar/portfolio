@@ -12,8 +12,9 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, '..', 'assets', 'illustrations', 'festemidler');
 
 function svg(w, h, body) {
+  // NOTE: Hardcoded dark stroke so CSS invert on .bibliotek-item__img yields white lines on dark cards.
   return `<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" fill="none" stroke="#120700" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
   <!-- NOTE: Blueprint-style technical drawing for fastener reference library -->
 ${body}
 </svg>
@@ -241,45 +242,46 @@ const nuts = [
   {
     file: 'muttere/hettemutter.svg',
     draw: () => `
-  <!-- NOTE: Cap / acorn nut -->
-  <path d="M52 110 L52 78 C52 48 108 48 108 78 L108 110" />
-  <ellipse cx="80" cy="110" rx="28" ry="8" />
-  <path d="M60 78 C60 58 100 58 100 78" opacity="0.5" />
-  <polygon points="80,28 102,40 102,58 80,70 58,58 58,40" opacity="0.85" />
-  <circle cx="80" cy="49" r="8" opacity="0.4" />
+  <!-- NOTE: Cap / acorn nut — dome elevation + hex plan -->
+  <polygon points="80,22 104,36 104,56 80,70 56,56 56,36" />
+  <circle cx="80" cy="46" r="9" opacity="0.45" />
+  <path d="M54 120 L54 86 C54 58 106 58 106 86 L106 120" />
+  <ellipse cx="80" cy="120" rx="26" ry="8" />
+  <path d="M62 86 C62 68 98 68 98 86" opacity="0.55" />
 `,
   },
   {
     file: 'muttere/firkantmutter.svg',
     draw: () => `
-  <rect x="44" y="28" width="72" height="72" />
-  <circle cx="80" cy="64" r="16" />
-  <circle cx="80" cy="64" r="9" opacity="0.45" />
-  <rect x="52" y="122" width="56" height="28" />
-  <line x1="52" y1="122" x2="108" y2="122" />
-  <line x1="52" y1="150" x2="108" y2="150" />
+  <rect x="40" y="24" width="80" height="80" />
+  <circle cx="80" cy="64" r="18" />
+  <circle cx="80" cy="64" r="10" opacity="0.45" />
+  <rect x="48" y="124" width="64" height="30" />
+  <line x1="48" y1="124" x2="112" y2="124" />
+  <line x1="48" y1="154" x2="112" y2="154" />
+  <circle cx="80" cy="139" r="9" opacity="0.4" />
 `,
   },
   {
     file: 'muttere/t-mutter.svg',
     draw: () => `
   <!-- NOTE: T-nut — barrel + pronged flange -->
-  <rect x="68" y="40" width="24" height="70" />
-  <path d="${machineThread(80, 48, 100, 6)}" opacity="0.7" />
-  <rect x="40" y="110" width="80" height="14" />
-  <path d="M48 124 L44 148 M64 124 L60 148 M96 124 L100 148 M112 124 L116 148" />
-  <circle cx="80" cy="48" r="8" opacity="0.45" />
+  <rect x="66" y="36" width="28" height="74" />
+  <path d="${machineThread(80, 44, 100, 7)}" opacity="0.7" />
+  <rect x="36" y="110" width="88" height="16" />
+  <path d="M46 126 L40 156 M66 126 L60 156 M94 126 L100 156 M114 126 L120 156" />
+  <circle cx="80" cy="42" r="9" opacity="0.45" />
 `,
   },
   {
     file: 'muttere/blindmutter.svg',
     draw: () => `
   <!-- NOTE: Rivet nut / blind insert — flange + deformable body -->
-  <ellipse cx="80" cy="36" rx="32" ry="10" />
-  <rect x="56" y="36" width="48" height="12" />
-  <path d="M60 48 L60 130 C60 150 100 150 100 130 L100 48" />
-  <path d="${machineThread(80, 70, 120, 7)}" opacity="0.65" />
-  <ellipse cx="80" cy="130" rx="20" ry="8" opacity="0.5" />
+  <ellipse cx="80" cy="32" rx="34" ry="11" />
+  <rect x="54" y="32" width="52" height="14" />
+  <path d="M58 46 L58 128 C58 152 102 152 102 128 L102 46" />
+  <path d="${machineThread(80, 68, 118, 8)}" opacity="0.65" />
+  <ellipse cx="80" cy="128" rx="22" ry="9" opacity="0.55" />
 `,
   },
   {
