@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 200" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <!-- NOTE: Blueprint-style technical drawing for fastener reference library -->
+
+  <line x1="80" y1="8" x2="80" y2="192" stroke-dasharray="3 3" opacity="0.35" />
+  <!-- NOTE: Stud bolt — thread both ends, plain middle -->
+  <path d="M 78 16 L 73 18 L 82 20 M 78 20 L 87 22 L 82 24 M 78 24 L 73 26 L 82 28 M 78 28 L 87 30 L 82 32 M 78 32 L 73 34 L 82 36 M 78 36 L 87 38 L 82 40 M 78 40 L 73 42 L 82 44 M 78 44 L 87 46 L 82 48 M 78 48 L 73 50 L 82 52 M 78 52 L 87 54 L 82 56 M 78 56 L 73 58 L 82 60" />
+  <rect x="73" y="60" width="14" height="70" />
+  <path d="M 78 130 L 73 132 L 82 134 M 78 134 L 87 136 L 82 138 M 78 138 L 73 140 L 82 142 M 78 142 L 87 144 L 82 146 M 78 146 L 73 148 L 82 150 M 78 150 L 87 152 L 82 154 M 78 154 L 73 156 L 82 158 M 78 158 L 87 160 L 82 162 M 78 162 L 73 164 L 82 166 M 78 166 L 87 168 L 82 170 M 78 170 L 73 172 L 82 174 M 78 174 L 87 176 L 82 178 M 78 178 L 73 179 L 82 180" />
+
+</svg>

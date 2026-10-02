@@ -39,6 +39,11 @@ const CURATED_SEO = {
     description:
       'Jobbe i Formaa AS — se ledige stillinger og muligheter for å bli med i teamet. Vi søker junior eller student til B2B-markedsføring, lead-generering og forretningsutvikling.',
   },
+  'bibliotek-festemidler.html': {
+    title: 'Bibliotek: Treskruer, muttere og skruer | Formaa',
+    description:
+      'Teknisk bibliotek med illustrasjoner i tegnestil: hovedtyper treskruer, muttere og maskinskruer med tekniske navn — referanse for produktutvikling.',
+  },
   'formaa-skaperverksted.html': {
     title: 'Aktivitet barnekurs i Oslo – kreativt kurs for barn 5–9 år | Formaa',
     description:
@@ -339,6 +344,7 @@ const files = [
   path.join(root, 'karriere.html'),
   path.join(root, 'arrangement.html'),
   path.join(root, 'formaa-skaperverksted.html'),
+  path.join(root, 'bibliotek-festemidler.html'),
   ...collectHtmlFiles(path.join(root, 'category')),
   ...collectHtmlFiles(path.join(root, 'blogg')),
   ...fs

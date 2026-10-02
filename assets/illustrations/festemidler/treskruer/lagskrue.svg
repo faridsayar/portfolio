@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 200" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <!-- NOTE: Blueprint-style technical drawing for fastener reference library -->
+
+  <line x1="80" y1="8" x2="80" y2="192" stroke-dasharray="3 3" opacity="0.35" />
+  <!-- NOTE: Hex head coach / lag screw for timber -->
+  <path d="M66 18 L80 12 L94 18 L94 32 L66 32 Z" />
+  <line x1="70" y1="22" x2="90" y2="22" opacity="0.45" />
+  <rect x="73" y="32" width="14" height="36" />
+  <path d="M 80 68 L 69 71 L 80 74 M 80 74 L 91 77 L 80 80 M 80 80 L 69 83 L 80 86 M 80 86 L 91 89 L 80 92 M 80 92 L 69 95 L 80 98 M 80 98 L 91 101 L 80 104 M 80 104 L 69 107 L 80 110 M 80 110 L 91 113 L 80 116 M 80 116 L 69 119 L 80 122 M 80 122 L 91 125 L 80 128 M 80 128 L 69 131 L 80 134 M 80 134 L 91 137 L 80 140 M 80 140 L 69 143 L 80 146 M 80 146 L 91 149 L 80 152 M 80 152 L 69 155 L 80 158 M 80 158 L 91 161 L 80 164 M 80 164 L 69 166 L 80 168" />
+  <path d="M69 168 L80 188 L91 168" />
+
+</svg>

@@ -14,6 +14,7 @@ export const STATIC_HUB_ROUTES = [
   '/arrangement',
   '/formaa-skaperverksted',
   '/karriere',
+  '/bibliotek-festemidler',
   ...EN_HUB_ROUTES,
   '/en/product-rendering',
   '/en/cad-modeling',
