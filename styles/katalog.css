@@ -1,0 +1,83 @@
+/* NOTE: Material catalogue — group cards and material rows (image, text, image, text). */
+
+.katalog-page .breadcrumb {
+  margin-top: 1.25rem;
+}
+
+.katalog-page .section-lead + .section-lead {
+  margin-top: 0.85rem;
+}
+
+/* NOTE: Group cards on the hub — square black placeholder instead of a photo. */
+.katalog-groups .article-card__img {
+  width: min(100%, 16rem);
+  height: auto;
+  aspect-ratio: 1;
+  background: var(--color-black);
+  border: 1px solid var(--border-card);
+}
+
+/* NOTE: Two materials per row; each material is image left and text right. */
+.katalog-materials {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.katalog-material {
+  display: grid;
+  grid-template-columns: minmax(6.5rem, 0.9fr) minmax(0, 1.2fr);
+  gap: 0.85rem 1rem;
+  align-items: start;
+  margin: 0;
+}
+
+.katalog-material__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+  background: var(--color-black);
+  border: 1px solid var(--border-card);
+}
+
+.katalog-material__title {
+  margin: 0 0 0.4rem;
+  font-size: var(--font-size-card-title);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-title);
+}
+
+.katalog-material__text {
+  margin: 0;
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-relaxed);
+}
+
+.katalog-material__points {
+  margin: 0.65rem 0 0;
+  padding-left: 1.1rem;
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-relaxed);
+}
+
+.katalog-material__label {
+  font-weight: var(--font-weight-semibold);
+}
+
+/* NOTE: Narrow viewport — one material per row, image stacked above the text. */
+@media (max-width: 768px) {
+  .katalog-materials {
+    grid-template-columns: 1fr;
+  }
+
+  .katalog-material {
+    grid-template-columns: 1fr;
+  }
+
+  .katalog-material__img {
+    width: min(100%, 12rem);
+  }
+}

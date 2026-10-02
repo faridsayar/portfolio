@@ -336,6 +336,111 @@ function buildPrisestimatGraph(html) {
   ]);
 }
 
+/** NOTE: FAQ pairs from a catalogue page (`data-katalog-faq` section). */
+function parseKatalogFaq(html) {
+  const sectionMatch = html.match(/<section[^>]*data-katalog-faq[^>]*>[\s\S]*?<\/section>/i);
+  if (!sectionMatch) return [];
+  const section = sectionMatch[0];
+  const pairs = [];
+  for (const h3 of section.matchAll(/<h3 class="section-title"[^>]*>([\s\S]*?)<\/h3>/gi)) {
+    const after = section.slice((h3.index ?? 0) + h3[0].length);
+    const pMatch = after.match(/<p class="section-lead"[^>]*>([\s\S]*?)<\/p>/i);
+    if (!pMatch) continue;
+    const question = stripHtml(h3[1]).replace(/^\d+\.\s*/, '');
+    const answer = stripHtml(pMatch[1]);
+    if (question && answer) pairs.push({ question, answer });
+  }
+  return pairs;
+}
+
+/** NOTE: Material names and in-page anchors on a group page. */
+function parseKatalogMaterials(html) {
+  const items = [];
+  for (const block of html.matchAll(/<article\b([^>]*)>([\s\S]*?)<\/article>/gi)) {
+    const attrs = block[1];
+    if (!/data-katalog-material/.test(attrs)) continue;
+    const idMatch = attrs.match(/\bid="([^"]+)"/i);
+    const nameMatch = block[2].match(/<h2[^>]*>([\s\S]*?)<\/h2>/i);
+    if (!idMatch || !nameMatch) continue;
+    items.push({ id: idMatch[1], name: stripHtml(nameMatch[1]) });
+  }
+  return items;
+}
+
+/** NOTE: Group cards on the catalogue hub. */
+function parseKatalogGroups(html) {
+  const items = [];
+  for (const card of html.matchAll(
+    /<a class="article-card__link" href="([^"]+)"[\s\S]*?<h2 class="article-card__title">([\s\S]*?)<\/h2>/gi
+  )) {
+    items.push({ href: card[1], name: stripHtml(card[2]) });
+  }
+  return items;
+}
+
+function katalogFaqNode(url, pairs) {
+  if (!pairs.length) return null;
+  return {
+    '@type': 'FAQPage',
+    '@id': `${url}#faq`,
+    mainEntity: pairs.map(({ question, answer }) => ({
+      '@type': 'Question',
+      name: question,
+      acceptedAnswer: { '@type': 'Answer', text: answer },
+    })),
+  };
+}
+
+/** NOTE: Catalogue hub and group pages — breadcrumb, collection, material or group list, FAQ. */
+function buildKatalogGraph({ url, title, description, html, relPath }) {
+  const isHub = relPath === 'katalog/index.html';
+  const h1 = getH1(html);
+  const crumbs = [
+    { name: BRAND_CRUMB, url: `${SITE}/` },
+    { name: 'Katalog', url: `${SITE}/katalog` },
+  ];
+  if (!isHub) crumbs.push({ name: h1 || title, url });
+
+  const listItems = isHub
+    ? parseKatalogGroups(html).map((item) => ({
+        name: item.name,
+        url: item.href.startsWith('http') ? item.href : `${SITE}${item.href}`,
+      }))
+    : parseKatalogMaterials(html).map((item) => ({
+        name: item.name,
+        url: `${url}#${item.id}`,
+      }));
+
+  const nodes = [
+    websiteRef(),
+    breadcrumbList(crumbs, url),
+    webPage({ url, name: title, description }),
+    {
+      '@type': 'CollectionPage',
+      '@id': `${url}#collection`,
+      name: h1 || title,
+      description,
+      url,
+      inLanguage: 'nb-NO',
+      isPartOf: isHub ? { '@id': WEBSITE_ID } : { '@id': `${SITE}/katalog` },
+      mainEntity: {
+        '@type': 'ItemList',
+        numberOfItems: listItems.length,
+        itemListElement: listItems.map((item, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          name: item.name,
+          url: item.url,
+        })),
+      },
+    },
+  ];
+
+  const faq = katalogFaqNode(url, parseKatalogFaq(html));
+  if (faq) nodes.push(faq);
+  return wrapGraph(nodes);
+}
+
 function processFile(absPath, relPath) {
   let html = read(absPath);
   if (isRedirectOnly(html) || isNoindex(html))
@@ -545,6 +650,13 @@ function processFile(absPath, relPath) {
     html = insertSchemaFromGraph(html, graph);
     write(absPath, html);
     return { updated: true, type: 'en-landing' };
+  }
+
+  if (relPath === 'katalog/index.html' || /^katalog\/[a-z0-9-]+\/index\.html$/.test(relPath)) {
+    graph = buildKatalogGraph({ url, title, description, html, relPath });
+    html = insertSchemaFromGraph(html, graph);
+    write(absPath, html);
+    return { updated: true, type: 'katalog' };
   }
 
   graph = buildDefaultWebGraph({

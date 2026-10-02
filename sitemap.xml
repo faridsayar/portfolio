@@ -3,11 +3,12 @@
      Project URLs: /prosjekter/{slug}. Blogg: /blogg/{slug} (blogg/{slug}/index.html).
      /application-form = kontaktform. /arrangement = event hub (skisse- og idéworkshop).
      /tjenester-prosess = tjenester og prosess.
+     /katalog = materialkatalog; /katalog/{gruppe} = materialgruppe.
      /gallery retired (301 → home). lastmod from source HTML mtime. Regenerate: pnpm generate:sitemap -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://formaa.no/</loc>
-    <lastmod>2026-09-01</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -604,6 +605,54 @@
     <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://formaa.no/katalog</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://formaa.no/katalog/andre</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://formaa.no/katalog/blandinger</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://formaa.no/katalog/keramikk</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://formaa.no/katalog/metaller</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://formaa.no/katalog/polymerer</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://formaa.no/katalog/tekstil</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://formaa.no/katalog/tre</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://formaa.no/oss</loc>
