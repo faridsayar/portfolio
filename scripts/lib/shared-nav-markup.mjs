@@ -80,6 +80,8 @@ export function getNavItems({ segments, path }) {
     path === 'formaa-skaperverksted.html' ||
     (segments.length === 1 && segments[0] === 'formaa-skaperverksted');
 
+  const isKatalogPage = segments[0] === 'katalog';
+
   return [
     { href: '/', label: 'Hjem', current: segments.length === 0 },
     {
@@ -96,6 +98,11 @@ export function getNavItems({ segments, path }) {
     },
     { href: '/prosjekter', label: 'Prosjekter', current: isProjectPage },
     { href: '/blogg', label: 'Blogg', current: isBloggPage },
+    {
+      href: '/katalog',
+      label: 'Materialkatalogen',
+      current: isKatalogPage,
+    },
     {
       href: '/formaa-skaperverksted',
       label: 'Skaperverksted',

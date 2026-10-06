@@ -85,6 +85,7 @@ function collectTargetFiles() {
       .filter((n) => n.startsWith('prosjekt-') && n.endsWith('.html'))
       .map((n) => path.join(root, n)),
     ...collectHtmlFiles(path.join(root, 'prosjekter')),
+    ...collectHtmlFiles(path.join(root, 'katalog')),
     ...collectHtmlFiles(path.join(root, 'en')),
   ];
 

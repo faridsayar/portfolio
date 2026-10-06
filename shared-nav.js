@@ -83,6 +83,8 @@ function getSharedNavItems(segments, path) {
     path === 'formaa-skaperverksted.html' ||
     (segments.length === 1 && segments[0] === 'formaa-skaperverksted');
 
+  const isKatalogPage = segments[0] === 'katalog';
+
   return [
     { href: '/', label: 'Hjem', current: segments.length === 0 },
     {
@@ -99,6 +101,11 @@ function getSharedNavItems(segments, path) {
     },
     { href: '/prosjekter', label: 'Prosjekter', current: isProjectPage },
     { href: '/blogg', label: 'Blogg', current: isBloggPage },
+    {
+      href: '/katalog',
+      label: 'Materialkatalogen',
+      current: isKatalogPage,
+    },
     {
       href: '/formaa-skaperverksted',
       label: 'Skaperverksted',
@@ -163,11 +170,13 @@ function renderSharedNav() {
         projects: '/prosjekter',
         categories: '/category/industridesign/norge',
         insights: '/blogg',
+        katalog: '/katalog',
         'tjenester-prosess': '/tjenester-prosess',
         about: '/oss',
         skaperverksted: '/formaa-skaperverksted',
         application: '/application-form',
         pricing: '/prisestimat',
+        karriere: '/karriere',
       };
 
   navRoots.forEach((nav) => {

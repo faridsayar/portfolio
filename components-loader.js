@@ -52,7 +52,7 @@
         <a class="site-footer__link" href="/prosjekter" data-footer-link="projects">Prosjekter</a>
         <a class="site-footer__link" href="/category/industridesign/norge" data-footer-link="categories">Kategorier</a>
         <a class="site-footer__link" href="/blogg" data-footer-link="insights">Blogg</a>
-        <a class="site-footer__link" href="/katalog" data-footer-link="katalog">Materialkatalog</a>
+        <a class="site-footer__link" href="/katalog" data-footer-link="katalog">Materialkatalogen</a>
         <a class="site-footer__link" href="/tjenester-prosess" data-footer-link="tjenester-prosess">Tjenester</a>
         <a class="site-footer__link" href="/oss" data-footer-link="about">Oss</a>
         <a class="site-footer__link" href="/application-form" data-footer-link="application">Kontaktform</a>
@@ -387,6 +387,16 @@
             <div class="quote-card__content">
               <p class="quote-card__text">"Gode og flinke designere som fulgte opp på alle punkter, og var med til å lage et produkt som vi er stolte av."</p>
               <p class="quote-card__name">Jon Egil</p>
+            </div>
+          </article>
+          <!-- NOTE: Client testimonial — Martin Ruste (3D visualisation / product images). -->
+          <article class="quote-card">
+            <div class="quote-card__media">
+              <img class="quote-card__avatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Ccircle cx='40' cy='40' r='40' fill='%23000'/%3E%3C/svg%3E" alt="" loading="lazy" decoding="async" />
+            </div>
+            <div class="quote-card__content">
+              <p class="quote-card__text">"Veldig fornøyd med samarbeidet med Formaa. Jeg brukte dem til 3D-visualisering og produktbilder i forbindelse med utviklingen av et nytt produkt. Farid var løsningsorientert, fleksibel og svært enkel å kommunisere med gjennom hele prosessen. Det var god dialog underveis med flere justeringer, og sluttresultatet ble profesjonelt og akkurat det jeg trengte. Kan absolutt anbefales."</p>
+              <p class="quote-card__name">Martin Ruste</p>
             </div>
           </article>
         </div>
