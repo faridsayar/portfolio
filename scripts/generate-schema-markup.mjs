@@ -353,7 +353,7 @@ function parseKatalogFaq(html) {
   return pairs;
 }
 
-/** NOTE: Material names and in-page anchors on the catalogue page. */
+/** NOTE: Material names and in-page anchors on a catalogue type page. */
 function parseKatalogMaterials(html) {
   const items = [];
   for (const block of html.matchAll(/<article\b([^>]*)>([\s\S]*?)<\/article>/gi)) {
@@ -363,6 +363,18 @@ function parseKatalogMaterials(html) {
     const nameMatch = block[2].match(/<h[23][^>]*>([\s\S]*?)<\/h[23]>/i);
     if (!idMatch || !nameMatch) continue;
     items.push({ id: idMatch[1], name: stripHtml(nameMatch[1]) });
+  }
+  return items;
+}
+
+/** NOTE: Type hub links on /katalog (title + URL). */
+function parseKatalogTypes(html) {
+  const items = [];
+  for (const block of html.matchAll(
+    /<a class="katalog-type-link"[^>]*href="([^"]+)"[^>]*>[\s\S]*?<h2[^>]*>([\s\S]*?)<\/h2>/gi
+  )) {
+    const href = block[1].startsWith('http') ? block[1] : `${SITE}${block[1]}`;
+    items.push({ url: href, name: stripHtml(block[2]) });
   }
   return items;
 }
@@ -380,18 +392,26 @@ function katalogFaqNode(url, pairs) {
   };
 }
 
-/** NOTE: Catalogue page — breadcrumb, collection of all materials, FAQ. */
-function buildKatalogGraph({ url, title, description, html }) {
+/** NOTE: Catalogue hub or type page — breadcrumb, collection list, optional FAQ. */
+function buildKatalogGraph({ url, title, description, html, typeLabel = null }) {
   const h1 = getH1(html);
   const crumbs = [
     { name: BRAND_CRUMB, url: `${SITE}/` },
     { name: 'Katalog', url: `${SITE}/katalog` },
   ];
+  if (typeLabel) {
+    crumbs.push({ name: typeLabel, url });
+  }
 
-  const listItems = parseKatalogMaterials(html).map((item) => ({
-    name: item.name,
-    url: `${url}#${item.id}`,
-  }));
+  const listItems = typeLabel
+    ? parseKatalogMaterials(html).map((item) => ({
+        name: item.name,
+        url: `${url}#${item.id}`,
+      }))
+    : parseKatalogTypes(html).map((item) => ({
+        name: item.name,
+        url: item.url,
+      }));
 
   const nodes = [
     websiteRef(),
@@ -639,6 +659,32 @@ function processFile(absPath, relPath) {
     html = insertSchemaFromGraph(html, graph);
     write(absPath, html);
     return { updated: true, type: 'katalog' };
+  }
+
+  // NOTE: Material type pages under /katalog/{type}/ (skip soft paywall last-ned).
+  const katalogTypeMatch = relPath.match(/^katalog\/([^/]+)\/index\.html$/);
+  if (katalogTypeMatch && katalogTypeMatch[1] !== 'last-ned') {
+    const typeSlug = katalogTypeMatch[1];
+    const typeLabels = {
+      tre: 'Tre',
+      metaller: 'Metaller',
+      plast: 'Plast',
+      keramikk: 'Keramikk',
+      blandinger: 'Blandinger',
+      tekstil: 'Tekstil',
+      andre: 'Andre',
+    };
+    const typeLabel = typeLabels[typeSlug] || typeSlug;
+    graph = buildKatalogGraph({
+      url: url || `${SITE}/katalog/${typeSlug}`,
+      title,
+      description,
+      html,
+      typeLabel,
+    });
+    html = insertSchemaFromGraph(html, graph);
+    write(absPath, html);
+    return { updated: true, type: 'katalog-type' };
   }
 
   graph = buildDefaultWebGraph({

@@ -9,22 +9,76 @@ body.katalog-page.single-page-body {
   overflow-y: visible;
 }
 
-/* NOTE: Book-cover preview + paid PDF Stripe CTA above the breadcrumb. */
+/* NOTE: Catalogue thumbnail + paid PDF Stripe CTA above the breadcrumb. */
 .katalog-pdf-cta {
   display: inline-flex;
   align-items: center;
-  gap: 0.85rem;
+  gap: 1rem;
   margin-top: 1.5rem;
   text-decoration: none;
   color: inherit;
+  max-width: 36rem;
+}
+
+/* NOTE: Light pad behind the book cover. */
+.katalog-pdf-cta__cover-wrap {
+  flex-shrink: 0;
+  display: inline-flex;
+  padding: 0.65rem;
+  background: var(--surface-panel);
+  border-radius: 14px;
 }
 
 .katalog-pdf-cta__cover {
-  width: 4.5rem;
-  height: 4.5rem;
-  flex-shrink: 0;
+  display: block;
+  width: 9rem;
+  height: auto;
+  aspect-ratio: 595 / 842;
   object-fit: cover;
-  border-radius: 14px;
+  border-radius: 6px;
+  /* NOTE: Subtle drop shadow so the cover reads as a book on the pad. */
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.16);
+}
+
+.katalog-pdf-cta__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.55rem;
+  min-width: 0;
+}
+
+/* NOTE: Price under the PDF CTA button. */
+.katalog-pdf-cta__price {
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.2;
+}
+
+.katalog-pdf-cta__desc {
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-relaxed);
+  opacity: 0.7;
+}
+
+/* NOTE: Post-payment download row on /katalog/last-ned (Stripe redirect target). */
+.katalog-pdf-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  max-width: 36rem;
+}
+
+@media (max-width: 640px) {
+  .katalog-pdf-cta,
+  .katalog-pdf-download {
+    align-items: flex-start;
+  }
+
+  .katalog-pdf-cta__cover {
+    width: 7rem;
+  }
 }
 
 .katalog-page .breadcrumb {
@@ -39,6 +93,84 @@ body.katalog-page.single-page-body {
 .katalog-search {
   margin-top: 1.5rem;
   max-width: 32rem;
+}
+
+/* NOTE: Hub index — one interactive link per material type. */
+.katalog-type-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  margin-top: 2rem;
+  max-width: 42rem;
+}
+
+.katalog-type-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid var(--border-neutral);
+}
+
+.katalog-type-link:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.katalog-type-link__title {
+  margin: 0 0 0.5rem;
+  font-size: var(--font-size-body-md);
+  font-weight: var(--font-weight-extrabold);
+  letter-spacing: var(--letter-spacing-tight-heading);
+  line-height: var(--line-height-title);
+  text-transform: uppercase;
+  color: var(--color-white);
+}
+
+.katalog-type-link__desc {
+  margin: 0 0 0.55rem;
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-relaxed);
+  opacity: 0.75;
+}
+
+.katalog-type-link__materials {
+  margin: 0;
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-relaxed);
+  opacity: 0.55;
+}
+
+.katalog-type-link__materials-label {
+  font-weight: var(--font-weight-semibold);
+  opacity: 0.9;
+}
+
+.katalog-type-link:hover .katalog-type-link__title,
+.katalog-type-link:focus-visible .katalog-type-link__title {
+  color: var(--color-primary);
+}
+
+/* NOTE: Type-page group intro under the section title. */
+.katalog-group__desc {
+  margin: -0.5rem 0 0.75rem;
+  max-width: 40rem;
+  font-size: var(--font-size-body-md);
+  line-height: var(--line-height-relaxed);
+  opacity: 0.8;
+}
+
+.katalog-group__materials {
+  margin: 0 0 1.75rem;
+  max-width: 40rem;
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-relaxed);
+  opacity: 0.6;
+}
+
+.katalog-group__materials-label {
+  font-weight: var(--font-weight-semibold);
+  opacity: 0.9;
 }
 
 /* NOTE: Left group jumps + right long material list. */

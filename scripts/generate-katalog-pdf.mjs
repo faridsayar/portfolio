@@ -9,9 +9,19 @@ import { spawnSync } from 'node:child_process';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, '..');
-const katalogHtmlPath = path.join(root, 'katalog', 'index.html');
+const katalogDir = path.join(root, 'katalog');
 const outHtmlPath = path.join(root, 'katalog', 'materialkatalog-print.html');
 const outPdfPath = path.join(root, 'katalog', 'materialkatalog.pdf');
+/** NOTE: Read type pages in stable order (hub no longer holds material cards). */
+const KATALOG_TYPE_ORDER = [
+  'tre',
+  'metaller',
+  'plast',
+  'keramikk',
+  'blandinger',
+  'tekstil',
+  'andre',
+];
 
 const CHROME =
   process.env.CHROME_PATH || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
@@ -319,11 +329,18 @@ ${pages.join('\n')}
 </html>`;
 }
 
-const htmlSource = fs.readFileSync(katalogHtmlPath, 'utf8');
+const htmlSource = KATALOG_TYPE_ORDER.map((slug) => {
+  const file = path.join(katalogDir, slug, 'index.html');
+  if (!fs.existsSync(file)) {
+    console.error(`Missing catalogue type page: ${file}`);
+    process.exit(1);
+  }
+  return fs.readFileSync(file, 'utf8');
+}).join('\n');
 const groups = extractMaterials(htmlSource);
 const total = groups.reduce((n, g) => n + g.materials.length, 0);
 if (total === 0) {
-  console.error('No materials found in katalog/index.html');
+  console.error('No materials found in katalog/{type}/index.html pages');
   process.exit(1);
 }
 

@@ -1,6 +1,6 @@
 /**
- * NOTE: Catalogue page search — filters materials by name/facts, pins the group
- * nav to the viewport top while scrolling, and highlights the active section.
+ * NOTE: Catalogue type-page search — filters materials by name/facts, pins the
+ * type nav to the viewport top while scrolling, and keeps the active type marked.
  */
 (function () {
   const input = document.querySelector('[data-katalog-search-input]');
@@ -56,8 +56,17 @@
     }
   }
 
-  /** NOTE: Pick the group whose top has crossed just below the sticky TOC. */
+  /**
+   * NOTE: Keep the current type highlighted. Type pages use page links in the
+   * TOC (`/katalog/plast`), so prefer aria-current when present.
+   */
   function updateActiveToc() {
+    const currentLink = tocLinks.find((link) => link.getAttribute('aria-current') === 'page');
+    if (currentLink) {
+      setActiveToc(currentLink.getAttribute('data-katalog-toc'));
+      return;
+    }
+
     const visibleGroups = groups.filter((group) => !group.hidden);
     if (!visibleGroups.length) return;
 
