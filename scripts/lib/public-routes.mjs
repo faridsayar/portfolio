@@ -14,6 +14,7 @@ export const STATIC_HUB_ROUTES = [
   '/arrangement',
   '/formaa-skaperverksted',
   '/karriere',
+  '/katalog',
   ...EN_HUB_ROUTES,
   '/en/product-rendering',
   '/en/cad-modeling',
@@ -31,6 +32,7 @@ export const AI_IMPORTANT_ROUTES = [
   '/arrangement',
   '/formaa-skaperverksted',
   '/application-form',
+  '/katalog',
 ];
 
 /** Primary category hubs for LLM/AI discovery (Norge-level). */

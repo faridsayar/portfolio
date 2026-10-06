@@ -1,0 +1,418 @@
+/* NOTE: Material catalogue — one-page list with search, group jumps, and image/text rows. */
+
+/*
+ * NOTE: Body overflow-x:hidden breaks position:sticky in Chromium. On this page,
+ * use clip + let the document scroller handle Y so the group TOC can pin to top.
+ */
+body.katalog-page.single-page-body {
+  overflow-x: clip;
+  overflow-y: visible;
+}
+
+/* NOTE: Catalogue thumbnail + paid PDF Stripe CTA above the breadcrumb. */
+.katalog-pdf-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  text-decoration: none;
+  color: inherit;
+  max-width: 36rem;
+}
+
+/* NOTE: Light pad behind the book cover. */
+.katalog-pdf-cta__cover-wrap {
+  flex-shrink: 0;
+  display: inline-flex;
+  padding: 0.65rem;
+  background: var(--surface-panel);
+  border-radius: 14px;
+}
+
+.katalog-pdf-cta__cover {
+  display: block;
+  width: 9rem;
+  height: auto;
+  aspect-ratio: 595 / 842;
+  object-fit: cover;
+  border-radius: 6px;
+  /* NOTE: Subtle drop shadow so the cover reads as a book on the pad. */
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.16);
+}
+
+.katalog-pdf-cta__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.55rem;
+  min-width: 0;
+}
+
+/* NOTE: Price under the PDF CTA button. */
+.katalog-pdf-cta__price {
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.2;
+}
+
+.katalog-pdf-cta__desc {
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-relaxed);
+  opacity: 0.7;
+}
+
+/* NOTE: Post-payment download row on /katalog/last-ned (Stripe redirect target). */
+.katalog-pdf-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  max-width: 36rem;
+}
+
+@media (max-width: 640px) {
+  .katalog-pdf-cta,
+  .katalog-pdf-download {
+    align-items: flex-start;
+  }
+
+  .katalog-pdf-cta__cover {
+    width: 7rem;
+  }
+}
+
+.katalog-page .breadcrumb {
+  margin-top: 1.25rem;
+}
+
+.katalog-page .section-lead + .section-lead {
+  margin-top: 0.85rem;
+}
+
+/* NOTE: Search field directly under the breadcrumb. */
+.katalog-search {
+  margin-top: 1.5rem;
+  max-width: 32rem;
+}
+
+/* NOTE: Hub index — one interactive link per material type. */
+.katalog-type-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  margin-top: 2rem;
+  max-width: 42rem;
+}
+
+.katalog-type-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid var(--border-neutral);
+}
+
+.katalog-type-link:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.katalog-type-link__title {
+  margin: 0 0 0.5rem;
+  font-size: var(--font-size-body-md);
+  font-weight: var(--font-weight-extrabold);
+  letter-spacing: var(--letter-spacing-tight-heading);
+  line-height: var(--line-height-title);
+  text-transform: uppercase;
+  color: var(--color-white);
+}
+
+.katalog-type-link__desc {
+  margin: 0 0 0.55rem;
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-relaxed);
+  opacity: 0.75;
+}
+
+.katalog-type-link__materials {
+  margin: 0;
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-relaxed);
+  opacity: 0.55;
+}
+
+.katalog-type-link__materials-label {
+  font-weight: var(--font-weight-semibold);
+  opacity: 0.9;
+}
+
+.katalog-type-link:hover .katalog-type-link__title,
+.katalog-type-link:focus-visible .katalog-type-link__title {
+  color: var(--color-primary);
+}
+
+/* NOTE: Type-page group intro under the section title. */
+.katalog-group__desc {
+  margin: -0.5rem 0 0.75rem;
+  max-width: 40rem;
+  font-size: var(--font-size-body-md);
+  line-height: var(--line-height-relaxed);
+  opacity: 0.8;
+}
+
+.katalog-group__materials {
+  margin: 0 0 1.75rem;
+  max-width: 40rem;
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-relaxed);
+  opacity: 0.6;
+}
+
+.katalog-group__materials-label {
+  font-weight: var(--font-weight-semibold);
+  opacity: 0.9;
+}
+
+/* NOTE: Left group jumps + right long material list. */
+.katalog-layout {
+  display: grid;
+  grid-template-columns: minmax(7rem, 10rem) minmax(0, 1fr);
+  gap: 2rem 2.5rem;
+  margin-top: 2rem;
+  align-items: start;
+}
+
+/* NOTE: Height placeholder while the group nav is fixed to the viewport. */
+.katalog-toc-sentinel {
+  width: 100%;
+  height: 0;
+  pointer-events: none;
+}
+
+/* NOTE: Sticky group nav — pins to viewport top while scrolling the material list. */
+.katalog-toc {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  background: var(--bg-page-canvas);
+  padding: 0.75rem 0;
+  box-sizing: border-box;
+}
+
+/* NOTE: Fixed pin used when CSS sticky is blocked by ancestor overflow. */
+.katalog-toc.is-stuck {
+  position: fixed;
+  top: 0;
+  margin: 0;
+  padding-top: 0.85rem;
+  padding-bottom: 0.85rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+
+.katalog-toc__link {
+  color: rgba(255, 255, 255, 0.35);
+  text-decoration: none;
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-extrabold);
+  letter-spacing: var(--letter-spacing-tight-heading);
+  line-height: var(--line-height-title);
+  text-transform: uppercase;
+  transition: color 0.15s ease;
+}
+
+.katalog-toc__link:hover,
+.katalog-toc__link:focus-visible {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* NOTE: Active group in view — full white; others stay grey. */
+.katalog-toc__link.is-active {
+  color: var(--color-white);
+}
+
+.katalog-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  min-width: 0;
+}
+
+.katalog-group__title {
+  margin: 0 0 1.5rem;
+  font-size: var(--font-size-big-text);
+  font-weight: var(--font-weight-extrabold);
+  letter-spacing: var(--letter-spacing-tight-heading);
+  line-height: var(--line-height-big-text);
+  text-transform: uppercase;
+  opacity: 0.2;
+}
+
+.katalog-group__list {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+/* NOTE: One material per row — square image left, text and properties right. */
+.katalog-material {
+  display: grid;
+  grid-template-columns: minmax(8rem, 14rem) minmax(0, 1fr);
+  gap: 1rem 1.5rem;
+  align-items: start;
+  margin: 0;
+}
+
+.katalog-material__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+  background: var(--color-black);
+  border: 1px solid var(--border-card);
+}
+
+.katalog-material__title {
+  margin: 0 0 0.5rem;
+  font-size: var(--font-size-section-title);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-title);
+  letter-spacing: var(--letter-spacing-tight-heading);
+}
+
+.katalog-material__text {
+  margin: 0;
+  font-size: var(--font-size-body-md);
+  line-height: var(--line-height-relaxed);
+}
+
+/* NOTE: Property rows as plain text — bold label, normal value, no bullet markers. */
+.katalog-material__props {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-top: 1rem;
+}
+
+.katalog-material__prop {
+  display: grid;
+  grid-template-columns: minmax(7rem, 11rem) minmax(0, 1fr);
+  gap: 0.35rem 1rem;
+  align-items: baseline;
+}
+
+.katalog-material__label {
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-relaxed);
+}
+
+.katalog-material__value {
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-relaxed);
+}
+
+/* NOTE: Hidden sprite used by 1–5 material rating icons. */
+.katalog-icon-sprite {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+/* NOTE: Icon meters for Fleksibilitet, Styrke, Pris, Gjenvinning (filled + grey rest). */
+.katalog-material__prop:has(.katalog-rating) {
+  align-items: center;
+}
+
+.katalog-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.18rem;
+}
+
+.katalog-rating__icon {
+  display: inline-flex;
+  width: 1.05rem;
+  height: 1.05rem;
+  color: currentColor;
+  opacity: 0.22;
+}
+
+.katalog-rating__icon.is-on {
+  opacity: 1;
+}
+
+.katalog-rating__icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* NOTE: Recycle leaf fills use green when active; inactive stay grey via opacity. */
+.katalog-rating--recycle .katalog-rating__icon.is-on {
+  color: #2f7a3e;
+}
+
+/* NOTE: Conductivity lightning — blue when active. */
+.katalog-rating--conductivity .katalog-rating__icon.is-on {
+  color: #2f6fed;
+}
+
+/* NOTE: Heat-wave strokes — red-orange when active. */
+.katalog-rating--heat .katalog-rating__icon.is-on {
+  color: #e85d04;
+}
+
+.katalog-empty {
+  margin: 0;
+  font-size: var(--font-size-body-md);
+  line-height: var(--line-height-relaxed);
+  opacity: 0.6;
+}
+
+.katalog-group[hidden],
+.katalog-material[hidden] {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .katalog-layout {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  /* NOTE: Keep sticky on small screens as a horizontal bar at the top. */
+  .katalog-toc {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.25rem;
+  }
+
+  .katalog-toc.is-stuck {
+    padding-left: var(--page-gutter);
+    padding-right: var(--page-gutter);
+  }
+}
+
+@media (max-width: 768px) {
+  .katalog-material {
+    grid-template-columns: 1fr;
+  }
+
+  .katalog-material__img {
+    width: min(100%, 12rem);
+  }
+
+  .katalog-material__prop {
+    grid-template-columns: minmax(6rem, 9rem) minmax(0, 1fr);
+  }
+
+  .katalog-group__title {
+    font-size: clamp(2rem, 12vw, var(--font-size-big-text));
+  }
+}

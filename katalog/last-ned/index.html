@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Last ned Materialkatalogen | Formaa</title>
+    <meta
+      name="description"
+      content="Takk for kjøpet. Last ned den printvennlige Materialkatalogen fra Formaa."
+    />
+    <!-- NOTE: Soft success URL after Stripe Checkout — keep out of search indexes. -->
+    <meta name="robots" content="noindex,nofollow" />
+
+    <link rel="canonical" href="https://formaa.no/katalog/last-ned" />
+
+    <link rel="icon" type="image/svg+xml" href="/assets/square-favicon.svg?v=1" sizes="any" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="/assets/square-favicon-fallback.png?v=1"
+      sizes="192x192"
+    />
+
+    <link rel="stylesheet" href="../../styles/base.css?v=46" />
+    <link rel="stylesheet" href="../../styles/katalog.css?v=13" />
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JSX18YWHXS"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-JSX18YWHXS');
+    </script>
+  </head>
+  <body class="single-page-body katalog-page">
+    <!-- NOTE: BEGIN static side-nav (build-inlined for crawlers) -->
+    <nav class="side-nav" aria-label="Navigasjon" data-mobile-nav data-static-nav="true">
+      <button
+        class="side-nav__toggle"
+        type="button"
+        aria-label="Utvid meny"
+        aria-expanded="false"
+        aria-controls="side-nav-content"
+        data-mobile-nav-toggle
+      >
+        <img class="side-nav__toggle-icon" src="/assets/triangle.svg" alt="" aria-hidden="true" />
+      </button>
+      <div class="side-nav__content" id="side-nav-content" data-mobile-nav-content>
+        <a class="side-nav__link" href="/">Hjem</a>
+        <a class="side-nav__link" href="/oss">Oss</a>
+        <a class="side-nav__link" href="/tjenester-prosess">Tjenester</a>
+        <a class="side-nav__link" href="/prosjekter">Prosjekter</a>
+        <a class="side-nav__link" href="/blogg">Blogg</a>
+        <a class="side-nav__link" href="/katalog" aria-current="page">Materialkatalogen</a>
+        <a class="side-nav__link" href="/formaa-skaperverksted">Skaperverksted</a>
+        <a class="side-nav__link" href="/application-form">Kontakt</a>
+        <div class="side-nav__divider" aria-hidden="true"></div>
+        <label class="lang-switch" for="lang-switch">
+          <span class="lang-switch__label">NO</span>
+          <input class="lang-switch__input" type="checkbox" id="lang-switch" />
+          <span class="lang-switch__track" aria-hidden="true">
+            <span class="lang-switch__thumb" aria-hidden="true"></span>
+          </span>
+          <span class="lang-switch__label">EN</span>
+        </label>
+      </div>
+    </nav>
+    <!-- NOTE: END static side-nav -->
+
+    <main>
+      <!-- NOTE: Stripe Payment Link success landing — download button for paid Materialkatalog PDF. -->
+      <section class="section section--white" aria-label="Last ned Materialkatalogen">
+        <div class="section-inner">
+          <p class="section-kicker">Katalog</p>
+          <h1 class="section-title">Takk for kjøpet</h1>
+          <p class="section-lead">
+            Betalingen er mottatt. Du kan laste ned den printvennlige Materialkatalogen her.
+            Kvittering sendes også på e-post.
+          </p>
+
+          <div class="katalog-pdf-download">
+            <!-- NOTE: Catalogue cover thumbnail in a light pad with book shadow. -->
+            <span class="katalog-pdf-cta__cover-wrap">
+              <img
+                class="katalog-pdf-cta__cover"
+                src="/katalog/Katalog-thumbnail.png"
+                alt=""
+                width="144"
+                height="204"
+                loading="eager"
+                decoding="async"
+              />
+            </span>
+            <div class="katalog-pdf-cta__copy">
+              <a
+                class="inquiry-cta"
+                href="/katalog/Materialkatalogen-formaa.pdf"
+                download="Materialkatalogen-formaa.pdf"
+              >
+                Last ned PDF
+              </a>
+              <p class="katalog-pdf-cta__desc">
+                Printvennlig og brukervennlig versjon av hele katalogen med flere materialer
+              </p>
+            </div>
+          </div>
+
+          <nav class="breadcrumb" aria-label="Brødsmulesti">
+            <a class="breadcrumb__link" href="/">Formaa</a>
+            <span class="breadcrumb__sep" aria-hidden="true">/</span>
+            <a class="breadcrumb__link" href="/katalog">Katalog</a>
+            <span class="breadcrumb__sep" aria-hidden="true">/</span>
+            <a class="breadcrumb__link" href="/katalog/last-ned" aria-current="page">Last ned</a>
+          </nav>
+        </div>
+      </section>
+    </main>
+
+    <script src="../../components-loader.js?v=1" defer></script>
+    <script src="../../shared-nav.js?v=2" defer></script>
+  </body>
+</html>

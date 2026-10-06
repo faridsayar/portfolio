@@ -1,0 +1,14 @@
+<!-- NOTE: Gjenvinning rating icon  leaf. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+  <path
+    fill="currentColor"
+    d="M20 4c-6.2.4-10.8 3.2-13.2 7.3-1.7 2.9-2 6.1-1.5 8.7 2.6.5 5.8.2 8.7-1.5C18.1 16.1 20.8 11.4 21.2 5.2 21.3 4.6 20.6 3.9 20 4z"
+  />
+  <path
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.8"
+    stroke-linecap="round"
+    d="M10 14c2.2-2.4 4.8-4.2 8-5.5"
+  />
+</svg>

@@ -6,6 +6,11 @@
   // NOTE: Manual message list — optional href shows link icon; published is ISO date (yyyy-mm-dd).
   const HOME_NEWS_MESSAGES_NO = [
     {
+      text: 'Sjekk ut den kule og nyttige materialkatalogen vi har laget.',
+      href: '/katalog',
+      published: '2026-10-06',
+    },
+    {
       text: 'Barnekurs i Oslo: Formaa-Skaperverksted for barn 5–9 år — meld interesse.',
       href: '/formaa-skaperverksted',
       published: '2026-07-12',
@@ -39,6 +44,11 @@
 
   // NOTE: English ticker copy for /en/ pages (keep roughly the same length limits as NO).
   const HOME_NEWS_MESSAGES_EN = [
+    {
+      text: 'Check out the useful material catalogue we put together.',
+      href: '/katalog',
+      published: '2026-10-06',
+    },
     {
       text: 'Kids course in Oslo: Formaa makerspace for ages 5–9 — register interest.',
       href: '/formaa-skaperverksted',
