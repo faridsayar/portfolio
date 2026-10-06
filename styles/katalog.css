@@ -1,5 +1,14 @@
 /* NOTE: Material catalogue — one-page list with search, group jumps, and image/text rows. */
 
+/*
+ * NOTE: Body overflow-x:hidden breaks position:sticky in Chromium. On this page,
+ * use clip + let the document scroller handle Y so the group TOC can pin to top.
+ */
+body.katalog-page.single-page-body {
+  overflow-x: clip;
+  overflow-y: visible;
+}
+
 /* NOTE: Book-cover preview + paid PDF Stripe CTA above the breadcrumb. */
 .katalog-pdf-cta {
   display: inline-flex;
@@ -41,32 +50,55 @@
   align-items: start;
 }
 
+/* NOTE: Height placeholder while the group nav is fixed to the viewport. */
+.katalog-toc-sentinel {
+  width: 100%;
+  height: 0;
+  pointer-events: none;
+}
+
+/* NOTE: Sticky group nav — pins to viewport top while scrolling the material list. */
 .katalog-toc {
   position: sticky;
-  top: 1.5rem;
+  top: 0;
+  z-index: 20;
   display: flex;
   flex-direction: column;
   gap: 0.65rem;
+  background: var(--bg-page-canvas);
+  padding: 0.75rem 0;
+  box-sizing: border-box;
+}
+
+/* NOTE: Fixed pin used when CSS sticky is blocked by ancestor overflow. */
+.katalog-toc.is-stuck {
+  position: fixed;
+  top: 0;
+  margin: 0;
+  padding-top: 0.85rem;
+  padding-bottom: 0.85rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
 }
 
 .katalog-toc__link {
-  color: inherit;
+  color: rgba(255, 255, 255, 0.35);
   text-decoration: none;
   font-size: var(--font-size-body-sm);
   font-weight: var(--font-weight-extrabold);
   letter-spacing: var(--letter-spacing-tight-heading);
   line-height: var(--line-height-title);
   text-transform: uppercase;
-  opacity: 0.35;
+  transition: color 0.15s ease;
 }
 
 .katalog-toc__link:hover,
 .katalog-toc__link:focus-visible {
-  opacity: 0.7;
+  color: rgba(255, 255, 255, 0.7);
 }
 
+/* NOTE: Active group in view — full white; others stay grey. */
 .katalog-toc__link.is-active {
-  opacity: 1;
+  color: var(--color-white);
 }
 
 .katalog-list {
@@ -152,6 +184,58 @@
   line-height: var(--line-height-relaxed);
 }
 
+/* NOTE: Hidden sprite used by 1–5 material rating icons. */
+.katalog-icon-sprite {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+/* NOTE: Icon meters for Fleksibilitet, Styrke, Pris, Gjenvinning (filled + grey rest). */
+.katalog-material__prop:has(.katalog-rating) {
+  align-items: center;
+}
+
+.katalog-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.18rem;
+}
+
+.katalog-rating__icon {
+  display: inline-flex;
+  width: 1.05rem;
+  height: 1.05rem;
+  color: currentColor;
+  opacity: 0.22;
+}
+
+.katalog-rating__icon.is-on {
+  opacity: 1;
+}
+
+.katalog-rating__icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* NOTE: Recycle leaf fills use green when active; inactive stay grey via opacity. */
+.katalog-rating--recycle .katalog-rating__icon.is-on {
+  color: #2f7a3e;
+}
+
+/* NOTE: Conductivity lightning — blue when active. */
+.katalog-rating--conductivity .katalog-rating__icon.is-on {
+  color: #2f6fed;
+}
+
+/* NOTE: Heat-wave strokes — red-orange when active. */
+.katalog-rating--heat .katalog-rating__icon.is-on {
+  color: #e85d04;
+}
+
 .katalog-empty {
   margin: 0;
   font-size: var(--font-size-body-md);
@@ -170,11 +254,16 @@
     gap: 1.5rem;
   }
 
+  /* NOTE: Keep sticky on small screens as a horizontal bar at the top. */
   .katalog-toc {
-    position: static;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 0.75rem 1.25rem;
+  }
+
+  .katalog-toc.is-stuck {
+    padding-left: var(--page-gutter);
+    padding-right: var(--page-gutter);
   }
 }
 

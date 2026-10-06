@@ -1,0 +1,15 @@
+<!-- NOTE: Varmeledningsevne rating icon  vertical heat waves. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+  <path
+    stroke="currentColor"
+    stroke-width="2.2"
+    stroke-linecap="round"
+    d="M8 20c0-3 2.5-3 2.5-6S8 11 8 8s2.5-3 2.5-6"
+  />
+  <path
+    stroke="currentColor"
+    stroke-width="2.2"
+    stroke-linecap="round"
+    d="M13.5 20c0-3 2.5-3 2.5-6s-2.5-3-2.5-6 2.5-3 2.5-6"
+  />
+</svg>
