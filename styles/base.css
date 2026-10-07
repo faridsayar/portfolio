@@ -2044,7 +2044,8 @@ section:is([aria-label='Oss'], [aria-label='About']) .about-top-graphic__img {
   height: 100%;
   object-fit: cover;
   object-position: right center;
-  filter: saturate(0.75);
+  /* NOTE: Hero color pullback — 15% less saturation than previous 0.75. */
+  filter: saturate(0.64);
 }
 
 section:is([aria-label='Oss'], [aria-label='About']) .about-top-graphic::after {
