@@ -42,7 +42,7 @@
     />
 
     <link rel="stylesheet" href="../styles/base.css?v=46" />
-    <link rel="stylesheet" href="../styles/katalog.css?v=13" />
+    <link rel="stylesheet" href="../styles/katalog.css?v=14" />
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JSX18YWHXS"></script>
     <script>
@@ -119,7 +119,7 @@
               />
             </span>
             <span class="katalog-pdf-cta__copy">
-              <span class="inquiry-cta">Last ned pen PDF</span>
+              <span class="inquiry-cta">Last ned PDF</span>
               <!-- NOTE: Simple price tag under the PDF purchase button (100 NOK ekskl. MVA). -->
               <span class="katalog-pdf-cta__price">100,-</span>
               <span class="katalog-pdf-cta__desc"
@@ -133,100 +133,177 @@
             <a class="breadcrumb__link" href="/katalog" aria-current="page">Katalog</a>
           </nav>
 
-          <!-- NOTE: Material type index — one link per group with description and material names. -->
+          <!-- NOTE: Material type index — square sample image + description + material names. -->
           <nav class="katalog-type-nav" aria-label="Materialgrupper">
-            <!-- NOTE: Type hub link — description + material names for SEO and navigation. -->
+            <!-- NOTE: Type hub link — sample image from the group + SEO copy. -->
             <a class="katalog-type-link" href="/katalog/tre">
-              <h2 class="katalog-type-link__title">Tre</h2>
-              <p class="katalog-type-link__desc">
-                Tre er et naturlig materiale med god bearbeidbarhet og varmt uttrykk. Det brukes i
-                møbler, innredning, emballasje og prototyper. Her kan du sammenligne vanlige treslag
-                og trebaserte plater før du velger materiale til prosjektet.
-              </p>
-              <p class="katalog-type-link__materials">
-                <span class="katalog-type-link__materials-label">Materialer:</span> Furu, Gran, Eik,
-                Bjørk, Ask, Bøk, Valnøtt, MDF, Kryssfiner
-              </p>
+              <img
+                class="katalog-type-link__img"
+                src="/katalog/material-images/furu.jpg"
+                alt=""
+                width="96"
+                height="96"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="katalog-type-link__copy">
+                <h2 class="katalog-type-link__title">Tre</h2>
+                <p class="katalog-type-link__desc">
+                  Tre er et naturlig materiale med god bearbeidbarhet og varmt uttrykk. Det brukes i
+                  møbler, innredning, emballasje og prototyper. Her kan du sammenligne vanlige
+                  treslag og trebaserte plater før du velger materiale til prosjektet.
+                </p>
+                <p class="katalog-type-link__materials">
+                  <span class="katalog-type-link__materials-label">Materialer:</span> Furu, Gran,
+                  Eik, Bjørk, Ask, Bøk, Valnøtt, MDF, Kryssfiner
+                </p>
+              </span>
             </a>
-            <!-- NOTE: Type hub link — description + material names for SEO and navigation. -->
+            <!-- NOTE: Type hub link — sample image from the group + SEO copy. -->
             <a class="katalog-type-link" href="/katalog/metaller">
-              <h2 class="katalog-type-link__title">Metaller</h2>
-              <p class="katalog-type-link__desc">
-                Metaller gir styrke, presisjon og ofte god varme- eller strømledning. De er vanlige
-                i CNC-deler, beslag, kapslinger og konstruksjoner. Her finner du metaller som ofte
-                brukes i produktutvikling og serieproduksjon.
-              </p>
-              <p class="katalog-type-link__materials">
-                <span class="katalog-type-link__materials-label">Materialer:</span> Aluminium,
-                Karbonstål, Rustfritt stål 304, Messing, Kobber, Støpejern
-              </p>
+              <img
+                class="katalog-type-link__img"
+                src="/katalog/material-images/aluminium.jpg"
+                alt=""
+                width="96"
+                height="96"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="katalog-type-link__copy">
+                <h2 class="katalog-type-link__title">Metaller</h2>
+                <p class="katalog-type-link__desc">
+                  Metaller gir styrke, presisjon og ofte god varme- eller strømledning. De er
+                  vanlige i CNC-deler, beslag, kapslinger og konstruksjoner. Her finner du metaller
+                  som ofte brukes i produktutvikling og serieproduksjon.
+                </p>
+                <p class="katalog-type-link__materials">
+                  <span class="katalog-type-link__materials-label">Materialer:</span> Aluminium,
+                  Karbonstål, Rustfritt stål 304, Messing, Kobber, Støpejern
+                </p>
+              </span>
             </a>
-            <!-- NOTE: Type hub link — description + material names for SEO and navigation. -->
+            <!-- NOTE: Type hub link — sample image from the group + SEO copy. -->
             <a class="katalog-type-link" href="/katalog/plast">
-              <h2 class="katalog-type-link__title">Plast</h2>
-              <p class="katalog-type-link__desc">
-                Plast dekker alt fra billige forbruksdeler til tekniske konstruksjoner. Valget
-                styres av styrke, temperatur, klarhet, kjemikalier og produksjonsmetode. Her kan du
-                sammenligne vanlige plasttyper side om side.
-              </p>
-              <p class="katalog-type-link__materials">
-                <span class="katalog-type-link__materials-label">Materialer:</span> Polypropylen
-                (PP), Polyeten, høy tetthet (HDPE), Polyeten, lav tetthet (LDPE),
-                Polyetylentereftalat (PET), PETG, ABS, Polykarbonat (PC), Polyamid 6 (PA6), POM
-                (acetal), PVC, Polystyren (PS), PMMA (akryl), TPU, PTFE, PLA, ASA
-              </p>
+              <img
+                class="katalog-type-link__img"
+                src="/katalog/material-images/pp.jpg"
+                alt=""
+                width="96"
+                height="96"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="katalog-type-link__copy">
+                <h2 class="katalog-type-link__title">Plast</h2>
+                <p class="katalog-type-link__desc">
+                  Plast dekker alt fra billige forbruksdeler til tekniske konstruksjoner. Valget
+                  styres av styrke, temperatur, klarhet, kjemikalier og produksjonsmetode. Her kan
+                  du sammenligne vanlige plasttyper side om side.
+                </p>
+                <p class="katalog-type-link__materials">
+                  <span class="katalog-type-link__materials-label">Materialer:</span> Polypropylen
+                  (PP), Polyeten, høy tetthet (HDPE), Polyeten, lav tetthet (LDPE),
+                  Polyetylentereftalat (PET), PETG, ABS, Polykarbonat (PC), Polyamid 6 (PA6), POM
+                  (acetal), PVC, Polystyren (PS), PMMA (akryl), TPU, PTFE, PLA, ASA
+                </p>
+              </span>
             </a>
-            <!-- NOTE: Type hub link — description + material names for SEO and navigation. -->
+            <!-- NOTE: Type hub link — sample image from the group + SEO copy. -->
             <a class="katalog-type-link" href="/katalog/keramikk">
-              <h2 class="katalog-type-link__title">Keramikk</h2>
-              <p class="katalog-type-link__desc">
-                Keramikk tåler varme og slitasje, men er sprøere enn plast og metall. Det brukes i
-                servise, tekniske deler og komponenter som skal tåle hard overflatebelastning. Her
-                får du en enkel oversikt før du går videre.
-              </p>
-              <p class="katalog-type-link__materials">
-                <span class="katalog-type-link__materials-label">Materialer:</span> Porselen,
-                Steingods, Alumina (teknisk keramikk)
-              </p>
+              <img
+                class="katalog-type-link__img"
+                src="/katalog/material-images/porselen.jpg"
+                alt=""
+                width="96"
+                height="96"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="katalog-type-link__copy">
+                <h2 class="katalog-type-link__title">Keramikk</h2>
+                <p class="katalog-type-link__desc">
+                  Keramikk tåler varme og slitasje, men er sprøere enn plast og metall. Det brukes i
+                  servise, tekniske deler og komponenter som skal tåle hard overflatebelastning. Her
+                  får du en enkel oversikt før du går videre.
+                </p>
+                <p class="katalog-type-link__materials">
+                  <span class="katalog-type-link__materials-label">Materialer:</span> Porselen,
+                  Steingods, Alumina (teknisk keramikk)
+                </p>
+              </span>
             </a>
-            <!-- NOTE: Type hub link — description + material names for SEO and navigation. -->
+            <!-- NOTE: Type hub link — sample image from the group + SEO copy. -->
             <a class="katalog-type-link" href="/katalog/blandinger">
-              <h2 class="katalog-type-link__title">Blandinger</h2>
-              <p class="katalog-type-link__desc">
-                Blandinger og kompositter kombinerer egenskaper fra flere materialer — for eksempel
-                fiberforsterkning, støpemasser og byggematerialer. De velges når ett enkelt
-                materiale ikke strekker til alene.
-              </p>
-              <p class="katalog-type-link__materials">
-                <span class="katalog-type-link__materials-label">Materialer:</span> Betong, Gips,
-                Epoksy, Polyuretan (støp), Glassfiber (GRP), Karbonfiber (CFRP)
-              </p>
+              <img
+                class="katalog-type-link__img"
+                src="/katalog/material-images/betong.jpg"
+                alt=""
+                width="96"
+                height="96"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="katalog-type-link__copy">
+                <h2 class="katalog-type-link__title">Blandinger</h2>
+                <p class="katalog-type-link__desc">
+                  Blandinger og kompositter kombinerer egenskaper fra flere materialer — for
+                  eksempel fiberforsterkning, støpemasser og byggematerialer. De velges når ett
+                  enkelt materiale ikke strekker til alene.
+                </p>
+                <p class="katalog-type-link__materials">
+                  <span class="katalog-type-link__materials-label">Materialer:</span> Betong, Gips,
+                  Epoksy, Polyuretan (støp), Glassfiber (GRP), Karbonfiber (CFRP)
+                </p>
+              </span>
             </a>
-            <!-- NOTE: Type hub link — description + material names for SEO and navigation. -->
+            <!-- NOTE: Type hub link — sample image from the group + SEO copy. -->
             <a class="katalog-type-link" href="/katalog/tekstil">
-              <h2 class="katalog-type-link__title">Tekstil</h2>
-              <p class="katalog-type-link__desc">
-                Tekstiler brukes i produkter, innredning og myke deler. Fiber, vev og overflate
-                avgjør styrke, strekk og følelse. Her sammenligner du vanlige tekstilmaterialer som
-                er relevante for produktutvikling.
-              </p>
-              <p class="katalog-type-link__materials">
-                <span class="katalog-type-link__materials-label">Materialer:</span> Bomull, Ull,
-                Lin, Polyester (tekstil), Nylon (tekstil), Kanvas
-              </p>
+              <img
+                class="katalog-type-link__img"
+                src="/katalog/material-images/bomull.jpg"
+                alt=""
+                width="96"
+                height="96"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="katalog-type-link__copy">
+                <h2 class="katalog-type-link__title">Tekstil</h2>
+                <p class="katalog-type-link__desc">
+                  Tekstiler brukes i produkter, innredning og myke deler. Fiber, vev og overflate
+                  avgjør styrke, strekk og følelse. Her sammenligner du vanlige tekstilmaterialer
+                  som er relevante for produktutvikling.
+                </p>
+                <p class="katalog-type-link__materials">
+                  <span class="katalog-type-link__materials-label">Materialer:</span> Bomull, Ull,
+                  Lin, Polyester (tekstil), Nylon (tekstil), Kanvas
+                </p>
+              </span>
             </a>
-            <!-- NOTE: Type hub link — description + material names for SEO and navigation. -->
+            <!-- NOTE: Type hub link — sample image from the group + SEO copy. -->
             <a class="katalog-type-link" href="/katalog/andre">
-              <h2 class="katalog-type-link__title">Andre</h2>
-              <p class="katalog-type-link__desc">
-                Her samler vi øvrige materialer som elastomerer, skum, lær og papirbaserte
-                løsninger. De er nyttige når tre, metall eller plast ikke passer alene for delen
-                eller opplevelsen du skal lage.
-              </p>
-              <p class="katalog-type-link__materials">
-                <span class="katalog-type-link__materials-label">Materialer:</span> Silikon,
-                Naturgummi, EVA-skum, Lær, Papp og kartong, Kork, Neopren
-              </p>
+              <img
+                class="katalog-type-link__img"
+                src="/katalog/material-images/silikon.jpg"
+                alt=""
+                width="96"
+                height="96"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="katalog-type-link__copy">
+                <h2 class="katalog-type-link__title">Andre</h2>
+                <p class="katalog-type-link__desc">
+                  Her samler vi øvrige materialer som elastomerer, skum, lær og papirbaserte
+                  løsninger. De er nyttige når tre, metall eller plast ikke passer alene for delen
+                  eller opplevelsen du skal lage.
+                </p>
+                <p class="katalog-type-link__materials">
+                  <span class="katalog-type-link__materials-label">Materialer:</span> Silikon,
+                  Naturgummi, EVA-skum, Lær, Papp og kartong, Kork, Neopren
+                </p>
+              </span>
             </a>
           </nav>
         </div>

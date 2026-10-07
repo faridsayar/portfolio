@@ -105,7 +105,9 @@ body.katalog-page.single-page-body {
 }
 
 .katalog-type-link {
-  display: block;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
   text-decoration: none;
   color: inherit;
   padding-bottom: 1.75rem;
@@ -115,6 +117,21 @@ body.katalog-page.single-page-body {
 .katalog-type-link:last-child {
   border-bottom: none;
   padding-bottom: 0;
+}
+
+/* NOTE: Square sample tile from one material in the group. */
+.katalog-type-link__img {
+  width: 6rem;
+  height: 6rem;
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+.katalog-type-link__copy {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
 }
 
 .katalog-type-link__title {
