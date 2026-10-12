@@ -15,6 +15,7 @@ export const STATIC_HUB_ROUTES = [
   '/formaa-skaperverksted',
   '/karriere',
   '/katalog',
+  '/ux',
   ...EN_HUB_ROUTES,
   '/en/product-rendering',
   '/en/cad-modeling',
@@ -33,6 +34,7 @@ export const AI_IMPORTANT_ROUTES = [
   '/formaa-skaperverksted',
   '/application-form',
   '/katalog',
+  '/ux',
 ];
 
 /** Primary category hubs for LLM/AI discovery (Norge-level). */
@@ -56,6 +58,7 @@ export const LLMS_BLOGG_HUBS = [
   '/blogg/produktutvikling-hardware-startup',
   '/blogg/hva-er-industridesign',
   '/blogg/hvordan-design-sparer-penger',
+  '/blogg/ux-er-ikke-produktdesign',
 ];
 
 /** Retired public routes (301 targets documented for crawlers). */

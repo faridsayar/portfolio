@@ -1,0 +1,289 @@
+/* NOTE: /ux landing only — hero steps and package layout. */
+
+/* NOTE: Cyan accent for this page — hero steps, package highlights, and CTAs. */
+.ux-page {
+  --color-ux-accent: #00eeff;
+}
+
+/* NOTE: Full-width viewport hero — image fills the black media layer. */
+.ux-page .ux-hero-section {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: transparent;
+}
+
+.ux-page .ux-hero-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: var(--color-black);
+}
+
+/* NOTE: Future hero image — place an <img class="ux-hero-media__img"> inside `.ux-hero-media`. */
+.ux-page .ux-hero-media__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.ux-page .ux-hero-section__inner {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-sizing: border-box;
+}
+
+.ux-page .ux-hero {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  container-type: inline-size;
+}
+
+/* NOTE: Hero steps — same display type as homepage `.big-text`, one line across the section. */
+.ux-page .ux-steps {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: baseline;
+  justify-content: flex-start;
+  gap: 0.75em;
+  width: 100%;
+  margin-bottom: 0;
+  font-size: clamp(14px, 6.3cqi, var(--font-size-big-text));
+  font-weight: var(--font-weight-extrabold);
+  letter-spacing: var(--letter-spacing-tight-heading);
+  line-height: var(--line-height-big-text);
+  white-space: nowrap;
+}
+
+.ux-page .ux-steps > span {
+  white-space: nowrap;
+}
+
+/* NOTE: Earlier steps sit quieter so UX-design stays the focus. */
+.ux-page .ux-steps__dim {
+  opacity: 0.3;
+}
+
+.ux-page .ux-steps__ux {
+  color: var(--color-ux-accent);
+}
+
+.ux-page .ux-steps__market {
+  color: var(--color-ux-accent);
+  opacity: 0.5;
+}
+
+/* NOTE: Title + lead sit below the steps; top offset keeps them in the lower hero band. */
+.ux-page .ux-hero__copy {
+  margin-top: 420px;
+  max-width: 28rem;
+}
+
+.ux-page .ux-hero__copy .section-lead {
+  max-width: none;
+}
+
+.ux-page .ux-packages {
+  display: grid;
+  gap: 1rem;
+  align-items: start;
+}
+
+/* NOTE: Package cards — large radius; each card expands on its own. */
+.ux-page .ux-package {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1.25rem;
+  background: var(--surface-card);
+  border: 1px solid var(--border-card);
+  border-radius: 28px;
+  color: var(--color-text-on-card);
+  cursor: pointer;
+}
+
+.ux-page .ux-package.is-selected {
+  border-color: var(--color-ux-accent);
+}
+
+/* NOTE: Package and form CTAs use the page cyan accent on hover. */
+.ux-page .inquiry-cta:hover:not(:disabled):not(.is-inactive) {
+  color: var(--color-ux-accent);
+  border-color: var(--color-ux-accent);
+}
+
+.ux-page .ux-package__name {
+  margin: 0;
+  font-size: var(--font-size-card-title);
+  font-weight: var(--font-weight-semibold);
+}
+
+.ux-page .ux-package__price {
+  margin: 0;
+  font-size: var(--font-size-section-title);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-tight-heading);
+}
+
+.ux-page .ux-package__note {
+  margin: 0;
+  opacity: 0.7;
+  font-size: var(--font-size-caption-sm);
+}
+
+.ux-page .ux-package .inquiry-cta {
+  margin-top: 1rem;
+  width: 100%;
+}
+
+/* NOTE: Height animates open/closed via grid rows; all packages start open. */
+.ux-page .ux-package__details {
+  display: grid;
+  grid-template-rows: 0fr;
+  margin-top: 0;
+  opacity: 0;
+  transition:
+    grid-template-rows 0.4s ease,
+    opacity 0.3s ease,
+    margin-top 0.4s ease;
+}
+
+.ux-page .ux-package.is-open .ux-package__details {
+  grid-template-rows: 1fr;
+  margin-top: 0.75rem;
+  opacity: 1;
+}
+
+.ux-page .ux-package__details-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.ux-page .ux-package__intro {
+  margin: 0 0 0.75rem;
+  line-height: var(--line-height-relaxed);
+}
+
+.ux-page .ux-package__list {
+  margin: 0 0 0.75rem;
+  padding-left: 1.15rem;
+  line-height: var(--line-height-relaxed);
+}
+
+.ux-page .ux-package__list li + li {
+  margin-top: 0.35rem;
+}
+
+/* NOTE: Scope caveat under each package — smaller type at half opacity. */
+.ux-page .ux-package__limit {
+  margin: 0;
+  font-size: var(--font-size-caption-sm);
+  line-height: var(--line-height-relaxed);
+  opacity: 0.5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ux-page .ux-package__details {
+    transition: none;
+  }
+}
+
+/* NOTE: Override `.inquiry-form` full-bleed breakout; width matches `.section-inner` content. */
+.ux-page .ux-form {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 1.25rem;
+  box-sizing: border-box;
+}
+
+.ux-page .ux-form .field--full {
+  grid-column: 1 / -1;
+}
+
+.ux-page .ux-form .inquiry-footer {
+  justify-content: flex-start;
+}
+
+/* NOTE: Package radios — block fieldset avoids Chrome fieldset/grid collapse. */
+.ux-page .ux-package-radios {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 0 1.5rem;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+
+.ux-page .ux-package-radios .field__label {
+  margin-bottom: 0.75rem;
+}
+
+.ux-page .ux-package-radios__options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.ux-page .ux-radio {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  width: 100%;
+  margin: 0;
+  padding: 0.85rem 1rem;
+  box-sizing: border-box;
+  background: var(--surface-card);
+  border: 1px solid var(--border-card);
+  border-radius: 14px;
+  color: var(--color-text-on-card);
+  cursor: pointer;
+}
+
+.ux-page .ux-radio:has(input:checked),
+.ux-page .ux-radio:has(input:focus-visible) {
+  border-color: var(--color-ux-accent);
+}
+
+.ux-page .ux-radio input {
+  flex: 0 0 auto;
+  width: 1rem;
+  height: 1rem;
+  margin: 0.2rem 0 0;
+  accent-color: var(--color-ux-accent);
+}
+
+.ux-page .ux-radio__text {
+  min-width: 0;
+  line-height: var(--line-height-relaxed);
+}
+
+@media (min-width: 640px) {
+  .ux-page .ux-package-radios__options {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .ux-page .ux-radio {
+    flex: 1 1 0;
+  }
+}
+
+@media (min-width: 900px) {
+  .ux-page .ux-packages {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

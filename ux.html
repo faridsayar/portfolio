@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UX-audit og appdesign for AI-apper | Formaa</title>
+    <meta
+      name="description"
+      content="UX-audit og redesign for AI-bygde apper. Pakker fra 5 000 kr — typisk 5–12 skjermer. Gjør appen profesjonell og klar for lansering."
+    />
+    <meta
+      name="keywords"
+      content="UX-audit, UX-design app, AI-app redesign, appdesign, brukeropplevelse, applansering, UX for små bedrifter, app UX Norge, Formaa"
+    />
+    <meta name="author" content="Formaa AS" />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+
+    <meta property="og:locale" content="nb_NO" />
+    <meta property="og:title" content="UX-audit og appdesign for AI-apper | Formaa" />
+    <meta
+      property="og:description"
+      content="UX-audit og redesign for AI-bygde apper. Pakker fra 5 000 kr — typisk 5–12 skjermer. Gjør appen profesjonell og klar for lansering."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://formaa.no/ux" />
+    <meta property="og:site_name" content="Formaa AS" />
+    <meta property="og:image" content="https://formaa.no/assets/images/ux-og.jpg" />
+    <meta property="og:image:width" content="1280" />
+    <meta property="og:image:height" content="720" />
+    <meta
+      property="og:image:alt"
+      content="Mørk studio med iPhone og flytende app-skjermer — UX-design for apper"
+    />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="UX-audit og appdesign for AI-apper | Formaa" />
+    <meta
+      name="twitter:description"
+      content="UX-audit og redesign for AI-bygde apper. Pakker fra 5 000 kr — typisk 5–12 skjermer. Gjør appen profesjonell og klar for lansering."
+    />
+    <meta name="twitter:image" content="https://formaa.no/assets/images/ux-og.jpg" />
+
+    <link rel="canonical" href="https://formaa.no/ux" />
+
+    <link rel="icon" type="image/svg+xml" href="/assets/square-favicon.svg?v=1" sizes="any" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="/assets/square-favicon-fallback.png?v=1"
+      sizes="192x192"
+    />
+
+    <link rel="stylesheet" href="/styles/base.css?v=46" />
+    <link rel="stylesheet" href="/styles/ux.css?v=25" />
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JSX18YWHXS"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-JSX18YWHXS');
+    </script>
+  </head>
+  <body class="single-page-body ux-page">
+    <!-- NOTE: Empty side-nav shell — shared-nav.js fills the standard links. This page is not a nav item. -->
+    <nav class="side-nav" aria-label="Navigasjon" data-mobile-nav></nav>
+
+    <main>
+      <!-- NOTE: Full-viewport hero — black placeholder box; swap in an image later via `.ux-hero-media__img`. -->
+      <section class="section ux-hero-section" aria-label="UX-design for apper">
+        <div class="ux-hero-media" aria-hidden="true">
+          <!-- NOTE: Full-bleed hero visual — iPhone with flying UI screens; decorative only. -->
+          <img
+            class="ux-hero-media__img"
+            src="/assets/images/ux-hero.jpg"
+            alt=""
+            width="1920"
+            height="1080"
+            fetchpriority="high"
+          />
+        </div>
+        <div class="section-inner ux-hero-section__inner">
+          <nav class="breadcrumb" aria-label="Brødsmulesti">
+            <a class="breadcrumb__link" href="/">Formaa</a>
+            <span class="breadcrumb__sep" aria-hidden="true">/</span>
+            <span class="breadcrumb__link" aria-current="page">UX</span>
+          </nav>
+
+          <div class="ux-hero">
+            <p class="section-kicker">UX-design</p>
+            <!-- NOTE: Four launch steps full-width — same display scale as homepage `.big-text`. -->
+            <h1 class="section-title ux-steps">
+              <span class="ux-steps__dim">Idé</span>
+              <span class="ux-steps__dim">AI MVP</span>
+              <span class="ux-steps__ux">UX-design</span>
+              <span class="ux-steps__market">Market</span>
+            </h1>
+
+            <!-- NOTE: Intro block below the steps — title + short lead. -->
+            <div class="ux-hero__copy">
+              <h2 class="section-title">Appforbedring og designgjennomgang</h2>
+              <p class="section-lead">
+                Ferdigstill og redesign din AI-laget apptjeneste. Få den til å se profesjonell ut og
+                brukervennlig. UX-design audit tjeneste.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--white" aria-label="Pakker" id="pakker">
+        <div class="section-inner">
+          <p class="section-kicker">Pakker</p>
+          <!-- NOTE: Whole package card toggles details; Bestill sits above the expandable copy. -->
+          <div class="ux-packages">
+            <article
+              class="ux-package is-open"
+              data-ux-package-card="Gjør appen din bedre"
+              data-ux-package-expand
+              tabindex="0"
+              aria-expanded="true"
+            >
+              <h3 class="ux-package__name">Gjør appen din bedre</h3>
+              <p class="ux-package__price">5 000 kr</p>
+              <p class="ux-package__note">eks. mva</p>
+              <button class="inquiry-cta" type="button" data-ux-package="Gjør appen din bedre">
+                Bestill
+              </button>
+              <div class="ux-package__details">
+                <div class="ux-package__details-inner">
+                  <p class="ux-package__intro">
+                    Vi går gjennom appen din, finner problemene og gir deg en konkret plan for hva
+                    som bør forbedres.
+                  </p>
+                  <ul class="ux-package__list">
+                    <li>UX/UI-audit og brukerflyt</li>
+                    <li>Analyse av brukervennlighet og hierarki</li>
+
+                    <li>Redesign av hovedskjermer og tilstander</li>
+                    <li>Gjennomføring av avtalte UI-endringer</li>
+                    <li>Anbefalinger for videre arbeid</li>
+                  </ul>
+                  <p class="ux-package__limit">
+                    Full sikkerhets- og arkitekturreview er ikke inkludert.
+                  </p>
+                </div>
+              </div>
+            </article>
+            <article
+              class="ux-package is-open"
+              data-ux-package-card="Gjør appen profesjonell"
+              data-ux-package-expand
+              tabindex="0"
+              aria-expanded="true"
+            >
+              <h3 class="ux-package__name">Gjør appen profesjonell</h3>
+              <p class="ux-package__price">10 000 kr</p>
+              <p class="ux-package__note">eks. mva</p>
+              <button class="inquiry-cta" type="button" data-ux-package="Gjør appen profesjonell">
+                Bestill
+              </button>
+              <div class="ux-package__details">
+                <div class="ux-package__details-inner">
+                  <p class="ux-package__intro">
+                    Vi analyserer appen og redesigner de viktigste skjermene for å gjøre den mer
+                    oversiktlig, brukervennlig og profesjonell.
+                  </p>
+                  <ul class="ux-package__list">
+                    <li>Ideavklaring og hovedoppgaver for brukeren</li>
+                    <li>UX-struktur og nøkkelflyter</li>
+                    <li>UI for hovedskjermer i Figma</li>
+                    <li>Klikkbar prototype for demo og test</li>
+                    <li>Overlevering til utvikling</li>
+                  </ul>
+                  <p class="ux-package__limit">
+                    Best for et lite MVP. Skjermer og funksjoner avtales på forhånd; komplett
+                    apputvikling er ikke inkludert.
+                  </p>
+                </div>
+              </div>
+            </article>
+            <article
+              class="ux-package is-open"
+              data-ux-package-card="Gjør appen klar for lansering"
+              data-ux-package-expand
+              tabindex="0"
+              aria-expanded="true"
+            >
+              <h3 class="ux-package__name">Gjør appen klar for lansering</h3>
+              <p class="ux-package__price">15 000 kr</p>
+              <p class="ux-package__note">eks. mva</p>
+              <button
+                class="inquiry-cta"
+                type="button"
+                data-ux-package="Gjør appen klar for lansering"
+              >
+                Bestill
+              </button>
+              <div class="ux-package__details">
+                <div class="ux-package__details-inner">
+                  <p class="ux-package__intro">
+                    Vi gjennomgår brukeropplevelsen, forbedrer designet og hjelper deg med å
+                    klargjøre appen for markedet.
+                  </p>
+                  <ul class="ux-package__list">
+                    <li>Audit og prioritering av problemer</li>
+                    <li>Forbedring av UX/UI og hovedflyter</li>
+                    <li>Oppgradering av valgte skjermer og funksjoner</li>
+                    <li>Sjekk av hovedflyter og responsivitet</li>
+                    <li>Klargjøring av UI, landingsside og basismateriale</li>
+                  </ul>
+                  <p class="ux-package__limit">
+                    Lanseringsklart innen avtalt omfang — ikke suksessgaranti, og ikke alle
+                    integrasjoner eller infrastruktur.
+                  </p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- NOTE: Short SEO explainer — what UX-audit is, what we deliver, screen range. -->
+      <section class="section section--white" aria-label="Hva er UX-audit" id="ux-audit">
+        <div class="section-inner">
+          <p class="section-kicker">Forklaring</p>
+          <h2 class="section-title">Hva er UX-audit?</h2>
+          <p class="section-lead">
+            Har du laget en app med AI? Vi hjelper deg med å gjøre den profesjonell og klar for
+            lansering. Se
+            <a class="internal-text-link" href="#pakker">pakkene</a>
+            under, eller les mer om
+            <a class="internal-text-link" href="/blogg/ux-er-ikke-produktdesign"
+              >UX versus produktdesign</a
+            >
+            på bloggen.
+          </p>
+          <p class="section-lead section-lead--after-grid">
+            UX (brukeropplevelse) handler om hvordan appen oppleves — om den er lett å forstå, rask
+            å bruke og tillitsvekkende. En audit er en gjennomgang der vi finner hva som fungerer
+            dårlig, og hva som bør endres først. Det er en del av
+            <a class="internal-text-link" href="/tjenester-prosess">tjenestene våre</a>
+            for produktutvikling og design.
+          </p>
+          <p class="section-lead section-lead--after-grid">
+            Vi går gjennom skjermene dine, foreslår konkrete forbedringer og leverer design og plan
+            du kan bygge videre på. Hver pakke dekker typisk 5–12 skjermer, avhengig av omfang. Se
+            også
+            <a class="internal-text-link" href="/prosjekter">prosjektene våre</a>
+            og
+            <a class="internal-text-link" href="/oss">teamet</a>
+            bak Formaa.
+          </p>
+        </div>
+      </section>
+
+      <!-- NOTE: Dedicated UX order form — Web3Forms, separate from the timeline inquiry form. -->
+      <section class="section section--white" aria-label="Bestill UX" id="ux-bestill">
+        <div class="section-inner">
+          <form class="inquiry-form ux-form" method="post" data-ux-order-form>
+            <input type="hidden" name="access_key" value="c21cafeb-72cf-4e8b-b66c-69384a07c888" />
+            <input type="hidden" name="subject" value="UX-landing" />
+            <input type="hidden" name="from_name" value="Formaa UX" />
+            <input type="hidden" name="botcheck" value="" />
+            <!-- NOTE: Package choice — radios stay in sync with Bestill on the cards above. -->
+            <fieldset class="ux-package-radios">
+              <legend class="field__label">Velg pakke</legend>
+              <div class="ux-package-radios__options">
+                <label class="ux-radio">
+                  <input type="radio" name="package" value="Gjør appen din bedre" required />
+                  <span class="ux-radio__text">Gjør appen din bedre</span>
+                </label>
+                <label class="ux-radio">
+                  <input type="radio" name="package" value="Gjør appen profesjonell" required />
+                  <span class="ux-radio__text">Gjør appen profesjonell</span>
+                </label>
+                <label class="ux-radio">
+                  <input
+                    type="radio"
+                    name="package"
+                    value="Gjør appen klar for lansering"
+                    required
+                  />
+                  <span class="ux-radio__text">Gjør appen klar for lansering</span>
+                </label>
+              </div>
+            </fieldset>
+            <div class="inquiry-grid">
+              <div class="field">
+                <label class="field__label" for="ux-name">Ditt navn</label>
+                <input
+                  class="field__input"
+                  id="ux-name"
+                  name="full_name"
+                  type="text"
+                  required
+                  autocomplete="name"
+                  placeholder="Kari Nordmann"
+                />
+              </div>
+              <div class="field">
+                <label class="field__label" for="ux-email">Din e-post</label>
+                <input
+                  class="field__input"
+                  id="ux-email"
+                  name="email"
+                  type="email"
+                  required
+                  autocomplete="email"
+                  inputmode="email"
+                  placeholder="kari.nordmann@example.com"
+                />
+              </div>
+              <div class="field field--full">
+                <label class="field__label" for="ux-message">Kort om appen</label>
+                <textarea
+                  class="field__textarea"
+                  id="ux-message"
+                  name="message"
+                  rows="4"
+                  placeholder="Hva skal appen gjøre, og hvor langt er dere kommet?"
+                ></textarea>
+              </div>
+            </div>
+            <div class="inquiry-footer">
+              <button class="inquiry-cta" type="submit">Send bestilling</button>
+              <p class="inquiry-note" data-ux-order-status aria-live="polite"></p>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- NOTE: JSON-LD @graph is written by generate:schema-markup (Service + FAQ + breadcrumbs). -->
+
+    <script src="/shared-nav.js?v=2" defer></script>
+    <script src="/script.js?v=14" defer></script>
+    <!-- NOTE: JSON-LD @graph for Google Search and AI Overviews — generated by scripts/generate-schema-markup.mjs; re-run after SEO/meta changes. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://formaa.no/#website",
+            "name": "Formaa",
+            "url": "https://formaa.no/",
+            "publisher": {
+              "@id": "https://formaa.no/#organization"
+            },
+            "inLanguage": ["nb-NO", "en"]
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://formaa.no/ux#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Formaa AS",
+                "item": "https://formaa.no/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "UX",
+                "item": "https://formaa.no/ux"
+              }
+            ]
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://formaa.no/ux",
+            "name": "UX-audit og appdesign for AI-apper | Formaa",
+            "url": "https://formaa.no/ux",
+            "description": "UX-audit og redesign for AI-bygde apper. Pakker fra 5 000 kr — typisk 5–12 skjermer. Gjør appen profesjonell og klar for lansering.",
+            "inLanguage": "nb-NO",
+            "isPartOf": {
+              "@id": "https://formaa.no/#website"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "@id": "https://formaa.no/#organization",
+              "name": "Formaa",
+              "url": "https://formaa.no/",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://formaa.no/assets/formaa-logo.svg"
+              },
+              "legalName": "Formaa AS",
+              "alternateName": ["Formaa", "Formaa Design", "formaaa"],
+              "taxID": "937772505",
+              "identifier": {
+                "@type": "PropertyValue",
+                "propertyID": "Brønnøysundregistrene",
+                "value": "937772505"
+              },
+              "sameAs": [
+                "https://www.linkedin.com/company/formaaa/",
+                "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+                "https://www.facebook.com/groups/2180500666141671/",
+                "https://t.me/designformaa",
+                "https://www.behance.net/formaa",
+                "https://x.com/FormaaDesignAS",
+                "https://www.reddit.com/user/Formaa-Design/"
+              ]
+            }
+          },
+          {
+            "@type": "Service",
+            "@id": "https://formaa.no/ux#service",
+            "name": "UX-audit og appdesign for AI-apper",
+            "serviceType": ["UX-design", "UX-audit", "Appdesign", "Redesign"],
+            "description": "UX-audit og redesign for AI-bygde apper. Pakker fra 5 000 kr — typisk 5–12 skjermer. Gjør appen profesjonell og klar for lansering.",
+            "url": "https://formaa.no/ux",
+            "inLanguage": "nb-NO",
+            "provider": {
+              "@type": "Organization",
+              "@id": "https://formaa.no/#organization",
+              "name": "Formaa",
+              "url": "https://formaa.no/",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://formaa.no/assets/formaa-logo.svg"
+              },
+              "legalName": "Formaa AS",
+              "alternateName": ["Formaa", "Formaa Design", "formaaa"],
+              "taxID": "937772505",
+              "identifier": {
+                "@type": "PropertyValue",
+                "propertyID": "Brønnøysundregistrene",
+                "value": "937772505"
+              },
+              "sameAs": [
+                "https://www.linkedin.com/company/formaaa/",
+                "https://www.instagram.com/formaa.no?igsh=Y3F4a2Nsc3V1Z2di&utm_source=qr",
+                "https://www.facebook.com/groups/2180500666141671/",
+                "https://t.me/designformaa",
+                "https://www.behance.net/formaa",
+                "https://x.com/FormaaDesignAS",
+                "https://www.reddit.com/user/Formaa-Design/"
+              ]
+            },
+            "areaServed": {
+              "@type": "Country",
+              "name": "Norge"
+            },
+            "image": "https://formaa.no/assets/images/ux-og.jpg",
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "UX-pakker",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "name": "Gjør appen din bedre",
+                  "price": "5000",
+                  "priceCurrency": "NOK",
+                  "description": "Vi går gjennom appen din, finner problemene og gir deg en konkret plan for hva som bør forbedres. Typisk 5–12 skjermer."
+                },
+                {
+                  "@type": "Offer",
+                  "name": "Gjør appen profesjonell",
+                  "price": "10000",
+                  "priceCurrency": "NOK",
+                  "description": "Vi analyserer appen og redesigner de viktigste skjermene for mer oversikt, brukervennlighet og et profesjonelt uttrykk."
+                },
+                {
+                  "@type": "Offer",
+                  "name": "Gjør appen klar for lansering",
+                  "price": "15000",
+                  "priceCurrency": "NOK",
+                  "description": "Vi gjennomgår brukeropplevelsen, forbedrer designet og hjelper deg med å klargjøre appen for markedet."
+                }
+              ]
+            }
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://formaa.no/ux#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Hva er UX-audit?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "En UX-audit er en gjennomgang av appens brukeropplevelse der vi finner hva som fungerer dårlig, og hva som bør endres først. UX handler om hvordan appen oppleves — om den er lett å forstå, rask å bruke og tillitsvekkende."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Hjelper Formaa med AI-bygde apper?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Ja. Har du laget en app med AI, hjelper vi deg med å gjøre den profesjonell og klar for lansering gjennom UX-audit, redesign og konkrete forbedringer."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Hvor mange skjermer dekker en UX-pakke?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Hver pakke dekker typisk 5–12 skjermer, avhengig av omfang. Du får forslag til forbedringer, design og en plan du kan bygge videre på."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+  </body>
+</html>

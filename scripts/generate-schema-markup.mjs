@@ -212,6 +212,93 @@ function buildTjenesterGraph({ url, title, description }) {
   ]);
 }
 
+// NOTE: /ux landing — Service with priced offers + FAQ for UX-audit explainers.
+function buildUxGraph({ url, title, description }) {
+  return wrapGraph([
+    websiteRef(),
+    breadcrumbList(
+      [
+        { name: BRAND_CRUMB, url: `${SITE}/` },
+        { name: 'UX', url },
+      ],
+      url
+    ),
+    webPage({ url, name: title, description }),
+    {
+      '@type': 'Service',
+      '@id': `${url}#service`,
+      name: 'UX-audit og appdesign for AI-apper',
+      serviceType: ['UX-design', 'UX-audit', 'Appdesign', 'Redesign'],
+      description,
+      url,
+      inLanguage: 'nb-NO',
+      provider: publisherRef(),
+      areaServed: { '@type': 'Country', name: 'Norge' },
+      image: `${SITE}/assets/images/ux-og.jpg`,
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'UX-pakker',
+        itemListElement: [
+          {
+            '@type': 'Offer',
+            name: 'Gjør appen din bedre',
+            price: '5000',
+            priceCurrency: 'NOK',
+            description:
+              'Vi går gjennom appen din, finner problemene og gir deg en konkret plan for hva som bør forbedres. Typisk 5–12 skjermer.',
+          },
+          {
+            '@type': 'Offer',
+            name: 'Gjør appen profesjonell',
+            price: '10000',
+            priceCurrency: 'NOK',
+            description:
+              'Vi analyserer appen og redesigner de viktigste skjermene for mer oversikt, brukervennlighet og et profesjonelt uttrykk.',
+          },
+          {
+            '@type': 'Offer',
+            name: 'Gjør appen klar for lansering',
+            price: '15000',
+            priceCurrency: 'NOK',
+            description:
+              'Vi gjennomgår brukeropplevelsen, forbedrer designet og hjelper deg med å klargjøre appen for markedet.',
+          },
+        ],
+      },
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': `${url}#faq`,
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'Hva er UX-audit?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'En UX-audit er en gjennomgang av appens brukeropplevelse der vi finner hva som fungerer dårlig, og hva som bør endres først. UX handler om hvordan appen oppleves — om den er lett å forstå, rask å bruke og tillitsvekkende.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Hjelper Formaa med AI-bygde apper?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Ja. Har du laget en app med AI, hjelper vi deg med å gjøre den profesjonell og klar for lansering gjennom UX-audit, redesign og konkrete forbedringer.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Hvor mange skjermer dekker en UX-pakke?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Hver pakke dekker typisk 5–12 skjermer, avhengig av omfang. Du får forslag til forbedringer, design og en plan du kan bygge videre på.',
+          },
+        },
+      ],
+    },
+  ]);
+}
+
 function buildIndexGraph(html) {
   const homeTitle = 'Formaa: Produktutvikling og 3D-visualisering for startups i Norge';
   const homeDescription =
@@ -537,6 +624,18 @@ function processFile(absPath, relPath) {
     html = insertSchemaFromGraph(html, graph);
     write(absPath, html);
     return { updated: true, type: 'tjenester' };
+  }
+
+  if (relPath === 'ux.html') {
+    const pageUrl = url || `${SITE}/ux`;
+    graph = buildUxGraph({
+      url: pageUrl,
+      title,
+      description,
+    });
+    html = insertSchemaFromGraph(html, graph);
+    write(absPath, html);
+    return { updated: true, type: 'ux' };
   }
 
   if (relPath === 'arrangement.html') {
