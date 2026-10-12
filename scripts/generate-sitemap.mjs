@@ -56,7 +56,7 @@ function sitemapHints(route) {
   if (['/en/', '/en/about', '/en/services', '/en/projects', '/en/contact'].includes(route)) {
     return { changefreq: 'weekly', priority: '0.8' };
   }
-  if (route === '/formaa-skaperverksted') {
+  if (route === '/formaa-skaperverksted' || route === '/ux') {
     return { changefreq: 'weekly', priority: '0.8' };
   }
   if (route === '/katalog') return { changefreq: 'monthly', priority: '0.8' };

@@ -44,6 +44,11 @@ const CURATED_SEO = {
     description:
       'Aktivitet barnekurs i Oslo øst (Trosterud): kreativt kurs for barn 5–9 år. Bygg og tegn i små grupper, 90 min × 8 uker. Meld interesse — uforpliktende.',
   },
+  'ux.html': {
+    title: 'UX-audit og appdesign for AI-apper | Formaa',
+    description:
+      'UX-audit og redesign for AI-bygde apper. Pakker fra 5 000 kr — typisk 5–12 skjermer. Gjør appen profesjonell og klar for lansering.',
+  },
 };
 
 /** NOTE: Prefer one studio term per meta sentence (never both designstudio and designbyrå together). */

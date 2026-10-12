@@ -135,6 +135,7 @@ class SinglePagePortfolio {
     this.setupTimeline();
     this.setupInquiryFormMailto();
     this.setupEventApplicationForm();
+    this.setupUxOrderForm();
     this.setupSkaperverkstedInterestForm();
     this.setupPricingEstimator();
     this.setupPricingPackages();
@@ -1027,6 +1028,136 @@ class SinglePagePortfolio {
         eventForm.reset();
       } catch (error) {
         setStatus('Kunne ikke sende påmeldingen nå. Prøv igjen om litt.', 'error');
+      } finally {
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.removeAttribute('aria-busy');
+        }
+      }
+    });
+  }
+
+  // NOTE: /ux order form — Bestill sets the package, then Web3Forms sends name, email and a short note.
+  setupUxOrderForm() {
+    const form = document.querySelector('[data-ux-order-form]');
+    if (!form) return;
+
+    const subjectInput = form.querySelector('[name="subject"]');
+    const packageRadios = form.querySelectorAll('input[name="package"]');
+    const statusEl = form.querySelector('[data-ux-order-status]');
+    const submitButton = form.querySelector('button[type="submit"]');
+    const web3FormsEndpoint = 'https://api.web3forms.com/submit';
+    const emailFormat = /^[^\s@]+@[^\s@]+\.(com|no)$/i;
+
+    const setStatus = (message, state) => {
+      if (!statusEl) return;
+      statusEl.textContent = message;
+      statusEl.dataset.state = state || '';
+    };
+
+    // NOTE: Sync card selection, subject line, and the package radio in the form.
+    const selectPackage = (name) => {
+      packageRadios.forEach((radio) => {
+        radio.checked = radio.value === name;
+      });
+      if (subjectInput) subjectInput.value = `UX-landing: ${name}`;
+      document.querySelectorAll('[data-ux-package-card]').forEach((card) => {
+        card.classList.toggle('is-selected', card.getAttribute('data-ux-package-card') === name);
+      });
+    };
+
+    packageRadios.forEach((radio) => {
+      radio.addEventListener('change', () => {
+        if (!radio.checked) return;
+        selectPackage(radio.value);
+      });
+    });
+
+    // NOTE: Each package toggles on its own; Bestill still selects and scrolls to the form.
+    document.querySelectorAll('[data-ux-package-expand]').forEach((card) => {
+      const toggle = () => {
+        const willOpen = !card.classList.contains('is-open');
+        card.classList.toggle('is-open', willOpen);
+        card.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+      };
+
+      card.addEventListener('click', (event) => {
+        if (event.target.closest('[data-ux-package]')) return;
+        toggle();
+      });
+
+      card.addEventListener('keydown', (event) => {
+        if (event.target !== card) return;
+        if (event.key !== 'Enter' && event.key !== ' ') return;
+        event.preventDefault();
+        toggle();
+      });
+    });
+
+    document.querySelectorAll('[data-ux-package]').forEach((button) => {
+      button.addEventListener('click', (event) => {
+        event.stopPropagation();
+        const name = button.getAttribute('data-ux-package') || '';
+        if (!name) return;
+        selectPackage(name);
+        form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const nameField = form.querySelector('[name="full_name"]');
+        if (nameField) nameField.focus({ preventScroll: true });
+      });
+    });
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      if (!form.reportValidity()) return;
+
+      const formData = new FormData(form);
+      const fullName = (formData.get('full_name') || '').toString().trim();
+      const email = (formData.get('email') || '').toString().trim();
+      const selectedPackage = (formData.get('package') || '').toString().trim();
+      const accessKey = (formData.get('access_key') || '').toString().trim();
+
+      if (!selectedPackage) {
+        setStatus('Velg en pakke.', 'error');
+        return;
+      }
+      if (!fullName || !email) {
+        setStatus('Vennligst fyll ut navn og e-post.', 'error');
+        return;
+      }
+      if (!emailFormat.test(email)) {
+        setStatus('Skriv en gyldig e-postadresse som slutter med .com eller .no.', 'error');
+        return;
+      }
+      if (!accessKey) {
+        setStatus('Web3Forms-nokkel mangler.', 'error');
+        return;
+      }
+
+      formData.set('full_name', fullName);
+      formData.set('email', email);
+      formData.set('replyto', email);
+      formData.set('subject', `UX-landing: ${selectedPackage}`);
+      setStatus('Sender bestilling ...', 'loading');
+
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.setAttribute('aria-busy', 'true');
+      }
+
+      try {
+        const response = await fetch(web3FormsEndpoint, {
+          method: 'POST',
+          body: formData,
+        });
+        const result = await response.json();
+        if (!response.ok || !result.success) {
+          throw new Error(result.message || 'Submission failed');
+        }
+        setStatus('Takk! Bestillingen er sendt. Vi svarer deg snart.', 'success');
+        form.reset();
+        selectPackage(selectedPackage);
+      } catch (error) {
+        setStatus('Kunne ikke sende skjemaet nå. Prøv igjen om litt.', 'error');
       } finally {
         if (submitButton) {
           submitButton.disabled = false;
