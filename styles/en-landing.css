@@ -39,11 +39,17 @@
 }
 
 .en-landing-body .internal-text-link,
-.en-landing-body .internal-text-link:visited,
-.en-landing-body .internal-text-link:hover,
-.en-landing-body .internal-text-link:focus,
-.en-landing-body .internal-text-link:active {
+.en-landing-body .internal-text-link:visited {
   color: var(--color-secondary);
+}
+
+.en-landing-body .internal-text-link:hover,
+.en-landing-body .internal-text-link:focus {
+  color: var(--color-hover);
+}
+
+.en-landing-body .internal-text-link:active {
+  color: var(--color-press);
 }
 
 .en-landing-body .en-landing-deliverables li::before {

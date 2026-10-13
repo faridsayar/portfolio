@@ -244,16 +244,16 @@
     </form>
   </div>
 </section>`,
-    'hero-process-flow': `<!-- NOTE: One-line process summary (Konsept → 3D → CAD → Prototype → Produksjon); each step links to the process page. -->
+    'hero-process-flow': `<!-- NOTE: One-line process summary (Konsept → 3D → Prototype → CAD → Produksjon); each step links to the process page. -->
 <div class="hero-process-flow" aria-label="Fra konsept til produksjon">
   <p class="hero-process-flow__text">
     <a class="hero-process-flow__step" href="/tjenester-prosess#prosess">Konsept</a>
     <img class="hero-process-flow__arrow hero-process-flow__arrow--lead" src="/assets/small-arrow-right.svg" alt="" width="12" height="12" aria-hidden="true" />
     <a class="hero-process-flow__step" href="/tjenester-prosess#prosess">3D</a>
     <img class="hero-process-flow__arrow" src="/assets/small-arrow-right.svg" alt="" width="10" height="10" aria-hidden="true" />
-    <a class="hero-process-flow__step" href="/tjenester-prosess#prosess">CAD</a>
-    <img class="hero-process-flow__arrow" src="/assets/small-arrow-right.svg" alt="" width="10" height="10" aria-hidden="true" />
     <a class="hero-process-flow__step" href="/tjenester-prosess#prosess">Prototype</a>
+    <img class="hero-process-flow__arrow" src="/assets/small-arrow-right.svg" alt="" width="10" height="10" aria-hidden="true" />
+    <a class="hero-process-flow__step" href="/tjenester-prosess#prosess">CAD</a>
     <img class="hero-process-flow__arrow" src="/assets/small-arrow-right.svg" alt="" width="10" height="10" aria-hidden="true" />
     <a class="hero-process-flow__step" href="/tjenester-prosess#prosess">Produksjon</a>
   </p>

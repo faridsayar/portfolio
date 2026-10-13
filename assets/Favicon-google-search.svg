@@ -1,10 +1,14 @@
 <svg width="192" height="192" viewBox="0 0 192 192" fill="none" xmlns="http://www.w3.org/2000/svg">
-<circle cx="96" cy="96" r="96" fill="url(#paint0_linear_1831_1223)"/>
-<path d="M134.553 122.956H57.4473L96.0031 56.1777L134.553 122.956ZM73.3052 113.798H118.695L95.9967 74.4881L73.3052 113.798Z" fill="white"/>
-<defs>
-<linearGradient id="paint0_linear_1831_1223" x1="192" y1="96" x2="0" y2="96" gradientUnits="userSpaceOnUse">
-<stop stop-color="#212121"/>
-<stop offset="1" stop-color="#494949"/>
-</linearGradient>
-</defs>
+  <!-- NOTE: Alias of square-favicon — Google Search needs a full-bleed square (it applies the circle mask). -->
+  <rect width="192" height="192" fill="url(#favicon-bg)"/>
+  <path
+    d="M163.008 154.035H28.991L96.005 37.966L163.008 154.035ZM56.553 138.116H135.445L95.993 69.792L56.553 138.116Z"
+    fill="white"
+  />
+  <defs>
+    <linearGradient id="favicon-bg" x1="192" y1="96" x2="0" y2="96" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#212121"/>
+      <stop offset="1" stop-color="#494949"/>
+    </linearGradient>
+  </defs>
 </svg>

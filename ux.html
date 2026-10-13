@@ -24,12 +24,13 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://formaa.no/ux" />
     <meta property="og:site_name" content="Formaa AS" />
-    <meta property="og:image" content="https://formaa.no/assets/images/ux-og.jpg" />
+    <!-- NOTE: Share thumbnail — phone illustration on page canvas (#1e1e1e); ?v busts crawler cache. -->
+    <meta property="og:image" content="https://formaa.no/assets/images/ux-og.jpg?v=2" />
     <meta property="og:image:width" content="1280" />
     <meta property="og:image:height" content="720" />
     <meta
       property="og:image:alt"
-      content="Mørk studio med iPhone og flytende app-skjermer — UX-design for apper"
+      content="Telefonillustrasjon — UX-audit og appdesign for AI-apper"
     />
 
     <meta name="twitter:card" content="summary_large_image" />
@@ -38,20 +39,22 @@
       name="twitter:description"
       content="UX-audit og redesign for AI-bygde apper. Pakker fra 5 000 kr — typisk 5–12 skjermer. Gjør appen profesjonell og klar for lansering."
     />
-    <meta name="twitter:image" content="https://formaa.no/assets/images/ux-og.jpg" />
+    <meta name="twitter:image" content="https://formaa.no/assets/images/ux-og.jpg?v=2" />
 
     <link rel="canonical" href="https://formaa.no/ux" />
 
-    <link rel="icon" type="image/svg+xml" href="/assets/square-favicon.svg?v=1" sizes="any" />
+    <!-- NOTE: Google Search favicon — full-bleed square PNG (48+), then SVG for browser tabs. Google crops to a circle; do not use a pre-drawn circle. -->
+    <link rel="icon" type="image/png" href="/assets/square-favicon-48.png?v=2" sizes="48x48" />
     <link
       rel="icon"
       type="image/png"
-      href="/assets/square-favicon-fallback.png?v=1"
+      href="/assets/square-favicon-fallback.png?v=2"
       sizes="192x192"
     />
+    <link rel="icon" type="image/svg+xml" href="/assets/square-favicon.svg?v=2" sizes="any" />
 
     <link rel="stylesheet" href="/styles/base.css?v=46" />
-    <link rel="stylesheet" href="/styles/ux.css?v=25" />
+    <link rel="stylesheet" href="/styles/ux.css?v=27" />
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JSX18YWHXS"></script>
     <script>
@@ -95,7 +98,7 @@
               <span class="ux-steps__dim">Idé</span>
               <span class="ux-steps__dim">AI MVP</span>
               <span class="ux-steps__ux">UX-design</span>
-              <span class="ux-steps__market">Market</span>
+              <span class="ux-steps__market">Marked</span>
             </h1>
 
             <!-- NOTE: Intro block below the steps — title + short lead. -->
@@ -139,7 +142,6 @@
                     <li>Analyse av brukervennlighet og hierarki</li>
 
                     <li>Redesign av hovedskjermer og tilstander</li>
-                    <li>Gjennomføring av avtalte UI-endringer</li>
                     <li>Anbefalinger for videre arbeid</li>
                   </ul>
                   <p class="ux-package__limit">
@@ -150,28 +152,28 @@
             </article>
             <article
               class="ux-package is-open"
-              data-ux-package-card="Gjør appen profesjonell"
+              data-ux-package-card="Design fra starten"
               data-ux-package-expand
               tabindex="0"
               aria-expanded="true"
             >
-              <h3 class="ux-package__name">Gjør appen profesjonell</h3>
+              <h3 class="ux-package__name">Design fra starten</h3>
               <p class="ux-package__price">10 000 kr</p>
               <p class="ux-package__note">eks. mva</p>
-              <button class="inquiry-cta" type="button" data-ux-package="Gjør appen profesjonell">
+              <button class="inquiry-cta" type="button" data-ux-package="Design fra starten">
                 Bestill
               </button>
               <div class="ux-package__details">
                 <div class="ux-package__details-inner">
                   <p class="ux-package__intro">
-                    Vi analyserer appen og redesigner de viktigste skjermene for å gjøre den mer
-                    oversiktlig, brukervennlig og profesjonell.
+                    Analyse av appen funksjoner og design tilpasset brukerbehovet.
                   </p>
                   <ul class="ux-package__list">
-                    <li>Ideavklaring og hovedoppgaver for brukeren</li>
-                    <li>UX-struktur og nøkkelflyter</li>
-                    <li>UI for hovedskjermer i Figma</li>
-                    <li>Klikkbar prototype for demo og test</li>
+                    <li>Ideavklaring og analyse</li>
+                    <li>UX/UI-audit og brukerflyt</li>
+                    <li>Analyse av brukervennlighet og hierarki</li>
+                    <li>Design av hovedskjermer og tilstander</li>
+                    <li>Design prototype</li>
                     <li>Overlevering til utvikling</li>
                   </ul>
                   <p class="ux-package__limit">
@@ -181,43 +183,15 @@
                 </div>
               </div>
             </article>
-            <article
-              class="ux-package is-open"
-              data-ux-package-card="Gjør appen klar for lansering"
-              data-ux-package-expand
-              tabindex="0"
-              aria-expanded="true"
-            >
-              <h3 class="ux-package__name">Gjør appen klar for lansering</h3>
-              <p class="ux-package__price">15 000 kr</p>
-              <p class="ux-package__note">eks. mva</p>
-              <button
-                class="inquiry-cta"
-                type="button"
-                data-ux-package="Gjør appen klar for lansering"
-              >
-                Bestill
-              </button>
-              <div class="ux-package__details">
-                <div class="ux-package__details-inner">
-                  <p class="ux-package__intro">
-                    Vi gjennomgår brukeropplevelsen, forbedrer designet og hjelper deg med å
-                    klargjøre appen for markedet.
-                  </p>
-                  <ul class="ux-package__list">
-                    <li>Audit og prioritering av problemer</li>
-                    <li>Forbedring av UX/UI og hovedflyter</li>
-                    <li>Oppgradering av valgte skjermer og funksjoner</li>
-                    <li>Sjekk av hovedflyter og responsivitet</li>
-                    <li>Klargjøring av UI, landingsside og basismateriale</li>
-                  </ul>
-                  <p class="ux-package__limit">
-                    Lanseringsklart innen avtalt omfang — ikke suksessgaranti, og ikke alle
-                    integrasjoner eller infrastruktur.
-                  </p>
-                </div>
-              </div>
-            </article>
+            <!-- NOTE: Phone illustration fills the third package column (replaces launch package). -->
+            <figure class="ux-packages__visual" aria-hidden="true">
+              <img
+                src="/assets/illustrations/phone-illustration.svg"
+                alt=""
+                width="199"
+                height="395"
+              />
+            </figure>
           </div>
         </div>
       </section>
@@ -228,10 +202,11 @@
           <p class="section-kicker">Forklaring</p>
           <h2 class="section-title">Hva er UX-audit?</h2>
           <p class="section-lead">
-            Har du laget en app med AI? Vi hjelper deg med å gjøre den profesjonell og klar for
-            lansering. Se
+            Har du laget en app med AI? Flink! Men det er stor sannsynlighet for at design og
+            brukervennlighet er elendig i appen din. Vi går gjennom appen din, finner feil og
+            hjelper deg å gjøre den profesjonell og brukbar. Se
             <a class="internal-text-link" href="#pakker">pakkene</a>
-            under, eller les mer om
+            over, eller les mer om
             <a class="internal-text-link" href="/blogg/ux-er-ikke-produktdesign"
               >UX versus produktdesign</a
             >
@@ -273,9 +248,10 @@
                   <span class="ux-radio__text">Gjør appen din bedre</span>
                 </label>
                 <label class="ux-radio">
-                  <input type="radio" name="package" value="Gjør appen profesjonell" required />
-                  <span class="ux-radio__text">Gjør appen profesjonell</span>
+                  <input type="radio" name="package" value="Design fra starten" required />
+                  <span class="ux-radio__text">Design fra starten</span>
                 </label>
+                <!-- NOTE: Third package radio temporarily hidden.
                 <label class="ux-radio">
                   <input
                     type="radio"
@@ -285,6 +261,7 @@
                   />
                   <span class="ux-radio__text">Gjør appen klar for lansering</span>
                 </label>
+                -->
               </div>
             </fieldset>
             <div class="inquiry-grid">
@@ -447,7 +424,7 @@
               "@type": "Country",
               "name": "Norge"
             },
-            "image": "https://formaa.no/assets/images/ux-og.jpg",
+            "image": "https://formaa.no/assets/images/ux-og.jpg?v=2",
             "hasOfferCatalog": {
               "@type": "OfferCatalog",
               "name": "UX-pakker",
@@ -461,17 +438,10 @@
                 },
                 {
                   "@type": "Offer",
-                  "name": "Gjør appen profesjonell",
+                  "name": "Design fra starten",
                   "price": "10000",
                   "priceCurrency": "NOK",
-                  "description": "Vi analyserer appen og redesigner de viktigste skjermene for mer oversikt, brukervennlighet og et profesjonelt uttrykk."
-                },
-                {
-                  "@type": "Offer",
-                  "name": "Gjør appen klar for lansering",
-                  "price": "15000",
-                  "priceCurrency": "NOK",
-                  "description": "Vi gjennomgår brukeropplevelsen, forbedrer designet og hjelper deg med å klargjøre appen for markedet."
+                  "description": "Analyse av appen funksjoner og design tilpasset brukerbehovet."
                 }
               ]
             }

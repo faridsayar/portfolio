@@ -30,6 +30,11 @@
   --font-weight-semibold: 600;
   --content-max-width: 70rem;
   --page-gutter: 2.25rem;
+  /* NOTE: Left edge of padded page content — logo and hero text share this inset. */
+  --page-content-start: max(
+    var(--page-gutter),
+    calc((100vw - var(--content-max-width)) / 2 + var(--page-gutter))
+  );
 }
 
 @media (min-width: 768px) {
@@ -177,7 +182,8 @@ html {
 .hero-triangle-logo {
   position: absolute;
   top: 1.25rem;
-  left: max(var(--page-gutter), calc((100vw - var(--content-max-width)) / 2));
+  /* NOTE: Match the hero title and the rest of the page column, including the gutter. */
+  left: var(--page-content-start);
   z-index: 2;
   height: 27.3px;
   width: auto;

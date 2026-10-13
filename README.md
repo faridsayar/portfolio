@@ -107,7 +107,7 @@ Use this checklist after structural updates (new pages, renamed slugs, new categ
    - Keep one canonical URL per page.
    - Ensure `<title>`, `meta description`, OG/Twitter title+description match page intent.
    - **Do not rewrite visible page copy for SEO** — adapt meta to match existing text on the page.
-   - Keep the site favicon aligned across all page heads. Current assets: `/assets/square-favicon.svg` (primary) and `/assets/square-favicon-fallback.png` (PNG fallback for Google Search).
+   - Keep the site favicon aligned across all page heads. Google Search needs a **full-bleed square PNG** (≥48×48, ideally 48/96/192) — Google crops it into a circle. Do **not** ship a pre-drawn circular favicon (that creates a circle-in-circle with padding). Current assets: `/assets/square-favicon-48.png` + `/assets/square-favicon-fallback.png` (192) for Search, `/assets/square-favicon.svg` for browser tabs.
 4. Structured data
    - Keep JSON-LD valid and aligned with canonical URL.
    - After SEO or route changes, run `corepack pnpm generate:schema-markup` (writes `@graph` JSON-LD on indexable HTML; updates `assets/data/project-schema-by-slug.js`).
@@ -270,7 +270,7 @@ Legacy flat URLs `blogg-{slug}` and `blogg-{slug}.html` 301 to `/blogg/{slug}` v
 
 - `.htaccess` (Apache) canonicalizes HTTP → HTTPS, 301s `www.formaa.no` to apex `https://formaa.no`, strips `.html` from URLs, maps `/prosjekter/{slug}` and `/blogg/{slug}` to the legacy `prosjekt-*.html` / `blogg-*.html` files, 301s legacy `prosjekt-*.html` / `blogg-*.html` to `/prosjekter/{slug}` / `/blogg/{slug}` (before the generic `.html` strip), serves `/llms.txt` and `/ai.txt` directly, and includes explicit 301s for friendly top-level routes such as `/application-form`, `/tjenester-prosess`, retired `/gallery` and `/designstudio-oslo` → `/` (plus Search Console legacy paths: duplicate `/blogg/blogg-*`, bad `/category/.../index`, `produksjon` → `teknisk-tegning`, etc.). If you deploy on a host that ignores `.htaccess`, replicate these rules in that platform’s redirect config.
 - **Blogg routing:** public URL `/blogg/{slug}` is served from root stub `blogg-{slug}.html` (internal rewrite). Adding a new article = add `blogg-{slug}.html` + run `generate:blogg-indexes`; no `.htaccess` change needed unless the slug pattern changes.
-- **Favicon:** `/assets/favicon.svg` and `/assets/Favicon-google-search.svg` redirect to `/assets/square-favicon.svg`. Pages link SVG + PNG fallback (`square-favicon-fallback.png`).
+- **Favicon:** Full-bleed square mark (PNG 48 + 192 first for Google Search; SVG for tabs). Legacy `/assets/favicon.svg` and `/assets/Favicon-google-search.svg` match the same square artwork.
 - Homepage: `/index.html` → `/` (301).
 - Public routes are extensionless (for example `/prosjekter`, `/blogg`, `/application-form`); legacy flat filenames redirect into those namespaces. Retired `/gallery` and `/gallery.html` redirect to `/`.
 

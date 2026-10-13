@@ -306,9 +306,9 @@ class SinglePagePortfolio {
     <img class="hero-process-flow__arrow hero-process-flow__arrow--lead" src="../../assets/small-arrow-right.svg" alt="" width="12" height="12" aria-hidden="true" />
     <a class="hero-process-flow__step" href="/tjenester-prosess#prosess">3D</a>
     <img class="hero-process-flow__arrow" src="../../assets/small-arrow-right.svg" alt="" width="10" height="10" aria-hidden="true" />
-    <a class="hero-process-flow__step" href="/tjenester-prosess#prosess">CAD</a>
-    <img class="hero-process-flow__arrow" src="../../assets/small-arrow-right.svg" alt="" width="10" height="10" aria-hidden="true" />
     <a class="hero-process-flow__step" href="/tjenester-prosess#prosess">Prototype</a>
+    <img class="hero-process-flow__arrow" src="../../assets/small-arrow-right.svg" alt="" width="10" height="10" aria-hidden="true" />
+    <a class="hero-process-flow__step" href="/tjenester-prosess#prosess">CAD</a>
     <img class="hero-process-flow__arrow" src="../../assets/small-arrow-right.svg" alt="" width="10" height="10" aria-hidden="true" />
     <a class="hero-process-flow__step" href="/tjenester-prosess#prosess">Produksjon</a>
   </p>

@@ -16,15 +16,39 @@ function isAllowedAsset(fileName) {
   return ALLOWED_EXTENSIONS.has(path.extname(fileName).toLowerCase());
 }
 
-async function processLogo({ sourcePath, outputPath, logoHeight, invertLogo }) {
-  let pipeline = sharp(sourcePath)
+// NOTE: Near-black fill → transparent so light-on-dark partner marks keep their own colors without a box.
+async function stripDarkBackground(sourcePath) {
+  const { data, info } = await sharp(sourcePath)
     .rotate()
+    .ensureAlpha()
+    .raw()
+    .toBuffer({ resolveWithObject: true });
+
+  for (let i = 0; i < data.length; i += info.channels) {
+    const r = data[i];
+    const g = data[i + 1];
+    const b = data[i + 2];
+    if (r < 40 && g < 40 && b < 40) {
+      data[i + 3] = 0;
+    }
+  }
+
+  return sharp(data, {
+    raw: {
+      width: info.width,
+      height: info.height,
+      channels: info.channels,
+    },
+  });
+}
+
+async function processLogo({ sourcePath, outputPath, logoHeight, invertLogo }) {
+  // NOTE: invertLogo = source is already light-on-dark; strip fill and skip CSS invert (see --inverted-source).
+  let pipeline = invertLogo ? await stripDarkBackground(sourcePath) : sharp(sourcePath).rotate();
+
+  pipeline = pipeline
     .grayscale()
     .resize({ height: logoHeight, fit: 'inside', withoutEnlargement: false });
-
-  if (invertLogo) {
-    pipeline = pipeline.negate();
-  }
 
   const tempPath = `${outputPath}.tmp.webp`;
   await pipeline.webp({ quality: 90, effort: 4 }).toFile(tempPath);
