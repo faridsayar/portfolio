@@ -355,7 +355,8 @@
 
 @media (min-width: 768px) {
   .home-section--note .home-section__inner {
-    width: min(100% - 2 * var(--page-gutter), 36rem);
+    /* NOTE: Match page content column so title + copy fit on one line when possible. */
+    width: min(100% - 2 * var(--page-gutter), var(--content-max-width));
     padding: calc(1.5rem + 20px) 1.75rem;
   }
 

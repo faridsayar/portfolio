@@ -2077,13 +2077,65 @@ section:is([aria-label='Oss'], [aria-label='About']) .about-top-graphic__breadcr
   right: 0;
 }
 
-/* NOTE: Om oss hero overlay — `.big-text` scale, white at 50% opacity on dark image. */
-section:is([aria-label='Oss'], [aria-label='About']) .about-top-graphic .big-text {
+/* NOTE: Om oss hero quote — soft bottom mask; rises after 1s into full view (0% → 40%). */
+section:is([aria-label='Oss'], [aria-label='About']) .about-hero-quote {
+  --about-hero-quote-feather: 1.6em;
   max-width: var(--content-max-width);
   margin: 0 auto;
   padding: 0 var(--page-gutter);
+  /* NOTE: Extra bottom space so finished text sits above the feather zone. */
+  padding-bottom: var(--about-hero-quote-feather);
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 calc(100% - var(--about-hero-quote-feather)),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 calc(100% - var(--about-hero-quote-feather)),
+    transparent 100%
+  );
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
+section:is([aria-label='Oss'], [aria-label='About'])
+  .about-top-graphic
+  .big-text.about-hero-quote__text {
+  max-width: none;
+  margin: 0;
+  padding: 0;
   color: var(--color-white);
-  opacity: 0.5;
+  text-transform: none;
+  opacity: 0;
+  transform: translateY(1.35em);
+  animation: about-hero-quote-rise 3.2s cubic-bezier(0.22, 0.82, 0.28, 1) 1s forwards;
+}
+
+@keyframes about-hero-quote-rise {
+  from {
+    opacity: 0;
+    transform: translateY(1.35em);
+  }
+  to {
+    opacity: 0.4;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  section:is([aria-label='Oss'], [aria-label='About'])
+    .about-top-graphic
+    .big-text.about-hero-quote__text {
+    opacity: 0.4;
+    transform: none;
+    animation: none;
+  }
 }
 
 /* NOTE: Reusable stats row — 4-up strip; count-up via shared-about-stats.js. */
