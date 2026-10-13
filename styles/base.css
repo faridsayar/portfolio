@@ -32,6 +32,8 @@
   --color-primary: #ff7300;
   --color-secondary: #ffc286;
   --color-accent: #ffc400;
+  /* NOTE: Light blue from the UX page — steps, package highlights, and CTAs. */
+  --color-ux-accent: #00eeff;
   --color-white: #ffffff;
   --color-black: #000000;
   /* NOTE: Full-bleed portfolio grid strip on homepage (behind tiles + captions only). */
@@ -300,8 +302,8 @@
 .hero-triangle-logo {
   position: absolute;
   top: 1.25rem;
-  /* Align with the centered hero content container (same left edge as .hero-content padding). */
-  left: max(var(--page-gutter), calc((100vw - var(--content-max-width)) / 2));
+  /* NOTE: Same left edge as hero title and other page content (gutter inside the centered column). */
+  left: var(--page-content-start);
   z-index: 2;
   height: 27.3px;
   width: auto;

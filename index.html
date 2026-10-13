@@ -114,10 +114,10 @@
       crossorigin
     />
     <!-- NOTE: First-paint styles only; full bundles are non-blocking. -->
-    <link rel="stylesheet" href="styles/home-critical.css?v=1" />
+    <link rel="stylesheet" href="styles/home-critical.css?v=2" />
     <link
       rel="preload"
-      href="styles/base.css?v=46"
+      href="styles/base.css?v=47"
       as="style"
       onload="
         this.onload = null;
@@ -126,7 +126,7 @@
     />
     <link
       rel="preload"
-      href="styles/home.css?v=19"
+      href="styles/home.css?v=21"
       as="style"
       onload="
         this.onload = null;
@@ -134,8 +134,8 @@
       "
     />
     <noscript>
-      <link rel="stylesheet" href="styles/base.css?v=46" />
-      <link rel="stylesheet" href="styles/home.css?v=19" />
+      <link rel="stylesheet" href="styles/base.css?v=47" />
+      <link rel="stylesheet" href="styles/home.css?v=21" />
     </noscript>
 
     <!-- NOTE: Queue GA immediately; inject gtag.js on idle so 167 KiB stays off first paint. -->
@@ -248,7 +248,7 @@
             <h1 class="hero-title">Produktutvikling og 3D visualisering</h1>
 
             <p class="hero-subtitle">
-              - produkt konseptutvikling, 3D-modelering og visualisering i Norge
+              - produktutvikling, konseptutvikling, 3D-modelering og visualisering i Oslo og Norge
             </p>
 
             <a class="hero-cta" href="#application-form">Ta kontakt</a>
@@ -309,7 +309,12 @@
               <div class="start-intro__gradient"></div>
             </div>
             <div class="start-intro__overlay-inner">
-              <div class="start-intro__content article-row__text">
+              <div class="start-intro__content article-row__text start-intro__content--step">
+                <!-- NOTE: Step rail — circled letter + vertical stroke down the content block. -->
+                <div class="start-intro__step-marker" aria-hidden="true">
+                  <span class="start-intro__step-marker-badge">A</span>
+                  <span class="start-intro__step-marker-line"></span>
+                </div>
                 <h2 class="section-title">Start enkelt — med 3D-model og visualisering</h2>
                 <p class="section-lead">
                   <a class="internal-text-link" href="/tjenester-prosess">Visualiser</a>
@@ -416,7 +421,12 @@
               <div class="start-intro__gradient"></div>
             </div>
             <div class="start-intro__overlay-inner">
-              <div class="start-intro__content article-row__text">
+              <div class="start-intro__content article-row__text start-intro__content--step">
+                <!-- NOTE: Step rail — circled letter + vertical stroke down the content block. -->
+                <div class="start-intro__step-marker" aria-hidden="true">
+                  <span class="start-intro__step-marker-badge">B</span>
+                  <span class="start-intro__step-marker-line"></span>
+                </div>
                 <h2 class="section-title">Trenger du mer enn bare visualisering?</h2>
                 <p class="section-lead">
                   Design og utvikling av ekte produkt som løser et problem - fra idé til prototype.
@@ -528,7 +538,12 @@
               <div class="start-intro__gradient"></div>
             </div>
             <div class="start-intro__overlay-inner">
-              <div class="start-intro__content article-row__text">
+              <div class="start-intro__content article-row__text start-intro__content--step">
+                <!-- NOTE: Step rail — circled letter + vertical stroke down the content block. -->
+                <div class="start-intro__step-marker" aria-hidden="true">
+                  <span class="start-intro__step-marker-badge">C</span>
+                  <span class="start-intro__step-marker-line"></span>
+                </div>
                 <h2 class="section-title">Komplett hardcore produktutvikling</h2>
                 <p class="section-lead">
                   Produkt hele veien! Strukturert arbeid — fra konseptutvikling og
