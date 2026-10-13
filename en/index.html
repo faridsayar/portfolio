@@ -127,7 +127,7 @@
     />
     <link
       rel="preload"
-      href="/styles/home.css?v=23"
+      href="/styles/home.css?v=31"
       as="style"
       onload="
         this.onload = null;
@@ -136,7 +136,7 @@
     />
     <noscript>
       <link rel="stylesheet" href="/styles/base.css?v=48" />
-      <link rel="stylesheet" href="/styles/home.css?v=23" />
+      <link rel="stylesheet" href="/styles/home.css?v=31" />
     </noscript>
 
     <!-- NOTE: Queue GA immediately; inject gtag.js on idle so 167 KiB stays off first paint. -->
@@ -537,24 +537,9 @@
         </div>
       </section>
 
-      <!-- NOTE: Homepage section 7 — quiet invite to /ux for app design / redesign. -->
-      <section
-        class="section section--white home-section home-section--note"
-        aria-label="App design"
-      >
-        <div class="home-section__inner">
-          <div class="home-scope-note">
-            <p class="home-scope-note__title">App design</p>
-            <p class="home-scope-note__text">
-              Need help with app design or redesign?
-              <a class="internal-text-link" href="/ux">See UX for apps</a>.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- NOTE: Homepage section 8 — partner logo strip after section-3 scope note. -->
+      <!-- NOTE: Homepage section 8 — partner logo strip temporarily hidden.
       <div data-component="partner-logos-section-en"></div>
+      -->
 
       <!-- NOTE: Homepage section 9 — featured project grid with link to /prosjekter. -->
       <section
@@ -591,6 +576,34 @@
             <div class="projects-sentinel" data-projects-sentinel aria-hidden="true"></div>
           </div>
         </div>
+      </section>
+
+      <!-- NOTE: UX invite — after portfolio grid; soft lead to /ux for app design. -->
+      <section
+        class="section section--white home-section home-section--note"
+        aria-label="App design"
+      >
+        <!-- NOTE: Whole plate links to /ux — no nested anchors inside. -->
+        <a class="home-section__inner home-section__inner--note-link" href="/ux">
+          <div class="home-scope-note">
+            <!-- NOTE: Audit icon — height matches title + text column via CSS stretch. -->
+            <img
+              class="home-scope-note__icon"
+              src="/assets/icons/map/app-design-audit.svg"
+              alt=""
+              width="80"
+              height="80"
+              aria-hidden="true"
+            />
+            <div class="home-scope-note__copy">
+              <h2 class="home-scope-note__title">App design</h2>
+              <p class="home-scope-note__text">
+                Need help with app design or redesign of a digital product? We also offer UX for
+                apps — <span class="internal-text-link">see the packages here</span>.
+              </p>
+            </div>
+          </div>
+        </a>
       </section>
 
       <!-- NOTE: Homepage section 10 — display line after portfolio grid, before “Hva du får”. -->
