@@ -24,12 +24,13 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://formaa.no/ux" />
     <meta property="og:site_name" content="Formaa AS" />
-    <meta property="og:image" content="https://formaa.no/assets/images/ux-og.jpg" />
+    <!-- NOTE: Share thumbnail — phone illustration on page canvas (#1e1e1e); ?v busts crawler cache. -->
+    <meta property="og:image" content="https://formaa.no/assets/images/ux-og.jpg?v=2" />
     <meta property="og:image:width" content="1280" />
     <meta property="og:image:height" content="720" />
     <meta
       property="og:image:alt"
-      content="Mørk studio med iPhone og flytende app-skjermer — UX-design for apper"
+      content="Telefonillustrasjon — UX-audit og appdesign for AI-apper"
     />
 
     <meta name="twitter:card" content="summary_large_image" />
@@ -38,7 +39,7 @@
       name="twitter:description"
       content="UX-audit og redesign for AI-bygde apper. Pakker fra 5 000 kr — typisk 5–12 skjermer. Gjør appen profesjonell og klar for lansering."
     />
-    <meta name="twitter:image" content="https://formaa.no/assets/images/ux-og.jpg" />
+    <meta name="twitter:image" content="https://formaa.no/assets/images/ux-og.jpg?v=2" />
 
     <link rel="canonical" href="https://formaa.no/ux" />
 
@@ -53,7 +54,7 @@
     <link rel="icon" type="image/svg+xml" href="/assets/square-favicon.svg?v=2" sizes="any" />
 
     <link rel="stylesheet" href="/styles/base.css?v=46" />
-    <link rel="stylesheet" href="/styles/ux.css?v=25" />
+    <link rel="stylesheet" href="/styles/ux.css?v=27" />
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JSX18YWHXS"></script>
     <script>
@@ -182,45 +183,15 @@
                 </div>
               </div>
             </article>
-            <!-- NOTE: Third package temporarily hidden.
-            <article
-              class="ux-package is-open"
-              data-ux-package-card="Gjør appen klar for lansering"
-              data-ux-package-expand
-              tabindex="0"
-              aria-expanded="true"
-            >
-              <h3 class="ux-package__name">Gjør appen klar for lansering</h3>
-              <p class="ux-package__price">15 000 kr</p>
-              <p class="ux-package__note">eks. mva</p>
-              <button
-                class="inquiry-cta"
-                type="button"
-                data-ux-package="Gjør appen klar for lansering"
-              >
-                Bestill
-              </button>
-              <div class="ux-package__details">
-                <div class="ux-package__details-inner">
-                  <p class="ux-package__intro">
-                    Vi gjennomgår brukeropplevelsen, forbedrer designet og hjelper deg med å
-                    klargjøre appen for markedet.
-                  </p>
-                  <ul class="ux-package__list">
-                    <li>Audit og prioritering av problemer</li>
-                    <li>Forbedring av UX/UI og hovedflyter</li>
-                    <li>Oppgradering av valgte skjermer og funksjoner</li>
-                    <li>Sjekk av hovedflyter og responsivitet</li>
-                    <li>Klargjøring av UI, landingsside og basismateriale</li>
-                  </ul>
-                  <p class="ux-package__limit">
-                    Lanseringsklart innen avtalt omfang — ikke suksessgaranti, og ikke alle
-                    integrasjoner eller infrastruktur.
-                  </p>
-                </div>
-              </div>
-            </article>
-            -->
+            <!-- NOTE: Phone illustration fills the third package column (replaces launch package). -->
+            <figure class="ux-packages__visual" aria-hidden="true">
+              <img
+                src="/assets/illustrations/phone-illustration.svg"
+                alt=""
+                width="199"
+                height="395"
+              />
+            </figure>
           </div>
         </div>
       </section>
@@ -453,7 +424,7 @@
               "@type": "Country",
               "name": "Norge"
             },
-            "image": "https://formaa.no/assets/images/ux-og.jpg",
+            "image": "https://formaa.no/assets/images/ux-og.jpg?v=2",
             "hasOfferCatalog": {
               "@type": "OfferCatalog",
               "name": "UX-pakker",

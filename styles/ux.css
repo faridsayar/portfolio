@@ -282,6 +282,22 @@
   }
 }
 
+/* NOTE: Decorative phone art in the third packages column — no card chrome; width matches column. */
+.ux-page .ux-packages__visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+.ux-page .ux-packages__visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 @media (min-width: 900px) {
   .ux-page .ux-packages {
     grid-template-columns: repeat(3, minmax(0, 1fr));
