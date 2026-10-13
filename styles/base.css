@@ -34,6 +34,15 @@
   --color-accent: #ffc400;
   /* NOTE: Light blue from the UX page — steps, package highlights, and CTAs. */
   --color-ux-accent: #00eeff;
+  /* NOTE: Interactive hover/press — change these to retheme links and buttons site-wide. */
+  --color-hover: var(--color-ux-accent);
+  --color-press: var(--color-secondary);
+  /* NOTE: Soft washes derived from hover so contact/footer alphas follow the same knob. */
+  --color-hover-a06: color-mix(in srgb, var(--color-hover) 6%, transparent);
+  --color-hover-a12: color-mix(in srgb, var(--color-hover) 12%, transparent);
+  --color-hover-a28: color-mix(in srgb, var(--color-hover) 28%, transparent);
+  --color-hover-a42: color-mix(in srgb, var(--color-hover) 42%, transparent);
+  --color-hover-a55: color-mix(in srgb, var(--color-hover) 55%, transparent);
   --color-white: #ffffff;
   --color-black: #000000;
   /* NOTE: Full-bleed portfolio grid strip on homepage (behind tiles + captions only). */
@@ -94,7 +103,7 @@
   --timeline-phase-1: #4a4a4a; /* Konseptutvikling */
   --timeline-phase-2: #5c5c5c; /* Prototype */
   --timeline-phase-3: #ff9a3d; /* Validering */
-  --timeline-phase-4: #ff7300; /* Ferdigstilling */
+  --timeline-phase-4: var(--color-primary); /* Ferdigstilling */
 
   /* NOTE: Shared horizontal page inset — 36px mobile minimum; scales on tablet/desktop. */
   --content-max-width: 70rem;
@@ -388,12 +397,12 @@
     box-shadow 0.2s ease;
 }
 
-/* NOTE: Black CTA hover — primary text and stroke; shared by hero, inquiry submit, and dark nav buttons. */
+/* NOTE: Black CTA hover — shared hover token; hero, inquiry submit, and dark nav buttons. */
 .hero-cta:hover,
 .inquiry-cta:hover:not(:disabled):not(.is-inactive),
 .article-nav-button:hover {
-  color: var(--color-primary);
-  border-color: var(--color-primary);
+  color: var(--color-hover);
+  border-color: var(--color-hover);
   transform: translateY(-1px);
 }
 
@@ -520,11 +529,11 @@ h3.section-title {
 
 .section-title-link:hover,
 .section-title-link:focus {
-  color: var(--color-primary);
+  color: var(--color-hover);
 }
 
 .section-title-link:active {
-  color: var(--color-secondary);
+  color: var(--color-press);
 }
 
 .section-title-link__arrow {
@@ -640,11 +649,11 @@ h3.section-title {
 
 .portfolio-summary-link:hover,
 .portfolio-summary-link:focus {
-  color: var(--color-primary);
+  color: var(--color-hover);
 }
 
 .portfolio-summary-link:active {
-  color: var(--color-secondary);
+  color: var(--color-press);
 }
 
 /* NOTE: Shared visual style for inline internal text links in body copy (semibold; inherits canvas white). */
@@ -657,11 +666,11 @@ h3.section-title {
 
 .internal-text-link:hover,
 .internal-text-link:focus {
-  color: var(--color-primary);
+  color: var(--color-hover);
 }
 
 .internal-text-link:active {
-  color: var(--color-secondary);
+  color: var(--color-press);
 }
 
 /* NOTE: Centered one-line process strip under homepage hero and category banner media. */
@@ -700,7 +709,7 @@ h3.section-title {
 
 .hero-process-flow__step:hover,
 .hero-process-flow__step:focus-visible {
-  color: var(--color-secondary);
+  color: var(--color-hover);
 }
 
 .hero-process-flow__step:active {
@@ -991,11 +1000,11 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
 
 .category-projects-link:hover,
 .category-projects-link:focus {
-  color: var(--color-primary);
+  color: var(--color-hover);
 }
 
 .category-projects-link:active {
-  color: var(--color-secondary);
+  color: var(--color-press);
 }
 
 .category-projects-link__arrow {
@@ -1159,7 +1168,7 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
 .section-2__hashtag:focus-visible,
 .section-3__hashtag:focus-visible {
   opacity: 0.55;
-  color: var(--color-primary);
+  color: var(--color-hover);
 }
 
 /* NOTE: Homepage “For hvem” block — spacing before category tags (before kontaktform). */
@@ -1199,7 +1208,7 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
 
 .service-tag:hover,
 .service-tag:focus-visible {
-  color: var(--color-secondary);
+  color: var(--color-hover);
   background: #353535;
 }
 
@@ -1239,8 +1248,8 @@ section[aria-label='Formaa'] .breadcrumb .breadcrumb__sep {
 }
 
 .pricing-service-card:hover {
-  border-color: var(--color-primary);
-  background: var(--color-primary);
+  border-color: var(--color-hover);
+  background: var(--color-hover);
   color: var(--color-white);
 }
 
@@ -1894,7 +1903,7 @@ section:is([aria-label='Prosess i bilder'], [aria-label='Process in images']) .s
 
 .prosess-image-grid__overlay .internal-text-link:hover,
 .prosess-image-grid__overlay .internal-text-link:focus {
-  color: var(--color-secondary);
+  color: var(--color-hover);
 }
 
 @media (min-width: 768px) {
@@ -2330,7 +2339,11 @@ section:is([aria-label='Oss'], [aria-label='About'])
   fill: currentColor;
 }
 
-.like-share-strip__button:hover,
+.like-share-strip__button:hover {
+  color: var(--color-hover);
+  opacity: 1;
+}
+
 .like-share-strip__button[aria-pressed='true'] {
   color: var(--color-primary);
   opacity: 1;
@@ -2341,7 +2354,7 @@ section:is([aria-label='Oss'], [aria-label='About'])
 }
 
 .like-share-strip__button:focus-visible {
-  outline: 2px solid rgba(255, 115, 0, 0.28);
+  outline: 2px solid var(--color-hover-a28);
   outline-offset: 4px;
 }
 
@@ -2432,7 +2445,7 @@ section:is([aria-label='Oss'], [aria-label='About'])
 }
 
 .about-team-card__email:hover {
-  color: var(--color-primary);
+  color: var(--color-hover);
   opacity: 1;
 }
 
@@ -3084,11 +3097,11 @@ main > .section--partner-logos > .section-inner {
 
 .feature-point__inline-link:hover,
 .feature-point__inline-link:focus {
-  color: var(--color-primary);
+  color: var(--color-hover);
 }
 
 .feature-point__inline-link:active {
-  color: var(--color-secondary);
+  color: var(--color-press);
 }
 
 /* Note: utility for highlighting specific text in primary color */
@@ -3741,9 +3754,9 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
   transform: scale(1.06);
 }
 
-/* NOTE: Project title turns primary orange when hovering the thumbnail. */
+/* NOTE: Project title uses the shared hover token when hovering the thumbnail. */
 .project-thumb:hover ~ .project-meta .project-title {
-  color: var(--color-primary);
+  color: var(--color-hover);
 }
 
 /* Project pages: shared hero layout (`section--project-hero-template`) with thumbnail rail navigation. */
@@ -4002,8 +4015,8 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
 }
 
 .section--article-template + .section--project-cta .inquiry-cta:hover {
-  background: var(--color-primary);
-  border-color: var(--color-primary);
+  background: var(--color-hover);
+  border-color: var(--color-hover);
   color: var(--color-white);
   box-shadow: none;
 }
@@ -4227,9 +4240,9 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
 }
 
 .social-link:hover {
-  border-color: rgba(255, 115, 0, 0.42);
-  color: var(--color-primary);
-  background: rgba(255, 115, 0, 0.06);
+  border-color: var(--color-hover-a42);
+  color: var(--color-hover);
+  background: var(--color-hover-a06);
 }
 
 .contact-item {
@@ -4261,12 +4274,12 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
 }
 
 .contact-link:hover {
-  border-color: rgba(255, 115, 0, 0.42);
-  background: rgba(255, 115, 0, 0.06);
+  border-color: var(--color-hover-a42);
+  background: var(--color-hover-a06);
 }
 
 .contact-link:hover .contact-item__value {
-  color: var(--color-primary);
+  color: var(--color-hover);
 }
 
 /* NOTE: Contact card wrapper — positions overlay copy button on the right, vertically centered. */
@@ -4308,13 +4321,13 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
 
 .contact-item__copy:hover,
 .contact-item__copy.contact-item__copy--copied {
-  border-color: rgba(255, 115, 0, 0.42);
-  color: var(--color-primary);
-  background: rgba(255, 115, 0, 0.06);
+  border-color: var(--color-hover-a42);
+  color: var(--color-hover);
+  background: var(--color-hover-a06);
 }
 
 .contact-item__copy:focus-visible {
-  outline: 2px solid rgba(255, 115, 0, 0.28);
+  outline: 2px solid var(--color-hover-a28);
   outline-offset: 2px;
 }
 
@@ -4350,7 +4363,7 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
 
 .karriere-apply__email:hover,
 .karriere-apply__email:focus-visible {
-  color: var(--color-primary);
+  color: var(--color-hover);
 }
 
 .karriere-apply__copy {
@@ -4423,12 +4436,12 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
 }
 
 .site-footer .contact-link:hover {
-  border-color: rgba(255, 115, 0, 0.55);
-  background: rgba(255, 115, 0, 0.12);
+  border-color: var(--color-hover-a55);
+  background: var(--color-hover-a12);
 }
 
 .site-footer .contact-link:hover .contact-item__value {
-  color: var(--color-primary);
+  color: var(--color-hover);
 }
 
 .site-footer .contact-item__copy {
@@ -4439,9 +4452,9 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
 
 .site-footer .contact-item__copy:hover,
 .site-footer .contact-item__copy.contact-item__copy--copied {
-  border-color: rgba(255, 115, 0, 0.55);
-  background: rgba(255, 115, 0, 0.12);
-  color: var(--color-primary);
+  border-color: var(--color-hover-a55);
+  background: var(--color-hover-a12);
+  color: var(--color-hover);
 }
 
 .site-footer .social-link {
@@ -4451,9 +4464,9 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
 }
 
 .site-footer .social-link:hover {
-  border-color: rgba(255, 115, 0, 0.55);
-  color: var(--color-primary);
-  background: rgba(255, 115, 0, 0.12);
+  border-color: var(--color-hover-a55);
+  color: var(--color-hover);
+  background: var(--color-hover-a12);
 }
 
 .site-footer__links {
@@ -4529,7 +4542,7 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
 .site-footer__intro .internal-text-link:focus,
 .site-footer__text .internal-text-link:hover,
 .site-footer__text .internal-text-link:focus {
-  color: var(--color-primary);
+  color: var(--color-hover);
 }
 
 @media (min-width: 720px) {

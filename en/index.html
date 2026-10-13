@@ -96,14 +96,15 @@
       content="https://formaa.no/assets/images/prosess/3d-modelering.webp"
     />
 
-    <!-- NOTE: Full-bleed square favicon (SVG + PNG fallback) for browser tabs and Google Search. -->
-    <link rel="icon" type="image/svg+xml" href="/assets/square-favicon.svg?v=1" sizes="any" />
+    <!-- NOTE: Google Search favicon — full-bleed square PNG (48+), then SVG for browser tabs. Google crops to a circle; do not use a pre-drawn circle. -->
+    <link rel="icon" type="image/png" href="/assets/square-favicon-48.png?v=2" sizes="48x48" />
     <link
       rel="icon"
       type="image/png"
-      href="/assets/square-favicon-fallback.png?v=1"
+      href="/assets/square-favicon-fallback.png?v=2"
       sizes="192x192"
     />
+    <link rel="icon" type="image/svg+xml" href="/assets/square-favicon.svg?v=2" sizes="any" />
 
     <!-- NOTE: Preload LCP font file (not a Google CSS stylesheet) so hero text can paint with Saira. -->
     <link
@@ -117,7 +118,7 @@
     <link rel="stylesheet" href="/styles/home-critical.css?v=2" />
     <link
       rel="preload"
-      href="/styles/base.css?v=47"
+      href="/styles/base.css?v=48"
       as="style"
       onload="
         this.onload = null;
@@ -126,7 +127,7 @@
     />
     <link
       rel="preload"
-      href="/styles/home.css?v=21"
+      href="/styles/home.css?v=23"
       as="style"
       onload="
         this.onload = null;
@@ -134,8 +135,8 @@
       "
     />
     <noscript>
-      <link rel="stylesheet" href="/styles/base.css?v=47" />
-      <link rel="stylesheet" href="/styles/home.css?v=21" />
+      <link rel="stylesheet" href="/styles/base.css?v=48" />
+      <link rel="stylesheet" href="/styles/home.css?v=23" />
     </noscript>
 
     <!-- NOTE: Queue GA immediately; inject gtag.js on idle so 167 KiB stays off first paint. -->
@@ -536,16 +537,19 @@
         </div>
       </section>
 
-      <!-- NOTE: Homepage section 7 — physical products scope disclaimer. -->
+      <!-- NOTE: Homepage section 7 — quiet invite to /ux for app design / redesign. -->
       <section
         class="section section--white home-section home-section--note"
-        aria-label="Physical products"
+        aria-label="App design"
       >
         <div class="home-section__inner">
-          <p class="home-scope-note">
-            We work with physical products. If you have a digital product or a service, we are
-            probably not the right partner.
-          </p>
+          <div class="home-scope-note">
+            <p class="home-scope-note__title">App design</p>
+            <p class="home-scope-note__text">
+              Need help with app design or redesign?
+              <a class="internal-text-link" href="/ux">See UX for apps</a>.
+            </p>
+          </div>
         </div>
       </section>
 

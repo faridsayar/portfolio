@@ -117,10 +117,10 @@
   border-color: var(--color-ux-accent);
 }
 
-/* NOTE: Package and form CTAs use the page cyan accent on hover. */
+/* NOTE: Package and form CTAs follow the shared hover token (ux-accent by default). */
 .ux-page .inquiry-cta:hover:not(:disabled):not(.is-inactive) {
-  color: var(--color-ux-accent);
-  border-color: var(--color-ux-accent);
+  color: var(--color-hover);
+  border-color: var(--color-hover);
 }
 
 .ux-page .ux-package__name {

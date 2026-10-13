@@ -1,10 +1,14 @@
-<svg width="90" height="90" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
-<circle cx="44.7671" cy="44.7671" r="44.7671" fill="url(#paint0_linear_1831_1223)"/>
-<path d="M62.7451 57.3373H26.7891L44.7686 26.197L62.7451 57.3373ZM34.184 53.0665H55.3502L44.7656 34.7356L34.184 53.0665Z" fill="white"/>
-<defs>
-<linearGradient id="paint0_linear_1831_1223" x1="89.5342" y1="44.7671" x2="0" y2="44.7671" gradientUnits="userSpaceOnUse">
-<stop stop-color="#212121"/>
-<stop offset="1" stop-color="#494949"/>
-</linearGradient>
-</defs>
+<svg width="192" height="192" viewBox="0 0 192 192" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- NOTE: Alias of square-favicon — keep legacy path in sync with Google Search square asset. -->
+  <rect width="192" height="192" fill="url(#favicon-bg)"/>
+  <path
+    d="M163.008 154.035H28.991L96.005 37.966L163.008 154.035ZM56.553 138.116H135.445L95.993 69.792L56.553 138.116Z"
+    fill="white"
+  />
+  <defs>
+    <linearGradient id="favicon-bg" x1="192" y1="96" x2="0" y2="96" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#212121"/>
+      <stop offset="1" stop-color="#494949"/>
+    </linearGradient>
+  </defs>
 </svg>

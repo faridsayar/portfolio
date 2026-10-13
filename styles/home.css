@@ -285,15 +285,27 @@
   }
 }
 
-/* NOTE: Scope disclaimer — standalone note section after media block. */
+/* NOTE: Quiet UX invite — standalone note after media blocks; low emphasis vs product design. */
 .home-section--note .home-scope-note {
   margin: 0;
   max-width: 28rem;
   padding-block: 2rem;
+  opacity: 0.45;
+}
+
+.home-section--note .home-scope-note__title {
+  margin: 0 0 0.35rem;
+  font-size: var(--font-size-section-kicker);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-kicker);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.home-section--note .home-scope-note__text {
+  margin: 0;
   font-size: var(--font-size-body-md);
   line-height: var(--line-height-relaxed);
-  text-transform: uppercase;
-  opacity: 0.3;
 }
 
 /* NOTE: Portfolio section — vertical rhythm around grid title and tiles. */
@@ -400,7 +412,7 @@
 
 .home-section--media .start-intro--overlay .internal-text-link:hover,
 .home-section--media .start-intro--overlay .internal-text-link:focus {
-  color: var(--color-secondary);
+  color: var(--color-hover);
 }
 
 .home-section--media .start-intro--overlay .category-projects-link,
@@ -410,7 +422,7 @@
 
 .home-section--media .start-intro--overlay .category-projects-link:hover,
 .home-section--media .start-intro--overlay .category-projects-link:focus {
-  color: var(--color-secondary);
+  color: var(--color-hover);
 }
 
 /* NOTE: Left-side step marker (circled letter + thin vertical line) for labeled media blocks. */
@@ -589,7 +601,7 @@ main > .section--partner-logos > .section-inner {
 
 .home-article-card__link:hover .home-article-card__more,
 .home-article-card__link:focus .home-article-card__more {
-  color: var(--color-primary);
+  color: var(--color-hover);
 }
 
 .home-article-card__title {
