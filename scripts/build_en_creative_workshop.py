@@ -30,7 +30,7 @@ REPLACEMENTS = [
     ('content="https://formaa.no/formaa-skaperverksted"', 'content="https://formaa.no/en/creative-workshop"'),
     ('content="Formaa-Skaperverksted — kreativt verksted for barn"', 'content="Formaa Creative Workshop — creative workshop for children"'),
     ('href="https://formaa.no/formaa-skaperverksted"', 'href="https://formaa.no/en/creative-workshop"'),
-    ('href="styles/base.css?v=22"', 'href="/styles/base.css?v=45"'),
+    ('href="styles/base.css?v=61"', 'href="/styles/base.css?v=61"'),
     ('src="assets/', 'src="/assets/'),
     ('href="/oss"', 'href="/en/about"'),
     ('href="/prosjekter"', 'href="/en/projects"'),
@@ -141,7 +141,7 @@ REPLACEMENTS = [
     ('value="Formaa nettside"', 'value="Formaa website"'),
     ('value="Formaa-Skaperverksted (kommer snart)"', 'value="Formaa Creative Workshop (coming soon)"'),
     ('components-loader.js?v=5', '/components-loader.js?v=5'),
-    ('shared-nav.js?v=2', '/shared-nav.js?v=3'),
+    ('shared-nav.js?v=4', '/shared-nav.js?v=4'),
     ('script.js?v=13', '/script.js?v=17'),
 ]
 

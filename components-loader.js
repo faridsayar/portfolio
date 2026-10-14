@@ -91,60 +91,19 @@
     <a class="inquiry-cta" href="/application-form">Gå til kontaktform</a>
   </div>
 </section>`,
+    // NOTE: Priority timeline archived in components/inquiry-timeline.html (not mounted).
     'application-form': `<section
-  class="section section--white section--timeline"
+  class="section section--white"
   id="application-form"
   aria-label="Send forespørsel"
 >
   <div class="section-inner">
     <form class="inquiry-form" method="post" data-inquiry-form>
-      <p class="inquiry-form__title">Kontaktform</p>
+      <p class="inquiry-form__title">Uforpliktende forespørsel</p>
       <input type="hidden" name="access_key" value="c21cafeb-72cf-4e8b-b66c-69384a07c888" />
       <input type="hidden" name="subject" value="Ny design samtale foresporsel" />
       <input type="hidden" name="from_name" value="Formaa nettside" />
       <input type="hidden" name="botcheck" value="" />
-      <!-- NOTE: Default timeframe for Web3Forms; visible select removed (matches components/application-form.html). -->
-      <input type="hidden" name="timeframe" value="2 mnd" />
-      <div class="timeline" data-timeline>
-        <div class="timeline-track-wrap">
-          <span class="timeline-mobile-anchor timeline-mobile-anchor--end">Ferdigstilling</span>
-          <span class="timeline-mobile-anchor timeline-mobile-anchor--start">Konsultasjon</span>
-          <div class="timeline-labels" aria-hidden="true">
-            <div class="timeline-handle-label" data-handle-label="0"></div>
-            <div class="timeline-handle-label" data-handle-label="1"></div>
-            <div class="timeline-handle-label" data-handle-label="2"></div>
-            <div class="timeline-handle-label" data-handle-label="3"></div>
-          </div>
-          <div class="timeline-track" data-timeline-track aria-label="Tidslinje">
-            <div class="timeline-segments" aria-hidden="true">
-              <div class="timeline-segment" data-segment="0"></div>
-              <div class="timeline-segment" data-segment="1"></div>
-              <div class="timeline-segment" data-segment="2"></div>
-              <div class="timeline-segment" data-segment="3"></div>
-              <div class="timeline-segment" data-segment="4"></div>
-            </div>
-          </div>
-          <div class="timeline-handles" aria-label="Juster grenser mellom faser">
-            <div class="timeline-handle" data-handle="0" role="slider" tabindex="0"></div>
-            <div class="timeline-handle" data-handle="1" role="slider" tabindex="0"></div>
-            <div class="timeline-handle" data-handle="2" role="slider" tabindex="0"></div>
-            <div class="timeline-handle" data-handle="3" role="slider" tabindex="0"></div>
-          </div>
-        </div>
-        <div class="timeline-caption-row">
-          <span class="timeline-anchor timeline-anchor--start">Konsultasjon</span>
-          <p class="inquiry-form__hint">Dra punktene langs linjen for å vekte prioriteringene (kun for orientering)</p>
-          <span class="timeline-anchor timeline-anchor--end">Ferdigstilling</span>
-          <span class="timeline-anchor timeline-anchor--time" data-timeframe-label>2 mnd prosjekt</span>
-        </div>
-        <div class="timeline-hidden" aria-hidden="true">
-          <input type="hidden" name="phase_brukeranalyse" data-phase-input="0" />
-          <input type="hidden" name="phase_konseptutvikling" data-phase-input="1" />
-          <input type="hidden" name="phase_prototype" data-phase-input="2" />
-          <input type="hidden" name="phase_validering" data-phase-input="3" />
-          <input type="hidden" name="phase_ferdigstilling" data-phase-input="4" />
-        </div>
-      </div>
       <div class="inquiry-grid">
         <div class="field">
           <label class="field__label" for="full-name">Ditt navn</label>
@@ -173,7 +132,8 @@
   </div>
 </section>`,
     // NOTE: EN inquiry form fallback if /components/application-form-en.html cannot be fetched.
-    'application-form-en': `<section class="section section--white section--timeline" id="application-form" aria-label="Send inquiry">
+    // NOTE: Priority timeline archived in components/inquiry-timeline-en.html (not mounted).
+    'application-form-en': `<section class="section section--white" id="application-form" aria-label="Send inquiry">
   <div class="section-inner">
     <form class="inquiry-form" method="post" data-inquiry-form>
       <p class="inquiry-form__title">Contact form</p>
@@ -181,47 +141,6 @@
       <input type="hidden" name="subject" value="New design conversation inquiry" />
       <input type="hidden" name="from_name" value="Formaa website (EN)" />
       <input type="hidden" name="botcheck" value="" />
-      <input type="hidden" name="timeframe" value="2 months" />
-      <div class="timeline" data-timeline>
-        <div class="timeline-track-wrap">
-          <span class="timeline-mobile-anchor timeline-mobile-anchor--end">Delivery</span>
-          <span class="timeline-mobile-anchor timeline-mobile-anchor--start">Consultation</span>
-          <div class="timeline-labels" aria-hidden="true">
-            <div class="timeline-handle-label" data-handle-label="0"></div>
-            <div class="timeline-handle-label" data-handle-label="1"></div>
-            <div class="timeline-handle-label" data-handle-label="2"></div>
-            <div class="timeline-handle-label" data-handle-label="3"></div>
-          </div>
-          <div class="timeline-track" data-timeline-track aria-label="Timeline">
-            <div class="timeline-segments" aria-hidden="true">
-              <div class="timeline-segment" data-segment="0"></div>
-              <div class="timeline-segment" data-segment="1"></div>
-              <div class="timeline-segment" data-segment="2"></div>
-              <div class="timeline-segment" data-segment="3"></div>
-              <div class="timeline-segment" data-segment="4"></div>
-            </div>
-          </div>
-          <div class="timeline-handles" aria-label="Adjust phase boundaries">
-            <div class="timeline-handle" data-handle="0" role="slider" tabindex="0"></div>
-            <div class="timeline-handle" data-handle="1" role="slider" tabindex="0"></div>
-            <div class="timeline-handle" data-handle="2" role="slider" tabindex="0"></div>
-            <div class="timeline-handle" data-handle="3" role="slider" tabindex="0"></div>
-          </div>
-        </div>
-        <div class="timeline-caption-row">
-          <span class="timeline-anchor timeline-anchor--start">Consultation</span>
-          <p class="inquiry-form__hint">Drag the points to weight priorities (for orientation only)</p>
-          <span class="timeline-anchor timeline-anchor--end">Delivery</span>
-          <span class="timeline-anchor timeline-anchor--time" data-timeframe-label>2 month project</span>
-        </div>
-        <div class="timeline-hidden" aria-hidden="true">
-          <input type="hidden" name="phase_brukeranalyse" data-phase-input="0" />
-          <input type="hidden" name="phase_konseptutvikling" data-phase-input="1" />
-          <input type="hidden" name="phase_prototype" data-phase-input="2" />
-          <input type="hidden" name="phase_validering" data-phase-input="3" />
-          <input type="hidden" name="phase_ferdigstilling" data-phase-input="4" />
-        </div>
-      </div>
       <div class="inquiry-grid">
         <div class="field">
           <label class="field__label" for="en-full-name">Your name</label>

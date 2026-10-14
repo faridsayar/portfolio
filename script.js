@@ -132,7 +132,8 @@ class SinglePagePortfolio {
     this.setupHeroVideoShuffle();
     this.setupCategoryHeroVideoShuffle();
     this.setupGlobalImageFallback();
-    this.setupTimeline();
+    // NOTE: Inquiry priority timeline disabled site-wide — markup kept in components/inquiry-timeline*.html.
+    // this.setupTimeline();
     this.setupInquiryFormMailto();
     this.setupEventApplicationForm();
     this.setupUxOrderForm();
@@ -333,10 +334,9 @@ class SinglePagePortfolio {
 
   async mountCategoryHeroProcessFlowComponent() {
     const pathname = window.location.pathname;
+    // NOTE: Process strip mounts on category pages only — not application-form /en/contact.
     const isCategoryPage = pathname.includes('/category/');
-    const isApplicationFormPage =
-      /application-form/i.test(pathname) || /\/en\/contact\/?$/i.test(pathname);
-    if (!isCategoryPage && !isApplicationFormPage) return;
+    if (!isCategoryPage) return;
     const heroMedia = document.querySelector('.category-hero-media');
     if (!heroMedia) return;
     if (heroMedia.nextElementSibling?.classList?.contains('hero-process-flow')) return;
@@ -653,8 +653,10 @@ class SinglePagePortfolio {
     });
   }
 
-  // NOTE: Interactive timeline (process prioritization)
+  // NOTE: Interactive timeline (process prioritization) — DISABLED; archive in components/inquiry-timeline*.html.
   setupTimeline() {
+    // NOTE: Hard-disable so a leftover `[data-timeline]` in the DOM does not re-activate.
+    return;
     const timeline = document.querySelector('[data-timeline]');
     if (!timeline) return;
 
@@ -932,6 +934,15 @@ class SinglePagePortfolio {
       formData.set('description', description);
       formData.set('subject', copy.subject(fullName));
       formData.set('replyto', email);
+      // NOTE: Drop disabled timeline fields so they never appear in the Web3Forms email.
+      [
+        'timeframe',
+        'phase_brukeranalyse',
+        'phase_konseptutvikling',
+        'phase_prototype',
+        'phase_validering',
+        'phase_ferdigstilling',
+      ].forEach((key) => formData.delete(key));
       setStatus(copy.sending, 'loading');
 
       if (submitButton) {

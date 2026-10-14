@@ -163,8 +163,10 @@
   transform: translateY(-50%);
   z-index: 50;
   display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
+  /* NOTE: Toggle sits on the left middle; links stack to its right. */
+  flex-direction: row;
+  align-items: center;
+  gap: 0.55rem;
   padding: 0.9rem;
   border-radius: 16px;
   background: var(--overlay-black-35);
@@ -177,8 +179,15 @@
   gap: 0.6rem;
 }
 
+/* NOTE: Desktop collapse control — left of the menu; reuses mobile triangle icon. */
 .side-nav__toggle {
-  display: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  align-self: center;
+  width: 1.65rem;
+  height: 1.65rem;
   border: none;
   background: transparent;
   color: var(--color-white);
@@ -188,9 +197,25 @@
 
 .side-nav__toggle-icon {
   display: block;
-  width: 18px;
-  height: 18px;
-  margin-top: 10px;
+  width: 12px;
+  height: 12px;
+  margin-top: 0;
+  /* NOTE: Point right while the menu is open (desktop). */
+  transform: rotate(90deg);
+  transition: transform 220ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* NOTE: Collapsed desktop nav — only the left-pointing arrow remains. */
+.side-nav.is-collapsed {
+  padding: 0.45rem;
+}
+
+.side-nav.is-collapsed .side-nav__content {
+  display: none;
+}
+
+.side-nav.is-collapsed .side-nav__toggle-icon {
+  transform: rotate(-90deg);
 }
 
 .side-nav__link {
@@ -376,8 +401,14 @@
   max-width: 48rem;
   font-size: var(--font-size-body-md);
   line-height: var(--line-height-relaxed);
-  opacity: 0.9;
+  /* NOTE: Muted via color (not opacity) so `.hero-subtitle__accent` can stay full primary. */
+  color: rgba(255, 255, 255, 0.9);
   text-shadow: 0 6px 18px var(--overlay-black-35);
+}
+
+/* NOTE: Accented lead words in the homepage hero subtitle (e.g. “- Design”). */
+.hero-subtitle__accent {
+  color: var(--color-primary);
 }
 
 .hero-cta,
@@ -800,6 +831,17 @@ section[aria-label='Formaa'] .section-inner {
 section:is([aria-label='Kontaktform'], [aria-label='Contact form']) .section-inner {
   padding-top: 0;
   padding-bottom: 0;
+}
+
+/* NOTE: Contact page H1 — section-title scale; full-bleed dark panel matching `.inquiry-form`. */
+section:is([aria-label='Kontaktform'], [aria-label='Contact form']) h1.section-title {
+  font-size: var(--font-size-section-title);
+  line-height: var(--line-height-h2);
+  background: var(--surface-card);
+  margin: 0;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding: 1.25rem var(--page-content-start);
 }
 
 /* NOTE: Arrangement page hero — full-bleed shuffle media; no vertical inset on the inner wrapper. */
@@ -2250,12 +2292,57 @@ section:is([aria-label='Oss'], [aria-label='About']) h1.section-title + .section
   margin-top: 0;
 }
 
+/* NOTE: Plain contact-person line above NAP on the application/contact pages. */
+.about-nap-person {
+  margin: 0 0 0.5rem;
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-relaxed);
+  font-weight: var(--font-weight-regular);
+}
+
 /* NOTE: NAP block on /oss — visible org contact aligned with JSON-LD and Google Business Profile. */
 .about-nap {
   margin: 0;
   font-style: normal;
   font-size: var(--font-size-body-sm);
   line-height: var(--line-height-relaxed);
+}
+
+/* NOTE: Horizontal row of round mail + LinkedIn buttons under the contact NAP. */
+.about-nap-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+/* NOTE: Round + white ring — specificity beats later `.social-link` border. */
+.social-link.about-nap-actions__btn {
+  border-radius: 50%;
+  border: 1px solid var(--color-white);
+}
+
+.social-link.about-nap-actions__btn:hover {
+  border-color: var(--color-white);
+}
+
+/* NOTE: Contact page Farid portrait — ~65% of Om oss team-card size (half + 30%). */
+.about-nap-portrait {
+  display: block;
+  width: auto;
+  height: clamp(9.75rem, 16.9vw, 13rem);
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: center;
+  margin: 0 0 1rem;
+  background: var(--surface-neutral);
+}
+
+@media (max-width: 767px) {
+  .about-nap-portrait {
+    width: 65%;
+    height: auto;
+  }
 }
 
 /* NOTE: Om oss “Litt mer om oss” — contained text/image row; image height tracks text column on desktop. */
@@ -3438,12 +3525,12 @@ main > .section--partner-logos > .section-inner {
 }
 
 /* NOTE: Application form heading displayed in top-left on desktop and mobile. */
-/* NOTE: “Kontaktform” label in the application form — smaller than section titles, brand accent. */
+/* NOTE: Inquiry form label — smaller than section titles; regular weight (not bold). */
 .inquiry-form__title {
   margin: 0 0 0.35rem 0;
   font-size: var(--font-size-card-title);
   line-height: var(--line-height-title);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-regular);
   letter-spacing: -0.01em;
 }
 
@@ -3529,10 +3616,12 @@ main > .section--partner-logos > .section-inner {
   outline-offset: 2px;
 }
 
+/* NOTE: CTA on the left content edge; helper/status copy sits to its right. */
 .inquiry-footer {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
+  flex-wrap: wrap;
   gap: 1.25rem;
   margin-top: 1.5rem;
 }
@@ -3546,13 +3635,17 @@ main > .section--partner-logos > .section-inner {
   cursor: pointer;
 }
 
-/* NOTE: Keep warning text left and CTA button right in inquiry footer on desktop. */
-.inquiry-footer .inquiry-note {
-  order: 1;
+.inquiry-footer .inquiry-cta {
+  order: 0;
+  flex-shrink: 0;
 }
 
-.inquiry-footer .inquiry-cta {
-  order: 2;
+/* NOTE: Helper/status copy sits immediately after the button, left-aligned. */
+.inquiry-footer .inquiry-note {
+  order: 1;
+  flex: 0 1 auto;
+  min-width: 0;
+  text-align: left;
 }
 
 .inquiry-cta:hover:not(:disabled):not(.is-inactive) {
@@ -4673,13 +4766,14 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
     gap: 0.9rem;
   }
 
-  .inquiry-note {
-    order: 1;
+  .inquiry-footer .inquiry-cta {
+    order: 0;
+    width: 100%;
   }
 
-  .inquiry-cta {
-    order: 2;
-    width: 100%;
+  .inquiry-footer .inquiry-note {
+    order: 1;
+    flex: none;
   }
 
   .contact-grid {
@@ -4723,6 +4817,11 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
     transition: none;
   }
 
+  /* NOTE: Ignore desktop collapse class on mobile — open state uses `.is-open` only. */
+  .side-nav.is-collapsed {
+    padding: 0;
+  }
+
   .side-nav__content {
     display: none;
     flex-direction: column;
@@ -4742,6 +4841,7 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    align-self: flex-end;
     width: var(--mobile-toggle-size);
     height: var(--mobile-toggle-size);
     background: transparent;
@@ -4750,7 +4850,8 @@ main.gallery-page section[aria-label='Om idegalleriet'] .service-tags {
     touch-action: manipulation;
   }
 
-  .side-nav__toggle-icon {
+  .side-nav__toggle-icon,
+  .side-nav.is-collapsed .side-nav__toggle-icon {
     width: 13px;
     height: 13px;
     transform: rotate(0deg);

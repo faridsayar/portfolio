@@ -285,13 +285,37 @@
   }
 }
 
-/* NOTE: Rounded white plate (10% opacity) — capped to content column, side gutters. */
-.home-section--note .home-section__inner {
-  box-sizing: border-box;
-  display: block;
+/* NOTE: Top gap matches the display section’s block pad below (same air as under this block). */
+.home-section--note {
+  padding-top: var(--home-display-pad);
+}
+
+/* NOTE: Section title row above the service invite plates. */
+.home-section--note .home-section__inner--note-head {
+  margin-bottom: 1rem;
+}
+
+.home-section--note .home-section__inner--note-head .section-title {
+  margin-bottom: 0;
+}
+
+/* NOTE: Vertical stack of equal-width invite plates under “Andre tjenester”. */
+.home-section--note .home-section__note-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   width: min(100% - 2 * var(--page-gutter), 36rem);
   max-width: none;
   margin-inline: auto;
+}
+
+/* NOTE: Rounded white plate (10% opacity) — fills the stack column. */
+.home-section--note .home-section__inner--note-link {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
   padding: calc(1rem + 20px) 1.1rem;
   background: color-mix(in srgb, var(--color-white) 10%, transparent);
   border-radius: 1.25rem;
@@ -328,7 +352,8 @@
   height: 4.0625rem;
   aspect-ratio: 1 / 1;
   object-fit: contain;
-  opacity: 0.5;
+  /* NOTE: Icons at full opacity so they read clearly on the soft plate wash. */
+  opacity: 1;
   align-self: center;
 }
 
@@ -347,6 +372,11 @@
   opacity: 1;
 }
 
+/* NOTE: Non-UX plates use white titles (Skaperverksted, Materialkatalogen). */
+.home-section--note .home-scope-note__title--white {
+  color: var(--color-white);
+}
+
 .home-section--note .home-scope-note__text {
   margin: 0;
   font-size: var(--font-size-caption-sm);
@@ -354,9 +384,12 @@
 }
 
 @media (min-width: 768px) {
-  .home-section--note .home-section__inner {
-    /* NOTE: Match page content column so title + copy fit on one line when possible. */
+  .home-section--note .home-section__note-stack {
+    /* NOTE: Match page content column so plates share width with other home sections. */
     width: min(100% - 2 * var(--page-gutter), var(--content-max-width));
+  }
+
+  .home-section--note .home-section__inner--note-link {
     padding: calc(1.5rem + 20px) 1.75rem;
   }
 
@@ -523,9 +556,10 @@
   place-items: center;
   width: 20px;
   height: 20px;
-  border: 1px solid var(--color-ux-accent);
+  /* NOTE: Circle + letter use brand primary on all media step sections (A/B/C). */
+  border: 1px solid var(--color-primary);
   border-radius: 50%;
-  color: var(--color-ux-accent);
+  color: var(--color-primary);
   font-size: 0.65rem;
   font-weight: var(--font-weight-semibold);
   line-height: 1;
@@ -535,7 +569,7 @@
   flex: 1 1 auto;
   width: 1px;
   margin-top: 0.4rem;
-  background: var(--color-ux-accent);
+  background: var(--color-primary);
 }
 
 .home-section--media .start-intro__content .section-title {
