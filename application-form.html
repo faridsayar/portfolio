@@ -63,7 +63,7 @@
       sizes="192x192"
     />
     <link rel="icon" type="image/svg+xml" href="/assets/square-favicon.svg?v=2" sizes="any" />
-    <link rel="stylesheet" href="styles/base.css?v=19" />
+    <link rel="stylesheet" href="styles/base.css?v=65" />
 
     <!-- NOTE: Google Analytics 4 global site tag for tracking website traffic. -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JSX18YWHXS"></script>
@@ -140,7 +140,6 @@
 
           <h1 class="section-title">Formaa AS Kontaktform</h1>
           <!-- NOTE: Ledende avsnitt for kontaktform og SERP-meta (pnpm sync:meta-descriptions). -->
-          <p class="section-lead">Ta kontakt med oss for en uforpliktende prat</p>
         </div>
       </section>
     </main>
@@ -151,6 +150,16 @@
     <!-- NOTE: Visible NAP block — aligns with JSON-LD / Google Business Profile (name, org.nr, phone, city). -->
     <section class="section section--white" aria-label="Kontaktinformasjon">
       <div class="section-inner">
+        <!-- NOTE: Farid portrait above NAP — half the Om oss team-card photo size. -->
+        <img
+          class="about-nap-portrait"
+          src="assets/images/profiles/farid-original.webp"
+          alt="Farid — industri- og produktdesigner"
+          width="1536"
+          height="2730"
+        />
+        <!-- NOTE: Plain contact-person label above NAP. -->
+        <p class="about-nap-person">Kontaktperson: Farid</p>
         <address class="about-nap">
           <strong>Formaa AS</strong><br />
           Org.nr.
@@ -164,6 +173,33 @@
           <a class="internal-text-link" href="/application-form">+47 46 38 18 87</a><br />
           Ole Messelts vei 5, 0676 Oslo, Norge
         </address>
+        <!-- NOTE: Round action buttons under NAP — mailto opens the default mail client; LinkedIn is Farid’s profile. -->
+        <div class="about-nap-actions" aria-label="Kontaktkanaler">
+          <a
+            class="social-link about-nap-actions__btn"
+            href="mailto:hei@formaa.no"
+            aria-label="Send e-post til hei@formaa.no"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2Zm0 4-8 5L4 8V6l8 5 8-5v2Z"
+              />
+            </svg>
+          </a>
+          <a
+            class="social-link about-nap-actions__btn"
+            href="https://www.linkedin.com/in/faridsayar/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Farid på LinkedIn"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M6.94 8.5H3.56V20h3.38V8.5Zm.24-3.54A1.96 1.96 0 0 0 5.2 3a1.95 1.95 0 0 0-1.95 1.96c0 1.08.86 1.96 1.95 1.96 1.09 0 1.98-.88 1.98-1.96ZM20.44 13.3c0-3.08-1.64-4.52-3.83-4.52-1.77 0-2.56.97-3 1.65V8.5h-3.38V20h3.38v-6.4c0-.34.02-.68.13-.93.27-.68.88-1.39 1.9-1.39 1.35 0 1.9 1.03 1.9 2.55V20h3.38v-6.7Z"
+              />
+            </svg>
+          </a>
+        </div>
       </div>
     </section>
 
@@ -482,7 +518,7 @@
     </script>
 
     <script src="components-loader.js?v=5" defer></script>
-    <script src="shared-nav.js?v=2" defer></script>
-    <script src="script.js?v=11" defer></script>
+    <script src="shared-nav.js?v=4" defer></script>
+    <script src="script.js?v=18" defer></script>
   </body>
 </html>

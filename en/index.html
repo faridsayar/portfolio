@@ -115,10 +115,10 @@
       crossorigin
     />
     <!-- NOTE: First-paint styles only; full bundles are non-blocking. -->
-    <link rel="stylesheet" href="/styles/home-critical.css?v=2" />
+    <link rel="stylesheet" href="/styles/home-critical.css?v=3" />
     <link
       rel="preload"
-      href="/styles/base.css?v=48"
+      href="/styles/base.css?v=61"
       as="style"
       onload="
         this.onload = null;
@@ -127,7 +127,7 @@
     />
     <link
       rel="preload"
-      href="/styles/home.css?v=32"
+      href="/styles/home.css?v=37"
       as="style"
       onload="
         this.onload = null;
@@ -135,8 +135,8 @@
       "
     />
     <noscript>
-      <link rel="stylesheet" href="/styles/base.css?v=48" />
-      <link rel="stylesheet" href="/styles/home.css?v=32" />
+      <link rel="stylesheet" href="/styles/base.css?v=61" />
+      <link rel="stylesheet" href="/styles/home.css?v=37" />
     </noscript>
 
     <!-- NOTE: Queue GA immediately; inject gtag.js on idle so 167 KiB stays off first paint. -->
@@ -581,29 +581,83 @@
       <!-- NOTE: UX invite — after portfolio grid; soft lead to /ux for app design. -->
       <section
         class="section section--white home-section home-section--note"
-        aria-label="App design"
+        aria-label="Other services"
       >
-        <!-- NOTE: Whole plate links to /ux — no nested anchors inside. -->
-        <a class="home-section__inner home-section__inner--note-link" href="/ux">
-          <div class="home-scope-note">
-            <!-- NOTE: Audit icon — height matches title + text column via CSS stretch. -->
-            <img
-              class="home-scope-note__icon"
-              src="/assets/icons/app-design-audit.svg"
-              alt=""
-              width="80"
-              height="80"
-              aria-hidden="true"
-            />
-            <div class="home-scope-note__copy">
-              <h2 class="home-scope-note__title">App design</h2>
-              <p class="home-scope-note__text">
-                Need help with app design or redesign of a digital product? We also offer UX for
-                apps — <span class="internal-text-link">see the packages here</span>.
-              </p>
+        <!-- NOTE: Section heading above the service invite plates. -->
+        <div class="home-section__inner home-section__inner--note-head">
+          <h2 class="section-title">Other services</h2>
+        </div>
+        <!-- NOTE: Stack of equal invite plates — UX accent title; others white titles. Icons TBD for 2–3. -->
+        <div class="home-section__note-stack">
+          <!-- NOTE: Whole plate links to /ux — no nested anchors inside. -->
+          <a class="home-section__inner home-section__inner--note-link" href="/ux">
+            <div class="home-scope-note">
+              <!-- NOTE: Audit icon — height matches title + text column via CSS stretch. -->
+              <img
+                class="home-scope-note__icon"
+                src="/assets/icons/app-design-audit.svg"
+                alt=""
+                width="80"
+                height="80"
+                aria-hidden="true"
+              />
+              <div class="home-scope-note__copy">
+                <h2 class="home-scope-note__title">App design</h2>
+                <p class="home-scope-note__text">
+                  Need help with app design or redesign of a digital product? We also offer UX for
+                  apps — <span class="internal-text-link">see the packages here</span>.
+                </p>
+              </div>
             </div>
-          </div>
-        </a>
+          </a>
+          <!-- NOTE: Creative workshop invite — white title; icon from /assets/icons. -->
+          <a
+            class="home-section__inner home-section__inner--note-link"
+            href="/en/creative-workshop"
+          >
+            <div class="home-scope-note">
+              <img
+                class="home-scope-note__icon"
+                src="/assets/icons/skaperverksted-icon.svg"
+                alt=""
+                width="80"
+                height="80"
+                aria-hidden="true"
+              />
+              <div class="home-scope-note__copy">
+                <h2 class="home-scope-note__title home-scope-note__title--white">
+                  Creative workshop
+                </h2>
+                <p class="home-scope-note__text">
+                  A creative workshop for children in Oslo — craft, form and design. Register
+                  interest and follow the launch.
+                </p>
+              </div>
+            </div>
+          </a>
+          <!-- NOTE: Materials catalog invite — white title; icon from /assets/icons. -->
+          <a class="home-section__inner home-section__inner--note-link" href="/katalog">
+            <div class="home-scope-note">
+              <img
+                class="home-scope-note__icon"
+                src="/assets/icons/katalogen-icon.svg"
+                alt=""
+                width="80"
+                height="80"
+                aria-hidden="true"
+              />
+              <div class="home-scope-note__copy">
+                <h2 class="home-scope-note__title home-scope-note__title--white">
+                  Materials catalog
+                </h2>
+                <p class="home-scope-note__text">
+                  An overview of materials with properties, price and use — helpful when choosing
+                  the right base for your product.
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
       </section>
 
       <!-- NOTE: Homepage section 10 — display line after portfolio grid, before “Hva du får”. -->
@@ -1067,13 +1121,13 @@
     </script>
 
     <script src="/components-loader.js?v=5" defer></script>
-    <script src="/shared-nav.js?v=3" defer></script>
+    <script src="/shared-nav.js?v=4" defer></script>
     <script src="/shared-home-hero-scrub.js?v=12" defer></script>
     <script src="/shared-lazy-video.js?v=1" defer></script>
     <script src="/shared-home-news-ticker.js?v=3" defer></script>
     <script src="/shared-partner-logos.js?v=2" defer></script>
     <script src="/shared-about-stats.js?v=1" defer></script>
     <!-- JavaScript -->
-    <script src="/script.js?v=17" defer></script>
+    <script src="/script.js?v=18" defer></script>
   </body>
 </html>

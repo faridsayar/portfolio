@@ -78,8 +78,9 @@ html {
   transform: translateY(-50%);
   z-index: 50;
   display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.55rem;
   padding: 0.9rem;
   background: var(--overlay-black-35);
 }
@@ -90,8 +91,14 @@ html {
   gap: 0.6rem;
 }
 
+/* NOTE: Desktop collapse arrow — left of menu; full styles in base.css. */
 .side-nav__toggle {
-  display: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 1.65rem;
+  height: 1.65rem;
   border: none;
   background: transparent;
   color: var(--color-white);
@@ -101,9 +108,22 @@ html {
 
 .side-nav__toggle-icon {
   display: block;
-  width: 18px;
-  height: 18px;
-  margin-top: 10px;
+  width: 12px;
+  height: 12px;
+  margin-top: 0;
+  transform: rotate(90deg);
+}
+
+.side-nav.is-collapsed {
+  padding: 0.45rem;
+}
+
+.side-nav.is-collapsed .side-nav__content {
+  display: none;
+}
+
+.side-nav.is-collapsed .side-nav__toggle-icon {
+  transform: rotate(-90deg);
 }
 
 .side-nav__link {
@@ -232,7 +252,13 @@ h1.hero-title {
   max-width: 48rem;
   font-size: var(--font-size-body-md);
   line-height: var(--line-height-relaxed);
-  opacity: 0.9;
+  /* NOTE: Muted via color (not opacity) so `.hero-subtitle__accent` can stay full primary. */
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* NOTE: Accented lead words in the homepage hero subtitle (e.g. “- Design”). */
+.hero-subtitle__accent {
+  color: var(--color-primary);
 }
 
 .hero-cta {
@@ -276,6 +302,10 @@ h1.hero-title {
     transform: none;
   }
 
+  .side-nav.is-collapsed {
+    padding: 0;
+  }
+
   .side-nav__content {
     display: none;
   }
@@ -284,13 +314,16 @@ h1.hero-title {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    align-self: flex-end;
     width: var(--mobile-toggle-size);
     height: var(--mobile-toggle-size);
   }
 
-  .side-nav__toggle-icon {
+  .side-nav__toggle-icon,
+  .side-nav.is-collapsed .side-nav__toggle-icon {
     width: 13px;
     height: 13px;
     margin-top: 0;
+    transform: rotate(0deg);
   }
 }

@@ -168,7 +168,7 @@ export function renderProjectPageHtml({ project, seoSlug, narratives, prevSeoSlu
       sizes="192x192"
     />
 
-    <link rel="stylesheet" href="/styles/base.css?v=13" />
+    <link rel="stylesheet" href="/styles/base.css?v=61" />
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JSX18YWHXS"></script>
     <script>
@@ -331,8 +331,8 @@ ${thumbButtons}
     <script src="/assets/data/projects-manifest.js?v=3" defer></script>
     <script src="/assets/data/project-narratives.js?v=1" defer></script>
 ${schemaBlock}
-    <script src="/components-loader.js?v=1" defer></script>
-    <script src="/shared-nav.js?v=2" defer></script>
+    <script src="/components-loader.js?v=5" defer></script>
+    <script src="/shared-nav.js?v=4" defer></script>
     <script src="/script.js?v=${scriptVersion}" defer></script>
   </body>
 </html>
@@ -402,7 +402,7 @@ export function renderProjectsHubHtml({ projects, seoSlugForCatalog }) {
       sizes="192x192"
     />
 
-    <link rel="stylesheet" href="/styles/base.css?v=13" />
+    <link rel="stylesheet" href="/styles/base.css?v=61" />
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JSX18YWHXS"></script>
     <script>
@@ -443,8 +443,8 @@ ${gridCards}
 
     <script src="/assets/data/projects-manifest.js?v=3" defer></script>
 ${schemaBlock}
-    <script src="/components-loader.js?v=1" defer></script>
-    <script src="/shared-nav.js?v=2" defer></script>
+    <script src="/components-loader.js?v=5" defer></script>
+    <script src="/shared-nav.js?v=4" defer></script>
     <script src="/script.js?v=${scriptVersion}" defer></script>
   </body>
 </html>
