@@ -89,7 +89,7 @@ window.__PROJECT_SCHEMA_BY_SLUG = {
         "description": "Skreddersydd 8-strengers elektrisk gitar — form, ergonomi, hardware og produksjonsklart konsept.",
         "url": "https://formaa.no/prosjekter/obseed-custom-8-string-guitar",
         "inLanguage": "nb-NO",
-        "image": "https://formaa.no/assets/images/Projects/Obseed/obseed1.JPG",
+        "image": "https://formaa.no/assets/images/Projects/Obseed/obseed1.webp",
         "mainEntityOfPage": {
           "@id": "https://formaa.no/prosjekter/obseed-custom-8-string-guitar"
         },

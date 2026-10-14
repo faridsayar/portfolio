@@ -2,7 +2,7 @@
 (function exposeArticleImageMap() {
   const imagePool = [
     '/assets/images/Articles/Memorium.jpg',
-    '/assets/images/Articles/usv.png',
+    '/assets/images/Articles/usv.webp',
     '/assets/images/Articles/itac.webp',
     '/assets/images/Articles/kalash.webp',
     '/assets/images/Articles/serviett.jpg',
