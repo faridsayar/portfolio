@@ -28,6 +28,7 @@ important_urls:
 - https://formaa.no/en/product-animation
 - https://formaa.no/prosjekter
 - https://formaa.no/blogg/hvordan-lage-prototype
+- https://formaa.no/blogg/stegvis-prototype-guide
 - https://formaa.no/blogg/fra-oppfinnelse-til-produksjon
 - https://formaa.no/blogg/produktutvikling-hardware-startup
 - https://formaa.no/blogg/hva-er-industridesign

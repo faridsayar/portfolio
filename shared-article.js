@@ -183,6 +183,7 @@ function renderSharedArticle() {
     'blogg-fra-oppfinnelse-til-produksjon',
     'blogg-hvordan-design-sparer-penger',
     'blogg-hvordan-lage-prototype',
+    'blogg-stegvis-prototype-guide',
     'blogg-hva-er-industridesign',
   ];
   const dataScript = document.getElementById('article-content');
@@ -227,11 +228,19 @@ function renderSharedArticle() {
     }
   }
   if (bodyEl) {
-    // NOTE: Article blocks support headings, paragraphs, and bullet lists (`items` on `ul`).
+    // NOTE: Article blocks support headings, paragraphs, inline figures (`img`), and bullet lists (`items` on `ul`).
     bodyEl.innerHTML = article.blocks
       .map((block) => {
         if (block.type === 'h2') {
           return `<h2 class="article-row__title">${block.text}</h2>`;
+        }
+        if (block.type === 'img' && block.src) {
+          const alt = typeof block.alt === 'string' ? block.alt : '';
+          const caption =
+            typeof block.caption === 'string' && block.caption
+              ? `<figcaption class="article-row__caption">${block.caption}</figcaption>`
+              : '';
+          return `<figure class="article-row__figure"><img class="article-row__img" src="${block.src}" alt="${alt}" loading="lazy" width="1600" height="900" />${caption}</figure>`;
         }
         if (block.type === 'ul' && Array.isArray(block.items)) {
           const items = block.items

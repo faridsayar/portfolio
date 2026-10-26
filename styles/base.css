@@ -2778,6 +2778,26 @@ section:is([aria-label='Oss'], [aria-label='About'])
   font-weight: var(--font-weight-semibold);
 }
 
+/* NOTE: In-article step photos — full content width under the narrow text measure. */
+.article-row__text .article-row__figure {
+  margin: 1.25rem 0 1.5rem;
+  max-width: min(100%, 42rem);
+}
+
+.article-row__text .article-row__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: var(--color-black);
+}
+
+.article-row__text .article-row__caption {
+  margin: 0.45rem 0 0;
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-relaxed);
+  opacity: 0.65;
+}
+
 .article-nav-buttons {
   margin-top: 2rem;
   display: flex;
