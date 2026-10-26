@@ -33,6 +33,10 @@
       return toRootAssetPath('assets/images/Articles/kalash.webp');
     if (String(key) === 'blogg-hvordan-lage-prototype')
       return toRootAssetPath('assets/images/Articles/prototype2.webp');
+    if (String(key) === 'blogg-stegvis-prototype-guide')
+      return toRootAssetPath(
+        'assets/images/Articles/stegvis-prototype-guide/stegvis-04-elektronikk.webp'
+      );
     if (String(key) === 'blogg-fra-oppfinnelse-til-produksjon')
       return toRootAssetPath('assets/images/Articles/CAD.webp');
     if (String(key) === 'blogg-produktutvikling-hardware-startup')

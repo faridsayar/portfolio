@@ -54,6 +54,7 @@ export const LLMS_CATEGORY_HUBS = [
 export const LLMS_BLOGG_HUBS = [
   '/blogg',
   '/blogg/hvordan-lage-prototype',
+  '/blogg/stegvis-prototype-guide',
   '/blogg/fra-oppfinnelse-til-produksjon',
   '/blogg/produktutvikling-hardware-startup',
   '/blogg/hva-er-industridesign',

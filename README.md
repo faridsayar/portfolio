@@ -261,6 +261,7 @@ Source files are root stubs `blogg-{slug}.html` with canonical `/blogg/{slug}`. 
 | `branding-og-produktdesign`         | `blogg-branding-og-produktdesign.html`         | Branding + produktdesign |
 | `design-for-crowdfunding`           | `blogg-design-for-crowdfunding.html`           | Crowdfunding + design    |
 | `hvordan-lage-prototype`            | `blogg-hvordan-lage-prototype.html`            | Hvordan lage prototype   |
+| `stegvis-prototype-guide`           | `blogg-stegvis-prototype-guide.html`           | Stegvis prototype guide  |
 | `fra-oppfinnelse-til-produksjon`    | `blogg-fra-oppfinnelse-til-produksjon.html`    | Oppfinnelse → produksjon |
 | `produktutvikling-hardware-startup` | `blogg-produktutvikling-hardware-startup.html` | Hardware startup Norge   |
 

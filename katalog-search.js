@@ -86,20 +86,14 @@
   /**
    * NOTE: Fixed pin fallback — CSS sticky fails when ancestors use overflow-x
    * clipping; switch to fixed once the sentinel reaches the top of the viewport.
-   * Desktop keeps the left column width; stacked layout uses the full list width.
+   * Width always matches the katalog layout so the bar does not jump when it pins.
    */
   function updateStickyToc() {
     if (!toc || !sentinel || !layout) return;
 
-    const stacked = window.matchMedia('(max-width: 1024px)').matches;
     const sentinelTop = sentinel.getBoundingClientRect().top;
     const shouldStick = sentinelTop <= 0;
     const layoutRect = layout.getBoundingClientRect();
-    const columnWidth = stacked
-      ? layoutRect.width
-      : toc.classList.contains('is-stuck')
-        ? parseFloat(toc.style.width) || toc.offsetWidth
-        : toc.offsetWidth;
 
     if (shouldStick) {
       if (!toc.classList.contains('is-stuck')) {
@@ -107,7 +101,7 @@
       }
       toc.classList.add('is-stuck');
       toc.style.left = `${layoutRect.left}px`;
-      toc.style.width = `${columnWidth}px`;
+      toc.style.width = `${layoutRect.width}px`;
     } else {
       toc.classList.remove('is-stuck');
       toc.style.left = '';
