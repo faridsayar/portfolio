@@ -190,11 +190,11 @@ body.katalog-page.single-page-body {
   opacity: 0.9;
 }
 
-/* NOTE: Left group jumps + right long material list. */
+/* NOTE: Full-width stack — horizontal group nav above the material list. */
 .katalog-layout {
   display: grid;
-  grid-template-columns: minmax(7rem, 10rem) minmax(0, 1fr);
-  gap: 2rem 2.5rem;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
   margin-top: 2rem;
   align-items: start;
 }
@@ -206,14 +206,15 @@ body.katalog-page.single-page-body {
   pointer-events: none;
 }
 
-/* NOTE: Sticky group nav — pins to viewport top while scrolling the material list. */
+/* NOTE: Horizontal group nav — same row layout on desktop and mobile; pins while scrolling. */
 .katalog-toc {
   position: sticky;
   top: 0;
   z-index: 20;
   display: flex;
-  flex-direction: column;
-  gap: 0.65rem;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
   background: var(--bg-page-canvas);
   padding: 0.75rem 0;
   box-sizing: border-box;
@@ -395,25 +396,6 @@ body.katalog-page.single-page-body {
 .katalog-group[hidden],
 .katalog-material[hidden] {
   display: none;
-}
-
-@media (max-width: 1024px) {
-  .katalog-layout {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  /* NOTE: Keep sticky on small screens as a horizontal bar at the top. */
-  .katalog-toc {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 0.75rem 1.25rem;
-  }
-
-  .katalog-toc.is-stuck {
-    padding-left: var(--page-gutter);
-    padding-right: var(--page-gutter);
-  }
 }
 
 @media (max-width: 768px) {
