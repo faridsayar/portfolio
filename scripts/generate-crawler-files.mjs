@@ -55,6 +55,9 @@ Disallow: /article-template
 Disallow: /article-template.html
 Disallow: /gallery
 Disallow: /gallery.html
+Disallow: /katalog/last-ned
+Disallow: /katalog/last-ned/
+Disallow: /katalog/Materialkatalogen-formaa.pdf
 
 ${aiBlocks}Sitemap: ${abs('/sitemap.xml')}
 `;
