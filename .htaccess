@@ -17,6 +17,11 @@ RewriteRule ^ https://formaa.no%{REQUEST_URI} [L,R=301]
 # NOTE: Send HSTS header on HTTPS responses to enforce secure transport.
 <IfModule mod_headers.c>
   Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+  # NOTE: Soft Stripe success page + paid PDF — keep out of search indexes (complements meta robots / robots.txt).
+  SetEnvIf Request_URI "^/katalog/last-ned" SOFT_KATALOG_PAYWALL
+  SetEnvIf Request_URI "^/katalog/Materialkatalogen-formaa\.pdf$" SOFT_KATALOG_PAYWALL
+  Header always set X-Robots-Tag "noindex, nofollow, noarchive, nosnippet, noimageindex" env=SOFT_KATALOG_PAYWALL
 </IfModule>
 
 DirectoryIndex index.html

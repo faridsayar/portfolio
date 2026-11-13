@@ -9,6 +9,9 @@ Disallow: /article-template
 Disallow: /article-template.html
 Disallow: /gallery
 Disallow: /gallery.html
+Disallow: /katalog/last-ned
+Disallow: /katalog/last-ned/
+Disallow: /katalog/Materialkatalogen-formaa.pdf
 
 # NOTE: Allow GPTBot to index public marketing pages; see https://formaa.no/llms.txt.
 User-agent: GPTBot
